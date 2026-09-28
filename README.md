@@ -1,5 +1,6 @@
 # KernelMax
 Uses an agentic auto research loop to find and verify faster MLX/Metal inference on a local model
+```text
 KernelMaxxing/
 ├── README.md
 ├── AGENTS.md
@@ -51,3 +52,4 @@ KernelMaxxing/
     ├── state.json
     ├── journal.jsonl
     └── model-files.sha256
+```
