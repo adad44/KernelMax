@@ -1,1 +1,6 @@
-
+{
+  "candidate_id": "REPLACE_WITH_GENERATED_ID",
+  "name": "Example candidate",
+  "implementation_type": "mlx",
+  "description": "Describe the proposed inference optimization."
+}
