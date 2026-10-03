@@ -6,11 +6,17 @@ contract; it does not import or execute candidate code.
 
 from __future__ import annotations
 
+import hashlib
 import json
+import os
 import re
+import shutil
+import stat
 import uuid
+from collections.abc import Mapping
 from dataclasses import dataclass
 from pathlib import Path
+from types import MappingProxyType
 from typing import Any
 
 
@@ -18,7 +24,6 @@ DEFAULT_CANDIDATES_ROOT = Path(__file__).resolve().parent.parent / "candidates"
 MANIFEST_NAME = "manifest.json"
 COMMON_REQUIRED_FILES = (MANIFEST_NAME, "wrapper.py")
 IMPLEMENTATION_FILES = {
-    "python": "implementation.py",
     "mlx": "implementation.py",
     "metal": "implementation.metal",
 }
@@ -42,7 +47,15 @@ class Candidate:
     implementation_type: str
     description: str
     directory: Path
-    manifest: dict[str, Any]
+    manifest: Mapping[str, Any]
+
+
+@dataclass(frozen=True)
+class FrozenCandidate(Candidate):
+    """Controller-owned snapshot with hashes of its paths and file contents."""
+
+    sha256: str
+    file_sha256: Mapping[str, str]
 
 
 def create_candidate_id() -> str:
@@ -56,6 +69,10 @@ def _confined_candidate_dir(candidate_dir: str | Path, candidates_root: str | Pa
     candidate = Path(candidate_dir)
     if not candidate.is_absolute():
         candidate = root / candidate
+    if candidate.is_symlink():
+        raise CandidateValidationError(
+            "candidate must be a real direct child directory, not a symlink"
+        )
     candidate = candidate.resolve()
 
     if candidate.parent != root:
@@ -65,7 +82,7 @@ def _confined_candidate_dir(candidate_dir: str | Path, candidates_root: str | Pa
     if not candidate.is_dir():
         raise CandidateValidationError(f"candidate directory does not exist: {candidate}")
     for path in candidate.rglob("*"):
-        if path.is_symlink() and not path.resolve().is_relative_to(candidate):
+        if path.is_symlink() and not path.resolve(strict=True).is_relative_to(candidate):
             raise CandidateValidationError(
                 f"candidate symlink points outside its allowed directory: {path.relative_to(candidate)}"
             )
@@ -82,7 +99,10 @@ def validate_candidate(
     to ``candidates_root``. The manifest ID must equal the directory name.
     """
 
-    directory = _confined_candidate_dir(candidate_dir, candidates_root)
+    try:
+        directory = _confined_candidate_dir(candidate_dir, candidates_root)
+    except (OSError, RuntimeError) as exc:
+        raise CandidateValidationError(f"cannot resolve candidate directory: {exc}") from exc
     if not _CANDIDATE_ID_RE.fullmatch(directory.name):
         raise CandidateValidationError(
             "candidate directory name must be a generated ID of the form cand_<12 lowercase hex>"
@@ -93,7 +113,7 @@ def validate_candidate(
         raise CandidateValidationError(f"missing required file: {MANIFEST_NAME}")
     try:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
         raise CandidateValidationError(f"cannot read valid JSON from {MANIFEST_NAME}: {exc}") from exc
     if not isinstance(manifest, dict):
         raise CandidateValidationError("manifest must contain a JSON object")
@@ -135,5 +155,119 @@ def validate_candidate(
         implementation_type=implementation_type,
         description=manifest["description"].strip(),
         directory=directory,
-        manifest=manifest,
+        manifest=MappingProxyType(manifest),
     )
+
+
+def _read_regular_file(path: Path) -> bytes:
+    """Read a source file without following a final-component symlink."""
+
+    flags = os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK
+    with os.fdopen(os.open(path, flags), "rb") as stream:
+        info = os.fstat(stream.fileno())
+        if not stat.S_ISREG(info.st_mode) or info.st_nlink != 1:
+            raise CandidateValidationError(
+                f"snapshot files must be regular files without hard links: {path.name}"
+            )
+        return stream.read()
+
+
+def _submission_paths(directory: Path) -> list[Path]:
+    if directory.is_symlink() or not directory.is_dir():
+        raise CandidateValidationError("snapshot must be a real directory")
+    paths = sorted(directory.rglob("*"))
+    for path in paths:
+        if path.is_symlink():
+            raise CandidateValidationError("frozen candidates must not contain symlinks")
+    return paths
+
+
+def _snapshot_hashes(directory: Path) -> dict[str, str]:
+    hashes = {}
+    for path in _submission_paths(directory):
+        if not path.is_dir():
+            hashes[path.relative_to(directory).as_posix()] = hashlib.sha256(
+                _read_regular_file(path)
+            ).hexdigest()
+    return hashes
+
+
+def _bundle_hash(hashes: Mapping[str, str]) -> str:
+    payload = json.dumps(dict(hashes), sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def _remove_snapshot(directory: Path) -> None:
+    # Restore owner permissions so cleanup also works after partial chmod failure.
+    directory.chmod(0o700)
+    for path in directory.rglob("*"):
+        if path.is_dir():
+            path.chmod(0o700)
+    shutil.rmtree(directory)
+
+
+def freeze_candidate(
+    candidate_dir: str | Path,
+    *,
+    frozen_root: str | Path,
+    candidates_root: str | Path = DEFAULT_CANDIDATES_ROOT,
+) -> FrozenCandidate:
+    """Copy a submission into a new read-only, hashed controller snapshot.
+
+    The controller must stop the candidate writer before calling this function
+    and keep ``frozen_root`` inaccessible to optimization agents. This function
+    does not sandbox processes or freeze the evaluator's protected inputs.
+    Existing snapshot IDs are never overwritten. All files are copied; symlinks,
+    hard links, and special files are rejected. Evaluate only the returned path.
+    """
+
+    candidate = validate_candidate(candidate_dir, candidates_root)
+    root = Path(frozen_root).resolve()
+    if root.is_relative_to(Path(candidates_root).resolve()):
+        raise CandidateValidationError("frozen_root must be outside candidates_root")
+    destination = root / candidate.candidate_id
+    try:
+        root.mkdir(parents=True, exist_ok=True)
+        destination.mkdir()  # Reserve the ID without replacing an existing snapshot.
+    except OSError as exc:
+        raise CandidateValidationError(f"cannot create new candidate snapshot: {exc}") from exc
+
+    try:
+        for path in _submission_paths(candidate.directory):
+            copied = destination / path.relative_to(candidate.directory)
+            if path.is_dir():
+                copied.mkdir()
+            else:
+                copied.write_bytes(_read_regular_file(path))
+        snapshot = validate_candidate(destination, root)
+        hashes = _snapshot_hashes(destination)
+        frozen = FrozenCandidate(
+            candidate_id=snapshot.candidate_id,
+            name=snapshot.name,
+            implementation_type=snapshot.implementation_type,
+            description=snapshot.description,
+            directory=destination,
+            manifest=snapshot.manifest,
+            sha256=_bundle_hash(hashes),
+            file_sha256=MappingProxyType(hashes),
+        )
+        for path in sorted(destination.rglob("*"), reverse=True):
+            path.chmod(0o555 if path.is_dir() else 0o444)
+        destination.chmod(0o555)
+        return frozen
+    except (OSError, CandidateValidationError) as exc:
+        _remove_snapshot(destination)
+        if isinstance(exc, CandidateValidationError):
+            raise
+        raise CandidateValidationError(f"cannot freeze candidate: {exc}") from exc
+
+
+def verify_frozen_candidate(candidate: FrozenCandidate) -> None:
+    """Reject a snapshot whose file names or contents changed since freezing."""
+
+    try:
+        hashes = _snapshot_hashes(candidate.directory)
+    except OSError as exc:
+        raise CandidateValidationError(f"cannot verify frozen candidate: {exc}") from exc
+    if hashes != candidate.file_sha256 or _bundle_hash(hashes) != candidate.sha256:
+        raise CandidateValidationError("frozen candidate contents changed")
