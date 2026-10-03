@@ -1,0 +1,95 @@
+schema_version: 1
+experiment_id: gpt-oss-20b-m4-week1
+
+model:
+  repository: openai/gpt-oss-20b
+  revision: 6cee5e81ee83917806bbde320786a8fb61efebee
+  architecture: gpt_oss
+  expert_weight_format: native_mxfp4
+  activation_dtype: bfloat16
+  kv_cache_dtype: bfloat16
+  requantize_weights: false
+
+hardware:
+  chip: Apple M4
+  memory_gib: 24
+  model_identifier: Mac16,12
+  backend: mlx_metal
+
+workload:
+  batch_size: 1
+  prompt_lengths: [512, 2048, 4096]
+  generation_tokens: 128
+  seed: 42  # Matches the target team's initial workload default.
+  input_source: fixed_token_ids
+  sampling: greedy
+  prefill_step_size: 4096
+  eos_stopping: false
+  reuse_prompt_cache: false
+
+correctness:
+  reference: unmodified_mlx_lm_same_checkpoint
+  tolerance_status: provisional
+  # Initial BF16 comparison limits, to be calibrated using repeated reference
+  # runs and operator-specific checks before candidate acceptance is enabled.
+  atol: 0.02
+  rtol: 0.02
+  require_finite: true
+  require_shape_match: true
+  require_dtype_match: true
+  required_cases:
+    - decode
+    - prefill
+    - uneven_expert_load
+    - unused_experts
+    - non_divisible_token_counts
+    - large_finite_activations
+    - held_out_inputs
+
+benchmark:
+  warmups: 5
+  trials_per_implementation: 20
+  order: alternating_ab_ba
+  synchronize_before_and_after: true
+  primary_metric: decode_tokens_per_second
+  required_metrics:
+    - decode_tokens_per_second
+    - time_to_first_token_ms
+    - prefill_tokens_per_second
+    - inter_token_latency_ms
+    - peak_memory_bytes
+    - full_model_wall_time_ms
+  statistics: [median, p90, mad]
+  resident_model: true
+  include_model_loading: false
+  include_agent_activity: false
+  invalidate_on_swap_growth: true
+  invalidate_on_thermal_change: true
+
+acceptance:
+  status: provisional
+  enabled: false
+  # Planning values, not an implemented verdict algorithm or measured result.
+  minimum_speedup: 1.05
+  maximum_p90_latency_ratio: 1.02
+  maximum_peak_memory_ratio: 1.05
+  require_all_correctness_cases: true
+  require_improvement_above_noise: true
+
+agent:
+  candidate_root: candidates
+  optimization_boundary: moe_expert_execution
+  allowed_implementation_types: [mlx, metal]
+  protected_paths:
+    - AGENTS.md
+    - kernelmaxxing.yaml
+    - pyproject.toml
+    - uv.lock
+    - orchestrator
+    - target
+    - evaluator
+    - tests
+    - reports
+    - .kernelmaxxing
+    - candidates/README.md
+    - candidates/candidate-template
