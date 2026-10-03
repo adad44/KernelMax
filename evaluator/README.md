@@ -33,6 +33,40 @@ fields, invalid types, nonfinite values, and duplicate YAML keys. `AGENTS.md`
 defines ownership and required enforcement. Its path policy is not an execution
 sandbox; the candidate runtime must implement isolation before untrusted code runs.
 
+## Run reports and failed experiments
+
+The evaluator creates one `EvaluationReport` for each frozen candidate run. The
+controller assigns a unique `run_id` (for example, a UUID); the report binds the
+candidate identity/hash, contract hash, environment, correctness checks, timings,
+run status, errors, and optional final verdict. Repeated candidate/contract
+identities in a verdict must match the report. Observed hardware includes the
+model identifier, not just chip and memory. Hashes and environment fields are
+claims to verify at execution time, not proof supplied by these data records.
+
+`completed`, `interrupted`, and `failed` are terminal run statuses. Interrupted
+and failed runs require an error explanation. An early failure may have a null
+environment and verdict, and no correctness or timing results. Invalid timing
+records may retain empty or unequal sample lists; valid timing records require
+at least two complete pairs. Every stored measurement must still be finite and
+positive. Describe unsuccessful measurements in errors/detail, never as fake
+zero/NaN samples. A raw sample is one trial-level observation for its metric;
+the runner must define inter-token aggregation consistently for each trial.
+
+Call `validate_report_against_contract(report, contract)` to get a tuple of
+completeness/eligibility issues. It checks contract identity, canonical hardware,
+required correctness cases, duplicate results, every workload/metric combination,
+validity, and the exact configured trial count. It flags failed checks, execution
+errors, non-completed runs, and an `ACCEPTED` claim while acceptance is disabled.
+
+Save the structurally valid report even when issues are returned; failed or
+incomplete evidence must not disappear. An invalid acceptance claim can be kept
+as an audit artifact but must not become an official accepted result. The future
+report writer/verdict implementation must enforce this gate. An empty issue list
+does **not** authorize acceptance: actual hash verification, numerical evaluation,
+sample pairing/order, timing/environment observations, noise analysis, and
+speedup/regression decisions still belong to the protected runtime/evaluator.
+There is no report writer or acceptance algorithm in this PR.
+
 Acceptance is disabled. The initial 5% speedup target, 2% p90 latency cap, 5%
 memory cap, and numerical tolerances are proposals. Calibrate them against the
 unchanged M4 baseline, document the evidence, and review a new contract revision

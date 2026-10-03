@@ -16,6 +16,7 @@ from collections.abc import Mapping
 from dataclasses import dataclass, fields, is_dataclass
 from enum import Enum
 from pathlib import Path, PurePosixPath
+from types import UnionType
 from typing import Any, Self, get_args, get_origin, get_type_hints
 
 
@@ -34,6 +35,12 @@ class CalibrationStatus(str, Enum):
     CALIBRATED = "calibrated"
 
 
+class RunStatus(str, Enum):
+    COMPLETED = "completed"
+    INTERRUPTED = "interrupted"
+    FAILED = "failed"
+
+
 class Metric(str, Enum):
     DECODE_THROUGHPUT = "decode_tokens_per_second"
     TTFT = "time_to_first_token_ms"
@@ -50,6 +57,17 @@ def _require(condition: bool, message: str) -> None:
 
 def _decode(value: Any, annotation: Any, name: str) -> Any:
     """Decode only the simple field types used by the records below."""
+    if get_origin(annotation) is UnionType:
+        members = get_args(annotation)
+        _require(
+            len(members) == 2 and type(None) in members,
+            f"{name} only supports an optional field, not arbitrary unions",
+        )
+        if value is None:
+            return None
+        return _decode(
+            value, next(item for item in members if item is not type(None)), name
+        )
     if get_origin(annotation) is tuple:
         _require(isinstance(value, (list, tuple)), f"{name} must be a sequence")
         item_type, _ = get_args(annotation)
@@ -479,8 +497,9 @@ class PerformanceResult(_Record):
         _Record.__post_init__(self)
         _require(self.prompt_length in (512, 2048, 4096), "unknown timing workload")
         _require(
-            len(self.baseline_samples) == len(self.candidate_samples) >= 2,
-            "timing requires equal paired sample counts of at least two",
+            not self.valid
+            or len(self.baseline_samples) == len(self.candidate_samples) >= 2,
+            "valid timing requires equal paired sample counts of at least two",
         )
         _require(
             all(
@@ -495,6 +514,7 @@ class PerformanceResult(_Record):
 class EnvironmentRecord(_Record):
     chip: str
     memory_gib: int
+    model_identifier: str
     macos_version: str
     python_version: str
     mlx_version: str
@@ -523,6 +543,125 @@ class VerdictResult(_Record):
             bool(re.fullmatch(r"[0-9a-f]{64}", self.contract_sha256)),
             "verdict must identify its contract hash",
         )
+
+
+@dataclass(frozen=True, slots=True)
+class EvaluationReport(_Record):
+    """One evaluator-owned run, including incomplete or failed evidence.
+
+    The controller assigns a unique run_id. Null environment/verdict fields are
+    explicit: early failures need no invented environment or final decision.
+    """
+
+    run_id: str
+    candidate: CandidateIdentity
+    contract_sha256: str
+    environment: EnvironmentRecord | None
+    correctness: tuple[CorrectnessResult, ...]
+    performance: tuple[PerformanceResult, ...]
+    status: RunStatus
+    errors: tuple[str, ...]
+    verdict: VerdictResult | None
+
+    def __post_init__(self) -> None:
+        _Record.__post_init__(self)
+        _require(
+            bool(re.fullmatch(r"[0-9a-f]{64}", self.contract_sha256)),
+            "report must identify its contract hash",
+        )
+        _require(
+            self.status is RunStatus.COMPLETED or bool(self.errors),
+            "interrupted or failed runs must explain the failure",
+        )
+        if self.verdict is not None:
+            _require(
+                self.verdict.candidate == self.candidate,
+                "report and verdict candidate identities must match",
+            )
+            _require(
+                self.verdict.contract_sha256 == self.contract_sha256,
+                "report and verdict contract hashes must match",
+            )
+
+
+def validate_report_against_contract(
+    report: EvaluationReport, contract: ExperimentContract
+) -> tuple[str, ...]:
+    """Return evidence/completeness issues without discarding failed runs.
+
+    Save the structurally valid report even when issues are returned. An empty
+    result is NOT an acceptance decision: noise, speedup/regression thresholds,
+    actual provenance, and execution isolation still need the verdict/runtime
+    implementation. In particular, this cannot verify claimed hashes or readings.
+    """
+    issues: list[str] = []
+    if report.contract_sha256 != contract.sha256:
+        issues.append("report contract hash does not match the supplied contract")
+    if (
+        report.candidate.implementation_type
+        not in contract.agent.allowed_implementation_types
+    ):
+        issues.append("candidate implementation is not allowed by the contract")
+    if report.status is not RunStatus.COMPLETED:
+        issues.append(f"run is {report.status.value}, not completed")
+    if report.errors:
+        issues.append("run contains execution or environment errors")
+
+    environment = report.environment
+    if environment is None:
+        issues.append("environment was not captured")
+    elif (
+        environment.chip != contract.hardware.chip
+        or environment.memory_gib != contract.hardware.memory_gib
+        or environment.model_identifier != contract.hardware.model_identifier
+    ):
+        issues.append("observed hardware does not match the canonical host")
+
+    seen_cases: set[str] = set()
+    for result in report.correctness:
+        if result.case_name in seen_cases:
+            issues.append(f"duplicate correctness case: {result.case_name}")
+        seen_cases.add(result.case_name)
+        if not result.passed:
+            issues.append(f"correctness failed: {result.case_name}")
+    for case in contract.correctness.required_cases:
+        if case not in seen_cases:
+            issues.append(f"missing correctness case: {case}")
+
+    expected_metrics = {
+        (length, metric)
+        for length in contract.workload.prompt_lengths
+        for metric in contract.benchmark.required_metrics
+    }
+    seen_metrics: set[tuple[int, Metric]] = set()
+    trials = contract.benchmark.trials_per_implementation
+    for result in report.performance:
+        key = (result.prompt_length, result.metric)
+        label = f"{result.prompt_length}/{result.metric.value}"
+        if key in seen_metrics:
+            issues.append(f"duplicate performance result: {label}")
+        seen_metrics.add(key)
+        if key not in expected_metrics:
+            issues.append(f"unexpected performance result: {label}")
+        if not result.valid:
+            issues.append(f"invalid performance result: {label}")
+        elif (
+            len(result.baseline_samples) != trials
+            or len(result.candidate_samples) != trials
+        ):
+            issues.append(
+                f"performance result {label} requires exactly {trials} paired trials"
+            )
+    for length, metric in sorted(expected_metrics - seen_metrics):
+        issues.append(f"missing performance result: {length}/{metric.value}")
+
+    if (
+        report.verdict is not None
+        and report.verdict.verdict is Verdict.ACCEPTED
+        and not contract.acceptance.enabled
+    ):
+        issues.append("ACCEPTED verdict is forbidden while acceptance is disabled")
+    return tuple(issues)
 
 
 def load_contract(path: str | Path) -> ExperimentContract:

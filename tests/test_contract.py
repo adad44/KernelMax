@@ -4,7 +4,7 @@ import copy
 import json
 import tempfile
 import unittest
-from dataclasses import FrozenInstanceError
+from dataclasses import FrozenInstanceError, replace
 from pathlib import Path
 
 from evaluator.schemas import (
@@ -13,12 +13,15 @@ from evaluator.schemas import (
     ContractError,
     CorrectnessResult,
     EnvironmentRecord,
+    EvaluationReport,
     ExperimentContract,
     Metric,
     PerformanceResult,
+    RunStatus,
     Verdict,
     VerdictResult,
     load_contract,
+    validate_report_against_contract,
 )
 
 
@@ -283,10 +286,44 @@ class ResultSchemaTests(unittest.TestCase):
             ):
                 PerformanceResult.from_mapping(data)
 
+    def test_invalid_timing_retains_partial_or_empty_measurements(self):
+        for baseline, candidate in [([], []), ([20], []), ([20, 21, 22], [23, 24])]:
+            with self.subTest(baseline=baseline, candidate=candidate):
+                result = PerformanceResult(
+                    512,
+                    Metric.DECODE_THROUGHPUT,
+                    baseline,
+                    candidate,
+                    False,
+                    "Interrupted during candidate trial",
+                )
+                self.assertEqual(result.baseline_samples, tuple(baseline))
+                self.assertEqual(result.candidate_samples, tuple(candidate))
+                self.assertFalse(result.valid)
+                self.assertEqual(
+                    PerformanceResult.from_mapping(
+                        json.loads(json.dumps(result.to_dict()))
+                    ),
+                    result,
+                )
+        for samples in ([0], [-1], [float("nan")], [float("inf")], [True]):
+            with self.subTest(samples=samples), self.assertRaises(ContractError):
+                PerformanceResult(
+                    512,
+                    Metric.DECODE_THROUGHPUT,
+                    samples,
+                    (),
+                    False,
+                    "Failed measurement is an error, not a sample",
+                )
+        with self.assertRaises(ContractError):
+            PerformanceResult(512, Metric.DECODE_THROUGHPUT, (), (), False, " ")
+
     def test_environment_requires_versions_and_model_hash_provenance(self):
         data = dict(
             chip="Apple M4",
             memory_gib=24,
+            model_identifier="Mac16,12",
             macos_version="example",
             python_version="example",
             mlx_version="example",
@@ -298,11 +335,286 @@ class ResultSchemaTests(unittest.TestCase):
             ("mlx_version", ""),
             ("model_files_sha256", "unpinned"),
             ("memory_gib", 0),
+            ("model_identifier", ""),
         ]:
             invalid = copy.deepcopy(data)
             invalid[field] = value
             with self.subTest(field=field), self.assertRaises(ContractError):
                 EnvironmentRecord.from_mapping(invalid)
+
+
+class EvaluationReportTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.contract = load_contract(ROOT / "kernelmaxxing.yaml")
+        cls.report = EvaluationReport(
+            run_id="run-synthetic-fixture",
+            candidate=CandidateIdentity("cand_0123456789ab", "mlx", "a" * 64),
+            contract_sha256=cls.contract.sha256,
+            environment=EnvironmentRecord(
+                chip="Apple M4",
+                memory_gib=24,
+                model_identifier="Mac16,12",
+                macos_version="synthetic",
+                python_version="synthetic",
+                mlx_version="synthetic",
+                mlx_lm_version="synthetic",
+                model_files_sha256="b" * 64,
+            ),
+            correctness=tuple(
+                CorrectnessResult(case, True, True, True, True, True, "Synthetic pass")
+                for case in cls.contract.correctness.required_cases
+            ),
+            performance=tuple(
+                PerformanceResult(
+                    length,
+                    metric,
+                    (20.0,) * 20,
+                    (21.0,) * 20,
+                    True,
+                    "Synthetic timing fixture, not measured evidence",
+                )
+                for length in cls.contract.workload.prompt_lengths
+                for metric in cls.contract.benchmark.required_metrics
+            ),
+            status=RunStatus.COMPLETED,
+            errors=(),
+            verdict=None,
+        )
+
+    def issues(self, report, contract=None):
+        return validate_report_against_contract(report, contract or self.contract)
+
+    def test_complete_report_round_trip_and_completeness_are_not_acceptance(self):
+        parsed = EvaluationReport.from_mapping(
+            json.loads(json.dumps(self.report.to_dict()))
+        )
+        self.assertEqual(parsed, self.report)
+        self.assertEqual(self.issues(parsed), ())
+        self.assertIsNone(parsed.verdict)
+        self.assertFalse(self.contract.acceptance.enabled)
+        with self.assertRaises(FrozenInstanceError):
+            parsed.errors = ("Changed",)
+
+    def test_early_failure_can_be_saved_without_environment_or_verdict(self):
+        report = replace(
+            self.report,
+            environment=None,
+            correctness=(),
+            performance=(),
+            status=RunStatus.FAILED,
+            errors=("Build failed before environment capture",),
+        )
+        parsed = EvaluationReport.from_mapping(json.loads(json.dumps(report.to_dict())))
+        self.assertEqual(parsed, report)
+        self.assertIn("environment was not captured", self.issues(parsed))
+        self.assertIn("run is failed, not completed", self.issues(parsed))
+
+    def test_interrupted_report_preserves_partial_evidence(self):
+        timing = replace(
+            self.report.performance[0],
+            baseline_samples=(20, 21, 22),
+            candidate_samples=(23, 24),
+            valid=False,
+            detail="Interrupted third pair",
+        )
+        report = replace(
+            self.report,
+            performance=(timing,),
+            status=RunStatus.INTERRUPTED,
+            errors=("Candidate process timed out",),
+        )
+        before = report.to_dict()
+        issues = self.issues(report)
+        self.assertIn("run is interrupted, not completed", issues)
+        self.assertTrue(
+            any(issue.startswith("invalid performance") for issue in issues)
+        )
+        self.assertTrue(
+            any(issue.startswith("missing performance") for issue in issues)
+        )
+        self.assertEqual(report.to_dict(), before)
+        self.assertEqual(
+            EvaluationReport.from_mapping(json.loads(json.dumps(before))),
+            report,
+        )
+
+    def test_report_rejects_malformed_fields_but_not_incomplete_evidence(self):
+        for field, value in [
+            ("run_id", ""),
+            ("contract_sha256", "short"),
+            ("status", "unknown"),
+            ("status", RunStatus.FAILED),
+            ("environment", False),
+            ("verdict", False),
+            ("errors", [""]),
+            ("correctness", [None]),
+        ]:
+            data = self.report.to_dict()
+            data[field] = value
+            with (
+                self.subTest(field=field, value=value),
+                self.assertRaises(ContractError),
+            ):
+                EvaluationReport.from_mapping(data)
+
+    def test_verdict_identity_must_match_its_report(self):
+        verdict = VerdictResult(
+            self.report.candidate,
+            self.report.contract_sha256,
+            Verdict.INCONCLUSIVE,
+            "Synthetic verdict fixture",
+        )
+        report = replace(self.report, verdict=verdict)
+        self.assertEqual(
+            EvaluationReport.from_mapping(json.loads(json.dumps(report.to_dict()))),
+            report,
+        )
+        for candidate in [
+            replace(verdict.candidate, candidate_id="cand_aaaaaaaaaaaa"),
+            replace(verdict.candidate, sha256="c" * 64),
+            replace(verdict.candidate, implementation_type="metal"),
+        ]:
+            with self.subTest(candidate=candidate), self.assertRaises(ContractError):
+                replace(self.report, verdict=replace(verdict, candidate=candidate))
+        with self.assertRaises(ContractError):
+            replace(self.report, verdict=replace(verdict, contract_sha256="d" * 64))
+
+    def test_contract_and_canonical_hardware_must_match(self):
+        self.assertIn(
+            "report contract hash does not match the supplied contract",
+            self.issues(replace(self.report, contract_sha256="c" * 64)),
+        )
+        for field, value in [
+            ("chip", "Apple M5"),
+            ("memory_gib", 16),
+            ("model_identifier", "Mac16,1"),
+        ]:
+            with self.subTest(field=field):
+                environment = replace(self.report.environment, **{field: value})
+                self.assertIn(
+                    "observed hardware does not match the canonical host",
+                    self.issues(replace(self.report, environment=environment)),
+                )
+
+    def test_missing_duplicate_and_failed_correctness_are_detected(self):
+        first = self.report.correctness[0]
+        variants = [
+            (
+                self.report.correctness[1:],
+                f"missing correctness case: {first.case_name}",
+            ),
+            (
+                (*self.report.correctness, first),
+                f"duplicate correctness case: {first.case_name}",
+            ),
+            (
+                (
+                    replace(first, passed=False, tolerance_passed=False),
+                    *self.report.correctness[1:],
+                ),
+                f"correctness failed: {first.case_name}",
+            ),
+        ]
+        for correctness, expected in variants:
+            with self.subTest(expected=expected):
+                self.assertIn(
+                    expected, self.issues(replace(self.report, correctness=correctness))
+                )
+
+    def test_missing_and_duplicate_workload_metrics_are_detected(self):
+        first = self.report.performance[0]
+        label = f"{first.prompt_length}/{first.metric.value}"
+        self.assertIn(
+            f"missing performance result: {label}",
+            self.issues(replace(self.report, performance=self.report.performance[1:])),
+        )
+        self.assertIn(
+            f"duplicate performance result: {label}",
+            self.issues(
+                replace(self.report, performance=(*self.report.performance, first))
+            ),
+        )
+
+    def test_trial_counts_come_from_contract_not_record_minimum(self):
+        for count in (2, 19, 21):
+            performance = tuple(
+                replace(
+                    result,
+                    baseline_samples=(20,) * count,
+                    candidate_samples=(21,) * count,
+                )
+                for result in self.report.performance
+            )
+            with self.subTest(count=count):
+                issues = self.issues(replace(self.report, performance=performance))
+                self.assertEqual(len(issues), len(performance))
+                self.assertTrue(
+                    all("exactly 20 paired trials" in issue for issue in issues)
+                )
+        data = self.contract.to_dict()
+        data["benchmark"]["trials_per_implementation"] = 2
+        contract = ExperimentContract.from_mapping(data)
+        performance = tuple(
+            replace(result, baseline_samples=(20, 20), candidate_samples=(21, 21))
+            for result in self.report.performance
+        )
+        report = replace(
+            self.report, contract_sha256=contract.sha256, performance=performance
+        )
+        self.assertEqual(self.issues(report, contract), ())
+
+    def test_accepted_claim_is_invalid_while_acceptance_is_disabled(self):
+        verdict = VerdictResult(
+            self.report.candidate,
+            self.report.contract_sha256,
+            Verdict.ACCEPTED,
+            "Untrusted acceptance claim",
+        )
+        report = replace(self.report, verdict=verdict)
+        self.assertIn(
+            "ACCEPTED verdict is forbidden while acceptance is disabled",
+            self.issues(report),
+        )
+        # It remains serializable as an audit artifact, not an official acceptance.
+        self.assertEqual(EvaluationReport.from_mapping(report.to_dict()), report)
+
+    def test_failed_invalid_or_incomplete_evidence_blocks_accepted_eligibility(self):
+        data = self.contract.to_dict()
+        data["acceptance"].update(enabled=True, status="calibrated")
+        data["correctness"]["tolerance_status"] = "calibrated"
+        contract = ExperimentContract.from_mapping(data)
+        report = replace(self.report, contract_sha256=contract.sha256)
+        report = replace(
+            report,
+            verdict=VerdictResult(
+                report.candidate,
+                contract.sha256,
+                Verdict.ACCEPTED,
+                "Synthetic claim",
+            ),
+        )
+        first = report.correctness[0]
+        for changes in [
+            {"status": RunStatus.INTERRUPTED, "errors": ("Timeout",)},
+            {"correctness": ()},
+            {
+                "correctness": (
+                    replace(first, passed=False, finite=False),
+                    *report.correctness[1:],
+                )
+            },
+            {"performance": ()},
+            {
+                "performance": (
+                    replace(report.performance[0], valid=False),
+                    *report.performance[1:],
+                )
+            },
+            {"errors": ("Thermal state changed",)},
+        ]:
+            with self.subTest(changes=changes):
+                self.assertTrue(self.issues(replace(report, **changes), contract))
 
 
 if __name__ == "__main__":
