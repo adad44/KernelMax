@@ -55,7 +55,54 @@ A public project board has not been linked yet.
 2. Follow the setup and run instructions once the project dependencies and implementation are added.
 
 > [!NOTE]
-> KernelMax is currently a structure-only scaffold, so there is not yet a runnable installation or benchmark command.
+> KernelMax is still mostly a scaffold, so there is not yet a runnable model benchmark command. The offline target helpers below can be used and tested now.
+
+### Offline fixed workload
+
+The first implemented pieces in `target/` prepare fake inputs for a future
+language-model benchmark. A workload is the set of inputs used for a test;
+benchmarking will later measure how quickly a model handles those inputs.
+These helpers do not run inference or measure performance.
+
+- `target/model_loader.py` defines `LoadedModel`, a record holding a model and
+  its tokenizer (the object that converts text to token IDs). Its `load_model`
+  function calls a required, caller-supplied loader once. The loader returns
+  `(model, tokenizer)`; tests can return fake objects. There is no default ML
+  backend, download, or model dependency. Any future backend's behavior is the
+  caller's responsibility.
+- `target/workload.py` defines `generate_workload(seed=42, vocab_size=32000)`.
+  It creates synthetic integer token IDs using its own seeded random generator.
+  The same seed and vocabulary size produce the same inputs. No tokenizer or
+  model is needed, and global random state is left unchanged.
+- Each immutable `WorkloadCase` holds `input_ids` and `max_new_tokens=128`.
+  Its `batch_size` property counts input rows, `prompt_length` counts tokens in
+  the row, and `input_shape` returns those two dimensions. Exactly three cases
+  are generated, with shapes `(1, 512)`, `(1, 2048)`, and `(1, 4096)`. The `1`
+  means one prompt per batch; `128` limits future output tokens.
+- `tests/test_model_loader.py` checks the interface using fake objects.
+  `tests/test_workload.py` checks the fixed cases, shapes, token bounds,
+  reproducibility, and invalid seed/vocabulary settings.
+
+Python 3.9 or newer is sufficient for these standard-library helpers:
+
+```python
+from target.model_loader import load_model
+from target.workload import generate_workload
+
+# These objects stand in for a model and tokenizer; no model files are read.
+loaded = load_model(loader=lambda: (object(), object()))
+for case in generate_workload():
+    print(case.input_shape, case.max_new_tokens)
+```
+
+With `pytest` available in your Python environment, run the offline tests from
+the repository root:
+
+```bash
+python3 -m pytest -q
+```
+
+The other scaffold modules and test files remain placeholders.
 
 ## Technology Stack
 
