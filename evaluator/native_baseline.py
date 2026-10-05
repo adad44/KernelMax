@@ -24,7 +24,6 @@ from pathlib import Path
 import threading
 import copy
 import shutil
-import plistlib
 
 
 class EnvironmentInvalid(RuntimeError):
@@ -110,25 +109,6 @@ def command(*args):
     return subprocess.check_output(args, text=True).strip()
 
 
-def gpu_client_counters(registry):
-    """Diagnostic driver counters with raw units, not a new timing/validity gate."""
-    result = {}
-    def walk(node):
-        if isinstance(node, dict):
-            owner = node.get('IOUserClientCreator')
-            if owner:
-                usage = node.get('AppUsage', [])
-                value = sum(u.get('accumulatedGPUTime', 0) for u in usage)
-                result[owner] = result.get(owner, 0) + value
-            for value in node.values():
-                walk(value)
-        elif isinstance(node, list):
-            for value in node:
-                walk(value)
-    walk(registry)
-    return result
-
-
 def environment():
     swap = command("sysctl", "-n", "vm.swapusage")
     match = re.search(r"used\s*=\s*([\d.]+)M", swap)
@@ -147,12 +127,6 @@ def environment():
         "process_cpu_snapshot": command("ps", "-Ao", "pid,pcpu,comm", "-r")[:8000],
         'process_cpu_time_seconds': time.process_time(),
     }
-    try:
-        registry = plistlib.loads(subprocess.check_output(['ioreg', '-a', '-r', '-c', 'AGXAccelerator'], timeout=10))
-        result['gpu_client_counters_raw'] = gpu_client_counters(registry)
-        result['gpu_client_counter_scope'] = 'IORegistry driver cumulative AppUsage counters, raw undocumented units; diagnostic only, not frequency or calibrated per-process energy attribution'
-    except (OSError, ValueError, subprocess.SubprocessError) as error:
-        result['gpu_client_counter_unavailable'] = str(error)
     for label in ('Swapins', 'Swapouts'):
         counter = re.search(rf'^{label}:\s*(\d+)\.', vm, re.MULTILINE)
         if counter:
@@ -199,32 +173,6 @@ def swap_observation(before, after, swap_policy):
             'swapout_pages': after['swapouts'] - before['swapouts'],
             'swap_growth_mib': after['swap_used_mib'] - before['swap_used_mib'],
             'swapins_permitted': swap_policy == 'paging-aware'}
-
-
-def stability_screen(rows, lengths):
-    """Predeclared diagnostic screen, never a substitute for twenty A/A pairs."""
-    if len(rows) != 4 * len(lengths):
-        raise ValueError('Stability screen requires two complete A/A pairs per size')
-    result = {}
-    for length in lengths:
-        selected = [r for r in rows if r['prompt_tokens'] == length]
-        if [(r['trial'], r['lane']) for r in selected] != [(1, 'A'), (1, 'B'), (2, 'B'), (2, 'A')]:
-            raise ValueError('Stability-screen coverage/order mismatch')
-        rates = [r['metrics']['decode_tokens_per_second'] for r in selected]
-        if any(not math.isfinite(v) or v <= 0 for v in rates):
-            raise ValueError('Invalid stability-screen rate')
-        a = {r['trial']: r for r in selected if r['lane'] == 'A'}
-        b = {r['trial']: r for r in selected if r['lane'] == 'B'}
-        ratios = [b[i]['metrics']['decode_tokens_per_second'] / a[i]['metrics']['decode_tokens_per_second'] for i in (1, 2)]
-        median = statistics.median(rates)
-        relative_mad = statistics.median(abs(v - median) for v in rates) / median
-        spread = max(rates) / min(rates) - 1
-        result[str(length)] = {'rates': rates, 'paired_b_over_a_ratios': ratios,
-            'relative_mad': relative_mad, 'relative_full_range': spread,
-            'passed': (not any(r['invalid_reasons'] for r in selected)
-                       and all(abs(v - 1) <= .02 for v in ratios)
-                       and relative_mad <= .01 and spread <= .04)}
-    return result
 
 
 def quiet_preflight(observe=environment, clock=time.monotonic, sleep=time.sleep,
@@ -369,8 +317,6 @@ def main():
                         help='Additional complete attempts after environment-only failure; no reloading')
     parser.add_argument('--swap-policy', choices=('strict', 'paging-aware'), default='strict',
                         help='Paging-aware permits logged swap-ins, never swap-outs or swap growth')
-    parser.add_argument('--stability-screen', action='store_true',
-                        help='Separate predeclared twelve-request diagnostic before official collection')
     parser.add_argument('--per-request-control', action='store_true',
                         help='Require the same untimed controlled settling/quiet window before both lanes')
     args = parser.parse_args()
@@ -400,7 +346,7 @@ def main():
         "loading_strategy": "upstream lazy load on CPU stream; native byte-layout conversion and one-parameter eval on CPU; Metal inference; outside timing",
         "mode": {'validate_reference': args.validate_reference, 'paired_aa': args.paired_aa,
                  'controlled': args.controlled, 'rehash_checkpoint': args.rehash_checkpoint,
-                 'stability_screen': args.stability_screen, 'per_request_control': args.per_request_control},
+                 'per_request_control': args.per_request_control},
         'primary_baseline_lane': 'A',
         'resident_session': {'session_id': session['session_id'], 'worker_pid': session['worker_pid'],
                              'attempt_index': 1, 'model_load_run_id': None, 'load_reused': False,
@@ -540,8 +486,6 @@ def main():
         from mlx_lm.generate import wired_limit
         from mlx.utils import tree_flatten
         import mlx_lm
-        import mlx_lm.models.gpt_oss as implementation
-        import mlx_lm.utils as loader
         state["runtime"] = {name: importlib.metadata.version(name) for name in ("mlx", "mlx-metal", "mlx-lm", "numpy", "transformers")}
         state["runtime"].update(python=platform.python_version(), macos=platform.mac_ver()[0])
         state["runtime_source_sha256"] = {str(p): digest(p) for p in Path(mlx_lm.__file__).parent.rglob('*.py')}
@@ -622,50 +566,6 @@ def main():
                 save()
                 if len(state['expert_correctness']) != 21 or not all(r['passed'] for r in state['expert_correctness']):
                     raise RuntimeError('Selected-expert reference correctness failed')
-        if args.stability_screen:
-            state['status'] = 'stability_screen_setup'
-            session['phase'] = state['status']
-            save()
-            print('Untimed setup for separate stability screen; no official samples are being collected.', flush=True)
-            time.sleep(args.settle_seconds)
-            priming = []
-            with wired_limit(model):
-                resident_precondition(workload['prompt_lengths'],
-                    lambda length: request(model, state['inputs'][str(length)],
-                        workload['prefill_step_size'], mx, make_prompt_cache),
-                    retain=lambda row: priming.append(row),
-                    prepare=lambda: quiet_preflight(swap_policy=args.swap_policy),
-                    swap_policy=args.swap_policy)
-                state['stability_screen'] = {'excluded_from_baseline': True,
-                    'scope': 'Diagnostic readiness only; does not establish twenty-pair A/A calibration',
-                    'policy': {'pairs_per_size': 2, 'maximum_pair_ratio_deviation': .02,
-                               'maximum_relative_mad': .01, 'maximum_relative_full_range': .04},
-                    'priming': priming, 'rows': [], 'status': 'collecting'}
-                state['status'] = session['phase'] = 'stability_screen'
-                save()
-                for trial in (1, 2):
-                    lengths = workload['prompt_lengths']
-                    order = lengths[trial - 1:] + lengths[:trial - 1]
-                    for length in order:
-                        if not args.per_request_control:
-                            checkpoint(f'stability screen round {trial}/2, prompt {length}')
-                        for lane in (('A', 'B') if trial == 1 else ('B', 'A')):
-                            if args.per_request_control:
-                                checkpoint(f'stability screen round {trial}/2, prompt {length}, lane {lane}')
-                            row = collect(model, state['inputs'][str(length)], length, trial, lane)
-                            state['stability_screen']['rows'].append(row)
-                            save()
-                            print(f"Diagnostic screen {length}/{trial}/{lane}: {row['metrics']['decode_tokens_per_second']:.2f} tok/s; invalid={row['invalid_reasons']}", flush=True)
-                screen = state['stability_screen']
-                screen['summary'] = stability_screen(screen['rows'], workload['prompt_lengths'])
-                screen['status'] = 'passed' if all(r['passed'] for r in screen['summary'].values()) else 'failed'
-                screen['controller_receipts'] = state.pop('controller_receipts', [])
-                screen['quiet_preflights'] = state.pop('quiet_preflights', [])
-                save()
-                verify_resident_inputs(state, contract_path)
-                if screen['status'] != 'passed':
-                    raise RuntimeError('Stability screen failed; diagnose retained evidence, never loop until lucky')
-                print('Separate stability screen passed. Fresh official settling/priming/warmups/samples follow; model stays resident.', flush=True)
         frozen_base = copy.deepcopy(state)
 
         def retain_failure(error, index):

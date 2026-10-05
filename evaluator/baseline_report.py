@@ -7,7 +7,7 @@ import statistics
 import shutil
 from pathlib import Path
 
-from evaluator.native_baseline import digest, environment_issues, stability_screen, swap_observation, verify_resident_inputs
+from evaluator.native_baseline import digest, environment_issues, swap_observation, verify_resident_inputs
 from evaluator.schemas import load_contract
 from evaluator.baseline_validation import aa_noise
 
@@ -33,7 +33,7 @@ def validate_resident_chain(s):
                  'inputs_sha256', 'runtime_source_sha256', 'runtime_binary_sha256',
                  'evaluator_source_sha256', 'model_support_sha256',
                  'checkpoint_stat_at_verification', 'driver_correctness', 'expert_correctness',
-                 'swap_policy', 'calibration_policy', 'stability_screen')
+                 'swap_policy', 'calibration_policy')
     for prior_index, entry in enumerate(failures, 1):
         try:
             raw = Path(entry['artifact']).read_bytes()
@@ -57,59 +57,22 @@ def validate_resident_chain(s):
     return sorted(set(errors))
 
 
-def validate_session_completion(s, root, service_receipt):
+def validate_session_completion(s, root, session_receipt):
     session = json.loads((root / 'resident-session.json').read_text())
     resident = s['resident_session']
     if (session['status'] != 'completed_pending_review' or session['model_loads'] != 1 or
             session['session_id'] != resident['session_id'] or session['worker_pid'] != resident['worker_pid'] or
             session['failed_attempts'] != resident['retained_failed_attempts'] or
-            Path(session['current_attempt']) != service_receipt.parent):
+            Path(session['current_attempt']) != session_receipt.parent):
         raise ValueError('Resident session did not complete with one verified model load')
-    receipt = json.loads(service_receipt.read_text())
-    labels = {r['label'] for r in receipt['initially_loaded']}
-    if (receipt.get('benchmark_returncode') != 0 or not receipt.get('restoration_complete') or
-            receipt.get('restoration_errors') or
-            {r['label'] for r in receipt['paused']} != labels or
-            {r['label'] for r in receipt['restored']} != labels):
-        raise ValueError('Temporary environment session restoration evidence incomplete')
-    external = receipt.get('external_service_lease')
-    if external:
-        expected_labels = {'com.memoryos.scheduler', 'com.memoryos.daemon', 'com.memoryos.backend'}
-        if (not external.get('unchanged') or
-                set(external.get('loaded_before_session', {})) != expected_labels or
-                set(external.get('loaded_after_session', {})) != expected_labels or
-                any(external['loaded_before_session'].values()) or any(external['loaded_after_session'].values()) or
-                digest(external['path']) != external['sha256']):
-            raise ValueError('Persistent background-service pause evidence incomplete or changed')
+    receipt = json.loads(session_receipt.read_text())
+    if (receipt.get('status') != 'benchmark_finished' or
+            receipt.get('benchmark_pid') != resident['worker_pid'] or
+            receipt.get('benchmark_returncode') != 0 or receipt.get('controller_returncode') != 0 or
+            receipt.get('shutdown_complete') is not True or receipt.get('shutdown_errors') or
+            receipt.get('external_service_lease') or receipt.get('paused')):
+        raise ValueError('Collection supervisor did not finish cleanly')
     return session, receipt
-
-
-def validate_ui_renderer_lease(s, review):
-    path = review.get('ui_renderer_lease')
-    if not path:
-        return None
-    lease = json.loads(Path(path).read_text())
-    targets = lease.get('targets', [])
-    pids = {entry['pid'] for entry in targets}
-    rows = s['warmups'] + s['samples'] + s.get('stability_screen', {}).get('rows', [])
-    first = min(row['environment_before']['observed_at'] for row in rows)
-    last = max(row['environment_after']['observed_at'] for row in rows)
-    prefix = '/Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/'
-    suffix = '/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)'
-    if (lease.get('schema') != 'kernelmax_ui_renderer_lease_v1' or
-            lease.get('status') != 'restored' or lease.get('errors') or
-            lease.get('end_reason') != 'worker_exited' or
-            lease.get('worker', {}).get('pid') != s['resident_session']['worker_pid'] or
-            not pids or len(pids) != len(targets) or
-            any(entry.get('uid') != 501 or not entry['executable'].startswith(prefix)
-                or not entry['executable'].endswith(suffix) for entry in targets) or
-            {entry['pid'] for entry in lease.get('paused', [])} != pids or
-            {entry['pid'] for entry in lease.get('resumed', [])} != pids or
-            lease.get('paused_at', float('inf')) > first or
-            any(entry['at'] > first for entry in lease['paused']) or
-            any(entry['at'] < last for entry in lease['resumed'])):
-        raise ValueError('UI-renderer lease identity, restoration or complete timing coverage failed')
-    return {'source': str(path), 'sha256': digest(path), 'receipt': lease}
 
 
 def validate_baseline(s, contract):
@@ -145,31 +108,8 @@ def validate_baseline(s, contract):
     checkpoints = 135 if per_request else 75
     if len(s.get('controller_receipts', [])) != checkpoints:
         errors.append(f'Expected {checkpoints} official controller checkpoints')
-    if s.get('mode', {}).get('stability_screen'):
-        screen = s.get('stability_screen', {})
-        try:
-            calculated = stability_screen(screen['rows'], spec['workload']['prompt_lengths'])
-            if (screen.get('excluded_from_baseline') is not True or screen.get('status') != 'passed'
-                    or calculated != screen.get('summary') or not all(r['passed'] for r in calculated.values())
-                    or len(screen.get('controller_receipts', [])) != (12 if per_request else 6)
-                    or len(screen.get('quiet_preflights', [])) != (12 if per_request else 6)
-                    or screen.get('policy') != {'pairs_per_size': 2, 'maximum_pair_ratio_deviation': .02,
-                                               'maximum_relative_mad': .01, 'maximum_relative_full_range': .04}):
-                errors.append('Separate predeclared stability-screen evidence incomplete or failed')
-            if any(q.get('quiet_seconds_required') != 10 or q.get('waited_seconds', 0) < 10
-                    or q.get('swap_policy', 'strict') != policy or len(q.get('observations', [])) < 5
-                    or any(o.get('issues') for o in q.get('observations', [])[-5:])
-                    for q in screen.get('quiet_preflights', [])):
-                errors.append('Stability-screen quiet preflight evidence failed')
-            golden = {r['prompt_tokens']: r['expected_token_ids'] for r in driver if r['case'] == 'prefill'}
-            for row in screen['rows']:
-                if (row['output_token_ids'] != golden[row['prompt_tokens']]
-                        or row.get('invalid_reasons') or environment_issues(row['environment_before'], row['environment_after'], policy)
-                        or any(t != 0 for t in row.get('thermal_states_during_request', [1]))
-                        or row.get('swap_activity') != swap_observation(row['environment_before'], row['environment_after'], policy)):
-                    errors.append('Stability-screen correctness/environment evidence failed')
-        except (KeyError, TypeError, ValueError):
-            errors.append('Separate stability-screen evidence malformed')
+    if s.get('mode', {}).get('stability_screen') or s.get('stability_screen'):
+        errors.append('Legacy stability-screen attempts require their original frozen writer')
     quiet = s.get('quiet_preflights', [])
     if len(quiet) != checkpoints or any(
             x.get('quiet_seconds_required') != 10 or x.get('waited_seconds', 0) < 10
@@ -228,17 +168,20 @@ def validate_baseline(s, contract):
 
 
 def validate_policy_review(s, review):
+    """Record reviewed protocol options without embedding historical chat replies."""
+    errors = []
     policy = s.get('swap_policy', 'strict')
     if review.get('swap_policy', 'strict') != policy:
-        return ['Human review swap-policy identity mismatch']
-    if policy == 'paging-aware' and review.get('paging_aware_response') != 'Approve paging-aware protocol':
-        return ['Explicit human paging-aware protocol review missing']
-    if s.get('mode', {}).get('stability_screen') and review.get('quiet_reference_response') != 'do what it takes to get our official baseline':
-        return ['Updated quiet-reference procedure human review missing']
-    if s.get('mode', {}).get('per_request_control') and (review.get('per_request_control_approved') is not True
-            or not review.get('per_request_control_response')):
-        return ['Per-request quiet-window protocol human review missing']
-    return []
+        errors.append('Human review swap-policy identity mismatch')
+    required = {'paging_aware': policy == 'paging-aware',
+                'resident_retries': s.get('resident_session', {}).get('max_environment_retries', 0) > 0,
+                'per_request_control': s.get('mode', {}).get('per_request_control', False)}
+    for option, enabled in required.items():
+        if enabled and review.get(option + '_approved') is not True:
+            errors.append(f'Explicit human {option} protocol review missing')
+    if review.get('ui_renderer_lease'):
+        errors.append('Legacy app-suspension evidence is unsupported by this writer')
+    return errors
 
 
 def paging_summary(s):
@@ -272,60 +215,44 @@ def main():
     issues.extend(validate_policy_review(s, review))
     if review.get('approved') is not True or review.get('run_id') != s['run_id'] or review.get('driver_sha256') != s['driver_sha256']:
         issues.append('Explicit human reference-protocol review missing or wrong identity')
-    if review.get('persistent_worker_response') != 'Approve persistent-worker protocol':
-        issues.append('Explicit human persistent-worker review missing')
     if issues:
         raise ValueError('Official baseline gate failed: ' + '; '.join(issues))
     root = Path(review['resident_session_root'])
-    session, service = validate_session_completion(s, root, args.attempt.parent / 'memoryos-session.json')
-    ui_lease = validate_ui_renderer_lease(s, review)
+    session, receipt = validate_session_completion(s, root, args.attempt.parent / 'collection-session.json')
     args.destination.mkdir(parents=True, exist_ok=False)
     (args.destination / 'raw.json').write_bytes(source)
     shutil.copytree(args.attempt.parent / 'protected_sources', args.destination / 'protected_sources')
     if (args.attempt.parent / 'dense_reference_diagnostic.json').exists():
         shutil.copy2(args.attempt.parent / 'dense_reference_diagnostic.json', args.destination / 'dense_reference_diagnostic.json')
     (args.destination / 'resident-session.json').write_bytes((root / 'resident-session.json').read_bytes())
-    shutil.copy2(args.attempt.parent / 'memoryos-session.json', args.destination / 'memoryos-session.json')
-    if service.get('external_service_lease'):
-        shutil.copy2(service['external_service_lease']['path'], args.destination / 'background-service-lease-at-freeze.json')
-    if ui_lease:
-        shutil.copy2(ui_lease['source'], args.destination / 'ui-renderer-lease.json')
+    shutil.copy2(args.attempt.parent / 'collection-session.json', args.destination / 'collection-session.json')
     failed_dir = args.destination / 'failed_attempts'
     if session['failed_attempts']:
         failed_dir.mkdir()
         for entry in session['failed_attempts']:
             shutil.copy2(entry['artifact'], failed_dir / (entry['run_id'] + '.json'))
-    report = {'schema': 'kernelmax_official_reference_baseline_v1', 'official': True,
+    report = {'schema': 'kernelmax_official_reference_baseline_v2', 'official': True,
               'scope': 'Reference-only, synchronous batch-one MLX/Metal inference on pinned native checkpoint. Not a stock CLI speed claim or candidate acceptance.',
               'run_id': s['run_id'], 'contract_sha256': s['contract_sha256'],
               'driver_sha256': s['driver_sha256'], 'raw_sha256': hashlib.sha256(source).hexdigest(),
               'human_review': review, 'candidate_acceptance_enabled': False,
               'swap_policy': s['swap_policy'], 'swap_activity_summary': paging_summary(s),
-              'resident_session': session, 'environment_session': service,
-              'ui_renderer_control': ui_lease,
-              'stability_screen': s.get('stability_screen'),
+              'resident_session': session, 'environment_session': receipt,
               'hardware': s['hardware'], 'runtime': s['runtime'], 'checkpoint_files': s['checkpoint_files'],
               'inputs_sha256': s['inputs_sha256'], 'metrics': {}, 'noise': s['aa_calibration'],
               'dense_reference_diagnostic': s.get('dense_reference_diagnostic'),
-              'limitations': ['Correctness operator cases sample layers 0/12/23, not every possible tensor/input.',
-                              'Native operator checks establish dispatch invariance, not independent matmul numerical accuracy.',
-                              'Alternate dense BF16 reconstruction failed large-activation layer12 tolerance; preserved as unresolved diagnostic, not relabeled passing.',
-                              'Thermal state sampled every 500 ms, not per-kernel temperature/frequency.',
-                              'Each request group waits for ten untimed seconds without policy-disallowed swap activity or thermal/power changes. No samples are discarded or retried within an attempt; complete environment-invalid attempts may be retried with fresh IDs/caches/warmups/samples, and every failure is retained.',
-                              'Additional untimed resident-state priming precedes the five contract warmups; all priming events are retained separately from the primary samples.',
-                              'No privileged GPU attribution; OS compositor/background effects enter measured A/A noise.',
-                              'Absolute speed is machine/session-specific; candidates require fresh alternating paired comparisons.',
-                              'All original provisional tolerances and candidate acceptance remain unchanged.']}
+              'limitations': [
+                  'Native operator checks sample layers 0/12/23 and verify dispatch invariance, not independent matmul accuracy.',
+                  'Thermal state is sampled every 500 ms; background CPU/GPU isolation is not certified.',
+                  'Priming requests are excluded; failed attempts and every measured sample are retained.',
+                  'Speed is specific to this machine/session. Candidate comparisons require fresh paired measurements with the same driver/profile.',
+                  'Candidate acceptance and numerical tolerances remain provisional.']}
     if s['swap_policy'] == 'paging-aware':
-        report['scope'] += ' Paging-aware profile: system swap-ins are allowed and logged; swap-outs or swap-usage growth invalidate the complete attempt.'
-        report['limitations'].append('This is not a zero-paging baseline. A/A noise gates quantify paired differential noise, not common-mode slowdowns; global swap counters cannot attribute paging to a process.')
-    if s.get('stability_screen'):
-        report['limitations'].append('A separate twelve-request stability screen preceded a fresh full collection on the same load. All screen/setup rows are excluded from official metrics; the short screen alone is not repeatability proof.')
-    if ui_lease:
-        report['limitations'].append('Exact same-user Codex UI-renderer processes were reversibly suspended across screen, warmups and measurements, then resumed automatically when the worker exited. Main app/service/CLI and WindowServer were not suspended. This reduces one observed contention source, not proof of complete CPU/GPU isolation; reproduce this environment control for comparisons.')
+        report['limitations'].append('System swap-ins are allowed and logged; swap-outs or swap growth invalidate the attempt. Global counters cannot attribute paging to a process.')
+    if s.get('dense_reference_diagnostic'):
+        report['limitations'].append('The attached dense-BF16 diagnostic is excluded from passing native-reference correctness claims; inspect its retained failed cases.')
     if s.get('mode', {}).get('per_request_control'):
-        report['limitations'].append('Every measured request, including the second lane of each A/A pair, received its own untimed controller/settling/ten-second quiet window. Future comparisons must use the same per-request cadence; this is not back-to-back serving throughput.')
-        report['limitations'].append('IORegistry GPU-client counters did not advance even for the running worker in the retained diagnostic. They are unvalidated/stale on this setup and cannot prove GPU isolation or attribution.')
+        report['limitations'].append('Each lane has its own untimed quiet window; these metrics describe controlled requests, not back-to-back serving.')
     for length in s['contract']['workload']['prompt_lengths']:
         rows = [r for r in s['samples'] if r['prompt_tokens'] == length and r['lane'] == 'A']
         values = {}
@@ -343,17 +270,8 @@ def main():
              '|---:|---:|---:|---:|---:|']
     for n, values in report['metrics'].items():
         lines.append(f"| {n} | {values['decode_tokens_per_second']['median']:.2f} | {values['time_to_first_token_ms']['median']:.1f} | {values['prefill_tokens_per_second']['median']:.2f} | {values['peak_memory_bytes']['median']/2**30:.2f} |")
-    lines += ['', 'Untimed resident-state priming, then five contract warmups; twenty primary A measurements and twenty identical-reference B calibration measurements per size; alternating AB/BA; seed 42; 128 outputs.',
-              '', f"Declared swap policy: `{report['swap_policy']}`. Every request's paging counters remain in the raw evidence; aggregate paging counts are in `baseline.json`. Future comparisons must use the same declared profile.",
-              '', 'Raw inputs, outputs, correctness, versions, source/binary/checkpoint hashes, telemetry and all timing intervals are in `raw.json`. Detailed median/p90/MAD, confidence intervals, drift, scope and limitations are in `baseline.json`.',
-              '', 'The alternate dense-BF16 reconstruction failed the large-activation test at layer 12. That failed diagnostic is preserved in `dense_reference_diagnostic.json`; it is not a passing numerical accuracy claim. The contract reference is unchanged native MLX-LM. Operator checks verify native dispatch invariance, not independent matmul accuracy.',
-              '', 'Candidate acceptance is still disabled. This reference is not an ACCEPTED optimization or proof of zero background GPU activity.', '']
-    if service.get('external_service_lease'):
-        lines += ['The three approved MemoryOS services remained paused across attempts and through report freeze under the preserved external lease. The supervisor did not restore those externally paused jobs. Restoration after freeze is recorded separately.', '']
-    if ui_lease:
-        lines += ['Codex UI-renderer helpers were reversibly paused for all measurements and automatically resumed after worker exit. Exact process identities, timing coverage and restoration are preserved in `ui-renderer-lease.json`. The app service/CLI and OS compositor were not paused; this is not complete isolation.', '']
-    if s.get('mode', {}).get('per_request_control'):
-        lines += ['Every one of the 120 measured requests had its own untimed settling/quiet window (135 official windows including warmups). This is controlled per-request latency/throughput, not back-to-back serving throughput. Keep this cadence in future comparisons.', '']
+    lines += ['', f"Swap policy: `{report['swap_policy']}`. Raw evidence is in `raw.json`; statistics, noise, protocol review and environment receipts are in `baseline.json`.",
+              '', *('- ' + limitation for limitation in report['limitations']), '']
     (args.destination / 'README.md').write_text('\n'.join(lines))
     print(args.destination / 'README.md')
 

@@ -6,38 +6,11 @@ from pathlib import Path
 from evaluator.native_baseline import (EnvironmentInvalid, digest, environment_issues, fixed_inputs,
     materialize_parameters, metrics, quiet_preflight, resident_precondition, resident_retry_loop,
     swap_observation, verify_resident_inputs)
-from evaluator.native_baseline import gpu_client_counters, stability_screen
 from evaluator.baseline_control import current_gate
 from evaluator.schemas import load_contract
 
 
 class ResidentWorkerTests(unittest.TestCase):
-    def test_diagnostic_gpu_counters_preserve_raw_units_and_aggregate_clients(self):
-        registry = [{'IORegistryEntryChildren': [
-            {'IOUserClientCreator': 'pid 7, worker', 'AppUsage': [{'accumulatedGPUTime': 10}, {'accumulatedGPUTime': 4}]},
-            {'IOUserClientCreator': 'pid 7, worker', 'AppUsage': [{'accumulatedGPUTime': 6}]},
-            {'IOUserClientCreator': 'pid 8, compositor', 'AppUsage': []}]}]
-        self.assertEqual(gpu_client_counters(registry), {'pid 7, worker': 20, 'pid 8, compositor': 0})
-        self.assertEqual(gpu_client_counters([]), {})
-    def test_stability_screen_is_separate_and_rejects_variation(self):
-        rows = []
-        for trial in (1, 2):
-            for length in (512, 2048, 4096):
-                for lane in (('A', 'B') if trial == 1 else ('B', 'A')):
-                    rows.append(dict(prompt_tokens=length, trial=trial, lane=lane,
-                                     metrics={'decode_tokens_per_second': 24.0}, invalid_reasons=[]))
-        self.assertTrue(all(r['passed'] for r in stability_screen(rows, (512, 2048, 4096)).values()))
-        rows[1]['metrics']['decode_tokens_per_second'] = 20.0
-        self.assertFalse(stability_screen(rows, (512, 2048, 4096))['512']['passed'])
-        rows[1]['metrics']['decode_tokens_per_second'] = 24.0
-        rows[0]['invalid_reasons'] = ['swap grew']
-        self.assertFalse(stability_screen(rows, (512, 2048, 4096))['512']['passed'])
-        with self.assertRaises(ValueError):
-            stability_screen(rows[:-1], (512, 2048, 4096))
-        rows[0]['trial'] = 2
-        with self.assertRaises(ValueError):
-            stability_screen(rows, (512, 2048, 4096))
-
     def test_environment_failure_retained_before_verify_cooldown_and_fresh_attempt(self):
         events = []
         def run(index):

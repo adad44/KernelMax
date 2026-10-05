@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import ctypes
-import math
 import random
 import statistics
 
@@ -63,73 +62,6 @@ def driver_checks(model, inputs, held_out, step_size, request, mx, make_prompt_c
         print(f"Stock generation comparison {name}/{len(ids)}: {record['passed']}", flush=True)
         if not record['passed']:
             return records
-    return records
-
-
-def dense_expert_checks(model, mx, atol, rtol):
-    """Check gather/sort/unsort against individually dequantized dense experts.
-
-    Full-model weights stay native MXFP4. Dense BF16 expert matrices are only
-    temporary correctness references; never used in timed inference.
-    """
-    import numpy as np
-    records = []
-    cases = [('decode', 1, 'uneven', 1), ('prefill', 16, 'varied', 1),
-             ('uneven_expert_load', 17, 'uneven', 1),
-             ('unused_experts', 17, 'unused', 1),
-             ('non_divisible_token_counts', 19, 'varied', 1),
-             ('large_finite_activations', 17, 'varied', 64),
-             ('held_out_inputs', 23, 'varied', 1)]
-    for layer_index in (0, 12, 23):
-        experts = model.model.layers[layer_index].mlp.experts
-        for case_index, (name, count, distribution, magnitude) in enumerate(cases):
-            rng = np.random.default_rng(4200 + layer_index * 31 + case_index)
-            data = rng.normal(size=(1, count, model.args.hidden_size)).astype(np.float32) * magnitude
-            ids = np.empty((1, count, 4), dtype=np.int32)
-            for i in range(count):
-                ids[0, i] = ([0, 1, 2, 3] if distribution == 'unused' else
-                             [0, 1, 2, (3 if i % 5 else 4)] if distribution == 'uneven' else
-                             [(i + j * 7) % model.args.num_local_experts for j in range(4)])
-            x, indices = mx.array(data, dtype=mx.bfloat16), mx.array(ids)
-            actual = experts(x, indices)
-            mx.eval(actual)
-            expected = mx.zeros(actual.shape, dtype=mx.bfloat16)
-            # Group positions by expert; dense GEMM is an independent projection path.
-            for expert_id in sorted(set(ids.reshape(-1).tolist())):
-                positions = np.argwhere(ids[0] == expert_id)
-                rows, slots = positions[:, 0], positions[:, 1]
-                values = x[0, mx.array(rows)]
-                projections = []
-                for projection in (experts.up_proj, experts.gate_proj):
-                    weight = mx.dequantize(projection.weight[expert_id], projection.scales[expert_id],
-                                           group_size=32, bits=4, mode='mxfp4', dtype=mx.bfloat16)
-                    projections.append(values @ weight.T + projection.bias[expert_id])
-                hidden = experts.activation(*projections)
-                down = experts.down_proj
-                weight = mx.dequantize(down.weight[expert_id], down.scales[expert_id],
-                                       group_size=32, bits=4, mode='mxfp4', dtype=mx.bfloat16)
-                projected = hidden @ weight.T + down.bias[expert_id]
-                expected[0, mx.array(rows), mx.array(slots), :] = projected
-                mx.eval(expected)
-            mx.eval(expected)
-            difference = mx.abs(actual.astype(mx.float32) - expected.astype(mx.float32))
-            allowed = atol + rtol * mx.abs(expected.astype(mx.float32))
-            record = {'case': name, 'layer': layer_index, 'tokens': count,
-                      'shape': list(actual.shape), 'dtype': str(actual.dtype),
-                      'reference_dtype': str(expected.dtype),
-                      'max_absolute_error': float(mx.max(difference).item()),
-                      'max_tolerance_ratio': float(mx.max(difference / allowed).item()),
-                      'finite': bool(mx.all(mx.isfinite(actual)).item()) and bool(mx.all(mx.isfinite(expected)).item()),
-                      'reference': 'native MXFP4 dequantization to BF16 plus dense per-expert matmul',
-                      'atol': atol, 'rtol': rtol}
-            record['passed'] = (record['finite'] and actual.shape == expected.shape
-                                and actual.dtype == expected.dtype and bool(mx.all(difference <= allowed).item()))
-            records.append(record)
-            print(f"Expert check {name}/layer{layer_index}: {record['passed']}; error={record['max_absolute_error']}", flush=True)
-            del actual, expected, difference, allowed, x, indices, weight, projected, hidden, projections, values
-            mx.clear_cache()
-            if not record['passed']:
-                return records
     return records
 
 

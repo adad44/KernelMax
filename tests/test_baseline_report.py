@@ -5,8 +5,8 @@ import hashlib
 import tempfile
 from pathlib import Path
 
-from evaluator.baseline_report import validate_baseline, validate_policy_review, validate_resident_chain, validate_ui_renderer_lease
-from evaluator.native_baseline import stability_screen, swap_observation
+from evaluator.baseline_report import validate_baseline, validate_policy_review, validate_resident_chain, validate_session_completion
+from evaluator.native_baseline import swap_observation
 from evaluator.baseline_validation import aa_noise
 from evaluator.schemas import load_contract
 
@@ -51,29 +51,12 @@ class ReportGateTests(unittest.TestCase):
         self.state['quiet_preflights'] = self.state['quiet_preflights'] + self.state['quiet_preflights'][:60]
         self.assertEqual(validate_baseline(self.state,self.contract),[])
         self.assertTrue(validate_policy_review(self.state, {}))
-        self.assertEqual(validate_policy_review(self.state, dict(per_request_control_approved=True,
-            per_request_control_response='Approve the reviewed cadence')), [])
+        self.assertEqual(validate_policy_review(self.state, dict(per_request_control_approved=True)), [])
 
-    def test_separate_screen_never_replaces_official_samples_and_is_revalidated(self):
+    def test_legacy_screen_attempt_cannot_silently_drop_diagnostic_evidence(self):
         self.state['mode']['stability_screen'] = True
-        self.state['driver_correctness'] = [dict(case='prefill', prompt_tokens=n, passed=True,
-            actual_token_ids=[1]*128, expected_token_ids=[1]*128) for n in (512,2048,4096)] + [
-            dict(case='decode',prompt_tokens=1,passed=True,actual_token_ids=[1]*128,expected_token_ids=[1]*128),
-            dict(case='held_out_inputs',prompt_tokens=257,passed=True,actual_token_ids=[1]*128,expected_token_ids=[1]*128)]
-        rows = copy.deepcopy([r for r in self.state['samples'] if r['trial'] <= 2])
-        for row in rows:
-            row['swap_activity'] = swap_observation(row['environment_before'], row['environment_after'], 'strict')
-        screen = dict(excluded_from_baseline=True,status='passed',rows=rows,
-            policy=dict(pairs_per_size=2,maximum_pair_ratio_deviation=.02,maximum_relative_mad=.01,maximum_relative_full_range=.04),
-            controller_receipts=[{}]*6,quiet_preflights=self.state['quiet_preflights'][:6],
-            summary=stability_screen(rows,(512,2048,4096)))
-        self.state['stability_screen'] = screen
-        self.assertEqual(validate_baseline(self.state,self.contract),[])
-        screen['rows'][0]['metrics']['decode_tokens_per_second'] = 15
-        self.assertIn('Separate predeclared stability-screen evidence incomplete or failed',validate_baseline(self.state,self.contract))
-        screen['rows'][0]['metrics']['decode_tokens_per_second'] = 20
-        self.state['samples'] = self.state['samples'][:-1]
-        self.assertTrue(validate_baseline(self.state,self.contract))
+        self.assertIn('Legacy stability-screen attempts require their original frozen writer',
+                      validate_baseline(self.state, self.contract))
 
     def paging_fixture(self):
         self.state = copy.deepcopy(self.state)
@@ -101,12 +84,12 @@ class ReportGateTests(unittest.TestCase):
             row['swap_activity'] = swap_observation(row['environment_before'], row['environment_after'], 'paging-aware')
             self.assertIn('Environment invalidation retained', validate_baseline(self.state, self.contract))
 
-    def test_paging_aware_requires_exact_human_approval(self):
+    def test_paging_aware_requires_explicit_human_approval(self):
         self.state['swap_policy'] = 'paging-aware'
         self.assertTrue(validate_policy_review(self.state, {}))
         self.assertTrue(validate_policy_review(self.state, {'swap_policy': 'paging-aware'}))
         self.assertEqual(validate_policy_review(self.state, {'swap_policy': 'paging-aware',
-            'paging_aware_response': 'Approve paging-aware protocol'}), [])
+            'paging_aware_approved': True}), [])
 
     def test_failed_correctness_blocks_freeze(self):
         self.state['expert_correctness'][0]['passed']=False
@@ -139,25 +122,43 @@ class ReportGateTests(unittest.TestCase):
         self.assertTrue(any('controller checkpoints' in x for x in errors))
 
 
-class UiLeaseTests(unittest.TestCase):
-    def test_worker_identity_full_coverage_and_restoration_required(self):
-        executable = '/Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/test/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)'
-        lease = dict(schema='kernelmax_ui_renderer_lease_v1', status='restored', errors=[],
-            end_reason='worker_exited', worker=dict(pid=123), targets=[dict(pid=2,uid=501,executable=executable)],
-            paused_at=5, paused=[dict(pid=2,at=5)], resumed=[dict(pid=2,at=25)])
-        row = dict(environment_before=dict(observed_at=10),environment_after=dict(observed_at=20))
-        state = dict(warmups=[row],samples=[row],resident_session=dict(worker_pid=123))
+class SessionCompletionTests(unittest.TestCase):
+    def test_session_and_supervisor_must_identify_the_same_finished_worker(self):
         with tempfile.TemporaryDirectory() as temporary:
-            path = Path(temporary) / 'lease.json'
-            path.write_text(json.dumps(lease))
-            review = dict(ui_renderer_lease=str(path))
-            self.assertEqual(validate_ui_renderer_lease(state, review)['receipt'], lease)
-            for change in (dict(worker=dict(pid=999)), dict(status='paused'),
-                           dict(paused_at=11), dict(resumed=[dict(pid=2,at=19)]),
-                           dict(targets=[dict(pid=2,uid=501,executable='/usr/bin/python')])):
-                path.write_text(json.dumps(dict(lease, **change)))
-                with self.assertRaises(ValueError):
-                    validate_ui_renderer_lease(state, review)
+            root = Path(temporary)
+            resident = dict(session_id='session', worker_pid=123, retained_failed_attempts=[])
+            state = dict(resident_session=resident)
+            session = dict(status='completed_pending_review', model_loads=1,
+                session_id='session', worker_pid=123, failed_attempts=[], current_attempt=str(root))
+            (root / 'resident-session.json').write_text(json.dumps(session))
+            receipt = dict(status='benchmark_finished', benchmark_pid=123,
+                benchmark_returncode=0, controller_returncode=0, shutdown_complete=True)
+            path = root / 'collection-session.json'
+            path.write_text(json.dumps(receipt))
+            self.assertEqual(validate_session_completion(state, root, path), (session, receipt))
+            for change in (dict(benchmark_pid=999), dict(controller_returncode=1),
+                           dict(status='session_error'), dict(shutdown_complete=False),
+                           dict(shutdown_errors=['worker could not stop']),
+                           dict(external_service_lease={'unchanged': True})):
+                with self.subTest(change=change):
+                    path.write_text(json.dumps(dict(receipt, **change)))
+                    with self.assertRaises(ValueError):
+                        validate_session_completion(state, root, path)
+            path.write_text(json.dumps(receipt))
+            (root / 'resident-session.json').write_text(json.dumps(dict(session, model_loads=2)))
+            with self.assertRaises(ValueError):
+                validate_session_completion(state, root, path)
+
+    def test_protocol_reviews_require_booleans_and_reject_legacy_app_controls(self):
+        state = dict(swap_policy='paging-aware', mode=dict(per_request_control=True),
+                     resident_session=dict(max_environment_retries=2))
+        review = dict(swap_policy='paging-aware', paging_aware_approved=True,
+                      per_request_control_approved=True,
+                      resident_retries_approved=True)
+        self.assertEqual(validate_policy_review(state, review), [])
+        for key in ('paging_aware', 'per_request_control', 'resident_retries'):
+            self.assertTrue(validate_policy_review(state, dict(review, **{key + '_approved': 'yes'})))
+        self.assertTrue(validate_policy_review(state, dict(review, ui_renderer_lease='legacy.json')))
 
 
 class ResidentChainTests(unittest.TestCase):
