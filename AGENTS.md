@@ -6,6 +6,9 @@ This repository contains both the human-built experiment system and agent-built
 optimization candidates. The write restrictions below apply to optimization
 runs, not to maintainers explicitly implementing or reviewing the system.
 
+Agents may commit, push, and open or update PRs when authorized, but must never
+merge a KernelMax PR. Merging is reserved for the human maintainer.
+
 Maintainers own `kernelmaxxing.yaml`, the reference path, evaluator, tests,
 orchestrator, environment setup, and candidate template. Changes to these inputs
 require human review. Freeze their hashes before running optimization experiments;
