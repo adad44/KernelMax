@@ -1,0 +1,10 @@
+# Observed versions from the measured reference, not a platform-independent lock.
+mlx==0.32.3
+mlx-metal==0.32.3
+mlx-lm==0.31.3
+numpy==2.5.3
+transformers==5.17.0
+PyYAML==6.0.3
+huggingface-hub==1.33.0
+tokenizers==0.23.2
+safetensors==0.8.0
