@@ -4,7 +4,6 @@ import hashlib
 import json
 import math
 import random
-import statistics
 from pathlib import Path
 
 
@@ -46,7 +45,7 @@ def main():
         assert prior['resident_session']['attempt_index'] == index
         assert prior['resident_session']['retained_failed_attempts'] == failures[:index-1]
         for key in ('driver_sha256', 'contract_sha256', 'inputs_sha256', 'checkpoint_files',
-                    'driver_correctness', 'expert_correctness', 'swap_policy', 'calibration_policy', 'stability_screen'):
+                    'driver_correctness', 'expert_correctness', 'swap_policy', 'calibration_policy'):
             assert prior.get(key) == state.get(key)
         seen.add(prior['run_id'])
     lengths = state['contract']['workload']['prompt_lengths']
@@ -62,31 +61,8 @@ def main():
     per_request = bool(state.get('mode', {}).get('per_request_control'))
     assert len(state['controller_receipts']) == len(state['quiet_preflights']) == (135 if per_request else 75)
     assert all(state[k] for k in ('runtime_source_sha256', 'runtime_binary_sha256', 'evaluator_source_sha256'))
-    diagnostic = state.get('stability_screen') if state.get('mode', {}).get('stability_screen') else None
-    diagnostic_rows = []
-    if diagnostic:
-        assert diagnostic['status'] == 'passed' and diagnostic['excluded_from_baseline'] is True
-        diagnostic_rows = diagnostic['rows']
-        assert len(diagnostic_rows) == 12
-        assert len(diagnostic['controller_receipts']) == len(diagnostic['quiet_preflights']) == (12 if per_request else 6)
-        assert diagnostic['policy'] == dict(pairs_per_size=2,maximum_pair_ratio_deviation=.02,
-                                           maximum_relative_mad=.01,maximum_relative_full_range=.04)
-        for n in lengths:
-            chosen = [r for r in diagnostic_rows if r['prompt_tokens'] == n]
-            assert [(r['trial'], r['lane']) for r in chosen] == [(1,'A'),(1,'B'),(2,'B'),(2,'A')]
-            values = [r['metrics']['decode_tokens_per_second'] for r in chosen]
-            midpoint = median(values)
-            mad = median([abs(v-midpoint) for v in values]) / midpoint
-            spread = max(values)/min(values)-1
-            ratios = [values[1]/values[0], values[2]/values[3]]
-            saved = diagnostic['summary'][str(n)]
-            assert values == saved['rates'] and ratios == saved['paired_b_over_a_ratios']
-            close(saved['relative_mad'], mad)
-            close(saved['relative_full_range'], spread)
-            assert saved['passed'] and mad <= .01 and spread <= .04 and all(abs(v-1) <= .02 for v in ratios)
-    elif state.get('mode', {}).get('stability_screen'):
-        raise AssertionError('Required diagnostic screen missing')
-    rows = state['warmups'] + state['samples'] + diagnostic_rows
+    assert not state.get('mode', {}).get('stability_screen') and not state.get('stability_screen'), 'Use the original audit for legacy stability-screen attempts'
+    rows = state['warmups'] + state['samples']
     for row in rows:
         assert row['output_token_ids'] == stock[row['prompt_tokens']]
         assert row['cache_dtypes'] == ['mlx.core.bfloat16'] and row['last_logits_finite']
@@ -115,36 +91,26 @@ def main():
         assert "'AC Power'" in before['power'] and "'AC Power'" in after['power']
     report = json.loads(args.report.read_bytes()) if args.report else None
     if report:
+        assert report['schema'] == 'kernelmax_official_reference_baseline_v2'
         assert report['official'] is True and report['candidate_acceptance_enabled'] is False
         assert report['raw_sha256'] == hashlib.sha256(raw).hexdigest()
         assert report['run_id'] == state['run_id']
         assert report['swap_policy'] == policy
-        assert report.get('stability_screen') == diagnostic
-        if diagnostic:
-            assert report['human_review']['quiet_reference_response'] == 'do what it takes to get our official baseline'
-        ui = report.get('ui_renderer_control')
-        if ui:
-            ui_bytes = (args.report.parent / 'ui-renderer-lease.json').read_bytes()
-            assert hashlib.sha256(ui_bytes).hexdigest() == ui['sha256']
-            lease = json.loads(ui_bytes)
-            assert lease == ui['receipt'] and lease['status'] == 'restored' and not lease['errors']
-            assert lease['end_reason'] == 'worker_exited' and lease['worker']['pid'] == state['resident_session']['worker_pid']
-            targets = {entry['pid'] for entry in lease['targets']}
-            assert targets and targets == {entry['pid'] for entry in lease['paused']} == {entry['pid'] for entry in lease['resumed']}
-            for target in lease['targets']:
-                assert target['uid'] == 501 and target['executable'].startswith('/Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/')
-                assert target['executable'].endswith('/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)')
-            first = min(row['environment_before']['observed_at'] for row in rows)
-            last = max(row['environment_after']['observed_at'] for row in rows)
-            assert lease['paused_at'] <= first and all(entry['at'] <= first for entry in lease['paused'])
-            assert all(entry['at'] >= last for entry in lease['resumed'])
-        external = report['environment_session'].get('external_service_lease')
-        if external:
-            snapshot = args.report.parent / 'background-service-lease-at-freeze.json'
-            assert hashlib.sha256(snapshot.read_bytes()).hexdigest() == external['sha256']
-            assert external['unchanged'] and not any(external['loaded_before_session'].values()) and not any(external['loaded_after_session'].values())
-        if policy == 'paging-aware':
-            assert report['human_review']['paging_aware_response'] == 'Approve paging-aware protocol'
+        review = report['human_review']
+        assert review['approved'] is True and review['run_id'] == state['run_id']
+        assert review['driver_sha256'] == state['driver_sha256']
+        assert review.get('swap_policy', 'strict') == policy
+        for option, enabled in (('paging_aware', policy == 'paging-aware'),
+                                ('resident_retries', resident['max_environment_retries'] > 0),
+                                ('per_request_control', per_request)):
+            if enabled:
+                assert review.get(option + '_approved') is True
+        assert not report.get('ui_renderer_control')
+        receipt = report['environment_session']
+        assert receipt['status'] == 'benchmark_finished' and receipt['shutdown_complete'] is True
+        assert receipt['benchmark_pid'] == resident['worker_pid']
+        assert receipt['benchmark_returncode'] == receipt['controller_returncode'] == 0
+        assert not receipt.get('shutdown_errors') and not receipt.get('external_service_lease')
         for phase in ('resident_preconditioning', 'warmups', 'samples'):
             phase_rows = state[phase]
             ins = [r['environment_after']['swapins'] - r['environment_before']['swapins'] for r in phase_rows]
@@ -191,7 +157,6 @@ def main():
     print(json.dumps({'independent_audit': 'passed', 'run_id': state['run_id'],
                       'checked_requests': len(rows), 'output_ids_match_stock': True,
                       'official_warmups': len(state['warmups']), 'official_samples': len(state['samples']),
-                      'excluded_diagnostic_requests': len(diagnostic_rows),
                       'metrics': result}, indent=2))
 
 

@@ -1,5 +1,4 @@
 """Coordinate the agent only at evaluator-owned, untimed checkpoints."""
-import argparse
 import json
 import time
 from pathlib import Path
@@ -23,33 +22,12 @@ def current_gate(root):
     return output, dict(gate, output=str(output))
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--resume')
-    parser.add_argument('--wait-seconds', type=float, default=50)
-    args = parser.parse_args()
-    if args.resume:
-        output, gate = current_gate(args.output)
-        if gate.get('status') != 'paused' or gate.get('token') != args.resume:
-            raise ValueError('Refusing stale checkpoint acknowledgement')
-        pending = output / 'resume.json.tmp'
-        pending.write_text(json.dumps({'token': args.resume, 'acknowledged_at': time.time(),
-                                      'controller': 'Codex; untimed checkpoint; then waiting only'}))
-        pending.replace(output / 'resume.json')
-    deadline = time.monotonic() + args.wait_seconds
-    while time.monotonic() < deadline:
-        try:
-            _, gate = current_gate(args.output)
-        except json.JSONDecodeError:
-            time.sleep(.5)
-            continue
-        if gate.get('status') not in ('running', 'waiting_for_worker') and (gate.get('status') != 'paused' or gate.get('token') != args.resume):
-            print(json.dumps(gate), flush=True)
-            return
-        time.sleep(.5)
-    print(json.dumps({'status': 'waiting_for_worker'}), flush=True)
-
-
-if __name__ == '__main__':
-    main()
+def resume_checkpoint(root, token):
+    """Atomically acknowledge only the current evaluator checkpoint."""
+    output, gate = current_gate(root)
+    if gate.get('status') != 'paused' or gate.get('token') != token:
+        raise ValueError('Refusing stale checkpoint acknowledgement')
+    pending = output / 'resume.json.tmp'
+    pending.write_text(json.dumps({'token': token, 'acknowledged_at': time.time(),
+                                  'controller': 'local; untimed checkpoint'}))
+    pending.replace(output / 'resume.json')

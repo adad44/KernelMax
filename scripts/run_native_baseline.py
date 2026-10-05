@@ -16,7 +16,7 @@ def worker_command(model, verification, output, policy, diagnostic=None):
         '--model', str(model), '--verification', str(verification), '--output', str(output),
         '--settle-seconds', '60', '--validate-reference', '--paired-aa', '--controlled',
         '--rehash-checkpoint', '--resident-retries', '2', '--swap-policy', policy,
-        '--stability-screen', '--per-request-control']
+        '--per-request-control']
     if diagnostic is not None:
         command += ['--dense-diagnostic', str(diagnostic)]
     return command
@@ -86,7 +86,6 @@ def main():
     output.parent.mkdir(parents=True, exist_ok=True)
     worker = controller = awake = None
     receipt = {'scope': 'Collection only; caller-managed environment; no services paused or restored',
-        'initially_loaded': [], 'paused': [], 'restored': [], 'restoration_errors': [],
         'status': 'starting', 'output': str(output), 'environment_ready_asserted_by_caller': True,
         'source_sha256': {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in
             (Path(__file__), REPO/'scripts/quiet_baseline_controller.py', REPO/'scripts/audit_baseline.py')}}
@@ -132,16 +131,16 @@ def main():
                 shutdown_errors.append(f'{type(error).__name__}: {error}')
         if shutdown_errors:
             receipt.update(status='session_error', shutdown_errors=shutdown_errors)
-        receipt.update(finished_at=time.time(), restoration_complete=not shutdown_errors)
+        receipt.update(finished_at=time.time(), shutdown_complete=not shutdown_errors)
         save()
         if output.exists():
-            (output/'memoryos-session.json').write_text(json.dumps(receipt, indent=2) + '\n')
+            (output/'collection-session.json').write_text(json.dumps(receipt, indent=2) + '\n')
             pointer = output/'resident-session.json'
             if pointer.exists():
                 from evaluator.baseline_control import current_gate
                 current, _ = current_gate(output)
                 if current != output:
-                    (current/'memoryos-session.json').write_text(json.dumps(receipt, indent=2) + '\n')
+                    (current/'collection-session.json').write_text(json.dumps(receipt, indent=2) + '\n')
     print(json.dumps(receipt), flush=True)
     return 0 if receipt['status'] == 'benchmark_finished' else 1
 
