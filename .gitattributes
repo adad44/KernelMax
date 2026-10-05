@@ -1,4 +1,0 @@
-reports/baselines/**/protected_sources/** linguist-vendored=true
-reports/baselines/**/execution_sources/** linguist-vendored=true
-reports/baselines/**/raw.json linguist-generated=true
-reports/baselines/**/historical_attempts/** linguist-generated=true
