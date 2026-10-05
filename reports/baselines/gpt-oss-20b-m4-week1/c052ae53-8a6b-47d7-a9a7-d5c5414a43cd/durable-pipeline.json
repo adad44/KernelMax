@@ -1,0 +1,27 @@
+{
+  "schema": "kernelmax_durable_reference_pipeline_v1",
+  "status": "complete",
+  "created_at": 1791149058.16225,
+  "pid": 19662,
+  "parent_pid": 1,
+  "output": "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/official-attempt-2026-10-04T14-24-18-seed42-paging-aware",
+  "model_loads_expected": 1,
+  "receipt": "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/durable-reference-2026-10-04-a1.json",
+  "scope": "One complete reference session; no automatic noise retries; original gates unchanged",
+  "authorization": "approve and continue; stop waiting for approval and do what is needed for the baseline",
+  "sources": {
+    "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-tools/durable_baseline_pipeline.py": "9cb6e67c50e15d5982977a139da21232fcdb5bc4518d327c042c8efbaff0577f",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-tools/memoryos_baseline_session.py": "6fce958164a95ef302719ac440315c2a89b79990b48f3593175ec093d6b2dba6",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-tools/quiet_checkpoint_controller.py": "e716cc1b6b4e92be741fe8f2e92554d7b154e36e647de75444e0054f7c740f35",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-tools/verify-baseline-evidence.py": "80aae551ff060a95029f7d80b79ecba85961d1659f25b92bfa83f50e36506486"
+  },
+  "supervisor_pid": 19690,
+  "run_id": "c052ae53-8a6b-47d7-a9a7-d5c5414a43cd",
+  "worker_pid": 19700,
+  "supervisor_returncode": 0,
+  "current_attempt": "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/official-attempt-2026-10-04T14-24-18-seed42-paging-aware",
+  "official_destination": "/Users/alandiaz/Downloads/KernelMaxxxing/KernelMax/reports/baselines/gpt-oss-20b-m4-week1/c052ae53-8a6b-47d7-a9a7-d5c5414a43cd",
+  "official_verified_at": 1791155907.327649,
+  "finished_at": 1791155907.422137,
+  "background_services_restored": true
+}
