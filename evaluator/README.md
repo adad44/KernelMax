@@ -29,7 +29,7 @@ After integrating the team's branches, run both their pytest tests and these
 unittest cases through pytest:
 
 ```bash
-uv run --no-project --python 3.12 --with PyYAML==6.0.3 --with pytest==8.4.2 python -B -m pytest -p no:cacheprovider -q
+uv run --no-project --python 3.12 --with numpy==2.5.3 --with PyYAML==6.0.3 --with pytest==8.4.2 python -B -m pytest -p no:cacheprovider -q
 ```
 
 `evaluator/schemas.py` provides immutable, strict data records for the model,
@@ -97,7 +97,65 @@ The optimization boundary is selected-expert execution. Routing IDs and the
 reference path remain evaluator-controlled. The target adapter and evaluator
 must agree on the exact tensor layout and callable before candidate integration.
 
-Candidate isolation, comparison and acceptance are subsequent work.
+Candidate execution, isolation and acceptance are subsequent work.
+
+## Candidate-output correctness
+
+`correctness.compare_outputs(reference, candidate, case_name=..., policy=...)`
+checks already-produced tensors against the evaluator-owned native reference.
+It does not import candidate code, load weights, time inference or issue a verdict.
+The target adapter still needs its agreed callable and input layout; the existing
+native expert checks use activations `[1, T, H]`, expert IDs `[1, T, K]`, and
+outputs `[1, T, K, H]`. This helper checks equality to the supplied reference's
+shape/dtype, not whether the caller supplied the correct model, routing or weights.
+
+```python
+from evaluator.correctness import compare_outputs
+
+result = compare_outputs(
+    reference_output, candidate_output,
+    case_name="decode", policy=contract.correctness,
+)
+# Keep result in EvaluationReport.correctness even when result.passed is False.
+```
+
+Use plain NumPy arrays for CPU fixtures or MLX arrays for native outputs. Original
+shape, backend and dtype must match, with no broadcasting. MLX BF16 values are
+materialized and widened to FP32 for a copied CPU view **after recording the
+original dtype**; this does not change model precision. The untimed comparison
+uses FP64 arithmetic and checks every element against
+`abs(candidate - reference) <= atol + rtol * abs(reference)`. Zero tolerances
+require exact equality. Arithmetic overflow fails closed. No tolerances change.
+The BF16 host conversion follows [MLX's NumPy guidance](https://ml-explore.github.io/mlx/build/html/usage/numpy.html).
+
+Malformed/nonfinite candidate outputs produce failed `CorrectnessResult` records.
+An empty, nonfloating or nonfinite reference raises `InvalidReferenceError`;
+record that in the run's errors, rather than blaming a candidate. Backend
+execution failures propagate as run errors. These checks are not an execution
+sandbox and must remain outside timed intervals. Freeze/verify candidates in
+the controller before/after eventual execution.
+Freeze the new checker with the protected inputs for future candidate experiments;
+do not relabel the historical baseline as if it used this comparison code.
+
+The runner must cover all declared cases and retain subcase/layer details. If
+several subchecks share one declared case, aggregate their pass flags with AND;
+never overwrite an earlier failure or emit duplicate case names in the report.
+The existing dense-BF16 layer-12 discrepancy remains unresolved. Small fixtures
+and reference-versus-reference checks do not resolve it or enable acceptance.
+
+CPU tests (no MLX or checkpoint download):
+
+```sh
+uv run --no-project --python 3.12 --with numpy==2.5.3 --with PyYAML==6.0.3 \
+  python -B -m unittest tests.test_correctness -v
+```
+
+To opt into two tiny MLX smoke tests using an **existing** native environment:
+
+```sh
+KERNELMAX_TEST_MLX=1 /path/to/existing/environment/bin/python -B \
+  -m unittest tests.test_correctness.MLXCorrectnessTests -v
+```
 
 ## Native reference baseline
 
