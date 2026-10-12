@@ -2,15 +2,50 @@
 
 The state machine records controller progress and evaluator output. It never
 executes candidate code or changes an evaluator-owned verdict.
+
+The controller binds a RunIdentity with CANDIDATE_FROZEN using its assigned run
+ID, the frozen snapshot's CandidateIdentity, and the locked contract's hash.
+Reports cannot supply or replace that expected identity themselves.
 """
 
 from __future__ import annotations
 
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from enum import Enum
 
-from evaluator.schemas import EvaluationReport, RunStatus, Verdict
+from evaluator.schemas import CandidateIdentity, EvaluationReport, RunStatus, Verdict
+
+
+@dataclass(frozen=True, slots=True)
+class RunIdentity:
+    """Controller-assigned provenance for one run of a frozen candidate."""
+
+    run_id: str
+    candidate: CandidateIdentity
+    contract_sha256: str
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.run_id, str) or not self.run_id.strip():
+            raise ValueError("run_id must be a non-empty string")
+        if not isinstance(self.candidate, CandidateIdentity):
+            raise TypeError("candidate must be a frozen CandidateIdentity")
+        if not isinstance(self.contract_sha256, str) or not re.fullmatch(
+            r"[0-9a-f]{64}", self.contract_sha256
+        ):
+            raise ValueError("contract_sha256 must be a SHA-256 hash")
+
+    def validate_report(self, report: EvaluationReport) -> None:
+        """Require the report to match independently supplied run provenance."""
+
+        if not isinstance(report, EvaluationReport):
+            raise TypeError("result must be an EvaluationReport")
+        if report.run_id != self.run_id:
+            raise ValueError("evaluator report belongs to a different run")
+        if report.candidate != self.candidate:
+            raise ValueError("evaluator report has a different candidate identity")
+        if report.contract_sha256 != self.contract_sha256:
+            raise ValueError("evaluator report has a different contract hash")
 
 
 class ExperimentPhase(str, Enum):
@@ -42,10 +77,11 @@ class ExperimentEvent:
     type: EventType
     detail: str = ""
     report: EvaluationReport | None = None
+    run: RunIdentity | None = None
 
     def __post_init__(self) -> None:
         if not isinstance(self.type, EventType):
-            raise ValueError("event type must be an EventType")
+            raise TypeError("event type must be an EventType")
         if self.type is EventType.EVALUATOR_RESULT and self.report is None:
             raise ValueError("evaluator_result events require an EvaluationReport")
         if self.report is not None and not isinstance(self.report, EvaluationReport):
@@ -53,7 +89,12 @@ class ExperimentEvent:
         if self.type is not EventType.EVALUATOR_RESULT and self.report is not None:
             raise ValueError("only evaluator_result events may include a report")
         if not isinstance(self.detail, str):
-            raise ValueError("event detail must be a string")
+            raise TypeError("event detail must be a string")
+        if self.type is EventType.CANDIDATE_FROZEN:
+            if not isinstance(self.run, RunIdentity):
+                raise ValueError("candidate_frozen events require a RunIdentity")
+        elif self.run is not None:
+            raise ValueError("only candidate_frozen events may bind a run")
 
 
 @dataclass(frozen=True, slots=True)
@@ -66,6 +107,7 @@ class ExperimentState:
     history: tuple[ExperimentEvent, ...] = ()
     evaluator_report: EvaluationReport | None = None
     failure_reason: str | None = None
+    run: RunIdentity | None = None
 
     @property
     def verdict(self) -> Verdict | None:
@@ -98,9 +140,15 @@ def new_experiment(experiment_id: str, candidate_id: str) -> ExperimentState:
 
 _NEXT_PHASE = {
     (ExperimentPhase.CREATED, EventType.SUBMITTED): ExperimentPhase.VALIDATING,
-    (ExperimentPhase.VALIDATING, EventType.CANDIDATE_VALIDATED): ExperimentPhase.FREEZING,
+    (
+        ExperimentPhase.VALIDATING,
+        EventType.CANDIDATE_VALIDATED,
+    ): ExperimentPhase.FREEZING,
     (ExperimentPhase.FREEZING, EventType.CANDIDATE_FROZEN): ExperimentPhase.CORRECTNESS,
-    (ExperimentPhase.CORRECTNESS, EventType.CORRECTNESS_PASSED): ExperimentPhase.BENCHMARK,
+    (
+        ExperimentPhase.CORRECTNESS,
+        EventType.CORRECTNESS_PASSED,
+    ): ExperimentPhase.BENCHMARK,
 }
 _ACTIVE_PHASES = frozenset(
     {
@@ -119,17 +167,22 @@ def transition(state: ExperimentState, event: ExperimentEvent) -> ExperimentStat
     if not isinstance(state, ExperimentState) or not isinstance(event, ExperimentEvent):
         raise TypeError("transition requires an ExperimentState and ExperimentEvent")
     if state.is_terminal:
-        raise ValueError(f"cannot transition a terminal experiment ({state.phase.value})")
+        raise ValueError(
+            f"cannot transition a terminal experiment ({state.phase.value})"
+        )
 
     next_phase = _NEXT_PHASE.get((state.phase, event.type))
     if next_phase is not None:
-        return ExperimentState(
-            experiment_id=state.experiment_id,
-            candidate_id=state.candidate_id,
+        run = state.run
+        if event.type is EventType.CANDIDATE_FROZEN:
+            run = event.run
+            if run is None or run.candidate.candidate_id != state.candidate_id:
+                raise ValueError("frozen run belongs to a different candidate")
+        return replace(
+            state,
             phase=next_phase,
             history=(*state.history, event),
-            evaluator_report=state.evaluator_report,
-            failure_reason=state.failure_reason,
+            run=run,
         )
 
     if event.type is EventType.CANDIDATE_REJECTED:
@@ -148,8 +201,9 @@ def transition(state: ExperimentState, event: ExperimentEvent) -> ExperimentStat
         report = event.report
         if report is None:  # Also guard against unusual object construction.
             raise ValueError("evaluator_result events require an EvaluationReport")
-        if report.candidate.candidate_id != state.candidate_id:
-            raise ValueError("evaluator report belongs to a different candidate")
+        if state.run is None:
+            raise ValueError("evaluation requires a bound frozen run")
+        state.run.validate_report(report)
         if report.status is RunStatus.FAILED:
             return _terminal(
                 state,
@@ -188,7 +242,9 @@ def transition(state: ExperimentState, event: ExperimentEvent) -> ExperimentStat
             event.detail.strip() or "controller failed",
         )
 
-    raise ValueError(f"event {event.type.value} is not valid during {state.phase.value}")
+    raise ValueError(
+        f"event {event.type.value} is not valid during {state.phase.value}"
+    )
 
 
 def _terminal(
@@ -198,9 +254,8 @@ def _terminal(
     reason: str | None,
     report: EvaluationReport | None = None,
 ) -> ExperimentState:
-    return ExperimentState(
-        experiment_id=state.experiment_id,
-        candidate_id=state.candidate_id,
+    return replace(
+        state,
         phase=phase,
         history=(*state.history, event),
         evaluator_report=report,
