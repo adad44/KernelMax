@@ -54,8 +54,6 @@ A public project board has not been linked yet.
 
 2. Follow the setup and run instructions once the project dependencies and implementation are added.
 
-> [!NOTE]
-> KernelMax is still mostly a scaffold, so there is not yet a runnable model benchmark command. The offline target helpers below can be used and tested now.
 
 ### Offline fixed workload
 
