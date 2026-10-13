@@ -19,7 +19,7 @@ This repository is currently an initial project scaffold. The implementation and
 
 ## Lead Contact Information
 
-**Project Lead:** Alan Diaz
+**Project Lead:** Alan
 
 **GitHub:** [@adad44](https://github.com/adad44)
 
