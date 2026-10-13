@@ -157,6 +157,100 @@ KERNELMAX_TEST_MLX=1 /path/to/existing/environment/bin/python -B \
   -m unittest tests.test_correctness.MLXCorrectnessTests -v
 ```
 
+## Selected-expert correctness suite
+
+`correctness_suite.run_correctness_suite` builds a declared plan before calling
+two **trusted** injected functions with `(layer_index, x, selected_expert_ids)`.
+Each function returns the selected-expert output **before** routing-weight
+combination. It neither imports submissions nor supplies execution isolation.
+Bind the reference to Javi's unchanged expert wrapper using a closure; bind any
+future candidate adapter to the verified frozen snapshot in the controller.
+Do not pass an untrusted in-process callable to this harness.
+
+```python
+from evaluator.correctness_suite import run_correctness_suite
+
+# Trusted native_wrappers maps each sampled layer to its unchanged callable.
+def reference(layer_index, x, selected_expert_ids):
+    return native_wrappers[layer_index](x, selected_expert_ids)
+
+suite = run_correctness_suite(
+    reference, trusted_test_adapter,
+    policy=contract.correctness,
+    hidden_size=model.args.hidden_size,
+    num_experts=model.args.num_local_experts,
+    mx=mx,  # Existing mlx.core module; omit only for FP32 NumPy fixtures.
+)
+# Controller/evaluator retains suite.correctness and suite.errors in its report.
+# Any suite.errors means incomplete/failed execution, not numerical rejection.
+# No errors plus not suite.passed means completed comparisons with mismatches.
+# Do not invent performance samples, a captured environment, or a final verdict.
+```
+
+The default plan is all seven contract cases at layers **0, 12, 23** (21 checks).
+`correctness_cases` reproduces the small operator counts, expert-ID patterns,
+scales and seeds from `baseline_validation.expert_checks`. Seeds stay attached to
+case names even if contract case ordering changes. This is not the 512/2048/4096
+full-model performance workload; `prefill` here uses 16 operator tokens. Published
+deterministic `held_out_inputs` fixtures are not a secret held-out evaluation set.
+Additional private coverage needs its own protected, reviewed plan.
+
+Inputs are `[1,T,H]` activations and `[1,T,4]` int32 IDs. Native MLX inputs and
+reference outputs must be BF16; CPU fixtures use FP32. Reference outputs must be
+`[1,T,4,H]`. Unknown cases, duplicate/empty layer selections and invalid dimensions
+are setup errors raised before execution. Explicit `layers=...` is available for
+diagnostics, but a smaller plan establishes only that smaller scope; the caller
+must bind the reviewed plan and dimensions to protected experiment inputs.
+
+Both callables receive fresh, independently generated identical inputs. The
+reference output is copied/materialized before the test runs; metadata and input
+value fingerprints detect observed mutations. These checks do **not** detect
+change-and-restore attacks or protect weights/files/other process state. They are
+not substitutes for isolation, timeouts or protected-input hash verification.
+The existing comparison tolerances and model precision remain unchanged.
+
+`SuiteResult` contains `correctness`, `checks`, `errors`, `complete` and `passed`.
+`summarize_checks` can aggregate collected `LayerCheck` records against the same
+predeclared plan. It retains duplicates, extra checks, missing-check errors,
+execution errors and every numerical result. Each case appears once in
+`correctness`; its flags AND all expected layer flags. Layer diagnostics, seeds,
+results and errors are JSON in `CorrectnessResult.detail`, so ordinary
+`EvaluationReport` serialization preserves them. Undeclared case records are
+retained under `unexpected_checks` in the first case's detail. Incomplete cases have false
+flags **and** coverage/execution errors: never present those as a pure numerical
+failure. `complete` means every planned comparison ran once without errors; a
+complete suite can still fail numerical checks. Preserve both result and error
+tuples, not just the convenience `passed` flag.
+
+Per-check `Exception` failures are stage-labelled (reference/test/comparison)
+and collection continues. `KeyboardInterrupt` and other `BaseException`s
+propagate; partial-progress persistence/interruption handling belongs to the
+controller and is not implemented here. Bad reference outputs skip the test
+callable. Setup exceptions must likewise be recorded by the caller.
+
+CPU regression tests, including suite/report round-trips:
+
+```sh
+uv run --no-project --python 3.12 --with numpy==2.5.3 --with PyYAML==6.0.3 \
+  python -B -m unittest tests.test_correctness_cases tests.test_correctness_suite -v
+```
+
+Optional tiny MLX BF16 tests (no checkpoint/weights or native expert wrapper):
+
+```sh
+KERNELMAX_TEST_MLX=1 /path/to/existing/environment/bin/python -B \
+  -m unittest tests.test_correctness_suite.MLXSuiteTests -v
+```
+
+Real-model smoke validation awaits the unchanged reference wrapper: construct
+layer closures on the verified pinned model, run reference versus reference with
+`mx=mx`, and retain all 21 diagnostics plus errors and source/runtime/model
+provenance. That establishes integration only, not candidate accuracy, full-model
+correctness, independent matmul accuracy or speedup. No such model run is claimed
+by the fake/tiny-MLX tests. The layer-12 dense discrepancy remains unresolved;
+acceptance stays disabled. Freeze these new evaluator sources for future runs;
+the historical baseline is not rerun or relabelled by this addition.
+
 ## Native reference baseline
 
 See [scripts/BASELINE.md](../scripts/BASELINE.md) for collection, review, audit,
