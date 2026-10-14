@@ -251,6 +251,118 @@ by the fake/tiny-MLX tests. The layer-12 dense discrepancy remains unresolved;
 acceptance stays disabled. Freeze these new evaluator sources for future runs;
 the historical baseline is not rerun or relabelled by this addition.
 
+## Trusted selected-expert adapter
+
+`target.adapter.TrustedExpertAdapter` connects already-loaded, **trusted** expert
+callables to the suite's `(layer_index, x, selected_expert_ids)` interface. Bind
+Javi's unchanged per-layer reference wrappers when available; the same mapping
+interface can use native expert modules directly for a pass-through diagnostic.
+It does not load candidate files, replace model modules, reroute tokens, combine
+routing weights, convert tensors, requantize weights, or silently fall back.
+
+```python
+from evaluator.correctness_suite import run_correctness_suite
+from target.adapter import TrustedExpertAdapter
+
+# On an already-loaded and independently verified pinned model:
+experts = {i: model.model.layers[i].mlp.experts for i in (0, 12, 23)}
+adapter = TrustedExpertAdapter(
+    experts, hidden_size=model.args.hidden_size,
+    num_experts=model.args.num_local_experts, mx=mx,
+)
+suite = run_correctness_suite(
+    lambda i, x, ids: experts[i](x, ids), adapter,
+    policy=contract.correctness, hidden_size=model.args.hidden_size,
+    num_experts=model.args.num_local_experts, mx=mx,
+)
+```
+
+The mapping is copied and read-only; the callable/weight objects are referenced
+unchanged, **not** frozen or protected by this class. The controller must verify
+checkpoint identity, weight formats, runtime and source provenance separately.
+Native mode requires BF16 MLX activations `[1,T,H]`, int32 MLX IDs `[1,T,4]`, and
+BF16 MLX output `[1,T,4,H]`. `mx=None` is explicit FP32 NumPy fixture mode. Only
+batch one, nonempty token inputs and explicitly bound integer layers are supported.
+Inputs must be finite and IDs within the bound expert count. Exact input objects
+are forwarded; valid output is returned unchanged. Nonfinite outputs reach the
+comparator for a numerical failure, while unsupported interface shapes/dtypes
+raise `AdapterError` and remain suite execution errors. Backend errors propagate.
+
+Value validation may synchronize native GPU work: this guarded adapter is for
+**untimed correctness**, not a benchmark interval. Keep the same controller-side
+mutation checks, recorded errors and isolation requirements as the suite. No
+arbitrary agent-generated callable is safe to execute merely because it is
+wrapped here. Future candidate execution needs a separate isolated, hash-bound
+adapter with timeouts and credential/filesystem restrictions.
+
+Run CPU tests with `python -B -m unittest tests.test_adapter -v` in the evaluator
+environment. Opt into the two tiny native-tensor tests with
+`KERNELMAX_TEST_MLX=1 .../bin/python -B -m unittest tests.test_adapter.MLXAdapterTests -v`.
+They use trusted synthetic expressions, not GPT-OSS weights. Actual pinned-model
+pass-through validation requires the existing local checkpoint to be available;
+the full Javi-reference/Elina-runner path additionally awaits their implementations.
+Even a passing real-model pass-through check would establish wiring only, not
+optimized-candidate accuracy, full-model correctness, speedup or acceptance.
+
+## Orchestrator evaluator handoff (trusted pass-through only)
+
+`evaluator.pass_through.TrustedPassThroughEvaluator` supplies a concrete injected
+callback for Elina's runner. Bind the trusted reference and `TrustedExpertAdapter`
+once, then call it with the controller's reserved `RunIdentity`, `FrozenCandidate`,
+and validated `ExperimentContract`:
+
+```python
+from evaluator.pass_through import TrustedPassThroughEvaluator
+
+# reference(layer_index, x, ids) is Javi's unchanged trusted wrapper, or a
+# trusted CPU fixture. adapter is the already-bound TrustedExpertAdapter above.
+evaluate = TrustedPassThroughEvaluator(reference, adapter)
+report = evaluate(run_identity, frozen_candidate, contract)
+run_identity.validate_report(report)
+budget.observe_result(report)
+```
+
+The bridge rejects mismatched candidate IDs/types/hashes or contract hashes
+before expert execution. It verifies the frozen snapshot before and after the
+suite, calls the fixed seven-case/three-layer suite, and packages every layer
+diagnostic and error in an `EvaluationReport`. Snapshot failures produce failed
+reports; errors after the suite retain its checks. Numerical mismatches without
+execution errors are completed diagnostics with failed correctness flags, not
+an invented `REJECTED` verdict. Early identity/setup errors raise to the runner.
+Interruptions during the suite propagate to the runner under the existing suite
+contract; the runner must record interruption and never claim complete coverage.
+
+The optional keyword hook is `on_diagnostic_passed(report)`. It fires once only
+after all 21 trusted pass-through checks and post-suite integrity checks pass.
+Hook errors/interruption retain the completed checks in failed/interrupted
+reports; snapshot changes made by the hook are also detected. This hook must
+**not** be converted to the candidate `CORRECTNESS_PASSED` event: the frozen
+submission's implementation has never been run. The existing state machine can
+record the terminal `EVALUATOR_RESULT` directly from its correctness phase.
+Real candidate correctness progress remains a separate future evaluator API.
+
+Every returned correctness detail identifies `evaluation_scope` as
+`trusted_pass_through`, declares the CPU-fixture or MLX-BF16 input mode, and sets
+`candidate_code_executed`, `candidate_correctness_established`, and
+`performance_measured` to false. Candidate identity is retained for the run's
+submission provenance only, not as evidence that its code produced the output.
+The bridge always returns empty performance evidence and `verdict=None`.
+`environment=None` is explicit absent evidence; supply an independently captured
+`EnvironmentRecord` only for an actually verified native environment. No report
+files are written, no model is loaded, and no candidate code is imported.
+
+The runner owns event journaling/state/budget; the evaluator owns report content
+and any future official report writer. Runner/candidate isolation, timeouts,
+credential restrictions, protected-input hashing and real model verification
+are still separate requirements. Snapshot checks alone do not provide isolation.
+
+Run the offline handoff tests, including state-machine/budget integration, with:
+
+```sh
+uv run --no-project --python 3.12 --with numpy==2.5.3 --with PyYAML==6.0.3 \
+  python -B -m unittest tests.test_pass_through -v
+```
+
 ## Native reference baseline
 
 See [scripts/BASELINE.md](../scripts/BASELINE.md) for collection, review, audit,
