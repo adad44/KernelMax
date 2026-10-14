@@ -251,6 +251,59 @@ by the fake/tiny-MLX tests. The layer-12 dense discrepancy remains unresolved;
 acceptance stays disabled. Freeze these new evaluator sources for future runs;
 the historical baseline is not rerun or relabelled by this addition.
 
+## Trusted selected-expert adapter
+
+`target.adapter.TrustedExpertAdapter` connects already-loaded, **trusted** expert
+callables to the suite's `(layer_index, x, selected_expert_ids)` interface. Bind
+Javi's unchanged per-layer reference wrappers when available; the same mapping
+interface can use native expert modules directly for a pass-through diagnostic.
+It does not load candidate files, replace model modules, reroute tokens, combine
+routing weights, convert tensors, requantize weights, or silently fall back.
+
+```python
+from evaluator.correctness_suite import run_correctness_suite
+from target.adapter import TrustedExpertAdapter
+
+# On an already-loaded and independently verified pinned model:
+experts = {i: model.model.layers[i].mlp.experts for i in (0, 12, 23)}
+adapter = TrustedExpertAdapter(
+    experts, hidden_size=model.args.hidden_size,
+    num_experts=model.args.num_local_experts, mx=mx,
+)
+suite = run_correctness_suite(
+    lambda i, x, ids: experts[i](x, ids), adapter,
+    policy=contract.correctness, hidden_size=model.args.hidden_size,
+    num_experts=model.args.num_local_experts, mx=mx,
+)
+```
+
+The mapping is copied and read-only; the callable/weight objects are referenced
+unchanged, **not** frozen or protected by this class. The controller must verify
+checkpoint identity, weight formats, runtime and source provenance separately.
+Native mode requires BF16 MLX activations `[1,T,H]`, int32 MLX IDs `[1,T,4]`, and
+BF16 MLX output `[1,T,4,H]`. `mx=None` is explicit FP32 NumPy fixture mode. Only
+batch one, nonempty token inputs and explicitly bound integer layers are supported.
+Inputs must be finite and IDs within the bound expert count. Exact input objects
+are forwarded; valid output is returned unchanged. Nonfinite outputs reach the
+comparator for a numerical failure, while unsupported interface shapes/dtypes
+raise `AdapterError` and remain suite execution errors. Backend errors propagate.
+
+Value validation may synchronize native GPU work: this guarded adapter is for
+**untimed correctness**, not a benchmark interval. Keep the same controller-side
+mutation checks, recorded errors and isolation requirements as the suite. No
+arbitrary agent-generated callable is safe to execute merely because it is
+wrapped here. Future candidate execution needs a separate isolated, hash-bound
+adapter with timeouts and credential/filesystem restrictions.
+
+Run CPU tests with `python -B -m unittest tests.test_adapter -v` in the evaluator
+environment. Opt into the two tiny native-tensor tests with
+`KERNELMAX_TEST_MLX=1 .../bin/python -B -m unittest tests.test_adapter.MLXAdapterTests -v`.
+They use trusted synthetic expressions, not GPT-OSS weights. Actual pinned-model
+pass-through validation requires the existing local checkpoint to be available;
+the full Javi-reference/Elina-runner path additionally awaits their implementations.
+Even a passing real-model pass-through check would establish wiring only, not
+optimized-candidate accuracy, full-model correctness, speedup or acceptance.
+
 ## Native reference baseline
 
 See [scripts/BASELINE.md](../scripts/BASELINE.md) for collection, review, audit,
