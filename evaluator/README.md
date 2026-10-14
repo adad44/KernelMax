@@ -304,6 +304,65 @@ the full Javi-reference/Elina-runner path additionally awaits their implementati
 Even a passing real-model pass-through check would establish wiring only, not
 optimized-candidate accuracy, full-model correctness, speedup or acceptance.
 
+## Orchestrator evaluator handoff (trusted pass-through only)
+
+`evaluator.pass_through.TrustedPassThroughEvaluator` supplies a concrete injected
+callback for Elina's runner. Bind the trusted reference and `TrustedExpertAdapter`
+once, then call it with the controller's reserved `RunIdentity`, `FrozenCandidate`,
+and validated `ExperimentContract`:
+
+```python
+from evaluator.pass_through import TrustedPassThroughEvaluator
+
+# reference(layer_index, x, ids) is Javi's unchanged trusted wrapper, or a
+# trusted CPU fixture. adapter is the already-bound TrustedExpertAdapter above.
+evaluate = TrustedPassThroughEvaluator(reference, adapter)
+report = evaluate(run_identity, frozen_candidate, contract)
+run_identity.validate_report(report)
+budget.observe_result(report)
+```
+
+The bridge rejects mismatched candidate IDs/types/hashes or contract hashes
+before expert execution. It verifies the frozen snapshot before and after the
+suite, calls the fixed seven-case/three-layer suite, and packages every layer
+diagnostic and error in an `EvaluationReport`. Snapshot failures produce failed
+reports; errors after the suite retain its checks. Numerical mismatches without
+execution errors are completed diagnostics with failed correctness flags, not
+an invented `REJECTED` verdict. Early identity/setup errors raise to the runner.
+Interruptions during the suite propagate to the runner under the existing suite
+contract; the runner must record interruption and never claim complete coverage.
+
+The optional keyword hook is `on_diagnostic_passed(report)`. It fires once only
+after all 21 trusted pass-through checks and post-suite integrity checks pass.
+Hook errors/interruption retain the completed checks in failed/interrupted
+reports; snapshot changes made by the hook are also detected. This hook must
+**not** be converted to the candidate `CORRECTNESS_PASSED` event: the frozen
+submission's implementation has never been run. The existing state machine can
+record the terminal `EVALUATOR_RESULT` directly from its correctness phase.
+Real candidate correctness progress remains a separate future evaluator API.
+
+Every returned correctness detail identifies `evaluation_scope` as
+`trusted_pass_through`, declares the CPU-fixture or MLX-BF16 input mode, and sets
+`candidate_code_executed`, `candidate_correctness_established`, and
+`performance_measured` to false. Candidate identity is retained for the run's
+submission provenance only, not as evidence that its code produced the output.
+The bridge always returns empty performance evidence and `verdict=None`.
+`environment=None` is explicit absent evidence; supply an independently captured
+`EnvironmentRecord` only for an actually verified native environment. No report
+files are written, no model is loaded, and no candidate code is imported.
+
+The runner owns event journaling/state/budget; the evaluator owns report content
+and any future official report writer. Runner/candidate isolation, timeouts,
+credential restrictions, protected-input hashing and real model verification
+are still separate requirements. Snapshot checks alone do not provide isolation.
+
+Run the offline handoff tests, including state-machine/budget integration, with:
+
+```sh
+uv run --no-project --python 3.12 --with numpy==2.5.3 --with PyYAML==6.0.3 \
+  python -B -m unittest tests.test_pass_through -v
+```
+
 ## Native reference baseline
 
 See [scripts/BASELINE.md](../scripts/BASELINE.md) for collection, review, audit,
