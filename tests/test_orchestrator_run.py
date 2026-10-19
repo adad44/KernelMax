@@ -5,6 +5,7 @@ import tempfile
 import unittest
 from dataclasses import replace
 from pathlib import Path
+from unittest.mock import patch
 
 from evaluator.pass_through import TrustedPassThroughEvaluator
 from evaluator.schemas import (
@@ -14,11 +15,10 @@ from evaluator.schemas import (
 )
 from orchestrator.candidate_manager import create_candidate_id
 from orchestrator.experiment_budget import ExperimentBudget
-from orchestrator.journal import ExperimentJournal
+from orchestrator.journal import ExperimentJournal, JournalError
 from orchestrator.run import run_candidate
 from orchestrator.state_machine import EventType, ExperimentPhase, RunIdentity
 from target.adapter import TrustedExpertAdapter
-
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = load_contract(ROOT / "kernelmaxxing.yaml")
@@ -98,7 +98,9 @@ class CandidateRunnerTests(unittest.TestCase):
     def test_valid_fake_evaluator_receives_inputs_and_report_is_retained(self):
         seen = {}
 
-        def evaluator(run_identity, frozen_candidate, contract, *, on_diagnostic_passed=None):
+        def evaluator(
+            run_identity, frozen_candidate, contract, *, on_diagnostic_passed=None
+        ):
             seen.update(
                 run=run_identity,
                 frozen=frozen_candidate,
@@ -141,7 +143,9 @@ class CandidateRunnerTests(unittest.TestCase):
     def test_mismatched_report_is_retained_but_not_accepted_as_evaluator_result(self):
         reports = []
 
-        def evaluator(run_identity, frozen_candidate, contract, *, on_diagnostic_passed=None):
+        def evaluator(
+            run_identity, frozen_candidate, contract, *, on_diagnostic_passed=None
+        ):
             report = replace(make_report(run_identity), run_id="another-run")
             reports.append(report)
             return report
@@ -283,6 +287,47 @@ class CandidateRunnerTests(unittest.TestCase):
         self.assertEqual(
             self.journal.read_history()[-1]["event"]["type"], "candidate_rejected"
         )
+
+    def test_invalid_candidate_id_is_journaled_without_a_fake_state_or_budget_use(self):
+        budget = ExperimentBudget(max_attempts=3)
+        calls = []
+        for name in ("invalid-id", "cand_short", "candidate-template"):
+            with self.subTest(name=name):
+                malformed = self.candidates_root / name
+                self.candidate_dir.rename(malformed)
+                self.candidate_dir = malformed
+                result = self.run_one(
+                    lambda *args, **kwargs: calls.append(args),
+                    budget,
+                    experiment_id=f"rejected-{name}",
+                )
+                self.assertIsNone(result.state)
+                self.assertIn("candidate_id", result.error)
+                entry = self.journal.read_history()[-1]
+                self.assertEqual(entry["kind"], "submission_rejected")
+                self.assertEqual(entry["experiment_id"], f"rejected-{name}")
+                self.assertEqual(entry["candidate_id"], name)
+                self.assertEqual(entry["candidate_path"], str(malformed))
+                self.assertEqual(entry["phase"], "failed")
+                self.assertEqual(entry["reason"], result.error)
+                self.assertIsNone(self.journal.read_state(f"rejected-{name}"))
+        self.assertEqual(calls, [])
+        self.assertEqual(budget.attempts_started, 0)
+        self.assertFalse(self.frozen_root.exists())
+        self.assertEqual(len(self.journal.read_history()), 3)
+
+    def test_invalid_id_does_not_hide_a_journal_write_failure(self):
+        malformed = self.candidates_root / "invalid-id"
+        self.candidate_dir.rename(malformed)
+        self.candidate_dir = malformed
+        calls = []
+        with (
+            patch.object(self.journal, "_append", side_effect=OSError("disk full")),
+            self.assertRaises(JournalError),
+        ):
+            self.run_one(lambda *args, **kwargs: calls.append(args))
+        self.assertEqual(calls, [])
+        self.assertEqual(self.journal.read_history(), [])
 
     def test_trusted_pass_through_diagnostic_signal_is_not_candidate_approval(self):
         reference_calls = []

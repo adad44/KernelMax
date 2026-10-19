@@ -136,7 +136,30 @@ class ExperimentJournal:
             },
         )
 
-    def _append_and_save(self, state: ExperimentState, entry: dict[str, Any]) -> None:
+    def record_rejection(
+        self, experiment_id: str, candidate_dir: str | Path, reason: str
+    ) -> None:
+        """Retain a rejected submission even when its ID cannot form a state."""
+
+        if not isinstance(experiment_id, str) or not experiment_id.strip():
+            raise ValueError("experiment_id must be a non-empty string")
+        if not isinstance(reason, str) or not reason.strip():
+            raise ValueError("rejection reason must be a non-empty string")
+        self._append_and_save(
+            None,
+            {
+                "kind": "submission_rejected",
+                "experiment_id": experiment_id,
+                "candidate_id": Path(candidate_dir).name,
+                "candidate_path": str(candidate_dir),
+                "phase": "failed",
+                "reason": reason,
+            },
+        )
+
+    def _append_and_save(
+        self, state: ExperimentState | None, entry: dict[str, Any]
+    ) -> None:
         encoded = (
             json.dumps(entry, sort_keys=True, separators=(",", ":"), allow_nan=False)
             + "\n"
@@ -149,21 +172,82 @@ class ExperimentJournal:
         )
         try:
             fcntl.flock(lock_fd, fcntl.LOCK_EX)
+            self._recover_tail()
             self._append(encoded)
-            self._save_state(self._state_path(state.experiment_id), state_mapping(state))
+            self._sync_directory(self.root)
+            if state is not None:
+                self._save_state(
+                    self._state_path(state.experiment_id), state_mapping(state)
+                )
         except (OSError, TypeError, ValueError) as exc:
             raise JournalError(f"cannot record experiment journal: {exc}") from exc
         finally:
             fcntl.flock(lock_fd, fcntl.LOCK_UN)
             os.close(lock_fd)
 
+    def _recover_tail(self) -> None:
+        """Quarantine an unfinished last record while holding the journal lock.
+
+        A newline is the commit boundary for a history record. Never truncate
+        until the exact unfinished bytes and their directory entry are durable.
+        Complete records, including malformed newline-terminated ones, stay put.
+        """
+
+        try:
+            fd = os.open(self.history_path, os.O_RDWR | getattr(os, "O_NOFOLLOW", 0))
+        except FileNotFoundError:
+            return
+        try:
+            end = os.lseek(fd, 0, os.SEEK_END)
+            if end == 0 or os.pread(fd, 1, end - 1) == b"\n":
+                return
+            position = end
+            boundary = 0
+            while position:
+                start = max(0, position - 8192)
+                block = os.pread(fd, position - start, start)
+                newline = block.rfind(b"\n")
+                if newline >= 0:
+                    boundary = start + newline + 1
+                    break
+                position = start
+            # Read through a duplicate descriptor without loading the older log.
+            with os.fdopen(os.dup(fd), "rb") as stream:
+                stream.seek(boundary)
+                fragment = stream.read()
+            self._preserve_tail(fragment)
+            os.ftruncate(fd, boundary)
+            os.fsync(fd)
+        finally:
+            os.close(fd)
+
+    def _preserve_tail(self, fragment: bytes) -> None:
+        fd, name = tempfile.mkstemp(
+            prefix="history-incomplete-", suffix=".bin", dir=self.root
+        )
+        path = Path(name)
+        try:
+            with os.fdopen(fd, "wb") as stream:
+                stream.write(fragment)
+                stream.flush()
+                os.fsync(stream.fileno())
+            self._sync_directory(self.root)
+        except BaseException:
+            path.unlink(missing_ok=True)
+            raise
+
+    @staticmethod
+    def _sync_directory(path: Path) -> None:
+        fd = os.open(path, os.O_RDONLY)
+        try:
+            os.fsync(fd)
+        finally:
+            os.close(fd)
+
     def _append(self, encoded: bytes) -> None:
         fd = os.open(
             self.history_path,
-            os.O_CREAT
-            | os.O_APPEND
-            | os.O_WRONLY
-            | getattr(os, "O_NOFOLLOW", 0),
+            os.O_CREAT | os.O_APPEND | os.O_WRONLY | getattr(os, "O_NOFOLLOW", 0),
             0o600,
         )
         try:
@@ -205,7 +289,7 @@ class ExperimentJournal:
             raise
 
     def read_history(self) -> list[dict[str, Any]]:
-        """Read the retained JSONL history (primarily useful for diagnostics)."""
+        """Read history, recovering an unfinished final record if necessary."""
 
         lock_fd = os.open(
             self.lock_path,
@@ -213,7 +297,8 @@ class ExperimentJournal:
             0o600,
         )
         try:
-            fcntl.flock(lock_fd, fcntl.LOCK_SH)
+            fcntl.flock(lock_fd, fcntl.LOCK_EX)
+            self._recover_tail()
             try:
                 fd = os.open(
                     self.history_path,

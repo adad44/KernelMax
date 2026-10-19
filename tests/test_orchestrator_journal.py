@@ -1,11 +1,14 @@
 """Persistence and history tests for the orchestrator journal."""
 
+import errno
+import os
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from evaluator.schemas import CandidateIdentity, EvaluationReport, RunStatus
-from orchestrator.journal import ExperimentJournal
+from orchestrator.journal import ExperimentJournal, JournalError
 from orchestrator.state_machine import (
     EventType,
     ExperimentEvent,
@@ -14,7 +17,6 @@ from orchestrator.state_machine import (
     new_experiment,
     transition,
 )
-
 
 CONTRACT_HASH = "b" * 64
 CANDIDATE_ID = "cand_012345abcdef"
@@ -70,7 +72,12 @@ class ExperimentJournalTests(unittest.TestCase):
         self.assertEqual(len(history), 4)
         self.assertEqual(
             [entry["event"]["type"] for entry in history],
-            ["submitted", "candidate_validated", "candidate_frozen", "evaluator_result"],
+            [
+                "submitted",
+                "candidate_validated",
+                "candidate_frozen",
+                "evaluator_result",
+            ],
         )
         self.assertEqual(state.phase, ExperimentPhase.COMPLETED)
         saved = self.journal.read_state("journal-run")
@@ -123,7 +130,9 @@ class ExperimentJournalTests(unittest.TestCase):
         self.assertEqual(entry["kind"], "evaluator_signal")
         self.assertEqual(entry["signal"], "on_diagnostic_passed")
         self.assertEqual(entry["report"], report.to_dict())
-        self.assertEqual(self.journal.read_state("diagnostic-run")["phase"], "correctness")
+        self.assertEqual(
+            self.journal.read_state("diagnostic-run")["phase"], "correctness"
+        )
 
     def test_state_file_is_atomically_replaced_without_following_symlink(self):
         state = transition(
@@ -150,10 +159,131 @@ class ExperimentJournalTests(unittest.TestCase):
             ExperimentEvent(EventType.SUBMITTED),
         )
         with self.assertRaisesRegex(ValueError, "latest event"):
-            self.journal.record(
-                state, ExperimentEvent(EventType.CANDIDATE_VALIDATED)
-            )
+            self.journal.record(state, ExperimentEvent(EventType.CANDIDATE_VALIDATED))
         self.assertEqual(self.journal.read_history(), [])
+
+    def test_partial_write_is_quarantined_after_restart_without_losing_history(self):
+        first = transition(
+            new_experiment("first", CANDIDATE_ID), ExperimentEvent(EventType.SUBMITTED)
+        )
+        self.journal.record(first, first.history[-1])
+        committed = self.journal.history_path.read_bytes()
+        second = transition(
+            new_experiment("interrupted-write", CANDIDATE_ID),
+            ExperimentEvent(EventType.SUBMITTED),
+        )
+        real_write = os.write
+        writes = 0
+
+        def partial_write(fd, data):
+            nonlocal writes
+            writes += 1
+            if writes == 1:
+                return real_write(fd, data[:20])
+            raise OSError(errno.ENOSPC, "simulated disk full")
+
+        with (
+            patch("orchestrator.journal.os.write", side_effect=partial_write),
+            self.assertRaises(JournalError),
+        ):
+            self.journal.record(second, second.history[-1])
+        fragment = self.journal.history_path.read_bytes()[len(committed) :]
+        self.assertEqual(len(fragment), 20)
+        self.assertIsNone(self.journal.read_state("interrupted-write"))
+
+        restarted = ExperimentJournal(self.journal.root)
+        self.assertEqual(len(restarted.read_history()), 1)
+        self.assertEqual(restarted.history_path.read_bytes(), committed)
+        quarantined = list(restarted.root.glob("history-incomplete-*.bin"))
+        self.assertEqual(len(quarantined), 1)
+        self.assertEqual(quarantined[0].read_bytes(), fragment)
+        self.assertEqual(quarantined[0].stat().st_mode & 0o777, 0o600)
+        self.assertEqual(restarted.read_state("first")["phase"], "validating")
+
+        third = transition(
+            new_experiment("after-restart", CANDIDATE_ID),
+            ExperimentEvent(EventType.SUBMITTED),
+        )
+        restarted.record(third, third.history[-1])
+        self.assertEqual(
+            [entry["experiment_id"] for entry in restarted.read_history()],
+            ["first", "after-restart"],
+        )
+        self.assertTrue(restarted.history_path.read_bytes().startswith(committed))
+        self.assertEqual(restarted.read_state("after-restart")["phase"], "validating")
+
+    def test_append_recovers_binary_and_large_unterminated_tails(self):
+        for index, fragment in enumerate(
+            (b'{"unfinished":', b'{"valid":true}', b"\xf0\x9f", b"x" * 20000)
+        ):
+            with self.subTest(fragment_index=index):
+                journal = ExperimentJournal(self.root / f"tail-{index}")
+                first = transition(
+                    new_experiment("first", CANDIDATE_ID),
+                    ExperimentEvent(EventType.SUBMITTED),
+                )
+                journal.record(first, first.history[-1])
+                committed = journal.history_path.read_bytes()
+                with journal.history_path.open("ab") as stream:
+                    stream.write(fragment)
+                restarted = ExperimentJournal(journal.root)
+                second = transition(
+                    new_experiment("second", CANDIDATE_ID),
+                    ExperimentEvent(EventType.SUBMITTED),
+                )
+                restarted.record(second, second.history[-1])
+                self.assertEqual(len(restarted.read_history()), 2)
+                self.assertTrue(
+                    restarted.history_path.read_bytes().startswith(committed)
+                )
+                quarantined = list(journal.root.glob("history-incomplete-*.bin"))
+                self.assertEqual(len(quarantined), 1)
+                self.assertEqual(quarantined[0].read_bytes(), fragment)
+
+    def test_first_partial_record_can_be_recovered_without_a_committed_prefix(self):
+        fragment = b'{"candidate_id":"cand_'
+        self.journal.history_path.write_bytes(fragment)
+        self.assertEqual(self.journal.read_history(), [])
+        self.assertEqual(self.journal.history_path.read_bytes(), b"")
+        quarantined = list(self.journal.root.glob("history-incomplete-*.bin"))
+        self.assertEqual(quarantined[0].read_bytes(), fragment)
+
+    def test_failed_quarantine_never_truncates_or_appends_history(self):
+        raw = b'{"incomplete":'
+        self.journal.history_path.write_bytes(raw)
+        state = transition(
+            new_experiment("blocked", CANDIDATE_ID),
+            ExperimentEvent(EventType.SUBMITTED),
+        )
+        with patch.object(
+            self.journal, "_preserve_tail", side_effect=OSError("disk full")
+        ):
+            with self.assertRaises(JournalError):
+                self.journal.record(state, state.history[-1])
+            with self.assertRaises(JournalError):
+                self.journal.read_history()
+        self.assertEqual(self.journal.history_path.read_bytes(), raw)
+        self.assertIsNone(self.journal.read_state("blocked"))
+
+    def test_corrupt_complete_records_are_not_silently_removed(self):
+        raw = b'{"complete":broken}\n'
+        self.journal.history_path.write_bytes(raw)
+        with self.assertRaises(JournalError):
+            self.journal.read_history()
+        self.assertEqual(self.journal.history_path.read_bytes(), raw)
+        self.assertEqual(list(self.journal.root.glob("history-incomplete-*.bin")), [])
+
+    def test_healthy_history_is_unchanged_when_read(self):
+        state = transition(
+            new_experiment("healthy", CANDIDATE_ID),
+            ExperimentEvent(EventType.SUBMITTED),
+        )
+        self.journal.record(state, state.history[-1])
+        committed = self.journal.history_path.read_bytes()
+        self.assertEqual(len(self.journal.read_history()), 1)
+        self.assertEqual(len(self.journal.read_history()), 1)
+        self.assertEqual(self.journal.history_path.read_bytes(), committed)
+        self.assertEqual(list(self.journal.root.glob("history-incomplete-*.bin")), [])
 
 
 if __name__ == "__main__":

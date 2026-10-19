@@ -21,6 +21,19 @@ experiment under `states/`, syncing both file and parent directory. Its hashed
 state filenames avoid treating experiment IDs as paths. Journal files are
 controller-owned and should be placed outside agent-writable candidate space.
 
+If an append is interrupted, the next read or append preserves the unfinished
+final bytes in a private `history-incomplete-*.bin` recovery file before trimming
+that tail. Complete history records are preserved. Recovery holds the journal
+lock and syncs the recovery file and its directory before truncating history;
+if preservation fails, the original history remains intact and the operation
+raises `JournalError`. Newline-terminated corrupt records remain visible as
+errors rather than being silently removed.
+
+A submission with an invalid candidate ID gets a `submission_rejected` history
+entry containing its experiment ID, supplied path/name, and error. Because it
+cannot form a valid candidate state, it has no state snapshot; the returned
+result retains `state=None`. No freezing or evaluator budget is used.
+
 ## Offline example
 
 This example uses NumPy fake experts and the real trusted pass-through evaluator.

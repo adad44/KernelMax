@@ -101,6 +101,7 @@ def run_candidate(
     try:
         state = new_experiment(run_group, candidate_id)
     except (TypeError, ValueError) as exc:
+        journal.record_rejection(run_group, candidate_dir, str(exc))
         return CandidateRunResult(state=None, error=str(exc))
 
     submitted = ExperimentEvent(EventType.SUBMITTED)
@@ -173,7 +174,7 @@ def run_candidate(
         )
     except KeyboardInterrupt as exc:
         evaluator_interrupted = exc
-    except Exception as exc:
+    except Exception as exc:  # noqa: BLE001 -- Retain any injected evaluator failure.
         evaluator_error = exc
 
     try:
@@ -200,9 +201,7 @@ def run_candidate(
     if evaluator_interrupted is not None:
         reason = f"evaluator interrupted: {evaluator_interrupted}".rstrip()
         budget.stop(reason)
-        state = _advance(
-            state, ExperimentEvent(EventType.INTERRUPTED, reason), journal
-        )
+        state = _advance(state, ExperimentEvent(EventType.INTERRUPTED, reason), journal)
         return CandidateRunResult(
             state,
             candidate=candidate,
@@ -211,7 +210,9 @@ def run_candidate(
             error=reason,
         )
     if evaluator_error is not None:
-        reason = f"evaluator failed: {type(evaluator_error).__name__}: {evaluator_error}"
+        reason = (
+            f"evaluator failed: {type(evaluator_error).__name__}: {evaluator_error}"
+        )
         state = _advance(
             state, ExperimentEvent(EventType.CONTROLLER_FAILED, reason), journal
         )
@@ -233,9 +234,7 @@ def run_candidate(
             state,
             ExperimentEvent(EventType.CONTROLLER_FAILED, reason),
             journal,
-            observed_report=(
-                report if isinstance(report, EvaluationReport) else None
-            ),
+            observed_report=(report if isinstance(report, EvaluationReport) else None),
         )
         return CandidateRunResult(
             state,
@@ -251,9 +250,7 @@ def run_candidate(
             state,
             ExperimentEvent(EventType.CONTROLLER_FAILED, reason),
             journal,
-            observed_report=(
-                report if isinstance(report, EvaluationReport) else None
-            ),
+            observed_report=(report if isinstance(report, EvaluationReport) else None),
         )
         return CandidateRunResult(
             state,
