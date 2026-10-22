@@ -14,6 +14,7 @@ import numpy as np
 from evaluator.candidate_execution import (
     ReviewedCandidateEvaluator,
     WorkerRuntime,
+    _compare_transported,
     _read_session,
 )
 from evaluator.candidate_protocol import VERSION, pack_tensor, unpack_tensor
@@ -290,6 +291,35 @@ class CandidateExecutionTests(unittest.TestCase):
             next(self.artifacts.glob("*/candidate/worker.log")).stat().st_size, 1024
         )
 
+    def test_failure_after_process_spawn_still_reaps_worker(self):
+        import evaluator.candidate_execution as execution
+
+        original_popen = execution.subprocess.Popen
+        original_write = execution.write_json
+        processes = []
+
+        def spawn(*args, **kwargs):
+            process = original_popen(*args, **kwargs)
+            processes.append(process)
+            return process
+
+        def write(path, value):
+            if path.name == "process.json":
+                raise OSError("process bookkeeping failed")
+            return original_write(path, value)
+
+        with (
+            patch.object(execution.subprocess, "Popen", side_effect=spawn),
+            patch.object(execution, "write_json", side_effect=write),
+        ):
+            report = self.run_frozen(self.freeze())
+        self.assertEqual(report.status, RunStatus.FAILED)
+        self.assertTrue(any("bookkeeping failed" in error for error in report.errors))
+        self.assertEqual(len(processes), 1)
+        self.assertIsNotNone(processes[0].returncode)
+        with self.assertRaises(ProcessLookupError):
+            os.kill(processes[0].pid, 0)
+
     def test_response_size_limit_fails_closed(self):
         report = self.run_frozen(self.freeze(), max_response_bytes=1024)
         self.assertEqual(report.status, RunStatus.FAILED)
@@ -338,6 +368,75 @@ class CandidateExecutionTests(unittest.TestCase):
         self.assertTrue(all(result.passed for result in report.correctness))
         self.assertIn("callback failed", report.errors[0])
 
+    def test_numerical_failure_emits_neither_success_callback(self):
+        frozen = self.freeze("def run(experts,x,ids): return experts(x,ids)+100\n")
+        evaluator, identity = self.evaluate(frozen)
+        signals = []
+        report = evaluator(
+            identity,
+            frozen,
+            CONTRACT,
+            on_candidate_correctness_passed=lambda report: signals.append("candidate"),
+            on_diagnostic_passed=lambda report: signals.append("diagnostic"),
+        )
+        self.assertEqual(report.status, RunStatus.COMPLETED)
+        self.assertFalse(any(result.passed for result in report.correctness))
+        self.assertEqual(signals, [])
+
+    def test_callback_interruption_retains_completed_comparisons(self):
+        frozen = self.freeze()
+        evaluator, identity = self.evaluate(frozen)
+
+        def interrupt(report):
+            raise KeyboardInterrupt()
+
+        report = evaluator(
+            identity, frozen, CONTRACT, on_candidate_correctness_passed=interrupt
+        )
+        self.assertEqual(report.status, RunStatus.INTERRUPTED)
+        self.assertTrue(all(result.passed for result in report.correctness))
+        self.assertIn("callback interrupted", report.errors[0])
+
+    def test_runner_rejects_diagnostic_evidence_on_candidate_callback(self):
+        class Impostor:
+            supports_candidate_correctness = True
+
+            def __call__(
+                self,
+                run,
+                frozen,
+                contract,
+                *,
+                on_diagnostic_passed=None,
+                on_candidate_correctness_passed=None,
+            ):
+                from evaluator.pass_through import TrustedPassThroughEvaluator
+                from target.adapter import TrustedExpertAdapter
+
+                def expert(x, ids):
+                    return x[:, :, None, :] + ids[:, :, :, None].astype(x.dtype)
+
+                adapter = TrustedExpertAdapter(
+                    {i: expert for i in (0, 12, 23)}, hidden_size=8, num_experts=32
+                )
+                report = TrustedPassThroughEvaluator(
+                    lambda layer, x, ids: expert(x, ids), adapter
+                )(run, frozen, contract)
+                on_candidate_correctness_passed(report)
+                return report
+
+        result = run_candidate(
+            self.source,
+            evaluator=Impostor(),
+            contract=CONTRACT,
+            budget=ExperimentBudget(max_attempts=1),
+            journal=ExperimentJournal(self.root / "journal"),
+            frozen_root=self.root / "runner-frozen",
+            candidates_root=self.submissions,
+        )
+        self.assertEqual(result.state.phase, ExperimentPhase.FAILED)
+        self.assertIn("diagnostics are not candidate correctness", result.error)
+
     def test_unavailable_native_model_and_invalid_options_fail_before_execution(self):
         for kwargs in (
             {"mode": "invalid"},
@@ -355,6 +454,16 @@ class CandidateExecutionTests(unittest.TestCase):
 
 
 class CandidateTransportTests(unittest.TestCase):
+    def test_original_native_dtype_cannot_be_masked_by_float32_storage(self):
+        value = pack_tensor(np.ones((1, 1, 4, 8), dtype=np.float32))
+        reference = value | {"backend": "mlx", "dtype": "mlx.core.bfloat16"}
+        candidate = value | {"backend": "mlx", "dtype": "mlx.core.float32"}
+        result = _compare_transported(
+            reference, candidate, case_name="decode", policy=CONTRACT.correctness
+        )
+        self.assertFalse(result.passed or result.dtype_match or result.tolerance_passed)
+        self.assertIn("before transport conversion", result.detail)
+
     def test_safe_tensor_roundtrip_and_metadata_bounds(self):
         array = np.arange(24, dtype=np.float32).reshape(1, 3, 4, 2)
         packed = pack_tensor(array)

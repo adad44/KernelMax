@@ -269,15 +269,15 @@ def _session(request, directory, runtime, plan, timeout, log_limit, response_lim
         stderr=subprocess.PIPE,
         start_new_session=True,
     )
-    write_json(
-        directory / "process.json", {"pid": process.pid, "phase": request["phase"]}
-    )
     selector = selectors.DefaultSelector()
-    for stream in (process.stdout, process.stderr):
-        os.set_blocking(stream.fileno(), False)
-        selector.register(stream, selectors.EVENT_READ)
-    deadline, total = time.monotonic() + timeout, 0
     try:
+        write_json(
+            directory / "process.json", {"pid": process.pid, "phase": request["phase"]}
+        )
+        for stream in (process.stdout, process.stderr):
+            os.set_blocking(stream.fileno(), False)
+            selector.register(stream, selectors.EVENT_READ)
+        deadline, total = time.monotonic() + timeout, 0
         with (directory / "worker.log").open("wb") as log:
             while process.poll() is None:
                 if time.monotonic() >= deadline:
@@ -424,12 +424,7 @@ class ReviewedCandidateEvaluator:
         artifacts = Path(tempfile.mkdtemp(prefix="execution-", dir=self.artifact_root))
         protected, checks, errors, interrupted, started = None, [], [], False, False
         plan = case_plan(contract.correctness)
-        protected_paths = (
-            tuple(self.protected_paths)
-            + tuple(self.runtime.model_path / name for name in self.runtime.model_files)
-            if self.runtime.model_path
-            else tuple(self.protected_paths)
-        )
+        protected_paths = self.protected_paths
         try:
             if candidate.sha256 not in self.approved_sha256s:
                 raise ValueError(
@@ -589,6 +584,15 @@ class ReviewedCandidateEvaluator:
                     protected_paths
                 ):
                     raise ValueError("protected sources changed during execution")
+                # Workers verify checkpoint bytes before EACH model load. Verify
+                # bytes again after candidate code; do not add a redundant full
+                # checkpoint scan in the parent before the reference worker.
+                if started and self.runtime.model_path:
+                    for name, expected in self.runtime.model_files.items():
+                        if file_digest(self.runtime.model_path / name) != expected:
+                            raise ValueError(
+                                f"checkpoint changed during candidate execution: {name}"
+                            )
             except Exception as exc:
                 errors.append(f"integrity: {type(exc).__name__}: {exc}")
         suite = summarize_checks(checks, policy=contract.correctness)
@@ -620,12 +624,21 @@ class ReviewedCandidateEvaluator:
         )
         if not errors and suite.passed and on_candidate_correctness_passed is not None:
             try:
+                model_stats = {
+                    name: (self.runtime.model_path / name).stat()
+                    for name in self.runtime.model_files
+                }
                 on_candidate_correctness_passed(report)
                 verify_frozen_candidate(frozen_candidate)
                 if protected != _protected_files(protected_paths):
                     raise ValueError(
                         "protected sources changed during correctness callback"
                     )
+                if any(
+                    (self.runtime.model_path / name).stat() != observed
+                    for name, observed in model_stats.items()
+                ):
+                    raise ValueError("checkpoint changed during correctness callback")
             except KeyboardInterrupt:
                 report = replace(
                     report,
