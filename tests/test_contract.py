@@ -8,7 +8,6 @@ from dataclasses import FrozenInstanceError, replace
 from pathlib import Path
 
 from evaluator.schemas import (
-    CalibrationStatus,
     CandidateIdentity,
     ContractError,
     CorrectnessResult,
@@ -23,7 +22,6 @@ from evaluator.schemas import (
     load_contract,
     validate_report_against_contract,
 )
-
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -50,6 +48,12 @@ class ExperimentContractTests(unittest.TestCase):
         self.assertEqual(self.contract.workload.seed, 42)
         self.assertEqual(self.contract.workload.generation_tokens, 128)
         self.assertFalse(self.contract.acceptance.enabled)
+        self.assertEqual(self.contract.schema_version, 2)
+        self.assertTrue(self.contract.task_quality.required)
+        self.assertEqual(self.contract.task_quality.status, "planned")
+        self.assertIsNone(self.contract.task_quality.suite_sha256)
+        self.assertIsNone(self.contract.task_quality.metric)
+        self.assertIsNone(self.contract.task_quality.maximum_score_drop)
 
     def test_json_round_trip_and_key_order_preserve_hash(self):
         data = json.loads(json.dumps(self.contract.to_dict()))
@@ -130,9 +134,11 @@ class ExperimentContractTests(unittest.TestCase):
             ("agent", "allowed_implementation_types", ["python"]),
         ]
         for section, field, value in cases:
-            with self.subTest(section=section, field=field, value=value):
-                with self.assertRaises(ContractError):
-                    ExperimentContract.from_mapping(self.changed(section, field, value))
+            with (
+                self.subTest(section=section, field=field, value=value),
+                self.assertRaises(ContractError),
+            ):
+                ExperimentContract.from_mapping(self.changed(section, field, value))
 
     def test_acceptance_requires_calibrated_thresholds_and_tolerances(self):
         data = self.changed("acceptance", "enabled", True)
@@ -142,16 +148,78 @@ class ExperimentContractTests(unittest.TestCase):
         with self.assertRaisesRegex(ContractError, "provisional numerical tolerances"):
             ExperimentContract.from_mapping(data)
         data["correctness"]["tolerance_status"] = "calibrated"
-        parsed = ExperimentContract.from_mapping(data)
-        self.assertTrue(parsed.acceptance.enabled)
-        self.assertEqual(parsed.acceptance.status, CalibrationStatus.CALIBRATED)
-        # Schema validation is not evidence that calibration actually occurred.
+        with self.assertRaisesRegex(
+            ContractError, "task-quality evaluation is planned"
+        ):
+            ExperimentContract.from_mapping(data)
+
+    def test_task_quality_cannot_be_disabled_or_claimed_implemented(self):
+        for field, value in (
+            ("required", False),
+            ("required", "true"),
+            ("status", "implemented"),
+            ("status", "calibrated"),
+            ("status", "passed"),
+        ):
+            with (
+                self.subTest(field=field, value=value),
+                self.assertRaises(ContractError),
+            ):
+                ExperimentContract.from_mapping(
+                    self.changed("task_quality", field, value)
+                )
+
+    def test_task_quality_validates_planned_metadata(self):
+        for field, value in (
+            ("suite_sha256", "main"),
+            ("suite_sha256", "a" * 63),
+            ("metric", " "),
+            ("maximum_score_drop", -0.01),
+            ("maximum_score_drop", 1.01),
+            ("maximum_score_drop", True),
+            ("maximum_score_drop", float("nan")),
+            ("maximum_score_drop", float("inf")),
+        ):
+            with (
+                self.subTest(field=field, value=value),
+                self.assertRaises(ContractError),
+            ):
+                ExperimentContract.from_mapping(
+                    self.changed("task_quality", field, value)
+                )
+
+    def test_filling_task_quality_metadata_is_not_execution_evidence(self):
+        data = self.contract.to_dict()
+        data["task_quality"].update(
+            suite_sha256="a" * 64, metric="exact_match", maximum_score_drop=0.0
+        )
+        planned = ExperimentContract.from_mapping(data)
+        self.assertNotEqual(planned.sha256, self.contract.sha256)
+        self.assertEqual(planned.task_quality.status, "planned")
+        self.assertFalse(planned.acceptance.enabled)
+        self.assertEqual(
+            ExperimentContract.from_mapping(json.loads(json.dumps(planned.to_dict()))),
+            planned,
+        )
+        data["acceptance"].update(enabled=True, status="calibrated")
+        data["correctness"]["tolerance_status"] = "calibrated"
+        with self.assertRaisesRegex(
+            ContractError, "task-quality evaluation is planned"
+        ):
+            ExperimentContract.from_mapping(data)
+
+    def test_task_quality_is_required_in_the_contract(self):
+        data = self.contract.to_dict()
+        del data["task_quality"]
+        with self.assertRaisesRegex(ContractError, "missing fields"):
+            ExperimentContract.from_mapping(data)
 
     def test_schema_version_is_explicit(self):
         data = self.contract.to_dict()
-        data["schema_version"] = 2
-        with self.assertRaises(ContractError):
-            ExperimentContract.from_mapping(data)
+        for version in (1, 3):
+            data["schema_version"] = version
+            with self.subTest(version=version), self.assertRaises(ContractError):
+                ExperimentContract.from_mapping(data)
 
     def test_agent_can_only_write_inside_its_assigned_candidate(self):
         agent = self.contract.agent
@@ -320,16 +388,16 @@ class ResultSchemaTests(unittest.TestCase):
             PerformanceResult(512, Metric.DECODE_THROUGHPUT, (), (), False, " ")
 
     def test_environment_requires_versions_and_model_hash_provenance(self):
-        data = dict(
-            chip="Apple M4",
-            memory_gib=24,
-            model_identifier="Mac16,12",
-            macos_version="example",
-            python_version="example",
-            mlx_version="example",
-            mlx_lm_version="example",
-            model_files_sha256="c" * 64,
-        )
+        data = {
+            "chip": "Apple M4",
+            "memory_gib": 24,
+            "model_identifier": "Mac16,12",
+            "macos_version": "example",
+            "python_version": "example",
+            "mlx_version": "example",
+            "mlx_lm_version": "example",
+            "model_files_sha256": "c" * 64,
+        }
         EnvironmentRecord.from_mapping(data)
         for field, value in [
             ("mlx_version", ""),
@@ -576,12 +644,16 @@ class EvaluationReportTests(unittest.TestCase):
             "ACCEPTED verdict is forbidden while acceptance is disabled",
             self.issues(report),
         )
+        self.assertIn(
+            "ACCEPTED verdict is forbidden while required task-quality evaluation is planned",
+            self.issues(report),
+        )
         # It remains serializable as an audit artifact, not an official acceptance.
         self.assertEqual(EvaluationReport.from_mapping(report.to_dict()), report)
 
     def test_failed_invalid_or_incomplete_evidence_blocks_accepted_eligibility(self):
         data = self.contract.to_dict()
-        data["acceptance"].update(enabled=True, status="calibrated")
+        data["acceptance"].update(status="calibrated")
         data["correctness"]["tolerance_status"] = "calibrated"
         contract = ExperimentContract.from_mapping(data)
         report = replace(self.report, contract_sha256=contract.sha256)
@@ -595,6 +667,7 @@ class EvaluationReportTests(unittest.TestCase):
             ),
         )
         first = report.correctness[0]
+        original_issues = set(self.issues(report, contract))
         for changes in [
             {"status": RunStatus.INTERRUPTED, "errors": ("Timeout",)},
             {"correctness": ()},
@@ -614,7 +687,10 @@ class EvaluationReportTests(unittest.TestCase):
             {"errors": ("Thermal state changed",)},
         ]:
             with self.subTest(changes=changes):
-                self.assertTrue(self.issues(replace(report, **changes), contract))
+                self.assertTrue(
+                    set(self.issues(replace(report, **changes), contract))
+                    - original_issues
+                )
 
 
 if __name__ == "__main__":
