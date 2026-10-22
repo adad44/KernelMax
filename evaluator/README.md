@@ -363,6 +363,135 @@ uv run --no-project --python 3.12 --with numpy==2.5.3 --with PyYAML==6.0.3 \
   python -B -m unittest tests.test_pass_through -v
 ```
 
+## Reviewed-candidate execution prototype
+
+`candidate_execution.ReviewedCandidateEvaluator` is distinct from trusted
+pass-through diagnostics: it actually imports `wrapper.py` from an explicitly
+approved frozen MLX snapshot **in a child process**, then grades the returned
+tensors in the parent. The candidate cannot supply its own pass flag or verdict.
+
+This is **not a hostile-code sandbox**. Workers share the user's filesystem and
+network permissions. A stripped environment does not block reading credentials
+from disk, hashes do not detect change-and-restore attacks, and process-group
+cleanup cannot contain descendants that deliberately escape their group. Only
+human-reviewed benign snapshots may be approved. Do not point this prototype at
+unreviewed agent-generated Python. After any integrity failure, stop the session
+and investigate before another run. Stronger isolation remains future work.
+
+### Entry point and approval
+
+`wrapper.py` exports `run(experts, x, selected_expert_ids)`. `experts` is the
+unchanged selected layer's native expert callable; return `[1,T,4,H]` before
+routing-weight combination. Preserve supplied routing IDs, native MXFP4 weights,
+BF16 activations and original output dtype/backend. Helpers use relative imports
+(`from .implementation import run`) from the frozen private package, not a mutable
+submission directory. The parent and reference worker never import these files.
+
+The existing manifest fields stay unchanged. Approval is an externally supplied
+set of exact frozen SHA256 hashes, never a field inside the candidate manifest.
+Review **all** files/helpers in that snapshot and its dependencies. Candidate
+names, ID reuse and a successful diagnostic are not approval. Test/example code
+is deliberately small enough to review; it demonstrates wiring, not optimization.
+
+Prepare a snapshot without executing it:
+
+```sh
+python -B scripts/run_reviewed_candidate.py \
+  --candidate /absolute/submissions/cand_0123456789ab \
+  --work-dir /absolute/controller/run --prepare-review
+```
+
+Inspect the printed snapshot, then supply its hash explicitly:
+
+```sh
+python -B scripts/run_reviewed_candidate.py \
+  --candidate /absolute/submissions/cand_0123456789ab \
+  --work-dir /absolute/controller/run --fixture \
+  --approved-sha256 THE_REVIEWED_SNAPSHOT_SHA256
+```
+
+`--fixture` means NumPy expert expressions, not model evidence. The script uses
+the existing single-candidate runner, budget and journal; it does not implement
+Elina's multi-submission session or terminal CLI. It freezes into a fresh run
+directory and refuses execution if current bytes differ from the approved hash.
+Use the existing evaluator environment; no dependencies/weights are installed.
+
+### Worker lifecycle and parent grading
+
+The evaluator declares all seven cases at layers 0/12/23. One reference worker
+handles all 21 inputs and exits/reaps **before** one candidate worker starts.
+Each native worker loads its model once lazily and materializes only the three
+sampled expert layers on CPU, then calls unchanged experts with MLX tensors.
+All checkpoint file hashes are still verified; unused weights are not needed for
+this operator-only test. No model/callable is pickled between processes, and two
+model copies are never intentionally resident at once. There is no automatic retry.
+
+Transport is bounded JSON Lines plus base64 numeric buffers, never pickle or
+object arrays. Original shape/backend/dtype are recorded before BF16 conversion;
+the parent validates both storage and original metadata before comparison.
+BF16 and FP32 outputs cannot pass as equal merely because their transport uses
+FP32. Every materialized input/output, worker error and partial response is kept.
+
+The parent checks run/candidate/contract identities, coverage, finite values,
+shape/dtype and existing tolerances. It verifies snapshots and scoped protected
+sources before/after runs, observes input mutations, and retains both per-layer
+details and seven aggregate results. Numerical mismatches are completed checks
+with false flags; import failures, crashes, timeouts, malformed responses, missing
+outputs and integrity failures are execution errors. Verdict stays null and
+performance evidence stays empty, including after a successful identity run.
+
+The runner opts into `on_candidate_correctness_passed(report)` only for evaluators
+declaring `supports_candidate_correctness=True`. Existing diagnostic/fake evaluator
+signatures remain compatible. The new signal is journaled without advancing into
+`BENCHMARK`; `on_diagnostic_passed` is never repurposed. It means only that this
+reviewed candidate passed the declared operator cases, not full-model/task quality,
+performance or acceptance. A later callback/integrity failure invalidates success
+and is retained in the final report.
+
+Each worker has a deadline, bounded combined stdout/stderr, bounded result file,
+isolated scratch cwd/HOME, an allowlisted environment and process-group cleanup.
+Artifacts include requests, raw responses, logs, PIDs, package versions, protected
+source hashes and the final evaluator report. They remain on failure; keep them
+controller-owned and sanitize before sharing. These controls are POSIX/macOS
+reliability measures, not filesystem/network/GPU-memory isolation.
+
+### Required native verification
+
+First verify the existing local `openai/gpt-oss-20b` files against revision
+`6cee5e81ee83917806bbde320786a8fb61efebee`, using an independently verified pinned
+manifest (for example the preserved official baseline's file hashes). Do not use
+a similarly named converted/requantized checkpoint. `--native-model` checks
+pinned download metadata; workers verify all supplied SHA256 hashes and native
+expert module format. Source, runtime, model-file and review provenance must be
+retained together. No downloads occur, and hub access is disabled in workers.
+Workers hash actual checkpoint bytes against the manifest before each model load;
+the parent additionally checks file device/inode/size/mtime/ctime across the entire
+run and callback. This avoids redundant full-checkpoint scans and does not replace
+the workers' byte verification with mere filename or timestamp claims.
+
+```sh
+/path/to/existing/native/environment/bin/python -B scripts/run_reviewed_candidate.py \
+  --candidate /absolute/submissions/cand_0123456789ab \
+  --work-dir /absolute/controller/native-run \
+  --native-model /absolute/pinned/checkpoint \
+  --approved-sha256 THE_REVIEWED_SNAPSHOT_SHA256 --timeout-seconds 1200
+```
+
+An optional trusted `--expert-factory package.module:function` binds an already
+loaded model through `factory(model, mx=mx) -> TrustedExpertAdapter`; a configured
+factory failure is an error, not a silent fallback. Until the teammate factory is
+available, the explicit default binds unchanged native expert modules directly;
+reference output uses Javi's `ReferenceMoE`. No `target/` files are rewritten.
+
+The identity fixture must pass all 21 native comparisons, while the reviewed
+incorrect fixture must produce retained numerical failures with no final verdict.
+This native validation is a required deliverable, **not** replaced by CPU fixtures
+or tiny MLX tests if weights are unavailable. No speedup, full-model correctness,
+task-quality pass or acceptance is established. The layer-12 independent dense
+diagnostic remains unresolved and tolerances/acceptance gates remain unchanged.
+
+Regression tests: `python -B -m unittest tests.test_candidate_execution -v`.
+
 ## Native reference baseline
 
 See [scripts/BASELINE.md](../scripts/BASELINE.md) for collection, review, audit,
