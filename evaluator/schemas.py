@@ -332,6 +332,40 @@ class AcceptancePolicy(_Record):
         )
 
 
+@dataclass(frozen=True, slots=True)
+class TaskQualityPolicy(_Record):
+    """Required full-model task gate, pending a suite, scorer and runner.
+
+    Planned metadata is not task-quality evidence. Only planned status is
+    supported until execution and per-example result validation are implemented.
+    Scores use [0, 1], higher is better; the margin is an absolute score drop.
+    """
+
+    required: bool
+    status: str
+    suite_sha256: str | None
+    metric: str | None
+    maximum_score_drop: float | None
+
+    def __post_init__(self) -> None:
+        _Record.__post_init__(self)
+        _require(self.required, "held-out task-quality evaluation is required")
+        _require(
+            self.status == "planned",
+            "task-quality execution is not implemented; status must remain planned",
+        )
+        if self.suite_sha256 is not None:
+            _require(
+                bool(re.fullmatch(r"[0-9a-f]{64}", self.suite_sha256)),
+                "task-quality suite_sha256 must be a full SHA-256",
+            )
+        if self.maximum_score_drop is not None:
+            _require(
+                0 <= self.maximum_score_drop <= 1,
+                "maximum_score_drop must be an absolute normalized score drop in [0, 1]",
+            )
+
+
 def _relative_path(value: str) -> PurePosixPath:
     _require(
         "\\" not in value and ":" not in value,
@@ -419,15 +453,24 @@ class ExperimentContract(_Record):
     correctness: CorrectnessPolicy
     benchmark: BenchmarkPolicy
     acceptance: AcceptancePolicy
+    task_quality: TaskQualityPolicy
     agent: AgentPolicy
 
     def __post_init__(self) -> None:
         _Record.__post_init__(self)
-        _require(self.schema_version == 1, "unsupported schema_version")
+        _require(self.schema_version == 2, "unsupported schema_version")
         _require(
             not self.acceptance.enabled
             or self.correctness.tolerance_status is CalibrationStatus.CALIBRATED,
             "cannot enable acceptance with provisional numerical tolerances",
+        )
+        _require(
+            not (
+                self.acceptance.enabled
+                and self.task_quality.required
+                and self.task_quality.status == "planned"
+            ),
+            "cannot enable acceptance while required task-quality evaluation is planned",
         )
 
     @property
@@ -655,12 +698,13 @@ def validate_report_against_contract(
     for length, metric in sorted(expected_metrics - seen_metrics):
         issues.append(f"missing performance result: {length}/{metric.value}")
 
-    if (
-        report.verdict is not None
-        and report.verdict.verdict is Verdict.ACCEPTED
-        and not contract.acceptance.enabled
-    ):
-        issues.append("ACCEPTED verdict is forbidden while acceptance is disabled")
+    if report.verdict is not None and report.verdict.verdict is Verdict.ACCEPTED:
+        if not contract.acceptance.enabled:
+            issues.append("ACCEPTED verdict is forbidden while acceptance is disabled")
+        if contract.task_quality.required and contract.task_quality.status == "planned":
+            issues.append(
+                "ACCEPTED verdict is forbidden while required task-quality evaluation is planned"
+            )
     return tuple(issues)
 
 

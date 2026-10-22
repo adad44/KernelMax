@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 experiment_id: gpt-oss-20b-m4-week1
 
 model:
@@ -75,6 +75,16 @@ acceptance:
   maximum_peak_memory_ratio: 1.05
   require_all_correctness_cases: true
   require_improvement_above_noise: true
+
+task_quality:
+  required: true
+  status: planned
+  # No task suite or score margin has been selected/calibrated yet.
+  # Scores will be normalized to [0, 1], higher is better; the margin is an
+  # absolute score drop, not a relative percentage. Null is not a passing gate.
+  suite_sha256: null
+  metric: null
+  maximum_score_drop: null
 
 agent:
   candidate_root: candidates
