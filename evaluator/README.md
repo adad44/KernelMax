@@ -420,8 +420,10 @@ Use the existing evaluator environment; no dependencies/weights are installed.
 
 The evaluator declares all seven cases at layers 0/12/23. One reference worker
 handles all 21 inputs and exits/reaps **before** one candidate worker starts.
-Each native worker loads/materializes its model once on CPU, then calls unchanged
-experts with MLX tensors. No model/callable is pickled between processes, and two
+Each native worker loads its model once lazily and materializes only the three
+sampled expert layers on CPU, then calls unchanged experts with MLX tensors.
+All checkpoint file hashes are still verified; unused weights are not needed for
+this operator-only test. No model/callable is pickled between processes, and two
 model copies are never intentionally resident at once. There is no automatic retry.
 
 Transport is bounded JSON Lines plus base64 numeric buffers, never pickle or
@@ -462,6 +464,10 @@ a similarly named converted/requantized checkpoint. `--native-model` checks
 pinned download metadata; workers verify all supplied SHA256 hashes and native
 expert module format. Source, runtime, model-file and review provenance must be
 retained together. No downloads occur, and hub access is disabled in workers.
+Workers hash actual checkpoint bytes against the manifest before each model load;
+the parent additionally checks file device/inode/size/mtime/ctime across the entire
+run and callback. This avoids redundant full-checkpoint scans and does not replace
+the workers' byte verification with mere filename or timestamp claims.
 
 ```sh
 /path/to/existing/native/environment/bin/python -B scripts/run_reviewed_candidate.py \

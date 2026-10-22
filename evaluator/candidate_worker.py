@@ -111,7 +111,14 @@ def _binding(request):
     # Avoid the known large-model Metal loading timeout; untimed CPU materialization.
     with mx.stream(mx.cpu):
         model, _ = load(str(root), lazy=True)
-        materialize_parameters(tree_flatten(model.parameters()), mx, progress)
+        parameters = [
+            (f"layer{layer}.{name}", value)
+            for layer in (0, 12, 23)
+            for name, value in tree_flatten(
+                model.model.layers[layer].mlp.experts.parameters()
+            )
+        ]
+        materialize_parameters(parameters, mx, progress)
     for layer in model.model.layers:
         for name in ("gate_proj", "up_proj", "down_proj"):
             module = getattr(layer.mlp.experts, name)
@@ -181,6 +188,7 @@ def main(request_path: Path, response_path: Path) -> int:
                     "identity": request["identity"],
                     "mode": request["runtime"]["mode"],
                     "pid": os.getpid(),
+                    "materialized_expert_layers": [0, 12, 23],
                     "python": sys.version,
                     "executable": sys.executable,
                     "packages": {

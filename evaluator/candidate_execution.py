@@ -156,6 +156,26 @@ def _protected_files(extra):
     return {str(path): file_digest(path) for path in sorted(paths)}
 
 
+def _checkpoint_identity(runtime):
+    """Cross-check native files across worker lifetimes without redundant I/O.
+
+    Every worker hashes actual bytes against pinned SHA256 before loading. OS
+    file identity/size/mtime/ctime must also remain stable across the entire run.
+    This is reviewed-code tamper observation, not hostile filesystem isolation.
+    """
+    observed = {}
+    for name in runtime.model_files:
+        info = (runtime.model_path / name).stat()
+        observed[name] = (
+            info.st_dev,
+            info.st_ino,
+            info.st_size,
+            info.st_mtime_ns,
+            info.st_ctime_ns,
+        )
+    return observed
+
+
 def _kill_group(process):
     try:
         os.killpg(process.pid, signal.SIGKILL)
@@ -423,6 +443,7 @@ class ReviewedCandidateEvaluator:
         self.artifact_root.mkdir(parents=True, exist_ok=True)
         artifacts = Path(tempfile.mkdtemp(prefix="execution-", dir=self.artifact_root))
         protected, checks, errors, interrupted, started = None, [], [], False, False
+        checkpoint_identity = None
         plan = case_plan(contract.correctness)
         protected_paths = self.protected_paths
         try:
@@ -437,6 +458,8 @@ class ReviewedCandidateEvaluator:
             verify_frozen_candidate(frozen_candidate)
             protected = _protected_files(protected_paths)
             write_json(artifacts / "protected_sources.json", protected)
+            checkpoint_identity = _checkpoint_identity(self.runtime)
+            write_json(artifacts / "checkpoint_identity.json", checkpoint_identity)
             if (
                 self.runtime.mode == "mlx_native"
                 and self.runtime.model_revision != contract.model.revision
@@ -584,15 +607,13 @@ class ReviewedCandidateEvaluator:
                     protected_paths
                 ):
                     raise ValueError("protected sources changed during execution")
-                # Workers verify checkpoint bytes before EACH model load. Verify
-                # bytes again after candidate code; do not add a redundant full
-                # checkpoint scan in the parent before the reference worker.
-                if started and self.runtime.model_path:
-                    for name, expected in self.runtime.model_files.items():
-                        if file_digest(self.runtime.model_path / name) != expected:
-                            raise ValueError(
-                                f"checkpoint changed during candidate execution: {name}"
-                            )
+                if (
+                    checkpoint_identity is not None
+                    and checkpoint_identity != _checkpoint_identity(self.runtime)
+                ):
+                    raise ValueError(
+                        "checkpoint file identity changed during execution"
+                    )
             except Exception as exc:
                 errors.append(f"integrity: {type(exc).__name__}: {exc}")
         suite = summarize_checks(checks, policy=contract.correctness)
@@ -624,20 +645,13 @@ class ReviewedCandidateEvaluator:
         )
         if not errors and suite.passed and on_candidate_correctness_passed is not None:
             try:
-                model_stats = {
-                    name: (self.runtime.model_path / name).stat()
-                    for name in self.runtime.model_files
-                }
                 on_candidate_correctness_passed(report)
                 verify_frozen_candidate(frozen_candidate)
                 if protected != _protected_files(protected_paths):
                     raise ValueError(
                         "protected sources changed during correctness callback"
                     )
-                if any(
-                    (self.runtime.model_path / name).stat() != observed
-                    for name, observed in model_stats.items()
-                ):
+                if checkpoint_identity != _checkpoint_identity(self.runtime):
                     raise ValueError("checkpoint changed during correctness callback")
             except KeyboardInterrupt:
                 report = replace(

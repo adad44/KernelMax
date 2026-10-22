@@ -528,5 +528,101 @@ class CandidateTransportTests(unittest.TestCase):
             self.assertTrue(errors)
 
 
+@unittest.skipUnless(
+    os.environ.get("KERNELMAX_TEST_MLX") == "1",
+    "opt in to tiny MLX transport/loader tests",
+)
+class MLXCandidateTransportTests(unittest.TestCase):
+    def test_original_bf16_and_float32_metadata_with_identical_transport_values(self):
+        import mlx.core as mx
+
+        reference = pack_tensor(mx.ones((1, 1, 4, 8), dtype=mx.bfloat16), mx)
+        candidate = pack_tensor(mx.ones((1, 1, 4, 8), dtype=mx.float32), mx)
+        np.testing.assert_array_equal(
+            unpack_tensor(reference), unpack_tensor(candidate)
+        )
+        result = _compare_transported(
+            reference, candidate, case_name="decode", policy=CONTRACT.correctness
+        )
+        self.assertFalse(result.passed or result.dtype_match)
+        self.assertTrue(
+            _compare_transported(
+                reference, reference, case_name="decode", policy=CONTRACT.correctness
+            ).passed
+        )
+
+    def test_native_loader_is_called_once_for_the_worker_binding(self):
+        # Exercises native setup with a MOCK loader and tiny tensors, not weights.
+        import mlx.core as mx
+        from types import SimpleNamespace
+        from evaluator.candidate_protocol import file_digest
+        from evaluator.candidate_worker import _binding
+
+        class Expert:
+            gate_proj = up_proj = down_proj = SimpleNamespace(
+                mode="mxfp4", bits=4, group_size=32
+            )
+
+            def __call__(self, x, ids):
+                return x[:, :, None, :] + ids[:, :, :, None].astype(mx.bfloat16)
+
+            def parameters(self):
+                return {"tiny": mx.zeros((1,), dtype=mx.bfloat16)}
+
+        model = SimpleNamespace(
+            model=SimpleNamespace(
+                layers=[
+                    SimpleNamespace(mlp=SimpleNamespace(experts=Expert()))
+                    for _ in range(24)
+                ]
+            ),
+            parameters=lambda: {"tiny": mx.zeros((1,), dtype=mx.bfloat16)},
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "config.json").write_text(
+                json.dumps(
+                    {
+                        "model_type": "gpt_oss",
+                        "quantization_config": {"quant_method": "mxfp4"},
+                        "hidden_size": 8,
+                        "num_local_experts": 32,
+                        "num_experts_per_tok": 4,
+                    }
+                )
+            )
+            (root / "model.safetensors.index.json").write_text(
+                json.dumps({"weight_map": {"tiny": "fixture.safetensors"}})
+            )
+            (root / "fixture.safetensors").write_bytes(
+                b"not real weights; loader is mocked"
+            )
+            runtime = {
+                "mode": "mlx_native",
+                "model_path": str(root),
+                "model_files": {
+                    name: file_digest(root / name)
+                    for name in (
+                        "config.json",
+                        "model.safetensors.index.json",
+                        "fixture.safetensors",
+                    )
+                },
+                "hidden_size": 8,
+                "num_experts": 32,
+                "expert_factory": None,
+            }
+            with patch("mlx_lm.load", return_value=(model, None)) as loader:
+                module, reference, experts = _binding({"runtime": runtime})
+                loader.assert_called_once_with(str(root), lazy=True)
+                self.assertIs(module, mx)
+                self.assertEqual(set(experts), {0, 12, 23})
+                x, ids = (
+                    mx.ones((1, 1, 8), dtype=mx.bfloat16),
+                    mx.zeros((1, 1, 4), dtype=mx.int32),
+                )
+                self.assertEqual(reference(12, x, ids).shape, (1, 1, 4, 8))
+
+
 if __name__ == "__main__":
     unittest.main()
