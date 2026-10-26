@@ -5,6 +5,7 @@ import os
 import unittest
 from dataclasses import FrozenInstanceError
 from pathlib import Path
+from types import SimpleNamespace
 
 import numpy as np
 
@@ -15,7 +16,8 @@ from evaluator.schemas import (
     RunStatus,
     load_contract,
 )
-from target.adapter import AdapterError, TrustedExpertAdapter
+from target.adapter import AdapterError, TrustedExpertAdapter, bind_native_experts
+from target.reference_moe import ReferenceMoE
 
 
 CONTRACT = load_contract(Path(__file__).resolve().parents[1] / "kernelmaxxing.yaml")
@@ -23,6 +25,23 @@ CONTRACT = load_contract(Path(__file__).resolve().parents[1] / "kernelmaxxing.ya
 
 def fake_expert(x, ids):
     return x[:, :, None, :] + ids[:, :, :, None].astype(x.dtype)
+
+
+def fake_native_model(*, hidden_size=7, num_experts=11, experts=None):
+    """Build the native model path without loading a checkpoint."""
+
+    layers = [
+        SimpleNamespace(mlp=SimpleNamespace(experts=fake_expert)) for _ in range(24)
+    ]
+    for layer_index, expert in (experts or {}).items():
+        layers[layer_index].mlp.experts = expert
+    return SimpleNamespace(
+        args=SimpleNamespace(
+            hidden_size=hidden_size,
+            num_local_experts=num_experts,
+        ),
+        model=SimpleNamespace(layers=layers),
+    )
 
 
 class AdapterTests(unittest.TestCase):
@@ -254,6 +273,133 @@ class AdapterTests(unittest.TestCase):
                     self.assertEqual(len(suite.errors), 7)
                     self.assertTrue(all("layer12" in error for error in suite.errors))
                     self.assertTrue(suite.checks[-1].result.passed)
+
+
+class NativeBindingTests(unittest.TestCase):
+    def setUp(self):
+        self.x = np.ones((1, 3, 7), dtype=np.float32)
+        self.ids = np.tile(np.arange(4, dtype=np.int32), (1, 3, 1))
+
+    def test_binds_exact_required_experts_and_model_dimensions(self):
+        experts = {
+            layer: (lambda x, ids, offset=layer: fake_expert(x, ids) + offset)
+            for layer in (0, 12, 23)
+        }
+        model = fake_native_model(experts=experts)
+        mx = SimpleNamespace(__name__="mlx.core")
+
+        adapter = bind_native_experts(model, mx=mx)
+
+        self.assertIsInstance(adapter, TrustedExpertAdapter)
+        self.assertEqual(tuple(adapter.experts), (0, 12, 23))
+        for layer_index, expert in experts.items():
+            self.assertIs(adapter.experts[layer_index], expert)
+        self.assertEqual(adapter.hidden_size, 7)
+        self.assertEqual(adapter.num_experts, 11)
+        self.assertIs(adapter.mx, mx)
+
+    def test_factory_adapter_matches_reference_wrapper_in_correctness_suite(self):
+        experts = {
+            layer: (
+                lambda x, ids, offset=np.float32(layer): fake_expert(x, ids)
+                + offset
+            )
+            for layer in (0, 12, 23)
+        }
+        model = fake_native_model(experts=experts)
+        adapter = bind_native_experts(model)
+
+        suite = run_correctness_suite(
+            ReferenceMoE(model),
+            adapter,
+            policy=CONTRACT.correctness,
+            hidden_size=adapter.hidden_size,
+            num_experts=adapter.num_experts,
+        )
+
+        self.assertTrue(suite.complete)
+        self.assertTrue(suite.passed)
+        self.assertEqual(len(suite.checks), 21)
+        self.assertEqual(suite.errors, ())
+
+    def test_missing_required_layer_or_expert_module_is_rejected(self):
+        missing_layer = fake_native_model()
+        missing_layer.model.layers.pop()
+        with self.assertRaisesRegex(AdapterError, "required expert layer 23"):
+            bind_native_experts(missing_layer)
+
+        missing_expert = fake_native_model()
+        missing_expert.model.layers[12].mlp = SimpleNamespace()
+        with self.assertRaisesRegex(AdapterError, "layer 12.*mlp.experts"):
+            bind_native_experts(missing_expert)
+
+        noncallable_expert = fake_native_model(experts={12: None})
+        with self.assertRaisesRegex(AdapterError, "layer 12.*mlp.experts"):
+            bind_native_experts(noncallable_expert)
+
+    def test_missing_dimensions_are_rejected_by_adapter_conventions(self):
+        model = fake_native_model()
+        del model.args.num_local_experts
+
+        with self.assertRaisesRegex(AdapterError, "args.num_local_experts"):
+            bind_native_experts(model)
+
+    def test_factory_preserves_exact_inputs_output_and_expert_failures(self):
+        output = fake_expert(self.x, self.ids)
+        calls = []
+
+        def recording_expert(x, ids):
+            calls.append((x, ids))
+            return output
+
+        adapter = bind_native_experts(
+            fake_native_model(experts={0: recording_expert})
+        )
+        self.assertIs(adapter(0, self.x, self.ids), output)
+        self.assertEqual(len(calls), 1)
+        self.assertIs(calls[0][0], self.x)
+        self.assertIs(calls[0][1], self.ids)
+
+        error = RuntimeError("native expert failed")
+
+        def failing_expert(x, ids):
+            raise error
+
+        failing = bind_native_experts(
+            fake_native_model(experts={12: failing_expert})
+        )
+        with self.assertRaises(RuntimeError) as raised:
+            failing(12, self.x, self.ids)
+        self.assertIs(raised.exception, error)
+
+    def test_correctness_suite_records_a_bound_expert_failure(self):
+        error = RuntimeError("native expert failed")
+
+        def failing_expert(x, ids):
+            raise error
+
+        reference_model = fake_native_model()
+        failing_model = fake_native_model(experts={12: failing_expert})
+        adapter = bind_native_experts(failing_model)
+
+        suite = run_correctness_suite(
+            ReferenceMoE(reference_model),
+            adapter,
+            policy=CONTRACT.correctness,
+            hidden_size=adapter.hidden_size,
+            num_experts=adapter.num_experts,
+        )
+
+        self.assertFalse(suite.complete)
+        self.assertFalse(suite.passed)
+        self.assertEqual(len(suite.checks), 21)
+        self.assertEqual(len(suite.errors), 7)
+        self.assertTrue(
+            all(
+                "layer12: test: RuntimeError: native expert failed" in message
+                for message in suite.errors
+            )
+        )
 
 
 @unittest.skipUnless(
