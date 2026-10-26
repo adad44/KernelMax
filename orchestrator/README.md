@@ -6,6 +6,17 @@ import or execute submission files. It passes the controller-created
 `RunIdentity`, read-only `FrozenCandidate`, and validated `ExperimentContract` to
 an injected evaluator matching `TrustedPassThroughEvaluator`'s interface.
 
+`run_session` processes an ordered list of submissions through that runner and
+shares one `ExperimentBudget` across the whole session. Candidate IDs are unique
+within a session: later occurrences are marked `duplicate` and never evaluated.
+Invalid submissions and evaluator failures are reported per submission; the
+session proceeds to the next distinct submission while the shared budget allows.
+When no attempts remain, later submissions are marked `budget_exhausted` without
+being frozen or evaluated. The session summary distinguishes an explicit
+`ACCEPTED` evaluator verdict from a completed run with no verdict. The latter is
+reported as `completed_no_verdict`, so diagnostic success is never presented as
+candidate approval.
+
 The runner validates returned report provenance against the reserved identity,
 keeps that exact `EvaluationReport` object, lets the budget observe it, and
 records the transition in the journal. It does not write official report files;
@@ -126,8 +137,32 @@ adds a journal record in the `correctness` phase without changing experiment
 state. The report's 7 cases summarize 21 fake-expert checks. Passing them only
 confirms the adapter/reference test wiring.
 
+## Multi-submission CLI demonstration
+
+Run the offline session demonstration from the repository root:
+
+```sh
+python -m orchestrator.main demo
+```
+
+It creates temporary fake submissions, detects a repeated candidate ID, injects
+one evaluator failure, and then runs the trusted pass-through evaluator with
+NumPy fake experts. The default shared budget is two attempts, so the final
+unique submission is reported as budget-exhausted. The summary labels the
+trusted pass-through result `completed_no_verdict`; the candidate code is never
+executed and the diagnostic does not imply candidate approval. Change the
+shared limit with `--max-attempts`, for example:
+
+```sh
+python -m orchestrator.main demo --max-attempts 3
+```
+
 Run the offline runner and journal tests from the repository root:
 
 ```sh
-python -B -m unittest tests.test_orchestrator_run tests.test_orchestrator_journal -v
+python -B -m unittest \
+  tests.test_orchestrator_run \
+  tests.test_orchestrator_journal \
+  tests.test_orchestrator_session \
+  tests.test_orchestrator_cli -v
 ```
