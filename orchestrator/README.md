@@ -9,8 +9,12 @@ an injected evaluator matching `TrustedPassThroughEvaluator`'s interface.
 `run_session` processes an ordered list of submissions through that runner and
 shares one `ExperimentBudget` across the whole session. Candidate IDs are unique
 within a session: later occurrences are marked `duplicate` and never evaluated.
-Invalid submissions and evaluator failures are reported per submission; the
-session proceeds to the next distinct submission while the shared budget allows.
+Invalid submissions and ordinary evaluator failures are reported per submission;
+the session proceeds to the next distinct submission while the shared budget
+allows. Journal failures, unexpected runner exceptions, and invalid evaluator
+report or diagnostic identities stop the shared budget. Later unique submissions
+are skipped with that stop reason. A failed final journal write retains the
+returned report in memory and does not claim that its terminal state was saved.
 When no attempts remain, later submissions are marked `budget_exhausted` without
 being frozen or evaluated. The session summary distinguishes an explicit
 `ACCEPTED` evaluator verdict from a completed run with no verdict. The latter is

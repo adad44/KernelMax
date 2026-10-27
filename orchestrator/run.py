@@ -19,7 +19,7 @@ from orchestrator.candidate_manager import (
     verify_frozen_candidate,
 )
 from orchestrator.experiment_budget import Attempt, BudgetExhausted, ExperimentBudget
-from orchestrator.journal import ExperimentJournal
+from orchestrator.journal import ExperimentJournal, JournalError
 from orchestrator.state_machine import (
     EventType,
     ExperimentEvent,
@@ -156,11 +156,24 @@ def run_candidate(
         journal,
     )
 
+    diagnostic_error: Exception | None = None
+
     def on_diagnostic_passed(report: EvaluationReport) -> None:
         """Journal diagnostics without advancing candidate correctness phases."""
 
-        attempt.run.validate_report(report)
-        journal.record_signal(state, "on_diagnostic_passed", report)
+        nonlocal diagnostic_error
+        try:
+            attempt.run.validate_report(report)
+        except (TypeError, ValueError) as exc:
+            diagnostic_error = exc
+            budget.stop(f"invalid evaluator diagnostic: {exc}")
+            raise
+        try:
+            journal.record_signal(state, "on_diagnostic_passed", report)
+        except JournalError as exc:
+            diagnostic_error = exc
+            budget.stop(f"diagnostic journal failed: {exc}")
+            raise
 
     report: EvaluationReport | None = None
     evaluator_error: Exception | None = None
@@ -176,6 +189,10 @@ def run_candidate(
         evaluator_interrupted = exc
     except Exception as exc:  # noqa: BLE001 -- Retain any injected evaluator failure.
         evaluator_error = exc
+
+    # An evaluator may catch callback exceptions. They remain controller failures.
+    if diagnostic_error is not None:
+        evaluator_error = diagnostic_error
 
     try:
         verify_frozen_candidate(frozen)
@@ -213,14 +230,20 @@ def run_candidate(
         reason = (
             f"evaluator failed: {type(evaluator_error).__name__}: {evaluator_error}"
         )
+        if isinstance(evaluator_error, JournalError):
+            budget.stop(reason)
         state = _advance(
-            state, ExperimentEvent(EventType.CONTROLLER_FAILED, reason), journal
+            state,
+            ExperimentEvent(EventType.CONTROLLER_FAILED, reason),
+            journal,
+            observed_report=(report if isinstance(report, EvaluationReport) else None),
         )
         return CandidateRunResult(
             state,
             candidate=candidate,
             frozen_candidate=frozen,
             attempt=attempt,
+            report=report,
             error=reason,
         )
 
@@ -246,6 +269,7 @@ def run_candidate(
         )
     except (TypeError, ValueError) as exc:
         reason = f"invalid evaluator report: {exc}"
+        budget.stop(reason)
         state = _advance(
             state,
             ExperimentEvent(EventType.CONTROLLER_FAILED, reason),
@@ -261,9 +285,23 @@ def run_candidate(
             error=reason,
         )
 
-    state = _advance(
-        state, ExperimentEvent(EventType.EVALUATOR_RESULT, report=report), journal
-    )
+    try:
+        state = _advance(
+            state, ExperimentEvent(EventType.EVALUATOR_RESULT, report=report), journal
+        )
+    except JournalError as exc:
+        reason = f"result journal failed: {exc}"
+        budget.stop(reason)
+        # Keep available evidence in memory; this state was not durably recorded.
+        state = transition(state, ExperimentEvent(EventType.CONTROLLER_FAILED, reason))
+        return CandidateRunResult(
+            state,
+            candidate=candidate,
+            frozen_candidate=frozen,
+            attempt=attempt,
+            report=report,
+            error=reason,
+        )
     return CandidateRunResult(
         state,
         candidate=candidate,

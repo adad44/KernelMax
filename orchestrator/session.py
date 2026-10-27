@@ -3,10 +3,10 @@
 from __future__ import annotations
 
 import uuid
+from collections.abc import Iterable
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
-from typing import Iterable
 
 from evaluator.schemas import EvaluationReport, ExperimentContract, Verdict
 from orchestrator.candidate_manager import DEFAULT_CANDIDATES_ROOT
@@ -75,11 +75,12 @@ class SessionResult:
         counts = {outcome: 0 for outcome in SubmissionOutcome}
         for submission in self.submissions:
             counts[submission.outcome] += 1
-        outcome_summary = ", ".join(
-            f"{outcome.value}={count}"
-            for outcome, count in counts.items()
-            if count
-        ) or "none"
+        outcome_summary = (
+            ", ".join(
+                f"{outcome.value}={count}" for outcome, count in counts.items() if count
+            )
+            or "none"
+        )
         lines = [
             f"Session {self.session_id}",
             (
@@ -213,10 +214,12 @@ def run_session(
             )
             outcome = _outcome(result)
             detail = result.error or ""
-        except Exception as exc:  # Keep a single infrastructure failure local.
+        # The runner already contains candidate-local failures.
+        except Exception as exc:  # noqa: BLE001 -- Stop on unexpected controller failures.
             result = None
             outcome = SubmissionOutcome.FAILED
             detail = f"session runner failed: {type(exc).__name__}: {exc}"
+            budget.stop(detail)
 
         outcomes.append(
             SubmissionResult(index, candidate_id, directory, outcome, result, detail)

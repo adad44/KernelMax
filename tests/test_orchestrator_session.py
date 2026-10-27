@@ -5,6 +5,7 @@ import tempfile
 import unittest
 from dataclasses import replace
 from pathlib import Path
+from unittest.mock import patch
 
 from evaluator.pass_through import TrustedPassThroughEvaluator
 from evaluator.schemas import (
@@ -16,11 +17,10 @@ from evaluator.schemas import (
 )
 from orchestrator.candidate_manager import create_candidate_id
 from orchestrator.experiment_budget import ExperimentBudget
-from orchestrator.journal import ExperimentJournal
+from orchestrator.journal import ExperimentJournal, JournalError
 from orchestrator.session import SubmissionOutcome, run_session
-from orchestrator.state_machine import RunIdentity
+from orchestrator.state_machine import EventType, ExperimentPhase, RunIdentity
 from target.adapter import TrustedExpertAdapter
-
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = load_contract(ROOT / "kernelmaxxing.yaml")
@@ -271,6 +271,183 @@ class OrchestratorSessionTests(unittest.TestCase):
         )
         self.assertEqual(calls, [])
         self.assertIn("operator requested stop", result.summary())
+
+    def assert_session_stopped(self, result, first, second, calls, attempts=1):
+        self.assertEqual(
+            [item.outcome for item in result.submissions],
+            [SubmissionOutcome.FAILED, SubmissionOutcome.BUDGET_EXHAUSTED],
+        )
+        self.assertEqual(calls, [first.name] if attempts else [])
+        self.assertEqual(result.attempts_started, attempts)
+        self.assertIsNotNone(result.stop_reason)
+        self.assertEqual(result.submissions[1].detail, result.stop_reason)
+        self.assertFalse(result.submissions[0].candidate_approved)
+        self.assertFalse(any(self.frozen.rglob(f"*{second.name}*")))
+
+    def test_journal_failure_before_evaluation_stops_without_using_budget(self):
+        first, second = [make_submission(self.candidates) for _ in range(2)]
+        calls = []
+        with patch.object(self.journal, "_append", side_effect=OSError("disk full")):
+            result = self.run_batch(
+                [first, second],
+                lambda *args, **kwargs: calls.append(args),
+                ExperimentBudget(max_attempts=3),
+            )
+        self.assert_session_stopped(result, first, second, calls, attempts=0)
+        self.assertIn("JournalError", result.stop_reason)
+
+    def test_final_journal_failures_retain_report_and_stop(self):
+        for failure in ("history", "snapshot"):
+            with self.subTest(failure=failure):
+                first, second = [make_submission(self.candidates) for _ in range(2)]
+                calls, reports = [], []
+
+                def evaluator(
+                    run,
+                    frozen,
+                    contract,
+                    *,
+                    on_diagnostic_passed=None,
+                    calls=calls,
+                    reports=reports,
+                ):
+                    calls.append(run.candidate.candidate_id)
+                    report = report_for(run)
+                    reports.append(report)
+                    return report
+
+                original_append = self.journal._append
+                original_save = self.journal._save_state
+
+                def append(encoded, original_append=original_append):
+                    event = json.loads(encoded).get("event", {})
+                    if event.get("type") == EventType.EVALUATOR_RESULT.value:
+                        raise OSError("history fsync failed")
+                    original_append(encoded)
+
+                def save(path, state, original_save=original_save):
+                    if state["phase"] == ExperimentPhase.COMPLETED.value:
+                        raise OSError("snapshot fsync failed")
+                    original_save(path, state)
+
+                with (
+                    patch.object(
+                        self.journal,
+                        "_append",
+                        side_effect=append if failure == "history" else original_append,
+                    ),
+                    patch.object(
+                        self.journal,
+                        "_save_state",
+                        side_effect=save if failure == "snapshot" else original_save,
+                    ),
+                ):
+                    result = self.run_batch(
+                        [first, second], evaluator, ExperimentBudget(max_attempts=3)
+                    )
+                self.assert_session_stopped(result, first, second, calls)
+                self.assertIs(result.submissions[0].report, reports[0])
+                self.assertEqual(
+                    result.submissions[0].result.state.phase, ExperimentPhase.FAILED
+                )
+                self.assertIn("result journal failed", result.stop_reason)
+
+    def test_invalid_report_provenance_stops_before_next_submission(self):
+        for field in ("run_id", "candidate", "contract_sha256", "report_type"):
+            with self.subTest(field=field):
+                first, second = [make_submission(self.candidates) for _ in range(2)]
+                calls, reports = [], []
+
+                def evaluator(
+                    run,
+                    frozen,
+                    contract,
+                    *,
+                    on_diagnostic_passed=None,
+                    calls=calls,
+                    reports=reports,
+                    field=field,
+                ):
+                    calls.append(run.candidate.candidate_id)
+                    report = report_for(run)
+                    if field == "run_id":
+                        report = replace(report, run_id="foreign-run")
+                    elif field == "candidate":
+                        report = replace(
+                            report, candidate=replace(report.candidate, sha256="0" * 64)
+                        )
+                    elif field == "contract_sha256":
+                        report = replace(report, contract_sha256="0" * 64)
+                    else:
+                        report = None
+                    reports.append(report)
+                    return report
+
+                result = self.run_batch(
+                    [first, second], evaluator, ExperimentBudget(max_attempts=3)
+                )
+                self.assert_session_stopped(result, first, second, calls)
+                self.assertIs(result.submissions[0].report, reports[0])
+                self.assertIn("invalid evaluator report", result.stop_reason)
+
+    def test_diagnostic_failures_stop_even_if_evaluator_swallows_exception(self):
+        for failure in ("journal", "provenance"):
+            for swallowed in (False, True):
+                with self.subTest(failure=failure, swallowed=swallowed):
+                    first, second = [make_submission(self.candidates) for _ in range(2)]
+                    calls = []
+
+                    def evaluator(
+                        run,
+                        frozen,
+                        contract,
+                        *,
+                        on_diagnostic_passed=None,
+                        calls=calls,
+                        failure=failure,
+                        swallowed=swallowed,
+                    ):
+                        calls.append(run.candidate.candidate_id)
+                        report = report_for(run)
+                        signal = (
+                            replace(report, run_id="foreign-run")
+                            if failure == "provenance"
+                            else report
+                        )
+                        try:
+                            on_diagnostic_passed(signal)
+                        except (JournalError, ValueError):
+                            if not swallowed:
+                                raise
+                        return report
+
+                    with patch.object(
+                        self.journal,
+                        "record_signal",
+                        side_effect=JournalError("diagnostic fsync failed"),
+                    ):
+                        result = self.run_batch(
+                            [first, second], evaluator, ExperimentBudget(max_attempts=3)
+                        )
+                    self.assert_session_stopped(result, first, second, calls)
+                    self.assertIsNone(
+                        result.submissions[0].result.state.evaluator_report
+                    )
+
+    def test_unexpected_runner_exception_stops_shared_budget(self):
+        first, second = [make_submission(self.candidates) for _ in range(2)]
+        with patch(
+            "orchestrator.session.run_candidate",
+            side_effect=RuntimeError("broken runner"),
+        ) as runner:
+            result = self.run_batch(
+                [first, second],
+                lambda *args, **kwargs: None,
+                ExperimentBudget(max_attempts=3),
+            )
+        self.assertEqual(runner.call_count, 1)
+        self.assert_session_stopped(result, first, second, [], attempts=0)
+        self.assertIn("broken runner", result.stop_reason)
 
 
 if __name__ == "__main__":
