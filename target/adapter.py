@@ -18,6 +18,9 @@ class AdapterError(ValueError):
     """Unsupported layer, input contract, or expert output interface."""
 
 
+_NATIVE_EXPERT_LAYERS = (0, 12, 23)
+
+
 @dataclass(frozen=True, slots=True)
 class TrustedExpertAdapter:
     """Suite callable: adapter(layer_index, x, selected_expert_ids).
@@ -119,3 +122,44 @@ class TrustedExpertAdapter:
                 "expert output must be [1,T,4,H] in the original backend/dtype"
             )
         return output
+
+
+def bind_native_experts(model, *, mx=None) -> TrustedExpertAdapter:
+    """Bind the reviewed native expert layers from an already-loaded model."""
+
+    try:
+        hidden_size = model.args.hidden_size
+        num_experts = model.args.num_local_experts
+        layers = model.model.layers
+    except AttributeError as exc:
+        raise AdapterError(
+            "model must expose args.hidden_size, args.num_local_experts, "
+            "and model.model.layers"
+        ) from exc
+
+    experts = {}
+    for layer_index in _NATIVE_EXPERT_LAYERS:
+        try:
+            layer = layers[layer_index]
+        except (IndexError, KeyError, TypeError) as exc:
+            raise AdapterError(
+                f"model is missing required expert layer {layer_index}"
+            ) from exc
+        try:
+            expert = layer.mlp.experts
+        except AttributeError as exc:
+            raise AdapterError(
+                f"model layer {layer_index} must expose callable mlp.experts"
+            ) from exc
+        if not callable(expert):
+            raise AdapterError(
+                f"model layer {layer_index} must expose callable mlp.experts"
+            )
+        experts[layer_index] = expert
+
+    return TrustedExpertAdapter(
+        experts,
+        hidden_size=hidden_size,
+        num_experts=num_experts,
+        mx=mx,
+    )
