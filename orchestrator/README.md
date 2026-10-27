@@ -1,5 +1,9 @@
 # Orchestrator
 
+The proposed [search-policy improvement loop](SEARCH_POLICY_DESIGN.md) describes
+how a future outer loop could evaluate better experiment-selection strategies.
+It is a design for a later phase; the runner behavior below is unchanged.
+
 `run_candidate` connects candidate validation/freezing, evaluator handoff, the
 experiment budget, the state machine and the local journal. The runner does not
 import or execute submission files. It passes the controller-created

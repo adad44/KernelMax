@@ -17,6 +17,11 @@ This repository is currently an initial project scaffold. The implementation and
 - Generate optimization candidates within a restricted candidate workspace.
 - Verify every candidate with protected correctness and performance checks.
 
+The proposed [search-policy improvement loop](orchestrator/SEARCH_POLICY_DESIGN.md)
+adds a later phase for testing whether better experiment-selection strategies
+find stronger verified optimizations within the same search budget. It is a
+design proposal; it does not implement or enable self-improvement.
+
 ## Lead Contact Information
 
 **Project Lead:** Alan
