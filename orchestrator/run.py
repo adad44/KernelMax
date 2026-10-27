@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import uuid
 from collections.abc import Callable
 from dataclasses import dataclass
@@ -162,16 +163,46 @@ def run_candidate(
         attempt.run.validate_report(report)
         journal.record_signal(state, "on_diagnostic_passed", report)
 
+    def on_candidate_correctness_passed(report: EvaluationReport) -> None:
+        """Record real operator correctness without entering benchmarking."""
+        attempt.run.validate_report(report)
+        if (
+            report.status.value != "completed"
+            or report.errors
+            or report.verdict is not None
+            or report.performance
+        ):
+            raise ValueError(
+                "candidate correctness signal requires completed untimed evidence"
+            )
+        if len(report.correctness) != len(contract.correctness.required_cases) or {
+            r.case_name for r in report.correctness
+        } != set(contract.correctness.required_cases):
+            raise ValueError(
+                "candidate correctness signal requires all declared cases exactly once"
+            )
+        for result in report.correctness:
+            detail = json.loads(result.detail)
+            if (
+                not result.passed
+                or detail.get("evaluation_scope") != "reviewed_candidate_execution"
+                or detail.get("candidate_execution_started") is not True
+            ):
+                raise ValueError("diagnostics are not candidate correctness evidence")
+        journal.record_signal(state, "on_candidate_correctness_passed", report)
+
     report: EvaluationReport | None = None
     evaluator_error: Exception | None = None
     evaluator_interrupted: KeyboardInterrupt | None = None
     try:
-        report = evaluator(
-            attempt.run,
-            frozen,
-            contract,
-            on_diagnostic_passed=on_diagnostic_passed,
-        )
+        callbacks = {"on_diagnostic_passed": on_diagnostic_passed}
+        # Legacy diagnostics/fakes retain their existing call signature. Session
+        # orchestration need not know about this opt-in evaluator capability.
+        if getattr(evaluator, "supports_candidate_correctness", False) is True:
+            callbacks["on_candidate_correctness_passed"] = (
+                on_candidate_correctness_passed
+            )
+        report = evaluator(attempt.run, frozen, contract, **callbacks)
     except KeyboardInterrupt as exc:
         evaluator_interrupted = exc
     except Exception as exc:  # noqa: BLE001 -- Retain any injected evaluator failure.
