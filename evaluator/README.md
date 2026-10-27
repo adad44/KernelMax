@@ -6,6 +6,58 @@ The scaffold descriptions below include historical deliverable scope; they do
 not override the current reference-only implementation. Candidate acceptance
 remains disabled.
 
+## Three acceptance requirements
+
+Final candidate acceptance requires all three:
+
+1. Numerical correctness against unchanged MLX-LM with the same checkpoint and
+   native precision.
+2. A measured speedup above noise, within latency and memory regression limits.
+3. No unacceptable score regression on a frozen held-out task evaluation suite.
+
+The third gate is **planned, not implemented**. `held_out_inputs` is a deterministic
+selected-expert tensor fixture; it does not score task answers. The existing
+stock-generation and trusted pass-through checks do not establish task quality.
+Small numerical differences may change generated tokens even within tolerance.
+
+`kernelmaxxing.yaml` now uses schema version 2 with a required `task_quality`
+policy. The suite hash, metric and maximum score drop are null because they have
+not been chosen or calibrated. Scores will use [0, 1], higher is better, with an
+absolute maximum drop (0.01 means one percentage point, not a 1% relative loss).
+No numerical margin is asserted by this PR. Filling planned metadata does not
+establish execution, and the schema refuses to enable acceptance even if the
+other thresholds and numerical tolerances are marked calibrated. An `ACCEPTED`
+report is flagged as ineligible; diagnostic and failed reports remain retainable.
+Implementing the runner and validated task evidence requires a reviewed change.
+
+The evaluator owner must define and freeze these inputs before that gate runs:
+
+- Held-out task examples, expected answers, suite revision/hash and development
+  versus final held-out splits. Arithmetic, extraction and short-answer tasks are
+  possible small-suite choices, not an already-selected benchmark.
+- Scoring implementation/version, answer normalization and how wrong, malformed,
+  timed-out or truncated answers score. Retain every example and execution error.
+- The identical checkpoint, tokenizer/chat template, generation settings and
+  fresh-cache policy for reference and candidate-integrated full-model inference.
+- A score-drop margin declared before inspecting candidate task results, justified
+  by baseline behavior, sample size and uncertainty. A small suite cannot support
+  an arbitrarily fine margin; insufficient evidence remains inconclusive.
+
+Run task evaluation on shortlisted candidates after cheaper numerical/performance
+screening, outside timed kernel measurements. Compare against the unchanged
+native-MXFP4 checkpoint, not a newly converted model. Preserve paired per-example
+outputs, scores, errors, aggregate deltas and provenance for human review. Keep
+final held-out examples/answers outside the optimizer's accessible inputs and
+give it only the feedback allowed by the reviewed evaluation plan. Task metrics
+need their own report evidence; never put them in numerical `CorrectnessResult`
+records or fabricate timings/verdicts from a task-only diagnostic.
+
+This is a new contract hash. Existing schema-v1 contracts and published M4
+measurements remain historical evidence under their original hashes and frozen
+source versions; use those versions to read/reproduce them. Do not rewrite them
+as task-quality results or mix them with schema-v2 candidate runs. A future
+acceptance-ready contract needs fresh matched baseline/candidate evidence.
+
 The contract lives in `kernelmaxxing.yaml`. It pins the upstream model revision,
 native MXFP4 expert weights, BF16 activation/KV-cache policy, a 24 GiB M4, and
 batch-one workloads of 512/2048/4096 prompt tokens with 128 generated tokens.

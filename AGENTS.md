@@ -24,7 +24,8 @@ lengths are 512, 2048, and 4096; timing requires 128 generated tokens.
 The Python/MLX/MLX-LM environment and actual model-file hashes still need to be
 recorded by environment/model integration. The contract alone is not a frozen
 runtime or evidence that inference works. Acceptance is disabled while numerical
-tolerances and performance thresholds are provisional.
+tolerances and performance thresholds are provisional and held-out task-quality
+evaluation is planned.
 
 ## Optimization-agent boundary
 
@@ -64,13 +65,22 @@ installation, warmups, synchronization, sample collection, and verdicts.
 4. Only after correctness passes, run alternating baseline/candidate trials on the
    designated M4. Load the model before timing, start with fresh request caches,
    synchronize GPU work at interval boundaries, and keep agents out of timing.
-5. Retain all samples, failed experiments, environment observations, and hashes.
-6. Return `ACCEPTED`, `REJECTED`, or `INCONCLUSIVE` from the evaluator. The
+5. Before final acceptance, require no unacceptable regression on a protected
+   held-out task suite using the complete reference and candidate-integrated
+   models. The suite, scoring, generation settings and score margin must be
+   frozen before candidate evaluation. This gate is planned, not implemented;
+   the `held_out_inputs` numerical fixture does not satisfy it.
+6. Retain all samples, failed experiments, environment observations, hashes and
+   eventual per-example task outputs/scores, including failures and truncations.
+7. Return `ACCEPTED`, `REJECTED`, or `INCONCLUSIVE` from the evaluator. The
    orchestrator records that verdict without overriding it.
 
 An invalid build or submission is an execution/validation error, not a speedup.
 Noisy or environmentally invalid timings cannot support `ACCEPTED`. Passing a
 small operator test does not establish full-model correctness or performance.
+An insufficient task-quality sample or missing task evidence cannot support
+`ACCEPTED`. The agent cannot select task examples, scorers or regression margins.
+See `evaluator/README.md` for the three acceptance requirements and planned gate.
 
 ## Enforcement responsibilities
 
