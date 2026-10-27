@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_b7f7dafae7bb",
+  "name": "Decode projection bias and SwiGLU compilation",
+  "implementation_type": "mlx",
+  "description": "Hypothesis: compiling native up/gate output-bias additions together with GPT-OSS SwiGLU reduces one-token decode dispatch overhead. Reuses original MXFP4 packed weights/scales and selected expert IDs; no requantization, weight copies, persistent tensor cache or layout conversion. Specializes BF16 [1,1,H] with int32 [1,1,4] IDs and native biased projections. All other shapes explicitly call the unchanged experts reference, including every prefill. Decode is the only optimized correctness case; the other six declared cases are reference fallbacks. No correctness, timing or verdict claim."
+}
