@@ -1,0 +1,121 @@
+{
+  "captured_task_processes": {},
+  "cleanup_finished_utc": "2026-10-27T20:00:11.543883+00:00",
+  "cleanup_started_utc": "2026-10-27T20:00:11.439363+00:00",
+  "deadline_unix": 1793131200.0,
+  "job_unloads": [
+    {
+      "label": "com.kernelmax.search.nativeorder021.20261027",
+      "output": "",
+      "returncode": 0
+    },
+    {
+      "label": "com.kernelmax.search.combined035.20261027",
+      "output": "",
+      "returncode": 0
+    },
+    {
+      "label": "com.kernelmax.search.candidate008.20261027",
+      "output": "Boot-out failed: 3: No such process",
+      "returncode": 3
+    },
+    {
+      "label": "com.kernelmax.search.probe001.20261027",
+      "output": "Boot-out failed: 3: No such process",
+      "returncode": 3
+    },
+    {
+      "label": "com.kernelmax.search.correctness014.20261027",
+      "output": "Boot-out failed: 3: No such process",
+      "returncode": 3
+    },
+    {
+      "label": "com.kernelmax.search.candidate009.20261027",
+      "output": "Boot-out failed: 3: No such process",
+      "returncode": 3
+    },
+    {
+      "label": "com.kernelmax.search.candidate007.20261027",
+      "output": "Boot-out failed: 3: No such process",
+      "returncode": 3
+    },
+    {
+      "label": "com.kernelmax.search.residency028.20261027",
+      "output": "",
+      "returncode": 0
+    },
+    {
+      "label": "com.kernelmax.search.combined036.20261027",
+      "output": "",
+      "returncode": 0
+    },
+    {
+      "label": "com.kernelmax.search.downfollowup024.20261027",
+      "output": "",
+      "returncode": 0
+    },
+    {
+      "label": "com.kernelmax.search.sweep011.20261027",
+      "output": "Boot-out failed: 3: No such process",
+      "returncode": 3
+    },
+    {
+      "label": "com.kernelmax.search.candidate019.20261027",
+      "output": "",
+      "returncode": 0
+    },
+    {
+      "label": "com.kernelmax.search.futility030.20261027",
+      "output": "",
+      "returncode": 0
+    },
+    {
+      "label": "com.kernelmax.search.kunroll032.20261027",
+      "output": "",
+      "returncode": 0
+    },
+    {
+      "label": "com.kernelmax.search.candidate016.20261027",
+      "output": "Boot-out failed: 3: No such process",
+      "returncode": 3
+    },
+    {
+      "label": "com.kernelmax.search.sweep010.20261027",
+      "output": "Boot-out failed: 3: No such process",
+      "returncode": 3
+    },
+    {
+      "label": "com.kernelmax.search.candidate005.20261027",
+      "output": "Boot-out failed: 3: No such process",
+      "returncode": 3
+    },
+    {
+      "label": "com.kernelmax.search.probe004.20261027",
+      "output": "Boot-out failed: 3: No such process",
+      "returncode": 3
+    },
+    {
+      "label": "com.kernelmax.search.probe002.20261027",
+      "output": "Boot-out failed: 3: No such process",
+      "returncode": 3
+    },
+    {
+      "label": "com.kernelmax.search.noise003.20261027",
+      "output": "Boot-out failed: 3: No such process",
+      "returncode": 3
+    },
+    {
+      "label": "com.kernelmax.search.fullmodel012.20261027",
+      "output": "Boot-out failed: 3: No such process",
+      "returncode": 3
+    },
+    {
+      "label": "com.kernelmax.search.candidate016timing017.20261027",
+      "output": "Boot-out failed: 3: No such process",
+      "returncode": 3
+    }
+  ],
+  "remaining_owned_processes": {},
+  "terminated_processes": [],
+  "unrelated_services_touched": false
+}

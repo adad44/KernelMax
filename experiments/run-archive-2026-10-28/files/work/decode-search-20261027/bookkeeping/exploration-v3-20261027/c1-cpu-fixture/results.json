@@ -1,0 +1,23 @@
+[
+  {
+    "name": "ruff-version",
+    "exit_code": 0,
+    "wall_seconds": 0.18739833286963403,
+    "stdout": "ruff 0.17.3\n",
+    "stderr": ""
+  },
+  {
+    "name": "ruff-format",
+    "exit_code": 0,
+    "wall_seconds": 0.052839624928310513,
+    "stdout": "3 files reformatted\n",
+    "stderr": ""
+  },
+  {
+    "name": "fixture",
+    "exit_code": 0,
+    "wall_seconds": 0.09608200006186962,
+    "stdout": "{\"passed\": true, \"cases\": 3, \"words_checked\": 136256, \"chunked\": true, \"native_gpu_pending\": true}\n",
+    "stderr": ""
+  }
+]

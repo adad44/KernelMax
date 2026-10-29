@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/cooled-profile/profile.py", line 243, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/cooled-profile/profile.py", line 226, in main
+    row,_=collect(f'{mode}-{pair}-{lane}',lane,reference,pair=pair)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/cooled-profile/profile.py", line 193, in collect
+    if issues:raise RuntimeError('Environment invalid; retained sample: '+str(issues))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Environment invalid; retained sample: ['swap grew during the request', 'swapouts increased during request']

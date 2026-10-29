@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_75ca936df290",
+  "name": "One-step-ahead complete decode scheduling",
+  "implementation_type": "mlx",
+  "description": "Complete-decode scheduling candidate exposing decode_request(model, ids, step_size, mx, make_prompt_cache). Use MLX async_eval to overlap CPU construction/evaluation of the next true greedy step with current GPU execution. Preserve unchanged native model operations, weights, routing, BF16 cache, fresh request caches and prompt handling. Emit the first token before queuing decode; produce exactly128tokens with no extra forward and include the last GPU drain. Hypothesis: recover part of evaluation-side CPU scheduling cost across the complete decode graph, rather than changing a small expert kernel. Full-model logits/routes/cache/call-count checks and fresh matched controls are required; expert-only evaluation does not validate this interface. No speedup or acceptance claim."
+}

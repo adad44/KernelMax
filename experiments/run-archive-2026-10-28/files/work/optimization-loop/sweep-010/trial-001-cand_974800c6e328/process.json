@@ -1,0 +1,9 @@
+{
+  "deadline_unix": 1793096205.2836301,
+  "supervisor_pid": 69841,
+  "status": "failed",
+  "candidate_id": "cand_974800c6e328",
+  "started_unix": 1793094405.283632,
+  "returncode": 1,
+  "ended_unix": 1793094405.905565
+}

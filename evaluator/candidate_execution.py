@@ -1,7 +1,8 @@
 """Parent-owned grading of explicitly reviewed MLX snapshots.
 
 Subprocesses, clean environments and hashes are reliability controls, NOT a
-hostile-code sandbox. Never approve an unreviewed/agent-self-approved snapshot.
+hostile-code sandbox. Execution requires exact-snapshot controller approval,
+which may come from an explicitly scoped standing user authorization.
 """
 
 from __future__ import annotations
@@ -59,6 +60,7 @@ class WorkerRuntime:
     model_revision: str | None = None
     model_files: dict[str, str] = field(default_factory=dict)
     expert_factory: str | None = None
+    checkpoint_verification: dict | None = None
 
     def __post_init__(self):
         if self.mode not in ("numpy_fixture", "mlx_native"):
@@ -105,6 +107,14 @@ class WorkerRuntime:
             r"[a-zA-Z_]\w*(?:\.[a-zA-Z_]\w*)*:[a-zA-Z_]\w*", self.expert_factory
         ):
             raise ValueError("expert_factory must be a trusted module:symbol")
+        if self.checkpoint_verification is not None:
+            if self.mode != "mlx_native":
+                raise ValueError("fixture mode cannot reuse checkpoint verification")
+            from evaluator.checkpoint_verification import validate_receipt
+
+            receipt = json.loads(json.dumps(self.checkpoint_verification))
+            validate_receipt(receipt, self.model_path, self.model_revision, files)
+            object.__setattr__(self, "checkpoint_verification", receipt)
 
     def payload(self):
         return {
@@ -116,6 +126,7 @@ class WorkerRuntime:
             "model_revision": self.model_revision,
             "model_files": dict(self.model_files),
             "expert_factory": self.expert_factory,
+            "checkpoint_verification": self.checkpoint_verification,
         }
 
 
@@ -159,8 +170,9 @@ def _protected_files(extra):
 def _checkpoint_identity(runtime):
     """Cross-check native files across worker lifetimes without redundant I/O.
 
-    Every worker hashes actual bytes against pinned SHA256 before loading. OS
-    file identity/size/mtime/ctime must also remain stable across the entire run.
+    By default every worker hashes bytes. An explicit controller verification
+    receipt permits identity checks instead of repeated byte reads. OS
+    file identity/size/mtime/ctime must remain stable across the entire run.
     This is reviewed-code tamper observation, not hostile filesystem isolation.
     """
     observed = {}

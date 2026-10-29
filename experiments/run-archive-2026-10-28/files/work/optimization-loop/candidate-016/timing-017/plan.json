@@ -1,0 +1,24 @@
+{
+  "cache_scope": "Only transformed immutable model parameters; no x, routing-ID, output or trajectory cache. Weak owner lifetime and parameter object signatures prevent stale reuse after updates.",
+  "candidate_id": "cand_ab711e414d17",
+  "candidate_source": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_ab711e414d17",
+  "correctness_diagnosis": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/correctness-014/analysis.json",
+  "estimated_model_contribution": "Unverified. The targeted up/gate region costs0.379ms per sampled expert; reducing Python/dispatch work could save only a small fraction. No measured dispatch-gap or DRAM-bound claim.",
+  "hypothesis": "Losslessly pack native up/gate weights/scales/biases along output-row dimension, then use one native gather_qmm and the unchanged native SwiGLU/down kernels. Preserve native reduction implementation instead of changed custom reductions that caused rare amplified rounding errors.",
+  "layout_conversion": "One-time bit-preserving output-row concatenation; original per-projection fields become views into the same packed buffers so steady-state weights are not duplicated. A controller preparation API restores native contiguous fields before baseline timing and packs outside candidate timing. Setup time/temporary allocation must be reported separately. No source checkpoint or precision changes.",
+  "measured_target": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/probe-004/audited-result.json",
+  "pointwise_isolation": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/epilogue-015/result.json",
+  "required_before_timing": [
+    "all native correctness cases",
+    "dynamic parameter/layout roundtrip fixtures",
+    "all saved failing real full-model boundary cases exact",
+    "fresh20-pairA/A after correct baseline/candidate preparation"
+  ],
+  "timing_layout_fairness": {
+    "baseline": "Restore native contiguous parameter fields before every native lane; no packed parameter cache is used by timed baseline calls.",
+    "candidate": "Prepare losslessly packed fields before each candidate lane; setup excluded from resident timing but every preparation duration/active-memory/peak is retained.",
+    "interpretation": "Setup is model representation work. No request inputs or outputs are cached. Report setup and temporary memory independently; no full-model speedup from these operator data.",
+    "priming": "Fixed1024call native primer per pair plus32call same-lane primer per microblock after layout setup, applied to both implementations. Timed calls remain1024 per lane; all raw counts retained.",
+    "stale_loading_refs": "Delete sampled parameter-loading lists before packing so original buffers are not artificially retained."
+  }
+}

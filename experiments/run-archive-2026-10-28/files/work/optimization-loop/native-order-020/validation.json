@@ -1,0 +1,8 @@
+{
+  "all_manifests_valid": true,
+  "nested_pipeline_and_repair_control_paths_verified": true,
+  "no_candidate_executed": true,
+  "pipeline_candidate_id_verified": true,
+  "shader_arithmetic_unchanged_after_normalizing_only_row_group_offset": true,
+  "six_geometry_configs_validated": true
+}

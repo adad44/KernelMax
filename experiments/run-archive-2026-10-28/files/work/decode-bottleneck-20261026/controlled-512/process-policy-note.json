@@ -1,0 +1,7 @@
+{
+  "worker_pid": 48864,
+  "loading_action": "taskpolicy -B -p 48864",
+  "sleep_assertion": "caffeinate -i -w 48864",
+  "scope": "Own process, same policy for every lane; assertion ends with worker",
+  "display_action": "Transient display sleep at each preflight, matching the recorded reference cadence; no saved power settings changed"
+}

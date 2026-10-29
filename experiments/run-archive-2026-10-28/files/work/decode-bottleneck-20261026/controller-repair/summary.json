@@ -1,0 +1,323 @@
+{
+  "acceptance_enabled": false,
+  "baseline": {
+    "2048": {
+      "decode_tokens_per_second": 23.494431648276432,
+      "environment_valid": false,
+      "mean_build_ms_per_token": 0.7350646109708886,
+      "mean_eval_wait_ms_per_token": 41.82343534193933,
+      "mean_readback_ms_per_token": 0.002679488379654922,
+      "milliseconds_per_token": 42.56327690622645,
+      "requests": 3
+    },
+    "4096": {
+      "decode_tokens_per_second": 21.85849266676422,
+      "environment_valid": false,
+      "mean_build_ms_per_token": 1.898579350782661,
+      "mean_eval_wait_ms_per_token": 43.89709848397243,
+      "mean_readback_ms_per_token": 0.00460936108560074,
+      "milliseconds_per_token": 45.748808723691056,
+      "requests": 3
+    },
+    "512": {
+      "decode_tokens_per_second": 23.851812819053723,
+      "environment_valid": false,
+      "mean_build_ms_per_token": 0.7450527687535042,
+      "mean_eval_wait_ms_per_token": 41.17564148430925,
+      "mean_readback_ms_per_token": 0.002365445674169721,
+      "milliseconds_per_token": 41.92553444831508,
+      "requests": 3
+    }
+  },
+  "environment_issues": [
+    "native thermal state is not nominal",
+    "swap grew during the request",
+    "swapins increased during request",
+    "swapouts increased during request"
+  ],
+  "logical_byte_accounting": {
+    "attention_projection_weights_bytes_per_token": 1274019840,
+    "candidate1_projection_result_traffic_saved_bytes_per_token": 2211840,
+    "candidate2_projection_result_traffic_saved_bytes_per_token": 4423680,
+    "combined_bytes_per_token": 3701329920,
+    "expert_weights_and_scales_bytes_per_token": 1269043200,
+    "lm_head_weights_bytes_per_token": 1158266880,
+    "warning": "analytical logical bytes, not measured DRAM traffic; intermediate estimate excludes bias-gather buffers, other tensors, caching and re-reads"
+  },
+  "official": false,
+  "operators": {
+    "candidate1": {
+      "blocks": 20,
+      "descriptive_bootstrap_95pct": [
+        1.0024410583004235,
+        1.0658399369165819
+      ],
+      "median_ms_per_call": 0.8457160365651362,
+      "paired_native_over_lane_median": 1.0264524474790284
+    },
+    "candidate1_up_gate": {
+      "blocks": 20,
+      "descriptive_bootstrap_95pct": [
+        1.147897674420963,
+        1.1997310496692302
+      ],
+      "median_ms_per_call": 0.7407402317767264,
+      "paired_native_over_lane_median": 1.1842011018417014
+    },
+    "candidate2": {
+      "blocks": 20,
+      "descriptive_bootstrap_95pct": [
+        1.0230781022779993,
+        1.0714029842546982
+      ],
+      "median_ms_per_call": 0.832009765872499,
+      "paired_native_over_lane_median": 1.0408554177399183
+    },
+    "candidate2_up_gate": {
+      "blocks": 20,
+      "descriptive_bootstrap_95pct": [
+        1.2129566069348372,
+        1.261319778209922
+      ],
+      "median_ms_per_call": 0.7065511041825328,
+      "paired_native_over_lane_median": 1.244543063284873
+    },
+    "down": {
+      "blocks": 20,
+      "descriptive_bootstrap_95pct": [
+        1.6192047626191945,
+        1.9063877814097492
+      ],
+      "median_ms_per_call": 0.5147897136339452,
+      "paired_native_over_lane_median": 1.75589005676398
+    },
+    "native": {
+      "blocks": 20,
+      "median_ms_per_call": 0.8706095904926769
+    },
+    "pointwise": {
+      "blocks": 20,
+      "descriptive_bootstrap_95pct": [
+        3.655110334885526,
+        4.1935424889565995
+      ],
+      "median_ms_per_call": 0.22527463079313748,
+      "paired_native_over_lane_median": 3.9874870276481875
+    },
+    "raw_up_gate": {
+      "blocks": 20,
+      "descriptive_bootstrap_95pct": [
+        1.2040782391140183,
+        1.270001683321419
+      ],
+      "median_ms_per_call": 0.7071222868641295,
+      "paired_native_over_lane_median": 1.2204921676809868
+    },
+    "up_gate_activation": {
+      "blocks": 20,
+      "descriptive_bootstrap_95pct": [
+        1.1628154967368496,
+        1.2119293130947202
+      ],
+      "median_ms_per_call": 0.7339423821880094,
+      "paired_native_over_lane_median": 1.1799896198659678
+    }
+  },
+  "oracle": {
+    "oracle_down": {
+      "conditional_amdahl_2x_stage_speedup": 1.093064362813424,
+      "environment_valid": false,
+      "interpretation": "optimistic cached-output intervention on this trajectory; not a deployable candidate or a universal bound",
+      "median_removed_fraction": 0.1702815789801928,
+      "median_saved_ms_per_token": 8.11736778664131,
+      "median_speedup": 1.2052281529086695,
+      "pairs": [
+        {
+          "baseline_ms": 47.67026377871163,
+          "environment_valid": false,
+          "exact_logits": true,
+          "fraction_removed": 0.1702815789801928,
+          "oracle_ms": 39.55289599207032,
+          "pair": 0,
+          "saved_ms": 8.11736778664131,
+          "speedup": 1.2052281529086695
+        },
+        {
+          "baseline_ms": 45.779730314315536,
+          "environment_valid": false,
+          "exact_logits": true,
+          "fraction_removed": 0.10842662105815781,
+          "oracle_ms": 40.81598884338059,
+          "pair": 1,
+          "saved_ms": 4.9637414709349486,
+          "speedup": 1.121612672180548
+        },
+        {
+          "baseline_ms": 57.82282217332404,
+          "environment_valid": false,
+          "exact_logits": true,
+          "fraction_removed": 0.28772353628938885,
+          "oracle_ms": 41.18583529938277,
+          "pair": 2,
+          "saved_ms": 16.636986873941275,
+          "speedup": 1.403949240145449
+        }
+      ]
+    },
+    "oracle_experts": {
+      "conditional_amdahl_2x_stage_speedup": 1.2217182883381728,
+      "environment_valid": false,
+      "interpretation": "optimistic cached-output intervention on this trajectory; not a deployable candidate or a universal bound",
+      "median_removed_fraction": 0.3629613970005514,
+      "median_saved_ms_per_token": 17.83282513634896,
+      "median_speedup": 1.5697635830726346,
+      "pairs": [
+        {
+          "baseline_ms": 49.1910534800859,
+          "environment_valid": false,
+          "exact_logits": true,
+          "fraction_removed": 0.418398945689627,
+          "oracle_ms": 28.609568566655902,
+          "pair": 0,
+          "saved_ms": 20.581484913429996,
+          "speedup": 1.7193916561684004
+        },
+        {
+          "baseline_ms": 47.85545701601021,
+          "environment_valid": false,
+          "exact_logits": true,
+          "fraction_removed": 0.22317625001460462,
+          "oracle_ms": 37.175255576441955,
+          "pair": 1,
+          "saved_ms": 10.680201439568258,
+          "speedup": 1.2872932888815518
+        },
+        {
+          "baseline_ms": 49.131464898791606,
+          "environment_valid": false,
+          "exact_logits": true,
+          "fraction_removed": 0.3629613970005514,
+          "oracle_ms": 31.298639762442647,
+          "pair": 2,
+          "saved_ms": 17.83282513634896,
+          "speedup": 1.5697635830726346
+        }
+      ]
+    },
+    "oracle_pointwise": {
+      "conditional_amdahl_2x_stage_speedup": 1.0194126364083576,
+      "environment_valid": false,
+      "interpretation": "optimistic cached-output intervention on this trajectory; not a deployable candidate or a universal bound",
+      "median_removed_fraction": 0.03808592460998528,
+      "median_saved_ms_per_token": 1.6640177176253346,
+      "median_speedup": 1.0395938946984875,
+      "pairs": [
+        {
+          "baseline_ms": 45.50017059897989,
+          "environment_valid": false,
+          "exact_logits": true,
+          "fraction_removed": 0.040830656318969205,
+          "oracle_ms": 43.64236877079848,
+          "pair": 0,
+          "saved_ms": 1.8578018281814153,
+          "speedup": 1.0425687670148758
+        },
+        {
+          "baseline_ms": 42.21022211924547,
+          "environment_valid": false,
+          "exact_logits": true,
+          "fraction_removed": 0.0031793746660062627,
+          "oracle_ms": 42.076020008393044,
+          "pair": 1,
+          "saved_ms": 0.13420211085242784,
+          "speedup": 1.0031895153302441
+        },
+        {
+          "baseline_ms": 43.691146654978866,
+          "environment_valid": false,
+          "exact_logits": true,
+          "fraction_removed": 0.03808592460998528,
+          "oracle_ms": 42.02712893735353,
+          "pair": 2,
+          "saved_ms": 1.6640177176253346,
+          "speedup": 1.0395938946984875
+        }
+      ]
+    },
+    "oracle_up_gate": {
+      "conditional_amdahl_2x_stage_speedup": 1.113291023528242,
+      "environment_valid": false,
+      "interpretation": "optimistic cached-output intervention on this trajectory; not a deployable candidate or a universal bound",
+      "median_removed_fraction": 0.20352454323973668,
+      "median_saved_ms_per_token": 8.89177001484736,
+      "median_speedup": 1.2555314686878003,
+      "pairs": [
+        {
+          "baseline_ms": 42.348497046715046,
+          "environment_valid": false,
+          "exact_logits": true,
+          "fraction_removed": 0.22877413590604656,
+          "oracle_ms": 32.66025622793305,
+          "pair": 0,
+          "saved_ms": 9.688240818781999,
+          "speedup": 1.2966370120053137
+        },
+        {
+          "baseline_ms": 43.68893241722459,
+          "environment_valid": false,
+          "exact_logits": true,
+          "fraction_removed": 0.20352454323973668,
+          "oracle_ms": 34.79716240237723,
+          "pair": 1,
+          "saved_ms": 8.89177001484736,
+          "speedup": 1.2555314686878003
+        },
+        {
+          "baseline_ms": 43.49255085717447,
+          "environment_valid": false,
+          "exact_logits": true,
+          "fraction_removed": 0.1590056884500275,
+          "oracle_ms": 36.57698786568161,
+          "pair": 2,
+          "saved_ms": 6.9155629914928625,
+          "speedup": 1.1890686848487433
+        }
+      ]
+    }
+  },
+  "serial": {
+    "inflation_ratio": 2.4150678453063508,
+    "mean_first_16_instrumented_ms_per_token": 101.25301014340948,
+    "pending_before_stage_ms_per_token": {
+      "activation": 0.016105856047943234,
+      "attention": 0.01353927655145526,
+      "down": 0.013663739082403481,
+      "embedding": 0.02061195846181363,
+      "final_norm": 0.22136210463941097,
+      "gate": 0.016330493963323534,
+      "input_norm": 5.298503398080356,
+      "lm_head": 0.0004817993612959981,
+      "post_norm": 5.163324763998389,
+      "router": 0.011862066457979381,
+      "up": 4.5254717115312815
+    },
+    "stage_ms_per_token": {
+      "activation": 4.559700901154429,
+      "attention": 22.319801326375455,
+      "down": 10.831987208803184,
+      "embedding": 0.18076824198942631,
+      "final_norm": 0.17232286336366087,
+      "gate": 11.144203832373023,
+      "input_norm": 4.388717716210522,
+      "lm_head": 11.975671775871888,
+      "post_norm": 4.150253123953007,
+      "router": 4.481702533666976,
+      "up": 10.67617219814565
+    },
+    "uninstrumented_ms_per_token": 41.92553444831508,
+    "warning": "synchronized serial attribution includes barrier effects; not the uninstrumented GPU critical path"
+  },
+  "source_and_checkpoint_unchanged": false,
+  "status": "completed_diagnostic",
+  "verdict": null
+}

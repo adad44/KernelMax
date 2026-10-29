@@ -1,0 +1,10 @@
+{
+  "actual_invoke_ast_microblock_calls": 128,
+  "actual_paired_ast_calls_per_lane": [
+    1024,
+    1024
+  ],
+  "actual_paired_ast_total_including_fixed_primer": 2080,
+  "thermal_invalid_pair_retained_then_stopped": true,
+  "elapsed_normalization": "Summaries divide each elapsed_ms by its raw sample calls; no inherited /256 factor."
+}

@@ -1,0 +1,57 @@
+{
+  "approved_response": "yea do that, and try for the official baseline again",
+  "scope": "Temporary pause of MemoryOS capture/indexing and scheduler; restore initially loaded jobs on exit. No history deletion.",
+  "output": "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/official-attempt-2026-10-03T20-51-29-seed42",
+  "log": "/Users/alandiaz/Library/Logs/kernelmax-official-baseline-2026-10-03T20-51-29.log",
+  "initially_loaded": [
+    {
+      "label": "com.memoryos.scheduler",
+      "plist_sha256": "436d3d0a3f20da38f87cc2d21b3106dea25314c1f075af20581a02678baabbdc",
+      "pid": 87059
+    },
+    {
+      "label": "com.memoryos.daemon",
+      "plist_sha256": "eb7d1d0ce032bf4c4aebab9b7c70a3a9a8d1e3bf218c7b8d5f2e941539e03644",
+      "pid": 87057
+    },
+    {
+      "label": "com.memoryos.backend",
+      "plist_sha256": "60cb04f2d385d5d2c51cb86f8612883eb3adea7df6cbc27b14050e0c0a409441",
+      "pid": 87054
+    }
+  ],
+  "paused": [
+    {
+      "label": "com.memoryos.scheduler",
+      "at": 1791085889.5756092
+    },
+    {
+      "label": "com.memoryos.daemon",
+      "at": 1791085889.5814579
+    },
+    {
+      "label": "com.memoryos.backend",
+      "at": 1791085889.586808
+    }
+  ],
+  "restored": [
+    {
+      "label": "com.memoryos.backend",
+      "at": 1791087071.356199
+    },
+    {
+      "label": "com.memoryos.daemon",
+      "at": 1791087071.3778079
+    },
+    {
+      "label": "com.memoryos.scheduler",
+      "at": 1791087071.394895
+    }
+  ],
+  "restoration_errors": [],
+  "status": "benchmark_finished",
+  "benchmark_pid": 87098,
+  "benchmark_returncode": 1,
+  "finished_at": 1791087071.395363,
+  "restoration_complete": true
+}

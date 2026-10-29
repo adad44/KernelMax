@@ -1,0 +1,3 @@
+{"trial": 1, "candidate_id": "cand_6dbb410bc1b0", "status": "stopped_operator_futility", "shortlisted": false}
+{"trial": 2, "candidate_id": "cand_255bf075877b", "status": "stopped_operator_futility", "shortlisted": false}
+{"trial": 3, "candidate_id": "cand_b64853d31601", "status": "completed_diagnostic", "shortlisted": true}

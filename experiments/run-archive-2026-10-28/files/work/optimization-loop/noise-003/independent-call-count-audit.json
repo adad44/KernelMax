@@ -1,0 +1,20 @@
+{
+  "counts": {
+    "256": {
+      "microblock_calls": 32,
+      "microblocks_per_lane": 8,
+      "calls_per_lane_sample": 256
+    },
+    "1024": {
+      "microblock_calls": 128,
+      "microblocks_per_lane": 8,
+      "calls_per_lane_sample": 1024
+    },
+    "4096": {
+      "microblock_calls": 512,
+      "microblocks_per_lane": 8,
+      "calls_per_lane_sample": 4096
+    }
+  },
+  "plan_note": "pairs_per_budget=6 governs this variance study. The unused aa_pairs=2 metadata inherited from the earlier deletion controller does not govern the noise loop; every budget retains six complete pairs."
+}

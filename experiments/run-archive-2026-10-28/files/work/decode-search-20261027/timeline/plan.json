@@ -1,0 +1,10 @@
+{
+  "scope": "Sequential follow-up after the complete cooled decode profile; inspect GPU command-buffer timestamps and submission gaps before selecting a broader candidate.",
+  "unchanged": "Pinned checkpoint, native MXFP4 experts/BF16 activations and cache, fresh512prompt cache,128greedy outputs, exact token trajectories; no candidate execution or speedup verdict in the timestamp probe.",
+  "observer": "Temporarily override the process-local Objective-C command-buffer commit method. Record CPU commit timestamp and retain buffers; no added GPU commands, per-kernel callbacks or GPU synchronizations inside decode. After the normal final drain, read public GPUStartTime/GPUEndTime and restore the exact original method. Retaining buffers may perturb memory/scheduling; compare three paired observer/control requests and retain raw intervals and environment.",
+  "interpretation": "Command-buffer GPU intervals include stalls and every command in a buffer. Union time is not kernel-active time. Time outside those intervals includes CPU build, readback, submission and observation. Gaps are a candidate budget to investigate, not proof of recoverable latency or bandwidth/occupancy.",
+  "protocol": "Two retained hydration requests; three fixed alternating control/observer pairs with12s hold,5s settle and10s quiet before each request. AC, nominal thermal observed every0.5s, no swap-outs or swap growth; swapins logged. This is a timestamp diagnostic, not the twenty-pair candidate benchmark. Stop and retain all failures.",
+  "handoff": "After observer restoration, retain the resident model for at most20minutes while the controller selects/freezes a candidate from measured evidence. Only controller-owned run-selected-candidate.json with action run_schedule can invoke the separately hashed full-model scheduler evaluator. It must perform complete-model correctness and fresh matched A/A/candidate timing; no historical baseline substitution.",
+  "no_overlap": "Refuse to start if PID71655 is still the cooled profiler, or its authoritative state is not completed_profile. No second benchmark or model worker overlaps it.",
+  "acceptance_enabled": false
+}

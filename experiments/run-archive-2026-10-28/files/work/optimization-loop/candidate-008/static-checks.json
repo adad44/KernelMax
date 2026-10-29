@@ -1,0 +1,6 @@
+{
+  "all_16_fp4_codes_bit_exact": true,
+  "negative_zero_preserved": true,
+  "python_syntax_valid": true,
+  "reduction_tiling_unchanged": true
+}

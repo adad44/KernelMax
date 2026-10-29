@@ -1,0 +1,8 @@
+{
+  "candidate_id": "cand_90f0c66e0d03",
+  "snapshot": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/review/231cbdd1ccde41928d4ffe72c3685c05/cand_90f0c66e0d03",
+  "snapshot_sha256": "93f523c916125738e860b796e6440170d192dcdeb207e327edaa26d826f14272",
+  "authorization": "Approve this snapshot for tests and timing",
+  "scope": "Exact reviewed Python/Metal snapshot; native correctness and paired timing only after correctness passes; no acceptance enablement",
+  "recorded_at_unix": 1793068961.5689101
+}

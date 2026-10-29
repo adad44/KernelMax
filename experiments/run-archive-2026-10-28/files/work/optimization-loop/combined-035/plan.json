@@ -1,0 +1,25 @@
+{
+  "acceptance_enabled": false,
+  "candidate_id": "cand_35fff69ba1e1",
+  "components": [
+    {
+      "frozen_sha256": "479b9aedac2513a825de6c2d5479effebbd2dcd7e51420e93851ef227dbab8f7",
+      "measured_outcome": "K-unroll2: layer0ratio1.01096, layer12ratio1.00534; stopped below calibration bias at12. No reliable model gain.",
+      "source": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-k-unroll-032/trial-001-cand_b51b7021c8f2/native-correctness/runs/b89a98dd48704c0d9e0353ebd92e8ec2/cand_b51b7021c8f2"
+    },
+    {
+      "frozen_sha256": "e5e1c8d5e703a523d34f4593c6dbbe5bf4955d5cc720c5771f09f5df4b7e3d14",
+      "measured_outcome": "Down-only ratios1.00677/1.00912/1.00775; third-layerCIincludes1, so parked. No model comparison.",
+      "source": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-candidate-025-cand_38d341fb17de/native-correctness/runs/a80fc2c997c04b5799195fa54d964391/cand_38d341fb17de"
+    }
+  ],
+  "deadline_unix": 1793131200.0,
+  "fresh_checks": "Freeze once; native21, tiny30, exact11, real per-layer checks; then20fresh A/A and20paired operator cases perlayer. Only reliable all3operator winners may enter a fresh matched full-model pass.",
+  "hypothesis": "Combine the two measured kernel changes to test whether their small savings accumulate or interact. This is a new two-kernel execution graph, not an unchanged timing retry or a megakernel.",
+  "measured_region_evidence": [
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/probe-004/audited-result.json",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-budget-023/budget-summary.json"
+  ],
+  "no_rerolls": true,
+  "potential_model_contribution": "Unknown. A hypothetical20percent reduction of sampled0.379ms up/gate and0.127ms down regions gives~2.43ms/token only if representative, additive and on critical path. Regions were measured under different controls; this is a planning scenario, not a validated bound or gain."
+}

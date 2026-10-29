@@ -1,0 +1,10 @@
+{
+  "candidate_id": "cand_8ca060ed7e93",
+  "candidate_source": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_8ca060ed7e93",
+  "hypothesis": "Remove dynamic lookup-table access from exact native FP4 decode while preserving eight-lane tiling and all arithmetic ordering.",
+  "measured_target_evidence": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/probe-004/audited-result.json",
+  "previous_candidate_result": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-005/result.json",
+  "candidate_change": "FP4 decode only",
+  "estimated_model_contribution": "Unverified. Same 20% region-improvement planning scenario: 0.0759 ms/sample expert or 1.82 ms/token if all 24 layers were identical and additive. Not a measured bound.",
+  "timing_method": "Reuse the fixed 1024-call resident primer and five-second cooldown, new candidate, fresh A/A. Existing candidate-005 calibration failure remains a failure. Stop immediately on any environment issue or noise gate failure."
+}

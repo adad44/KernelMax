@@ -1,0 +1,66 @@
+{
+  "scope": "CPU scheduling fixture only; no native/GPU correctness or performance claim",
+  "records": [
+    {
+      "prompt": 1,
+      "step_size": 4096,
+      "tokens": 128,
+      "async_submissions": 127,
+      "model_calls": 128,
+      "same_reference_forward_shapes": true,
+      "same_fake_cache": true,
+      "same_fake_greedy_tokens": true,
+      "first_token_before_async": true,
+      "final_drain_included": true
+    },
+    {
+      "prompt": 512,
+      "step_size": 4096,
+      "tokens": 128,
+      "async_submissions": 127,
+      "model_calls": 129,
+      "same_reference_forward_shapes": true,
+      "same_fake_cache": true,
+      "same_fake_greedy_tokens": true,
+      "first_token_before_async": true,
+      "final_drain_included": true
+    },
+    {
+      "prompt": 2048,
+      "step_size": 4096,
+      "tokens": 128,
+      "async_submissions": 127,
+      "model_calls": 129,
+      "same_reference_forward_shapes": true,
+      "same_fake_cache": true,
+      "same_fake_greedy_tokens": true,
+      "first_token_before_async": true,
+      "final_drain_included": true
+    },
+    {
+      "prompt": 4096,
+      "step_size": 4096,
+      "tokens": 128,
+      "async_submissions": 127,
+      "model_calls": 129,
+      "same_reference_forward_shapes": true,
+      "same_fake_cache": true,
+      "same_fake_greedy_tokens": true,
+      "first_token_before_async": true,
+      "final_drain_included": true
+    },
+    {
+      "prompt": 19,
+      "step_size": 3,
+      "tokens": 128,
+      "async_submissions": 127,
+      "model_calls": 134,
+      "same_reference_forward_shapes": true,
+      "same_fake_cache": true,
+      "same_fake_greedy_tokens": true,
+      "first_token_before_async": true,
+      "final_drain_included": true
+    }
+  ],
+  "passed": true
+}

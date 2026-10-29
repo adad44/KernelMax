@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_90f0c66e0d03",
+  "name": "Joint native MXFP4 up-gate decode with SwiGLU",
+  "implementation_type": "mlx",
+  "description": "Hypothesis: a custom Metal dispatch sharing activation loads between the original up/gate MXFP4 dot products and applying native biases/SwiGLU reduces one-token decode overhead. Reads unchanged packed uint32 weights, uint8 E8M0 scales and BF16 biases directly; no requantization or persistent tensor/weight cache. FP32 dot accumulation and explicit BF16 projection/activation boundaries; native down projection unchanged. Batch-one, four-expert decode only; all other token shapes use the reference fallback. Supports native int32/uint32 IDs unchanged, K divisible by 32 and N divisible by 8. MLX ensures contiguous kernel inputs; any required layout copy remains part of candidate execution. No correctness, timing or verdict claim."
+}

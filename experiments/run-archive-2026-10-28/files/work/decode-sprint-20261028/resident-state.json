@@ -1,0 +1,106 @@
+{
+  "acceptance_enabled": false,
+  "active_command_sha256": "24aaf8160de6337a5f435edf75c5b7c99731f196c0eed7c17e56c6f0370a6f78",
+  "active_directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-005-confirm-cand_5785998944e5",
+  "candidate_ids": [
+    "cand_5785998944e5",
+    "cand_4a02c3189b7d",
+    "cand_3f4c02fcfc71"
+  ],
+  "checkpoint_unchanged": true,
+  "commands": [
+    {
+      "candidate_id": "cand_5785998944e5",
+      "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-001-screen-cand_5785998944e5",
+      "five_percent_improvement_verified": false,
+      "mode": "screen",
+      "number": 1,
+      "status": "completed_exploratory_screen"
+    },
+    {
+      "candidate_id": "cand_4a02c3189b7d",
+      "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-002-screen-cand_4a02c3189b7d",
+      "five_percent_improvement_verified": false,
+      "mode": "screen",
+      "number": 2,
+      "status": "completed_exploratory_screen"
+    },
+    {
+      "candidate_id": "cand_3f4c02fcfc71",
+      "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-003-screen-cand_3f4c02fcfc71",
+      "five_percent_improvement_verified": false,
+      "mode": "screen",
+      "number": 3,
+      "status": "completed_exploratory_screen"
+    },
+    {
+      "candidate_id": "cand_3f4c02fcfc71",
+      "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-004-confirm-cand_3f4c02fcfc71",
+      "five_percent_improvement_verified": false,
+      "mode": "confirm",
+      "number": 4,
+      "status": "stopped_NumericalFailure"
+    },
+    {
+      "candidate_id": "cand_5785998944e5",
+      "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-005-confirm-cand_5785998944e5",
+      "five_percent_improvement_verified": false,
+      "mode": "confirm",
+      "number": 5,
+      "status": "stopped_EnvironmentFailure"
+    }
+  ],
+  "contract_sha256": "2a31bbda3389e91f12e1e17b1cff261b96c5f12cd3ce9af5dc818fd21a50c895",
+  "errors": [],
+  "finished_unix": 1793212445.067081,
+  "five_percent_improvement_verified": false,
+  "load_progress": {
+    "done": 531,
+    "total": 531
+  },
+  "next_command": 6,
+  "official": false,
+  "pid": 48619,
+  "protected_before": {
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/AGENTS.md": "7bca53cf4fc2ab3f9a637020487f75b4c4a104c5f940954fc71bf181615dce8f",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/baseline_control.py": "5e875661a98c49773e10d02584e4a4f1dd080334bfe2c2cee76eeae662a0ea73",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/baseline_report.py": "e1fabd273ef4691766ecbc5f28a3ddd5a98a99be80b077373a13764411e33d4c",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/baseline_validation.py": "c02579ec4aefa5f88fe3bf3ad36dcea212c014c3d2f44fa54394bfa89d1af0f8",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/benchmark.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_execution.py": "2021d9bbb7024960957b2e3b7618d8e2e3b3c9e7d689d8403a1fb0d7ea88bb96",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_protocol.py": "7d53c380991ded462cde7aa22c4fb17b29ed0a3b3d23bbfc812a7b24f5441d2e",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_worker.py": "79ff191bcacca2189e5b47b99398d06f1a353b63d64fa888c81306b76fdf1755",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/checkpoint_verification.py": "ea768edf0da79a9aa761fb31bb13b92496ecb9c291bcfe1c6cfd1ce48c35017f",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/correctness.py": "2950193dcac879ca3859050df377d24b03fc4b92361f977f40f841d21f159914",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/correctness_cases.py": "1f7fafcc624aec310c4958ff927d1486da43ebf74a74b4cefdb76fa59a666825",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/correctness_suite.py": "e859715a5f9911b03ffeff8fac3deaa294d7875453c03e2349ec4e67b154eb05",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/environment.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/measurement.py": "61ced09d3af5fb2b43bda3d7085826b2d34d16c1d1d189fecc9a847a2fd1bdcb",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/native_baseline.py": "af7a8f890fd0242692b831446c5fb8a1d1b70bbf5c15cc6519dafb7931869844",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/pass_through.py": "8e3e48ab7be379a48f7134c4a6e3454d6af525f33d9090d4b8794aa858ee252a",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/schemas.py": "e2a5455f8dc074b8e1c93d14e194c1b3afe06aca0b338ef31d3493f247ba9dfb",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/verdict.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/kernelmaxxing.yaml": "5aec8b31bb9fe54857fb4e35920265a8fd799f93d0c9f14a1a547f27e386e15b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/candidate_manager.py": "ee52e306ae9d22f64ca9a2e10832826d5c30e0838120ee1a60709852f9760068",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/experiment_budget.py": "4dc0bf94b091b1d2cb3653487cc90f9a81396eae6f01bd427068067b4abe9a23",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/journal.py": "899f5077d5cdf1cb1b7c19248d289950df0843c8c31b0f8f8277ff0468b2563c",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/main.py": "ce9c64bbc5f207a3723820613bf0415ebb135b0454453f8a3917e62f88298b6a",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/run.py": "5073a41c4edab30aa62922c2f6eca70cf9fd8978773495b9f0b05a3b651fbcb0",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/session.py": "68bfcce40a650d7fcbd11128ff6d826019f3fb6c9decee0f16dfbbd8e047f64a",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/state_machine.py": "829e24546ba96eb8de2ed2b8f85c2398d8c2a239781171c40798075d29325acd",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/target/adapter.py": "290f8c1bab4ca5af3429b06727834a9609ec482ffc56cffc7a791304e513d3a7",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/target/model_loader.py": "88401ad24d877a9618f5f7566a617777b81511d2c1b34115ec2ba46b9c5e93de",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/target/reference_moe.py": "7d3f5f6aecf70402027ad0c42a3727264df7de9ef4577c4627d05d945a71d9bd",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/target/workload.py": "62ce8d2c58c0106786523652b7396ff1b8dbad1296b416c8583ee732f5d789ab",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/lib/python3.12/site-packages/mlx/core.cpython-312-darwin.so": "49eeb7232106aa9ab846b20e0417add980b1c7213ef6dda6e25c01d45ca54851",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/lib/python3.12/site-packages/mlx_lm/models/gpt_oss.py": "a71c0402bcdf9495291ff1efdba02dca2dfc9c4c821d81df460ba4bd6cca3443",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/lib/python3.12/site-packages/mlx_lm/models/switch_layers.py": "073a6a808d5c90bb699a2ecca0e559b06727ae96dbc1f0253e4c7e77e4ee1ef2",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/plan.json": "dbd808ffe1ec0f46521d5d635e1fc2fe4b01fd918dd1631916a474663b9b574d",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/run_sprint.py": "a9116f4a37d559037e58d5d519e8bdb16911a368f8ae22452fdc6b28b7200367",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/session.json": "e5d96b0a1b2fb86e7e77f5df567c2bc69f29af477935ceb799a4f9e4d4b7354d"
+  },
+  "protected_unchanged": true,
+  "started_unix": 1793210258.811712,
+  "status": "finished_by_controller",
+  "verdict": null
+}

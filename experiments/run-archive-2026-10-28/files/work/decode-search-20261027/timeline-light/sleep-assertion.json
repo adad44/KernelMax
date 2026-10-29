@@ -1,0 +1,6 @@
+{
+  "pid": 78267,
+  "worker_pid": 77840,
+  "created_unix": 1793152924.8312871,
+  "scope": "prevent idle/system sleep only while this worker exists; no saved power settings changed"
+}

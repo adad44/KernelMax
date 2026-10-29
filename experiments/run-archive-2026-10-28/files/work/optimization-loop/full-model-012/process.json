@@ -1,0 +1,74 @@
+{
+  "candidate_id": "cand_b64853d31601",
+  "command": [
+    "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+    "-B",
+    "-u",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-012/workflow.py"
+  ],
+  "deadline_unix": 1793131200.0,
+  "ended_unix": 1793097223.076419,
+  "kind": "full_model_then_untried_candidate_search",
+  "returncode": 0,
+  "started_unix": 1793096715.837964,
+  "status": "completed",
+  "supervisor_pid": 78037,
+  "tracked_processes": {
+    "78039": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-012/workflow.py",
+      "ppid": 78037,
+      "start": "Tue Oct 27 03:25:15 2026"
+    },
+    "78041": {
+      "command": "(python3.12)",
+      "ppid": 78039,
+      "start": "Tue Oct 27 03:25:15 2026"
+    },
+    "79190": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-013/search.py",
+      "ppid": 78039,
+      "start": "Tue Oct 27 03:31:32 2026"
+    },
+    "79191": {
+      "command": "/usr/bin/caffeinate -i -w 79190",
+      "ppid": 79190,
+      "start": "Tue Oct 27 03:31:32 2026"
+    },
+    "79192": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-013/trial-001-cand_b435496c6696/pipeline.py",
+      "ppid": 79190,
+      "start": "Tue Oct 27 03:31:32 2026"
+    },
+    "79197": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/scripts/run_candidate_loop.py --session /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/session.json --candidate /Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_b435496c6696 --work-dir /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-013/trial-001-cand_b435496c6696/native-correctness --timeout-seconds 300",
+      "ppid": 79192,
+      "start": "Tue Oct 27 03:31:32 2026"
+    },
+    "79210": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -I -B /Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_worker.py /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-013/trial-001-cand_b435496c6696/native-correctness/artifacts/execution-oz8ugioe/reference/request.json /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-013/trial-001-cand_b435496c6696/native-correctness/artifacts/execution-oz8ugioe/reference/response.jsonl",
+      "ppid": 79197,
+      "start": "Tue Oct 27 03:31:33 2026"
+    },
+    "79382": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -I -B /Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_worker.py /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-013/trial-001-cand_b435496c6696/native-correctness/artifacts/execution-oz8ugioe/candidate/request.json /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-013/trial-001-cand_b435496c6696/native-correctness/artifacts/execution-oz8ugioe/candidate/response.jsonl",
+      "ppid": 79197,
+      "start": "Tue Oct 27 03:32:07 2026"
+    },
+    "79397": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-013/trial-001-cand_b435496c6696/tiny_native_checks.py",
+      "ppid": 79192,
+      "start": "Tue Oct 27 03:32:09 2026"
+    },
+    "79406": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-013/trial-001-cand_b435496c6696/operator_diagnostic.py /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-013/trial-001-cand_b435496c6696/native-correctness/artifacts/execution-oz8ugioe/report.json",
+      "ppid": 79192,
+      "start": "Tue Oct 27 03:32:11 2026"
+    },
+    "79446": {
+      "command": "(ps)",
+      "ppid": 79406,
+      "start": "Tue Oct 27 03:32:15 2026"
+    }
+  },
+  "worker_pid": 78039
+}

@@ -1,0 +1,46 @@
+{
+  "approved_response": "yea do that, and try for the official baseline again",
+  "scope": "Temporary pause of MemoryOS capture/indexing and scheduler; restore initially loaded jobs on exit. No history deletion.",
+  "output": "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/official-attempt-2026-10-04T14-24-18-seed42-paging-aware",
+  "log": "/Users/alandiaz/Library/Logs/kernelmax-official-baseline-2026-10-04T14-24-18.log",
+  "initially_loaded": [],
+  "swap_policy": "paging-aware",
+  "controller_idle_seconds": 900,
+  "session_limit_seconds": 10800,
+  "paused": [],
+  "restored": [],
+  "restoration_errors": [],
+  "status": "benchmark_finished",
+  "external_service_lease": {
+    "path": "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/background-pause-until-official-2026-10-04.json",
+    "sha256": "87e5c8e357acaadb78a7bf9121be9138a9ba323e0bde08e733eccd52599f1728",
+    "loaded_before_session": {
+      "com.memoryos.scheduler": false,
+      "com.memoryos.daemon": false,
+      "com.memoryos.backend": false
+    },
+    "scope": "Services remain paused across attempts until the official baseline is frozen; this supervisor did not unload or restore them.",
+    "loaded_after_session": {
+      "com.memoryos.scheduler": false,
+      "com.memoryos.daemon": false,
+      "com.memoryos.backend": false
+    },
+    "unchanged": true
+  },
+  "display_control": {
+    "action": "display sleep only; system kept awake by caffeinate; no permanent power-setting change",
+    "returncode": 0,
+    "error": ""
+  },
+  "benchmark_pid": 19700,
+  "autonomous_controller": {
+    "pid": 19701,
+    "log": "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/official-attempt-2026-10-04T14-24-18-seed42-paging-aware-controller.log",
+    "scope": "Detached local control; display sleep only, no UI suspension or AppleEvents",
+    "returncode": 0
+  },
+  "benchmark_returncode": 0,
+  "current_attempt": "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/official-attempt-2026-10-04T14-24-18-seed42-paging-aware",
+  "finished_at": 1791155906.7073028,
+  "restoration_complete": true
+}

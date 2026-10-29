@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_06f4ad03af35",
+  "name": "Sixteen-lane joint up/gate reduction",
+  "implementation_type": "mlx",
+  "description": "Changes only reduction width from eight to sixteen lanes per output row and four output rows per64threadgroup. Uses the correctness-passed native-style exact half FP4 decode. Targets the measured up/gate region (0.379ms/call,46.7% of one sampled isolated expert), testing a different work/register/coalescing balance without a hardware-cause claim. Original MXFP4 weights/scales/routes, BF16 epilogue, native down and prefill fallback remain. No copy, conversion or requantization."
+}

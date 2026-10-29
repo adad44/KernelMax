@@ -1,0 +1,26 @@
+{
+  "actual_model_workers": 1,
+  "deadline_unix": 1793131200.0,
+  "no_duplicate_benchmark": true,
+  "observed_unix": 1793130877.706153,
+  "task_python_processes": [
+    {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-followup-036/flow.py",
+      "pid": 19763,
+      "ppid": 1,
+      "start": "Tue Oct 27 11:35:58 2026"
+    },
+    {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-038-01/supervise.py",
+      "pid": 25519,
+      "ppid": 19763,
+      "start": "Tue Oct 27 11:51:19 2026"
+    },
+    {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-038-01/run.py",
+      "pid": 25522,
+      "ppid": 25519,
+      "start": "Tue Oct 27 11:51:19 2026"
+    }
+  ]
+}

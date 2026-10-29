@@ -1,0 +1,10 @@
+{
+  "all128tokens_and127positive_intervals": true,
+  "all_greedy_sequences_match_native_first_request": true,
+  "candidate_id": "cand_02e5f860f143",
+  "errors": [],
+  "no_mlx_execution": true,
+  "scope": "Read-only completed-request consistency audit; no held-out quality or performance verdict",
+  "source_sha256": "b159e01ca3bd9b487ba75729c555f64fef1d0ee7ed29ee361cea9720b0c09093",
+  "timed_requests_audited": 92
+}

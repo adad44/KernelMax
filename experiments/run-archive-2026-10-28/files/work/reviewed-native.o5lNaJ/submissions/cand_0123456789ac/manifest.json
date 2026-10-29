@@ -1,0 +1,1 @@
+{"candidate_id":"cand_0123456789ac","name":"Reviewed native intentional corruption","implementation_type":"mlx","description":"Explicitly reviewed incorrect smoke fixture; output offset must fail numerical checks."}

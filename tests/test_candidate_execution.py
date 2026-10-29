@@ -599,6 +599,7 @@ class MLXCandidateTransportTests(unittest.TestCase):
             )
             runtime = {
                 "mode": "mlx_native",
+                "model_revision": "mock-pinned-revision",
                 "model_path": str(root),
                 "model_files": {
                     name: file_digest(root / name)
@@ -622,6 +623,32 @@ class MLXCandidateTransportTests(unittest.TestCase):
                     mx.zeros((1, 1, 4), dtype=mx.int32),
                 )
                 self.assertEqual(reference(12, x, ids).shape, (1, 1, 4, 8))
+            # A real byte-verification receipt allows both workers to avoid
+            # rereading shards while preserving before/after load identity checks.
+            from evaluator.checkpoint_verification import verify_checkpoint
+
+            receipt, _ = verify_checkpoint(
+                root, runtime["model_revision"], runtime["model_files"],
+                root.parent / (root.name + "-verification.json"),
+            )
+            self.addCleanup((root.parent / (root.name + "-verification.json")).unlink)
+            runtime["checkpoint_verification"] = receipt
+            with patch("mlx_lm.load", return_value=(model, None)) as loader:
+                with patch("evaluator.candidate_worker.file_digest", side_effect=AssertionError("redundant byte hash")):
+                    _binding({"runtime": runtime})
+                loader.assert_called_once()
+
+            def changed_load(*args, **kwargs):
+                (root / "fixture.safetensors").write_bytes(b"changed during model load")
+                return model, None
+
+            with patch("mlx_lm.load", side_effect=changed_load):
+                with self.assertRaisesRegex(ValueError, "stale or mismatched"):
+                    _binding({"runtime": runtime})
+            with patch("mlx_lm.load") as loader:
+                with self.assertRaisesRegex(ValueError, "stale or mismatched"):
+                    _binding({"runtime": runtime})
+                loader.assert_not_called()
 
 
 if __name__ == "__main__":

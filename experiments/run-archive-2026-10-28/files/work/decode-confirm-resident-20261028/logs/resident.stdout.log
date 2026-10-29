@@ -1,0 +1,79 @@
+load 0 531
+load 25 531
+load 50 531
+load 75 531
+load 100 531
+load 125 531
+load 150 531
+load 175 531
+load 200 531
+load 225 531
+load 250 531
+load 275 531
+load 300 531
+load 325 531
+load 350 531
+load 375 531
+load 400 531
+load 425 531
+load 450 531
+load 475 531
+load 500 531
+load 525 531
+load 531 531
+confirm 512 aa_warmup 1 A 24.351tok/s []
+confirm 512 aa_warmup 1 B 24.474tok/s []
+confirm 512 aa_warmup 2 A 24.377tok/s []
+confirm 512 aa_warmup 2 B 24.401tok/s []
+confirm 512 aa_warmup 3 A 24.407tok/s []
+confirm 512 aa_warmup 3 B 24.207tok/s []
+confirm 512 aa_warmup 4 A 24.341tok/s []
+confirm 512 aa_warmup 4 B 24.383tok/s []
+confirm 512 aa_warmup 5 A 24.329tok/s []
+confirm 512 aa_warmup 5 B 24.301tok/s []
+confirm 512 aa 1 A 24.293tok/s []
+confirm 512 aa 1 B 24.259tok/s []
+confirm 512 aa 2 B 24.272tok/s []
+confirm 512 aa 2 A 24.351tok/s []
+confirm 512 aa 3 A 24.340tok/s []
+confirm 512 aa 3 B 24.235tok/s []
+confirm 512 aa 4 B 24.353tok/s []
+confirm 512 aa 4 A 24.358tok/s []
+confirm 512 aa 5 A 24.365tok/s []
+confirm 512 aa 5 B 24.346tok/s []
+confirm 512 aa 6 B 24.361tok/s []
+confirm 512 aa 6 A 24.269tok/s []
+confirm 512 aa 7 A 24.332tok/s []
+confirm 512 aa 7 B 24.374tok/s []
+confirm 512 aa 8 B 24.358tok/s []
+confirm 512 aa 8 A 24.353tok/s []
+confirm 512 aa 9 A 24.386tok/s []
+confirm 512 aa 9 B 24.167tok/s []
+confirm 512 aa 10 B 24.339tok/s []
+confirm 512 aa 10 A 24.211tok/s []
+confirm 512 aa 11 A 24.231tok/s []
+confirm 512 aa 11 B 24.312tok/s []
+confirm 512 aa 12 B 24.342tok/s []
+confirm 512 aa 12 A 24.330tok/s []
+confirm 512 aa 13 A 24.327tok/s []
+confirm 512 aa 13 B 24.361tok/s []
+confirm 512 aa 14 B 24.336tok/s []
+confirm 512 aa 14 A 24.362tok/s []
+confirm 512 aa 15 A 24.216tok/s []
+confirm 512 aa 15 B 24.382tok/s []
+confirm 512 aa 16 B 24.386tok/s []
+confirm 512 aa 16 A 24.378tok/s []
+confirm 512 aa 17 A 24.073tok/s []
+confirm 512 aa 17 B 24.406tok/s []
+confirm 512 aa 18 B 24.310tok/s []
+confirm 512 aa 18 A 24.380tok/s []
+confirm 512 aa 19 A 24.351tok/s []
+confirm 512 aa 19 B 24.329tok/s []
+confirm 512 aa 20 B 24.353tok/s []
+confirm 512 aa 20 A 24.294tok/s []
+confirm 512 warmup-1 1 baseline 24.266tok/s []
+confirm 512 warmup-1 1 candidate 26.269tok/s []
+confirm 512 warmup-1 2 baseline 24.389tok/s []
+confirm 512 warmup-1 2 candidate 26.298tok/s []
+confirm 512 warmup-1 3 baseline 24.129tok/s []
+confirm 512 warmup-1 3 candidate 25.973tok/s ['swapouts increased during request']

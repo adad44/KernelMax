@@ -1,0 +1,18 @@
+{
+  "declared_before_candidate_timing": true,
+  "reason": "The first candidate had wide descriptive intervals at 32 calls per sample. Lengthen both lanes equally to amortize startup/scheduling variation. No second-candidate timing has been observed.",
+  "routing_inputs": 32,
+  "routing_cycles_per_sample": 8,
+  "decode_calls_per_sample": 256,
+  "pairs_per_layer": 20,
+  "layers": [
+    0,
+    12,
+    23
+  ],
+  "order": "alternating_ab_ba",
+  "environment_policy": "unchanged strict policy; retain every sample including invalid ones",
+  "original_controller_sha256": "027b506ae528e8568c4e09ac515ccc8736760fe64c053f8f91588e08b77eb46d",
+  "new_controller_sha256": "831891480ca60bcbdc4826c533ac20942d1b26a622f7d38e6f3219c15d270d51",
+  "candidate_snapshot_changed": false
+}

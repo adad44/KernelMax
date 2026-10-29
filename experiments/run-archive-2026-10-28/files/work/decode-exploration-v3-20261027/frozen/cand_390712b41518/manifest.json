@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_390712b41518",
+  "name": "Lossless BF16 dense decode weight reads",
+  "implementation_type": "mlx",
+  "description": "Complete-decode memory-execution candidate exposing prepare_projection(weight). Encode BF16 dense weights in64word blocks with low bytes, exact upper-byte exponent deltas/sign nibbles and raw-block escapes. No rounding or requantization: every original16bit weight word must reconstruct exactly. A Metal one-vector matrix product reads this layout while preserving native32lane/four-value ordered accumulation and shuffle reductions. Intended replacement sites are attention q/k/v/o and vocabulary projection; native MXFP4 experts, routing, activations and cache stay unchanged. Prefill and unsupported layouts use controller-declared unchanged native fallbacks. Preparation is outside resident-model timing; sidecars increase prototype allocation and that cost must be reported. Hypothesis: reduce dense weight-read traffic across the complete decode step rather than tune a small expert kernel. No correctness, speedup or acceptance claim."
+}

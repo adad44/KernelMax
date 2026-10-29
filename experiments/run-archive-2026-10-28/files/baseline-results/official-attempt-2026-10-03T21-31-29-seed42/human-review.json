@@ -1,0 +1,27 @@
+{
+  "approved": true,
+  "run_id": "51b638ba-7cf5-4bae-a981-24a75c0a9550",
+  "driver_sha256": "53521a5522bcc1f65b8ec7709f1d4cf61def1a24b034ff4c827fc6ebc8043a9a",
+  "resident_session_root": "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/official-attempt-2026-10-03T21-31-29-seed42",
+  "reviewer": "Alan Diaz",
+  "review_date": "2026-10-03 America/Los_Angeles",
+  "human_response": "Approve this reference protocol",
+  "method_choice_response": "do whats best for our mission",
+  "method_choice_question": "Approve using the contract’s native MLX-LM operator for the MoE checks—testing token/expert-slot dispatch invariance—while retaining the failed dense-BF16 comparison as an unresolved diagnostic? All five stock-generation comparisons passed. Tolerances will not change, and candidate acceptance will remain disabled.",
+  "delegated_method_choice": "Use the unchanged native MLX-LM operator specified by the contract for token and expert-slot dispatch invariance. This is not an independent matrix-multiply numerical oracle. Preserve the failed dense-BF16 comparison as an unresolved diagnostic; do not widen tolerances or enable candidate acceptance.",
+  "pre_run_unit_tests": "54 passed",
+  "persistent_worker_response": "Approve persistent-worker protocol",
+  "persistent_worker_protocol": "Load and verify unchanged native model once. Retry only environment-invalid attempts, with fresh run IDs/caches, resident preconditioning, five warmups and all 20 alternating A/A pairs per size. At most two additional attempts. Retain every failed artifact with its hash. Stop on GPU/correctness errors, failed statistical calibration or changed protected inputs. No gates or tolerances change; candidate acceptance stays disabled.",
+  "resident_setup": "Before the five contract warmups, require a quiet preflight before each untimed priming request across all three context lengths; retain all priming until two complete consecutive rounds have no environment events, or stop after five rounds. These additional setup requests are explicitly excluded from the baseline and never replace the required warmups or measured samples.",
+  "environment_pause_response": "yea do that, and try for the official baseline again",
+  "environment_pause_scope": "Temporarily unload only the initially loaded MemoryOS backend, capture daemon and scheduler launch jobs. Preserve job configurations and stored history; restore those jobs at the end of this attempt, including on failure or controller timeout. Capturing is paused during this interval.",
+  "environment_control_receipt": "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/memoryos-session-2026-10-03T21-31-29.json",
+  "untimed_precondition": "Before each warmup request or timed A/A pair, require a ten-second quiet window in swap, thermal and power observations. Invalidate attempt if not settled within sixty seconds. Do not discard or retry measured requests within an attempt; complete environment-invalid attempts may be retried under the approved bounded persistent protocol. All existing invalidation rules remain unchanged.",
+  "retained_failed_attempts": [
+    "official-attempt-2026-10-03T17-08-11-seed42: dense-BF16 diagnostic failed",
+    "official-attempt-2026-10-03T17-36-08-seed42: twelve swap-in pages invalidated second warmup",
+    "official-attempt-2026-10-03T17-51-49-seed42: three swap-in pages invalidated second warmup despite quiet preflight"
+  ],
+  "reviewed_protocol": "Native OpenAI weights; unchanged MLX-LM model with synchronous timing; stock-output and selected-expert correctness checks; 20 alternating A/A pairs per prompt size; nominal thermal state and no swap activity; reported noise confidence intervals. Freeze only if all checks pass. Candidate acceptance stays disabled.",
+  "scope": "Reference-protocol approval, not a code-security audit or approval of an optimization candidate"
+}

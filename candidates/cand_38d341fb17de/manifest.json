@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_38d341fb17de",
+  "name": "Native-order down projection and bias",
+  "implementation_type": "mlx",
+  "description": "Targets freshly measured native down projection cost with one custom native32-lane/four-row MXFP4 kernel and BF16 projection-rounding then BF16 bias. Native up/gate/SwiGLU, selected IDs, all weights/scales/precision, prefill fallback preserved. No parameter conversion, caching or routing weighting. Arithmetic structure follows native QMV; exact real-boundary checks required. No speedup claim."
+}

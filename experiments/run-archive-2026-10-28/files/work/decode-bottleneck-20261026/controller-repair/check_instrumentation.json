@@ -1,0 +1,49 @@
+{
+  "checks": [
+    {
+      "max_abs_logit_error": 0,
+      "mode": "normal",
+      "tokens_equal": true
+    },
+    {
+      "max_abs_logit_error": 0,
+      "mode": "oracle_pointwise",
+      "tokens_equal": true
+    },
+    {
+      "max_abs_logit_error": 0,
+      "mode": "oracle_up_gate",
+      "tokens_equal": true
+    },
+    {
+      "max_abs_logit_error": 0,
+      "mode": "oracle_down",
+      "tokens_equal": true
+    },
+    {
+      "max_abs_logit_error": 0,
+      "mode": "oracle_experts",
+      "tokens_equal": true
+    },
+    {
+      "max_abs_logit_error": 0,
+      "mode": "serial",
+      "tokens_equal": true
+    },
+    {
+      "candidate_id": "cand_b7f7dafae7bb",
+      "full_and_region_checks": 6,
+      "module": "_bottleneck_cand_b7f7dafae7bb.implementation",
+      "source_file": "/Users/alandiaz/Downloads/KernelMaxxxing/work/first-optimization-20261026/review/f8c93159c83647368348a5b022c6bf6d/cand_b7f7dafae7bb/implementation.py"
+    },
+    {
+      "candidate_id": "cand_90f0c66e0d03",
+      "full_and_region_checks": 6,
+      "module": "_bottleneck_cand_90f0c66e0d03.implementation",
+      "source_file": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/review/231cbdd1ccde41928d4ffe72c3685c05/cand_90f0c66e0d03/implementation.py"
+    }
+  ],
+  "saved_entries": 1778,
+  "scope": "tiny random model; controller validation only",
+  "serial_events": 304
+}

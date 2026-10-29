@@ -1,0 +1,20 @@
+{
+  "status": "loading",
+  "official": false,
+  "verdict": null,
+  "acceptance_enabled": false,
+  "baseline": {},
+  "oracle": {},
+  "operators": {},
+  "logical_byte_accounting": {
+    "expert_weights_and_scales_bytes_per_token": 1269043200,
+    "attention_projection_weights_bytes_per_token": 1274019840,
+    "lm_head_weights_bytes_per_token": 1158266880,
+    "combined_bytes_per_token": 3701329920,
+    "candidate1_projection_result_traffic_saved_bytes_per_token": 2211840,
+    "candidate2_projection_result_traffic_saved_bytes_per_token": 4423680,
+    "warning": "analytical logical bytes, not measured DRAM traffic; intermediate estimate excludes bias-gather buffers, other tensors, caching and re-reads"
+  },
+  "environment_issues": [],
+  "source_and_checkpoint_unchanged": null
+}

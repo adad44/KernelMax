@@ -1,0 +1,1620 @@
+{
+  "acceptance_enabled": false,
+  "all_tracked_sources_unchanged": true,
+  "candidate_ids": [
+    "cand_5785998944e5",
+    "cand_4a02c3189b7d",
+    "cand_3f4c02fcfc71"
+  ],
+  "collected_at_unix": 1793211588.492494,
+  "commands": [
+    {
+      "candidate_bundle_sha256": "b6dd528b50b4d3d89db496fb021bbcd21d2043f701c36196e39ea08457283918",
+      "candidate_id": "cand_5785998944e5",
+      "correctness": [
+        {
+          "all_logits_bit_exact": true,
+          "arrays_sha256": "85099f9e589734adba284ef40d3b489f8783bf8dec67fad6702e4573186d9234",
+          "cache_max_abs_errors": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "cache_metadata_equal": true,
+          "cache_within_tolerance": true,
+          "detail": "max_abs_error=0; violations=0/1608704; atol=0.02; rtol=0.02; tolerance_status=provisional",
+          "length": 512,
+          "numerical_passed": true,
+          "outputs": 8,
+          "passed": true,
+          "route_set_differences": 0,
+          "route_slot_differences": 0,
+          "token_differences": 0
+        }
+      ],
+      "errors": [],
+      "five_percent_improvement_verified": false,
+      "guards": {
+        "checkpoint_and_snapshot_unchanged": true,
+        "original_methods_restored": true,
+        "protected_unchanged": true
+      },
+      "number": 1,
+      "phase_memory": [
+        {
+          "decode_tokens_per_second": 23.880366511216046,
+          "full_model_wall_time_ms": 8150.678916834295,
+          "inter_token_latency_ms": 41.2238750141114,
+          "invalid_reasons": [],
+          "lane": "baseline",
+          "phase": "phase_memory",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -48.0,
+            "swapin_pages": 3008,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 0
+        },
+        {
+          "decode_tokens_per_second": 26.02464571671249,
+          "full_model_wall_time_ms": 6467.53712487407,
+          "inter_token_latency_ms": 37.93662507086992,
+          "invalid_reasons": [],
+          "lane": "candidate",
+          "phase": "phase_memory",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -24.0,
+            "swapin_pages": 1019,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 0
+        }
+      ],
+      "promising_for_confirmation": true,
+      "status": "completed_exploratory_screen",
+      "summary": {
+        "all_pair_saved_ms_per_token": [
+          3.179792976593525,
+          2.873239827921658,
+          4.130706693390458
+        ],
+        "bootstrap_95pct_ratio": [
+          1.0738405431896847,
+          1.1080304491287924
+        ],
+        "length": 512,
+        "median_ratio": 1.0839572187665303,
+        "median_saved_ms_per_token": 3.179792976593525,
+        "metrics": {
+          "decode_tokens_per_second": {
+            "baseline": {
+              "mad": 0.32907342116009985,
+              "median": 23.932232211394442,
+              "p90": 24.273090061091008
+            },
+            "candidate": {
+              "mad": 0.2503413899761071,
+              "median": 26.153018635201565,
+              "p90": 26.35329174718245
+            }
+          },
+          "full_model_wall_time_ms": {
+            "baseline": {
+              "mad": 148.96700088866055,
+              "median": 7018.390042008832,
+              "p90": 8633.034408511594
+            },
+            "candidate": {
+              "mad": 86.49108302779496,
+              "median": 8132.950333878398,
+              "p90": 8202.143200300634
+            }
+          },
+          "inter_token_latency_ms": {
+            "baseline": {
+              "mad": 0.3848741762340069,
+              "median": 41.6574168484658,
+              "p90": 41.965316189453006
+            },
+            "candidate": {
+              "mad": 0.3590828273445368,
+              "median": 38.099957862868905,
+              "p90": 38.53595876134932
+            }
+          },
+          "peak_memory_bytes": {
+            "baseline": {
+              "mad": 0,
+              "median": 15111664335,
+              "p90": 15111664335.0
+            },
+            "candidate": {
+              "mad": 0,
+              "median": 15111664335,
+              "p90": 15111664335.0
+            }
+          },
+          "prefill_tokens_per_second": {
+            "baseline": {
+              "mad": 15.001264873783896,
+              "median": 312.6719545048104,
+              "p90": 324.6729664038375
+            },
+            "candidate": {
+              "mad": 8.216333089848405,
+              "median": 160.454556477111,
+              "p90": 299.416624615959
+            }
+          },
+          "time_to_first_token_ms": {
+            "baseline": {
+              "mad": 74.98208386823535,
+              "median": 1637.7542919944972,
+              "p90": 3385.8451921027154
+            },
+            "candidate": {
+              "mad": 172.2044579219073,
+              "median": 3191.200959030539,
+              "p90": 3328.9645253680646
+            }
+          }
+        },
+        "mode": "screen",
+        "paired_ratios": [
+          1.0839572187665303,
+          1.0738405431896847,
+          1.1080304491287924
+        ],
+        "pairs": 3,
+        "swap_affected_rows": 3
+      },
+      "timed_rows": [
+        {
+          "decode_tokens_per_second": 24.358304523515148,
+          "full_model_wall_time_ms": 9036.695500137284,
+          "inter_token_latency_ms": 40.83516704849899,
+          "invalid_reasons": [
+            "swap grew during the request",
+            "swapouts increased during request"
+          ],
+          "lane": "baseline",
+          "phase": "screen",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": 0.18999999999869033,
+            "swapin_pages": 1915,
+            "swapins_permitted": true,
+            "swapout_pages": 1548
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 1
+        },
+        {
+          "decode_tokens_per_second": 26.403360025177673,
+          "full_model_wall_time_ms": 6342.455207835883,
+          "inter_token_latency_ms": 37.74087503552437,
+          "invalid_reasons": [],
+          "lane": "candidate",
+          "phase": "screen",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": 0.0,
+            "swapin_pages": 80,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 1
+        },
+        {
+          "decode_tokens_per_second": 25.699401237625477,
+          "full_model_wall_time_ms": 8132.950333878398,
+          "inter_token_latency_ms": 38.644958985969424,
+          "invalid_reasons": [
+            "swap grew during the request",
+            "swapouts increased during request"
+          ],
+          "lane": "candidate",
+          "phase": "screen",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": 98.86999999999898,
+            "swapin_pages": 25313,
+            "swapins_permitted": true,
+            "swapout_pages": 30908
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 2
+        },
+        {
+          "decode_tokens_per_second": 23.932232211394442,
+          "full_model_wall_time_ms": 6869.423041120172,
+          "inter_token_latency_ms": 41.6574168484658,
+          "invalid_reasons": [],
+          "lane": "baseline",
+          "phase": "screen",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": 0.0,
+            "swapin_pages": 112,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 2
+        },
+        {
+          "decode_tokens_per_second": 23.603158790234342,
+          "full_model_wall_time_ms": 7018.390042008832,
+          "inter_token_latency_ms": 42.04229102469981,
+          "invalid_reasons": [],
+          "lane": "baseline",
+          "phase": "screen",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -48.0,
+            "swapin_pages": 2704,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 3
+        },
+        {
+          "decode_tokens_per_second": 26.153018635201565,
+          "full_model_wall_time_ms": 8219.441416906193,
+          "inter_token_latency_ms": 38.099957862868905,
+          "invalid_reasons": [
+            "swap grew during the request",
+            "swapouts increased during request"
+          ],
+          "lane": "candidate",
+          "phase": "screen",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": 325.3199999999997,
+            "swapin_pages": 511,
+            "swapins_permitted": true,
+            "swapout_pages": 21844
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 3
+        }
+      ],
+      "warmups": [
+        {
+          "decode_tokens_per_second": 24.366203313696765,
+          "full_model_wall_time_ms": 6781.519332900643,
+          "inter_token_latency_ms": 40.877291932702065,
+          "invalid_reasons": [],
+          "lane": "baseline",
+          "phase": "warmup",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": 0.0,
+            "swapin_pages": 88,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 0
+        },
+        {
+          "decode_tokens_per_second": 25.572824127365767,
+          "full_model_wall_time_ms": 6536.104624858126,
+          "inter_token_latency_ms": 38.11300010420382,
+          "invalid_reasons": [],
+          "lane": "candidate",
+          "phase": "warmup",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -64.0,
+            "swapin_pages": 4064,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 0
+        }
+      ]
+    },
+    {
+      "candidate_bundle_sha256": "e4c96fc022079e58d7987f1bec0bdd4defb36589b4fc303efc5a41a5b76e1ed3",
+      "candidate_id": "cand_4a02c3189b7d",
+      "correctness": [
+        {
+          "all_logits_bit_exact": true,
+          "arrays_sha256": "85099f9e589734adba284ef40d3b489f8783bf8dec67fad6702e4573186d9234",
+          "cache_max_abs_errors": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "cache_metadata_equal": true,
+          "cache_within_tolerance": true,
+          "detail": "max_abs_error=0; violations=0/1608704; atol=0.02; rtol=0.02; tolerance_status=provisional",
+          "length": 512,
+          "numerical_passed": true,
+          "outputs": 8,
+          "passed": true,
+          "route_set_differences": 0,
+          "route_slot_differences": 0,
+          "token_differences": 0
+        }
+      ],
+      "errors": [],
+      "five_percent_improvement_verified": false,
+      "guards": {
+        "checkpoint_and_snapshot_unchanged": true,
+        "original_methods_restored": true,
+        "protected_unchanged": true
+      },
+      "number": 2,
+      "phase_memory": [
+        {
+          "decode_tokens_per_second": 24.301240666792733,
+          "full_model_wall_time_ms": 6767.973749898374,
+          "inter_token_latency_ms": 40.791082894429564,
+          "invalid_reasons": [],
+          "lane": "baseline",
+          "phase": "phase_memory",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": 0.0,
+            "swapin_pages": 356,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 0
+        },
+        {
+          "decode_tokens_per_second": 24.65034819333528,
+          "full_model_wall_time_ms": 7818.950375076383,
+          "inter_token_latency_ms": 40.18704197369516,
+          "invalid_reasons": [],
+          "lane": "candidate",
+          "phase": "phase_memory",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -64.0,
+            "swapin_pages": 3934,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 0
+        }
+      ],
+      "promising_for_confirmation": false,
+      "status": "completed_exploratory_screen",
+      "summary": {
+        "all_pair_saved_ms_per_token": [
+          0.742056432700771,
+          0.6581318902042526,
+          0.8177437643542547
+        ],
+        "bootstrap_95pct_ratio": [
+          1.016328263765402,
+          1.0203434030172551
+        ],
+        "length": 512,
+        "median_ratio": 1.0184493024343646,
+        "median_saved_ms_per_token": 0.742056432700771,
+        "metrics": {
+          "decode_tokens_per_second": {
+            "baseline": {
+              "mad": 0.000592018676972117,
+              "median": 24.411421450865653,
+              "p90": 24.41189506580723
+            },
+            "candidate": {
+              "mad": 0.01508053446482549,
+              "median": 24.862398089074,
+              "p90": 24.87446251664586
+            }
+          },
+          "full_model_wall_time_ms": {
+            "baseline": {
+              "mad": 9.739542147144675,
+              "median": 6727.782333036885,
+              "p90": 6757.955366699025
+            },
+            "candidate": {
+              "mad": 5.20158396102488,
+              "median": 6646.730541018769,
+              "p90": 6650.891808187589
+            }
+          },
+          "inter_token_latency_ms": {
+            "baseline": {
+              "mad": 0.009500887244939804,
+              "median": 40.92220892198384,
+              "p90": 40.94164171256125
+            },
+            "candidate": {
+              "mad": 0.0030829105526208878,
+              "median": 40.15345801599324,
+              "p90": 40.155924344435334
+            }
+          },
+          "peak_memory_bytes": {
+            "baseline": {
+              "mad": 0,
+              "median": 14200894157,
+              "p90": 14200894157.0
+            },
+            "candidate": {
+              "mad": 0,
+              "median": 14200894157,
+              "p90": 14200894157.0
+            }
+          },
+          "prefill_tokens_per_second": {
+            "baseline": {
+              "mad": 2.127654982878596,
+              "median": 335.7310270444916,
+              "p90": 337.4331510307945
+            },
+            "candidate": {
+              "mad": 4.134900166070452,
+              "median": 335.1730481864835,
+              "p90": 338.9691598101113
+            }
+          },
+          "time_to_first_token_ms": {
+            "baseline": {
+              "mad": 9.61337611079216,
+              "median": 1525.299542117864,
+              "p90": 1550.3608756698668
+            },
+            "candidate": {
+              "mad": 19.082666840404272,
+              "median": 1527.8305001556873,
+              "p90": 1543.0966336280107
+            }
+          }
+        },
+        "mode": "screen",
+        "paired_ratios": [
+          1.0184493024343646,
+          1.016328263765402,
+          1.0203434030172551
+        ],
+        "pairs": 3,
+        "swap_affected_rows": 0
+      },
+      "timed_rows": [
+        {
+          "decode_tokens_per_second": 24.412013469542625,
+          "full_model_wall_time_ms": 6718.04279088974,
+          "inter_token_latency_ms": 40.9127080347389,
+          "invalid_reasons": [],
+          "lane": "baseline",
+          "phase": "screen",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -48.0,
+            "swapin_pages": 3571,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 1
+        },
+        {
+          "decode_tokens_per_second": 24.862398089074,
+          "full_model_wall_time_ms": 6614.624500041828,
+          "inter_token_latency_ms": 40.12262495234609,
+          "invalid_reasons": [],
+          "lane": "candidate",
+          "phase": "screen",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -8.0,
+            "swapin_pages": 540,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 1
+        },
+        {
+          "decode_tokens_per_second": 24.81001757920378,
+          "full_model_wall_time_ms": 6646.730541018769,
+          "inter_token_latency_ms": 40.15345801599324,
+          "invalid_reasons": [],
+          "lane": "candidate",
+          "phase": "screen",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -48.0,
+            "swapin_pages": 2602,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 2
+        },
+        {
+          "decode_tokens_per_second": 24.411421450865653,
+          "full_model_wall_time_ms": 6727.782333036885,
+          "inter_token_latency_ms": 40.92220892198384,
+          "invalid_reasons": [],
+          "lane": "baseline",
+          "phase": "screen",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -24.0,
+            "swapin_pages": 1316,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 2
+        },
+        {
+          "decode_tokens_per_second": 24.3814764225198,
+          "full_model_wall_time_ms": 6765.49862511456,
+          "inter_token_latency_ms": 40.9464999102056,
+          "invalid_reasons": [],
+          "lane": "baseline",
+          "phase": "screen",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -136.0,
+            "swapin_pages": 8268,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 3
+        },
+        {
+          "decode_tokens_per_second": 24.877478623538824,
+          "full_model_wall_time_ms": 6651.932124979794,
+          "inter_token_latency_ms": 40.15654092654586,
+          "invalid_reasons": [],
+          "lane": "candidate",
+          "phase": "screen",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -8.0,
+            "swapin_pages": 220,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 3
+        }
+      ],
+      "warmups": [
+        {
+          "decode_tokens_per_second": 24.497017283064427,
+          "full_model_wall_time_ms": 6687.940875068307,
+          "inter_token_latency_ms": 40.79358302988112,
+          "invalid_reasons": [],
+          "lane": "baseline",
+          "phase": "warmup",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -8.0,
+            "swapin_pages": 424,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 0
+        },
+        {
+          "decode_tokens_per_second": 24.79475305168957,
+          "full_model_wall_time_ms": 6636.524582980201,
+          "inter_token_latency_ms": 40.18641705624759,
+          "invalid_reasons": [],
+          "lane": "candidate",
+          "phase": "warmup",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": 0.0,
+            "swapin_pages": 927,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 0
+        }
+      ]
+    },
+    {
+      "candidate_bundle_sha256": "fe5ae0dd947e383f92c4ea10abd884838551ba74f6da205381e707935d3caaf5",
+      "candidate_id": "cand_3f4c02fcfc71",
+      "correctness": [
+        {
+          "all_logits_bit_exact": true,
+          "arrays_sha256": "85099f9e589734adba284ef40d3b489f8783bf8dec67fad6702e4573186d9234",
+          "cache_max_abs_errors": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "cache_metadata_equal": true,
+          "cache_within_tolerance": true,
+          "detail": "max_abs_error=0; violations=0/1608704; atol=0.02; rtol=0.02; tolerance_status=provisional",
+          "length": 512,
+          "numerical_passed": true,
+          "outputs": 8,
+          "passed": true,
+          "route_set_differences": 0,
+          "route_slot_differences": 0,
+          "token_differences": 0
+        }
+      ],
+      "errors": [],
+      "five_percent_improvement_verified": false,
+      "guards": {
+        "checkpoint_and_snapshot_unchanged": true,
+        "original_methods_restored": true,
+        "protected_unchanged": true
+      },
+      "number": 3,
+      "phase_memory": [
+        {
+          "decode_tokens_per_second": 24.324744531836263,
+          "full_model_wall_time_ms": 6825.051999883726,
+          "inter_token_latency_ms": 40.86454212665558,
+          "invalid_reasons": [],
+          "lane": "baseline",
+          "phase": "phase_memory",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": 0.0,
+            "swapin_pages": 203,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 0
+        },
+        {
+          "decode_tokens_per_second": 26.779053176610198,
+          "full_model_wall_time_ms": 6329.89904191345,
+          "inter_token_latency_ms": 37.08891593851149,
+          "invalid_reasons": [],
+          "lane": "candidate",
+          "phase": "phase_memory",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -8.0,
+            "swapin_pages": 927,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 0
+        }
+      ],
+      "promising_for_confirmation": true,
+      "status": "completed_exploratory_screen",
+      "summary": {
+        "all_pair_saved_ms_per_token": [
+          3.7317887172249584,
+          3.7778185746507873,
+          3.861214243256903
+        ],
+        "bootstrap_95pct_ratio": [
+          1.1001490293810527,
+          1.103459471911766
+        ],
+        "length": 512,
+        "median_ratio": 1.101605055610391,
+        "median_saved_ms_per_token": 3.7778185746507873,
+        "metrics": {
+          "decode_tokens_per_second": {
+            "baseline": {
+              "mad": 0.020798141129951375,
+              "median": 24.393728021734223,
+              "p90": 24.410366534638182
+            },
+            "candidate": {
+              "mad": 0.04219298890900447,
+              "median": 26.83673620609629,
+              "p90": 26.883479602293924
+            }
+          },
+          "full_model_wall_time_ms": {
+            "baseline": {
+              "mad": 15.241082990542054,
+              "median": 7819.04666707851,
+              "p90": 7831.239533470944
+            },
+            "candidate": {
+              "mad": 2.527666976675391,
+              "median": 6284.12670805119,
+              "p90": 7786.313675297424
+            }
+          },
+          "inter_token_latency_ms": {
+            "baseline": {
+              "mad": 0.023124972358345985,
+              "median": 40.93204205855727,
+              "p90": 41.041474882513285
+            },
+            "candidate": {
+              "mad": 0.020292121917009354,
+              "median": 37.12462494149804,
+              "p90": 37.14085863903165
+            }
+          },
+          "peak_memory_bytes": {
+            "baseline": {
+              "mad": 0,
+              "median": 15111664335,
+              "p90": 15111664335.0
+            },
+            "candidate": {
+              "mad": 0,
+              "median": 15111664335,
+              "p90": 15111664335.0
+            }
+          },
+          "prefill_tokens_per_second": {
+            "baseline": {
+              "mad": 0.6506461635234757,
+              "median": 196.62956321236743,
+              "p90": 302.68249062242654
+            },
+            "candidate": {
+              "mad": 4.309273720721535,
+              "median": 327.8203421126606,
+              "p90": 331.26776108923787
+            }
+          },
+          "time_to_first_token_ms": {
+            "baseline": {
+              "mad": 8.647874929010868,
+              "median": 2604.142500087619,
+              "p90": 2611.0608000308275
+            },
+            "candidate": {
+              "mad": 20.260458113625646,
+              "median": 1562.0884581003338,
+              "p90": 3056.0507253278047
+            }
+          }
+        },
+        "mode": "screen",
+        "paired_ratios": [
+          1.1001490293810527,
+          1.101605055610391,
+          1.103459471911766
+        ],
+        "pairs": 3,
+        "swap_affected_rows": 0
+      },
+      "timed_rows": [
+        {
+          "decode_tokens_per_second": 24.393728021734223,
+          "full_model_wall_time_ms": 7819.04666707851,
+          "inter_token_latency_ms": 40.93204205855727,
+          "invalid_reasons": [],
+          "lane": "baseline",
+          "phase": "screen",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -16.0,
+            "swapin_pages": 800,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 1
+        },
+        {
+          "decode_tokens_per_second": 26.83673620609629,
+          "full_model_wall_time_ms": 8161.860417108983,
+          "inter_token_latency_ms": 37.14491706341505,
+          "invalid_reasons": [],
+          "lane": "candidate",
+          "phase": "screen",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -32.0,
+            "swapin_pages": 1322,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 1
+        },
+        {
+          "decode_tokens_per_second": 26.895165451343335,
+          "full_model_wall_time_ms": 6284.12670805119,
+          "inter_token_latency_ms": 37.12462494149804,
+          "invalid_reasons": [],
+          "lane": "candidate",
+          "phase": "screen",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -8.0,
+            "swapin_pages": 380,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 2
+        },
+        {
+          "decode_tokens_per_second": 24.414526162864174,
+          "full_model_wall_time_ms": 6757.389874896035,
+          "inter_token_latency_ms": 40.908917086198926,
+          "invalid_reasons": [],
+          "lane": "baseline",
+          "phase": "screen",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": 0.0,
+            "swapin_pages": 228,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 2
+        },
+        {
+          "decode_tokens_per_second": 24.282308412075334,
+          "full_model_wall_time_ms": 7834.287750069052,
+          "inter_token_latency_ms": 41.06883308850229,
+          "invalid_reasons": [],
+          "lane": "baseline",
+          "phase": "screen",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -72.0,
+            "swapin_pages": 4692,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 3
+        },
+        {
+          "decode_tokens_per_second": 26.794543217187286,
+          "full_model_wall_time_ms": 6281.599041074514,
+          "inter_token_latency_ms": 37.090040976181626,
+          "invalid_reasons": [],
+          "lane": "candidate",
+          "phase": "screen",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": 0.0,
+            "swapin_pages": 83,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 3
+        }
+      ],
+      "warmups": [
+        {
+          "decode_tokens_per_second": 24.444526012254514,
+          "full_model_wall_time_ms": 6765.211584046483,
+          "inter_token_latency_ms": 40.86420894600451,
+          "invalid_reasons": [],
+          "lane": "baseline",
+          "phase": "warmup",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": 0.0,
+            "swapin_pages": 192,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 0
+        },
+        {
+          "decode_tokens_per_second": 26.836765031135617,
+          "full_model_wall_time_ms": 6275.942999869585,
+          "inter_token_latency_ms": 37.11395780555904,
+          "invalid_reasons": [],
+          "lane": "candidate",
+          "phase": "warmup",
+          "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -56.0,
+            "swapin_pages": 3588,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_states": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "trial": 0
+        }
+      ]
+    }
+  ],
+  "contract_sha256": "2a31bbda3389e91f12e1e17b1cff261b96c5f12cd3ce9af5dc818fd21a50c895",
+  "five_percent_improvement_verified": false,
+  "objective": "repeatable >=5% full-model decode improvement; all screens exploratory only",
+  "official": false,
+  "plan_sha256": "dbd808ffe1ec0f46521d5d635e1fc2fe4b01fd918dd1631916a474663b9b574d",
+  "queued_commands": [
+    "001.json",
+    "002.json",
+    "003.json"
+  ],
+  "resident": {
+    "birth": "2026-10-28 10:57:36 local",
+    "caffeinate_label": "com.kernelmax.sprint.vocab.caffeinate.20261028",
+    "caffeinate_pid": 48639,
+    "errors": [],
+    "launchd_label": "com.kernelmax.sprint.vocab.20261028",
+    "next_command": 4,
+    "pid": 48619,
+    "status": "waiting_command"
+  },
+  "runner_sha256": "a9116f4a37d559037e58d5d519e8bdb16911a368f8ae22452fdc6b28b7200367",
+  "session_sha256": "e5d96b0a1b2fb86e7e77f5df567c2bc69f29af477935ceb799a4f9e4d4b7354d",
+  "slot3_allocated": true,
+  "source_hashes_after": {
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5/codec.py": "bb8079062c5f9aee76b5e964ef4ebc30bf151fc6d92f0563d4cc5846f5811b5e",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5/implementation.metal": "7e4b2fa51eea175b9ad376ce1b6ab9276bca7aac6201733945174b3ee275862e",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5/implementation.py": "18baf2ffe4815c753917c81ef1aefa8d0c0ddb81f0f6d90179bb7710567dc16b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5/manifest.json": "55bf8c6f602549626dbd7f498f95c7219cc30f87d107814df9551fe72457cc7b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5/reader.py": "a0f31e2b8e18f8fd05146c3e8cea09609b3f0162195035f8b2cdfb0fb2d18214",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5/wrapper.py": "aae74e2f43d62be8197af65ecd1cd5da208409b3cba1136cee062ab5ffeb1beb",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/plan.json": "dbd808ffe1ec0f46521d5d635e1fc2fe4b01fd918dd1631916a474663b9b574d",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/run_sprint.py": "a9116f4a37d559037e58d5d519e8bdb16911a368f8ae22452fdc6b28b7200367",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/session.json": "e5d96b0a1b2fb86e7e77f5df567c2bc69f29af477935ceb799a4f9e4d4b7354d",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/test_bindings.py": "02870126d4a28be65938b39c2b8fbb057e25ad5bae065f6b2281872a8de597aa",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/vocabulary-frozen.json": "ae21c63bb6e99e8a0d20552a440cf0604cf1d82dced81e4c15fb7e22caaa4ef0"
+  },
+  "source_hashes_before": {
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5/codec.py": "bb8079062c5f9aee76b5e964ef4ebc30bf151fc6d92f0563d4cc5846f5811b5e",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5/implementation.metal": "7e4b2fa51eea175b9ad376ce1b6ab9276bca7aac6201733945174b3ee275862e",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5/implementation.py": "18baf2ffe4815c753917c81ef1aefa8d0c0ddb81f0f6d90179bb7710567dc16b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5/manifest.json": "55bf8c6f602549626dbd7f498f95c7219cc30f87d107814df9551fe72457cc7b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5/reader.py": "a0f31e2b8e18f8fd05146c3e8cea09609b3f0162195035f8b2cdfb0fb2d18214",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5/wrapper.py": "aae74e2f43d62be8197af65ecd1cd5da208409b3cba1136cee062ab5ffeb1beb",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/plan.json": "dbd808ffe1ec0f46521d5d635e1fc2fe4b01fd918dd1631916a474663b9b574d",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/run_sprint.py": "a9116f4a37d559037e58d5d519e8bdb16911a368f8ae22452fdc6b28b7200367",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/session.json": "e5d96b0a1b2fb86e7e77f5df567c2bc69f29af477935ceb799a4f9e4d4b7354d",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/test_bindings.py": "02870126d4a28be65938b39c2b8fbb057e25ad5bae065f6b2281872a8de597aa",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/vocabulary-frozen.json": "ae21c63bb6e99e8a0d20552a440cf0604cf1d82dced81e4c15fb7e22caaa4ef0"
+  },
+  "verdict": null
+}

@@ -1,0 +1,6 @@
+{
+  "row_abi_bytes": 64,
+  "overlap_union_and_gap_checks": true,
+  "empty_timeline_rejected": true,
+  "native_gpu_fixture": "pending; deliberately not run concurrently with profiler"
+}

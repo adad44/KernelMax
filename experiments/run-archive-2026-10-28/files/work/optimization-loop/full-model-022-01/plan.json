@@ -1,0 +1,34 @@
+{
+  "controls": {
+    "ac_required": true,
+    "all_samples_retained": true,
+    "controller_hold_seconds": 12,
+    "log_swap_ins": true,
+    "quiet_seconds": 10,
+    "reject_swap_outs_and_growth": true,
+    "settle_seconds": 5,
+    "thermal_nominal_required": true
+  },
+  "correctness_before_timing": "On the same pinned native checkpoint, compare unchanged-reference and integrated candidate on fresh caches and deterministic baseline token trajectories. Retain logits/output tokens, numerical comparisons, shapes/dtypes and routing-related mismatches. Passing isolated checks is not full-model correctness.",
+  "deadline": "2026-10-27T13:00:00-07:00",
+  "integration": "Trusted controller temporarily replaces only the native expert class call during candidate requests. Intercept supported BF16 single-token expert input; call the original method directly for prefill/unsupported shapes to prevent fallback recursion. Restore the exact original method between candidate and baseline requests and on every exit. No source-file mutation.",
+  "measurement": "Materialize native model one tensor at a time on CPU outside timing. Use matched request driver, candidate snapshot, current protected/runtime/checkpoint identity. Fresh20-pair A/A confidence calibration before matched20-pair baseline/candidate comparisons with five warmups; preserve fixed per-request controls and paging-aware policy. Do not compare new candidate against historical baseline numbers. No old failed calibration relabeled.",
+  "new_run_started": false,
+  "prerequisite": "Independent native/tiny checks and reliable positive operator results with valid A/A, environment and integrity on layers0,12,23. An exploratory multi-candidate shortlist is not independent confirmation.",
+  "reporting": "Only valid fresh full-model results can support a speedup statement. No ACCEPTED verdict or task-quality claim: acceptance remains disabled and held-out task gate remains planned.",
+  "request_driver": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/native_baseline.py:request",
+  "status": "prepared_not_executed",
+  "workload": {
+    "batch": 1,
+    "fresh_cache_per_request": true,
+    "outputs": 128,
+    "precision": "native MXFP4 and BF16 activations/cache",
+    "prompts": [
+      512,
+      2048,
+      4096
+    ],
+    "sampling": "greedy",
+    "seed": 42
+  }
+}

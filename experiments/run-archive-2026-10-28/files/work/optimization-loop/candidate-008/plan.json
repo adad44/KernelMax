@@ -1,0 +1,9 @@
+{
+  "candidate_id": "cand_430b7852e4b5",
+  "candidate_source": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_430b7852e4b5",
+  "estimated_total_model_contribution": "Unverified; 20% isolated-region gain gives hypothetical 0.0759 ms/expert or 1.82 ms/token over24 representative additive layers.",
+  "hypothesis": "Native-style exact half FP4 conversion may avoid LUT access with less instruction work than the regressing direct integer decoder. Tiling and arithmetic ordering fixed.",
+  "measured_target_evidence": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/probe-004/audited-result.json",
+  "previous_regression": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-007/result.json",
+  "timing": "Fixed1024call primer; 5sec cooldown; fresh A/A and20pairs; stop on environmental/noise failure. Early park allowed after all20 layer0 pairs show a reliable regression; not a formal verdict."
+}

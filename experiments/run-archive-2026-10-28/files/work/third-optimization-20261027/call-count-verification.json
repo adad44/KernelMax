@@ -1,0 +1,16 @@
+{
+  "method": "Actual controller invoke AST executed with counting stubs, without candidate or GPU code",
+  "passed": true,
+  "counts": {
+    "baseline": {
+      "returned": 256,
+      "value": 256,
+      "eval": 256
+    },
+    "candidate": {
+      "returned": 256,
+      "value": 256,
+      "eval": 256
+    }
+  }
+}

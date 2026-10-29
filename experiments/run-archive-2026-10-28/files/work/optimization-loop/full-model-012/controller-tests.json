@@ -1,0 +1,10 @@
+{
+  "all24_layer_route_capture_checked": true,
+  "decode_binding_checked": true,
+  "native_full_model_not_executed_in_unit_checks": true,
+  "original_method_restored_on_success_and_error": true,
+  "paired_interval_checked": true,
+  "prefill_fallback_calls_original_without_recursion": true,
+  "routing_ids_forwarded_without_mutation": true,
+  "uses_exact_existing_native_request_function": true
+}

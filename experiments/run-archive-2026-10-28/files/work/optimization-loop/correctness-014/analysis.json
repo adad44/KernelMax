@@ -1,0 +1,167 @@
+{
+  "all_within_existing_operator_tolerance": true,
+  "checked_boundary_cases": 192,
+  "conclusion": "Native reference repeats exactly. The candidate differs at a few activation elements on real unsampled layers. Existing operator tolerance admits those differences, but full-model composition changes logits/routes. Next isolate projection accumulation versus pointwise rounding on saved inputs. Do not loosen tolerances.",
+  "first_local_divergence": {
+    "activation_max_abs": 0.000244140625,
+    "layer": 7,
+    "step": 2
+  },
+  "native_repeatability": {
+    "all_logits_exact": true,
+    "all_routes_exact": true,
+    "all_tokens_equal": true,
+    "cache_dtypes": [
+      "mlx.core.bfloat16"
+    ],
+    "logit_dtypes": [
+      "mlx.core.bfloat16"
+    ],
+    "max_abs_logit_error": 0.0
+  },
+  "nonexact_cases": [
+    {
+      "activation_exact": false,
+      "activation_max_abs": 0.000244140625,
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/correctness-014/boundary-step2-layer7.npz",
+      "arrays_sha256": "1bceaf311d9d9c75a103ec5477720e19304ea5585e0ddc30e93d98aa0bd95962",
+      "bit_exact": false,
+      "detail": "max_abs_error=0.015625; violations=0/11520; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "different_elements": 17,
+      "layer": 7,
+      "max_abs": 0.015625,
+      "passed_existing_operator_tolerance": true,
+      "step": 2
+    },
+    {
+      "activation_exact": false,
+      "activation_max_abs": 0.001953125,
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/correctness-014/boundary-step3-layer1.npz",
+      "arrays_sha256": "a00b30233ab141ef2c4c3e861f64da2379704dd5f081c52499984043cec2049c",
+      "bit_exact": false,
+      "detail": "max_abs_error=0.015625; violations=0/11520; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "different_elements": 126,
+      "layer": 1,
+      "max_abs": 0.015625,
+      "passed_existing_operator_tolerance": true,
+      "step": 3
+    },
+    {
+      "activation_exact": false,
+      "activation_max_abs": 0.00048828125,
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/correctness-014/boundary-step3-layer2.npz",
+      "arrays_sha256": "b6cd2aa64255636ab70e366b7b0fe060c1f4f80c83b9c2f4f84daafbace092ef",
+      "bit_exact": false,
+      "detail": "max_abs_error=0.015625; violations=0/11520; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "different_elements": 20,
+      "layer": 2,
+      "max_abs": 0.015625,
+      "passed_existing_operator_tolerance": true,
+      "step": 3
+    },
+    {
+      "activation_exact": false,
+      "activation_max_abs": 0.0009765625,
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/correctness-014/boundary-step3-layer6.npz",
+      "arrays_sha256": "073ef3ae5f49d8693c2a8f9625b2fdd219442b63d9872595556b4954c4d8e916",
+      "bit_exact": false,
+      "detail": "max_abs_error=0.03125; violations=0/11520; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "different_elements": 55,
+      "layer": 6,
+      "max_abs": 0.03125,
+      "passed_existing_operator_tolerance": true,
+      "step": 3
+    },
+    {
+      "activation_exact": false,
+      "activation_max_abs": 0.0001373291015625,
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/correctness-014/boundary-step3-layer10.npz",
+      "arrays_sha256": "98fe352feb14442eb0a007fcc8e3274bef264a2947c987a9b5c44933c72f578f",
+      "bit_exact": false,
+      "detail": "max_abs_error=0.03125; violations=0/11520; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "different_elements": 8,
+      "layer": 10,
+      "max_abs": 0.03125,
+      "passed_existing_operator_tolerance": true,
+      "step": 3
+    },
+    {
+      "activation_exact": false,
+      "activation_max_abs": 0.0009765625,
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/correctness-014/boundary-step4-layer18.npz",
+      "arrays_sha256": "f76b0c19577fc86e3f86cb33ce6a1f176e8753f1677c97c465cd6f43710e225f",
+      "bit_exact": false,
+      "detail": "max_abs_error=0.5; violations=0/11520; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "different_elements": 41,
+      "layer": 18,
+      "max_abs": 0.5,
+      "passed_existing_operator_tolerance": true,
+      "step": 4
+    },
+    {
+      "activation_exact": false,
+      "activation_max_abs": 0.00048828125,
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/correctness-014/boundary-step5-layer4.npz",
+      "arrays_sha256": "70e1b9f750b4af5459af7ddad55d27ca3abae550cdfadee60011206afe5d49b6",
+      "bit_exact": false,
+      "detail": "max_abs_error=0.015625; violations=0/11520; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "different_elements": 11,
+      "layer": 4,
+      "max_abs": 0.015625,
+      "passed_existing_operator_tolerance": true,
+      "step": 5
+    },
+    {
+      "activation_exact": false,
+      "activation_max_abs": 0.0009765625,
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/correctness-014/boundary-step5-layer15.npz",
+      "arrays_sha256": "9f0223b7dbd5695c229ba09867f1536ef64921313dd549a33496b3c8df4344af",
+      "bit_exact": false,
+      "detail": "max_abs_error=0.25; violations=0/11520; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "different_elements": 34,
+      "layer": 15,
+      "max_abs": 0.25,
+      "passed_existing_operator_tolerance": true,
+      "step": 5
+    },
+    {
+      "activation_exact": false,
+      "activation_max_abs": 0.00048828125,
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/correctness-014/boundary-step6-layer6.npz",
+      "arrays_sha256": "cb7506fe653bdb65649bf84df936489a2ce89ebd87c737ce0f19fe1441544f61",
+      "bit_exact": false,
+      "detail": "max_abs_error=0.03125; violations=0/11520; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "different_elements": 60,
+      "layer": 6,
+      "max_abs": 0.03125,
+      "passed_existing_operator_tolerance": true,
+      "step": 6
+    },
+    {
+      "activation_exact": false,
+      "activation_max_abs": 0.0001983642578125,
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/correctness-014/boundary-step6-layer11.npz",
+      "arrays_sha256": "7dbbee46ac1bef36613eb8e675d24eec25f4368fa018af4fb9fd6dda55a53e56",
+      "bit_exact": false,
+      "detail": "max_abs_error=0.03125; violations=0/11520; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "different_elements": 22,
+      "layer": 11,
+      "max_abs": 0.03125,
+      "passed_existing_operator_tolerance": true,
+      "step": 6
+    },
+    {
+      "activation_exact": false,
+      "activation_max_abs": 0.00048828125,
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/correctness-014/boundary-step6-layer22.npz",
+      "arrays_sha256": "0cff92943ae7aeb7452b01080778f98183ee7d4de4204594e8b7965166b5992c",
+      "bit_exact": false,
+      "detail": "max_abs_error=2; violations=0/11520; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "different_elements": 23,
+      "layer": 22,
+      "max_abs": 2.0,
+      "passed_existing_operator_tolerance": true,
+      "step": 6
+    }
+  ]
+}

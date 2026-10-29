@@ -1,0 +1,10 @@
+{
+  "supervisor_pid": 58522,
+  "status": "completed",
+  "started_unix": 1793090650.0714722,
+  "timeout_seconds": 1200,
+  "deadline_unix": 1793131200.0,
+  "worker_pid": 58524,
+  "returncode": 0,
+  "ended_unix": 1793090667.541125
+}

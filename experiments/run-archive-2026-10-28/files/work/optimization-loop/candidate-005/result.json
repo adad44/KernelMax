@@ -1,0 +1,67 @@
+{
+  "aa_screens": {
+    "0": {
+      "full_range": 0.03417951244070665,
+      "passed": true,
+      "ratios": [
+        1.0199451625695064,
+        1.0146285528547536
+      ],
+      "relative_mad": 0.0073142611295854455
+    },
+    "12": {
+      "full_range": 0.03983237245484891,
+      "passed": false,
+      "ratios": [
+        0.9947891557025382,
+        1.013836790049476
+      ],
+      "relative_mad": 0.013163983322335124
+    }
+  },
+  "actual_sample_calls_verified": 1024,
+  "candidate_id": "cand_5dc343a37cb3",
+  "committed": false,
+  "disposition": "parked_no_promotion",
+  "full_model_speedup_established": false,
+  "layer0": {
+    "ab_order_median_ratio": 1.007675285212212,
+    "ba_order_median_ratio": 1.0101156423102666,
+    "descriptive_bootstrap_95pct": [
+      1.0060109345451154,
+      1.0104596457182242
+    ],
+    "environment_valid": true,
+    "median_baseline_ms_per_call": 0.8301856079101563,
+    "median_candidate_ms_per_call": 0.81887471484375,
+    "median_ratio": 1.0082751141869681,
+    "paired_ratios": [
+      1.0095006542713179,
+      1.0082892672708128,
+      1.0082609611031232,
+      1.0032860747372494,
+      0.9712079491016484,
+      1.0093459387395036,
+      1.0079248142350323,
+      1.0108853458810294,
+      0.9857829205077283,
+      1.0128998018560766,
+      1.0405609760091903,
+      1.01438061091236,
+      1.0074257561893916,
+      1.0068228600820563,
+      1.0051990090081746,
+      0.9995864283996926,
+      1.0044540571612497,
+      1.0135495654997961,
+      1.010033945555419,
+      1.1101584398267208
+    ]
+  },
+  "native_checks_passed": 21,
+  "raw_sha256": "bc94614641cea7c63dfaeded58ff66757c970548f9e58f45caac44a220c0e1fc",
+  "real_checks_passed": 32,
+  "reason": "Layer-0 median ratio 1.0083 is below the layer-0 A/A label deviations up to 1.01995, so the small local descriptive effect is not a reliable improvement above observed calibration bias. Layer-12 A/A relative MAD 1.316% failed the unchanged 1% screen, so no candidate timing there. No unchanged reroll, no model speedup claim.",
+  "timing_status": "stopped_aa_screen",
+  "tiny_checks_passed": 30
+}

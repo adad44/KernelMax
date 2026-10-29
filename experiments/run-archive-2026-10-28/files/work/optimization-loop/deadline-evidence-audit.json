@@ -1,0 +1,70 @@
+{
+  "as_of_utc": "2026-10-27T20:00:19.958003+00:00",
+  "model_runs": [
+    {
+      "aa_screens": {
+        "512": {
+          "bootstrap_95pct_ci": [
+            0.9985817881456469,
+            1.0075257174120544
+          ],
+          "median_ratio": 1.0025010965693464,
+          "paired_b_over_a_ratios": [
+            1.0101810409118095,
+            1.004615222977885,
+            1.000476354834031,
+            0.9991143252954012,
+            1.0040425513650457,
+            1.0089676927231306,
+            0.9978841318436485,
+            1.0063721865653639,
+            0.9976086626030453,
+            0.993152039264228,
+            0.9980492509958927,
+            1.0009596417736468,
+            0.9997008211408528,
+            1.0069576007962373,
+            0.9979671989859757,
+            1.0127224213072226,
+            0.9960953743295242,
+            1.013931703461853,
+            1.0110370719767052,
+            1.0080938340278716
+          ],
+          "passed": true
+        }
+      },
+      "candidate_id": "cand_35fff69ba1e1",
+      "checkpoint_identity_mismatches": [],
+      "complete_candidate_pairs_by_context": {
+        "2048": 0,
+        "4096": 0,
+        "512": 12
+      },
+      "complete_context_summaries": {},
+      "correctness_array_mismatches": [],
+      "full_model_speedup_established": false,
+      "invalid_requests": 0,
+      "protected_source_mismatches": [],
+      "raw_errors": [],
+      "raw_final_guard_presence": {
+        "checkpoint_and_snapshot_unchanged": false,
+        "expert_class_method_restored": false,
+        "protected_sources_unchanged": false
+      },
+      "raw_status": "context_512_candidate_timing",
+      "request_counts_by_phase": {
+        "aa": 40,
+        "aa_warmup": 10,
+        "candidate": 25,
+        "candidate_warmup": 10
+      },
+      "request_structure_or_token_issues": [],
+      "resident_primers": 85,
+      "snapshot_mismatches": [],
+      "snapshot_sha256": "14dce12ba76605fa3c04b56b0a431447c643540e63dbecea5a4351687d394e90",
+      "state": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-038-01/state.json"
+    }
+  ],
+  "scope": "Read-only post-deadline audit. Preserved partial requests are not a complete comparison; no partial statistical result or acceptance is inferred. In-memory dispatch restoration cannot be audited after process exit."
+}

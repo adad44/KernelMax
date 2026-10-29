@@ -1,0 +1,134 @@
+{
+  "candidate_id": "cand_35fff69ba1e1",
+  "command": [
+    "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+    "-B",
+    "-u",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-035/pipeline.py"
+  ],
+  "deadline_unix": 1793127781.071365,
+  "ended_unix": 1793127079.175055,
+  "kind": "sequential_candidate_pipeline",
+  "returncode": 0,
+  "started_unix": 1793125981.071383,
+  "status": "completed",
+  "supervisor_pid": 19109,
+  "tracked_processes": {
+    "19111": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-035/pipeline.py",
+      "ppid": 19109,
+      "start": "Tue Oct 27 11:33:01 2026"
+    },
+    "19113": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/scripts/run_candidate_loop.py --session /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/session.json --candidate /Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_35fff69ba1e1 --work-dir /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-035/native-correctness --timeout-seconds 300",
+      "ppid": 19111,
+      "start": "Tue Oct 27 11:33:01 2026"
+    },
+    "19117": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -I -B /Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_worker.py /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-035/native-correctness/artifacts/execution-p3xvqqph/reference/request.json /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-035/native-correctness/artifacts/execution-p3xvqqph/reference/response.jsonl",
+      "ppid": 19113,
+      "start": "Tue Oct 27 11:33:02 2026"
+    },
+    "19220": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -I -B /Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_worker.py /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-035/native-correctness/artifacts/execution-p3xvqqph/candidate/request.json /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-035/native-correctness/artifacts/execution-p3xvqqph/candidate/response.jsonl",
+      "ppid": 19113,
+      "start": "Tue Oct 27 11:33:37 2026"
+    },
+    "19234": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-035/tiny_native_checks.py",
+      "ppid": 19111,
+      "start": "Tue Oct 27 11:33:41 2026"
+    },
+    "19249": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-035/repair_checks.py",
+      "ppid": 19111,
+      "start": "Tue Oct 27 11:33:43 2026"
+    },
+    "19429": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-035/operator_diagnostic.py /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-035/native-correctness/artifacts/execution-p3xvqqph/report.json",
+      "ppid": 19111,
+      "start": "Tue Oct 27 11:34:44 2026"
+    },
+    "19434": {
+      "command": "(pmset)",
+      "ppid": 19429,
+      "start": "Tue Oct 27 11:34:45 2026"
+    },
+    "19590": {
+      "command": "(pmset)",
+      "ppid": 19429,
+      "start": "Tue Oct 27 11:35:21 2026"
+    },
+    "20497": {
+      "command": "(vm_stat)",
+      "ppid": 19429,
+      "start": "Tue Oct 27 11:37:56 2026"
+    },
+    "21025": {
+      "command": "(pmset)",
+      "ppid": 19429,
+      "start": "Tue Oct 27 11:39:22 2026"
+    },
+    "21039": {
+      "command": "(sysctl)",
+      "ppid": 19429,
+      "start": "Tue Oct 27 11:39:24 2026"
+    },
+    "21520": {
+      "command": "(pmset)",
+      "ppid": 19429,
+      "start": "Tue Oct 27 11:40:38 2026"
+    },
+    "21963": {
+      "command": "(ps)",
+      "ppid": 19429,
+      "start": "Tue Oct 27 11:41:50 2026"
+    },
+    "22589": {
+      "command": "(pmset)",
+      "ppid": 19429,
+      "start": "Tue Oct 27 11:43:31 2026"
+    },
+    "22918": {
+      "command": "(ps)",
+      "ppid": 19429,
+      "start": "Tue Oct 27 11:44:23 2026"
+    },
+    "22936": {
+      "command": "(pmset)",
+      "ppid": 19429,
+      "start": "Tue Oct 27 11:44:26 2026"
+    },
+    "23565": {
+      "command": "(ps)",
+      "ppid": 19429,
+      "start": "Tue Oct 27 11:46:03 2026"
+    },
+    "24245": {
+      "command": "(ps)",
+      "ppid": 19429,
+      "start": "Tue Oct 27 11:47:55 2026"
+    },
+    "24481": {
+      "command": "(pmset)",
+      "ppid": 19429,
+      "start": "Tue Oct 27 11:48:34 2026"
+    },
+    "24755": {
+      "command": "(pmset)",
+      "ppid": 19429,
+      "start": "Tue Oct 27 11:49:18 2026"
+    },
+    "25144": {
+      "command": "(pmset)",
+      "ppid": 19429,
+      "start": "Tue Oct 27 11:50:21 2026"
+    },
+    "25485": {
+      "command": "(ps)",
+      "ppid": 19429,
+      "start": "Tue Oct 27 11:51:15 2026"
+    }
+  },
+  "worker_pid": 19111
+}

@@ -1,0 +1,23 @@
+{
+  "actual_calls_per_original_sample": 32,
+  "call_count_verification": {
+    "declared_calls_per_sample": 256,
+    "method": "Actual controller invoke function executed with counting stubs; no candidate code or GPU execution",
+    "observed_calls_per_sample": {
+      "baseline": 256,
+      "candidate": 256
+    },
+    "passed": true
+  },
+  "candidate_correctness_affected": false,
+  "candidate_source_changed": false,
+  "corrected_controller_sha256": "435527d3962285684704468d95090f4880c818ab61c48dc53f0ecab47aed5003",
+  "declared_calls_per_original_sample": 256,
+  "issue": "Initial timing report claimed 256 calls per lane but invoke executed 32 because a planned loop replacement was not applied.",
+  "original_controller_sha256": "831891480ca60bcbdc4826c533ac20942d1b26a622f7d38e6f3219c15d270d51",
+  "original_report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/operator-diagnostic.json",
+  "original_report_sha256": "f84d5338d3b3ff262ee45e7ac9e3d60070091c0fb72aeb3ebfc0b4f12e2a4e5f",
+  "original_timing_eligibility": "invalid_as_planned_due_to_instrumentation_mismatch; preserve all observations",
+  "repair_directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/timing-controller-repair",
+  "repeat_reason": "Correct the demonstrated instrumentation bug, not statistical selection"
+}

@@ -1,0 +1,30 @@
+{
+  "candidate_id": "cand_5dc343a37cb3",
+  "command": [
+    "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+    "-B",
+    "-u",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-005/operator_diagnostic.py",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-005/native-correctness/artifacts/execution-sl98zclh/report.json"
+  ],
+  "deadline_unix": 1793093014.499674,
+  "ended_unix": 1793092144.393307,
+  "kind": "candidate_real_operator_timing",
+  "returncode": 0,
+  "started_unix": 1793092114.499691,
+  "status": "completed",
+  "supervisor_pid": 63520,
+  "tracked_processes": {
+    "63522": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-005/operator_diagnostic.py /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-005/native-correctness/artifacts/execution-sl98zclh/report.json",
+      "ppid": 63520,
+      "start": "Tue Oct 27 02:08:34 2026"
+    },
+    "63537": {
+      "command": "(python3.12)",
+      "ppid": 63522,
+      "start": "Tue Oct 27 02:08:37 2026"
+    }
+  },
+  "worker_pid": 63522
+}

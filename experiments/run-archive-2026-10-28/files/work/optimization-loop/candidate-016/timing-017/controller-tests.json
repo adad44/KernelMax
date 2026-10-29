@@ -1,0 +1,9 @@
+{
+  "aa_uses_only_native_layout": true,
+  "actual_functions_ast_checked": true,
+  "calls_including_all_fixed_primers": 3584,
+  "correct_layout_enforced_for_each_timed_lane": true,
+  "preparation_records_per_pair": 17,
+  "setup_time_and_peaks_kept_outside_timing_and_retained": true,
+  "timed_calls_per_lane": 1024
+}

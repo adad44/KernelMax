@@ -1,0 +1,9 @@
+{
+  "declared_before_any_candidate_pair": true,
+  "declared_unix": 1793111632.470874,
+  "condition": "Only after all20valid paired samples in a context and existing improvement_above_measured_noise false, park without later contexts or an unchanged reroll. No interim estimates or changed thresholds.",
+  "mechanism": "ExternalSTOP marker honored by frozen experiment; retain all data and integrity finalizers; wait parent process exit; immediately start distinct down target in fresh031 controller.",
+  "no_protected_source_modified": true,
+  "no_experiment_rerun": true,
+  "deadline_unix": 1793131200.0
+}

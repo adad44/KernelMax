@@ -1,0 +1,7 @@
+{
+  "reason": "The N=72 synthetic fixture made the native down projection incompatible with group-32 quantization. Use N=96, retaining the original failed setup and four completed comparisons.",
+  "candidate_source_changed": false,
+  "original_controller_sha256": "76a7a80c9d9e15f5b0c628ef7fc4113fd004e3649541bd7b0a79b1c1d8ce317e",
+  "replacement_controller_sha256": "16a14a5998bff1d3de4bbca8a019a3a8bd25989bf673584b093c05227072045f",
+  "original_failure": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/tiny-native-checks.json"
+}

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/run_round.py", line 901, in <module>
+    main()
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/run_round.py", line 872, in main
+    run_command(command, number)
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/run_round.py", line 831, in run_command
+    raise RuntimeError("Final source/checkpoint/snapshot guard failed")
+RuntimeError: Final source/checkpoint/snapshot guard failed

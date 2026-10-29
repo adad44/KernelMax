@@ -1,0 +1,31 @@
+load 0/531
+load 25/531
+load 50/531
+load 75/531
+load 100/531
+load 125/531
+load 150/531
+load 175/531
+load 200/531
+load 225/531
+load 250/531
+load 275/531
+load 300/531
+load 325/531
+load 350/531
+load 375/531
+load 400/531
+load 425/531
+load 450/531
+load 475/531
+load 500/531
+load 525/531
+load 531/531
+boundary step0: 0 nonexact layers
+boundary step1: 0 nonexact layers
+boundary step2: 1 nonexact layers
+boundary step3: 4 nonexact layers
+boundary step4: 1 nonexact layers
+boundary step5: 2 nonexact layers
+boundary step6: 3 nonexact layers
+boundary step7: 0 nonexact layers

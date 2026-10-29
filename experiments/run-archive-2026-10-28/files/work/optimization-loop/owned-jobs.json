@@ -1,0 +1,225 @@
+{
+  "deadline_unix": 1793131200.0,
+  "jobs": [
+    {
+      "label": "com.kernelmax.search.nativeorder021.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/followup-021/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/followup-021/coordinator.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.combined035.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-035/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-035/supervise.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.candidate008.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-008/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-008/supervise.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.probe001.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/probe-001/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/probe-001/supervise.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.correctness014.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/correctness-014/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/correctness-014/supervise.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.candidate009.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-009/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-009/supervise.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.candidate007.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-007/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-007/supervise.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.residency028.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/residency-followup-028/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/residency-followup-028/coordinator.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.combined036.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-followup-036/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-followup-036/flow.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.downfollowup024.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-followup-024/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-followup-024/coordinator.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.sweep011.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-011/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-011/search.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.candidate019.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-019/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-019/supervise.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.futility030.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/model-futility-030/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/model-futility-030/watch.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.kunroll032.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-k-unroll-032/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-k-unroll-032/coordinator.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.candidate016.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-016/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-016/supervise.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.sweep010.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-010/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-010/search.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.candidate005.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-005/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-005/supervise.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.probe004.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/probe-004/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/probe-004/supervise.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.probe002.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/probe-002/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/probe-002/supervise.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.noise003.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/noise-003/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/noise-003/supervise.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.fullmodel012.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-012/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-012/supervise.py"
+      ]
+    },
+    {
+      "label": "com.kernelmax.search.candidate016timing017.20261027",
+      "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-016/timing-017/job.plist",
+      "program": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-016/timing-017/timing-supervise.py"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+{
+  "all_recorded_samples_call_counts_verified": true,
+  "original_integrity": {
+    "checkpoint_unchanged": true,
+    "sources_unchanged": true
+  },
+  "raw_samples": 172,
+  "raw_sha256": "0f0dd7c8b5bf0415465a625f15ef05b1d8499d5c1e21a6ff30c387fc1df3caf6",
+  "regions": {
+    "0:without_down": {
+      "calls_per_lane_sample": 4096,
+      "complete_pairs": 20,
+      "deleted_ms_per_call": 0.6938692729492187,
+      "descriptive_95pct_saved_ms": [
+        0.1135721995849609,
+        0.11769463073730468
+      ],
+      "environment_issues": [
+        "native thermal state is not nominal"
+      ],
+      "full_model_contribution_established": false,
+      "median_isolated_operator_fraction": 0.14205914400441194,
+      "median_saved_ms_per_call": 0.11504459594726568,
+      "native_ms_per_call": 0.8099481097412109,
+      "paired_savings_ms": [
+        0.11843262719726566,
+        0.10890519213867189,
+        0.11569590283203124,
+        0.11423296093750002,
+        0.12131832861328129,
+        0.10910361718749995,
+        0.11245197583007804,
+        0.11291143823242178,
+        0.1201855263671876,
+        0.1152441401367188,
+        0.11616395068359375,
+        0.10819472290039067,
+        0.11880389404296876,
+        0.11444941210937509,
+        0.11695663427734371,
+        0.11253046679687495,
+        0.11457763720703129,
+        0.11951008056640622,
+        0.1210934450683594,
+        0.11484505175781257
+      ],
+      "usable_as_sampled_operator_deletion_evidence": false
+    },
+    "0:without_up_gate": {
+      "calls_per_lane_sample": 4096,
+      "complete_pairs": 20,
+      "deleted_ms_per_call": 0.43407093310546874,
+      "descriptive_95pct_saved_ms": [
+        0.37236257934570305,
+        0.38047638964843755
+      ],
+      "environment_issues": [],
+      "full_model_contribution_established": false,
+      "median_isolated_operator_fraction": 0.46669783046501145,
+      "median_saved_ms_per_call": 0.3794740854492188,
+      "native_ms_per_call": 0.8114382528076172,
+      "paired_savings_ms": [
+        0.386617533203125,
+        0.38045418286132815,
+        0.3849874775390625,
+        0.37854608178710936,
+        0.38431529785156243,
+        0.3764009702148438,
+        0.3804985964355469,
+        0.3717826228027344,
+        0.37968223046875,
+        0.3717458806152344,
+        0.3802232770996094,
+        0.3717366743164062,
+        0.3818312883300781,
+        0.3712855637207031,
+        0.3798535258789062,
+        0.3719882097167968,
+        0.37926594042968753,
+        0.37273694897460935,
+        0.3808158566894531,
+        0.3710364174804687
+      ],
+      "usable_as_sampled_operator_deletion_evidence": true
+    },
+    "12:without_down": {
+      "calls_per_lane_sample": 4096,
+      "complete_pairs": 20,
+      "deleted_ms_per_call": 0.7764744769287109,
+      "descriptive_95pct_saved_ms": [
+        0.1313994091796875,
+        0.17708103417968757
+      ],
+      "environment_issues": [
+        "native thermal state is not nominal"
+      ],
+      "full_model_contribution_established": false,
+      "median_isolated_operator_fraction": 0.15674199862823662,
+      "median_saved_ms_per_call": 0.14279985534667966,
+      "native_ms_per_call": 0.9196773225097656,
+      "paired_savings_ms": [
+        0.11679023242187503,
+        0.1115036213378906,
+        0.13003044653320306,
+        0.2365561726074219,
+        0.1907058000488282,
+        0.28119100927734375,
+        0.40241043066406257,
+        0.16345626831054694,
+        0.15762199926757814,
+        0.13168746923828123,
+        0.12746459985351566,
+        0.2191597897949219,
+        0.15198098706054686,
+        0.1311113491210938,
+        0.23936243652343747,
+        0.14926633715820314,
+        0.13525758862304693,
+        0.13579141210937495,
+        0.13633337353515618,
+        0.11873184204101561
+      ],
+      "usable_as_sampled_operator_deletion_evidence": false
+    },
+    "12:without_up_gate": {
+      "calls_per_lane_sample": 4096,
+      "complete_pairs": 20,
+      "deleted_ms_per_call": 0.43412773657226567,
+      "descriptive_95pct_saved_ms": [
+        0.37052492797851566,
+        0.3784584910888672
+      ],
+      "environment_issues": [
+        "native thermal state is not nominal"
+      ],
+      "full_model_contribution_established": false,
+      "median_isolated_operator_fraction": 0.46186073796188915,
+      "median_saved_ms_per_call": 0.3751424813232421,
+      "native_ms_per_call": 0.8096724395751953,
+      "paired_savings_ms": [
+        0.3806864523925781,
+        0.3683132019042969,
+        0.37573116015624997,
+        0.37042298364257814,
+        0.37991305541992193,
+        0.37133212158203127,
+        0.3755239052734375,
+        0.3675767924804688,
+        0.38420230102539066,
+        0.3747610573730468,
+        0.3778686525878907,
+        0.3689053142089844,
+        0.37904832958984375,
+        0.3706268723144531,
+        0.3794314072265625,
+        0.3686715905761718,
+        0.38187599707031256,
+        0.37415858984375006,
+        0.377528310546875,
+        0.37025647900390624
+      ],
+      "usable_as_sampled_operator_deletion_evidence": false
+    }
+  },
+  "status": "stopped_aa_screen",
+  "summary_correction": "Original summary divided by 256 despite 4096 actual calls. Recomputed below from each raw sample calls. Original artifact preserved."
+}

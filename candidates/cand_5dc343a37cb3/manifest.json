@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_5dc343a37cb3",
+  "name": "Eight-lane up/gate reduction with native MXFP4",
+  "implementation_type": "mlx",
+  "description": "Targets the measured up/gate isolated expert region (layer-0 deletion diagnostic saved about 0.379 ms per call, about 46.7% of sampled expert wall time). Changes reduction mapping from 32 lanes with four row accumulators to eight lanes per row and one accumulator per projection; fuses the same BF16 bias/SwiGLU epilogue. Original packed weights, scales, routes, three logical products, and native down projection remain. No packing, persistent tensor cache or requantization. Decode BF16 only; int32/uint32 IDs; prefill reference fallback. Region evidence is not a full-model share or speedup claim."
+}

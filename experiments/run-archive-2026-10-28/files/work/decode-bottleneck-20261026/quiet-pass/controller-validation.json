@@ -1,0 +1,5 @@
+{
+  "all_model_hooks_and_math_and_request_functions_unchanged": true,
+  "checkpoint_identity_expected_variable_assignments": 1,
+  "change_scope": "pre-request/block quiet gates and post-run variable shadow repair"
+}

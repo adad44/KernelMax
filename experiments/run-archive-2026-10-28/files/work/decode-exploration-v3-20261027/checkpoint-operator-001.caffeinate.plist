@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>Label</key><string>com.kernelmax.checkpoint-operator-001.caffeinate</string>
+<key>ProgramArguments</key><array><string>/usr/bin/caffeinate</string><string>-i</string><string>-s</string><string>-w</string><string>89774</string></array>
+<key>RunAtLoad</key><false/><key>KeepAlive</key><false/><key>ProcessType</key><string>Interactive</string>
+<key>StandardOutPath</key><string>/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/checkpoint-operator-001.caffeinate.stdout</string>
+<key>StandardErrorPath</key><string>/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/checkpoint-operator-001.caffeinate.stderr</string>
+</dict></plist>

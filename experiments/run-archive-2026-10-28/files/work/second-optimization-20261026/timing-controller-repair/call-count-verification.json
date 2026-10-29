@@ -1,0 +1,9 @@
+{
+  "observed_calls_per_sample": {
+    "baseline": 256,
+    "candidate": 256
+  },
+  "declared_calls_per_sample": 256,
+  "passed": true,
+  "method": "Actual controller invoke function executed with counting stubs; no candidate code or GPU execution"
+}

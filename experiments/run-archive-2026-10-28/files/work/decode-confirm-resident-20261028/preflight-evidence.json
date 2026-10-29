@@ -1,0 +1,144 @@
+{
+  "all_npz_full128_pass": true,
+  "candidate_bundle_sha256": "b6dd528b50b4d3d89db496fb021bbcd21d2043f701c36196e39ea08457283918",
+  "candidate_cap_exhausted": true,
+  "candidate_id": "cand_5785998944e5",
+  "candidate_matches_plan": true,
+  "checkpoint_receipt_sha256": "a40793bc665c8fbb108028d391abf2b4d3bf0b5836d712e6eedf910545d5e2df",
+  "checkpoint_receipt_validator_passed": true,
+  "copy_hashes": {
+    "plan-before.json": "dbd808ffe1ec0f46521d5d635e1fc2fe4b01fd918dd1631916a474663b9b574d",
+    "run_confirm.py": "d2f5fc68277db9189d98bd1013ad870a8c645efb3d0add94621369e1301231ac",
+    "session-before.json": "e5d96b0a1b2fb86e7e77f5df567c2bc69f29af477935ceb799a4f9e4d4b7354d"
+  },
+  "correctness_npz_checks": [
+    {
+      "context": 512,
+      "logit_arrays_exact": true,
+      "max_abs_logit_error": 0.0,
+      "outputs": 128,
+      "route_arrays_equal": true,
+      "sha256_matches": true,
+      "shapes": {
+        "logits": [
+          128,
+          201088
+        ],
+        "routes": [
+          128,
+          24,
+          4
+        ],
+        "tokens": [
+          128
+        ]
+      },
+      "stored_bit_exact": true,
+      "stored_cache_within_tolerance": true,
+      "stored_passed": true,
+      "token_arrays_equal": true
+    },
+    {
+      "context": 2048,
+      "logit_arrays_exact": true,
+      "max_abs_logit_error": 0.0,
+      "outputs": 128,
+      "route_arrays_equal": true,
+      "sha256_matches": true,
+      "shapes": {
+        "logits": [
+          128,
+          201088
+        ],
+        "routes": [
+          128,
+          24,
+          4
+        ],
+        "tokens": [
+          128
+        ]
+      },
+      "stored_bit_exact": true,
+      "stored_cache_within_tolerance": true,
+      "stored_passed": true,
+      "token_arrays_equal": true
+    },
+    {
+      "context": 4096,
+      "logit_arrays_exact": true,
+      "max_abs_logit_error": 0.0,
+      "outputs": 128,
+      "route_arrays_equal": true,
+      "sha256_matches": true,
+      "shapes": {
+        "logits": [
+          128,
+          201088
+        ],
+        "routes": [
+          128,
+          24,
+          4
+        ],
+        "tokens": [
+          128
+        ]
+      },
+      "stored_bit_exact": true,
+      "stored_cache_within_tolerance": true,
+      "stored_passed": true,
+      "token_arrays_equal": true
+    }
+  ],
+  "current_contract_sha256": "2a31bbda3389e91f12e1e17b1cff261b96c5f12cd3ce9af5dc818fd21a50c895",
+  "new_runner_receipt_check_satisfied": true,
+  "no_gpu_worker_live": true,
+  "no_session_parent_replacement": true,
+  "old005_confirmed_timed_rows": 0,
+  "old005_guards_passed": true,
+  "old005_request_count": 5,
+  "old005_sha_matches": true,
+  "old005_warmups_match_reference": [
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "old_protected_count": 36,
+  "old_protected_mismatches": [],
+  "old_resident_final_status": "finished_by_controller",
+  "old_resident_guards_passed": true,
+  "parent_checkpoint_identity_matches_receipt_projection": true,
+  "parent_checkpoint_identity_projection_fields": [
+    "byte_verification",
+    "file_identity",
+    "model_files",
+    "model_path",
+    "model_revision"
+  ],
+  "parent_checkpoint_receipt_sha256_matches_receipt_bytes": true,
+  "parent_manifest_original_creation_shape_restored": true,
+  "parent_manifest_restoration_note": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-confirm-resident-20261028/parent-manifest-restoration.json",
+  "parent_manifest_restoration_recorded": true,
+  "parent_sha256": "8b76510d4d0cd0b2371aeb5757d8bed4f052f2b3bc50fadb3a741f799f7ee521",
+  "plan_sha256": "09b59c5920d06fab69b598f045d5ee694cfb719f0133318391c62c8ce42b9666",
+  "run_ast_passed": true,
+  "run_sha256": "d2f5fc68277db9189d98bd1013ad870a8c645efb3d0add94621369e1301231ac",
+  "session_allowed_operations_retained": true,
+  "session_authorization_basis_mentions_one_attempt": true,
+  "session_authorization_passed": true,
+  "session_contract_matches": true,
+  "session_controller_sources_match": true,
+  "session_prior_lineage_retained": true,
+  "session_sha256": "749a48b839bbf4fcc1bcce8d16ece8b53c6e48135809829c7117edaee8849859",
+  "test_protocol": {
+    "ast_passed": true,
+    "cpu_only": true,
+    "file": "work/decode-confirm-resident-20261028/test_protocol.py",
+    "no_model_loaded": true,
+    "result": "5 passed",
+    "sha256": "c0c1bfeecf3f6de5b79c36e248d0d8af6623f449ad23855ebc4310b9a29a72a4"
+  }
+}

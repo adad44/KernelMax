@@ -1,0 +1,15 @@
+{
+  "decision": "Run one strict confirmation of the unchanged current-round vocabulary snapshot",
+  "candidate_id": "cand_680ac65cf145",
+  "snapshot_sha256": "9994db5b687579196de78dbf625d9b23543064432bdc9e096a50d33d90600881",
+  "basis": "Human approved the new three-candidate round. Primary reviewed screen-audit.json and frozen metadata: all three clean paired ratios exceed 1.06; median ratio1.0737323681573472 and saving2.960400591699738ms/token; short8outputnumerics/cache bit-exact, zero route/token differences, all128screenoutputs match, exact actual-matrix unpack/nativebacking proof, physical single-representation residency and all source/checkpoint/storage/method guards pass.",
+  "screen_evidence": "screen-audit.json",
+  "old_evidence_policy": "No old performance result reused. This is a new frozen candidate with a substantive weight-lifetime change, not an unchanged reroll of the prior failed candidate.",
+  "next_command": 2,
+  "mode": "confirm",
+  "requirements": "Run full128outputcorrectness at512/2048/4096 first. Then fresh20pair A/A percontext and four20pair candidateblocks including independent512repeat, identical declared primers, strict measured power/thermal/swap conditions, freshcaches, nativeprecision, all128tokens and129forwards accounted. Every block must meet median>=1.05 and bootstrap95lower>max(1.05,1+freshAAnoise). Preserve all failures; no filtering or automatic retry.",
+  "candidate_count_this_round": 1,
+  "candidate_cap_this_round": 3,
+  "claims_enabled_by_this_decision": false,
+  "acceptance_enabled": false
+}

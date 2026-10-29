@@ -1,0 +1,36 @@
+2026-10-03T10:59:27.764083+00:00 Loading model once from /Volumes/BankOfSouls/models/gpt-oss-20b-mlx; load time is excluded from trials.
+2026-10-03T11:04:31.037567+00:00 Model loaded in 303.15s; seed=42, greedy sampling.
+2026-10-03T11:04:31.039822+00:00 Warmup: 512 input / 256 output tokens.
+2026-10-03T11:04:43.181050+00:00 Warmup: 2048 input / 256 output tokens.
+2026-10-03T11:04:57.537407+00:00 Warmup: 4096 input / 256 output tokens.
+2026-10-03T11:05:27.370967+00:00 Trial 1/10, input=512: prefill=349.60 tok/s, decode=32.09 tok/s, TTFT=1.559s, peak=12.502 GB.
+2026-10-03T11:05:43.055479+00:00 Trial 1/10, input=2048: prefill=285.85 tok/s, decode=30.62 tok/s, TTFT=7.262s, peak=12.859 GB.
+2026-10-03T11:06:05.324544+00:00 Trial 1/10, input=4096: prefill=302.14 tok/s, decode=30.11 tok/s, TTFT=13.689s, peak=12.922 GB.
+2026-10-03T11:06:20.822606+00:00 Trial 2/10, input=2048: prefill=298.67 tok/s, decode=30.23 tok/s, TTFT=6.957s, peak=12.859 GB.
+2026-10-03T11:06:45.283054+00:00 Trial 2/10, input=4096: prefill=278.39 tok/s, decode=26.81 tok/s, TTFT=14.838s, peak=12.922 GB.
+2026-10-03T11:06:56.585306+00:00 Trial 2/10, input=512: prefill=244.28 tok/s, decode=28.53 tok/s, TTFT=2.254s, peak=12.502 GB.
+2026-10-03T11:07:22.707478+00:00 Trial 3/10, input=4096: prefill=256.27 tok/s, decode=25.81 tok/s, TTFT=16.126s, peak=12.922 GB.
+2026-10-03T11:07:34.914936+00:00 Trial 3/10, input=512: prefill=207.69 tok/s, decode=26.91 tok/s, TTFT=2.614s, peak=12.502 GB.
+2026-10-03T11:07:53.497903+00:00 Trial 3/10, input=2048: prefill=242.91 tok/s, decode=25.78 tok/s, TTFT=8.568s, peak=12.859 GB.
+2026-10-03T11:08:05.771365+00:00 Trial 4/10, input=512: prefill=212.65 tok/s, decode=26.73 tok/s, TTFT=2.613s, peak=12.502 GB.
+2026-10-03T11:08:24.133992+00:00 Trial 4/10, input=2048: prefill=246.95 tok/s, decode=26.01 tok/s, TTFT=8.439s, peak=12.859 GB.
+2026-10-03T11:08:51.014186+00:00 Trial 4/10, input=4096: prefill=246.34 tok/s, decode=25.55 tok/s, TTFT=16.778s, peak=12.922 GB.
+2026-10-03T11:09:09.281496+00:00 Trial 5/10, input=2048: prefill=246.59 tok/s, decode=26.39 tok/s, TTFT=8.474s, peak=12.859 GB.
+2026-10-03T11:09:36.642502+00:00 Trial 5/10, input=4096: prefill=238.96 tok/s, decode=25.80 tok/s, TTFT=17.359s, peak=12.922 GB.
+2026-10-03T11:09:48.763904+00:00 Trial 5/10, input=512: prefill=214.07 tok/s, decode=26.92 tok/s, TTFT=2.533s, peak=12.502 GB.
+2026-10-03T11:10:15.801045+00:00 Trial 6/10, input=4096: prefill=246.45 tok/s, decode=25.14 tok/s, TTFT=16.767s, peak=12.922 GB.
+2026-10-03T11:10:27.882814+00:00 Trial 6/10, input=512: prefill=228.52 tok/s, decode=26.69 tok/s, TTFT=2.409s, peak=12.502 GB.
+2026-10-03T11:10:46.863532+00:00 Trial 6/10, input=2048: prefill=242.36 tok/s, decode=24.91 tok/s, TTFT=8.611s, peak=12.859 GB.
+2026-10-03T11:10:59.504983+00:00 Trial 7/10, input=512: prefill=208.07 tok/s, decode=25.93 tok/s, TTFT=2.678s, peak=12.502 GB.
+2026-10-03T11:11:18.582874+00:00 Trial 7/10, input=2048: prefill=239.42 tok/s, decode=24.93 tok/s, TTFT=8.721s, peak=12.859 GB.
+2026-10-03T11:11:46.912873+00:00 Trial 7/10, input=4096: prefill=237.38 tok/s, decode=23.72 tok/s, TTFT=17.438s, peak=12.922 GB.
+2026-10-03T11:12:05.989159+00:00 Trial 8/10, input=2048: prefill=239.71 tok/s, decode=24.96 tok/s, TTFT=8.723s, peak=12.859 GB.
+2026-10-03T11:12:34.070193+00:00 Trial 8/10, input=4096: prefill=238.38 tok/s, decode=24.15 tok/s, TTFT=17.382s, peak=12.922 GB.
+2026-10-03T11:12:46.516868+00:00 Trial 8/10, input=512: prefill=219.68 tok/s, decode=26.00 tok/s, TTFT=2.517s, peak=12.502 GB.
+2026-10-03T11:13:14.561811+00:00 Trial 9/10, input=4096: prefill=239.00 tok/s, decode=24.10 tok/s, TTFT=17.329s, peak=12.922 GB.
+2026-10-03T11:13:27.695372+00:00 Trial 9/10, input=512: prefill=201.50 tok/s, decode=24.83 tok/s, TTFT=2.710s, peak=12.502 GB.
+2026-10-03T11:13:47.286698+00:00 Trial 9/10, input=2048: prefill=237.26 tok/s, decode=24.21 tok/s, TTFT=8.917s, peak=12.859 GB.
+2026-10-03T11:14:00.516563+00:00 Trial 10/10, input=512: prefill=204.20 tok/s, decode=24.59 tok/s, TTFT=2.730s, peak=12.502 GB.
+2026-10-03T11:14:20.871969+00:00 Trial 10/10, input=2048: prefill=227.03 tok/s, decode=23.26 tok/s, TTFT=9.231s, peak=12.859 GB.
+2026-10-03T11:14:49.032997+00:00 Trial 10/10, input=4096: prefill=233.66 tok/s, decode=24.94 tok/s, TTFT=17.787s, peak=12.922 GB.
+2026-10-03T11:14:49.120983+00:00 COMPLETE: 30 measured trials saved to /Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/2026-10-03-seed42/results.json

@@ -1,0 +1,486 @@
+{
+  "candidate_directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-candidate-025-cand_38d341fb17de",
+  "candidate_id": "cand_38d341fb17de",
+  "candidate_outcome": {
+    "all_actual_counts_verified": true,
+    "candidate_id": "cand_38d341fb17de",
+    "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-candidate-025-cand_38d341fb17de",
+    "full_model_speedup_established": false,
+    "guards_passed": true,
+    "raw_sha256": "d59e1ad9ba196e661695904a571cdd27bf33aff13f882b26877e8c546d3c3e0f",
+    "shortlisted": false,
+    "status": "stopped_operator_futility",
+    "summaries": {
+      "0": {
+        "ab_order_median_ratio": 1.0049103480839325,
+        "ba_order_median_ratio": 1.0107759051340302,
+        "descriptive_bootstrap_95pct": [
+          1.002975317003537,
+          1.0147349417139735
+        ],
+        "environment_valid": true,
+        "median_baseline_ms_per_call": 0.805298298828125,
+        "median_candidate_ms_per_call": 0.7995610361328125,
+        "median_ratio": 1.006765992134866,
+        "paired_ratios": [
+          0.9976282822799006,
+          1.0141937804054557,
+          1.0152761030224913,
+          0.9937671828210787,
+          1.017550410720863,
+          1.0029678477633341,
+          0.9975509477316535,
+          1.0225793767739166,
+          0.9887250213976194,
+          1.018150509082156,
+          0.9953611809336467,
+          1.0155957859566955,
+          1.0037786866369849,
+          1.0029827862437397,
+          1.0060420095308804,
+          1.0072221350005872,
+          1.0063098492691445,
+          1.0073580298626048,
+          1.0131380254825222,
+          1.0167682542430172
+        ]
+      },
+      "12": {
+        "ab_order_median_ratio": 1.0099884135979498,
+        "ba_order_median_ratio": 1.0073343270376114,
+        "descriptive_bootstrap_95pct": [
+          1.004277623989402,
+          1.0126800948990236
+        ],
+        "environment_valid": true,
+        "median_baseline_ms_per_call": 0.8083333330078125,
+        "median_candidate_ms_per_call": 0.8017900585937501,
+        "median_ratio": 1.0091225814715794,
+        "paired_ratios": [
+          0.9994471062087281,
+          1.0188124111228916,
+          0.9984298525958551,
+          1.0126632002428655,
+          1.0143381049375504,
+          1.0059059775385242,
+          0.998663727390178,
+          1.0174208114195005,
+          1.0100612092277774,
+          1.0108477836964427,
+          1.0099156179681221,
+          1.0083295449750367,
+          1.0036649328928884,
+          1.0063391091001863,
+          1.0126969895551816,
+          0.9973203686693742,
+          1.0151300297761048,
+          1.0048903150859154,
+          1.0136077536237698,
+          1.0013900344427364
+        ]
+      },
+      "23": {
+        "ab_order_median_ratio": 0.9975173882566111,
+        "ba_order_median_ratio": 1.0172922882922473,
+        "descriptive_bootstrap_95pct": [
+          0.9980724728287345,
+          1.0172922882922473
+        ],
+        "environment_valid": true,
+        "median_baseline_ms_per_call": 0.8114919833984375,
+        "median_candidate_ms_per_call": 0.8054056791992188,
+        "median_ratio": 1.0077507710632134,
+        "paired_ratios": [
+          1.0253985848617224,
+          0.9993909241773993,
+          0.9973412829122205,
+          1.0119792212039977,
+          1.0070532718617906,
+          1.0207121843817017,
+          0.9959944800016458,
+          1.019096765521878,
+          0.989852106954696,
+          1.0198884769131364,
+          0.9976934936010016,
+          1.0170868847599068,
+          0.9950762631668344,
+          1.021724612125239,
+          0.9970035425622971,
+          1.013495320867833,
+          0.9989487911992763,
+          1.0174976918245875,
+          0.9984514520564673,
+          1.0084482702646362
+        ]
+      }
+    }
+  },
+  "deadline_unix": 1793131200.0,
+  "ended_unix": 1793115686.3640718,
+  "pid": 77991,
+  "probe_audit": {
+    "all_actual_counts_verified": true,
+    "raw_sha256": "860761070aef39a5ab533c3f659f58a5943fd8641e5530fc019948d8a7ee390b",
+    "status": "completed_operator_diagnostic"
+  },
+  "stages": [
+    {
+      "command": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-budget-023/probe.py"
+      ],
+      "deadline_unix": 1793115392.005735,
+      "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-budget-023",
+      "ended_unix": 1793114596.9797351,
+      "name": "measuring_down_budget",
+      "returncode": 0,
+      "started_unix": 1793113592.005738,
+      "status": "completed",
+      "tracked_processes": {
+        "77996": {
+          "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-budget-023/probe.py",
+          "ppid": 77991,
+          "start": "Tue Oct 27 08:06:32 2026"
+        },
+        "78412": {
+          "command": "(ps)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:07:18 2026"
+        },
+        "78861": {
+          "command": "(pmset)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:08:06 2026"
+        },
+        "79149": {
+          "command": "(python3.12)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:08:38 2026"
+        },
+        "79297": {
+          "command": "(python3.12)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:08:53 2026"
+        },
+        "79370": {
+          "command": "(pmset)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:09:01 2026"
+        },
+        "79440": {
+          "command": "(pmset)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:09:09 2026"
+        },
+        "79518": {
+          "command": "(pmset)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:09:17 2026"
+        },
+        "79640": {
+          "command": "(ps)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:09:29 2026"
+        },
+        "80034": {
+          "command": "(pmset)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:10:13 2026"
+        },
+        "80153": {
+          "command": "(pmset)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:10:25 2026"
+        },
+        "80461": {
+          "command": "(pmset)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:10:58 2026"
+        },
+        "80581": {
+          "command": "(ps)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:11:11 2026"
+        },
+        "80605": {
+          "command": "(ps)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:11:14 2026"
+        },
+        "81425": {
+          "command": "(pmset)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:12:41 2026"
+        },
+        "81555": {
+          "command": "(python3.12)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:12:56 2026"
+        },
+        "81632": {
+          "command": "(pmset)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:13:03 2026"
+        },
+        "82498": {
+          "command": "(ps)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:14:37 2026"
+        },
+        "83231": {
+          "command": "(ps)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:15:56 2026"
+        },
+        "83255": {
+          "command": "(ps)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:15:58 2026"
+        },
+        "83581": {
+          "command": "(ps)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:16:34 2026"
+        },
+        "83793": {
+          "command": "(pmset)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:16:57 2026"
+        },
+        "83816": {
+          "command": "(pmset)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:16:59 2026"
+        },
+        "83932": {
+          "command": "(pmset)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:17:12 2026"
+        },
+        "84074": {
+          "command": "(pmset)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:17:27 2026"
+        },
+        "84098": {
+          "command": "(pmset)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:17:30 2026"
+        },
+        "84585": {
+          "command": "(vm_stat)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:18:21 2026"
+        },
+        "85575": {
+          "command": "(ps)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:20:08 2026"
+        },
+        "85718": {
+          "command": "(ps)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:20:23 2026"
+        },
+        "85815": {
+          "command": "(pmset)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:20:34 2026"
+        },
+        "86367": {
+          "command": "(sysctl)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:21:34 2026"
+        },
+        "86728": {
+          "command": "(ps)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:22:13 2026"
+        },
+        "86936": {
+          "command": "(pmset)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:22:36 2026"
+        },
+        "87107": {
+          "command": "(pmset)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:22:53 2026"
+        },
+        "87219": {
+          "command": "(pmset)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:23:06 2026"
+        },
+        "87289": {
+          "command": "(sysctl)",
+          "ppid": 77996,
+          "start": "Tue Oct 27 08:23:14 2026"
+        }
+      },
+      "worker_pid": 77996
+    },
+    {
+      "command": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-candidate-025-cand_38d341fb17de/pipeline.py"
+      ],
+      "deadline_unix": 1793116396.9994318,
+      "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-candidate-025-cand_38d341fb17de",
+      "ended_unix": 1793115686.351252,
+      "name": "running_down_candidate",
+      "returncode": 0,
+      "started_unix": 1793114596.9994318,
+      "status": "completed",
+      "tracked_processes": {
+        "87323": {
+          "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-candidate-025-cand_38d341fb17de/pipeline.py",
+          "ppid": 77991,
+          "start": "Tue Oct 27 08:23:16 2026"
+        },
+        "87327": {
+          "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/scripts/run_candidate_loop.py --session /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/session.json --candidate /Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_38d341fb17de --work-dir /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-candidate-025-cand_38d341fb17de/native-correctness --timeout-seconds 300",
+          "ppid": 87323,
+          "start": "Tue Oct 27 08:23:17 2026"
+        },
+        "87337": {
+          "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -I -B /Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_worker.py /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-candidate-025-cand_38d341fb17de/native-correctness/artifacts/execution-wv7lywb3/reference/request.json /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-candidate-025-cand_38d341fb17de/native-correctness/artifacts/execution-wv7lywb3/reference/response.jsonl",
+          "ppid": 87327,
+          "start": "Tue Oct 27 08:23:17 2026"
+        },
+        "87360": {
+          "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -I -B /Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_worker.py /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-candidate-025-cand_38d341fb17de/native-correctness/artifacts/execution-wv7lywb3/candidate/request.json /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-candidate-025-cand_38d341fb17de/native-correctness/artifacts/execution-wv7lywb3/candidate/response.jsonl",
+          "ppid": 87327,
+          "start": "Tue Oct 27 08:23:18 2026"
+        },
+        "87376": {
+          "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-candidate-025-cand_38d341fb17de/tiny_native_checks.py",
+          "ppid": 87323,
+          "start": "Tue Oct 27 08:23:21 2026"
+        },
+        "87392": {
+          "command": "(python3.12)",
+          "ppid": 87323,
+          "start": "Tue Oct 27 08:23:22 2026"
+        },
+        "88292": {
+          "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-candidate-025-cand_38d341fb17de/operator_diagnostic.py /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-candidate-025-cand_38d341fb17de/native-correctness/artifacts/execution-wv7lywb3/report.json",
+          "ppid": 87323,
+          "start": "Tue Oct 27 08:25:12 2026"
+        },
+        "88369": {
+          "command": "(pmset)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:25:18 2026"
+        },
+        "89030": {
+          "command": "(pmset)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:26:28 2026"
+        },
+        "89715": {
+          "command": "(python3.12)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:27:43 2026"
+        },
+        "89788": {
+          "command": "(ps)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:27:51 2026"
+        },
+        "90363": {
+          "command": "(pmset)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:28:53 2026"
+        },
+        "91334": {
+          "command": "(ps)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:30:37 2026"
+        },
+        "91429": {
+          "command": "(pmset)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:30:46 2026"
+        },
+        "91583": {
+          "command": "(pmset)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:31:03 2026"
+        },
+        "91730": {
+          "command": "(ps)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:31:18 2026"
+        },
+        "91970": {
+          "command": "(pmset)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:31:44 2026"
+        },
+        "92090": {
+          "command": "(ps)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:31:57 2026"
+        },
+        "92189": {
+          "command": "(ps)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:32:07 2026"
+        },
+        "93950": {
+          "command": "(vm_stat)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:35:19 2026"
+        },
+        "94167": {
+          "command": "(python3.12)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:35:42 2026"
+        },
+        "94426": {
+          "command": "(ps)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:36:07 2026"
+        },
+        "95328": {
+          "command": "(pmset)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:37:37 2026"
+        },
+        "95586": {
+          "command": "(ps)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:38:00 2026"
+        },
+        "96017": {
+          "command": "(python3.12)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:38:39 2026"
+        },
+        "97747": {
+          "command": "(ps)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:41:15 2026"
+        },
+        "97829": {
+          "command": "(pmset)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:41:23 2026"
+        },
+        "97870": {
+          "command": "(pmset)",
+          "ppid": 88292,
+          "start": "Tue Oct 27 08:41:26 2026"
+        }
+      },
+      "worker_pid": 87323
+    }
+  ],
+  "started_unix": 1793113591.988103,
+  "status": "parked_down_candidate_no_operator_gain"
+}

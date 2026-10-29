@@ -1,0 +1,40 @@
+{
+  "created_at_unix": 1793153815.834908,
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "1e67db6da1464fc54fd53d52d369690e096e764aa18947259b9c302a439e1d47",
+      "size_bytes": 6475
+    },
+    {
+      "path": "kernelmaxxing.yaml",
+      "sha256": "f1168ec47dbee47e620412a8c3c16eb0393f03327f894f32c1ef69803404879d",
+      "size_bytes": 3010
+    },
+    {
+      "path": "evaluator/schemas.py",
+      "sha256": "eaa86bf75089d52d9fef1d1ebe61d1b58898783657bbf08d6457deb0d41f08ea",
+      "size_bytes": 26423
+    },
+    {
+      "path": "tests/test_contract.py",
+      "sha256": "34573cd3535db51d882727cf72e4e6599e2491c61f164206a38c135a0b664271",
+      "size_bytes": 29190
+    },
+    {
+      "path": "candidates/README.md",
+      "sha256": "f3dc46dd020fff73f8ee3b1d2d3e2083412bef876362bb46bf554b7ba422a658",
+      "size_bytes": 4375
+    },
+    {
+      "path": "scripts/CANDIDATE_LOOP.md",
+      "sha256": "38eed054aa0a4071e1e9cff66e282c7ffb883b620c3192e5bf4f33472108b5c9",
+      "size_bytes": 4446
+    }
+  ],
+  "normalization": "evaluator.schemas.load_contract(kernelmaxxing.yaml).sha256 via current checkout loader",
+  "old_normalized_contract_sha256": "5fc5d80bf357fd02a8977b10da7896692c79aa9c30019ab85ba6296c9bd56af4",
+  "schema": 1,
+  "snapshot_root": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/policy-v2-snapshot",
+  "source_checkout": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop"
+}

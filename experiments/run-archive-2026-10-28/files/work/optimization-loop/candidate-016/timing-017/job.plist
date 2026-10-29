@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>HF_HUB_OFFLINE</key>
+		<string>1</string>
+		<key>PATH</key>
+		<string>/usr/bin:/bin:/usr/sbin:/sbin</string>
+		<key>TRANSFORMERS_OFFLINE</key>
+		<string>1</string>
+	</dict>
+	<key>KeepAlive</key>
+	<false/>
+	<key>Label</key>
+	<string>com.kernelmax.search.candidate016timing017.20261027</string>
+	<key>ProcessType</key>
+	<string>Interactive</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python</string>
+		<string>-B</string>
+		<string>-u</string>
+		<string>/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-016/timing-017/timing-supervise.py</string>
+	</array>
+	<key>RunAtLoad</key>
+	<false/>
+	<key>StandardErrorPath</key>
+	<string>/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-016/timing-017/timing-supervisor-stderr.log</string>
+	<key>StandardOutPath</key>
+	<string>/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-016/timing-017/timing-supervisor-stdout.log</string>
+	<key>WorkingDirectory</key>
+	<string>/Users/alandiaz/Downloads/KernelMaxxxing</string>
+</dict>
+</plist>

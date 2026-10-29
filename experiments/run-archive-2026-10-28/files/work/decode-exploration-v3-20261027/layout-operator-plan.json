@@ -1,0 +1,14 @@
+{
+  "mode": "exploration",
+  "candidate_id": "cand_390712b41518",
+  "snapshot_sha256": "bbe50c8a03c67d5ba3811eb657a8f15c0292238e66fe8a1ddf3a93a8a5813595",
+  "hypothesis": "Reduce dense BF16 weight-read traffic across attentionq/k/v/o and vocabulary projection using exact lossless word encoding. Measured whole-decode deletion budgets: attention median14.720ms, vocabulary median12.205ms, expert median14.674ms and smallops0.296ms; nonadditive optimistic removal budgets, not implementation savings. The maximal eligible dense-layout logical byte saving532MB/token corresponds conditionally to4.4–6.7ms at hypothetical80–120GB/s, before decode overhead; actual encoded/escape ratio must be measured.",
+  "native_prerequisite": "Matching frozen syntheticGPU fixture26/26passed with intact source/snapshot guards; no statistical rerun of older candidates.",
+  "actual_checkpoint_inputs": "Load exact original BF16 tensor bytes only for attentionq/k/v/o at layers0/12/23 and lm_head, using the pinned full-shard byte-verification receipt and per-tensor wordSHA. No full model inference in this screen. Four declared syntheticBF16 input vectors per matrix, magnitudes1,.5,2,64; these are not captured model activations.",
+  "numerical_checks": "All13actual matrices x4vectors must match unchanged native matmul/addmm output words bit-for-bit, shape/dtype/finite. Retain output/input word arrays and digests before timing. Numerical failures stop.",
+  "bounds": "Max128families/samples and1800wallseconds including preparation. Planned13correctnessfamilies+100samples=113. Eachsample has13matrices x16synchronizedcalls. CPU loading/encoding, GPU compilation, numerical checks and environmental observations are outside timing. Prototype sidecars stay resident equally for both lanes; report sidecar/absolute allocation, never claim resident-memory saving.",
+  "timing": "Fivewarmups per nativeA/B lane,20alternatingA/A pairs per matrix, thenfivewarmups per baseline/candidate lane and20alternatingAB/BApairs. Eachlane fixed2second rest, environment boundaries and0.5second thermal observer. Every sample including swap-affected/noisy ones retained. A/A results are preserved and annotated; exploratory pass finishes within bounds even if calibration is noisy.",
+  "claims": "No speedup or task-quality/acceptance claim from this screen. Record actual codec ratios, all paired timings and conditional24layer planning estimate only. Full-model validation and fresh strict matched confirmation would be separate after a useful local result. Park if gross decoding cost outweighs reduced bytes.",
+  "stop_conditions": "Powerloss/nonnominalthermal, numerical/GPU/build/integrityfailures stop with all artifacts; bounds finish normally. Swap-growth/swapout flags are retained and do not abort exploration. No unchanged reroll.",
+  "acceptance_enabled": false
+}

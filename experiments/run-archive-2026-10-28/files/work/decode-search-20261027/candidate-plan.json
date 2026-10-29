@@ -1,0 +1,31 @@
+{
+  "acceptance_enabled": false,
+  "candidate_id": "cand_75ca936df290",
+  "correctness": "Before timing compare every128generated logits, routes, tokens, finalBF16 cache arrays and metadata on512/2048/4096. Independently enforce129forward shapes per request and recompute metrics from raw timestamps; first-token release precedes queued decode and finaldrain is included. CPU fixture is not native correctness.",
+  "created_unix": 1793151656.078687,
+  "evidence": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/scheduling-hypothesis-evidence.json",
+  "held_out_task_quality": "planned; no acceptance or task-quality claim",
+  "hypothesis": "Submit actual greedy steps asynchronously and construct the following graph before CPU readback, to overlap CPU graph construction/evaluation with GPU work. Recovering roughly half of measured CPU runtime work would save about3ms/token; this is an optimistic planning hypothesis, not a measured critical-path share.",
+  "hypothetical_half_cpu_work_ms": 2.910523622047275,
+  "limitation": "CPU work may already overlap GPU. Python-only build cost~0.68ms is insufficient. Inspect complete cooled-profile region budgets and command-buffer timestamp gaps/observer overhead before selecting this snapshot for native timing. Do not promote it based only on a several-ms total CPU number.",
+  "maximum_candidate_seconds": 18000,
+  "measured_cpu_profile_ms": {
+    "build_cpu_ms": 0.7205433070867983,
+    "build_ms": 0.6786291964176133,
+    "eval_cpu_ms": 5.100503937007752,
+    "eval_wait_ms": 40.28558260651203,
+    "readback_ms": 0.0049592725433937205
+  },
+  "metrics": "decode throughput, TTFT, prefill throughput, inter-token latency/p90, peak memory and full-model wall time; raw times and controller entry wall retained.",
+  "native_model_load_reuse": "Timestamp runner may pass the same verified resident model after restoring its process-local observer. Source/snapshot/checkpoint guards apply before and after.",
+  "new_candidate_execution_started": false,
+  "profiling_intervention": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/timeline-light/plan.json",
+  "protocol": "Matched unchanged synchronous native request versus frozen scheduler; native checkpoint/precision/workloads/freshcaches unchanged. Five warmups per lane,20alternatingA/A pairs per context, then5warmups per candidate/baseline and20AB/BA candidate pairs. Fixed12s hold+5ssettle+10squiet before every measured request; AC/nominalthermal0.5s/no swap-outs or growth. Retain every sample; stop at first failure. No unchanged statistical rerolls. Stop later contexts on failed improvement-above-fresh-noise gate.",
+  "scope": "Complete decode CPU/GPU scheduling; no expert-kernel variant.",
+  "selection_prerequisites": [
+    "Completed valid A/A calibration and recorded whole-decode CPU-phase profile; failed region-deletion samples remain invalid/incomplete",
+    "Current native lightweight timestamp observer fixture",
+    "Lightweight timestamp/control results support a plausible several-ms scheduling target; outside command intervals is not automatically recoverable"
+  ],
+  "snapshot_sha256": "afb45fa871e35ba35161c09d6797d8e44731430e77c62cf0a99ec990bd090c22"
+}

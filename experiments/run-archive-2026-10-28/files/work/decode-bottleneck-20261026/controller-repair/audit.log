@@ -1,0 +1,284 @@
+{
+  "completed": true,
+  "requests_retained": 43,
+  "timing_blocks_retained": 180,
+  "all_requests_have_128_tokens": true,
+  "all_requests_have_127_decode_intervals": true,
+  "all_operator_blocks_have_192_calls": true,
+  "real_operator_checks": 96,
+  "real_operator_checks_passed": 96,
+  "real_operator_max_abs_error": 0.0,
+  "sources_unchanged": true,
+  "checkpoint_identity_unchanged": false,
+  "distinct_candidate_modules": true,
+  "logit_comparison_requests": 29,
+  "all_logit_comparisons_exact": true,
+  "real_activation_hashes_match": true,
+  "prepared_hashes_match": true,
+  "environment_issues": [
+    "native thermal state is not nominal",
+    "swap grew during the request",
+    "swapins increased during request",
+    "swapouts increased during request"
+  ],
+  "measurement_environment_policy": "strict",
+  "aa_screen": null,
+  "warmup_requests_retained": 7,
+  "measured_requests_with_environment_issues": 36,
+  "operator_groups_with_environment_issues": 20,
+  "measured_swap_activity": {
+    "swapin_pages_total": 93493,
+    "swapin_pages_max_request": 19608,
+    "swapout_pages_total": 72704,
+    "swap_growth_mib_max_request": 228.3099999999995
+  },
+  "independent_postrun_checkpoint_identity_matches": true,
+  "recording_bug_explanation": "The controller reassigned main.expected to a numerical expected output array before the final dictionary comparison. Raw state remains unchanged; this independent audit compares the original checkpoint identity dictionary to live file identities.",
+  "paired_comparisons": {
+    "native_over_candidate1": {
+      "pairs": 20,
+      "ratios": [
+        1.0114043501542749,
+        1.0016916836587768,
+        1.066434189336724,
+        1.4891508184311133,
+        1.0539143831224869,
+        0.9969969987480065,
+        1.1304651873866425,
+        1.010411279935356,
+        1.0807224376798248,
+        1.0031904329420702,
+        1.0652456844964397,
+        0.9934370365153994,
+        1.094921704235179,
+        1.0067842517092955,
+        1.0415005448037817,
+        0.993149510937951,
+        1.0435234482613431,
+        0.9997236980113449,
+        1.0816169645645635,
+        1.0002896162017902
+      ],
+      "median_ratio": 1.0264524474790284,
+      "descriptive_bootstrap_95pct": [
+        1.0024410583004235,
+        1.0658399369165819
+      ],
+      "median_saved_ms_per_call": 0.022594943099344768,
+      "block_order_strata": {
+        "0": {
+          "pairs": 10,
+          "median_ratio": 1.0658399369165819,
+          "descriptive_bootstrap_95pct": [
+            1.0435234482613431,
+            1.087822070957502
+          ]
+        },
+        "1": {
+          "pairs": 10,
+          "median_ratio": 1.0009906499302836,
+          "descriptive_bootstrap_95pct": [
+            0.9965803672633722,
+            1.006800856438713
+          ]
+        }
+      }
+    },
+    "native_over_candidate2": {
+      "pairs": 20,
+      "ratios": [
+        1.0257230270303332,
+        1.016481234919042,
+        1.0677655466479379,
+        1.5167674914929044,
+        1.0584621144550441,
+        1.0164507417307214,
+        1.1936465815974877,
+        1.0233403240757653,
+        1.0954001289279514,
+        1.018362882235762,
+        1.0750404218614587,
+        1.0156128572488639,
+        1.111237931137652,
+        1.0266786149898126,
+        1.059244105547785,
+        1.0230781022779993,
+        1.0550322204900242,
+        1.019331839652059,
+        1.0759744168739989,
+        1.0263148411149414
+      ],
+      "median_ratio": 1.0408554177399183,
+      "descriptive_bootstrap_95pct": [
+        1.0230781022779993,
+        1.0714029842546982
+      ],
+      "median_saved_ms_per_call": 0.03418880078243092,
+      "block_order_strata": {
+        "0": {
+          "pairs": 10,
+          "median_ratio": 1.0714029842546982,
+          "descriptive_bootstrap_95pct": [
+            1.0571381630189047,
+            1.0954001289279514
+          ]
+        },
+        "1": {
+          "pairs": 10,
+          "median_ratio": 1.0212049709650293,
+          "descriptive_bootstrap_95pct": [
+            1.016481234919042,
+            1.0263148411149414
+          ]
+        }
+      }
+    },
+    "up_gate_activation_over_candidate1_up_gate": {
+      "pairs": 20,
+      "ratios": [
+        0.9870143768964162,
+        1.0045005596131649,
+        1.0045361826848702,
+        0.9386822289583467,
+        1.0102715211000677,
+        1.008128211401889,
+        0.9886816192660416,
+        0.9952110274698068,
+        1.0040458452392444,
+        0.9838526532536305,
+        0.9767987768865447,
+        0.9868726870145573,
+        0.9765751220975463,
+        0.9942745151709181,
+        0.9986834968555761,
+        1.0047526341970348,
+        1.002390533607213,
+        0.9817694319132245,
+        0.9870532775776976,
+        0.9858368551896922
+      ],
+      "median_ratio": 0.9914780672184799,
+      "descriptive_bootstrap_95pct": [
+        0.9863547711021248,
+        1.0032181894232286
+      ],
+      "median_saved_ms_per_call": -0.006345919246086851,
+      "block_order_strata": {
+        "0": {
+          "pairs": 10,
+          "median_ratio": 0.9936825580608089,
+          "descriptive_bootstrap_95pct": [
+            0.9819260272321211,
+            1.0040458452392444
+          ]
+        },
+        "1": {
+          "pairs": 10,
+          "median_ratio": 0.9905736010927377,
+          "descriptive_bootstrap_95pct": [
+            0.9838526532536305,
+            1.0045005596131649
+          ]
+        }
+      }
+    },
+    "up_gate_activation_over_candidate2_up_gate": {
+      "pairs": 20,
+      "ratios": [
+        1.0451517545118325,
+        1.055943999980738,
+        1.110250396589534,
+        0.9640242517593643,
+        1.0609499193606935,
+        1.0132560183116517,
+        1.0378194533667529,
+        1.0360944247627348,
+        1.031173294000886,
+        1.0669590037941004,
+        1.0214694740990984,
+        1.0404049127644484,
+        1.0250376783360577,
+        1.0394560306286134,
+        1.048205525338943,
+        1.070957197220561,
+        1.0400591366178742,
+        1.0750549047848164,
+        1.0444536522464365,
+        1.0362047494519673
+      ],
+      "median_ratio": 1.0402320246911612,
+      "descriptive_bootstrap_95pct": [
+        1.0361495871073512,
+        1.0520747626598406
+      ],
+      "median_saved_ms_per_call": 0.028587999622686766,
+      "block_order_strata": {
+        "0": {
+          "pairs": 10,
+          "median_ratio": 1.0422563944321555,
+          "descriptive_bootstrap_95pct": [
+            1.031173294000886,
+            1.053050836936263
+          ]
+        },
+        "1": {
+          "pairs": 10,
+          "median_ratio": 1.0399304716965307,
+          "descriptive_bootstrap_95pct": [
+            1.0247303838818094,
+            1.0669590037941004
+          ]
+        }
+      }
+    },
+    "up_gate_activation_over_raw_up_gate": {
+      "pairs": 20,
+      "ratios": [
+        1.0340208504937651,
+        1.057302859276698,
+        1.0545498998917873,
+        1.0446813472238163,
+        1.0564585507426478,
+        1.0262761250793229,
+        1.0353172519043936,
+        1.0516788739299525,
+        1.0452610940816334,
+        1.0313218660288774,
+        1.025426406747699,
+        1.0379698910704416,
+        1.0342419409726729,
+        1.0328108018884206,
+        1.0909733885251467,
+        1.0453419864445341,
+        1.0423947383525909,
+        1.0255156936761556,
+        1.0335954807118786,
+        1.0392734599842197
+      ],
+      "median_ratio": 1.0386216755273305,
+      "descriptive_bootstrap_95pct": [
+        1.0338081656028217,
+        1.0453015402630839
+      ],
+      "median_saved_ms_per_call": 0.027062935259891674,
+      "block_order_strata": {
+        "0": {
+          "pairs": 10,
+          "median_ratio": 1.0388559951284924,
+          "descriptive_bootstrap_95pct": [
+            1.0339187108422756,
+            1.0545498998917873
+          ]
+        },
+        "1": {
+          "pairs": 10,
+          "median_ratio": 1.0386216755273305,
+          "descriptive_bootstrap_95pct": [
+            1.0313218660288774,
+            1.0481801105768844
+          ]
+        }
+      }
+    }
+  }
+}

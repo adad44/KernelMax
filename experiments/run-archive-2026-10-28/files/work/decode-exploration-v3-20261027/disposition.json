@@ -1,0 +1,21 @@
+{
+  "candidate_id": "cand_390712b41518",
+  "snapshot_sha256": "bbe50c8a03c67d5ba3811eb657a8f15c0292238e66fe8a1ddf3a93a8a5813595",
+  "decision": "park combined attention/vocabulary placement after completed operator exploration",
+  "reason": "All sampled attention projections regressed descriptively and most A/A controls were noisy; the vocabulary-only signal does not establish a useful combined placement or full-model gain.",
+  "native_execution_completed": true,
+  "full_model_executed": false,
+  "full_model_speedup_established": false,
+  "acceptance_verdict": null,
+  "acceptance_enabled": false,
+  "future_vocabulary_only_test": "possible separate hypothesis; not executed or promised as a result of this goal",
+  "goal_requirements": {
+    "identify_complete_decode_targets_first": "63request bounded profile completed before candidate native execution; large attention/expert/vocabulary budgets and small-op limit retained",
+    "target_plausible_several_ms_change": "exact lossless dense-weight layout targeted532MB/token maximal conditional logical-byte saving; explicit bandwidth assumptions before timing",
+    "run_new_candidate": "new frozen C1 passed26nativefixtures and52actual-checkpoint operator checks;100matched lane/warmup samples completed without reroll",
+    "honest_scope": "operator exploration only; no full-model gain, acceptance, quality or publication claim",
+    "user_policy": "Luna-high procedural execution; schema3 bounded retain-and-flag exploration; fresh strict confirmation required for future speedup claims"
+  },
+  "required_remaining_work": [],
+  "raw_artifacts": ["state.json", "layout-frozen.json", "native-gpu-fixture-001/state.json", "checkpoint-operator-001/state.json"]
+}

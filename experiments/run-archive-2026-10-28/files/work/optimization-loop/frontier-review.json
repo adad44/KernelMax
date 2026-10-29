@@ -1,0 +1,250 @@
+{
+  "created_utc": "2026-10-27T14:06:07.351246+00:00",
+  "grouping_failure": {
+    "candidate": "cand_b64853d31601",
+    "evidence": [
+      "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/correctness-014/analysis.json",
+      "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/epilogue-015/result.json"
+    ],
+    "finding": "Changed16-lane projection reduction produced small tolerated boundary errors which accumulated into logit/routing mismatches. Native reference repeat was bit-exact; epilogue replay exact. Native32-lane reduction candidates subsequently matched all3full-model contexts exactly."
+  },
+  "latest_valid_model_result": {
+    "candidate_id": "cand_02e5f860f143",
+    "complete_pairs": 20,
+    "evidence": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/memory-residency-027/result.json",
+    "full_model_speedup_established": false,
+    "paired_ratio": 1.0058088307350967,
+    "ratio95percent": [
+      0.9994369702384727,
+      1.017063259041103
+    ],
+    "status": "parked_full_model_context_futility",
+    "valid": true
+  },
+  "measured_budget": {
+    "evidence": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/probe-004/audited-result.json",
+    "interval_ms": [
+      0.372363,
+      0.380476
+    ],
+    "isolated_expert_fraction": 0.4667,
+    "model_share_established": false,
+    "saved_ms": 0.379474,
+    "target": "Layer0up/gate removal"
+  },
+  "native_order_candidates": [
+    {
+      "candidate_id": "cand_d5987f75f173",
+      "config": null,
+      "evidence": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-019/result.json",
+      "explanation": "No operator gain above fresh A/A uncertainty and order-bias gate; no hardware-cause conclusion.",
+      "layers": {
+        "0": {
+          "baseline_ms": 0.7980806684570312,
+          "candidate_ms": 0.7972736401367188,
+          "median_ratio": 1.0020882347029567,
+          "ratio_95pct": [
+            1.0001365977553207,
+            1.0029390021027402
+          ]
+        }
+      },
+      "outcome": "stopped_operator_futility"
+    },
+    {
+      "candidate_id": "cand_62a307e4eac7",
+      "config": [
+        4,
+        "half"
+      ],
+      "evidence": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-020/trial-001-cand_62a307e4eac7/result.json",
+      "explanation": "No operator gain above fresh A/A uncertainty and order-bias gate; no hardware-cause conclusion.",
+      "layers": {
+        "0": {
+          "baseline_ms": 0.7998423676757812,
+          "candidate_ms": 0.7986958413085937,
+          "median_ratio": 1.001277402773796,
+          "ratio_95pct": [
+            0.9996389850407188,
+            1.002348127101775
+          ]
+        }
+      },
+      "outcome": "stopped_operator_futility"
+    },
+    {
+      "candidate_id": "cand_44a3e41eb5ae",
+      "config": [
+        1,
+        "half"
+      ],
+      "evidence": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-020/trial-002-cand_44a3e41eb5ae/result.json",
+      "explanation": "No operator gain above fresh A/A uncertainty and order-bias gate; no hardware-cause conclusion.",
+      "layers": {
+        "0": {
+          "baseline_ms": 0.8006940502929687,
+          "candidate_ms": 0.7990537709960938,
+          "median_ratio": 1.0016884229696776,
+          "ratio_95pct": [
+            1.0002072771201718,
+            1.0050628055240578
+          ]
+        }
+      },
+      "outcome": "stopped_operator_futility"
+    },
+    {
+      "candidate_id": "cand_291130cc756a",
+      "config": [
+        8,
+        "half"
+      ],
+      "evidence": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-020/trial-003-cand_291130cc756a/result.json",
+      "explanation": "No operator gain above fresh A/A uncertainty and order-bias gate; no hardware-cause conclusion.",
+      "layers": {
+        "0": {
+          "baseline_ms": 0.8005855297851563,
+          "candidate_ms": 0.8005897622070313,
+          "median_ratio": 1.0013829866734398,
+          "ratio_95pct": [
+            0.9963482797832282,
+            1.0033779555800046
+          ]
+        }
+      },
+      "outcome": "stopped_operator_futility"
+    },
+    {
+      "candidate_id": "cand_b50ecab31887",
+      "config": [
+        4,
+        "lut"
+      ],
+      "evidence": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-020/trial-004-cand_b50ecab31887/result.json",
+      "explanation": "Small reliable isolated operator gain, bit-exact full-model correctness; model timing failed paging validity. No model-speedup conclusion.",
+      "layers": {
+        "0": {
+          "baseline_ms": 0.801417439453125,
+          "candidate_ms": 0.797531005859375,
+          "median_ratio": 1.0055428277701028,
+          "ratio_95pct": [
+            1.0036549464676865,
+            1.0071342568979693
+          ]
+        },
+        "12": {
+          "baseline_ms": 0.802429240234375,
+          "candidate_ms": 0.7977132163085938,
+          "median_ratio": 1.005414860327642,
+          "ratio_95pct": [
+            1.003714530229686,
+            1.0068384937718466
+          ]
+        },
+        "23": {
+          "baseline_ms": 0.8012901821289062,
+          "candidate_ms": 0.7981275639648437,
+          "median_ratio": 1.0064391145075828,
+          "ratio_95pct": [
+            1.0008241080764004,
+            1.0074195447356096
+          ]
+        }
+      },
+      "outcome": "completed_diagnostic"
+    },
+    {
+      "candidate_id": "cand_02e5f860f143",
+      "config": [
+        1,
+        "lut"
+      ],
+      "evidence": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-resume-02/trial-001-cand_02e5f860f143/result.json",
+      "explanation": "Small reliable isolated operator gain, bit-exact full-model correctness; model timing failed paging validity. No model-speedup conclusion.",
+      "layers": {
+        "0": {
+          "baseline_ms": 0.8013518056640625,
+          "candidate_ms": 0.7968808784179688,
+          "median_ratio": 1.0057135503033328,
+          "ratio_95pct": [
+            1.0039260711387699,
+            1.0080662618465106
+          ]
+        },
+        "12": {
+          "baseline_ms": 0.8011148676757812,
+          "candidate_ms": 0.7959233193359375,
+          "median_ratio": 1.0069881593564358,
+          "ratio_95pct": [
+            1.0053365583699339,
+            1.00810347221499
+          ]
+        },
+        "23": {
+          "baseline_ms": 0.8016636337890626,
+          "candidate_ms": 0.7971247978515625,
+          "median_ratio": 1.0059547086974283,
+          "ratio_95pct": [
+            1.0038002389361582,
+            1.0078924091482775
+          ]
+        }
+      },
+      "outcome": "completed_diagnostic"
+    },
+    {
+      "candidate_id": "cand_57e746a157dd",
+      "config": [
+        8,
+        "lut"
+      ],
+      "evidence": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-resume-03/trial-001-cand_57e746a157dd/result.json",
+      "explanation": "No operator gain above fresh A/A uncertainty and order-bias gate; no hardware-cause conclusion.",
+      "layers": {
+        "0": {
+          "baseline_ms": 0.8018614497070313,
+          "candidate_ms": 0.798242146484375,
+          "median_ratio": 1.0038694725221293,
+          "ratio_95pct": [
+            1.0013027466810245,
+            1.0064818696853148
+          ]
+        },
+        "12": {
+          "baseline_ms": 0.8024941616210938,
+          "candidate_ms": 0.7979418354492187,
+          "median_ratio": 1.0050697032514941,
+          "ratio_95pct": [
+            1.0039374952179334,
+            1.00827731747345
+          ]
+        },
+        "23": {
+          "baseline_ms": 0.8013015541992188,
+          "candidate_ms": 0.7970615234375,
+          "median_ratio": 1.003016367310289,
+          "ratio_95pct": [
+            1.0012101632016943,
+            1.0077324793974696
+          ]
+        }
+      },
+      "outcome": "stopped_operator_futility"
+    }
+  ],
+  "next_supported_actions": [
+    "Continue already-running down-budget023 under031; generate one new candidate only after valid fresh region budgets.",
+    "Do not rerun parked02e5f860f143 or collect later model contexts after its completed-context statistical failure."
+  ],
+  "packing": {
+    "candidate": "cand_ab711e414d17",
+    "evidence": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-016/result.json",
+    "finding": "Lossless row packing passed exact rounding-sensitive checks but operator ratio1.000008,95percentCI[0.999003,1.001602]; no gain."
+  },
+  "prohibited_inferences": [
+    "No model gain from operator data",
+    "No GPU dispatch-gap or DRAM bottleneck claim from CPU waits/logical bytes",
+    "No validated old deletion model shares"
+  ],
+  "scope": "Measured frontier and limitations, no acceptance or model-speedup result"
+}

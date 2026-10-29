@@ -1,0 +1,66 @@
+load 0 531
+load 25 531
+load 50 531
+load 75 531
+load 100 531
+load 125 531
+load 150 531
+load 175 531
+load 200 531
+load 225 531
+load 250 531
+load 275 531
+load 300 531
+load 325 531
+load 350 531
+load 375 531
+load 400 531
+load 425 531
+load 450 531
+load 475 531
+load 500 531
+load 525 531
+load 531 531
+correctness screen cand_5785998944e5 512 8 True
+screen 512 phase_memory 0 baseline 23.880tok/s []
+screen 512 phase_memory 0 candidate 26.025tok/s []
+screen 512 warmup 0 baseline 24.366tok/s []
+screen 512 warmup 0 candidate 25.573tok/s []
+screen 512 screen 1 baseline 24.358tok/s ['swap grew during the request', 'swapouts increased during request']
+screen 512 screen 1 candidate 26.403tok/s []
+screen 512 screen 2 candidate 25.699tok/s ['swap grew during the request', 'swapouts increased during request']
+screen 512 screen 2 baseline 23.932tok/s []
+screen 512 screen 3 baseline 23.603tok/s []
+screen 512 screen 3 candidate 26.153tok/s ['swap grew during the request', 'swapouts increased during request']
+correctness screen cand_4a02c3189b7d 512 8 True
+screen 512 phase_memory 0 baseline 24.301tok/s []
+screen 512 phase_memory 0 candidate 24.650tok/s []
+screen 512 warmup 0 baseline 24.497tok/s []
+screen 512 warmup 0 candidate 24.795tok/s []
+screen 512 screen 1 baseline 24.412tok/s []
+screen 512 screen 1 candidate 24.862tok/s []
+screen 512 screen 2 candidate 24.810tok/s []
+screen 512 screen 2 baseline 24.411tok/s []
+screen 512 screen 3 baseline 24.381tok/s []
+screen 512 screen 3 candidate 24.877tok/s []
+correctness screen cand_3f4c02fcfc71 512 8 True
+screen 512 phase_memory 0 baseline 24.325tok/s []
+screen 512 phase_memory 0 candidate 26.779tok/s []
+screen 512 warmup 0 baseline 24.445tok/s []
+screen 512 warmup 0 candidate 26.837tok/s []
+screen 512 screen 1 baseline 24.394tok/s []
+screen 512 screen 1 candidate 26.837tok/s []
+screen 512 screen 2 candidate 26.895tok/s []
+screen 512 screen 2 baseline 24.415tok/s []
+screen 512 screen 3 baseline 24.282tok/s []
+screen 512 screen 3 candidate 26.795tok/s []
+correctness confirm cand_3f4c02fcfc71 512 128 True
+correctness confirm cand_3f4c02fcfc71 2048 128 False
+correctness confirm cand_5785998944e5 512 128 True
+correctness confirm cand_5785998944e5 2048 128 True
+correctness confirm cand_5785998944e5 4096 128 True
+confirm 512 aa_warmup 1 A 23.992tok/s []
+confirm 512 aa_warmup 1 B 24.347tok/s []
+confirm 512 aa_warmup 2 A 23.926tok/s []
+confirm 512 aa_warmup 2 B 24.373tok/s []
+confirm 512 aa_warmup 3 A 24.358tok/s ['swap grew during the request', 'swapouts increased during request']

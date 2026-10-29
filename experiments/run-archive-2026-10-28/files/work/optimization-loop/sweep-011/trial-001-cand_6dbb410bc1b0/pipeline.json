@@ -1,0 +1,21 @@
+{
+  "ended_unix": 1793094863.308021,
+  "operator_status": "stopped_operator_futility",
+  "stage": "operator-diagnostic",
+  "stages": [
+    {
+      "name": "native-summary",
+      "returncode": 0
+    },
+    {
+      "name": "tiny-checks",
+      "returncode": 0
+    },
+    {
+      "name": "operator-diagnostic",
+      "returncode": 0
+    }
+  ],
+  "started_unix": 1793094530.0153248,
+  "status": "completed_diagnostic"
+}

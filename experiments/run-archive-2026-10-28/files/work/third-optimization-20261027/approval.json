@@ -1,0 +1,8 @@
+{
+  "candidate_id": "cand_206746fae66e",
+  "snapshot": "/Users/alandiaz/Downloads/KernelMaxxxing/work/third-optimization-20261027/review/5561960a830c4de291211b523b702d5b/cand_206746fae66e",
+  "snapshot_sha256": "a4b4a69630d5444774119f44e323933a46da64d033779e96f57bb99a7710b901",
+  "authorization": "Current user: Just run another candidate run. Standing instruction: also stop asking for approval.",
+  "scope": "Controller-authorized frozen candidate correctness and operator timing under standing experiment authorization; no commit/push/acceptance/merge",
+  "human_reviewed_exact_snapshot": false
+}

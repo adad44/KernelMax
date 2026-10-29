@@ -1,0 +1,47 @@
+{
+  "schema": "kernelmax_ui_renderer_lease_v1",
+  "targets": [
+    {
+      "pid": 1006,
+      "uid": 501,
+      "launched": "Sat Oct 3 22:12:46 2026",
+      "executable": "/Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/154.0.8037.98/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)"
+    },
+    {
+      "pid": 1007,
+      "uid": 501,
+      "launched": "Sat Oct 3 22:12:46 2026",
+      "executable": "/Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/154.0.8037.98/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)"
+    }
+  ],
+  "worker": null,
+  "max_seconds": 20,
+  "authorization": "approve and continue; stop waiting for my approval and do what is needed for the baseline",
+  "scope": "UI renderers only; reversible SIGSTOP/SIGCONT, no deletion, no main/service/CLI suspension",
+  "created_at": 1791148100.367751,
+  "status": "restored",
+  "paused": [
+    {
+      "pid": 1006,
+      "at": 1791148100.3700109
+    },
+    {
+      "pid": 1007,
+      "at": 1791148100.372328
+    }
+  ],
+  "resumed": [
+    {
+      "pid": 1006,
+      "at": 1791148120.8015842
+    },
+    {
+      "pid": 1007,
+      "at": 1791148120.807335
+    }
+  ],
+  "errors": [],
+  "paused_at": 1791148100.3726249,
+  "end_reason": "bounded_timeout",
+  "finished_at": 1791148120.807339
+}

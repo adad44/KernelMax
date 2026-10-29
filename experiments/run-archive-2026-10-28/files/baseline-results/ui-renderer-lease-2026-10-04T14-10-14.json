@@ -1,0 +1,41 @@
+{
+  "schema": "kernelmax_ui_renderer_lease_v1",
+  "targets": [
+    {
+      "pid": 1006,
+      "uid": 501,
+      "launched": "Sat Oct 3 22:12:46 2026",
+      "executable": "/Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/154.0.8037.98/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)"
+    },
+    {
+      "pid": 1007,
+      "uid": 501,
+      "launched": "Sat Oct 3 22:12:46 2026",
+      "executable": "/Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/154.0.8037.98/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)"
+    }
+  ],
+  "worker": {
+    "pid": 18729,
+    "uid": 501,
+    "launched": "Sun Oct 4 14:10:14 2026",
+    "executable": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python"
+  },
+  "max_seconds": 10800,
+  "authorization": "approve and continue; stop waiting for my approval and do what is needed for the baseline",
+  "scope": "UI renderers only; reversible SIGSTOP/SIGCONT, no deletion, no main/service/CLI suspension",
+  "created_at": 1791148240.7326112,
+  "status": "paused",
+  "paused": [
+    {
+      "pid": 1006,
+      "at": 1791148240.735141
+    },
+    {
+      "pid": 1007,
+      "at": 1791148240.73753
+    }
+  ],
+  "resumed": [],
+  "errors": [],
+  "paused_at": 1791148240.73782
+}

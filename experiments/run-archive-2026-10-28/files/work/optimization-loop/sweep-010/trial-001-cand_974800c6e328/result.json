@@ -1,0 +1,21 @@
+{
+  "candidate_id": "cand_974800c6e328",
+  "config": [
+    16,
+    2,
+    8,
+    "lut"
+  ],
+  "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-010/trial-001-cand_974800c6e328",
+  "process": {
+    "candidate_id": "cand_974800c6e328",
+    "deadline_unix": 1793096205.2836301,
+    "ended_unix": 1793094405.905565,
+    "returncode": 1,
+    "started_unix": 1793094405.283632,
+    "status": "failed",
+    "supervisor_pid": 69841
+  },
+  "shortlisted": false,
+  "status": "no_operator_result"
+}

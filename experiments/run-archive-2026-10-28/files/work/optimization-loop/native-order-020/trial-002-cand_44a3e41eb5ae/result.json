@@ -1,0 +1,59 @@
+{
+  "all_actual_counts_verified": true,
+  "candidate_id": "cand_44a3e41eb5ae",
+  "config": [
+    1,
+    "half"
+  ],
+  "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-020/trial-002-cand_44a3e41eb5ae",
+  "full_model_speedup_established": false,
+  "guards_passed": true,
+  "process": {
+    "candidate_id": "cand_44a3e41eb5ae",
+    "deadline_unix": 1793102015.5593832,
+    "ended_unix": 1793100547.442662,
+    "returncode": 0,
+    "started_unix": 1793100215.559384,
+    "status": "completed",
+    "supervisor_pid": 86254
+  },
+  "raw_sha256": "08cd8b3e036606e1a355026e0c9335a67cd7e1089e85f3def9c049d02041eef1",
+  "shortlisted": false,
+  "status": "stopped_operator_futility",
+  "summaries": {
+    "0": {
+      "ab_order_median_ratio": 1.0016437149325044,
+      "ba_order_median_ratio": 1.002028539306726,
+      "descriptive_bootstrap_95pct": [
+        1.0002072771201718,
+        1.0050628055240578
+      ],
+      "environment_valid": true,
+      "median_baseline_ms_per_call": 0.8006940502929687,
+      "median_candidate_ms_per_call": 0.7990537709960938,
+      "median_ratio": 1.0016884229696776,
+      "paired_ratios": [
+        1.0054872778187178,
+        1.0005043416082626,
+        0.9963901900924139,
+        1.0016319755648075,
+        0.9978243614281326,
+        1.005292668867707,
+        1.0043990979675848,
+        1.0048329421804083,
+        1.0064584642949754,
+        0.9929235319581766,
+        1.0066735749285969,
+        0.9988812017112454,
+        1.0011250945401144,
+        1.0078100695893182,
+        0.9999102126320809,
+        1.0089705052183926,
+        1.001744870374548,
+        1.0024251030486448,
+        1.001542559490461,
+        0.9934093645118605
+      ]
+    }
+  }
+}

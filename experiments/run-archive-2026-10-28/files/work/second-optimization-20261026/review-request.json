@@ -1,0 +1,14 @@
+{
+  "approval_status": "pending_human_review",
+  "candidate_id": "cand_90f0c66e0d03",
+  "execution_started": false,
+  "file_sha256": {
+    "README.md": "bfe4455c8180179362b9d04893f317b8620c1ec303c3d6945618626a556053d5",
+    "fused_up_gate.metal": "4ae84a072f11eda4e73979d5905d40ef624425c2064a79d0de454fb4aedce75c",
+    "implementation.py": "08c9f3e263fb7fefc68f18823ca6f855154768c496e32597f8962c1f9a4ee948",
+    "manifest.json": "d7e289dcbd0956eb59ff5e410a4c851398f0d6f1faffca2de8c38bf4c9b15ef8",
+    "wrapper.py": "1ef9bcfd62b5daf7b65f30a60a9912ae367d3e9c0d3fe98518f59bf47e82306f"
+  },
+  "snapshot": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/review/231cbdd1ccde41928d4ffe72c3685c05/cand_90f0c66e0d03",
+  "snapshot_sha256": "93f523c916125738e860b796e6440170d192dcdeb207e327edaa26d826f14272"
+}

@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/memory-residency-027/run.py", line 309, in <module>
+    main()
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/memory-residency-027/run.py", line 257, in main
+    collect(length,'A','aa_warmup',warm);collect(length,'B','aa_warmup',warm)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/memory-residency-027/run.py", line 179, in collect
+    check();primer_before=environment()
+    ^^^^^^^
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/memory-residency-027/run.py", line 131, in check
+    if time.time()>=deadline or (WORK/'STOP').exists():raise TimeoutError('Deadline or explicit stop reached')
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: Deadline or explicit stop reached

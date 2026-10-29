@@ -1,0 +1,10 @@
+{
+  "future_controller_syntax": true,
+  "future_generated_model_controller_syntax": true,
+  "same_native_request_and_expert_binding": true,
+  "resident_primer_cadence_carried_forward": true,
+  "stop_only_after_complete20pair_context": true,
+  "current_frozen_run_untouched": true,
+  "future_model_plan_selection_updated": true,
+  "no_native_execution": true
+}

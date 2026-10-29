@@ -1,0 +1,6 @@
+{
+  "pid": 41200,
+  "action": "taskpolicy -B -p 41200",
+  "scope": "Own controller process, during untimed checkpoint loading",
+  "reason": "Lift background I/O throttling while reading the external native checkpoint; same process policy for every diagnostic lane"
+}

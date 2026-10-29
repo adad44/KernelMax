@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-022-02/run.py", line 281, in <module>
+    main()
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-022-02/run.py", line 232, in main
+    for lane in (('A','B') if pair%2 else ('B','A')):aa.append(collect(length,lane,'aa',pair))
+                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-022-02/run.py", line 201, in collect
+    if issues:raise RuntimeError('Environment invalid; complete request retained: '+str(issues))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Environment invalid; complete request retained: ['swap grew during the request', 'swapouts increased during request']

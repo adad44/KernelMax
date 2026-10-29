@@ -1,0 +1,215 @@
+{
+  "audit_type": "read_only_terminal_confirmation_revalidation",
+  "current_status": "resident_wait_expired",
+  "terminal": true,
+  "command_records": [
+    {
+      "candidate_id": "cand_5785998944e5",
+      "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-confirm-resident-20261028/command-001-confirm-cand_5785998944e5",
+      "five_percent_improvement_verified": false,
+      "mode": "confirm",
+      "number": 1,
+      "status": "stopped_EnvironmentFailure"
+    }
+  ],
+  "command_files": [
+    "001.json"
+  ],
+  "command_file_count": 1,
+  "no_new_command": true,
+  "candidate_ids": [
+    "cand_5785998944e5",
+    "cand_4a02c3189b7d",
+    "cand_3f4c02fcfc71"
+  ],
+  "unique_candidate_count": 3,
+  "candidate_cap": 3,
+  "cap_exhausted": true,
+  "human_approval_to_expand_cap": "pending",
+  "five_percent_improvement_verified": false,
+  "acceptance_enabled": false,
+  "candidate_confirmation_pairs": 0,
+  "candidate_blocks_complete": 0,
+  "attempt_count": 1,
+  "same_blocker_consecutive_root_goal_turns": 2,
+  "blocker_first_appeared": "Previous root goal turn, after terminal audit: cap of three unique candidates exhausted; explicit human approval to expand cap remains pending.",
+  "blocker": "No authorized candidate capacity remains for another attempt until human approval expands the cap.",
+  "current_terminal_audit_memory_field": {
+    "interpretation_limits": [
+      "These are whole-request boundary snapshots; they do not attribute paging to prefill versus decode portions.",
+      "vm_stat and swap counters are system-wide; there is no process-page attribution.",
+      "Pages stored in compressor is reported as a logical page count; nominal GiB conversion is only a page-size equivalent, not physical compressor storage."
+    ],
+    "primer": {
+      "source": "retained system vm_stat observations immediately before/after complete request; boundary snapshots, not continuous profiling",
+      "page_size_bytes": 16384,
+      "elapsed_seconds": 6.633965015411377,
+      "before": {
+        "observed_at_unix": 1793215664.521451,
+        "wired_pages": 150356,
+        "wired_gib_nominal": 2.29425048828125,
+        "free_pages": 4623,
+        "free_gib_nominal": 0.0705413818359375,
+        "file_backed_pages": 85437,
+        "file_backed_gib_nominal": 1.3036651611328125,
+        "compressor_occupied_pages": 274292,
+        "compressor_occupied_gib_nominal": 4.18536376953125,
+        "compressor_stored_pages": 1949162,
+        "compressor_stored_gib_nominal": 29.741851806640625,
+        "swapin_count": 5315690,
+        "swapout_count": 7629730
+      },
+      "after": {
+        "observed_at_unix": 1793215671.155416,
+        "wired_pages": 1066278,
+        "wired_gib_nominal": 16.270111083984375,
+        "free_pages": 15837,
+        "free_gib_nominal": 0.2416534423828125,
+        "file_backed_pages": 84823,
+        "file_backed_gib_nominal": 1.2942962646484375,
+        "compressor_occupied_pages": 224514,
+        "compressor_occupied_gib_nominal": 3.425811767578125,
+        "compressor_stored_pages": 1905943,
+        "compressor_stored_gib_nominal": 29.082382202148438,
+        "swapin_count": 5315698,
+        "swapout_count": 7629730
+      },
+      "delta": {
+        "wired_pages": 915922,
+        "free_pages": 11214,
+        "file_backed_pages": -614,
+        "compressor_occupied_pages": -49778,
+        "compressor_stored_pages": -43219,
+        "swapin_count": 8,
+        "swapout_count": 0,
+        "pageouts": 0
+      },
+      "swap_count_rates_per_second": {
+        "swapin_count_per_second": 1.2059153133028566,
+        "swapout_count_per_second": 0.0
+      },
+      "thermal_before": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "thermal_after": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "power_before": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+      "power_after": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true"
+    },
+    "measured_request": {
+      "source": "retained system vm_stat observations immediately before/after complete request; boundary snapshots, not continuous profiling",
+      "page_size_bytes": 16384,
+      "elapsed_seconds": 6.260217905044556,
+      "before": {
+        "observed_at_unix": 1793215671.193252,
+        "wired_pages": 1066278,
+        "wired_gib_nominal": 16.270111083984375,
+        "free_pages": 15680,
+        "free_gib_nominal": 0.2392578125,
+        "file_backed_pages": 84823,
+        "file_backed_gib_nominal": 1.2942962646484375,
+        "compressor_occupied_pages": 224437,
+        "compressor_occupied_gib_nominal": 3.4246368408203125,
+        "compressor_stored_pages": 1905680,
+        "compressor_stored_gib_nominal": 29.078369140625,
+        "swapin_count": 5315698,
+        "swapout_count": 7629730
+      },
+      "after": {
+        "observed_at_unix": 1793215677.45347,
+        "wired_pages": 1052767,
+        "wired_gib_nominal": 16.063949584960938,
+        "free_pages": 19063,
+        "free_gib_nominal": 0.2908782958984375,
+        "file_backed_pages": 89084,
+        "file_backed_gib_nominal": 1.35931396484375,
+        "compressor_occupied_pages": 219078,
+        "compressor_occupied_gib_nominal": 3.342864990234375,
+        "compressor_stored_pages": 1897409,
+        "compressor_stored_gib_nominal": 28.952163696289062,
+        "swapin_count": 5349497,
+        "swapout_count": 7661960
+      },
+      "delta": {
+        "wired_pages": -13511,
+        "free_pages": 3383,
+        "file_backed_pages": 4261,
+        "compressor_occupied_pages": -5359,
+        "compressor_stored_pages": -8271,
+        "swapin_count": 33799,
+        "swapout_count": 32230,
+        "pageouts": 45
+      },
+      "swap_count_rates_per_second": {
+        "swapin_count_per_second": 5399.01334309216,
+        "swapout_count_per_second": 5148.383089673076
+      },
+      "thermal_before": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "thermal_after": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "power_before": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+      "power_after": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true"
+    },
+    "primer_to_measured_residency": {
+      "primer_after_to_measured_before_elapsed_seconds": 0.03783607482910156,
+      "primer_after_wired_pages": 1066278,
+      "measured_before_wired_pages": 1066278,
+      "wired_pages_equal": true,
+      "wired_gib_nominal": 16.270111083984375,
+      "interpretation": "The retained boundary snapshots show the primer after wired count persisted exactly to measured-request before snapshot. This supports persistence of system wired pages across this short transition, but does not establish that the model pages were wired or identify what memory those pages represent."
+    }
+  },
+  "notes": "Read-only evidence check. No run/source/raw artifact was changed; this record is newly written bookkeeping only."
+}

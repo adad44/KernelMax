@@ -1,0 +1,13 @@
+{
+  "C1_screen_bootstrap_interval": [
+    1.0738405431896847,
+    1.1080304491287924
+  ],
+  "C1_screen_median_ratio": 1.0839572187665303,
+  "C1_swap_affected_rows": 3,
+  "frozen_info": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/vocabulary-frozen.json",
+  "primary_decision": "After substantive C3 long-context numerical failure, park C3 combined and C2 MoE fusion; test the already-screened vocabulary-only C1 in a fresh strict confirmation. This is a different candidate, not a C3 reroll.",
+  "selected_at_unix": 1793211837.7287512,
+  "selected_candidate_id": "cand_5785998944e5",
+  "strict_confirmation_required": true
+}

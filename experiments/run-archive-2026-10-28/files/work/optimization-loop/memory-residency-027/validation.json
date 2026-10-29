@@ -1,0 +1,9 @@
+{
+  "expert_binding_AST_unchanged": true,
+  "same_unmodified_native_request_import": true,
+  "exactly_one_unconditional_primer_per_timed_request": true,
+  "timed_request_paging_guard_unchanged": true,
+  "all20pair_loops_unchanged": true,
+  "all_raw_primers_retained": true,
+  "no_model_executed_by_validation": true
+}

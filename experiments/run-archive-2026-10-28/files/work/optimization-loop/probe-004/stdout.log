@@ -1,0 +1,10 @@
+native_load 0/27
+native_load 25/27
+native_load 27/27
+layer 0 without_up_gate retained 20 pairs
+layer 0 without_down retained 20 pairs
+layer 0 complete
+layer 12 without_up_gate retained 20 pairs
+layer 12 without_down retained 20 pairs
+layer 12 complete
+AA screen failed layer 23; no deletion timing or unchanged retry

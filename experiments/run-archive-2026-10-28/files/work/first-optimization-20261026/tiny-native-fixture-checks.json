@@ -1,0 +1,34 @@
+{
+  "scope": "synthetic random MXFP4 expert fixtures; no checkpoint loaded; not real-model evidence",
+  "snapshot_sha256": "04442d2a56c48c328cf812a86bbe0edc45f8736fb3765f223274ec8fd6212949",
+  "checks": [
+    {
+      "tokens": 1,
+      "magnitude": 1,
+      "passed": true,
+      "detail": "max_abs_error=0; violations=0/256; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "path": "specialization"
+    },
+    {
+      "tokens": 1,
+      "magnitude": 64,
+      "passed": true,
+      "detail": "max_abs_error=0; violations=0/256; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "path": "specialization"
+    },
+    {
+      "tokens": 16,
+      "magnitude": 1,
+      "passed": true,
+      "detail": "max_abs_error=0; violations=0/4096; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "path": "reference_fallback"
+    },
+    {
+      "tokens": 17,
+      "magnitude": 1,
+      "passed": true,
+      "detail": "max_abs_error=0; violations=0/4352; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "path": "reference_fallback"
+    }
+  ]
+}

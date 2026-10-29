@@ -1,0 +1,24 @@
+{
+  "round_id": "decode-sprint-r2-20261028",
+  "cap": 3,
+  "allocated_count": 1,
+  "slots": [
+    {
+      "slot": 1,
+      "candidate_id": "cand_680ac65cf145",
+      "path": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_680ac65cf145",
+      "status": "frozen; awaiting final controller review",
+      "sha256": "9994db5b687579196de78dbf625d9b23543064432bdc9e096a50d33d90600881",
+      "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/frozen/cand_680ac65cf145"
+    }
+  ],
+  "unallocated_slots": [
+    2,
+    3
+  ],
+  "previous_round_ids": [
+    "cand_5785998944e5",
+    "cand_4a02c3189b7d",
+    "cand_3f4c02fcfc71"
+  ]
+}

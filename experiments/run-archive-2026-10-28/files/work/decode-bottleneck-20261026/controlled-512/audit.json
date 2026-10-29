@@ -1,0 +1,47 @@
+{
+  "aa_screen": {
+    "environment_valid": true,
+    "gates": {
+      "max_pair_deviation": 0.02,
+      "max_relative_mad": 0.01,
+      "max_relative_range": 0.04
+    },
+    "pair_ratios": [
+      1.0302925542823027,
+      0.9747199337081219
+    ],
+    "passed": false,
+    "relative_mad": 0.012853614515444964,
+    "relative_range": 0.03774812968690572
+  },
+  "all_logit_comparisons_exact": null,
+  "all_operator_blocks_have_192_calls": true,
+  "all_requests_have_127_decode_intervals": true,
+  "all_requests_have_128_tokens": true,
+  "checkpoint_identity_unchanged": true,
+  "completed": false,
+  "distinct_candidate_modules": true,
+  "environment_issues": [
+    "swapouts increased during request"
+  ],
+  "logit_comparison_requests": 0,
+  "measured_requests_with_environment_issues": 0,
+  "measured_swap_activity": {
+    "swap_growth_mib_max_request": 0.0,
+    "swapin_pages_max_request": 700,
+    "swapin_pages_total": 1308,
+    "swapout_pages_total": 0
+  },
+  "measurement_environment_policy": "paging-aware; permit and retain swap-ins, reject swap-outs/growth and non-nominal thermals; 10-second quiet preflight",
+  "operator_groups_with_environment_issues": 0,
+  "paired_comparisons": {},
+  "prepared_hashes_match": true,
+  "real_activation_hashes_match": true,
+  "real_operator_checks": 0,
+  "real_operator_checks_passed": 0,
+  "real_operator_max_abs_error": null,
+  "requests_retained": 5,
+  "sources_unchanged": true,
+  "timing_blocks_retained": 0,
+  "warmup_requests_retained": 1
+}

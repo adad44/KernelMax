@@ -1,0 +1,92 @@
+{
+  "candidate_id": "cand_38d341fb17de",
+  "errors": [],
+  "layout_checks": [
+    {
+      "check": "no parameter layout conversion or cache in this candidate",
+      "passed": true
+    }
+  ],
+  "real_boundary_checks": [
+    {
+      "candidate_exact": true,
+      "layer": 7,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 2
+    },
+    {
+      "candidate_exact": true,
+      "layer": 1,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 3
+    },
+    {
+      "candidate_exact": true,
+      "layer": 2,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 3
+    },
+    {
+      "candidate_exact": true,
+      "layer": 6,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 3
+    },
+    {
+      "candidate_exact": true,
+      "layer": 10,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 3
+    },
+    {
+      "candidate_exact": true,
+      "layer": 18,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 4
+    },
+    {
+      "candidate_exact": true,
+      "layer": 4,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 5
+    },
+    {
+      "candidate_exact": true,
+      "layer": 15,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 5
+    },
+    {
+      "candidate_exact": true,
+      "layer": 6,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 6
+    },
+    {
+      "candidate_exact": true,
+      "layer": 11,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 6
+    },
+    {
+      "candidate_exact": true,
+      "layer": 22,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 6
+    }
+  ],
+  "scope": "untimed correctness/representation tests; no performance claim",
+  "snapshot_sha256": "e5e1c8d5e703a523d34f4593c6dbbe5bf4955d5cc720c5771f09f5df4b7e3d14",
+  "status": "passed_exact_repair_checks"
+}

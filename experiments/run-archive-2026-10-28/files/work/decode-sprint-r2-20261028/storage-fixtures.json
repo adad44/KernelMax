@@ -1,0 +1,159 @@
+{
+  "actual_matrix_unpack_bit_exact": true,
+  "full_model_correctness": false,
+  "native_roundtrip_bit_exact": true,
+  "no_checkpoint_loaded": true,
+  "passed": true,
+  "rows": [
+    {
+      "candidate": true,
+      "exact": true,
+      "mlx_active_bytes": 7626,
+      "native_vocabulary_bytes": 0,
+      "packed_vocabulary_bytes": 6530,
+      "tokens": 1,
+      "within_existing_tolerance": true
+    },
+    {
+      "candidate": true,
+      "exact": true,
+      "mlx_active_bytes": 7754,
+      "native_vocabulary_bytes": 0,
+      "packed_vocabulary_bytes": 6530,
+      "tokens": 3,
+      "within_existing_tolerance": true
+    },
+    {
+      "candidate": false,
+      "exact": true,
+      "mlx_active_bytes": 9288,
+      "native_vocabulary_bytes": 8192,
+      "packed_vocabulary_bytes": 0,
+      "tokens": 1,
+      "within_existing_tolerance": true
+    },
+    {
+      "candidate": false,
+      "exact": true,
+      "mlx_active_bytes": 9416,
+      "native_vocabulary_bytes": 8192,
+      "packed_vocabulary_bytes": 0,
+      "tokens": 3,
+      "within_existing_tolerance": true
+    },
+    {
+      "candidate": true,
+      "exact": true,
+      "mlx_active_bytes": 7626,
+      "native_vocabulary_bytes": 0,
+      "packed_vocabulary_bytes": 6530,
+      "tokens": 1,
+      "within_existing_tolerance": true
+    },
+    {
+      "candidate": true,
+      "exact": true,
+      "mlx_active_bytes": 7754,
+      "native_vocabulary_bytes": 0,
+      "packed_vocabulary_bytes": 6530,
+      "tokens": 3,
+      "within_existing_tolerance": true
+    },
+    {
+      "candidate": false,
+      "exact": true,
+      "mlx_active_bytes": 9288,
+      "native_vocabulary_bytes": 8192,
+      "packed_vocabulary_bytes": 0,
+      "tokens": 1,
+      "within_existing_tolerance": true
+    },
+    {
+      "candidate": false,
+      "exact": true,
+      "mlx_active_bytes": 9416,
+      "native_vocabulary_bytes": 8192,
+      "packed_vocabulary_bytes": 0,
+      "tokens": 3,
+      "within_existing_tolerance": true
+    }
+  ],
+  "storage": {
+    "actual_matrix_unpack_bit_exact": true,
+    "backing_stores": {
+      "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/storage-fixtures.backing/native-head.safetensors": {
+        "identity": [
+          16777230,
+          22168704,
+          8288,
+          1793226747159158319,
+          1793226747159158319
+        ],
+        "sha256": "8ceb3d6c468d2d230330909ee602f8d811dbbd865a336a37c4ebaaf21f0580b4"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/storage-fixtures.backing/packed-head.safetensors": {
+        "identity": [
+          16777230,
+          22168705,
+          6819,
+          1793226747159312818,
+          1793226747159312818
+        ],
+        "sha256": "dc3e402076abb8d86b4856721d985a306de873a25d8249c5b99aae2e5297a5ba"
+      }
+    },
+    "current": {
+      "candidate": false,
+      "mlx_active_bytes": 9416,
+      "native_vocabulary_bytes": 8192,
+      "packed_vocabulary_bytes": 0
+    },
+    "native_bytes": 8192,
+    "native_roundtrip_bit_exact": true,
+    "original_word_sha256": "b8b486583e5e143d9ede0adf763656a2963be59487c951ab78a49068a561309a",
+    "packed_bytes": 6530,
+    "switches": [
+      {
+        "candidate": false,
+        "mlx_active_bytes": 9224,
+        "native_vocabulary_bytes": 8192,
+        "outside_request_timing": true,
+        "packed_vocabulary_bytes": 0,
+        "wall_ms": 1.7389168497174978
+      },
+      {
+        "candidate": true,
+        "mlx_active_bytes": 7562,
+        "native_vocabulary_bytes": 0,
+        "outside_request_timing": true,
+        "packed_vocabulary_bytes": 6530,
+        "wall_ms": 1.0514578316360712
+      },
+      {
+        "candidate": false,
+        "mlx_active_bytes": 9416,
+        "native_vocabulary_bytes": 8192,
+        "outside_request_timing": true,
+        "packed_vocabulary_bytes": 0,
+        "wall_ms": 1.002082834020257
+      },
+      {
+        "candidate": true,
+        "mlx_active_bytes": 7754,
+        "native_vocabulary_bytes": 0,
+        "outside_request_timing": true,
+        "packed_vocabulary_bytes": 6530,
+        "wall_ms": 0.9802090935409069
+      },
+      {
+        "candidate": false,
+        "mlx_active_bytes": 9416,
+        "native_vocabulary_bytes": 8192,
+        "outside_request_timing": true,
+        "packed_vocabulary_bytes": 0,
+        "wall_ms": 0.9530000388622284
+      }
+    ]
+  },
+  "wall_seconds": 0.0606450829654932
+}

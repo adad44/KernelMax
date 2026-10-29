@@ -1,0 +1,45 @@
+{
+  "chunk_escape_indices_match": true,
+  "passed": true,
+  "records": [
+    {
+      "all_words_bit_exact": true,
+      "blocks": 1024,
+      "case": "every_word_ordered",
+      "encoded_bytes": 102400,
+      "encoded_ratio": 0.78125,
+      "escaped_blocks": 0,
+      "native_bytes": 131072,
+      "words": 65536
+    },
+    {
+      "all_words_bit_exact": true,
+      "blocks": 1024,
+      "case": "every_word_shuffled",
+      "encoded_bytes": 233472,
+      "encoded_ratio": 1.78125,
+      "escaped_blocks": 1024,
+      "native_bytes": 131072,
+      "words": 65536
+    },
+    {
+      "all_words_bit_exact": true,
+      "blocks": 81,
+      "case": "mixed_normal_and_raw_blocks",
+      "encoded_bytes": 10532,
+      "encoded_ratio": 1.0158179012345678,
+      "escaped_blocks": 19,
+      "native_bytes": 10368,
+      "words": 5184
+    }
+  ],
+  "scope": "CPU integer-word representation only; native GPU/projection/full-model correctness and performance pending",
+  "source_sha256": {
+    "README.md": "7d93ae7dce1a51820edcdffa48ef4c940146309423f7db2e808b4537fcaa70ec",
+    "codec.py": "bb8079062c5f9aee76b5e964ef4ebc30bf151fc6d92f0563d4cc5846f5811b5e",
+    "implementation.metal": "7e4b2fa51eea175b9ad376ce1b6ab9276bca7aac6201733945174b3ee275862e",
+    "implementation.py": "a0f31e2b8e18f8fd05146c3e8cea09609b3f0162195035f8b2cdfb0fb2d18214",
+    "manifest.json": "e55fce8435cc25b583362dae7f4212e4a1a2283171ae118711dbb0a718f96408",
+    "wrapper.py": "9edc8a8b569583ba92f46ac157c7c9fabb151fa89a3293a82de4392a33a2da40"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "pid": 45775,
+  "action": "taskpolicy -B -p 45775",
+  "scope": "Own controller process during untimed checkpoint loading",
+  "reason": "Same loading process policy as the first diagnostic pass and all lanes"
+}

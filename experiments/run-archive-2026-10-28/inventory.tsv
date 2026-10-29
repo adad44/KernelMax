@@ -1,0 +1,15 @@
+input_directory	retained_files	retained_bytes	external_files	external_bytes
+baseline-results	2945	48645569	1	2168274
+baseline-tools	18	89054	0	0
+KernelMax/reports/baselines	3	9580	0	0
+work/decode-confirm-resident-20261028	30	3341656	0	0
+work/decode-search-20261027	134	7573727	2	104464
+work/third-optimization-20261027	44	3161428	106	57102424
+work/decode-exploration-v3-20261027	44	10051207	78	7069884
+work/decode-bottleneck-20261026	78	4917951	24	152004
+work/optimization-loop	1107	94985561	1641	2327689099
+work/second-optimization-20261026	54	5660326	212	62651388
+work/reviewed-native.o5lNaJ	43	276280	5	55816261
+work/decode-sprint-r2-20261028	80	851289	8	2341870987
+work/first-optimization-20261026	45	5618966	196	60807980
+work/decode-sprint-20261028	97	1536542	8	462378330

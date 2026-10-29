@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_44a3e41eb5ae",
+  "name": "Native-order up/gate G1 half",
+  "implementation_type": "mlx",
+  "description": "Keeps four rows per32-lane SIMD group, the unchanged per-lane K accumulation and simd_sum; varies only independent SIMD groups per threadgroup to1, using exact half FP4 conversion. Targets the measured up/gate region. Native MXFP4 values/scales/routes, BF16 epilogue, native down and prefill fallback preserved. No layout conversion or cache. Must match all11 saved rounding-sensitive boundaries exactly before timing. No speedup claim."
+}

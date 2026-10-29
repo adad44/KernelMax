@@ -1,0 +1,11 @@
+{
+  "after_sha256": "6b46050612a9f54a52483c444a90fde2ef42c0859d65e57d7f5371701354dc7b",
+  "before_sha256": "c8c939d6b097760c4785ce0bd017380275b6da9ec219f17efe5b96322b8b1590",
+  "format_exit": 0,
+  "format_stderr": "",
+  "format_stdout": "1 file reformatted\n",
+  "format_wall_seconds": 0.134831374976784,
+  "gpu_execution": false,
+  "post_format_ast_parse": "passed",
+  "post_format_sha256": "6b46050612a9f54a52483c444a90fde2ef42c0859d65e57d7f5371701354dc7b"
+}

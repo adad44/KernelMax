@@ -1,0 +1,16 @@
+{
+  "status": "implemented_and_tested",
+  "cpu_suite": {
+    "passed": 344,
+    "skipped": 8
+  },
+  "opt_in_mlx_candidate_execution_suite": {
+    "passed": 25,
+    "scope": "tiny MLX tensors and mocked loader, not a native checkpoint run"
+  },
+  "session_valid": true,
+  "checkpoint_cache_populated": false,
+  "candidate_run_started": false,
+  "committed": false,
+  "historical_runs_modified": false
+}

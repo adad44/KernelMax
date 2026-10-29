@@ -1,0 +1,13 @@
+{
+  "session_id": "92e82967-543c-4eff-bf0e-b526e242687d",
+  "worker_pid": 17079,
+  "status": "failed",
+  "phase": "failed",
+  "current_attempt": "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/official-attempt-2026-10-04T13-43-24-seed42-paging-aware",
+  "model_loads": 1,
+  "max_environment_retries": 2,
+  "failed_attempts": [],
+  "errors": [
+    "RuntimeError: Stability screen failed; diagnose retained evidence, never loop until lucky"
+  ]
+}

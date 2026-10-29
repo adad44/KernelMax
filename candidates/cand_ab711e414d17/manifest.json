@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_ab711e414d17",
+  "name": "Lossless native up/gate row packing",
+  "implementation_type": "mlx",
+  "description": "Combines up/gate native gather_qmm calls through a one-time bit-preserving concatenation along output rows, keeping native MXFP4 values/scales and native SwiGLU/down arithmetic. Original module fields become views of the packed storage so steady-state weights are not duplicated. An explicit preparation API restores contiguous original-layout fields before baseline trials; setup time and transient memory must be reported separately. Only model parameter representations are cached with weak owner lifetime and parameter-object invalidation; no activations, IDs or outputs are cached. Decode BF16 [1,1,H] and four IDs only; prefill reference fallback. Targets measured up/gate work while avoiding the custom-reduction rounding differences found in full-model validation. No speedup or acceptance claim."
+}

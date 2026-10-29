@@ -1,0 +1,390 @@
+unformatted: File would be reformatted
+   --> work/decode-exploration-v3-20261027/layout_gpu_fixture.py:6:1
+    |
+5   | """
+6   +
+7   | import argparse
+--------------------------------------------------------------------------------
+18  |
+    - WORK=Path(__file__).resolve().parent
+    - ROOT=WORK.parent.parent/'kernelmax-first-loop'
+    - sys.path.insert(0,str(ROOT))
+19  + WORK = Path(__file__).resolve().parent
+20  + ROOT = WORK.parent.parent / "kernelmax-first-loop"
+21  + sys.path.insert(0, str(ROOT))
+22  | from evaluator.schemas import load_contract
+23  | from evaluator.candidate_execution import _protected_files
+24  | from evaluator.native_baseline import environment
+25  | from evaluator.baseline_validation import thermal_state
+    - from evaluator.measurement import assess_environment,BoundedExploration
+    - from orchestrator.candidate_manager import FrozenCandidate,validate_candidate,verify_frozen_candidate
+26  + from evaluator.measurement import assess_environment, BoundedExploration
+27  + from orchestrator.candidate_manager import (
+28  +     FrozenCandidate,
+29  +     validate_candidate,
+30  +     verify_frozen_candidate,
+31  + )
+32  | from scripts.loop_control import load_authorization
+33  |
+34  |
+    - def write(path,value):
+    -     temp=path.with_suffix('.tmp');temp.write_text(json.dumps(value,indent=2,sort_keys=True,allow_nan=False)+'\n');temp.replace(path)
+35  + def write(path, value):
+36  +     temp = path.with_suffix(".tmp")
+37  +     temp.write_text(json.dumps(value, indent=2, sort_keys=True, allow_nan=False) + "\n")
+38  +     temp.replace(path)
+39  |
+40  |
+41  | def main():
+    -     parser=argparse.ArgumentParser()
+    -     parser.add_argument('--output',type=Path,required=True)
+    -     args=parser.parse_args();output=args.output.resolve();output.mkdir(parents=True,exist_ok=False)
+    -     process=subprocess.run(['ps','-p','81514','-o','lstart=,command='],capture_output=True,text=True)
+    -     if process.returncode==0 and 'decode-exploration-v3-20261027/profile.py' in process.stdout:
+    -         raise RuntimeError('Whole-model exploration still live; no overlapping GPU fixture')
+    -     contract=load_contract(ROOT/'kernelmaxxing.yaml')
+    -     load_authorization(WORK/'session.json',contract)
+    -     info=json.loads((WORK/'layout-frozen.json').read_text())
+    -     candidate=validate_candidate(info['directory'],Path(info['directory']).parent)
+    -     frozen=FrozenCandidate(**vars(candidate),sha256=info['sha256'],file_sha256=info['file_sha256'])
+42  +     parser = argparse.ArgumentParser()
+43  +     parser.add_argument("--output", type=Path, required=True)
+44  +     args = parser.parse_args()
+45  +     output = args.output.resolve()
+46  +     output.mkdir(parents=True, exist_ok=False)
+47  +     process = subprocess.run(
+48  +         ["ps", "-p", "81514", "-o", "lstart=,command="], capture_output=True, text=True
+49  +     )
+50  +     if (
+51  +         process.returncode == 0
+52  +         and "decode-exploration-v3-20261027/profile.py" in process.stdout
+53  +     ):
+54  +         raise RuntimeError(
+55  +             "Whole-model exploration still live; no overlapping GPU fixture"
+56  +         )
+57  +     contract = load_contract(ROOT / "kernelmaxxing.yaml")
+58  +     load_authorization(WORK / "session.json", contract)
+59  +     info = json.loads((WORK / "layout-frozen.json").read_text())
+60  +     candidate = validate_candidate(info["directory"], Path(info["directory"]).parent)
+61  +     frozen = FrozenCandidate(
+62  +         **vars(candidate), sha256=info["sha256"], file_sha256=info["file_sha256"]
+63  +     )
+64  |     verify_frozen_candidate(frozen)
+65  |     import mlx.core as mx
+66  |     import numpy as np
+    -     extra=[__file__,WORK/'layout-frozen.json',WORK/'session.json',mx.__file__]
+    -     protected=_protected_files(extra)
+    -     state={'status':'starting','mode':'exploration','scope':'native synthetic word-decoder and projection checks only',
+    -         'candidate_id':frozen.candidate_id,'snapshot_sha256':frozen.sha256,'contract_sha256':contract.sha256,
+    -         'pid':os.getpid(),'official':False,'verdict':None,'speedup_claim_eligible':False,
+    -         'records':[],'errors':[],'protected_before':protected,'started_unix':time.time()}
+    -     save=lambda:write(output/'state.json',state)
+    -     budget=BoundedExploration(contract.measurement.exploration,max_requests=32,max_seconds=600)
+    -     observed=[];stop=threading.Event()
+67  +
+68  +     extra = [__file__, WORK / "layout-frozen.json", WORK / "session.json", mx.__file__]
+69  +     protected = _protected_files(extra)
+70  +     state = {
+71  +         "status": "starting",
+72  +         "mode": "exploration",
+73  +         "scope": "native synthetic word-decoder and projection checks only",
+74  +         "candidate_id": frozen.candidate_id,
+75  +         "snapshot_sha256": frozen.sha256,
+76  +         "contract_sha256": contract.sha256,
+77  +         "pid": os.getpid(),
+78  +         "official": False,
+79  +         "verdict": None,
+80  +         "speedup_claim_eligible": False,
+81  +         "records": [],
+82  +         "errors": [],
+83  +         "protected_before": protected,
+84  +         "started_unix": time.time(),
+85  +     }
+86  +     save = lambda: write(output / "state.json", state)
+87  +     budget = BoundedExploration(
+88  +         contract.measurement.exploration, max_requests=32, max_seconds=600
+89  +     )
+90  +     observed = []
+91  +     stop = threading.Event()
+92  +
+93  |     def observe():
+    -         while not stop.wait(.5):observed.append(thermal_state())
+    -     observer=threading.Thread(target=observe,daemon=True);observer.start();save()
+94  +         while not stop.wait(0.5):
+95  +             observed.append(thermal_state())
+96  +
+97  +     observer = threading.Thread(target=observe, daemon=True)
+98  +     observer.start()
+99  +     save()
+100 +
+101 |     def begin(label):
+    -         budget.begin_request();verify_frozen_candidate(frozen)
+    -         before=environment();assessment=assess_environment(before,before,mode='exploration')
+    -         if not assessment['continue_pass']:raise RuntimeError('Hard preflight failure: '+str(assessment))
+    -         state['status']=label;save()
+    -         return before,len(observed)
+    -     def retain(row,before,index):
+    -         after=environment();row['environment_assessment']=assess_environment(before,after,mode='exploration',thermal_states=observed[index:])
+    -         row['environment_before']=before;row['environment_after']=after
+    -         state['records'].append(row);save();print(row['case'],row.get('passed'),row['environment_assessment']['flags'],flush=True)
+    -         if not row['environment_assessment']['continue_pass']:raise RuntimeError('Hard environment failure')
+    -         if not row['passed']:raise ValueError('Native exact-layout fixture failed: '+row['case'])
+102 +         budget.begin_request()
+103 +         verify_frozen_candidate(frozen)
+104 +         before = environment()
+105 +         assessment = assess_environment(before, before, mode="exploration")
+106 +         if not assessment["continue_pass"]:
+107 +             raise RuntimeError("Hard preflight failure: " + str(assessment))
+108 +         state["status"] = label
+109 +         save()
+110 +         return before, len(observed)
+111 +
+112 +     def retain(row, before, index):
+113 +         after = environment()
+114 +         row["environment_assessment"] = assess_environment(
+115 +             before, after, mode="exploration", thermal_states=observed[index:]
+116 +         )
+117 +         row["environment_before"] = before
+118 +         row["environment_after"] = after
+119 +         state["records"].append(row)
+120 +         save()
+121 +         print(
+122 +             row["case"],
+123 +             row.get("passed"),
+124 +             row["environment_assessment"]["flags"],
+125 +             flush=True,
+126 +         )
+127 +         if not row["environment_assessment"]["continue_pass"]:
+128 +             raise RuntimeError("Hard environment failure")
+129 +         if not row["passed"]:
+130 +             raise ValueError("Native exact-layout fixture failed: " + row["case"])
+131 +
+132 |     try:
+    -         name='frozen_lossless_dense_'+frozen.candidate_id
+    -         spec=importlib.util.spec_from_file_location(name,frozen.directory/'implementation.py')
+    -         module=importlib.util.module_from_spec(spec);sys.modules[name]=module;spec.loader.exec_module(module)
+    -         decoder=mx.fast.metal_kernel(name='fixture_lossless_words_'+frozen.candidate_id,
+    -             input_names=['payload','headers','escapes'],output_names=['decoded'],header=module._HEADER,
+    -             source='''
+133 +         name = "frozen_lossless_dense_" + frozen.candidate_id
+134 +         spec = importlib.util.spec_from_file_location(
+135 +             name, frozen.directory / "implementation.py"
+136 +         )
+137 +         module = importlib.util.module_from_spec(spec)
+138 +         sys.modules[name] = module
+139 +         spec.loader.exec_module(module)
+140 +         decoder = mx.fast.metal_kernel(
+141 +             name="fixture_lossless_words_" + frozen.candidate_id,
+142 +             input_names=["payload", "headers", "escapes"],
+143 +             output_names=["decoded"],
+144 +             header=module._HEADER,
+145 +             source="""
+146 |                 const uint start = thread_position_in_grid.x * 4;
+--------------------------------------------------------------------------------
+150 |                 for (uint q=0; q<4; ++q) decoded[start+q] = ushort(as_type<uint>(values[q]) >> 16);
+    -             ''',ensure_row_contiguous=True,compile_options={'math_mode':'safe'})
+    -         rng=np.random.default_rng(390712)
+    -         all_words=np.arange(65536,dtype=np.uint16)
+    -         for label,words in (('all_words_ordered',all_words),('all_words_shuffled',rng.permutation(all_words))):
+    -             before,index=begin(label)
+    -             weight=mx.array(words.reshape(512,128),dtype=mx.uint16).view(mx.bfloat16);mx.eval(weight)
+    -             prepared=module.prepare_projection(weight)
+    -             actual=decoder(inputs=[prepared.payload,prepared.headers,prepared.escapes],
+    -                 template=[('WORDS',65536)],grid=(16384,1,1),threadgroup=(256,1,1),
+    -                 output_shapes=[(65536,)],output_dtypes=[mx.uint16])[0]
+    -             mx.eval(actual);mx.synchronize()
+    -             values=np.array(actual)
+    -             row={'case':label,'words':65536,'passed':bool(np.array_equal(values,words)),
+    -                 'statistics':prepared.statistics,'comparison':'original uint16 words, including zero signs and NaN payload bits'}
+    -             np.savez_compressed(output/(label+'.npz'),reference_words=words,actual_words=values)
+    -             retain(row,before,index)
+    -             del weight,prepared,actual,values;mx.clear_cache()
+    -         shapes=((128,128),(512,192),(512,2880),(2880,4096),(4096,2880),(201088,128))
+    -         for shape_index,(n,k) in enumerate(shapes):
+    -             raw=rng.standard_normal((n,k),dtype=np.float32);raw*=np.float32(.02)
+    -             weight=mx.array(raw,dtype=mx.bfloat16);mx.eval(weight);del raw
+151 +             """,
+152 +             ensure_row_contiguous=True,
+153 +             compile_options={"math_mode": "safe"},
+154 +         )
+155 +         rng = np.random.default_rng(390712)
+156 +         all_words = np.arange(65536, dtype=np.uint16)
+157 +         for label, words in (
+158 +             ("all_words_ordered", all_words),
+159 +             ("all_words_shuffled", rng.permutation(all_words)),
+160 +         ):
+161 +             before, index = begin(label)
+162 +             weight = mx.array(words.reshape(512, 128), dtype=mx.uint16).view(
+163 +                 mx.bfloat16
+164 +             )
+165 +             mx.eval(weight)
+166 +             prepared = module.prepare_projection(weight)
+167 +             actual = decoder(
+168 +                 inputs=[prepared.payload, prepared.headers, prepared.escapes],
+169 +                 template=[("WORDS", 65536)],
+170 +                 grid=(16384, 1, 1),
+171 +                 threadgroup=(256, 1, 1),
+172 +                 output_shapes=[(65536,)],
+173 +                 output_dtypes=[mx.uint16],
+174 +             )[0]
+175 +             mx.eval(actual)
+176 +             mx.synchronize()
+177 +             values = np.array(actual)
+178 +             row = {
+179 +                 "case": label,
+180 +                 "words": 65536,
+181 +                 "passed": bool(np.array_equal(values, words)),
+182 +                 "statistics": prepared.statistics,
+183 +                 "comparison": "original uint16 words, including zero signs and NaN payload bits",
+184 +             }
+185 +             np.savez_compressed(
+186 +                 output / (label + ".npz"), reference_words=words, actual_words=values
+187 +             )
+188 +             retain(row, before, index)
+189 +             del weight, prepared, actual, values
+190 +             mx.clear_cache()
+191 +         shapes = (
+192 +             (128, 128),
+193 +             (512, 192),
+194 +             (512, 2880),
+195 +             (2880, 4096),
+196 +             (4096, 2880),
+197 +             (201088, 128),
+198 +         )
+199 +         for shape_index, (n, k) in enumerate(shapes):
+200 +             raw = rng.standard_normal((n, k), dtype=np.float32)
+201 +             raw *= np.float32(0.02)
+202 +             weight = mx.array(raw, dtype=mx.bfloat16)
+203 +             mx.eval(weight)
+204 +             del raw
+205 |             # Force finite raw escapes as well as compressed normal blocks.
+    -             words=np.array(weight.view(mx.uint16));words[::17,0]=0;words[1::31,64]=0x8000
+    -             weight=mx.array(words,dtype=mx.uint16).view(mx.bfloat16);mx.eval(weight)
+    -             weight_hash=hashlib.sha256(words.tobytes()).hexdigest();del words
+    -             prepared=module.prepare_projection(weight)
+    -             for magnitude in (1.,64.):
+    -                 x=mx.array(rng.standard_normal((1,1,k),dtype=np.float32)*np.float32(magnitude),dtype=mx.bfloat16)
+    -                 for has_bias in (False,True):
+    -                     label=f'n{n}-k{k}-m{int(magnitude)}-bias{int(has_bias)}'
+    -                     before,index=begin(label)
+    -                     bias=mx.array(rng.standard_normal(n,dtype=np.float32),dtype=mx.bfloat16) if has_bias else None
+    -                     reference=x@weight.T if bias is None else mx.addmm(bias,x,weight.T)
+    -                     actual=prepared(x,bias)
+    -                     mx.eval(reference,actual);mx.synchronize()
+    -                     reference_words=np.array(reference.view(mx.uint16));actual_words=np.array(actual.view(mx.uint16))
+    -                     finite=bool(mx.all(mx.isfinite(actual)).item())
+    -                     exact=bool(np.array_equal(reference_words,actual_words))
+    -                     error=float(mx.max(mx.abs(reference.astype(mx.float32)-actual.astype(mx.float32))).item())
+    -                     payload={'reference_words':reference_words,'actual_words':actual_words,'input_words':np.array(x.view(mx.uint16))}
+    -                     if bias is not None:payload['bias_words']=np.array(bias.view(mx.uint16))
+    -                     np.savez_compressed(output/(label+'.npz'),**payload)
+    -                     row={'case':label,'shape':[n,k],'magnitude':magnitude,'bias':has_bias,
+    -                         'passed':exact and finite and actual.shape==reference.shape and actual.dtype==reference.dtype==mx.bfloat16,
+    -                         'all_output_words_bit_exact':exact,'finite':finite,'max_abs_error':error,
+    -                         'weight_words_sha256':weight_hash,'statistics':prepared.statistics}
+    -                     retain(row,before,index)
+    -                     del actual,reference,bias,payload,reference_words,actual_words
+    -             del weight,prepared,x;mx.clear_cache()
+    -         if len(state['records'])!=26:raise ValueError('Missing native fixture records')
+    -         state['status']='passed_native_synthetic_fixture'
+206 +             words = np.array(weight.view(mx.uint16))
+207 +             words[::17, 0] = 0
+208 +             words[1::31, 64] = 0x8000
+209 +             weight = mx.array(words, dtype=mx.uint16).view(mx.bfloat16)
+210 +             mx.eval(weight)
+211 +             weight_hash = hashlib.sha256(words.tobytes()).hexdigest()
+212 +             del words
+213 +             prepared = module.prepare_projection(weight)
+214 +             for magnitude in (1.0, 64.0):
+215 +                 x = mx.array(
+216 +                     rng.standard_normal((1, 1, k), dtype=np.float32)
+217 +                     * np.float32(magnitude),
+218 +                     dtype=mx.bfloat16,
+219 +                 )
+220 +                 for has_bias in (False, True):
+221 +                     label = f"n{n}-k{k}-m{int(magnitude)}-bias{int(has_bias)}"
+222 +                     before, index = begin(label)
+223 +                     bias = (
+224 +                         mx.array(
+225 +                             rng.standard_normal(n, dtype=np.float32), dtype=mx.bfloat16
+226 +                         )
+227 +                         if has_bias
+228 +                         else None
+229 +                     )
+230 +                     reference = (
+231 +                         x @ weight.T if bias is None else mx.addmm(bias, x, weight.T)
+232 +                     )
+233 +                     actual = prepared(x, bias)
+234 +                     mx.eval(reference, actual)
+235 +                     mx.synchronize()
+236 +                     reference_words = np.array(reference.view(mx.uint16))
+237 +                     actual_words = np.array(actual.view(mx.uint16))
+238 +                     finite = bool(mx.all(mx.isfinite(actual)).item())
+239 +                     exact = bool(np.array_equal(reference_words, actual_words))
+240 +                     error = float(
+241 +                         mx.max(
+242 +                             mx.abs(
+243 +                                 reference.astype(mx.float32) - actual.astype(mx.float32)
+244 +                             )
+245 +                         ).item()
+246 +                     )
+247 +                     payload = {
+248 +                         "reference_words": reference_words,
+249 +                         "actual_words": actual_words,
+250 +                         "input_words": np.array(x.view(mx.uint16)),
+251 +                     }
+252 +                     if bias is not None:
+253 +                         payload["bias_words"] = np.array(bias.view(mx.uint16))
+254 +                     np.savez_compressed(output / (label + ".npz"), **payload)
+255 +                     row = {
+256 +                         "case": label,
+257 +                         "shape": [n, k],
+258 +                         "magnitude": magnitude,
+259 +                         "bias": has_bias,
+260 +                         "passed": exact
+261 +                         and finite
+262 +                         and actual.shape == reference.shape
+263 +                         and actual.dtype == reference.dtype == mx.bfloat16,
+264 +                         "all_output_words_bit_exact": exact,
+265 +                         "finite": finite,
+266 +                         "max_abs_error": error,
+267 +                         "weight_words_sha256": weight_hash,
+268 +                         "statistics": prepared.statistics,
+269 +                     }
+270 +                     retain(row, before, index)
+271 +                     del actual, reference, bias, payload, reference_words, actual_words
+272 +             del weight, prepared, x
+273 +             mx.clear_cache()
+274 +         if len(state["records"]) != 26:
+275 +             raise ValueError("Missing native fixture records")
+276 +         state["status"] = "passed_native_synthetic_fixture"
+277 |     except BaseException:
+    -         state['status']='failed';state['errors'].append(traceback.format_exc());raise
+278 +         state["status"] = "failed"
+279 +         state["errors"].append(traceback.format_exc())
+280 +         raise
+281 |     finally:
+    -         stop.set();observer.join()
+    -         state['protected_unchanged']=protected==_protected_files(extra)
+    -         try:verify_frozen_candidate(frozen);state['snapshot_unchanged']=True
+    -         except Exception:state['snapshot_unchanged']=False;state['errors'].append(traceback.format_exc())
+    -         state['finished_unix']=time.time();save()
+282 +         stop.set()
+283 +         observer.join()
+284 +         state["protected_unchanged"] = protected == _protected_files(extra)
+285 +         try:
+286 +             verify_frozen_candidate(frozen)
+287 +             state["snapshot_unchanged"] = True
+288 +         except Exception:
+289 +             state["snapshot_unchanged"] = False
+290 +             state["errors"].append(traceback.format_exc())
+291 +         state["finished_unix"] = time.time()
+292 +         save()
+293 |
+294 |
+    - if __name__=='__main__':main()
+295 + if __name__ == "__main__":
+296 +     main()
+    |
+
+1 file would be reformatted

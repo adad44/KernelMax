@@ -1,0 +1,58 @@
+{
+  "approved_response": "yea do that, and try for the official baseline again",
+  "scope": "Temporary pause of MemoryOS capture/indexing and scheduler; restore initially loaded jobs on exit. No history deletion.",
+  "output": "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/official-attempt-2026-10-03T22-48-02-seed42-paging-aware",
+  "log": "/Users/alandiaz/Library/Logs/kernelmax-official-baseline-2026-10-03T22-48-02.log",
+  "initially_loaded": [
+    {
+      "label": "com.memoryos.scheduler",
+      "plist_sha256": "436d3d0a3f20da38f87cc2d21b3106dea25314c1f075af20581a02678baabbdc",
+      "pid": 3320
+    },
+    {
+      "label": "com.memoryos.daemon",
+      "plist_sha256": "eb7d1d0ce032bf4c4aebab9b7c70a3a9a8d1e3bf218c7b8d5f2e941539e03644",
+      "pid": 3315
+    },
+    {
+      "label": "com.memoryos.backend",
+      "plist_sha256": "60cb04f2d385d5d2c51cb86f8612883eb3adea7df6cbc27b14050e0c0a409441",
+      "pid": 3309
+    }
+  ],
+  "swap_policy": "paging-aware",
+  "paused": [
+    {
+      "label": "com.memoryos.scheduler",
+      "at": 1791092882.9540741
+    },
+    {
+      "label": "com.memoryos.daemon",
+      "at": 1791092882.960366
+    },
+    {
+      "label": "com.memoryos.backend",
+      "at": 1791092882.9659688
+    }
+  ],
+  "restored": [
+    {
+      "label": "com.memoryos.backend",
+      "at": 1791095262.6677399
+    },
+    {
+      "label": "com.memoryos.daemon",
+      "at": 1791095262.680207
+    },
+    {
+      "label": "com.memoryos.scheduler",
+      "at": 1791095262.6911879
+    }
+  ],
+  "restoration_errors": [],
+  "status": "session_error",
+  "benchmark_pid": 3544,
+  "error": "RuntimeError: Controller checkpoint idle for 180 seconds; stopping retry and restoring MemoryOS",
+  "finished_at": 1791095262.6914911,
+  "restoration_complete": true
+}

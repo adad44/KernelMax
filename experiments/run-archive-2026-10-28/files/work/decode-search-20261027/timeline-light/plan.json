@@ -1,0 +1,13 @@
+{
+  "acceptance_enabled": false,
+  "created_unix": 1793152548.1371179,
+  "handoff": "Same resident-model handoff to separately frozen scheduling candidate only after valid timestamp/control evidence supports several-ms target; full-model correctness and fresh timing gates remain required.",
+  "interpretation": "Command-buffer GPU intervals include stalls and every command in a buffer. Union time is not kernel-active time. Time outside those intervals includes CPU build, readback, submission and observation. Gaps are a candidate budget to investigate, not proof of recoverable latency or bandwidth/occupancy.",
+  "no_overlap": "Both preceding profiler PID71655 and supervisor PID76057 are terminal, verified by launchctl last_exit1 and missing ps handles. No second benchmark overlaps them.",
+  "observer": "Eight predeclared complete decode steps1/19/37/55/73/91/109/127 across all128outputs. Retain only one step of command buffers, read public timestamps after its existing token wait, release references immediately. No activation/logit capture or replay tensors, per-kernel callbacks or inserted GPU synchronization. GPU intervals include stalls; outside time is a planning budget only.",
+  "preceding_attempt": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/cooled-profile/profile-state.json",
+  "preceding_status": "59requests; A/A completed and passed; expert-removal comparison stopped at pair4control on7.44MiB swap growth/988global swapouts; full deletion result incomplete.",
+  "protocol": "Two retained hydration requests; three fixed alternating control/observer pairs with12s hold,5s settle and10s quiet before each request. AC, nominal thermal observed every0.5s, no swap-outs or swap growth; swapins logged. This is a timestamp diagnostic, not the twenty-pair candidate benchmark. Stop and retain all failures.",
+  "scope": "Fresh lightweight timestamp intervention after paging-invalid cached-deletion diagnostic; not a rerun of statistical failure.",
+  "unchanged": "Pinned checkpoint, native MXFP4 experts/BF16 activations and cache, fresh512prompt cache,128greedy outputs, exact token trajectories; no candidate execution or speedup verdict in the timestamp probe."
+}

@@ -1,0 +1,9 @@
+{
+  "compile_start": 1793150428.911656,
+  "compile_end": 1793150429.388745,
+  "profile_last_after": 1793150428.617022,
+  "timing_excluded": "within fixed12second cooldown hold after completed request",
+  "returncode": 1,
+  "stdout": "",
+  "stderr": "work/decode-search-20261027/timeline/command_timeline.mm:6:10: fatal error: 'algorithm' file not found\n    6 | #include <algorithm>\n      |          ^~~~~~~~~~~\n1 error generated.\n"
+}

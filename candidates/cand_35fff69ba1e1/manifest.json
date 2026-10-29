@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_35fff69ba1e1",
+  "name": "Native-order joint up/gate and down pair",
+  "implementation_type": "mlx",
+  "description": "One-token two-kernel composition of native-order joint up/gate/SwiGLU with ordered K-loop unroll2, and native-order down/bias. Original MXFP4 weights/scales, BF16 rounding and selected IDs preserved. No parameter conversion, caching, routing weighting or prefill change. Combines measured component hypotheses; no additive gain or model-speedup claim. Every native and exact-boundary case must pass before timing."
+}

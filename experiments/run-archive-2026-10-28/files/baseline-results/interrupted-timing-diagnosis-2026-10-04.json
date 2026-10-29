@@ -1,0 +1,1396 @@
+{
+  "purpose": "Diagnose interrupted timing; not an official or passing baseline",
+  "attempt": "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/official-attempt-2026-10-03T23-31-16-seed42-paging-aware/attempt.json",
+  "attempt_sha256": "8d21339c209492b002574bc1338abc01315c117e55ee28e0ee2bfc154002eeae",
+  "run_id": "cfb0ab6d-401e-423d-b70c-fa56f97b069a",
+  "status": "interrupted",
+  "grouping_rule": "Post-request ps snapshot WindowServer CPU above versus at most 5 percent; exploratory association, not a validity gate",
+  "normalization": "Within-size median of first three warmups; diagnostic denominator, not an official performance number",
+  "groups": {
+    "WindowServer_at_most_5pct": {
+      "requests": 34,
+      "median_normalized_throughput": 0.9982984190773829,
+      "per_length": {
+        "512": {
+          "requests": 10,
+          "median_tps": 24.568119438911857
+        },
+        "2048": {
+          "requests": 13,
+          "median_tps": 24.15876914965395
+        },
+        "4096": {
+          "requests": 11,
+          "median_tps": 23.458446974617452
+        }
+      }
+    },
+    "WindowServer_above_5pct": {
+      "requests": 27,
+      "median_normalized_throughput": 0.8561456650402741,
+      "per_length": {
+        "512": {
+          "requests": 9,
+          "median_tps": 21.740932565317983
+        },
+        "2048": {
+          "requests": 8,
+          "median_tps": 20.900706317253025
+        },
+        "4096": {
+          "requests": 10,
+          "median_tps": 20.14398673969125
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "phase": "warmups",
+      "length": 512,
+      "trial": 1,
+      "lane": "A",
+      "observed_at": 1791096351.983637,
+      "tps": 24.619928239093767,
+      "relative_to_first_three_warmups": 1.0020069116728505,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "warmups",
+      "length": 2048,
+      "trial": 1,
+      "lane": "A",
+      "observed_at": 1791096381.165575,
+      "tps": 24.20018488057288,
+      "relative_to_first_three_warmups": 1.0,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.2,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 4,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "warmups",
+      "length": 4096,
+      "trial": 1,
+      "lane": "A",
+      "observed_at": 1791096418.5048409,
+      "tps": 23.63742314823921,
+      "relative_to_first_three_warmups": 0.9982350027335016,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "warmups",
+      "length": 2048,
+      "trial": 2,
+      "lane": "A",
+      "observed_at": 1791096448.244556,
+      "tps": 24.202723533850897,
+      "relative_to_first_three_warmups": 1.0001049022265964,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "warmups",
+      "length": 4096,
+      "trial": 2,
+      "lane": "A",
+      "observed_at": 1791096486.632786,
+      "tps": 23.679216901342905,
+      "relative_to_first_three_warmups": 1.0,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "warmups",
+      "length": 512,
+      "trial": 2,
+      "lane": "A",
+      "observed_at": 1791096511.8611462,
+      "tps": 24.570617180664748,
+      "relative_to_first_three_warmups": 1.0,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "warmups",
+      "length": 4096,
+      "trial": 3,
+      "lane": "A",
+      "observed_at": 1791096549.701164,
+      "tps": 23.703368951577264,
+      "relative_to_first_three_warmups": 1.0010199682842125,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.1,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "warmups",
+      "length": 512,
+      "trial": 3,
+      "lane": "A",
+      "observed_at": 1791096576.51389,
+      "tps": 24.563057816976485,
+      "relative_to_first_three_warmups": 0.9996923413183854,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "warmups",
+      "length": 2048,
+      "trial": 3,
+      "lane": "A",
+      "observed_at": 1791096607.214633,
+      "tps": 24.185718901032143,
+      "relative_to_first_three_warmups": 0.99940223681711,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "warmups",
+      "length": 512,
+      "trial": 4,
+      "lane": "A",
+      "observed_at": 1791096632.974066,
+      "tps": 24.565621697158967,
+      "relative_to_first_three_warmups": 0.9997966887250308,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "warmups",
+      "length": 2048,
+      "trial": 4,
+      "lane": "A",
+      "observed_at": 1791096667.2625642,
+      "tps": 20.371253258348258,
+      "relative_to_first_three_warmups": 0.8417808937774536,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 32.6,
+        "Codex_Renderer": 28.599999999999998,
+        "Codex_Service": 9.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 71,
+        "swapout_pages": 0,
+        "swap_growth_mib": -8.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "warmups",
+      "length": 4096,
+      "trial": 4,
+      "lane": "A",
+      "observed_at": 1791096705.237664,
+      "tps": 21.34385953596865,
+      "relative_to_first_three_warmups": 0.9013752281123025,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 14.1,
+        "Codex_Renderer": 7.6,
+        "Codex_Service": 7.1
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "warmups",
+      "length": 2048,
+      "trial": 5,
+      "lane": "A",
+      "observed_at": 1791096748.2898219,
+      "tps": 21.32138649107575,
+      "relative_to_first_three_warmups": 0.8810422976640919,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 25.5,
+        "Codex_Renderer": 9.4,
+        "Codex_Service": 10.6
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "warmups",
+      "length": 4096,
+      "trial": 5,
+      "lane": "A",
+      "observed_at": 1791096786.162102,
+      "tps": 19.97760751187433,
+      "relative_to_first_three_warmups": 0.8436768663047025,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 32.5,
+        "Codex_Renderer": 8.6,
+        "Codex_Service": 11.5
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "warmups",
+      "length": 512,
+      "trial": 5,
+      "lane": "A",
+      "observed_at": 1791096814.507147,
+      "tps": 22.671304801714122,
+      "relative_to_first_three_warmups": 0.9226998505985742,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 29.2,
+        "Codex_Renderer": 1.1,
+        "Codex_Service": 1.8
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 512,
+      "trial": 1,
+      "lane": "A",
+      "observed_at": 1791096843.089042,
+      "tps": 21.740932565317983,
+      "relative_to_first_three_warmups": 0.8848346138584783,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 25.7,
+        "Codex_Renderer": 8.2,
+        "Codex_Service": 10.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 512,
+      "trial": 1,
+      "lane": "B",
+      "observed_at": 1791096850.794836,
+      "tps": 20.623967302336695,
+      "relative_to_first_three_warmups": 0.8393752241016651,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 20.7,
+        "Codex_Renderer": 11.1,
+        "Codex_Service": 9.4
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 2048,
+      "trial": 1,
+      "lane": "A",
+      "observed_at": 1791096882.89128,
+      "tps": 22.35225560287127,
+      "relative_to_first_three_warmups": 0.9236398694133503,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 29.0,
+        "Codex_Renderer": 3.0999999999999996,
+        "Codex_Service": 3.1
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 2048,
+      "trial": 1,
+      "lane": "B",
+      "observed_at": 1791096894.915644,
+      "tps": 20.480026143430305,
+      "relative_to_first_three_warmups": 0.8462756067566658,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 21.8,
+        "Codex_Renderer": 12.2,
+        "Codex_Service": 10.5
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 4096,
+      "trial": 1,
+      "lane": "A",
+      "observed_at": 1791096933.80279,
+      "tps": 21.607729338769246,
+      "relative_to_first_three_warmups": 0.9125187470850786,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 20.8,
+        "Codex_Renderer": 12.100000000000001,
+        "Codex_Service": 10.7
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 4096,
+      "trial": 1,
+      "lane": "B",
+      "observed_at": 1791096952.678025,
+      "tps": 20.131305648522073,
+      "relative_to_first_three_warmups": 0.8501677117278477,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 26.4,
+        "Codex_Renderer": 7.1,
+        "Codex_Service": 7.5
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 2048,
+      "trial": 2,
+      "lane": "B",
+      "observed_at": 1791096988.527833,
+      "tps": 20.12992904866403,
+      "relative_to_first_three_warmups": 0.8318088951801225,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 27.3,
+        "Codex_Renderer": 6.9,
+        "Codex_Service": 9.8
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 2048,
+      "trial": 2,
+      "lane": "A",
+      "observed_at": 1791097000.076085,
+      "tps": 22.441978536965344,
+      "relative_to_first_three_warmups": 0.9273474003490375,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 30.2,
+        "Codex_Renderer": 1.7000000000000002,
+        "Codex_Service": 2.9
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 12,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 4096,
+      "trial": 2,
+      "lane": "B",
+      "observed_at": 1791097039.299359,
+      "tps": 20.929125021879166,
+      "relative_to_first_three_warmups": 0.8838605224606151,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 23.8,
+        "Codex_Renderer": 9.0,
+        "Codex_Service": 9.4
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 31,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 4096,
+      "trial": 2,
+      "lane": "A",
+      "observed_at": 1791097058.254426,
+      "tps": 19.961019953629034,
+      "relative_to_first_three_warmups": 0.8429763550371886,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 26.9,
+        "Codex_Renderer": 8.4,
+        "Codex_Service": 10.7
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 512,
+      "trial": 2,
+      "lane": "B",
+      "observed_at": 1791097089.2373602,
+      "tps": 22.751339996958215,
+      "relative_to_first_three_warmups": 0.9259572044800662,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 28.6,
+        "Codex_Renderer": 1.2,
+        "Codex_Service": 2.3
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 512,
+      "trial": 2,
+      "lane": "A",
+      "observed_at": 1791097096.909523,
+      "tps": 20.730834557698998,
+      "relative_to_first_three_warmups": 0.8437246164908151,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 25.9,
+        "Codex_Renderer": 11.8,
+        "Codex_Service": 12.5
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 4096,
+      "trial": 3,
+      "lane": "A",
+      "observed_at": 1791097136.3855412,
+      "tps": 20.156667830860425,
+      "relative_to_first_three_warmups": 0.8512387852538017,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 25.8,
+        "Codex_Renderer": 9.299999999999999,
+        "Codex_Service": 11.6
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 4096,
+      "trial": 3,
+      "lane": "B",
+      "observed_at": 1791097155.306481,
+      "tps": 20.0660853611269,
+      "relative_to_first_three_warmups": 0.847413385532564,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 24.8,
+        "Codex_Renderer": 8.2,
+        "Codex_Service": 10.4
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 12,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 512,
+      "trial": 3,
+      "lane": "A",
+      "observed_at": 1791097183.7090611,
+      "tps": 22.789211185042717,
+      "relative_to_first_three_warmups": 0.927498524659614,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 21.5,
+        "Codex_Renderer": 2.0,
+        "Codex_Service": 2.3
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 512,
+      "trial": 3,
+      "lane": "B",
+      "observed_at": 1791097191.305853,
+      "tps": 21.036027386590206,
+      "relative_to_first_three_warmups": 0.8561456650402741,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 25.9,
+        "Codex_Renderer": 9.6,
+        "Codex_Service": 11.2
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 2048,
+      "trial": 3,
+      "lane": "A",
+      "observed_at": 1791097226.604533,
+      "tps": 20.401779170597813,
+      "relative_to_first_three_warmups": 0.8430422854734344,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 26.4,
+        "Codex_Renderer": 11.6,
+        "Codex_Service": 13.2
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 2048,
+      "trial": 3,
+      "lane": "B",
+      "observed_at": 1791097238.1732118,
+      "tps": 22.379200499544744,
+      "relative_to_first_three_warmups": 0.9247532863895613,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 30.0,
+        "Codex_Renderer": 2.0,
+        "Codex_Service": 2.5
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 512,
+      "trial": 4,
+      "lane": "B",
+      "observed_at": 1791097267.073013,
+      "tps": 22.77182969567227,
+      "relative_to_first_three_warmups": 0.9267911151044269,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 31.0,
+        "Codex_Renderer": 1.9000000000000001,
+        "Codex_Service": 3.1
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 12,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 512,
+      "trial": 4,
+      "lane": "A",
+      "observed_at": 1791097274.7763772,
+      "tps": 20.69416554867296,
+      "relative_to_first_three_warmups": 0.8422322238188519,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 20.3,
+        "Codex_Renderer": 10.5,
+        "Codex_Service": 9.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 2048,
+      "trial": 4,
+      "lane": "B",
+      "observed_at": 1791097306.923815,
+      "tps": 21.452986266245986,
+      "relative_to_first_three_warmups": 0.8864802633581426,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.4,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 4,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 2048,
+      "trial": 4,
+      "lane": "A",
+      "observed_at": 1791097317.658326,
+      "tps": 24.189175734313842,
+      "relative_to_first_three_warmups": 0.9995450800763148,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 4096,
+      "trial": 4,
+      "lane": "B",
+      "observed_at": 1791097355.1495302,
+      "tps": 23.594718715633515,
+      "relative_to_first_three_warmups": 0.9964315464459217,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 4096,
+      "trial": 4,
+      "lane": "A",
+      "observed_at": 1791097372.689496,
+      "tps": 22.1357803537968,
+      "relative_to_first_three_warmups": 0.9348189362014513,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.4,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 2048,
+      "trial": 5,
+      "lane": "A",
+      "observed_at": 1791097409.0655649,
+      "tps": 24.140217788220784,
+      "relative_to_first_three_warmups": 0.9975220399080407,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 2048,
+      "trial": 5,
+      "lane": "B",
+      "observed_at": 1791097419.7953138,
+      "tps": 24.169793559487363,
+      "relative_to_first_three_warmups": 0.9987441698798791,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 11.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 4096,
+      "trial": 5,
+      "lane": "A",
+      "observed_at": 1791097459.015497,
+      "tps": 20.99076001850764,
+      "relative_to_first_three_warmups": 0.8864634377886544,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 4096,
+      "trial": 5,
+      "lane": "B",
+      "observed_at": 1791097476.673743,
+      "tps": 21.657962349504086,
+      "relative_to_first_three_warmups": 0.9146401437066025,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.4,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 8,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 512,
+      "trial": 5,
+      "lane": "A",
+      "observed_at": 1791097506.031762,
+      "tps": 24.550644868812242,
+      "relative_to_first_three_warmups": 0.999187146513022,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 512,
+      "trial": 5,
+      "lane": "B",
+      "observed_at": 1791097512.6469178,
+      "tps": 24.601670664854336,
+      "relative_to_first_three_warmups": 1.0012638463234869,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 4096,
+      "trial": 6,
+      "lane": "B",
+      "observed_at": 1791097550.807907,
+      "tps": 20.983162066883917,
+      "relative_to_first_three_warmups": 0.886142567733898,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 4096,
+      "trial": 6,
+      "lane": "A",
+      "observed_at": 1791097568.02816,
+      "tps": 23.458446974617452,
+      "relative_to_first_three_warmups": 0.9906766373379124,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 2.4,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 512,
+      "trial": 6,
+      "lane": "B",
+      "observed_at": 1791097599.9509802,
+      "tps": 24.371009470517894,
+      "relative_to_first_three_warmups": 0.9918761621379242,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 17,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 512,
+      "trial": 6,
+      "lane": "A",
+      "observed_at": 1791097606.545583,
+      "tps": 24.60478225584403,
+      "relative_to_first_three_warmups": 1.0013904850223365,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 2048,
+      "trial": 6,
+      "lane": "B",
+      "observed_at": 1791097637.837297,
+      "tps": 24.14543460689354,
+      "relative_to_first_three_warmups": 0.9977376092806923,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 2048,
+      "trial": 6,
+      "lane": "A",
+      "observed_at": 1791097648.528193,
+      "tps": 24.15840418332124,
+      "relative_to_first_three_warmups": 0.9982735380965961,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 512,
+      "trial": 7,
+      "lane": "A",
+      "observed_at": 1791097676.359506,
+      "tps": 24.547362304951076,
+      "relative_to_first_three_warmups": 0.9990535493861354,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.1,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 4,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 512,
+      "trial": 7,
+      "lane": "B",
+      "observed_at": 1791097682.971222,
+      "tps": 24.584434138071355,
+      "relative_to_first_three_warmups": 1.00056233660331,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 2048,
+      "trial": 7,
+      "lane": "A",
+      "observed_at": 1791097714.814178,
+      "tps": 24.089938552638262,
+      "relative_to_first_three_warmups": 0.995444401417647,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.1,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 2048,
+      "trial": 7,
+      "lane": "B",
+      "observed_at": 1791097725.525793,
+      "tps": 24.06586543125808,
+      "relative_to_first_three_warmups": 0.994449651935402,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.2,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 4096,
+      "trial": 7,
+      "lane": "A",
+      "observed_at": 1791097762.551073,
+      "tps": 23.598334237959563,
+      "relative_to_first_three_warmups": 0.9965842340259675,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 4096,
+      "trial": 7,
+      "lane": "B",
+      "observed_at": 1791097779.762003,
+      "tps": 23.410592077737356,
+      "relative_to_first_three_warmups": 0.9886556711429796,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.6,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 2048,
+      "trial": 8,
+      "lane": "B",
+      "observed_at": 1791097814.182805,
+      "tps": 24.159243465658637,
+      "relative_to_first_three_warmups": 0.9983082189199675,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.0
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 2048,
+      "trial": 8,
+      "lane": "A",
+      "observed_at": 1791097824.913513,
+      "tps": 24.15876914965395,
+      "relative_to_first_three_warmups": 0.9982886192347985,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 0.0,
+        "Codex_Renderer": 0.0,
+        "Codex_Service": 0.1
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 0,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 4096,
+      "trial": 8,
+      "lane": "B",
+      "observed_at": 1791097864.4817998,
+      "tps": 21.354931296078867,
+      "relative_to_first_three_warmups": 0.9018428010120461,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 39.4,
+        "Codex_Renderer": 26.700000000000003,
+        "Codex_Service": 13.6
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 8,
+        "swapout_pages": 0,
+        "swap_growth_mib": 0.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    },
+    {
+      "phase": "samples",
+      "length": 4096,
+      "trial": 8,
+      "lane": "A",
+      "observed_at": 1791097883.43404,
+      "tps": 19.916408456284845,
+      "relative_to_first_three_warmups": 0.8410923612577466,
+      "cpu_snapshot_percentages": {
+        "WindowServer": 29.8,
+        "Codex_Renderer": 14.3,
+        "Codex_Service": 7.1
+      },
+      "paging": {
+        "policy": "paging-aware",
+        "swapin_pages": 204,
+        "swapout_pages": 0,
+        "swap_growth_mib": -8.0,
+        "swapins_permitted": true
+      },
+      "invalid_reasons": []
+    }
+  ],
+  "limits": [
+    "Snapshots are not interval-integrated CPU/GPU attribution.",
+    "Association does not prove causality; a controlled display/controller intervention is required.",
+    "No row is removed, reused or relabeled as official."
+  ]
+}

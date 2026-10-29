@@ -1,0 +1,8 @@
+{
+  "ownership_selection_cpu_fixture_passed": true,
+  "owned_model_and_descendants_selected": true,
+  "unrelated_python_caffeinate_and_shell_false_positive_excluded": true,
+  "cleanup_self_excluded": true,
+  "no_process_termination_or_job_unload_executed": true,
+  "deadline_gate_preserved": true
+}

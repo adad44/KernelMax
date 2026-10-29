@@ -1,0 +1,13 @@
+{
+  "ended_unix": 1793094406.021002,
+  "error": "RuntimeError: native-summary failed; next stage blocked",
+  "stage": "native-summary",
+  "stages": [
+    {
+      "name": "native-summary",
+      "returncode": 1
+    }
+  ],
+  "started_unix": 1793094405.930611,
+  "status": "failed"
+}

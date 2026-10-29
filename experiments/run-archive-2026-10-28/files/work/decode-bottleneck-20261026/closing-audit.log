@@ -1,0 +1,119 @@
+{
+  "status": "stopped_inconclusive",
+  "official": false,
+  "verdict": null,
+  "acceptance_enabled": false,
+  "new_candidate_created": false,
+  "certified_baseline_modified": false,
+  "reliable_bottleneck_fraction_established": false,
+  "dispatch_gaps_measured": false,
+  "dram_traffic_measured": false,
+  "real_operator_checks_passed": 96,
+  "real_operator_checks": 96,
+  "real_operator_max_abs_error": 0.0,
+  "exact_logit_replay_requests": 29,
+  "controlled_screen": {
+    "environment_valid": true,
+    "gates": {
+      "max_pair_deviation": 0.02,
+      "max_relative_mad": 0.01,
+      "max_relative_range": 0.04
+    },
+    "pair_ratios": [
+      1.0302925542823027,
+      0.9747199337081219
+    ],
+    "passed": false,
+    "relative_mad": 0.012853614515444964,
+    "relative_range": 0.03774812968690572
+  },
+  "host_intervals": {
+    "scope": "four environmental-boundary-valid unchanged-model screen requests; overall A/A screen failed",
+    "median_ms_per_token": 45.78382956271067,
+    "median_mean_graph_build_ms_per_token": 2.6020807192081543,
+    "median_mean_eval_wait_ms_per_token": 43.09118634335491,
+    "median_mean_readback_ms_per_token": 0.00563480407292918,
+    "all_observed_thermal_states": [
+      0
+    ],
+    "swapin_pages_per_request": [
+      220,
+      188,
+      200,
+      700
+    ],
+    "swapout_pages_per_request": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "inventory": {
+    "controller-repair": {
+      "status": "completed_diagnostic",
+      "requests_retained": 43,
+      "operator_blocks_retained": 180,
+      "aa_screen": null,
+      "protected_sources_unchanged": true,
+      "raw_checkpoint_guard": false,
+      "prepared_hashes_match": true
+    },
+    "quiet-pass": {
+      "status": "failed_diagnostic",
+      "requests_retained": 0,
+      "operator_blocks_retained": 0,
+      "aa_screen": null,
+      "protected_sources_unchanged": true,
+      "raw_checkpoint_guard": true,
+      "prepared_hashes_match": true
+    },
+    "paging-aware-512": {
+      "status": "failed_diagnostic",
+      "requests_retained": 5,
+      "operator_blocks_retained": 0,
+      "aa_screen": {
+        "environment_valid": true,
+        "gates": {
+          "max_pair_deviation": 0.02,
+          "max_relative_mad": 0.01,
+          "max_relative_range": 0.04
+        },
+        "pair_ratios": [
+          1.1046385998066466,
+          1.0845491633201887
+        ],
+        "passed": false,
+        "relative_mad": 0.039967222147156305,
+        "relative_range": 0.1312117414966905
+      },
+      "protected_sources_unchanged": true,
+      "raw_checkpoint_guard": true,
+      "prepared_hashes_match": true
+    },
+    "controlled-512": {
+      "status": "failed_diagnostic",
+      "requests_retained": 5,
+      "operator_blocks_retained": 0,
+      "aa_screen": {
+        "environment_valid": true,
+        "gates": {
+          "max_pair_deviation": 0.02,
+          "max_relative_mad": 0.01,
+          "max_relative_range": 0.04
+        },
+        "pair_ratios": [
+          1.0302925542823027,
+          0.9747199337081219
+        ],
+        "passed": false,
+        "relative_mad": 0.012853614515444964,
+        "relative_range": 0.03774812968690572
+      },
+      "protected_sources_unchanged": true,
+      "raw_checkpoint_guard": true,
+      "prepared_hashes_match": true
+    }
+  },
+  "checkpoint_independent_first_pass_identity_matches": true
+}

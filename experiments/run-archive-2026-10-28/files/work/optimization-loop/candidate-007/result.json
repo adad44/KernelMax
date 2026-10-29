@@ -1,0 +1,64 @@
+{
+  "aa_screens": {
+    "0": {
+      "full_range": 0.009540684126873202,
+      "passed": true,
+      "ratios": [
+        1.001713697312929,
+        1.0048676265528853
+      ],
+      "relative_mad": 0.0023329296352112465
+    },
+    "12": {
+      "full_range": 0.03610362676200806,
+      "passed": false,
+      "ratios": [
+        0.9911113321374596,
+        1.0052101518690524
+      ],
+      "relative_mad": 0.013518495219765793
+    }
+  },
+  "candidate_id": "cand_8ca060ed7e93",
+  "disposition": "parked_operator_regression",
+  "full_model_speedup_established": false,
+  "layer0": {
+    "ab_order_median_ratio": 0.9639938481625578,
+    "ba_order_median_ratio": 0.9639657706701616,
+    "descriptive_bootstrap_95pct": [
+      0.9615751096522713,
+      0.966426899105931
+    ],
+    "environment_valid": true,
+    "median_baseline_ms_per_call": 0.8328019409179688,
+    "median_candidate_ms_per_call": 0.8593824052734376,
+    "median_ratio": 0.9639938481625578,
+    "paired_ratios": [
+      0.9636477549641156,
+      0.9631653995792222,
+      0.9611259467800809,
+      0.991462040402304,
+      0.9725414331917791,
+      0.9578925337030528,
+      0.9659940471463248,
+      0.9619429866903428,
+      0.9658927083489337,
+      0.9730218206773841,
+      0.9637477827000462,
+      0.964766141761101,
+      0.9600198004925655,
+      0.9612072326141999,
+      0.9534275942169372,
+      0.9668597510655375,
+      0.9642399136250696,
+      0.9599315768441056,
+      0.9683110195591289,
+      0.9810508677545329
+    ]
+  },
+  "native_checks_passed": 21,
+  "raw_call_counts_verified": true,
+  "real_checks_passed": 32,
+  "reason": "Exact integer FP4 decode slowed the valid layer-0 operator by about 3.6% (baseline/candidate ratio 0.964, descriptive 95% interval 0.9616..0.9664). Both order strata agree. Layer12 gate failed before candidate timing. The tested replacement adds arithmetic/select operations but removes a tiny hot table; hardware/compiler cause remains unmeasured.",
+  "tiny_checks_passed": 30
+}

@@ -1,0 +1,6 @@
+{
+  "builder_and_coordinator_syntax": true,
+  "temporary_fixture_generation_only": true,
+  "candidate_ids_and_BF16_bias_rounding_checked": true,
+  "no_native_candidate_or_probe_executed": true
+}

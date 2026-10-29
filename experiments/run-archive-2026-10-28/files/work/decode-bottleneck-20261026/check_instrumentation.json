@@ -1,0 +1,37 @@
+{
+  "checks": [
+    {
+      "max_abs_logit_error": 0,
+      "mode": "normal",
+      "tokens_equal": true
+    },
+    {
+      "max_abs_logit_error": 0,
+      "mode": "oracle_pointwise",
+      "tokens_equal": true
+    },
+    {
+      "max_abs_logit_error": 0,
+      "mode": "oracle_up_gate",
+      "tokens_equal": true
+    },
+    {
+      "max_abs_logit_error": 0,
+      "mode": "oracle_down",
+      "tokens_equal": true
+    },
+    {
+      "max_abs_logit_error": 0,
+      "mode": "oracle_experts",
+      "tokens_equal": true
+    },
+    {
+      "max_abs_logit_error": 0,
+      "mode": "serial",
+      "tokens_equal": true
+    }
+  ],
+  "saved_entries": 1778,
+  "scope": "tiny random model; controller validation only",
+  "serial_events": 304
+}

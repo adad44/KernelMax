@@ -1,0 +1,13 @@
+{
+  "session_id": "5e91ce7f-0daf-4868-8322-112793782944",
+  "worker_pid": 6386,
+  "status": "interrupted",
+  "phase": "interrupted",
+  "current_attempt": "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/official-attempt-2026-10-03T23-31-16-seed42-paging-aware",
+  "model_loads": 1,
+  "max_environment_retries": 2,
+  "failed_attempts": [],
+  "errors": [
+    "Interrupted by user"
+  ]
+}

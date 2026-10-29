@@ -1,0 +1,20 @@
+{
+  "aa_screens": {
+    "0": {
+      "full_range": 0.03735852655909419,
+      "passed": false,
+      "ratios": [
+        1.0007665801041428,
+        1.0054154829458493
+      ],
+      "relative_mad": 0.015929410009216393
+    }
+  },
+  "candidate_id": "cand_06f4ad03af35",
+  "candidate_timing_started": false,
+  "disposition": "inconclusive_calibration",
+  "full_model_speedup_established": false,
+  "native_checks_passed": 21,
+  "reason": "Four-sample raw MAD screen failed before any candidate timing. Preserve failure; candidate performance remains unmeasured.",
+  "tiny_checks_passed": 30
+}

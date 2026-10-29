@@ -1,0 +1,44 @@
+{
+  "candidate_id": "cand_4a02c3189b7d",
+  "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_4a02c3189b7d",
+  "file_sha256": {
+    "README.md": "c88477235e5601f0fa0e44db04af766a18d38d56ac971b10e198b287822e90d8",
+    "down_reduce.metal": "0e9818a1e40b7de49e1c45ca220941892c4796b5db1a4f9e5ccfd3892aba0392",
+    "implementation.metal": "87528181cbbf76e2e3c2b66e69fcc5c724f627fd7604f6d78f502a50b7a7f3c3",
+    "implementation.py": "633a284c2147275e55bb0deb76e43806c4947b8aa25b8088d3abcffc4f7b0b83",
+    "manifest.json": "bc8051eee6629aafa85a6f7b7ce0898d4599cc6312a887bcaaf78b69080dcb7f",
+    "route.metal": "8cbc8f969508b606ed87ff3eab815b0797a3430221f23d108820eaa7d86690e1",
+    "up_gate.metal": "6455430ec62efd2473edcbe13ed2467452ffb044343b5570996489322a212050",
+    "wrapper.py": "3269c7d2a3fe9ea2f2e1171387e6db6dae0af44aa7547d5caee41687eda9d860"
+  },
+  "frozen_once": true,
+  "ruff_version": "ruff 0.17.3",
+  "sha256": "e4c96fc022079e58d7987f1bec0bdd4defb36589b4fc303efc5a41a5b76e1ed3",
+  "source_hashes_after": {
+    "README.md": "c88477235e5601f0fa0e44db04af766a18d38d56ac971b10e198b287822e90d8",
+    "down_reduce.metal": "0e9818a1e40b7de49e1c45ca220941892c4796b5db1a4f9e5ccfd3892aba0392",
+    "implementation.metal": "87528181cbbf76e2e3c2b66e69fcc5c724f627fd7604f6d78f502a50b7a7f3c3",
+    "implementation.py": "633a284c2147275e55bb0deb76e43806c4947b8aa25b8088d3abcffc4f7b0b83",
+    "manifest.json": "bc8051eee6629aafa85a6f7b7ce0898d4599cc6312a887bcaaf78b69080dcb7f",
+    "route.metal": "8cbc8f969508b606ed87ff3eab815b0797a3430221f23d108820eaa7d86690e1",
+    "up_gate.metal": "6455430ec62efd2473edcbe13ed2467452ffb044343b5570996489322a212050",
+    "wrapper.py": "3269c7d2a3fe9ea2f2e1171387e6db6dae0af44aa7547d5caee41687eda9d860"
+  },
+  "source_hashes_before": {
+    "README.md": "c88477235e5601f0fa0e44db04af766a18d38d56ac971b10e198b287822e90d8",
+    "down_reduce.metal": "0e9818a1e40b7de49e1c45ca220941892c4796b5db1a4f9e5ccfd3892aba0392",
+    "implementation.metal": "87528181cbbf76e2e3c2b66e69fcc5c724f627fd7604f6d78f502a50b7a7f3c3",
+    "implementation.py": "633a284c2147275e55bb0deb76e43806c4947b8aa25b8088d3abcffc4f7b0b83",
+    "manifest.json": "bc8051eee6629aafa85a6f7b7ce0898d4599cc6312a887bcaaf78b69080dcb7f",
+    "route.metal": "8cbc8f969508b606ed87ff3eab815b0797a3430221f23d108820eaa7d86690e1",
+    "up_gate.metal": "6455430ec62efd2473edcbe13ed2467452ffb044343b5570996489322a212050",
+    "wrapper.py": "3269c7d2a3fe9ea2f2e1171387e6db6dae0af44aa7547d5caee41687eda9d860"
+  },
+  "source_unchanged_across_freeze": true,
+  "vendored_up_gate": {
+    "exact_match": true,
+    "sha256": "6455430ec62efd2473edcbe13ed2467452ffb044343b5570996489322a212050",
+    "source": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_35fff69ba1e1/fused_up_gate.metal",
+    "target": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_4a02c3189b7d/up_gate.metal"
+  }
+}

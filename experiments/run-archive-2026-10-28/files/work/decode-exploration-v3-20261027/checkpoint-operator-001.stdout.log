@@ -1,0 +1,126 @@
+prepared model.layers.0.self_attn.q_proj codec ratio 0.7935546875
+prepared model.layers.0.self_attn.k_proj codec ratio 0.7931423611111111
+prepared model.layers.0.self_attn.v_proj codec ratio 0.7901041666666667
+prepared model.layers.0.self_attn.o_proj codec ratio 0.7860080295138889
+prepared model.layers.12.self_attn.q_proj codec ratio 0.7862630208333333
+prepared model.layers.12.self_attn.k_proj codec ratio 0.7872395833333333
+prepared model.layers.12.self_attn.v_proj codec ratio 0.7871527777777778
+prepared model.layers.12.self_attn.o_proj codec ratio 0.7855088975694444
+prepared model.layers.23.self_attn.q_proj codec ratio 0.7909071180555556
+prepared model.layers.23.self_attn.k_proj codec ratio 0.7971354166666667
+prepared model.layers.23.self_attn.v_proj codec ratio 0.7950954861111111
+prepared model.layers.23.self_attn.o_proj codec ratio 0.7860297309027777
+prepared lm_head codec ratio 0.786294668116557
+correctness model.layers.0.self_attn.q_proj True
+correctness model.layers.0.self_attn.k_proj True
+correctness model.layers.0.self_attn.v_proj True
+correctness model.layers.0.self_attn.o_proj True
+correctness model.layers.12.self_attn.q_proj True
+correctness model.layers.12.self_attn.k_proj True
+correctness model.layers.12.self_attn.v_proj True
+correctness model.layers.12.self_attn.o_proj True
+correctness model.layers.23.self_attn.q_proj True
+correctness model.layers.23.self_attn.k_proj True
+correctness model.layers.23.self_attn.v_proj True
+correctness model.layers.23.self_attn.o_proj True
+correctness lm_head True
+aa_warmup 1 A flags []
+aa_warmup 1 B flags []
+aa_warmup 2 B flags []
+aa_warmup 2 A flags []
+aa_warmup 3 A flags []
+aa_warmup 3 B flags []
+aa_warmup 4 B flags []
+aa_warmup 4 A flags []
+aa_warmup 5 A flags []
+aa_warmup 5 B flags []
+aa 1 A flags []
+aa 1 B flags []
+aa 2 B flags []
+aa 2 A flags []
+aa 3 A flags []
+aa 3 B flags []
+aa 4 B flags []
+aa 4 A flags []
+aa 5 A flags []
+aa 5 B flags []
+aa 6 B flags []
+aa 6 A flags []
+aa 7 A flags []
+aa 7 B flags []
+aa 8 B flags []
+aa 8 A flags []
+aa 9 A flags []
+aa 9 B flags []
+aa 10 B flags []
+aa 10 A flags []
+aa 11 A flags []
+aa 11 B flags []
+aa 12 B flags []
+aa 12 A flags []
+aa 13 A flags []
+aa 13 B flags []
+aa 14 B flags []
+aa 14 A flags []
+aa 15 A flags []
+aa 15 B flags []
+aa 16 B flags []
+aa 16 A flags []
+aa 17 A flags []
+aa 17 B flags []
+aa 18 B flags []
+aa 18 A flags []
+aa 19 A flags []
+aa 19 B flags []
+aa 20 B flags []
+aa 20 A flags []
+candidate_warmup 1 baseline flags []
+candidate_warmup 1 candidate flags []
+candidate_warmup 2 candidate flags []
+candidate_warmup 2 baseline flags []
+candidate_warmup 3 baseline flags []
+candidate_warmup 3 candidate flags []
+candidate_warmup 4 candidate flags []
+candidate_warmup 4 baseline flags []
+candidate_warmup 5 baseline flags []
+candidate_warmup 5 candidate flags []
+candidate 1 baseline flags []
+candidate 1 candidate flags []
+candidate 2 candidate flags []
+candidate 2 baseline flags []
+candidate 3 baseline flags []
+candidate 3 candidate flags []
+candidate 4 candidate flags []
+candidate 4 baseline flags []
+candidate 5 baseline flags []
+candidate 5 candidate flags []
+candidate 6 candidate flags []
+candidate 6 baseline flags []
+candidate 7 baseline flags []
+candidate 7 candidate flags []
+candidate 8 candidate flags []
+candidate 8 baseline flags []
+candidate 9 baseline flags []
+candidate 9 candidate flags []
+candidate 10 candidate flags []
+candidate 10 baseline flags []
+candidate 11 baseline flags []
+candidate 11 candidate flags []
+candidate 12 candidate flags []
+candidate 12 baseline flags []
+candidate 13 baseline flags []
+candidate 13 candidate flags []
+candidate 14 candidate flags []
+candidate 14 baseline flags []
+candidate 15 baseline flags []
+candidate 15 candidate flags []
+candidate 16 candidate flags []
+candidate 16 baseline flags []
+candidate 17 baseline flags []
+candidate 17 candidate flags []
+candidate 18 candidate flags []
+candidate 18 baseline flags []
+candidate 19 baseline flags []
+candidate 19 candidate flags []
+candidate 20 candidate flags []
+candidate 20 baseline flags []

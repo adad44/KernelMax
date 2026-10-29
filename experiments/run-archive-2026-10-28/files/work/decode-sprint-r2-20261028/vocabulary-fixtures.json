@@ -1,0 +1,37 @@
+{
+  "full_model_correctness": false,
+  "no_checkpoint_loaded": true,
+  "passed": true,
+  "records": [
+    {
+      "escaped_blocks": 0,
+      "exact": true,
+      "fixture": "all_words",
+      "words": 131072
+    },
+    {
+      "escaped_blocks": 2048,
+      "exact": true,
+      "fixture": "escape_permutation",
+      "words": 131072
+    },
+    {
+      "exact": true,
+      "fixture": "projection",
+      "max_abs_error": 0.0,
+      "placeholder_restored": true,
+      "tokens": 1,
+      "within_existing_tolerance": true
+    },
+    {
+      "exact": true,
+      "fixture": "projection",
+      "max_abs_error": 0.0,
+      "placeholder_restored": true,
+      "tokens": 3,
+      "within_existing_tolerance": true
+    }
+  ],
+  "script_sha256": "b9431c116082ea3f6387b52fd0aad472c1a5bcba79a9362066306e23cdce0640",
+  "wall_seconds": 0.2901901670265943
+}

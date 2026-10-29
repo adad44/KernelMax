@@ -1,0 +1,1 @@
+/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B work/decode-sprint-r2-20261028/check_storage.py --candidate /Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/frozen/cand_680ac65cf145 --output /Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/storage-fixtures.json

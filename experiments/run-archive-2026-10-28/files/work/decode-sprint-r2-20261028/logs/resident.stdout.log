@@ -1,0 +1,38 @@
+load 0 531
+load 25 531
+load 50 531
+load 75 531
+load 100 531
+load 125 531
+load 150 531
+load 175 531
+load 200 531
+load 225 531
+load 250 531
+load 275 531
+load 300 531
+load 325 531
+load 350 531
+load 375 531
+load 400 531
+load 425 531
+load 450 531
+load 475 531
+load 500 531
+load 525 531
+load 531 531
+correctness screen cand_680ac65cf145 512 8 True
+screen 512 phase_memory 0 baseline 23.137tok/s []
+screen 512 phase_memory 0 candidate 24.876tok/s []
+screen 512 warmup 0 baseline 22.656tok/s []
+screen 512 warmup 0 candidate 25.210tok/s []
+screen 512 screen 1 baseline 23.336tok/s []
+screen 512 screen 1 candidate 24.757tok/s []
+screen 512 screen 2 candidate 24.906tok/s []
+screen 512 screen 2 baseline 23.196tok/s []
+screen 512 screen 3 baseline 23.208tok/s []
+screen 512 screen 3 candidate 25.259tok/s []
+correctness confirm cand_680ac65cf145 512 128 True
+correctness confirm cand_680ac65cf145 2048 128 True
+correctness confirm cand_680ac65cf145 4096 128 True
+confirm 512 aa_warmup 1 A 22.533tok/s ['AC power unavailable']

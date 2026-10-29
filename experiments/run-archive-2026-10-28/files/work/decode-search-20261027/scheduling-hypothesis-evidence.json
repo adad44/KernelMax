@@ -1,0 +1,345 @@
+{
+  "all_prefix_environment_valid": true,
+  "median_of_request_means_ms": {
+    "build_cpu_ms": 0.7205433070867983,
+    "build_ms": 0.6786291964176133,
+    "eval_cpu_ms": 5.100503937007752,
+    "eval_wait_ms": 40.28558260651203,
+    "readback_ms": 0.0049592725433937205
+  },
+  "per_request_mean_step_cpu_wall_ms": [
+    {
+      "build_cpu_ms": 0.7145196850394605,
+      "build_ms": 0.6723158761829607,
+      "eval_cpu_ms": 5.103330708661334,
+      "eval_wait_ms": 40.21236321001541,
+      "label": "warmup-0",
+      "readback_ms": 0.004736517783342384
+    },
+    {
+      "build_cpu_ms": 0.7249999999999538,
+      "build_ms": 0.6830220085048065,
+      "eval_cpu_ms": 5.130771653543373,
+      "eval_wait_ms": 40.271203658785524,
+      "label": "warmup-1",
+      "readback_ms": 0.004886524883780893
+    },
+    {
+      "build_cpu_ms": 0.7569133858267454,
+      "build_ms": 0.7181131687953951,
+      "eval_cpu_ms": 5.361582677165352,
+      "eval_wait_ms": 40.82377163847307,
+      "label": "warmup-2",
+      "readback_ms": 0.0052739917410640266
+    },
+    {
+      "build_cpu_ms": 0.7105984251967843,
+      "build_ms": 0.6694002113649695,
+      "eval_cpu_ms": 5.09652755905516,
+      "eval_wait_ms": 40.254831730248775,
+      "label": "warmup-3",
+      "readback_ms": 0.004967471115349785
+    },
+    {
+      "build_cpu_ms": 0.7250708661416471,
+      "build_ms": 0.6854031913305126,
+      "eval_cpu_ms": 5.0835511811025205,
+      "eval_wait_ms": 40.57062399302294,
+      "label": "warmup-4",
+      "readback_ms": 0.005187672071569548
+    },
+    {
+      "build_cpu_ms": 0.721102362204644,
+      "build_ms": 0.679843868385619,
+      "eval_cpu_ms": 5.094519685039391,
+      "eval_wait_ms": 40.34366996181527,
+      "label": "aa-1-A",
+      "readback_ms": 0.00506002404617043
+    },
+    {
+      "build_cpu_ms": 0.7198818897637872,
+      "build_ms": 0.6786282944280332,
+      "eval_cpu_ms": 5.100503937007752,
+      "eval_wait_ms": 40.277097410867064,
+      "label": "aa-1-B",
+      "readback_ms": 0.00490355818701072
+    },
+    {
+      "build_cpu_ms": 0.7205433070867983,
+      "build_ms": 0.6786291964176133,
+      "eval_cpu_ms": 5.086409448818973,
+      "eval_wait_ms": 40.23032484935435,
+      "label": "aa-2-B",
+      "readback_ms": 0.004893715134051841
+    },
+    {
+      "build_cpu_ms": 0.7166377952756483,
+      "build_ms": 0.6750751008081624,
+      "eval_cpu_ms": 5.099433070866065,
+      "eval_wait_ms": 40.283985870457656,
+      "label": "aa-2-A",
+      "readback_ms": 0.004991166674949992
+    },
+    {
+      "build_cpu_ms": 0.723889763779515,
+      "build_ms": 0.6836380893877876,
+      "eval_cpu_ms": 5.136929133858299,
+      "eval_wait_ms": 40.31191143119253,
+      "label": "aa-3-A",
+      "readback_ms": 0.005139092966092853
+    },
+    {
+      "build_cpu_ms": 0.7233937007872148,
+      "build_ms": 0.684430107738324,
+      "eval_cpu_ms": 4.977551181102517,
+      "eval_wait_ms": 40.90435039728704,
+      "label": "aa-3-B",
+      "readback_ms": 0.005144708401222867
+    },
+    {
+      "build_cpu_ms": 0.7174645669289785,
+      "build_ms": 0.6757986321165337,
+      "eval_cpu_ms": 5.099645669291341,
+      "eval_wait_ms": 40.28558260651203,
+      "label": "aa-4-B",
+      "readback_ms": 0.004920976485793046
+    },
+    {
+      "build_cpu_ms": 0.7195590551177581,
+      "build_ms": 0.6777867528162603,
+      "eval_cpu_ms": 5.10211023622063,
+      "eval_wait_ms": 40.335983899605324,
+      "label": "aa-4-A",
+      "readback_ms": 0.005039694447686353
+    },
+    {
+      "build_cpu_ms": 0.7144724409449796,
+      "build_ms": 0.6741880453888356,
+      "eval_cpu_ms": 5.07910236220473,
+      "eval_wait_ms": 40.28100390390559,
+      "label": "aa-5-A",
+      "readback_ms": 0.004962323174819233
+    },
+    {
+      "build_cpu_ms": 0.7186062992126376,
+      "build_ms": 0.6777857573277603,
+      "eval_cpu_ms": 5.092716535433028,
+      "eval_wait_ms": 40.26170867297241,
+      "label": "aa-5-B",
+      "readback_ms": 0.005020006508456441
+    },
+    {
+      "build_cpu_ms": 0.7166535433069368,
+      "build_ms": 0.6748871459794326,
+      "eval_cpu_ms": 5.103047244094379,
+      "eval_wait_ms": 40.25262857119986,
+      "label": "aa-6-B",
+      "readback_ms": 0.004951147303923847
+    },
+    {
+      "build_cpu_ms": 0.7247795275589501,
+      "build_ms": 0.6854885081782585,
+      "eval_cpu_ms": 5.110370078740442,
+      "eval_wait_ms": 40.81246327227495,
+      "label": "aa-6-A",
+      "readback_ms": 0.005321146362996477
+    },
+    {
+      "build_cpu_ms": 0.7299448818894856,
+      "build_ms": 0.6896716076880693,
+      "eval_cpu_ms": 5.089535433071246,
+      "eval_wait_ms": 40.37013156779521,
+      "label": "aa-7-A",
+      "readback_ms": 0.005262408874870285
+    },
+    {
+      "build_cpu_ms": 0.7196771653544637,
+      "build_ms": 0.6771802253229177,
+      "eval_cpu_ms": 5.10000787401562,
+      "eval_wait_ms": 40.28270501592087,
+      "label": "aa-7-B",
+      "readback_ms": 0.004854971748285406
+    },
+    {
+      "build_cpu_ms": 0.7166692913385889,
+      "build_ms": 0.6773283661115826,
+      "eval_cpu_ms": 4.9235196850395395,
+      "eval_wait_ms": 40.33953741955476,
+      "label": "aa-8-B",
+      "readback_ms": 0.0050301795576031755
+    },
+    {
+      "build_cpu_ms": 0.7238740157478629,
+      "build_ms": 0.6825495291295953,
+      "eval_cpu_ms": 5.110181102362519,
+      "eval_wait_ms": 40.374425861353835,
+      "label": "aa-8-A",
+      "readback_ms": 0.005297883465064792
+    },
+    {
+      "build_cpu_ms": 0.7307716535427878,
+      "build_ms": 0.6903304010776319,
+      "eval_cpu_ms": 5.146330708661882,
+      "eval_wait_ms": 40.35524048431828,
+      "label": "aa-9-A",
+      "readback_ms": 0.005307088525393817
+    },
+    {
+      "build_cpu_ms": 0.721637795275417,
+      "build_ms": 0.6797719787160946,
+      "eval_cpu_ms": 5.108322834646032,
+      "eval_wait_ms": 40.27109253990251,
+      "label": "aa-9-B",
+      "readback_ms": 0.004846776842953652
+    },
+    {
+      "build_cpu_ms": 0.7243070866143658,
+      "build_ms": 0.6823516395822988,
+      "eval_cpu_ms": 5.140007874015559,
+      "eval_wait_ms": 40.30236419231638,
+      "label": "aa-10-B",
+      "readback_ms": 0.005082956947914259
+    },
+    {
+      "build_cpu_ms": 0.7174251968507294,
+      "build_ms": 0.6752900474917466,
+      "eval_cpu_ms": 5.095637795275249,
+      "eval_wait_ms": 40.24982970303262,
+      "label": "aa-10-A",
+      "readback_ms": 0.00491892684280403
+    },
+    {
+      "build_cpu_ms": 0.7213700787403802,
+      "build_ms": 0.6801256612969899,
+      "eval_cpu_ms": 5.119881889763492,
+      "eval_wait_ms": 40.30876572053205,
+      "label": "aa-11-A",
+      "readback_ms": 0.004918991008729447
+    },
+    {
+      "build_cpu_ms": 0.7175275590549716,
+      "build_ms": 0.6752407643944025,
+      "eval_cpu_ms": 5.085779527559378,
+      "eval_wait_ms": 40.267376676495154,
+      "label": "aa-11-B",
+      "readback_ms": 0.0049592725433937205
+    },
+    {
+      "build_cpu_ms": 0.7300314960631666,
+      "build_ms": 0.6889760527231796,
+      "eval_cpu_ms": 5.141488188976425,
+      "eval_wait_ms": 40.36985532248642,
+      "label": "aa-12-B",
+      "readback_ms": 0.0052369056694854905
+    },
+    {
+      "build_cpu_ms": 0.7225511811022325,
+      "build_ms": 0.6811200644762263,
+      "eval_cpu_ms": 5.089094488189154,
+      "eval_wait_ms": 40.280956397287724,
+      "label": "aa-12-A",
+      "readback_ms": 0.005014411239760128
+    },
+    {
+      "build_cpu_ms": 0.7316456692915779,
+      "build_ms": 0.6909751164631581,
+      "eval_cpu_ms": 5.163062992126165,
+      "eval_wait_ms": 40.362042963402125,
+      "label": "aa-13-A",
+      "readback_ms": 0.005514771626220914
+    },
+    {
+      "build_cpu_ms": 0.718480314961211,
+      "build_ms": 0.6763333396062138,
+      "eval_cpu_ms": 5.0995748031491726,
+      "eval_wait_ms": 40.30997079511092,
+      "label": "aa-13-B",
+      "readback_ms": 0.004814275885074157
+    },
+    {
+      "build_cpu_ms": 0.7215905511809922,
+      "build_ms": 0.6798775848294571,
+      "eval_cpu_ms": 5.121385826771877,
+      "eval_wait_ms": 40.26900791731758,
+      "label": "aa-14-B",
+      "readback_ms": 0.004917958853986319
+    },
+    {
+      "build_cpu_ms": 0.7166929133856614,
+      "build_ms": 0.6754166633624026,
+      "eval_cpu_ms": 5.111708661417921,
+      "eval_wait_ms": 40.290731973359435,
+      "label": "aa-14-A",
+      "readback_ms": 0.004808062790181693
+    },
+    {
+      "build_cpu_ms": 0.7171968503936059,
+      "build_ms": 0.6746091755239043,
+      "eval_cpu_ms": 5.116125984251876,
+      "eval_wait_ms": 40.26672016374591,
+      "label": "aa-15-A",
+      "readback_ms": 0.004819579657137863
+    },
+    {
+      "build_cpu_ms": 0.7214566929135018,
+      "build_ms": 0.6794160649943071,
+      "eval_cpu_ms": 5.107141732283396,
+      "eval_wait_ms": 40.30136512335771,
+      "label": "aa-15-B",
+      "readback_ms": 0.004683410396843444
+    },
+    {
+      "build_cpu_ms": 0.7222913385825881,
+      "build_ms": 0.6802985407998712,
+      "eval_cpu_ms": 5.107598425197139,
+      "eval_wait_ms": 40.29071124226559,
+      "label": "aa-16-B",
+      "readback_ms": 0.004941307917589278
+    },
+    {
+      "build_cpu_ms": 0.7135039370080952,
+      "build_ms": 0.6723408953939366,
+      "eval_cpu_ms": 5.054259842519526,
+      "eval_wait_ms": 40.28053670263607,
+      "label": "aa-16-A",
+      "readback_ms": 0.004883204755468632
+    },
+    {
+      "build_cpu_ms": 0.7227480314960517,
+      "build_ms": 0.6811318526733813,
+      "eval_cpu_ms": 5.0942992125982745,
+      "eval_wait_ms": 40.27195042549214,
+      "label": "aa-17-A",
+      "readback_ms": 0.00487341486856224
+    },
+    {
+      "build_cpu_ms": 0.7156850393701641,
+      "build_ms": 0.6729392646481906,
+      "eval_cpu_ms": 5.058803149606474,
+      "eval_wait_ms": 40.26548096756121,
+      "label": "aa-17-B",
+      "readback_ms": 0.004875042849755663
+    },
+    {
+      "build_cpu_ms": 0.7168976377947612,
+      "build_ms": 0.6744806493419832,
+      "eval_cpu_ms": 5.0776220472442,
+      "eval_wait_ms": 40.27120012232638,
+      "label": "aa-18-B",
+      "readback_ms": 0.004871101228622939
+    },
+    {
+      "build_cpu_ms": 0.7191181102359745,
+      "build_ms": 0.6785925320078303,
+      "eval_cpu_ms": 5.105385826771878,
+      "eval_wait_ms": 40.314365167346764,
+      "label": "aa-18-A",
+      "readback_ms": 0.005262440041176916
+    }
+  ],
+  "prefix_request_count": 41,
+  "scope": "Descriptive CPU-stage targeting from every retained request available at candidate preparation; A/A still incomplete, no valid speedup result.",
+  "source": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/cooled-profile/profile-state.json",
+  "source_sha256_at_preparation": "c07d3c734aeaa8fe7ebe51158c04c068a79836952fc16cb2289435afbb49a90f",
+  "status_at_preparation": "aa_calibration"
+}

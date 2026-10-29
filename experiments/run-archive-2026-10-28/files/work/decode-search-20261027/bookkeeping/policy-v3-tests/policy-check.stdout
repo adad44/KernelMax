@@ -1,0 +1,6 @@
+exploration_max_requests_128=True
+exploration_max_wall_time_seconds_7200=True
+exploration_swap_policy_retain_and_flag=True
+confirmation_reject_swap_outs_or_growth=True
+acceptance_enabled_false=True
+all_checks_passed=True

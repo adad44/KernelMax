@@ -1,0 +1,24 @@
+{
+  "candidate_id": "cand_35fff69ba1e1",
+  "completed_context_futility": "Stop after20valid paired samples fail the existing improvement_above_measured_noise gate.",
+  "created_utc": "2026-10-27T13:45:38.789583+00:00",
+  "deadline_unix": 1793131200.0,
+  "evidence": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-paging-analysis.json",
+  "full_model_speedup_established": false,
+  "hypothesis": "Resident primer after long quiet period will reduce timed-request working-set transition. Falsified if fresh A/A/environment fails; stop immediately.",
+  "intervention": "Keep fixed12s hold+5s settle+10s quiet preflight. Then perform one unconditional untimed full native-driver request in the same lane on the same prompt,128greedy outputs and freshBF16 cache. Record every primer metric, temperature and paging transition. Follow immediately with environment boundary and the timed fresh-cache request. No additional idle interval. No conditional retries, no samples filtered.",
+  "operator_evidence": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-035/result.json",
+  "order": "Sequential after current queue; no overlapping benchmark.",
+  "reason": "Two full-model passes failed paging validity. At first invalid request physical wired pages rose from2.38/2.47GiB to15.30/15.43GiB while compressor occupancy fell from8.72/8.18GiB to2.73/3.00GiB, with54/310MiB swap growth. This supports testing resident warmup after idle; it does not identify process attribution or a hardware bottleneck.",
+  "selection": "Fresh native-order loop candidate cand_35fff69ba1e1 after valid operator shortlist, no timing reroll.",
+  "status": "execution_plan",
+  "unchanged": [
+    "native request implementation",
+    "model/snapshot/weights/precision/routing/tolerances/seed",
+    "5warmups/lane and20A/A pairs then20candidate pairs",
+    "all3contexts512/2048/4096",
+    "AC/nominal thermal and no swap-outs/growth during any timed request",
+    "all raw samples and integrity guards",
+    "no acceptance or task-quality claim"
+  ]
+}

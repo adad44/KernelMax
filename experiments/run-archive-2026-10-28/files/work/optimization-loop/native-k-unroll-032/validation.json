@@ -1,0 +1,11 @@
+{
+  "temporary_fixture_only": true,
+  "two_manifests_validated": true,
+  "two_generated_python_sources_syntax_checked": true,
+  "nested_pipeline_and_repair_control_paths_checked": true,
+  "pipeline_candidate_identity_checked": true,
+  "shader_loop_factors_and_ordered_column_expression_checked": true,
+  "CPU_lane_order_proof_cases": 16384,
+  "current_candidate_untouched": true,
+  "no_native_or_GPU_execution": true
+}

@@ -1,0 +1,9 @@
+{
+  "sources_sha256": {
+    "probe.py": "a91bd0fca06a7561dd5af789b51203a246aeb5eeb6f3f3837b835835044f3b90",
+    "supervise.py": "d22e37810480782153152bbc0f04ba4d8e9b79124c2fcd5a227cfe28f4f58567"
+  },
+  "actual_invoke_ast_calls_verified": 256,
+  "execution_class": "launchd Interactive",
+  "candidate_code_executed": false
+}

@@ -1,0 +1,24 @@
+{
+  "assumptions_and_uncertainty": "24 layers represented by the sampled three, every operator saving transfers unchanged, adds linearly and is on the decode critical path. These assumptions are unverified. Ranges are scenario endpoints, not confidence intervals, measured model share, hardware time or an upper bound.",
+  "candidate_id": "cand_35fff69ba1e1",
+  "conditional_24layer_additive_saving_ms_per_token_range": [
+    0.2987519765625004,
+    0.34935643359374957
+  ],
+  "conditional_model_throughput_increase_fraction_range": [
+    0.006663918816297132,
+    0.0078015007347223
+  ],
+  "full_model_aa": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-038-01/state.json",
+  "full_model_aa_noise_threshold_above1": 0.0075257174120544335,
+  "full_model_speedup_established": false,
+  "interpretation": "Observed isolated savings imply only a subpercent model scenario, comparable with this completed A/A noise allowance. Continue predeclared comparison; no early win or reroll.",
+  "measured_operator_median_latency_difference_ms_by_sampled_layer": {
+    "0": 0.012447999023437517,
+    "12": 0.014556518066406232,
+    "23": 0.013565755371093724
+  },
+  "observed_unix": 1793130080.445792,
+  "operator_result": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-035/result.json",
+  "valid_full_model_aa_average_decode_ms_per_token_median_across_requests": 45.13002690624475
+}

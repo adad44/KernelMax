@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_f36e3678fbf1",
+  "name": "Native-order joint up/gate K-loop unroll4",
+  "implementation_type": "mlx",
+  "description": "Preserves the exact native32-lane ordered dot8 accumulations and SIMD sum while unrolling the outer K loop by4. Uses the earlier native-order LUT up/gate kernel, unchanged native down, BF16 projections/bias/SwiGLU and native prefill fallback. No weight/layout/precision/routing change or cache. Tests loop-control/load scheduling on a measured up/gate region; hardware cause and performance unproven."
+}

@@ -1,0 +1,100 @@
+{
+  "ast": {
+    "all_ast_passed": true,
+    "checked_at_unix": 1793210009.243805,
+    "formatted_files": "2 files reformatted",
+    "python_files": [
+      {
+        "ast": "passed",
+        "path": "codec.py",
+        "sha256": "bb8079062c5f9aee76b5e964ef4ebc30bf151fc6d92f0563d4cc5846f5811b5e"
+      },
+      {
+        "ast": "passed",
+        "path": "implementation.py",
+        "sha256": "18baf2ffe4815c753917c81ef1aefa8d0c0ddb81f0f6d90179bb7710567dc16b"
+      },
+      {
+        "ast": "passed",
+        "path": "reader.py",
+        "sha256": "a0f31e2b8e18f8fd05146c3e8cea09609b3f0162195035f8b2cdfb0fb2d18214"
+      },
+      {
+        "ast": "passed",
+        "path": "wrapper.py",
+        "sha256": "aae74e2f43d62be8197af65ecd1cd5da208409b3cba1136cee062ab5ffeb1beb"
+      }
+    ],
+    "ruff_version": "ruff 0.17.3",
+    "vendored_reader_formatted": false
+  },
+  "candidate_id": "cand_5785998944e5",
+  "candidate_status": "frozen_waiting_for_prepared_resident_runner",
+  "contract": {
+    "archive_path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/policy-current/kernelmaxxing.yaml",
+    "contract_source_sha256": "5aec8b31bb9fe54857fb4e35920265a8fd799f93d0c9f14a1a547f27e386e15b",
+    "experiment_id": "gpt-oss-20b-m4-decode-sprint-20261028",
+    "normalized_sha256": "2a31bbda3389e91f12e1e17b1cff261b96c5f12cd3ce9af5dc818fd21a50c895"
+  },
+  "created_at_unix": 1793210039.5392141,
+  "formatting": {
+    "formatted_only": [
+      "implementation.py",
+      "wrapper.py"
+    ],
+    "ruff_output": "2 files reformatted",
+    "ruff_version": "ruff 0.17.3",
+    "vendored_reader_codec_metal_formatted": false
+  },
+  "frozen_directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5",
+  "frozen_sha256": "b6dd528b50b4d3d89db496fb021bbcd21d2043f701c36196e39ea08457283918",
+  "gpu_run_started": false,
+  "schema": 1,
+  "session": {
+    "path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/session.json",
+    "protected_source_count": 33,
+    "sha256": "e5d96b0a1b2fb86e7e77f5df567c2bc69f29af477935ceb799a4f9e4d4b7354d",
+    "valid_controller_authorization": true
+  },
+  "slot2_empty": true,
+  "slot3_allocated": false,
+  "source_hashes_match_frozen": true,
+  "tests": {
+    "command": "uv run --no-project --python /Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python --with pytest==8.3.4 --with PyYAML==6.0.3 --with numpy==2.5.3 python -B -m pytest -q tests/test_contract.py tests/test_measurement.py",
+    "environment": [
+      "python 3.12.12",
+      "pytest 8.3.4",
+      "PyYAML 6.0.3",
+      "numpy 2.5.3"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "..............................................                           [100%]\n46 passed in 0.11s\n"
+  },
+  "vendored_reader_provenance": {
+    "copied_at_unix": 1793209998.884416,
+    "logic_changes": false,
+    "mapping": [
+      {
+        "byte_identical": true,
+        "destination": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_5785998944e5/reader.py",
+        "sha256": "a0f31e2b8e18f8fd05146c3e8cea09609b3f0162195035f8b2cdfb0fb2d18214",
+        "source": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/frozen/cand_390712b41518/implementation.py"
+      },
+      {
+        "byte_identical": true,
+        "destination": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_5785998944e5/codec.py",
+        "sha256": "bb8079062c5f9aee76b5e964ef4ebc30bf151fc6d92f0563d4cc5846f5811b5e",
+        "source": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/frozen/cand_390712b41518/codec.py"
+      },
+      {
+        "byte_identical": true,
+        "destination": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_5785998944e5/implementation.metal",
+        "sha256": "7e4b2fa51eea175b9ad376ce1b6ab9276bca7aac6201733945174b3ee275862e",
+        "source": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/frozen/cand_390712b41518/implementation.metal"
+      }
+    ],
+    "source_bundle_sha256": "bbe50c8a03c67d5ba3811eb657a8f15c0292238e66fe8a1ddf3a93a8a5813595",
+    "source_candidate_id": "cand_390712b41518"
+  }
+}

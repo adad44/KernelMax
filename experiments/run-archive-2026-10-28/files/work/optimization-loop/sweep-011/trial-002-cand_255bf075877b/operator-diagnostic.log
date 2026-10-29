@@ -1,0 +1,44 @@
+native_load 0/27
+native_load 25/27
+native_load 27/27
+layer 0: A/A pair 1/20 retained
+layer 0: A/A pair 2/20 retained
+layer 0: A/A pair 3/20 retained
+layer 0: A/A pair 4/20 retained
+layer 0: A/A pair 5/20 retained
+layer 0: A/A pair 6/20 retained
+layer 0: A/A pair 7/20 retained
+layer 0: A/A pair 8/20 retained
+layer 0: A/A pair 9/20 retained
+layer 0: A/A pair 10/20 retained
+layer 0: A/A pair 11/20 retained
+layer 0: A/A pair 12/20 retained
+layer 0: A/A pair 13/20 retained
+layer 0: A/A pair 14/20 retained
+layer 0: A/A pair 15/20 retained
+layer 0: A/A pair 16/20 retained
+layer 0: A/A pair 17/20 retained
+layer 0: A/A pair 18/20 retained
+layer 0: A/A pair 19/20 retained
+layer 0: A/A pair 20/20 retained
+layer 0: pair 1/20 retained
+layer 0: pair 2/20 retained
+layer 0: pair 3/20 retained
+layer 0: pair 4/20 retained
+layer 0: pair 5/20 retained
+layer 0: pair 6/20 retained
+layer 0: pair 7/20 retained
+layer 0: pair 8/20 retained
+layer 0: pair 9/20 retained
+layer 0: pair 10/20 retained
+layer 0: pair 11/20 retained
+layer 0: pair 12/20 retained
+layer 0: pair 13/20 retained
+layer 0: pair 14/20 retained
+layer 0: pair 15/20 retained
+layer 0: pair 16/20 retained
+layer 0: pair 17/20 retained
+layer 0: pair 18/20 retained
+layer 0: pair 19/20 retained
+layer 0: pair 20/20 retained
+layer 0: all20pairs do not establish gain above calibration bias; park without extra layers

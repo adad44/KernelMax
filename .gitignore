@@ -3,3 +3,11 @@ __pycache__/
 .pytest_cache/
 .venv-baseline/
 baseline-runs/
+
+# Bulky run artifacts stay outside Git; their hashes live in the run manifest.
+/experiments/**/objects/
+/experiments/**/*.npz
+/experiments/**/*.npy
+/experiments/**/*.safetensors
+/experiments/**/*.dylib
+/experiments/**/*.gz

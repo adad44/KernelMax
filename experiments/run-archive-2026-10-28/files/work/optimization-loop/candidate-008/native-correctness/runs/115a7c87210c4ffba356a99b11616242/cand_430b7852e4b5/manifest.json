@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_430b7852e4b5",
+  "name": "Native-style half FP4 decode for fused up/gate",
+  "implementation_type": "mlx",
+  "description": "Isolates native-style half conversion of exact FP4 values in the measured up/gate region. Replaces the LUT decoder while preserving eight-lane tiling, float accumulation order, native MXFP4 scales/weights/routes, BF16 epilogue, native down projection, and prefill fallback. All 16 values are exactly half-representable; no weight requantization, tensor conversion, layout copy or cache. Integer bit-decode predecessor regressed; emitted instruction/hardware effect is unmeasured."
+}

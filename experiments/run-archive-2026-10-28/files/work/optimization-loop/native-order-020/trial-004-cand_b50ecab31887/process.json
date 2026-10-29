@@ -1,0 +1,9 @@
+{
+  "deadline_unix": 1793102679.6440089,
+  "supervisor_pid": 86254,
+  "status": "completed",
+  "candidate_id": "cand_b50ecab31887",
+  "started_unix": 1793100879.64401,
+  "returncode": 0,
+  "ended_unix": 1793101858.264008
+}

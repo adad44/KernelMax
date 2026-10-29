@@ -1,0 +1,213 @@
+{
+  "acceptance_enabled": false,
+  "checkpoint_identity": {
+    "chat_template.jinja": [
+      16777240,
+      1072,
+      16738,
+      1790639396455109558,
+      1790639396455448887
+    ],
+    "config.json": [
+      16777240,
+      1070,
+      1806,
+      1790639396436893123,
+      1790639396437420741
+    ],
+    "generation_config.json": [
+      16777240,
+      1071,
+      177,
+      1790639396441185235,
+      1790639396441533439
+    ],
+    "model-00000-of-00002.safetensors": [
+      16777240,
+      1333,
+      4792272488,
+      1791066838774969066,
+      1791066838984715563
+    ],
+    "model-00001-of-00002.safetensors": [
+      16777240,
+      1334,
+      4798702184,
+      1791066827812806335,
+      1791066828014274710
+    ],
+    "model-00002-of-00002.safetensors": [
+      16777240,
+      1341,
+      4170342232,
+      1791067075930994469,
+      1791067076130473405
+    ],
+    "model.safetensors.index.json": [
+      16777240,
+      1140,
+      36355,
+      1790644497708119934,
+      1790644497709019927
+    ],
+    "special_tokens_map.json": [
+      16777240,
+      1090,
+      98,
+      1790639719070169263,
+      1790639719070633798
+    ],
+    "tokenizer.json": [
+      16777240,
+      1093,
+      27868174,
+      1790639720921328889,
+      1790639721114847566
+    ],
+    "tokenizer_config.json": [
+      16777240,
+      1096,
+      4200,
+      1790639721609042202,
+      1790639721610209184
+    ]
+  },
+  "checkpoint_identity_unchanged": true,
+  "contract_sha256": "3855f2e4d5d0114a5b572905faf5042f0d31f70adff603446291e6ad19f25f4a",
+  "environment_at_end": {
+    "observed_at": 1793083038.360759,
+    "power": "Now drawing from 'Battery Power'\n -InternalBattery-0 (id=22151267)\t54%; discharging; 2:29 remaining present: true",
+    "power_settings": "Battery Power:\n Sleep On Power Button 1\n lowpowermode         0\n standby              1\n ttyskeepawake        1\n hibernatemode        0\n powernap             1\n hibernatefile        /var/vm/sleepimage\n displaysleep         60\n womp                 1\n networkoversleep     0\n sleep                1\n lessbright           1\n tcpkeepalive         1\n disksleep            10\nAC Power:\n Sleep On Power Button 1\n lowpowermode         0\n standby              1\n ttyskeepawake        1\n hibernatemode        0\n powernap             1\n hibernatefile        /var/vm/sleepimage\n displaysleep         10\n womp                 1\n networkoversleep     0\n sleep                1\n tcpkeepalive         1\n disksleep            10",
+    "process_cpu_snapshot": "PID  %CPU COMM\n98497  36.8 /System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/MacOS/Safari\n  397  29.8 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer\n32286  21.9 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n40261  19.9 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n  389   7.5 /usr/sbin/bluetoothd\n98507   6.0 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking\n40157   5.2 /System/Library/PrivateFrameworks/SafariSafeBrowsing.framework/com.apple.Safari.SafeBrowsing.Service\n  410   4.9 /usr/sbin/mDNSResponder\n40959   4.9 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n98508   4.0 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU\n  602   3.8 /System/Library/CoreServices/WindowManager.app/Contents/MacOS/WindowManager\n98818   3.2 /Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex\n40259   3.2 /System/Library/PrivateFrameworks/CoreParsec.framework/parsecd\n  324   2.6 /usr/libexec/logd\n  530   2.2 /System/Library/DriverExtensions/com.apple.DriverKit-AppleBCMWLAN.dext/com.apple.DriverKit-AppleBCMWLAN\n  680   2.0 /usr/libexec/sharingd\n98768   1.9 /Applications/ChatGPT.app/Contents/MacOS/ChatGPT\n  367   1.7 /System/Library/CoreServices/launchservicesd\n  403   1.5 /usr/libexec/runningboardd\n98817   1.3 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.80/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n  328   1.3 /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd\n  658   1.2 /usr/libexec/rapportd\n41200   1.2 runtime/gpt-oss/.venv/bin/python\n  567   0.8 /usr/libexec/searchpartyd\n  590   0.8 /usr/libexec/UserEventAgent\n  682   0.7 /usr/libexec/nearbyd\n19633   0.7 /System/Library/Frameworks/Virtualization.framework/Versions/A/XPCServices/com.apple.Virtualization.VirtualMachine.xpc/Contents/MacOS/com.apple.Virtualization.VirtualMachine\n15125   0.5 /usr/libexec/trustd\n40439   0.5 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n36355   0.5 /usr/libexec/networkserviceproxy\n  417   0.4 /System/Library/PrivateFrameworks/CoreAnalytics.framework/Support/analyticsd\n18741   0.4 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n99329   0.4 /Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex-code-mode-host\n 4549   0.4 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n46003   0.4 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n40482   0.4 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n34852   0.4 /usr/libexec/knowledge-agent\n99123   0.4 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n18809   0.4 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n40828   0.4 /System/Library/Frameworks/ImageIO.framework/Versions/A/XPCServices/ImageIOXPCService.xpc/Contents/MacOS/ImageIOXPCService\n  372   0.4 /usr/libexec/locationd\n27630   0.3 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n  438   0.3 /usr/libexec/symptomsd\n30030   0.3 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n 3878   0.3 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n40834   0.2 /usr/libexec/swcd\n  604   0.2 /System/Library/PrivateFrameworks/BiomeStreams.framework/Support/BiomeAgent\n 2708   0.2 /System/Library/Frameworks/AppKit.framework/Versions/C/XPCServices/ThemeWidgetControlViewService.xpc/Contents/MacOS/ThemeWidgetControlViewService\n  365   0.2 /usr/libexec/opendirectoryd\n  353   0.2 /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds\n  613   0.2 /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder\n98596   0.1 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n98803   0.1 /Applications/ChatGPT.app/Contents/Resources/native/bare-modifier-monitor\n41492   0.1 /System/Library/PrivateFrameworks/WorkflowKit.framework/XPCServices/ShortcutsViewService.xpc/Contents/MacOS/ShortcutsViewService\n30308   0.1 /opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/Resources/Python.app/Contents/MacOS/Python\n24770   0.1 /System/Library/Frameworks/AppKit.framework/Versions/C/XPCServices/com.apple.appkit.xpc.openAndSavePanelService.xpc/Contents/MacOS/com.apple.appkit.xpc.openAndSavePanelService\n  400   0.1 /System/Library/CoreServices/loginwindow.app/Contents/MacOS/loginwindow\n    1   0.1 /sbin/launchd\n  776   0.1 /System/Library/CoreServices/TextInputMenuAgent.app/Contents/MacOS/TextInputMenuAgent\n59012   0.1 /System/Library/Frameworks/AppKit.framework/Versions/C/XPCServices/com.apple.appkit.xpc.openAndSavePanelService.xpc/Contents/MacOS/com.apple.appkit.xpc.openAndSavePanelService\n70106   0.1 /Applications/Amphetamine.app/Contents/MacOS/Amphetamine\n  392   0.1 /usr/libexec/corebrightnessd\n40940   0.1 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n76333   0.1 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n  657   0.1 /System/Library/PrivateFrameworks/ViewBridge.framework/Versions/A/XPCServices/ViewBridgeAuxiliary.xpc/Contents/MacOS/ViewBridgeAuxiliary\n  659   0.1 /System/Library/PrivateFrameworks/UserNotificationsCore.framework/Support/usernotificationsd\n50541   0.1 /Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper.app/Contents/MacOS/Code Helper\n  793   0.1 /System/Library/PrivateFrameworks/TextInputUIMacHelper.framework/Versions/A/XPCServices/CursorUIViewService.xpc/Contents/MacOS/CursorUIViewService\n40797   0.0 /System/Library/PrivateFrameworks/MediaAnalysis.framework/Versions/A/mediaanalysisd\n40796   0.0 /System/Library/Frameworks/NetFS.framework/Versions/A/XPCServices/PlugInLibraryService.xpc/Contents/MacOS/PlugInLibraryService\n40795   0.0 /System/Library/PrivateFrameworks/PowerLog.framework/Versions/A/XPCServices/PerfPowerTelemetryClientRegistrationService.xpc/Contents/MacOS/PerfPowerTelemetryClientRegistrationService\n40794   0.0 /System/Library/CoreServices/ScopedBookmarkAgent\n40792   0.0 /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/Versions/A/Support/photolibraryd\n40793   0.0 /usr/libexec/textunderstandingd\n40791   0.0 /System/Library/PrivateFrameworks/CoreRecents.framework/Versions/A/Support/recentsd\n40789   0.0 /usr/libexec/secinitd\n40788   0.0 /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/SpeechSynthesis.framework/Versions/A/XPCServices/SpeechSynthesisServerXPC.xpc/Contents/MacOS/Speec",
+    "process_cpu_time_seconds": 6.391373,
+    "swap_raw": "total = 11264.00M  used = 10392.88M  free = 871.12M  (encrypted)",
+    "swap_used_mib": 10392.88,
+    "swapins": 834204,
+    "swapouts": 2561938,
+    "thermal": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+    "thermal_state": 0,
+    "vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                     4321.\nPages active:                                 268276.\nPages inactive:                               261270.\nPages speculative:                              5902.\nPages throttled:                                   0.\nPages wired down:                             185433.\nPages purgeable:                                  10.\n\"Translation faults\":                     2598103055.\nPages copy-on-write:                        95964141.\nPages zero filled:                        4469118226.\nPages reactivated:                         226996768.\nPages purged:                              171337305.\nFile-backed pages:                            200131.\nAnonymous pages:                              335317.\nPages stored in compressor:                  2495750.\nPages occupied by compressor:                 808049.\nDecompressions:                            376472361.\nCompressions:                              447964429.\nPageins:                                   117575588.\nPageouts:                                    1573424.\nSwapins:                                      834204.\nSwapouts:                                    2561938."
+  },
+  "environment_at_start": {
+    "observed_at": 1793082790.9264529,
+    "power": "Now drawing from 'Battery Power'\n -InternalBattery-0 (id=22151267)\t56%; discharging; 3:00 remaining present: true",
+    "power_settings": "Battery Power:\n Sleep On Power Button 1\n lowpowermode         0\n standby              1\n ttyskeepawake        1\n hibernatemode        0\n powernap             1\n hibernatefile        /var/vm/sleepimage\n displaysleep         60\n womp                 1\n networkoversleep     0\n sleep                1\n lessbright           1\n tcpkeepalive         1\n disksleep            10\nAC Power:\n Sleep On Power Button 1\n lowpowermode         0\n standby              1\n ttyskeepawake        1\n hibernatemode        0\n powernap             1\n hibernatefile        /var/vm/sleepimage\n displaysleep         10\n womp                 1\n networkoversleep     0\n sleep                1\n tcpkeepalive         1\n disksleep            10",
+    "process_cpu_snapshot": "PID  %CPU COMM\n41200  82.5 runtime/gpt-oss/.venv/bin/python\n  397  25.8 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer\n40959  16.8 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n98497  15.8 /System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/MacOS/Safari\n98507   5.0 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking\n98508   4.2 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU\n  389   2.7 /usr/sbin/bluetoothd\n98768   1.3 /Applications/ChatGPT.app/Contents/MacOS/ChatGPT\n98818   1.2 /Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex\n  658   0.7 /usr/libexec/rapportd\n  620   0.7 /usr/libexec/ContinuityCaptureAgent\n  680   0.6 /usr/libexec/sharingd\n27630   0.5 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n40439   0.4 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n  394   0.4 /System/Library/Frameworks/CoreMediaIO.framework/Versions/A/Resources/com.apple.cmio.registerassistantservice\n 3878   0.4 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n 4549   0.4 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n40482   0.4 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n30030   0.3 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n18809   0.3 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n97745   0.3 /usr/libexec/SidecarRelay\n  530   0.3 /System/Library/DriverExtensions/com.apple.DriverKit-AppleBCMWLAN.dext/com.apple.DriverKit-AppleBCMWLAN\n18741   0.3 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n99123   0.3 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n  324   0.2 /usr/libexec/logd\n  567   0.2 /usr/libexec/searchpartyd\n19633   0.2 /System/Library/Frameworks/Virtualization.framework/Versions/A/XPCServices/com.apple.Virtualization.VirtualMachine.xpc/Contents/MacOS/com.apple.Virtualization.VirtualMachine\n 2708   0.1 /System/Library/Frameworks/AppKit.framework/Versions/C/XPCServices/ThemeWidgetControlViewService.xpc/Contents/MacOS/ThemeWidgetControlViewService\n50541   0.1 /Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper.app/Contents/MacOS/Code Helper\n  372   0.1 /usr/libexec/locationd\n70106   0.1 /Applications/Amphetamine.app/Contents/MacOS/Amphetamine\n  392   0.1 /usr/libexec/corebrightnessd\n  328   0.1 /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd\n98596   0.1 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n  682   0.1 /usr/libexec/nearbyd\n40816   0.0 /System/Library/Frameworks/AudioToolbox.framework/AudioComponentRegistrar\n40815   0.0 /usr/sbin/systemsoundserverd\n40814   0.0 /System/Library/PrivateFrameworks/CloudTelemetry.framework/Versions/A/XPCServices/CloudTelemetryService.xpc/Contents/MacOS/CloudTelemetryService\n40808   0.0 /usr/libexec/naturallanguaged\n40807   0.0 cloudphotod\n40801   0.0 /System/Library/CoreServices/CoreServicesUIAgent.app/Contents/MacOS/CoreServicesUIAgent\n40800   0.0 /System/Library/PrivateFrameworks/PhotoAnalysis.framework/Versions/A/Support/photoanalysisd\n40798   0.0 /System/Library/Frameworks/ManagedSettings.framework/Versions/A/ManagedSettingsAgent\n40797   0.0 /System/Library/PrivateFrameworks/MediaAnalysis.framework/Versions/A/mediaanalysisd\n40796   0.0 /System/Library/Frameworks/NetFS.framework/Versions/A/XPCServices/PlugInLibraryService.xpc/Contents/MacOS/PlugInLibraryService\n40795   0.0 /System/Library/PrivateFrameworks/PowerLog.framework/Versions/A/XPCServices/PerfPowerTelemetryClientRegistrationService.xpc/Contents/MacOS/PerfPowerTelemetryClientRegistrationService\n40794   0.0 /System/Library/CoreServices/ScopedBookmarkAgent\n40792   0.0 /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/Versions/A/Support/photolibraryd\n40793   0.0 /usr/libexec/textunderstandingd\n40791   0.0 /System/Library/PrivateFrameworks/CoreRecents.framework/Versions/A/Support/recentsd\n40789   0.0 /usr/libexec/secinitd\n40788   0.0 /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/SpeechSynthesis.framework/Versions/A/XPCServices/SpeechSynthesisServerXPC.xpc/Contents/MacOS/SpeechSynthesisServerXPC\n40787   0.0 /System/Library/PrivateFrameworks/ProtectedCloudStorage.framework/Helpers/ProtectedCloudKeySyncing\n40786   0.0 /System/Library/CoreServices/osanalyticshelper\n40785   0.0 /System/Library/PrivateFrameworks/ModelCatalogRuntime.framework/Versions/A/modelcatalogd\n40784   0.0 /usr/libexec/textcomposerd\n40783   0.0 /System/Library/PrivateFrameworks/CoreFollowUp.framework/Versions/A/Support/followupd\n40782   0.0 /usr/libexec/transparencyd\n40781   0.0 /System/Library/Frameworks/Contacts.framework/Support/contactsd\n40780   0.0 /System/Library/Frameworks/Contacts.framework/Support/postersyncd\n40779   0.0 /System/Library/PrivateFrameworks/IMDPersistence.framework/XPCServices/IMDPersistenceAgent.xpc/Contents/MacOS/IMDPersistenceAgent\n40768   0.0 /usr/libexec/containermanagerd\n40767   0.0 /usr/libexec/containermanagerd\n40762   0.0 /usr/libexec/trustdFileHelper\n40761   0.0 /usr/libexec/trustd\n40759   0.0 /usr/libexec/trustd\n40758   0.0 /usr/sbin/cfprefsd\n40757   0.0 /usr/sbin/cfprefsd\n40756   0.0 /usr/libexec/secinitd\n40755   0.0 /usr/libexec/secinitd\n40754   0.0 /System/Library/PrivateFrameworks/MobileAccessoryUpdater.framework/Support/accessoryupdaterd\n40753   0.0 /System/Library/PrivateFrameworks/GeoServices.framework/Versions/A/XPCServices/com.apple.geod.xpc/Contents/MacOS/com.apple.geod\n40752   0.0 /System/Library/PrivateFrameworks/GeoServices.framework/Versions/A/XPCServices/com.apple.geod.xpc/Contents/MacOS/com.apple.geod\n40751   0.0 /usr/libexec/containermanagerd\n40750   0.0 /usr/libexec/containermanagerd_system\n40749   0.0 /usr/libexec/secinitd\n40748   0.0 /System/Library/PrivateFrameworks/GeoServices.framework/Versions/A/XPCServices/com.apple.geod.xpc/Contents/MacOS/com.apple.geod\n40735   0.0 /usr/sbin/BTLEServer\n40734   0.0 /usr/libexec/powerexperienced\n40733   0.0 /usr/libexec/ospredictiond\n40721   0.0 /System/Library/PrivateFrameworks/NearFieldPrivateServices.framework/Versions/A/XPCServices/NFStorageServer.xpc/Contents/MacOS/NFStorageServer\n40720   0.0 /usr/libexec/nfcd\n40703   0.0 /System/Library/PrivateFrameworks/ContextKit.framework/Versions/A/XPCServices/ContextService.xpc/Contents/MacOS/ContextService\n40702   0.0 /System/Library/PrivateFrameworks/Categories.framework/Versions/A/XPCServices/CategoriesService.xpc/Contents/MacOS/CategoriesService\n40701   0.0 /usr/libexec/audioanalyticsd\n40688   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/155.0.8059.80/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n40666   0.0 /usr/libexec/replayd\n40655   0.0 /System/Library/PrivateFrameworks/IntelligenceFlowRuntime.framework/Versions/A/intelligenceflowd\n40654   0.0 /System/Library/CoreServices/Keyc",
+    "process_cpu_time_seconds": 0.615613,
+    "swap_raw": "total = 4096.00M  used = 2790.50M  free = 1305.50M  (encrypted)",
+    "swap_used_mib": 2790.5,
+    "swapins": 833447,
+    "swapouts": 2075262,
+    "thermal": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+    "thermal_state": 0,
+    "vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                     4139.\nPages active:                                 339836.\nPages inactive:                               336045.\nPages speculative:                              3369.\nPages throttled:                                   0.\nPages wired down:                             176974.\nPages purgeable:                                6104.\n\"Translation faults\":                     2595592340.\nPages copy-on-write:                        95835580.\nPages zero filled:                        4467186772.\nPages reactivated:                         226353430.\nPages purged:                              171047188.\nFile-backed pages:                            244658.\nAnonymous pages:                              434592.\nPages stored in compressor:                  1804130.\nPages occupied by compressor:                 672584.\nDecompressions:                            376048284.\nCompressions:                              446806695.\nPageins:                                   116890954.\nPageouts:                                    1572039.\nSwapins:                                      833447.\nSwapouts:                                    2075262."
+  },
+  "errors": [
+    "Traceback (most recent call last):\n  File \"/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-bottleneck-20261026/profile_decode.py\", line 215, in main\n    materialize_parameters(tree_flatten(model.parameters()), mx, progress)\n  File \"/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/native_baseline.py\", line 86, in materialize_parameters\n    mx.eval(tensor)\nKeyboardInterrupt\n"
+  ],
+  "load_progress": {
+    "done": 375,
+    "name": "model.layers.16.post_attention_layernorm.weight",
+    "total": 531
+  },
+  "official": false,
+  "operators": [],
+  "packages": {
+    "mlx": "0.32.3",
+    "mlx-lm": "0.31.3",
+    "numpy": "2.5.3"
+  },
+  "protected_after": {
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/AGENTS.md": "c5fdecf9aca47fcdff4ac684cc7a295abf347d27b6472162dbb9746a1f8f09d1",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/baseline_control.py": "5e875661a98c49773e10d02584e4a4f1dd080334bfe2c2cee76eeae662a0ea73",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/baseline_report.py": "e1fabd273ef4691766ecbc5f28a3ddd5a98a99be80b077373a13764411e33d4c",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/baseline_validation.py": "c02579ec4aefa5f88fe3bf3ad36dcea212c014c3d2f44fa54394bfa89d1af0f8",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/benchmark.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_execution.py": "ca9b9a2df46bcd03af68d0ceae5b2d91e64972960481cccd3351d7b00dfc779b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_protocol.py": "7d53c380991ded462cde7aa22c4fb17b29ed0a3b3d23bbfc812a7b24f5441d2e",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_worker.py": "2d6f09742694dba90cc637979824362d7133417fb34e5dfad90db04eca127288",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/correctness.py": "2950193dcac879ca3859050df377d24b03fc4b92361f977f40f841d21f159914",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/correctness_cases.py": "1f7fafcc624aec310c4958ff927d1486da43ebf74a74b4cefdb76fa59a666825",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/correctness_suite.py": "e859715a5f9911b03ffeff8fac3deaa294d7875453c03e2349ec4e67b154eb05",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/environment.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/native_baseline.py": "af7a8f890fd0242692b831446c5fb8a1d1b70bbf5c15cc6519dafb7931869844",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/pass_through.py": "8e3e48ab7be379a48f7134c4a6e3454d6af525f33d9090d4b8794aa858ee252a",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/schemas.py": "182ad6a65f1d4f094032499a036cda949eefe7d273f859311bda317097c2e72c",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/verdict.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/kernelmaxxing.yaml": "d3d421fd53281bb5078f216f7756a3a8641e5d6a8942933f71af8c41bb28b98d",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/candidate_manager.py": "ee52e306ae9d22f64ca9a2e10832826d5c30e0838120ee1a60709852f9760068",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/experiment_budget.py": "4dc0bf94b091b1d2cb3653487cc90f9a81396eae6f01bd427068067b4abe9a23",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/journal.py": "899f5077d5cdf1cb1b7c19248d289950df0843c8c31b0f8f8277ff0468b2563c",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/main.py": "ce9c64bbc5f207a3723820613bf0415ebb135b0454453f8a3917e62f88298b6a",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/run.py": "5073a41c4edab30aa62922c2f6eca70cf9fd8978773495b9f0b05a3b651fbcb0",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/session.py": "68bfcce40a650d7fcbd11128ff6d826019f3fb6c9decee0f16dfbbd8e047f64a",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/state_machine.py": "829e24546ba96eb8de2ed2b8f85c2398d8c2a239781171c40798075d29325acd",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/target/adapter.py": "290f8c1bab4ca5af3429b06727834a9609ec482ffc56cffc7a791304e513d3a7",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/target/model_loader.py": "88401ad24d877a9618f5f7566a617777b81511d2c1b34115ec2ba46b9c5e93de",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/target/reference_moe.py": "7d3f5f6aecf70402027ad0c42a3727264df7de9ef4577c4627d05d945a71d9bd",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/target/workload.py": "62ce8d2c58c0106786523652b7396ff1b8dbad1296b416c8583ee732f5d789ab",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/lib/python3.12/site-packages/mlx_lm/models/gpt_oss.py": "a71c0402bcdf9495291ff1efdba02dca2dfc9c4c821d81df460ba4bd6cca3443",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/lib/python3.12/site-packages/mlx_lm/models/switch_layers.py": "073a6a808d5c90bb699a2ecca0e559b06727ae96dbc1f0253e4c7e77e4ee1ef2",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-bottleneck-20261026/PLAN.md": "62895f472cb56a1375346e5f592147c6e889ca17e117e1e9a6c89ab69ee457fa",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-bottleneck-20261026/profile_decode.py": "19ca2c430c058362b399ee33547490e5257ac56635d8d4e07950f4bea4c3c7ec"
+  },
+  "protected_before": {
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/AGENTS.md": "c5fdecf9aca47fcdff4ac684cc7a295abf347d27b6472162dbb9746a1f8f09d1",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/baseline_control.py": "5e875661a98c49773e10d02584e4a4f1dd080334bfe2c2cee76eeae662a0ea73",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/baseline_report.py": "e1fabd273ef4691766ecbc5f28a3ddd5a98a99be80b077373a13764411e33d4c",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/baseline_validation.py": "c02579ec4aefa5f88fe3bf3ad36dcea212c014c3d2f44fa54394bfa89d1af0f8",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/benchmark.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_execution.py": "ca9b9a2df46bcd03af68d0ceae5b2d91e64972960481cccd3351d7b00dfc779b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_protocol.py": "7d53c380991ded462cde7aa22c4fb17b29ed0a3b3d23bbfc812a7b24f5441d2e",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_worker.py": "2d6f09742694dba90cc637979824362d7133417fb34e5dfad90db04eca127288",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/correctness.py": "2950193dcac879ca3859050df377d24b03fc4b92361f977f40f841d21f159914",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/correctness_cases.py": "1f7fafcc624aec310c4958ff927d1486da43ebf74a74b4cefdb76fa59a666825",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/correctness_suite.py": "e859715a5f9911b03ffeff8fac3deaa294d7875453c03e2349ec4e67b154eb05",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/environment.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/native_baseline.py": "af7a8f890fd0242692b831446c5fb8a1d1b70bbf5c15cc6519dafb7931869844",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/pass_through.py": "8e3e48ab7be379a48f7134c4a6e3454d6af525f33d9090d4b8794aa858ee252a",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/schemas.py": "182ad6a65f1d4f094032499a036cda949eefe7d273f859311bda317097c2e72c",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/verdict.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/kernelmaxxing.yaml": "d3d421fd53281bb5078f216f7756a3a8641e5d6a8942933f71af8c41bb28b98d",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/candidate_manager.py": "ee52e306ae9d22f64ca9a2e10832826d5c30e0838120ee1a60709852f9760068",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/experiment_budget.py": "4dc0bf94b091b1d2cb3653487cc90f9a81396eae6f01bd427068067b4abe9a23",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/journal.py": "899f5077d5cdf1cb1b7c19248d289950df0843c8c31b0f8f8277ff0468b2563c",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/main.py": "ce9c64bbc5f207a3723820613bf0415ebb135b0454453f8a3917e62f88298b6a",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/run.py": "5073a41c4edab30aa62922c2f6eca70cf9fd8978773495b9f0b05a3b651fbcb0",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/session.py": "68bfcce40a650d7fcbd11128ff6d826019f3fb6c9decee0f16dfbbd8e047f64a",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/state_machine.py": "829e24546ba96eb8de2ed2b8f85c2398d8c2a239781171c40798075d29325acd",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/target/adapter.py": "290f8c1bab4ca5af3429b06727834a9609ec482ffc56cffc7a791304e513d3a7",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/target/model_loader.py": "88401ad24d877a9618f5f7566a617777b81511d2c1b34115ec2ba46b9c5e93de",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/target/reference_moe.py": "7d3f5f6aecf70402027ad0c42a3727264df7de9ef4577c4627d05d945a71d9bd",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/target/workload.py": "62ce8d2c58c0106786523652b7396ff1b8dbad1296b416c8583ee732f5d789ab",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/lib/python3.12/site-packages/mlx_lm/models/gpt_oss.py": "a71c0402bcdf9495291ff1efdba02dca2dfc9c4c821d81df460ba4bd6cca3443",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/lib/python3.12/site-packages/mlx_lm/models/switch_layers.py": "073a6a808d5c90bb699a2ecca0e559b06727ae96dbc1f0253e4c7e77e4ee1ef2",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-bottleneck-20261026/PLAN.md": "62895f472cb56a1375346e5f592147c6e889ca17e117e1e9a6c89ab69ee457fa",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-bottleneck-20261026/profile_decode.py": "19ca2c430c058362b399ee33547490e5257ac56635d8d4e07950f4bea4c3c7ec"
+  },
+  "protected_unchanged": true,
+  "requests": [],
+  "runtime": {
+    "expert_factory": null,
+    "hidden_size": 2880,
+    "mode": "mlx_native",
+    "model_files": {
+      "chat_template.jinja": "a4c9919cbbd4acdd51ccffe22da049264b1b73e59055fa58811a99efbd7c8146",
+      "config.json": "3a2a26ded679375b7928ddeca59764df7cea83220c1961035f6d6e232659e9ce",
+      "generation_config.json": "f9970ada892d2d1f72e3ed0a6535ccebadd11897318794ca671d8c7014c957da",
+      "model-00000-of-00002.safetensors": "16d0f997dcfc4462089d536bffe51b4bcea2f872f5c430be09ef8ed392312427",
+      "model-00001-of-00002.safetensors": "4fbe328ab445455d6f58dc73852b85873bd626986310abd91cd4d2ce3245eaea",
+      "model-00002-of-00002.safetensors": "a18106b209e9ab35c3406db4f6f12a927364a058b21e9d1373d682e20674b303",
+      "model.safetensors.index.json": "0e085b977c4c9942f85938828e8c989ed7d5cdabf852e4da6a67c116cd502cd1",
+      "special_tokens_map.json": "dd5e191d20c12d2fee1da5bae14ca1db0f5f4215300af691f23cdee97120a293",
+      "tokenizer.json": "0614fe83cadab421296e664e1f48f4261fa8fef6e03e63bb75c20f38e37d07d3",
+      "tokenizer_config.json": "9279e942392b742d633c7adbb89ebe002c98399db8926a7af5125c726f404070"
+    },
+    "model_path": "/Volumes/BankOfSouls/models/gpt-oss-20b",
+    "model_revision": "6cee5e81ee83917806bbde320786a8fb61efebee",
+    "num_experts": 32,
+    "python": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python"
+  },
+  "status": "failed_diagnostic",
+  "verdict": null
+}

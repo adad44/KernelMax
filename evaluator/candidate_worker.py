@@ -1,7 +1,7 @@
 """One reviewed execution session. No numerical grading or verdicts here.
 
 This is a reliability boundary, NOT an adversarial sandbox. The worker shares
-the user's filesystem permissions. Only explicitly reviewed snapshots may run.
+the user's filesystem permissions. Only controller-authorized snapshots may run.
 """
 
 from __future__ import annotations
@@ -78,14 +78,20 @@ def _binding(request):
     required.update(index["weight_map"].values())
     if not required <= manifest.keys():
         raise ValueError("checkpoint manifest omits configuration/index/weight shards")
-    for name, digest in manifest.items():
-        path = root / name
-        if (
-            not path.resolve().is_relative_to(root.resolve())
-            or path.is_symlink()
-            or file_digest(path) != digest
-        ):
-            raise ValueError(f"checkpoint integrity failure: {name}")
+    receipt = runtime.get("checkpoint_verification")
+    if receipt is not None:
+        from evaluator.checkpoint_verification import validate_receipt
+
+        validate_receipt(receipt, root, runtime["model_revision"], manifest)
+    else:
+        for name, digest in manifest.items():
+            path = root / name
+            if (
+                not path.resolve().is_relative_to(root.resolve())
+                or path.is_symlink()
+                or file_digest(path) != digest
+            ):
+                raise ValueError(f"checkpoint integrity failure: {name}")
     config = read_json(root / "config.json")
     if (
         config.get("model_type") != "gpt_oss"
@@ -119,6 +125,8 @@ def _binding(request):
             )
         ]
         materialize_parameters(parameters, mx, progress)
+    if receipt is not None:
+        validate_receipt(receipt, root, runtime["model_revision"], manifest)
     for layer in model.model.layers:
         for name in ("gate_proj", "up_proj", "down_proj"):
             module = getattr(layer.mlp.experts, name)

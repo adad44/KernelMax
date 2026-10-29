@@ -1,0 +1,21 @@
+{
+  "session_id": "d166a9d2-2d70-4a07-93a7-f84383207ba1",
+  "worker_pid": 1497,
+  "status": "interrupted",
+  "phase": "interrupted",
+  "current_attempt": "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/official-attempt-2026-10-03T22-17-27-seed42-retry02",
+  "model_loads": 1,
+  "max_environment_retries": 2,
+  "failed_attempts": [
+    {
+      "run_id": "db12a101-5e67-4f57-acec-b6834f21ff6d",
+      "artifact": "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/official-attempt-2026-10-03T22-17-27-seed42/attempt.json",
+      "sha256": "8b6685263e632b502ee2a6985ad2f1ff7eb7ad30a66c57d58c6c54dc86d5bf81",
+      "failure_category": "environment",
+      "attempt_index": 1
+    }
+  ],
+  "errors": [
+    "Interrupted by user"
+  ]
+}

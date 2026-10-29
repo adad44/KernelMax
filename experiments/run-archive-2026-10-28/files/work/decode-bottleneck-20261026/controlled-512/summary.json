@@ -1,0 +1,22 @@
+{
+  "acceptance_enabled": false,
+  "baseline": {},
+  "environment_issues": [
+    "swapouts increased during request"
+  ],
+  "logical_byte_accounting": {
+    "attention_projection_weights_bytes_per_token": 1274019840,
+    "candidate1_projection_result_traffic_saved_bytes_per_token": 2211840,
+    "candidate2_projection_result_traffic_saved_bytes_per_token": 4423680,
+    "combined_bytes_per_token": 3701329920,
+    "expert_weights_and_scales_bytes_per_token": 1269043200,
+    "lm_head_weights_bytes_per_token": 1158266880,
+    "warning": "analytical logical bytes, not measured DRAM traffic; intermediate estimate excludes bias-gather buffers, other tensors, caching and re-reads"
+  },
+  "official": false,
+  "operators": {},
+  "oracle": {},
+  "source_and_checkpoint_unchanged": true,
+  "status": "failed_diagnostic",
+  "verdict": null
+}

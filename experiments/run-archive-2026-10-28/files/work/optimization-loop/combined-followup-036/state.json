@@ -1,0 +1,5133 @@
+{
+  "deadline_unix": 1793131200.0,
+  "ended_unix": 1793131200.093251,
+  "error": "Deadline/stop",
+  "full_model_runs": [],
+  "outcomes": [
+    {
+      "all_actual_counts_verified": true,
+      "candidate_id": "cand_35fff69ba1e1",
+      "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-035",
+      "full_model_speedup_established": false,
+      "guards_passed": true,
+      "raw_sha256": "3ec34529ebfdbc1909f84938f0f69f9d44ebe1771f6c4d52e87bb7bb86d6ad80",
+      "shortlisted": true,
+      "status": "completed_diagnostic",
+      "summaries": {
+        "0": {
+          "ab_order_median_ratio": 1.0152459733600314,
+          "ba_order_median_ratio": 1.0162744734498006,
+          "descriptive_bootstrap_95pct": [
+            1.0135568339663465,
+            1.0172275304469636
+          ],
+          "environment_valid": true,
+          "median_baseline_ms_per_call": 0.8129585180664063,
+          "median_candidate_ms_per_call": 0.8005105190429688,
+          "median_ratio": 1.016072226019992,
+          "paired_ratios": [
+            1.0174870033359866,
+            1.017148561291815,
+            0.9972868004480776,
+            1.0159934400008546,
+            1.0178013433902555,
+            1.0169879420959425,
+            1.0156179783264618,
+            1.016397934860472,
+            1.0148739683936008,
+            1.0161510120391293,
+            1.0173064996021122,
+            1.0132465283999015,
+            1.0129149232339358,
+            1.0111875069957146,
+            1.0095518955293015,
+            1.018857681758562,
+            1.0084543279828984,
+            1.029019509886863,
+            1.0185114033190152,
+            1.0138671395327914
+          ]
+        },
+        "12": {
+          "ab_order_median_ratio": 1.017538156699068,
+          "ba_order_median_ratio": 1.0157236549128712,
+          "descriptive_bootstrap_95pct": [
+            1.0147603178692317,
+            1.0199303893096636
+          ],
+          "environment_valid": true,
+          "median_baseline_ms_per_call": 0.8153021235351563,
+          "median_candidate_ms_per_call": 0.8007456054687501,
+          "median_ratio": 1.0167962081104123,
+          "paired_ratios": [
+            1.014750022865324,
+            1.040842369481786,
+            1.017491897316375,
+            1.0226531417245832,
+            1.0117579473257505,
+            1.0134327800829035,
+            1.017584416081761,
+            1.0146003582838277,
+            1.0360594984928801,
+            1.0161005189044496,
+            1.0147706128731393,
+            1.0153467909212928,
+            1.0195769872360199,
+            0.9729419864431598,
+            1.0216549691306396,
+            1.0205765113055314,
+            1.0149088906332409,
+            1.0124152935426465,
+            1.0202837913833076,
+            1.0183005795141205
+          ]
+        },
+        "23": {
+          "ab_order_median_ratio": 1.01726994878541,
+          "ba_order_median_ratio": 1.0156050699875878,
+          "descriptive_bootstrap_95pct": [
+            1.014152371812738,
+            1.0185118643723574
+          ],
+          "environment_valid": true,
+          "median_baseline_ms_per_call": 0.8153966064453124,
+          "median_candidate_ms_per_call": 0.8018308510742187,
+          "median_ratio": 1.017006630830168,
+          "paired_ratios": [
+            1.021839955006243,
+            1.0144517565937117,
+            1.0483017552116305,
+            1.019578078079476,
+            1.0043056342987677,
+            1.0138785295213082,
+            1.0081411025845413,
+            1.01955714355144,
+            1.0220376679472634,
+            1.0140837335139143,
+            1.0130815132969777,
+            1.0187072090359632,
+            1.0182644245795622,
+            1.016758383381464,
+            1.0152158620430574,
+            1.0183165197087514,
+            1.017285019291948,
+            1.0142210101115618,
+            1.017254878278872,
+            1.0125448775741843
+          ]
+        }
+      }
+    }
+  ],
+  "pid": 19763,
+  "records": [
+    {
+      "command": [
+        "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+        "-B",
+        "-u",
+        "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-038-01/supervise.py"
+      ],
+      "deadline_unix": 1793131200.0,
+      "ended_unix": 1793131200.081739,
+      "name": "running_independent_native_loop_full_model",
+      "returncode": -9,
+      "started_unix": 1793127079.762217,
+      "tracked_processes": {
+        "25519": {
+          "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-038-01/supervise.py",
+          "ppid": 19763,
+          "start": "Tue Oct 27 11:51:19 2026"
+        },
+        "25521": {
+          "command": "/usr/bin/caffeinate -i -w 25519",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:51:19 2026"
+        },
+        "25522": {
+          "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-038-01/run.py",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:51:19 2026"
+        },
+        "25526": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:51:20 2026"
+        },
+        "25571": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:51:25 2026"
+        },
+        "25607": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:51:29 2026"
+        },
+        "25641": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:51:35 2026"
+        },
+        "25673": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:51:39 2026"
+        },
+        "25707": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:51:45 2026"
+        },
+        "25738": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:51:49 2026"
+        },
+        "25805": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:51:59 2026"
+        },
+        "25836": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:52:04 2026"
+        },
+        "25870": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:52:09 2026"
+        },
+        "25967": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:52:24 2026"
+        },
+        "26098": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:52:44 2026"
+        },
+        "26129": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:52:49 2026"
+        },
+        "26163": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:52:54 2026"
+        },
+        "26255": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:53:09 2026"
+        },
+        "26316": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:53:18 2026"
+        },
+        "26378": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:53:28 2026"
+        },
+        "26412": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:53:33 2026"
+        },
+        "26508": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:53:48 2026"
+        },
+        "26573": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:53:58 2026"
+        },
+        "26605": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:54:03 2026"
+        },
+        "26641": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:54:08 2026"
+        },
+        "26674": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:54:13 2026"
+        },
+        "26709": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:54:18 2026"
+        },
+        "26741": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:54:23 2026"
+        },
+        "26772": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:54:27 2026"
+        },
+        "26813": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:54:32 2026"
+        },
+        "26850": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:54:37 2026"
+        },
+        "26881": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:54:42 2026"
+        },
+        "26915": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:54:47 2026"
+        },
+        "26946": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:54:52 2026"
+        },
+        "27011": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:55:02 2026"
+        },
+        "27047": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:55:08 2026"
+        },
+        "27084": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:55:13 2026"
+        },
+        "27120": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:55:18 2026"
+        },
+        "27190": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:55:28 2026"
+        },
+        "27225": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:55:33 2026"
+        },
+        "27259": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:55:39 2026"
+        },
+        "27400": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:55:59 2026"
+        },
+        "27434": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:56:05 2026"
+        },
+        "27469": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:56:10 2026"
+        },
+        "27504": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:56:15 2026"
+        },
+        "27539": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:56:20 2026"
+        },
+        "27604": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:56:30 2026"
+        },
+        "27641": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:56:36 2026"
+        },
+        "27676": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:56:41 2026"
+        },
+        "27710": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:56:47 2026"
+        },
+        "27744": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:56:52 2026"
+        },
+        "27813": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:57:03 2026"
+        },
+        "27847": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:57:08 2026"
+        },
+        "27870": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:57:11 2026"
+        },
+        "27898": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:57:15 2026"
+        },
+        "27920": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:57:19 2026"
+        },
+        "27957": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:57:25 2026"
+        },
+        "27992": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:57:30 2026"
+        },
+        "28028": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:57:36 2026"
+        },
+        "28060": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:57:40 2026"
+        },
+        "28104": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:57:48 2026"
+        },
+        "28206": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:58:04 2026"
+        },
+        "28283": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:58:15 2026"
+        },
+        "28317": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:58:20 2026"
+        },
+        "28349": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:58:25 2026"
+        },
+        "28383": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:58:30 2026"
+        },
+        "28406": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:58:35 2026"
+        },
+        "28430": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:58:38 2026"
+        },
+        "28455": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:58:42 2026"
+        },
+        "28488": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:58:47 2026"
+        },
+        "28521": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:58:52 2026"
+        },
+        "28543": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:58:55 2026"
+        },
+        "28563": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:58:59 2026"
+        },
+        "28598": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:59:04 2026"
+        },
+        "28609": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:59:05 2026"
+        },
+        "28631": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:59:10 2026"
+        },
+        "28689": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:59:19 2026"
+        },
+        "28711": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:59:22 2026"
+        },
+        "28729": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:59:25 2026"
+        },
+        "28770": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:59:31 2026"
+        },
+        "28785": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:59:34 2026"
+        },
+        "28818": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:59:37 2026"
+        },
+        "28851": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 11:59:41 2026"
+        },
+        "28887": {
+          "command": "ps -Ao pid,pcpu,comm -r",
+          "ppid": 25522,
+          "start": "Tue Oct 27 11:59:45 2026"
+        },
+        "28917": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:59:48 2026"
+        },
+        "28940": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:59:51 2026"
+        },
+        "28972": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 11:59:55 2026"
+        },
+        "29042": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:00:05 2026"
+        },
+        "29077": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:00:11 2026"
+        },
+        "29097": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:00:14 2026"
+        },
+        "29118": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:00:17 2026"
+        },
+        "29141": {
+          "command": "(python3.12)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:00:20 2026"
+        },
+        "29147": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:00:20 2026"
+        },
+        "29161": {
+          "command": "(vm_stat)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:00:22 2026"
+        },
+        "29179": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:00:24 2026"
+        },
+        "29209": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:00:27 2026"
+        },
+        "29220": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:00:28 2026"
+        },
+        "29244": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:00:31 2026"
+        },
+        "29266": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:00:35 2026"
+        },
+        "29303": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:00:38 2026"
+        },
+        "29322": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:00:42 2026"
+        },
+        "29336": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:00:43 2026"
+        },
+        "29368": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:00:48 2026"
+        },
+        "29404": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:00:54 2026"
+        },
+        "29419": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:00:57 2026"
+        },
+        "29440": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:01:00 2026"
+        },
+        "29465": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:01:02 2026"
+        },
+        "29500": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:01:06 2026"
+        },
+        "29503": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:01:07 2026"
+        },
+        "29520": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:01:08 2026"
+        },
+        "29531": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:01:10 2026"
+        },
+        "29539": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:01:11 2026"
+        },
+        "29572": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:01:14 2026"
+        },
+        "29691": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:01:31 2026"
+        },
+        "29727": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:01:37 2026"
+        },
+        "29765": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:01:42 2026"
+        },
+        "29769": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:01:43 2026"
+        },
+        "29786": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:01:44 2026"
+        },
+        "29797": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:01:46 2026"
+        },
+        "29804": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:01:46 2026"
+        },
+        "29806": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:01:47 2026"
+        },
+        "29826": {
+          "command": "ps -Ao pid,pcpu,comm -r",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:01:48 2026"
+        },
+        "29834": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:01:50 2026"
+        },
+        "29865": {
+          "command": "ps -Ao pid,pcpu,comm -r",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:01:53 2026"
+        },
+        "29866": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:01:53 2026"
+        },
+        "29900": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:01:56 2026"
+        },
+        "29923": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:02:00 2026"
+        },
+        "29963": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:02:04 2026"
+        },
+        "29985": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:02:07 2026"
+        },
+        "29986": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:02:07 2026"
+        },
+        "30005": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:02:10 2026"
+        },
+        "30060": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:02:19 2026"
+        },
+        "30102": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:02:25 2026"
+        },
+        "30125": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:02:28 2026"
+        },
+        "30139": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:02:29 2026"
+        },
+        "30162": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:02:32 2026"
+        },
+        "30200": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:02:35 2026"
+        },
+        "30219": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:02:39 2026"
+        },
+        "30241": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:02:42 2026"
+        },
+        "30278": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:02:46 2026"
+        },
+        "30361": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:02:58 2026"
+        },
+        "30422": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:03:07 2026"
+        },
+        "30476": {
+          "command": "(python3.12)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:03:13 2026"
+        },
+        "30497": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:03:15 2026"
+        },
+        "30501": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:03:16 2026"
+        },
+        "30542": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:03:20 2026"
+        },
+        "30599": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:03:27 2026"
+        },
+        "30621": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:03:31 2026"
+        },
+        "30631": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:03:32 2026"
+        },
+        "30644": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:03:34 2026"
+        },
+        "30699": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:03:43 2026"
+        },
+        "30721": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:03:46 2026"
+        },
+        "30744": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:03:50 2026"
+        },
+        "30761": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:03:51 2026"
+        },
+        "30769": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:03:52 2026"
+        },
+        "30823": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:03:58 2026"
+        },
+        "30863": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:04:03 2026"
+        },
+        "30919": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:04:10 2026"
+        },
+        "30941": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:04:13 2026"
+        },
+        "30970": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:04:16 2026"
+        },
+        "30990": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:04:20 2026"
+        },
+        "31010": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:04:22 2026"
+        },
+        "31046": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:04:28 2026"
+        },
+        "31074": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:04:32 2026"
+        },
+        "31125": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:04:37 2026"
+        },
+        "31136": {
+          "command": "(sysctl)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:04:39 2026"
+        },
+        "31162": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:04:41 2026"
+        },
+        "31188": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:04:45 2026"
+        },
+        "31250": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:04:52 2026"
+        },
+        "31306": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:05:01 2026"
+        },
+        "31361": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:05:10 2026"
+        },
+        "31409": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:05:16 2026"
+        },
+        "31443": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:05:20 2026"
+        },
+        "31468": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:05:22 2026"
+        },
+        "31475": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:05:23 2026"
+        },
+        "31507": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:05:27 2026"
+        },
+        "31529": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:05:30 2026"
+        },
+        "31615": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:05:41 2026"
+        },
+        "31638": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:05:44 2026"
+        },
+        "31673": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:05:50 2026"
+        },
+        "31695": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:05:54 2026"
+        },
+        "31769": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:06:02 2026"
+        },
+        "31807": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:06:05 2026"
+        },
+        "31815": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:06:07 2026"
+        },
+        "31840": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:06:11 2026"
+        },
+        "31877": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:06:14 2026"
+        },
+        "31917": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:06:20 2026"
+        },
+        "31967": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:06:27 2026"
+        },
+        "31995": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:06:31 2026"
+        },
+        "32014": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:06:34 2026"
+        },
+        "32035": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:06:37 2026"
+        },
+        "32058": {
+          "command": "ps -Ao pid,pcpu,comm -r",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:06:39 2026"
+        },
+        "32063": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:06:40 2026"
+        },
+        "32075": {
+          "command": "ps -Ao pid,pcpu,comm -r",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:06:41 2026"
+        },
+        "32099": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:06:44 2026"
+        },
+        "32123": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:06:47 2026"
+        },
+        "32158": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:06:50 2026"
+        },
+        "32176": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:06:53 2026"
+        },
+        "32213": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:06:57 2026"
+        },
+        "32234": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:07:00 2026"
+        },
+        "32249": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:07:02 2026"
+        },
+        "32279": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:07:07 2026"
+        },
+        "32299": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:07:10 2026"
+        },
+        "32336": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:07:16 2026"
+        },
+        "32379": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:07:21 2026"
+        },
+        "32383": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:07:22 2026"
+        },
+        "32396": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:07:24 2026"
+        },
+        "32420": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:07:26 2026"
+        },
+        "32449": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:07:29 2026"
+        },
+        "32478": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:07:32 2026"
+        },
+        "32514": {
+          "command": "(python3.12)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:07:37 2026"
+        },
+        "32533": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:07:39 2026"
+        },
+        "32619": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:07:52 2026"
+        },
+        "32720": {
+          "command": "(vm_stat)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:08:06 2026"
+        },
+        "32725": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:08:06 2026"
+        },
+        "32737": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:08:08 2026"
+        },
+        "32748": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:08:09 2026"
+        },
+        "32827": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:08:19 2026"
+        },
+        "32839": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:08:19 2026"
+        },
+        "32864": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:08:23 2026"
+        },
+        "32886": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:08:26 2026"
+        },
+        "32906": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:08:29 2026"
+        },
+        "32942": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:08:35 2026"
+        },
+        "33003": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:08:44 2026"
+        },
+        "33019": {
+          "command": "(sysctl)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:08:46 2026"
+        },
+        "33028": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:08:47 2026"
+        },
+        "33040": {
+          "command": "ps -Ao pid,pcpu,comm -r",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:08:48 2026"
+        },
+        "33082": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:08:53 2026"
+        },
+        "33154": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:09:01 2026"
+        },
+        "33200": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:09:07 2026"
+        },
+        "33242": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:09:13 2026"
+        },
+        "33262": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:09:16 2026"
+        },
+        "33275": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:09:19 2026"
+        },
+        "33345": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:09:28 2026"
+        },
+        "33377": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:09:32 2026"
+        },
+        "33406": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:09:34 2026"
+        },
+        "33447": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:09:39 2026"
+        },
+        "33469": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:09:42 2026"
+        },
+        "33505": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:09:46 2026"
+        },
+        "33527": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:09:50 2026"
+        },
+        "33588": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:09:58 2026"
+        },
+        "33602": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:10:01 2026"
+        },
+        "33643": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:10:07 2026"
+        },
+        "33648": {
+          "command": "(sysctl)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:10:08 2026"
+        },
+        "33669": {
+          "command": "ps -Ao pid,pcpu,comm -r",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:10:10 2026"
+        },
+        "33672": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:10:11 2026"
+        },
+        "33690": {
+          "command": "ps -Ao pid,pcpu,comm -r",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:10:12 2026"
+        },
+        "33700": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:10:14 2026"
+        },
+        "33709": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:10:15 2026"
+        },
+        "33737": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:10:18 2026"
+        },
+        "33804": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:10:26 2026"
+        },
+        "33825": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:10:28 2026"
+        },
+        "33900": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:10:40 2026"
+        },
+        "33936": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:10:46 2026"
+        },
+        "33956": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:10:49 2026"
+        },
+        "33976": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:10:51 2026"
+        },
+        "33981": {
+          "command": "(python3.12)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:10:52 2026"
+        },
+        "34006": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:10:54 2026"
+        },
+        "34009": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:10:55 2026"
+        },
+        "34024": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:10:56 2026"
+        },
+        "34037": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:10:58 2026"
+        },
+        "34072": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:11:01 2026"
+        },
+        "34096": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:11:04 2026"
+        },
+        "34113": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:11:08 2026"
+        },
+        "34123": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:11:08 2026"
+        },
+        "34150": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:11:11 2026"
+        },
+        "34172": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:11:15 2026"
+        },
+        "34192": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:11:17 2026"
+        },
+        "34233": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:11:24 2026"
+        },
+        "34247": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:11:26 2026"
+        },
+        "34315": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:11:35 2026"
+        },
+        "34350": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:11:39 2026"
+        },
+        "34371": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:11:41 2026"
+        },
+        "34465": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:11:53 2026"
+        },
+        "34500": {
+          "command": "ps -Ao pid,pcpu,comm -r",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:11:57 2026"
+        },
+        "34530": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:12:02 2026"
+        },
+        "34585": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:12:11 2026"
+        },
+        "34614": {
+          "command": "ps -Ao pid,pcpu,comm -r",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:12:15 2026"
+        },
+        "34636": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:12:18 2026"
+        },
+        "34694": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:12:24 2026"
+        },
+        "34708": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:12:25 2026"
+        },
+        "34730": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:12:28 2026"
+        },
+        "34767": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:12:33 2026"
+        },
+        "34792": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:12:35 2026"
+        },
+        "34809": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:12:39 2026"
+        },
+        "34837": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:12:42 2026"
+        },
+        "34873": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:12:48 2026"
+        },
+        "34892": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:12:51 2026"
+        },
+        "34907": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:12:54 2026"
+        },
+        "34946": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:12:59 2026"
+        },
+        "34976": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:13:02 2026"
+        },
+        "34988": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:13:04 2026"
+        },
+        "35013": {
+          "command": "ps -Ao pid,pcpu,comm -r",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:13:06 2026"
+        },
+        "35032": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:13:08 2026"
+        },
+        "35177": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:13:28 2026"
+        },
+        "35191": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:13:30 2026"
+        },
+        "35246": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:13:39 2026"
+        },
+        "35277": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:13:42 2026"
+        },
+        "35312": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:13:46 2026"
+        },
+        "35382": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:13:54 2026"
+        },
+        "35403": {
+          "command": "(sysctl)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:13:57 2026"
+        },
+        "35496": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:14:10 2026"
+        },
+        "35534": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:14:16 2026"
+        },
+        "35581": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:14:22 2026"
+        },
+        "35604": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:14:25 2026"
+        },
+        "35642": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:14:29 2026"
+        },
+        "35661": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:14:31 2026"
+        },
+        "35673": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:14:32 2026"
+        },
+        "35699": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:14:35 2026"
+        },
+        "35721": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:14:38 2026"
+        },
+        "35762": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:14:42 2026"
+        },
+        "35781": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:14:45 2026"
+        },
+        "35814": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:14:49 2026"
+        },
+        "35830": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:14:52 2026"
+        },
+        "35848": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:14:54 2026"
+        },
+        "35904": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:15:03 2026"
+        },
+        "35930": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:15:06 2026"
+        },
+        "35932": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:15:06 2026"
+        },
+        "35960": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:15:10 2026"
+        },
+        "35991": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:15:13 2026"
+        },
+        "36045": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:15:20 2026"
+        },
+        "36082": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:15:23 2026"
+        },
+        "36099": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:15:27 2026"
+        },
+        "36127": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:15:30 2026"
+        },
+        "36182": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:15:39 2026"
+        },
+        "36220": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:15:45 2026"
+        },
+        "36241": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:15:48 2026"
+        },
+        "36253": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:15:48 2026"
+        },
+        "36274": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:15:51 2026"
+        },
+        "36287": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:15:52 2026"
+        },
+        "36302": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:15:54 2026"
+        },
+        "36311": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:15:55 2026"
+        },
+        "36332": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:15:57 2026"
+        },
+        "36349": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:15:59 2026"
+        },
+        "36368": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:16:02 2026"
+        },
+        "36386": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:16:04 2026"
+        },
+        "36431": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:16:10 2026"
+        },
+        "36454": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:16:13 2026"
+        },
+        "36478": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:16:16 2026"
+        },
+        "36501": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:16:20 2026"
+        },
+        "36515": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:16:22 2026"
+        },
+        "36582": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:16:31 2026"
+        },
+        "36610": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:16:34 2026"
+        },
+        "36619": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:16:35 2026"
+        },
+        "36676": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:16:42 2026"
+        },
+        "36698": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:16:45 2026"
+        },
+        "36756": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:16:52 2026"
+        },
+        "36783": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:16:56 2026"
+        },
+        "36819": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:17:02 2026"
+        },
+        "36839": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:17:05 2026"
+        },
+        "36855": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:17:08 2026"
+        },
+        "36903": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:17:14 2026"
+        },
+        "36931": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:17:17 2026"
+        },
+        "36948": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:17:19 2026"
+        },
+        "36962": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:17:20 2026"
+        },
+        "36972": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:17:21 2026"
+        },
+        "37019": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:17:28 2026"
+        },
+        "37056": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:17:31 2026"
+        },
+        "37073": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:17:35 2026"
+        },
+        "37101": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:17:38 2026"
+        },
+        "37156": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:17:47 2026"
+        },
+        "37189": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:17:52 2026"
+        },
+        "37199": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:17:53 2026"
+        },
+        "37294": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:18:03 2026"
+        },
+        "37349": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:18:10 2026"
+        },
+        "37374": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:18:13 2026"
+        },
+        "37396": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:18:16 2026"
+        },
+        "37419": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:18:19 2026"
+        },
+        "37474": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:18:28 2026"
+        },
+        "37510": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:18:34 2026"
+        },
+        "37562": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:18:40 2026"
+        },
+        "37590": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:18:43 2026"
+        },
+        "37596": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:18:43 2026"
+        },
+        "37625": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:18:45 2026"
+        },
+        "37644": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:18:46 2026"
+        },
+        "37647": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:18:47 2026"
+        },
+        "37692": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:18:55 2026"
+        },
+        "37754": {
+          "command": "(python3.12)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:19:02 2026"
+        },
+        "37771": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:19:05 2026"
+        },
+        "37828": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:19:13 2026"
+        },
+        "37842": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:19:16 2026"
+        },
+        "37865": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:19:19 2026"
+        },
+        "37870": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:19:20 2026"
+        },
+        "37883": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:19:21 2026"
+        },
+        "37907": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:19:24 2026"
+        },
+        "37932": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:19:27 2026"
+        },
+        "37949": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:19:28 2026"
+        },
+        "37960": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:19:29 2026"
+        },
+        "37970": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:19:30 2026"
+        },
+        "37995": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:19:32 2026"
+        },
+        "38024": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:19:36 2026"
+        },
+        "38058": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:19:39 2026"
+        },
+        "38106": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:19:44 2026"
+        },
+        "38115": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:19:45 2026"
+        },
+        "38141": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:19:48 2026"
+        },
+        "38205": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:19:55 2026"
+        },
+        "38230": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:19:59 2026"
+        },
+        "38263": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:20:02 2026"
+        },
+        "38286": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:20:06 2026"
+        },
+        "38329": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:20:12 2026"
+        },
+        "38351": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:20:15 2026"
+        },
+        "38365": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:20:18 2026"
+        },
+        "38407": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:20:24 2026"
+        },
+        "38466": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:20:31 2026"
+        },
+        "38495": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:20:33 2026"
+        },
+        "38532": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:20:37 2026"
+        },
+        "38554": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:20:40 2026"
+        },
+        "38609": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:20:47 2026"
+        },
+        "38637": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:20:51 2026"
+        },
+        "38661": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:20:54 2026"
+        },
+        "38676": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:20:57 2026"
+        },
+        "38711": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:21:03 2026"
+        },
+        "38739": {
+          "command": "(python3.12)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:21:07 2026"
+        },
+        "38812": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:21:15 2026"
+        },
+        "38821": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:21:16 2026"
+        },
+        "38895": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:21:25 2026"
+        },
+        "38926": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:21:29 2026"
+        },
+        "38954": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:21:33 2026"
+        },
+        "38976": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:21:36 2026"
+        },
+        "38990": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:21:39 2026"
+        },
+        "39012": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:21:42 2026"
+        },
+        "39048": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:21:48 2026"
+        },
+        "39092": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:21:53 2026"
+        },
+        "39100": {
+          "command": "<defunct>",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:21:54 2026"
+        },
+        "39117": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:21:55 2026"
+        },
+        "39137": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:21:58 2026"
+        },
+        "39158": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:22:00 2026"
+        },
+        "39160": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:22:00 2026"
+        },
+        "39185": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:22:03 2026"
+        },
+        "39261": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:22:14 2026"
+        },
+        "39286": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:22:16 2026"
+        },
+        "39322": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:22:23 2026"
+        },
+        "39341": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:22:25 2026"
+        },
+        "39404": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:22:34 2026"
+        },
+        "39434": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:22:38 2026"
+        },
+        "39469": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:22:41 2026"
+        },
+        "39502": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:22:45 2026"
+        },
+        "39524": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:22:48 2026"
+        },
+        "39606": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:22:58 2026"
+        },
+        "39628": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:23:01 2026"
+        },
+        "39702": {
+          "command": "(vm_stat)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:23:14 2026"
+        },
+        "39721": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:23:16 2026"
+        },
+        "39733": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:23:17 2026"
+        },
+        "39784": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:23:22 2026"
+        },
+        "39851": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:23:31 2026"
+        },
+        "39888": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:23:35 2026"
+        },
+        "39952": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:23:44 2026"
+        },
+        "39972": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:23:47 2026"
+        },
+        "40018": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:23:53 2026"
+        },
+        "40024": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:23:54 2026"
+        },
+        "40030": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:23:55 2026"
+        },
+        "40067": {
+          "command": "(vm_stat)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:23:58 2026"
+        },
+        "40076": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:23:59 2026"
+        },
+        "40089": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:24:00 2026"
+        },
+        "40152": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:24:07 2026"
+        },
+        "40170": {
+          "command": "(python3.12)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:24:08 2026"
+        },
+        "40179": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:24:10 2026"
+        },
+        "40233": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:24:16 2026"
+        },
+        "40336": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:24:27 2026"
+        },
+        "40358": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:24:31 2026"
+        },
+        "40386": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:24:34 2026"
+        },
+        "40403": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:24:37 2026"
+        },
+        "40422": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:24:40 2026"
+        },
+        "40460": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:24:46 2026"
+        },
+        "40482": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:24:49 2026"
+        },
+        "40491": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:24:50 2026"
+        },
+        "40512": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:24:53 2026"
+        },
+        "40537": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:24:55 2026"
+        },
+        "40629": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:25:06 2026"
+        },
+        "40669": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:25:10 2026"
+        },
+        "40686": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:25:13 2026"
+        },
+        "40714": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:25:16 2026"
+        },
+        "40733": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:25:19 2026"
+        },
+        "40747": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:25:22 2026"
+        },
+        "40769": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:25:25 2026"
+        },
+        "40784": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:25:28 2026"
+        },
+        "40822": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:25:33 2026"
+        },
+        "40854": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:25:36 2026"
+        },
+        "40867": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:25:38 2026"
+        },
+        "40914": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:25:42 2026"
+        },
+        "40951": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:25:48 2026"
+        },
+        "40993": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:25:53 2026"
+        },
+        "41074": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:26:05 2026"
+        },
+        "41127": {
+          "command": "(sysctl)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:26:14 2026"
+        },
+        "41153": {
+          "command": "ps -Ao pid,pcpu,comm -r",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:26:16 2026"
+        },
+        "41156": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:26:16 2026"
+        },
+        "41183": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:26:20 2026"
+        },
+        "41209": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:26:22 2026"
+        },
+        "41243": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:26:26 2026"
+        },
+        "41260": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:26:29 2026"
+        },
+        "41294": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:26:32 2026"
+        },
+        "41317": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:26:35 2026"
+        },
+        "41333": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:26:39 2026"
+        },
+        "41342": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:26:39 2026"
+        },
+        "41364": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:26:43 2026"
+        },
+        "41384": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:26:45 2026"
+        },
+        "41434": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:26:54 2026"
+        },
+        "41480": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:27:00 2026"
+        },
+        "41510": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:27:03 2026"
+        },
+        "41524": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:27:04 2026"
+        },
+        "41538": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:27:06 2026"
+        },
+        "41547": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:27:06 2026"
+        },
+        "41589": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:27:12 2026"
+        },
+        "41608": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:27:14 2026"
+        },
+        "41629": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:27:17 2026"
+        },
+        "41646": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:27:20 2026"
+        },
+        "41707": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:27:29 2026"
+        },
+        "41726": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:27:32 2026"
+        },
+        "41786": {
+          "command": "ps -Ao pid,pcpu,comm -r",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:27:40 2026"
+        },
+        "41788": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:27:40 2026"
+        },
+        "41816": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:27:44 2026"
+        },
+        "41898": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:27:53 2026"
+        },
+        "41932": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:27:56 2026"
+        },
+        "41982": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:28:03 2026"
+        },
+        "42004": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:28:07 2026"
+        },
+        "42019": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:28:09 2026"
+        },
+        "42054": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:28:16 2026"
+        },
+        "42101": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:28:22 2026"
+        },
+        "42152": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:28:27 2026"
+        },
+        "42163": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:28:28 2026"
+        },
+        "42186": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:28:31 2026"
+        },
+        "42206": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:28:33 2026"
+        },
+        "42223": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:28:37 2026"
+        },
+        "42263": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:28:41 2026"
+        },
+        "42285": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:28:44 2026"
+        },
+        "42327": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:28:50 2026"
+        },
+        "42396": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:29:02 2026"
+        },
+        "42432": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:29:05 2026"
+        },
+        "42445": {
+          "command": "<defunct>",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:29:06 2026"
+        },
+        "42465": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:29:08 2026"
+        },
+        "42495": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:29:11 2026"
+        },
+        "42543": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:29:15 2026"
+        },
+        "42568": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:29:18 2026"
+        },
+        "42670": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:29:31 2026"
+        },
+        "42690": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:29:34 2026"
+        },
+        "42738": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:29:43 2026"
+        },
+        "42790": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:29:49 2026"
+        },
+        "42825": {
+          "command": "(sysctl)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:29:53 2026"
+        },
+        "42841": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:29:54 2026"
+        },
+        "42881": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:29:59 2026"
+        },
+        "42898": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:30:02 2026"
+        },
+        "42903": {
+          "command": "(sysctl)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:30:02 2026"
+        },
+        "42936": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:30:06 2026"
+        },
+        "42958": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:30:09 2026"
+        },
+        "43017": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:30:18 2026"
+        },
+        "43036": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:30:21 2026"
+        },
+        "43078": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:30:27 2026"
+        },
+        "43103": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:30:30 2026"
+        },
+        "43123": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:30:33 2026"
+        },
+        "43127": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:30:33 2026"
+        },
+        "43132": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:30:33 2026"
+        },
+        "43150": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:30:35 2026"
+        },
+        "43252": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:30:47 2026"
+        },
+        "43382": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:31:08 2026"
+        },
+        "43407": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:31:11 2026"
+        },
+        "43427": {
+          "command": "(sysctl)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:31:13 2026"
+        },
+        "43451": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:31:15 2026"
+        },
+        "43458": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:31:16 2026"
+        },
+        "43513": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:31:22 2026"
+        },
+        "43635": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:31:39 2026"
+        },
+        "43659": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:31:42 2026"
+        },
+        "43678": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:31:45 2026"
+        },
+        "43718": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:31:51 2026"
+        },
+        "43741": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:31:53 2026"
+        },
+        "43744": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:31:53 2026"
+        },
+        "43772": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:31:57 2026"
+        },
+        "43798": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:32:00 2026"
+        },
+        "43832": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:32:03 2026"
+        },
+        "43909": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:32:13 2026"
+        },
+        "43933": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:32:16 2026"
+        },
+        "43937": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:32:16 2026"
+        },
+        "43953": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:32:19 2026"
+        },
+        "44009": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:32:28 2026"
+        },
+        "44024": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:32:31 2026"
+        },
+        "44046": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:32:33 2026"
+        },
+        "44184": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:32:50 2026"
+        },
+        "44257": {
+          "command": "(sysctl)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:32:58 2026"
+        },
+        "44269": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:33:00 2026"
+        },
+        "44305": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:33:06 2026"
+        },
+        "44330": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:33:09 2026"
+        },
+        "44343": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:33:12 2026"
+        },
+        "44362": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:33:14 2026"
+        },
+        "44416": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:33:20 2026"
+        },
+        "44481": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:33:27 2026"
+        },
+        "44505": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:33:30 2026"
+        },
+        "44578": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:33:40 2026"
+        },
+        "44586": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:33:41 2026"
+        },
+        "44624": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:33:47 2026"
+        },
+        "44679": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:33:56 2026"
+        },
+        "44727": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:34:02 2026"
+        },
+        "44736": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:34:02 2026"
+        },
+        "44761": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:34:05 2026"
+        },
+        "44781": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:34:08 2026"
+        },
+        "44822": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:34:12 2026"
+        },
+        "44844": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:34:15 2026"
+        },
+        "44878": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:34:19 2026"
+        },
+        "44924": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:34:25 2026"
+        },
+        "44979": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:34:34 2026"
+        },
+        "44993": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:34:37 2026"
+        },
+        "45021": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:34:40 2026"
+        },
+        "45052": {
+          "command": "(python3.12)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:34:44 2026"
+        },
+        "45067": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:34:46 2026"
+        },
+        "45073": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:34:46 2026"
+        },
+        "45076": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:34:46 2026"
+        },
+        "45091": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:34:48 2026"
+        },
+        "45104": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:34:50 2026"
+        },
+        "45118": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:34:50 2026"
+        },
+        "45135": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:34:53 2026"
+        },
+        "45167": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:34:58 2026"
+        },
+        "45197": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:35:00 2026"
+        },
+        "45214": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:35:04 2026"
+        },
+        "45261": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:35:10 2026"
+        },
+        "45275": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:35:13 2026"
+        },
+        "45330": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:35:21 2026"
+        },
+        "45394": {
+          "command": "ps -Ao pid,pcpu,comm -r",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:35:28 2026"
+        },
+        "45406": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:35:30 2026"
+        },
+        "45461": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:35:36 2026"
+        },
+        "45477": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:35:39 2026"
+        },
+        "45517": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:35:43 2026"
+        },
+        "45539": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:35:47 2026"
+        },
+        "45559": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:35:49 2026"
+        },
+        "45578": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:35:52 2026"
+        },
+        "45601": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:35:55 2026"
+        },
+        "45640": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:36:01 2026"
+        },
+        "45655": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:36:04 2026"
+        },
+        "45683": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:36:06 2026"
+        },
+        "45689": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:36:07 2026"
+        },
+        "45779": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:36:16 2026"
+        },
+        "45795": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:36:20 2026"
+        },
+        "45855": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:36:27 2026"
+        },
+        "45930": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:36:38 2026"
+        },
+        "45949": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:36:41 2026"
+        },
+        "45980": {
+          "command": "(sysctl)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:36:46 2026"
+        },
+        "46001": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:36:48 2026"
+        },
+        "46012": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:36:50 2026"
+        },
+        "46021": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:36:51 2026"
+        },
+        "46049": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:36:54 2026"
+        },
+        "46104": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:37:00 2026"
+        },
+        "46163": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:37:07 2026"
+        },
+        "46243": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:37:19 2026"
+        },
+        "46298": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:37:28 2026"
+        },
+        "46307": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:37:29 2026"
+        },
+        "46374": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:37:37 2026"
+        },
+        "46386": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:37:37 2026"
+        },
+        "46417": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:37:41 2026"
+        },
+        "46461": {
+          "command": "ps -Ao pid,pcpu,comm -r",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:37:46 2026"
+        },
+        "46481": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:37:49 2026"
+        },
+        "46503": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:37:52 2026"
+        },
+        "46523": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:37:55 2026"
+        },
+        "46542": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:37:58 2026"
+        },
+        "46558": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:38:00 2026"
+        },
+        "46591": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:38:06 2026"
+        },
+        "46613": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:38:09 2026"
+        },
+        "46622": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:38:10 2026"
+        },
+        "46647": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:38:13 2026"
+        },
+        "46670": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:38:16 2026"
+        },
+        "46701": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:38:19 2026"
+        },
+        "46713": {
+          "command": "(sysctl)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:38:21 2026"
+        },
+        "46740": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:38:23 2026"
+        },
+        "46757": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:38:26 2026"
+        },
+        "46794": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:38:30 2026"
+        },
+        "46816": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:38:33 2026"
+        },
+        "46839": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:38:36 2026"
+        },
+        "46875": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:38:42 2026"
+        },
+        "46894": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:38:45 2026"
+        },
+        "46930": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:38:51 2026"
+        },
+        "46955": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:38:54 2026"
+        },
+        "46981": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:38:57 2026"
+        },
+        "47001": {
+          "command": "(python3.12)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:38:59 2026"
+        },
+        "47009": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:39:00 2026"
+        },
+        "47041": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:39:03 2026"
+        },
+        "47125": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:39:14 2026"
+        },
+        "47142": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:39:17 2026"
+        },
+        "47144": {
+          "command": "(sysctl)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:39:17 2026"
+        },
+        "47168": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:39:20 2026"
+        },
+        "47182": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:39:22 2026"
+        },
+        "47201": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:39:25 2026"
+        },
+        "47216": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:39:28 2026"
+        },
+        "47238": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:39:31 2026"
+        },
+        "47257": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:39:34 2026"
+        },
+        "47264": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:39:34 2026"
+        },
+        "47266": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:39:35 2026"
+        },
+        "47374": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:39:47 2026"
+        },
+        "47396": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:39:50 2026"
+        },
+        "47450": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:39:57 2026"
+        },
+        "47479": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:40:00 2026"
+        },
+        "47492": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:40:03 2026"
+        },
+        "47512": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:40:06 2026"
+        },
+        "47547": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:40:12 2026"
+        },
+        "47567": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:40:15 2026"
+        },
+        "47614": {
+          "command": "(python3.12)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:40:21 2026"
+        },
+        "47634": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:40:23 2026"
+        },
+        "47640": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:40:24 2026"
+        },
+        "47666": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:40:26 2026"
+        },
+        "47694": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:40:30 2026"
+        },
+        "47768": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:40:39 2026"
+        },
+        "47787": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:40:42 2026"
+        },
+        "47796": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:40:43 2026"
+        },
+        "47851": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:40:52 2026"
+        },
+        "47865": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:40:54 2026"
+        },
+        "47886": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:40:57 2026"
+        },
+        "47915": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:41:01 2026"
+        },
+        "47923": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:41:01 2026"
+        },
+        "47969": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:41:07 2026"
+        },
+        "47991": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:41:09 2026"
+        },
+        "48017": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:41:11 2026"
+        },
+        "48034": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:41:14 2026"
+        },
+        "48068": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:41:17 2026"
+        },
+        "48094": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:41:21 2026"
+        },
+        "48117": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:41:24 2026"
+        },
+        "48137": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:41:27 2026"
+        },
+        "48173": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:41:33 2026"
+        },
+        "48187": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:41:36 2026"
+        },
+        "48234": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:41:42 2026"
+        },
+        "48282": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:41:47 2026"
+        },
+        "48308": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:41:51 2026"
+        },
+        "48342": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:41:54 2026"
+        },
+        "48362": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:41:57 2026"
+        },
+        "48431": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:42:06 2026"
+        },
+        "48444": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:42:07 2026"
+        },
+        "48460": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:42:10 2026"
+        },
+        "48479": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:42:13 2026"
+        },
+        "48494": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:42:16 2026"
+        },
+        "48545": {
+          "command": "(python3.12)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:42:23 2026"
+        },
+        "48565": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:42:25 2026"
+        },
+        "48593": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:42:29 2026"
+        },
+        "48620": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:42:32 2026"
+        },
+        "48660": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:42:36 2026"
+        },
+        "48663": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:42:36 2026"
+        },
+        "48688": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:42:40 2026"
+        },
+        "48698": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:42:41 2026"
+        },
+        "48750": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:42:48 2026"
+        },
+        "48771": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:42:50 2026"
+        },
+        "48807": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:42:57 2026"
+        },
+        "48827": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:42:59 2026"
+        },
+        "48841": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:43:02 2026"
+        },
+        "48849": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:43:03 2026"
+        },
+        "48869": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:43:06 2026"
+        },
+        "48881": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:43:07 2026"
+        },
+        "48897": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:43:09 2026"
+        },
+        "48906": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:43:10 2026"
+        },
+        "48991": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:43:19 2026"
+        },
+        "49042": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:43:26 2026"
+        },
+        "49064": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:43:29 2026"
+        },
+        "49072": {
+          "command": "(sysctl)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:43:30 2026"
+        },
+        "49087": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:43:32 2026"
+        },
+        "49107": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:43:35 2026"
+        },
+        "49122": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:43:38 2026"
+        },
+        "49141": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:43:41 2026"
+        },
+        "49176": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:43:47 2026"
+        },
+        "49229": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:43:52 2026"
+        },
+        "49261": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:43:56 2026"
+        },
+        "49279": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:43:58 2026"
+        },
+        "49297": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:43:59 2026"
+        },
+        "49314": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:44:02 2026"
+        },
+        "49338": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:44:05 2026"
+        },
+        "49372": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:44:09 2026"
+        },
+        "49414": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:44:15 2026"
+        },
+        "49428": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:44:18 2026"
+        },
+        "49448": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:44:20 2026"
+        },
+        "49507": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:44:29 2026"
+        },
+        "49530": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:44:32 2026"
+        },
+        "49536": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:44:33 2026"
+        },
+        "49634": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:44:43 2026"
+        },
+        "49664": {
+          "command": "<defunct>",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:44:48 2026"
+        },
+        "49693": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:44:50 2026"
+        },
+        "49710": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:44:53 2026"
+        },
+        "49752": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:44:59 2026"
+        },
+        "49770": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:45:02 2026"
+        },
+        "49792": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:45:05 2026"
+        },
+        "49806": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:45:08 2026"
+        },
+        "49875": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:45:16 2026"
+        },
+        "49879": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:45:17 2026"
+        },
+        "49892": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:45:18 2026"
+        },
+        "49907": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:45:20 2026"
+        },
+        "49916": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:45:21 2026"
+        },
+        "49948": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:45:24 2026"
+        },
+        "49985": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:45:30 2026"
+        },
+        "50007": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:45:32 2026"
+        },
+        "50024": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:45:35 2026"
+        },
+        "50052": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:45:38 2026"
+        },
+        "50088": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:45:44 2026"
+        },
+        "50168": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:45:56 2026"
+        },
+        "50191": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:45:58 2026"
+        },
+        "50194": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:45:59 2026"
+        },
+        "50223": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:46:02 2026"
+        },
+        "50280": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:46:08 2026"
+        },
+        "50302": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:46:12 2026"
+        },
+        "50335": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:46:15 2026"
+        },
+        "50356": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:46:19 2026"
+        },
+        "50363": {
+          "command": "ps -Ao pid,pcpu,comm -r",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:46:19 2026"
+        },
+        "50365": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:46:19 2026"
+        },
+        "50384": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:46:22 2026"
+        },
+        "50436": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:46:31 2026"
+        },
+        "50444": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:46:32 2026"
+        },
+        "50458": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:46:34 2026"
+        },
+        "50471": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:46:36 2026"
+        },
+        "50486": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:46:38 2026"
+        },
+        "50512": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:46:40 2026"
+        },
+        "50580": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:46:47 2026"
+        },
+        "50597": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:46:50 2026"
+        },
+        "50656": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:46:57 2026"
+        },
+        "50674": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:47:01 2026"
+        },
+        "50702": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:47:04 2026"
+        },
+        "50716": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:47:07 2026"
+        },
+        "50797": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:47:18 2026"
+        },
+        "50845": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:47:24 2026"
+        },
+        "50872": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:47:27 2026"
+        },
+        "50886": {
+          "command": "(python3.12)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:47:29 2026"
+        },
+        "50967": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:47:38 2026"
+        },
+        "51009": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:47:44 2026"
+        },
+        "51043": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:47:50 2026"
+        },
+        "51118": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:48:01 2026"
+        },
+        "51172": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:48:07 2026"
+        },
+        "51200": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:48:11 2026"
+        },
+        "51240": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:48:15 2026"
+        },
+        "51269": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:48:18 2026"
+        },
+        "51346": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:48:29 2026"
+        },
+        "51361": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:48:32 2026"
+        },
+        "51383": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:48:35 2026"
+        },
+        "51398": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:48:38 2026"
+        },
+        "51444": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:48:44 2026"
+        },
+        "51471": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:48:47 2026"
+        },
+        "51498": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:48:50 2026"
+        },
+        "51552": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:48:56 2026"
+        },
+        "51574": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:48:59 2026"
+        },
+        "51606": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:49:03 2026"
+        },
+        "51651": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:49:09 2026"
+        },
+        "51689": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:49:15 2026"
+        },
+        "51703": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:49:18 2026"
+        },
+        "51722": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:49:21 2026"
+        },
+        "51765": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:49:27 2026"
+        },
+        "51786": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:49:29 2026"
+        },
+        "51798": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:49:30 2026"
+        },
+        "51811": {
+          "command": "ps -Ao pid,pcpu,comm -r",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:49:31 2026"
+        },
+        "51822": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:49:33 2026"
+        },
+        "51830": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:49:34 2026"
+        },
+        "51867": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:49:37 2026"
+        },
+        "51920": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:49:44 2026"
+        },
+        "51941": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:49:47 2026"
+        },
+        "51969": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:49:50 2026"
+        },
+        "51983": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:49:53 2026"
+        },
+        "52002": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:49:56 2026"
+        },
+        "52036": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:50:02 2026"
+        },
+        "52077": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:50:08 2026"
+        },
+        "52105": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:50:11 2026"
+        },
+        "52114": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:50:12 2026"
+        },
+        "52193": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:50:20 2026"
+        },
+        "52210": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:50:24 2026"
+        },
+        "52261": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:50:30 2026"
+        },
+        "52282": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:50:32 2026"
+        },
+        "52289": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:50:33 2026"
+        },
+        "52342": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:50:42 2026"
+        },
+        "52355": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:50:45 2026"
+        },
+        "52397": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:50:51 2026"
+        },
+        "52432": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:50:54 2026"
+        },
+        "52442": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:50:56 2026"
+        },
+        "52457": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:50:57 2026"
+        },
+        "52466": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:50:58 2026"
+        },
+        "52484": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:51:00 2026"
+        },
+        "52496": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:51:01 2026"
+        },
+        "52541": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:51:07 2026"
+        },
+        "52543": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:51:07 2026"
+        },
+        "52624": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:51:18 2026"
+        },
+        "52638": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:51:21 2026"
+        },
+        "52658": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:51:24 2026"
+        },
+        "52719": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:51:33 2026"
+        },
+        "52726": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:51:33 2026"
+        },
+        "52739": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:51:35 2026"
+        },
+        "52748": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:51:36 2026"
+        },
+        "52776": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:51:39 2026"
+        },
+        "52836": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:51:46 2026"
+        },
+        "52898": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:51:54 2026"
+        },
+        "52922": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:51:57 2026"
+        },
+        "52965": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:52:03 2026"
+        },
+        "53043": {
+          "command": "(sysctl)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:52:15 2026"
+        },
+        "53064": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:52:17 2026"
+        },
+        "53071": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:52:18 2026"
+        },
+        "53094": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:52:21 2026"
+        },
+        "53145": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:52:26 2026"
+        },
+        "53204": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:52:33 2026"
+        },
+        "53221": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:52:37 2026"
+        },
+        "53249": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:52:40 2026"
+        },
+        "53285": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:52:46 2026"
+        },
+        "53304": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:52:49 2026"
+        },
+        "53358": {
+          "command": "(vm_stat)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:52:57 2026"
+        },
+        "53366": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:52:58 2026"
+        },
+        "53382": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:52:59 2026"
+        },
+        "53391": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:53:01 2026"
+        },
+        "53401": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:53:02 2026"
+        },
+        "53467": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:53:08 2026"
+        },
+        "53483": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:53:12 2026"
+        },
+        "53496": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:53:13 2026"
+        },
+        "53545": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:53:19 2026"
+        },
+        "53565": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:53:22 2026"
+        },
+        "53621": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:53:31 2026"
+        },
+        "53635": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:53:34 2026"
+        },
+        "53680": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:53:39 2026"
+        },
+        "53683": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:53:40 2026"
+        },
+        "53688": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:53:40 2026"
+        },
+        "53702": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:53:42 2026"
+        },
+        "53745": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:53:46 2026"
+        },
+        "53840": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:53:58 2026"
+        },
+        "53901": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:54:07 2026"
+        },
+        "53937": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:54:13 2026"
+        },
+        "53959": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:54:16 2026"
+        },
+        "53973": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:54:19 2026"
+        },
+        "54033": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:54:25 2026"
+        },
+        "54054": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:54:28 2026"
+        },
+        "54060": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:54:28 2026"
+        },
+        "54062": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:54:28 2026"
+        },
+        "54102": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:54:33 2026"
+        },
+        "54125": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:54:36 2026"
+        },
+        "54146": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:54:37 2026"
+        },
+        "54170": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:54:41 2026"
+        },
+        "54187": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:54:44 2026"
+        },
+        "54242": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:54:52 2026"
+        },
+        "54297": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:55:01 2026"
+        },
+        "54326": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:55:04 2026"
+        },
+        "54351": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:55:07 2026"
+        },
+        "54371": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:55:10 2026"
+        },
+        "54375": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:55:10 2026"
+        },
+        "54397": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:55:12 2026"
+        },
+        "54439": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:55:17 2026"
+        },
+        "54455": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:55:19 2026"
+        },
+        "54469": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:55:20 2026"
+        },
+        "54535": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:55:30 2026"
+        },
+        "54568": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:55:36 2026"
+        },
+        "54587": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:55:39 2026"
+        },
+        "54638": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:55:46 2026"
+        },
+        "54655": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:55:48 2026"
+        },
+        "54662": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:55:48 2026"
+        },
+        "54664": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:55:48 2026"
+        },
+        "54785": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:56:02 2026"
+        },
+        "54787": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:56:02 2026"
+        },
+        "54805": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:56:05 2026"
+        },
+        "54827": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:56:08 2026"
+        },
+        "54902": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:56:20 2026"
+        },
+        "54922": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:56:23 2026"
+        },
+        "54941": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:56:26 2026"
+        },
+        "54944": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:56:26 2026"
+        },
+        "54964": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:56:28 2026"
+        },
+        "55020": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:56:34 2026"
+        },
+        "55034": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:56:36 2026"
+        },
+        "55093": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:56:44 2026"
+        },
+        "55111": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:56:45 2026"
+        },
+        "55134": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:56:49 2026"
+        },
+        "55157": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:56:52 2026"
+        },
+        "55176": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:56:55 2026"
+        },
+        "55190": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:56:57 2026"
+        },
+        "55231": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:57:03 2026"
+        },
+        "55245": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:57:06 2026"
+        },
+        "55270": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:57:09 2026"
+        },
+        "55290": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:57:12 2026"
+        },
+        "55296": {
+          "command": "(python3.12)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:57:12 2026"
+        },
+        "55299": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:57:12 2026"
+        },
+        "55317": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:57:14 2026"
+        },
+        "55361": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:57:18 2026"
+        },
+        "55446": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:57:29 2026"
+        },
+        "55487": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:57:35 2026"
+        },
+        "55501": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:57:38 2026"
+        },
+        "55521": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:57:41 2026"
+        },
+        "55556": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:57:47 2026"
+        },
+        "55576": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:57:50 2026"
+        },
+        "55584": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:57:50 2026"
+        },
+        "55613": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:57:54 2026"
+        },
+        "55664": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:57:59 2026"
+        },
+        "55694": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:58:02 2026"
+        },
+        "55716": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:58:06 2026"
+        },
+        "55753": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:58:10 2026"
+        },
+        "55770": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:58:13 2026"
+        },
+        "55795": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:58:16 2026"
+        },
+        "55831": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:58:22 2026"
+        },
+        "55850": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:58:24 2026"
+        },
+        "55865": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:58:27 2026"
+        },
+        "55899": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:58:32 2026"
+        },
+        "55906": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:58:33 2026"
+        },
+        "55968": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:58:40 2026"
+        },
+        "56022": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:58:46 2026"
+        },
+        "56039": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:58:49 2026"
+        },
+        "56099": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:58:56 2026"
+        },
+        "56122": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:58:59 2026"
+        },
+        "56145": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:59:02 2026"
+        },
+        "56165": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:59:05 2026"
+        },
+        "56178": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:59:08 2026"
+        },
+        "56214": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:59:14 2026"
+        },
+        "56249": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:59:17 2026"
+        },
+        "56273": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:59:20 2026"
+        },
+        "56295": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:59:23 2026"
+        },
+        "56317": {
+          "command": "(pmset)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:59:25 2026"
+        },
+        "56342": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:59:28 2026"
+        },
+        "56364": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:59:31 2026"
+        },
+        "56374": {
+          "command": "(ps)",
+          "ppid": 25522,
+          "start": "Tue Oct 27 12:59:32 2026"
+        },
+        "56396": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:59:35 2026"
+        },
+        "56418": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:59:38 2026"
+        },
+        "56480": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:59:47 2026"
+        },
+        "56494": {
+          "command": "/bin/ps -axo pid=,ppid=,lstart=,command=",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:59:50 2026"
+        },
+        "56543": {
+          "command": "(ps)",
+          "ppid": 25519,
+          "start": "Tue Oct 27 12:59:56 2026"
+        }
+      },
+      "worker_pid": 25519
+    }
+  ],
+  "started_unix": 1793126158.113722,
+  "status": "deadline_or_stop_reached"
+}

@@ -1,0 +1,129 @@
+load 0/531: model.embed_tokens.weight
+load 25/531: model.layers.1.self_attn.q_proj.weight
+load 50/531: model.layers.2.self_attn.k_proj.bias
+load 75/531: model.layers.3.self_attn.o_proj.weight
+load 100/531: model.layers.4.mlp.experts.gate_proj.scales
+load 125/531: model.layers.5.mlp.experts.up_proj.scales
+load 150/531: model.layers.6.mlp.experts.down_proj.scales
+load 175/531: model.layers.7.mlp.router.bias
+load 200/531: model.layers.9.self_attn.sinks
+load 225/531: model.layers.10.self_attn.k_proj.weight
+load 250/531: model.layers.11.self_attn.v_proj.bias
+load 275/531: model.layers.12.mlp.experts.gate_proj.weight
+load 300/531: model.layers.13.mlp.experts.up_proj.weight
+load 325/531: model.layers.14.mlp.experts.down_proj.weight
+load 350/531: model.layers.15.mlp.router.weight
+load 375/531: model.layers.16.post_attention_layernorm.weight
+load 400/531: model.layers.18.self_attn.q_proj.bias
+load 425/531: model.layers.19.self_attn.v_proj.weight
+load 450/531: model.layers.20.self_attn.o_proj.bias
+load 475/531: model.layers.21.mlp.experts.gate_proj.bias
+load 500/531: model.layers.22.mlp.experts.up_proj.bias
+load 525/531: model.layers.23.mlp.experts.down_proj.bias
+load 531/531: None
+request warmup-512: context=512, mode=normal
+done warmup-512: 23.498 tok/s; issues=['swapins increased during request', 'swapouts increased during request']
+request baseline-512-0: context=512, mode=normal
+done baseline-512-0: 23.371 tok/s; issues=['swapins increased during request']
+request baseline-512-1: context=512, mode=normal
+done baseline-512-1: 23.938 tok/s; issues=['swapins increased during request']
+request baseline-512-2: context=512, mode=normal
+done baseline-512-2: 23.852 tok/s; issues=['swapins increased during request']
+request warmup-2048: context=2048, mode=normal
+done warmup-2048: 22.391 tok/s; issues=['swapins increased during request']
+request baseline-2048-0: context=2048, mode=normal
+done baseline-2048-0: 23.628 tok/s; issues=['swapins increased during request']
+request baseline-2048-1: context=2048, mode=normal
+done baseline-2048-1: 23.494 tok/s; issues=['swapins increased during request']
+request baseline-2048-2: context=2048, mode=normal
+done baseline-2048-2: 20.560 tok/s; issues=['swapins increased during request']
+request warmup-4096: context=4096, mode=normal
+done warmup-4096: 20.437 tok/s; issues=['swapins increased during request']
+request baseline-4096-0: context=4096, mode=normal
+done baseline-4096-0: 19.453 tok/s; issues=['swap grew during the request', 'swapins increased during request', 'swapouts increased during request']
+request baseline-4096-1: context=4096, mode=normal
+done baseline-4096-1: 21.858 tok/s; issues=['native thermal state is not nominal', 'swap grew during the request', 'swapins increased during request', 'swapouts increased during request']
+request baseline-4096-2: context=4096, mode=normal
+done baseline-4096-2: 22.355 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request capture-control-512: context=512, mode=normal
+done capture-control-512: 22.769 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request capture-512: context=512, mode=capture
+done capture-512: 20.745 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request warmup-oracle_pointwise: context=512, mode=oracle_pointwise
+done warmup-oracle_pointwise: 22.324 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_pointwise-pair-0-normal: context=512, mode=normal
+done oracle_pointwise-pair-0-normal: 21.978 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_pointwise-pair-0-oracle_pointwise: context=512, mode=oracle_pointwise
+done oracle_pointwise-pair-0-oracle_pointwise: 22.914 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_pointwise-pair-1-oracle_pointwise: context=512, mode=oracle_pointwise
+done oracle_pointwise-pair-1-oracle_pointwise: 23.767 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_pointwise-pair-1-normal: context=512, mode=normal
+done oracle_pointwise-pair-1-normal: 23.691 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_pointwise-pair-2-normal: context=512, mode=normal
+done oracle_pointwise-pair-2-normal: 22.888 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_pointwise-pair-2-oracle_pointwise: context=512, mode=oracle_pointwise
+done oracle_pointwise-pair-2-oracle_pointwise: 23.794 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request warmup-oracle_up_gate: context=512, mode=oracle_up_gate
+done warmup-oracle_up_gate: 26.595 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_up_gate-pair-0-normal: context=512, mode=normal
+done oracle_up_gate-pair-0-normal: 23.614 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_up_gate-pair-0-oracle_up_gate: context=512, mode=oracle_up_gate
+done oracle_up_gate-pair-0-oracle_up_gate: 30.618 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_up_gate-pair-1-oracle_up_gate: context=512, mode=oracle_up_gate
+done oracle_up_gate-pair-1-oracle_up_gate: 28.738 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_up_gate-pair-1-normal: context=512, mode=normal
+done oracle_up_gate-pair-1-normal: 22.889 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_up_gate-pair-2-normal: context=512, mode=normal
+done oracle_up_gate-pair-2-normal: 22.992 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_up_gate-pair-2-oracle_up_gate: context=512, mode=oracle_up_gate
+done oracle_up_gate-pair-2-oracle_up_gate: 27.340 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request warmup-oracle_down: context=512, mode=oracle_down
+done warmup-oracle_down: 26.094 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_down-pair-0-normal: context=512, mode=normal
+done oracle_down-pair-0-normal: 20.977 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_down-pair-0-oracle_down: context=512, mode=oracle_down
+done oracle_down-pair-0-oracle_down: 25.283 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_down-pair-1-oracle_down: context=512, mode=oracle_down
+done oracle_down-pair-1-oracle_down: 24.500 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_down-pair-1-normal: context=512, mode=normal
+done oracle_down-pair-1-normal: 21.844 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_down-pair-2-normal: context=512, mode=normal
+done oracle_down-pair-2-normal: 17.294 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_down-pair-2-oracle_down: context=512, mode=oracle_down
+done oracle_down-pair-2-oracle_down: 24.280 tok/s; issues=['native thermal state is not nominal', 'swap grew during the request', 'swapins increased during request', 'swapouts increased during request']
+request warmup-oracle_experts: context=512, mode=oracle_experts
+done warmup-oracle_experts: 30.961 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_experts-pair-0-normal: context=512, mode=normal
+done oracle_experts-pair-0-normal: 20.329 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_experts-pair-0-oracle_experts: context=512, mode=oracle_experts
+done oracle_experts-pair-0-oracle_experts: 34.953 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_experts-pair-1-oracle_experts: context=512, mode=oracle_experts
+done oracle_experts-pair-1-oracle_experts: 26.900 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request', 'swapouts increased during request']
+request oracle_experts-pair-1-normal: context=512, mode=normal
+done oracle_experts-pair-1-normal: 20.896 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_experts-pair-2-normal: context=512, mode=normal
+done oracle_experts-pair-2-normal: 20.354 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request oracle_experts-pair-2-oracle_experts: context=512, mode=oracle_experts
+done oracle_experts-pair-2-oracle_experts: 31.950 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+request serial-stage-512: context=512, mode=serial
+done serial-stage-512: 19.111 tok/s; issues=['native thermal state is not nominal', 'swapins increased during request']
+operator block 1/20 retained
+operator block 2/20 retained
+operator block 3/20 retained
+operator block 4/20 retained
+operator block 5/20 retained
+operator block 6/20 retained
+operator block 7/20 retained
+operator block 8/20 retained
+operator block 9/20 retained
+operator block 10/20 retained
+operator block 11/20 retained
+operator block 12/20 retained
+operator block 13/20 retained
+operator block 14/20 retained
+operator block 15/20 retained
+operator block 16/20 retained
+operator block 17/20 retained
+operator block 18/20 retained
+operator block 19/20 retained
+operator block 20/20 retained

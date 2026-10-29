@@ -1,0 +1,25 @@
+{
+  "command": {
+    "frozen_info": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/vocabulary-frozen.json",
+    "mode": "confirm"
+  },
+  "command_path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/commands/005.json",
+  "command_sha256": "c63740be3bb8206cc3101161293fdce546926cce82870f677ecf4f1b750fc53d",
+  "disposition": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/confirmation-disposition-005.json",
+  "queued_at_unix": 1793211837.729179,
+  "resident_pid": 48619,
+  "resident_status_before_queue": "waiting_command",
+  "selection": {
+    "C1_screen_bootstrap_interval": [
+      1.0738405431896847,
+      1.1080304491287924
+    ],
+    "C1_screen_median_ratio": 1.0839572187665303,
+    "C1_swap_affected_rows": 3,
+    "frozen_info": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/vocabulary-frozen.json",
+    "primary_decision": "After substantive C3 long-context numerical failure, park C3 combined and C2 MoE fusion; test the already-screened vocabulary-only C1 in a fresh strict confirmation. This is a different candidate, not a C3 reroll.",
+    "selected_at_unix": 1793211837.7287512,
+    "selected_candidate_id": "cand_5785998944e5",
+    "strict_confirmation_required": true
+  }
+}

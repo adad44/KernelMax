@@ -1,0 +1,11 @@
+{
+  "candidate_id": "cand_75ca936df290",
+  "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/frozen/cand_75ca936df290",
+  "file_sha256": {
+    "README.md": "a731bf5e962085d2d9c19de54117bae430fa4383ca8261e33bbc41c37201b993",
+    "implementation.py": "78706aa587a67abf013e3af40ba89edbc12cd12e651d136d130782ff5af87f16",
+    "manifest.json": "f4fab83426479768b0a9a2aeb04788d2df47c4463c2025d77635695f4cdd812c",
+    "wrapper.py": "54294928250baa52b484ef7677f5a28ab3e7bf66fef38be710f92030dd39aea4"
+  },
+  "sha256": "afb45fa871e35ba35161c09d6797d8e44731430e77c62cf0a99ec990bd090c22"
+}

@@ -1,0 +1,476 @@
+{
+  "current_trial": {
+    "candidate_id": "cand_b50ecab31887",
+    "config": [
+      4,
+      "lut"
+    ],
+    "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-020/trial-004-cand_b50ecab31887"
+  },
+  "deadline_unix": 1793131200.0,
+  "ended_unix": 1793101858.3079512,
+  "pid": 86254,
+  "predeclared_pool": [
+    [
+      4,
+      "half"
+    ],
+    [
+      1,
+      "half"
+    ],
+    [
+      8,
+      "half"
+    ],
+    [
+      4,
+      "lut"
+    ],
+    [
+      1,
+      "lut"
+    ],
+    [
+      8,
+      "lut"
+    ]
+  ],
+  "shortlist": [
+    {
+      "all_actual_counts_verified": true,
+      "candidate_id": "cand_b50ecab31887",
+      "config": [
+        4,
+        "lut"
+      ],
+      "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-020/trial-004-cand_b50ecab31887",
+      "full_model_speedup_established": false,
+      "guards_passed": true,
+      "process": {
+        "candidate_id": "cand_b50ecab31887",
+        "deadline_unix": 1793102679.6440089,
+        "ended_unix": 1793101858.264008,
+        "returncode": 0,
+        "started_unix": 1793100879.64401,
+        "status": "completed",
+        "supervisor_pid": 86254
+      },
+      "raw_sha256": "e6c5821fc93ef7fd1a5312eff53314a6f50949c633261d32a008ee9a4c20122e",
+      "shortlisted": true,
+      "status": "completed_diagnostic",
+      "summaries": {
+        "0": {
+          "ab_order_median_ratio": 1.0063825492623188,
+          "ba_order_median_ratio": 1.003432277713737,
+          "descriptive_bootstrap_95pct": [
+            1.0036549464676865,
+            1.0071342568979693
+          ],
+          "environment_valid": true,
+          "median_baseline_ms_per_call": 0.801417439453125,
+          "median_candidate_ms_per_call": 0.797531005859375,
+          "median_ratio": 1.0055428277701028,
+          "paired_ratios": [
+            1.0068998499827813,
+            1.002701877725695,
+            1.0041867882431923,
+            1.0031587322408788,
+            1.0092618763230425,
+            1.0037058231865952,
+            1.0073686638131574,
+            1.0050696139072341,
+            1.0060399625944025,
+            1.002862591322047,
+            1.0067251359302352,
+            1.007814448657448,
+            1.005151977657357,
+            1.009503130928245,
+            1.0036040697487776,
+            1.000065347581384,
+            1.0126349920351714,
+            1.0175976104340727,
+            1.0059336778828485,
+            0.9955950073205918
+          ]
+        },
+        "12": {
+          "ab_order_median_ratio": 1.0060604309834105,
+          "ba_order_median_ratio": 1.0050435287930966,
+          "descriptive_bootstrap_95pct": [
+            1.003714530229686,
+            1.0068384937718466
+          ],
+          "environment_valid": true,
+          "median_baseline_ms_per_call": 0.802429240234375,
+          "median_candidate_ms_per_call": 0.7977132163085938,
+          "median_ratio": 1.005414860327642,
+          "paired_ratios": [
+            1.0043062892923957,
+            1.000258915088824,
+            1.0023212172462697,
+            1.0021764454872932,
+            1.0192661245983383,
+            1.012298659515291,
+            1.0069429309034783,
+            0.9997410131199969,
+            1.0048963666313289,
+            1.004644142257515,
+            1.0097503461143258,
+            1.0065529888185833,
+            1.0067340566402148,
+            1.005442915328678,
+            1.0053868053266064,
+            1.01053278267888,
+            1.011366919052246,
+            1.0031227711669763,
+            1.0002271161999383,
+            1.0062705794586198
+          ]
+        },
+        "23": {
+          "ab_order_median_ratio": 1.0067566659552367,
+          "ba_order_median_ratio": 1.005307552735101,
+          "descriptive_bootstrap_95pct": [
+            1.0008241080764004,
+            1.0074195447356096
+          ],
+          "environment_valid": true,
+          "median_baseline_ms_per_call": 0.8012901821289062,
+          "median_candidate_ms_per_call": 0.7981275639648437,
+          "median_ratio": 1.0064391145075828,
+          "paired_ratios": [
+            1.0013646364406092,
+            0.9991782940863937,
+            1.0095773415736091,
+            1.0065459707386615,
+            1.0063322582765042,
+            1.0066043954355526,
+            1.010756741436527,
+            1.0144429286897803,
+            1.00765801583725,
+            0.9982588937927653,
+            1.0071810736339692,
+            1.0070100853240964,
+            1.0018907969036213,
+            1.0040691347315402,
+            1.0002835797121916,
+            1.008198332182335,
+            1.0000927147401077,
+            0.998934516333537,
+            1.007818586862253,
+            1.000084024638155
+          ]
+        }
+      }
+    }
+  ],
+  "started_unix": 1793099884.430812,
+  "status": "shortlist_needs_independent_full_model_confirmation",
+  "trials": [
+    {
+      "all_actual_counts_verified": true,
+      "candidate_id": "cand_62a307e4eac7",
+      "config": [
+        4,
+        "half"
+      ],
+      "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-020/trial-001-cand_62a307e4eac7",
+      "full_model_speedup_established": false,
+      "guards_passed": true,
+      "process": {
+        "candidate_id": "cand_62a307e4eac7",
+        "deadline_unix": 1793101684.4438,
+        "ended_unix": 1793100215.547014,
+        "returncode": 0,
+        "started_unix": 1793099884.443802,
+        "status": "completed",
+        "supervisor_pid": 86254
+      },
+      "raw_sha256": "645c139c38362e1b610a7dd21a0751c13ac4de32631cb919b4db4ef4b0e48b36",
+      "shortlisted": false,
+      "status": "stopped_operator_futility",
+      "summaries": {
+        "0": {
+          "ab_order_median_ratio": 1.001277402773796,
+          "ba_order_median_ratio": 1.0012926045456045,
+          "descriptive_bootstrap_95pct": [
+            0.9996389850407188,
+            1.002348127101775
+          ],
+          "environment_valid": true,
+          "median_baseline_ms_per_call": 0.7998423676757812,
+          "median_candidate_ms_per_call": 0.7986958413085937,
+          "median_ratio": 1.001277402773796,
+          "paired_ratios": [
+            0.9994123472050994,
+            1.0004496466562274,
+            0.9998656228763381,
+            0.9972750180880599,
+            1.0025141824644053,
+            1.005223801140213,
+            1.0032452346157061,
+            1.0290076590249106,
+            1.001120569555826,
+            0.9960091658486192,
+            1.0013369179822431,
+            1.0027599935659075,
+            0.9993316603668796,
+            0.9960031783387242,
+            1.004898282557837,
+            1.0021820717391443,
+            1.0017376881965212,
+            1.002135562434982,
+            1.0012178875653492,
+            0.9985109907142744
+          ]
+        }
+      }
+    },
+    {
+      "all_actual_counts_verified": true,
+      "candidate_id": "cand_44a3e41eb5ae",
+      "config": [
+        1,
+        "half"
+      ],
+      "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-020/trial-002-cand_44a3e41eb5ae",
+      "full_model_speedup_established": false,
+      "guards_passed": true,
+      "process": {
+        "candidate_id": "cand_44a3e41eb5ae",
+        "deadline_unix": 1793102015.5593832,
+        "ended_unix": 1793100547.442662,
+        "returncode": 0,
+        "started_unix": 1793100215.559384,
+        "status": "completed",
+        "supervisor_pid": 86254
+      },
+      "raw_sha256": "08cd8b3e036606e1a355026e0c9335a67cd7e1089e85f3def9c049d02041eef1",
+      "shortlisted": false,
+      "status": "stopped_operator_futility",
+      "summaries": {
+        "0": {
+          "ab_order_median_ratio": 1.0016437149325044,
+          "ba_order_median_ratio": 1.002028539306726,
+          "descriptive_bootstrap_95pct": [
+            1.0002072771201718,
+            1.0050628055240578
+          ],
+          "environment_valid": true,
+          "median_baseline_ms_per_call": 0.8006940502929687,
+          "median_candidate_ms_per_call": 0.7990537709960938,
+          "median_ratio": 1.0016884229696776,
+          "paired_ratios": [
+            1.0054872778187178,
+            1.0005043416082626,
+            0.9963901900924139,
+            1.0016319755648075,
+            0.9978243614281326,
+            1.005292668867707,
+            1.0043990979675848,
+            1.0048329421804083,
+            1.0064584642949754,
+            0.9929235319581766,
+            1.0066735749285969,
+            0.9988812017112454,
+            1.0011250945401144,
+            1.0078100695893182,
+            0.9999102126320809,
+            1.0089705052183926,
+            1.001744870374548,
+            1.0024251030486448,
+            1.001542559490461,
+            0.9934093645118605
+          ]
+        }
+      }
+    },
+    {
+      "all_actual_counts_verified": true,
+      "candidate_id": "cand_291130cc756a",
+      "config": [
+        8,
+        "half"
+      ],
+      "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-020/trial-003-cand_291130cc756a",
+      "full_model_speedup_established": false,
+      "guards_passed": true,
+      "process": {
+        "candidate_id": "cand_291130cc756a",
+        "deadline_unix": 1793102347.453126,
+        "ended_unix": 1793100879.632229,
+        "returncode": 0,
+        "started_unix": 1793100547.453127,
+        "status": "completed",
+        "supervisor_pid": 86254
+      },
+      "raw_sha256": "12f5aa8509300b178bc85e662e3651904dfbb1451187923dc734646041c10340",
+      "shortlisted": false,
+      "status": "stopped_operator_futility",
+      "summaries": {
+        "0": {
+          "ab_order_median_ratio": 1.0013829866734398,
+          "ba_order_median_ratio": 1.001197737274926,
+          "descriptive_bootstrap_95pct": [
+            0.9963482797832282,
+            1.0033779555800046
+          ],
+          "environment_valid": true,
+          "median_baseline_ms_per_call": 0.8005855297851563,
+          "median_candidate_ms_per_call": 0.8005897622070313,
+          "median_ratio": 1.0013829866734398,
+          "paired_ratios": [
+            0.9956549150937746,
+            1.003661720818521,
+            1.0080321539917159,
+            0.9976815509431831,
+            1.00114127276507,
+            0.9938412938801775,
+            1.0016247005818097,
+            1.0061872472888471,
+            0.9945834216094633,
+            1.0030941903414883,
+            0.9970416444726816,
+            1.0030218376435078,
+            1.002520515881939,
+            0.9941278152240112,
+            1.004551672226707,
+            0.9951130792882861,
+            0.9893329915463477,
+            1.0047601322850686,
+            1.0036814692395526,
+            0.9993736369063441
+          ]
+        }
+      }
+    },
+    {
+      "all_actual_counts_verified": true,
+      "candidate_id": "cand_b50ecab31887",
+      "config": [
+        4,
+        "lut"
+      ],
+      "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-020/trial-004-cand_b50ecab31887",
+      "full_model_speedup_established": false,
+      "guards_passed": true,
+      "process": {
+        "candidate_id": "cand_b50ecab31887",
+        "deadline_unix": 1793102679.6440089,
+        "ended_unix": 1793101858.264008,
+        "returncode": 0,
+        "started_unix": 1793100879.64401,
+        "status": "completed",
+        "supervisor_pid": 86254
+      },
+      "raw_sha256": "e6c5821fc93ef7fd1a5312eff53314a6f50949c633261d32a008ee9a4c20122e",
+      "shortlisted": true,
+      "status": "completed_diagnostic",
+      "summaries": {
+        "0": {
+          "ab_order_median_ratio": 1.0063825492623188,
+          "ba_order_median_ratio": 1.003432277713737,
+          "descriptive_bootstrap_95pct": [
+            1.0036549464676865,
+            1.0071342568979693
+          ],
+          "environment_valid": true,
+          "median_baseline_ms_per_call": 0.801417439453125,
+          "median_candidate_ms_per_call": 0.797531005859375,
+          "median_ratio": 1.0055428277701028,
+          "paired_ratios": [
+            1.0068998499827813,
+            1.002701877725695,
+            1.0041867882431923,
+            1.0031587322408788,
+            1.0092618763230425,
+            1.0037058231865952,
+            1.0073686638131574,
+            1.0050696139072341,
+            1.0060399625944025,
+            1.002862591322047,
+            1.0067251359302352,
+            1.007814448657448,
+            1.005151977657357,
+            1.009503130928245,
+            1.0036040697487776,
+            1.000065347581384,
+            1.0126349920351714,
+            1.0175976104340727,
+            1.0059336778828485,
+            0.9955950073205918
+          ]
+        },
+        "12": {
+          "ab_order_median_ratio": 1.0060604309834105,
+          "ba_order_median_ratio": 1.0050435287930966,
+          "descriptive_bootstrap_95pct": [
+            1.003714530229686,
+            1.0068384937718466
+          ],
+          "environment_valid": true,
+          "median_baseline_ms_per_call": 0.802429240234375,
+          "median_candidate_ms_per_call": 0.7977132163085938,
+          "median_ratio": 1.005414860327642,
+          "paired_ratios": [
+            1.0043062892923957,
+            1.000258915088824,
+            1.0023212172462697,
+            1.0021764454872932,
+            1.0192661245983383,
+            1.012298659515291,
+            1.0069429309034783,
+            0.9997410131199969,
+            1.0048963666313289,
+            1.004644142257515,
+            1.0097503461143258,
+            1.0065529888185833,
+            1.0067340566402148,
+            1.005442915328678,
+            1.0053868053266064,
+            1.01053278267888,
+            1.011366919052246,
+            1.0031227711669763,
+            1.0002271161999383,
+            1.0062705794586198
+          ]
+        },
+        "23": {
+          "ab_order_median_ratio": 1.0067566659552367,
+          "ba_order_median_ratio": 1.005307552735101,
+          "descriptive_bootstrap_95pct": [
+            1.0008241080764004,
+            1.0074195447356096
+          ],
+          "environment_valid": true,
+          "median_baseline_ms_per_call": 0.8012901821289062,
+          "median_candidate_ms_per_call": 0.7981275639648437,
+          "median_ratio": 1.0064391145075828,
+          "paired_ratios": [
+            1.0013646364406092,
+            0.9991782940863937,
+            1.0095773415736091,
+            1.0065459707386615,
+            1.0063322582765042,
+            1.0066043954355526,
+            1.010756741436527,
+            1.0144429286897803,
+            1.00765801583725,
+            0.9982588937927653,
+            1.0071810736339692,
+            1.0070100853240964,
+            1.0018907969036213,
+            1.0040691347315402,
+            1.0002835797121916,
+            1.008198332182335,
+            1.0000927147401077,
+            0.998934516333537,
+            1.007818586862253,
+            1.000084024638155
+          ]
+        }
+      }
+    }
+  ]
+}

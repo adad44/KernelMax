@@ -1,0 +1,46 @@
+{
+  "all_actual_counts_verified": true,
+  "candidate_id": "cand_d5987f75f173",
+  "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-019",
+  "full_model_speedup_established": false,
+  "guards_passed": true,
+  "raw_sha256": "3ea115ca26f7ff8dc2f801ca2d50735bd8fff9a8ce77e4f785c5f3fe90d93335",
+  "shortlisted": false,
+  "status": "stopped_operator_futility",
+  "summaries": {
+    "0": {
+      "ab_order_median_ratio": 1.0016001803611625,
+      "ba_order_median_ratio": 1.0020882347029567,
+      "descriptive_bootstrap_95pct": [
+        1.0001365977553207,
+        1.0029390021027402
+      ],
+      "environment_valid": true,
+      "median_baseline_ms_per_call": 0.7980806684570312,
+      "median_candidate_ms_per_call": 0.7972736401367188,
+      "median_ratio": 1.0020882347029567,
+      "paired_ratios": [
+        1.0028976587391594,
+        1.001721519707244,
+        1.0024784433517575,
+        1.0084602539686238,
+        0.9984019264399273,
+        1.0052446745634995,
+        1.0025738573009224,
+        1.0063199667186782,
+        1.0002116515121406,
+        0.9995068597683668,
+        0.9991752714552309,
+        0.9988492674491529,
+        1.0055624572904387,
+        1.0024549496986692,
+        1.0000615439985006,
+        1.000462645466139,
+        1.0007219173705675,
+        1.0029803454663209,
+        1.003505129417756,
+        0.997895653654278
+      ]
+    }
+  }
+}

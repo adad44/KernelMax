@@ -1,0 +1,834 @@
+{
+  "acceptance_enabled": false,
+  "contract_sha256": "5fc5d80bf357fd02a8977b10da7896692c79aa9c30019ab85ba6296c9bd56af4",
+  "environment_flags": [
+    {
+      "mode": "control",
+      "pair": 1,
+      "reported_flags": []
+    },
+    {
+      "mode": "timeline",
+      "pair": 1,
+      "reported_flags": []
+    },
+    {
+      "mode": "timeline",
+      "pair": 2,
+      "reported_flags": []
+    },
+    {
+      "mode": "control",
+      "pair": 2,
+      "reported_flags": []
+    },
+    {
+      "mode": "control",
+      "pair": 3,
+      "reported_flags": []
+    },
+    {
+      "mode": "timeline",
+      "pair": 3,
+      "reported_flags": []
+    }
+  ],
+  "errors": [],
+  "generated_at_terminal_unix": 1793153453.654454,
+  "generated_at_unix": 1793153431.678329,
+  "job_label": "gui/501/com.kernelmax.decodetimeline.light.20261027",
+  "live_status_at_capture": {
+    "launchctl_exit_code": 0,
+    "launchd_reports_running": true,
+    "process_line": "77840     1 Tue Oct 27 18:56:39 2026     S    /Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/timeline-light/run.py",
+    "selection_wait_started_unix": 1793153176.953559
+  },
+  "notes": [
+    "Exploration telemetry only; no acceptance or speedup claim.",
+    "Command-buffer intervals include stalls and are not kernel-active time.",
+    "Runner had completed all six probe requests and was waiting for candidate selection at capture."
+  ],
+  "official": false,
+  "pairs": [
+    {
+      "control": {
+        "invalid_reasons": [],
+        "metrics": {
+          "decode_tokens_per_second": 20.095971184046938,
+          "full_model_wall_time_ms": 7991.212582914159,
+          "inter_token_latency_ms": 49.62787497788668,
+          "peak_memory_bytes": 14200894157,
+          "prefill_tokens_per_second": 306.35369799169666,
+          "time_to_first_token_ms": 1671.5379159431905
+        },
+        "swap_activity": {
+          "policy": "paging-aware",
+          "swap_growth_mib": -8.0,
+          "swapin_pages": 328,
+          "swapins_permitted": true,
+          "swapout_pages": 0
+        }
+      },
+      "environment": {
+        "control": {
+          "after_observed_at_unix": 1793153001.597051,
+          "before_observed_at_unix": 1793152993.541124,
+          "invalid_reasons": [],
+          "power_after": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; finishing charge; 0:00 remaining present: true",
+          "power_before": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; finishing charge; 0:00 remaining present: true",
+          "quiet_preflight": {
+            "observations": [
+              {
+                "elapsed_seconds": 2.183967625023797,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 24,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9620.06,
+                "swapins": 3617337,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 4.269957792013884,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 16,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9620.06,
+                "swapins": 3617353,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 6.360709083965048,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 8,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9620.06,
+                "swapins": 3617361,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 8.443479417124763,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 24,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9620.06,
+                "swapins": 3617385,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 10.52943045902066,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 28,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9620.06,
+                "swapins": 3617413,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              }
+            ],
+            "quiet_seconds_required": 10,
+            "swap_policy": "paging-aware",
+            "waited_seconds": 10.52943045902066
+          },
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -8.0,
+            "swapin_pages": 328,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_state_after": 0,
+          "thermal_state_before": 0
+        },
+        "timeline": {
+          "after_observed_at_unix": 1793153036.608725,
+          "before_observed_at_unix": 1793153029.271978,
+          "invalid_reasons": [],
+          "power_after": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; finishing charge; 0:00 remaining present: true",
+          "power_before": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; finishing charge; 0:00 remaining present: true",
+          "quiet_preflight": {
+            "observations": [
+              {
+                "elapsed_seconds": 2.1974273750092834,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 16,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9572.06,
+                "swapins": 3620098,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 4.296422166982666,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 124,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9572.06,
+                "swapins": 3620222,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 6.3915854170918465,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 4,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9572.06,
+                "swapins": 3620226,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 8.485907291993499,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": -48.0,
+                  "swapin_pages": 2918,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9524.06,
+                "swapins": 3623144,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 10.580126542132348,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 16,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9524.06,
+                "swapins": 3623160,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              }
+            ],
+            "quiet_seconds_required": 10,
+            "swap_policy": "paging-aware",
+            "waited_seconds": 10.580126542132348
+          },
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": 0.0,
+            "swapin_pages": 72,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_state_after": 0,
+          "thermal_state_before": 0
+        }
+      },
+      "observer": {
+        "invalid_reasons": [],
+        "raw_timeline_summary": {
+          "command_buffers": 545,
+          "complete127interval_ms_per_token": 44.6775423227186,
+          "mean_sampled_gpu_command_interval_ms_per_token": 43.64405167871155,
+          "mean_sampled_outside_gpu_command_intervals_ms_per_token": 1.1818025377579033,
+          "mean_sampled_wall_ms_per_token": 44.82585421646945,
+          "sampled_decode_wall_ms": 358.6068337317556,
+          "sampled_gpu_command_interval_union_ms": 349.1524134296924,
+          "sampled_steps": [
+            1,
+            19,
+            37,
+            55,
+            73,
+            91,
+            109,
+            127
+          ],
+          "sampled_wall_outside_gpu_command_intervals_ms": 9.454420302063227,
+          "warning": "Eight fixed complete decode steps are sampled across the full128token request. Buffer intervals include stalls, not kernel-active time. Outside time is not automatically recoverable. Metadata observation between sampled steps is excluded from their step timers but included in complete-request cadence."
+        },
+        "swap_activity": {
+          "policy": "paging-aware",
+          "swap_growth_mib": 0.0,
+          "swapin_pages": 72,
+          "swapins_permitted": true,
+          "swapout_pages": 0
+        }
+      },
+      "pair": 1,
+      "paired_observer_minus_control": {
+        "timeline_complete127interval_minus_control_inter_token_latency_ms": -4.950332655168076
+      }
+    },
+    {
+      "control": {
+        "invalid_reasons": [],
+        "metrics": {
+          "decode_tokens_per_second": 21.96464844736241,
+          "full_model_wall_time_ms": 7559.878000058234,
+          "inter_token_latency_ms": 45.26729206554592,
+          "peak_memory_bytes": 14200894157,
+          "prefill_tokens_per_second": 288.02989661601424,
+          "time_to_first_token_ms": 1777.8596670832485
+        },
+        "swap_activity": {
+          "policy": "paging-aware",
+          "swap_growth_mib": -8.0,
+          "swapin_pages": 340,
+          "swapins_permitted": true,
+          "swapout_pages": 0
+        }
+      },
+      "environment": {
+        "control": {
+          "after_observed_at_unix": 1793153106.985392,
+          "before_observed_at_unix": 1793153099.367096,
+          "invalid_reasons": [],
+          "power_after": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; finishing charge; 0:00 remaining present: true",
+          "power_before": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; finishing charge; 0:00 remaining present: true",
+          "quiet_preflight": {
+            "observations": [
+              {
+                "elapsed_seconds": 2.1835657078772783,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 8,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9396.06,
+                "swapins": 3631629,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 4.277005707845092,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 12,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9396.06,
+                "swapins": 3631641,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 6.364324708003551,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 36,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9396.06,
+                "swapins": 3631677,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 8.446109290933236,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 8,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9396.06,
+                "swapins": 3631685,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 10.535816290881485,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 72,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9396.06,
+                "swapins": 3631757,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              }
+            ],
+            "quiet_seconds_required": 10,
+            "swap_policy": "paging-aware",
+            "waited_seconds": 10.535816290881485
+          },
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -8.0,
+            "swapin_pages": 340,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_state_after": 0,
+          "thermal_state_before": 0
+        },
+        "timeline": {
+          "after_observed_at_unix": 1793153071.751848,
+          "before_observed_at_unix": 1793153064.311347,
+          "invalid_reasons": [],
+          "power_after": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; finishing charge; 0:00 remaining present: true",
+          "power_before": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; finishing charge; 0:00 remaining present: true",
+          "quiet_preflight": {
+            "observations": [
+              {
+                "elapsed_seconds": 2.255839791847393,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": -16.0,
+                  "swapin_pages": 767,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9508.06,
+                "swapins": 3624248,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 4.34682183386758,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 16,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9508.06,
+                "swapins": 3624264,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 6.447568167001009,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 16,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9508.06,
+                "swapins": 3624280,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 8.546075999969617,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 44,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9508.06,
+                "swapins": 3624324,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 10.636552999960259,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 4,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9508.06,
+                "swapins": 3624328,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              }
+            ],
+            "quiet_seconds_required": 10,
+            "swap_policy": "paging-aware",
+            "waited_seconds": 10.636552999960259
+          },
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": -112.0,
+            "swapin_pages": 6970,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_state_after": 0,
+          "thermal_state_before": 0
+        }
+      },
+      "observer": {
+        "invalid_reasons": [],
+        "raw_timeline_summary": {
+          "command_buffers": 539,
+          "complete127interval_ms_per_token": 45.25094815735214,
+          "mean_sampled_gpu_command_interval_ms_per_token": 44.7876509570051,
+          "mean_sampled_outside_gpu_command_intervals_ms_per_token": 1.2540106545202434,
+          "mean_sampled_wall_ms_per_token": 46.04166161152534,
+          "sampled_decode_wall_ms": 368.33329289220273,
+          "sampled_gpu_command_interval_union_ms": 358.3012076560408,
+          "sampled_steps": [
+            1,
+            19,
+            37,
+            55,
+            73,
+            91,
+            109,
+            127
+          ],
+          "sampled_wall_outside_gpu_command_intervals_ms": 10.032085236161947,
+          "warning": "Eight fixed complete decode steps are sampled across the full128token request. Buffer intervals include stalls, not kernel-active time. Outside time is not automatically recoverable. Metadata observation between sampled steps is excluded from their step timers but included in complete-request cadence."
+        },
+        "swap_activity": {
+          "policy": "paging-aware",
+          "swap_growth_mib": -112.0,
+          "swapin_pages": 6970,
+          "swapins_permitted": true,
+          "swapout_pages": 0
+        }
+      },
+      "pair": 2,
+      "paired_observer_minus_control": {
+        "timeline_complete127interval_minus_control_inter_token_latency_ms": -0.01634390819377529
+      }
+    },
+    {
+      "control": {
+        "invalid_reasons": [],
+        "metrics": {
+          "decode_tokens_per_second": 22.32040825752867,
+          "full_model_wall_time_ms": 7321.667583892122,
+          "inter_token_latency_ms": 43.985124910250306,
+          "peak_memory_bytes": 14200894157,
+          "prefill_tokens_per_second": 313.8105445966703,
+          "time_to_first_token_ms": 1631.8075000308454
+        },
+        "swap_activity": {
+          "policy": "paging-aware",
+          "swap_growth_mib": 0.0,
+          "swapin_pages": 103,
+          "swapins_permitted": true,
+          "swapout_pages": 0
+        }
+      },
+      "environment": {
+        "control": {
+          "after_observed_at_unix": 1793153142.0040672,
+          "before_observed_at_unix": 1793153134.617471,
+          "invalid_reasons": [],
+          "power_after": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; finishing charge; (no estimate) present: true",
+          "power_before": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; finishing charge; (no estimate) present: true",
+          "quiet_preflight": {
+            "observations": [
+              {
+                "elapsed_seconds": 2.1929324578959495,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 4,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9364.06,
+                "swapins": 3633192,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 4.274478832958266,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 0,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9364.06,
+                "swapins": 3633192,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 6.361377457855269,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 104,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9364.06,
+                "swapins": 3633296,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 8.458364750025794,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 4,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9364.06,
+                "swapins": 3633300,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 10.557325833011419,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 8,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9364.06,
+                "swapins": 3633308,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              }
+            ],
+            "quiet_seconds_required": 10,
+            "swap_policy": "paging-aware",
+            "waited_seconds": 10.557325833011419
+          },
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": 0.0,
+            "swapin_pages": 103,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_state_after": 0,
+          "thermal_state_before": 0
+        },
+        "timeline": {
+          "after_observed_at_unix": 1793153176.904756,
+          "before_observed_at_unix": 1793153169.6526809,
+          "invalid_reasons": [],
+          "power_after": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; finishing charge; 0:00 remaining present: true",
+          "power_before": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; finishing charge; (no estimate) present: true",
+          "quiet_preflight": {
+            "observations": [
+              {
+                "elapsed_seconds": 2.1880602908786386,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 16,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9332.06,
+                "swapins": 3635435,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 4.287680458044633,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 4,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9332.06,
+                "swapins": 3635439,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 6.377708374988288,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 80,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9332.06,
+                "swapins": 3635519,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 8.471353374887258,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 168,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9332.06,
+                "swapins": 3635687,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              },
+              {
+                "elapsed_seconds": 10.563827290898189,
+                "issues": [],
+                "swap_activity": {
+                  "policy": "paging-aware",
+                  "swap_growth_mib": 0.0,
+                  "swapin_pages": 12,
+                  "swapins_permitted": true,
+                  "swapout_pages": 0
+                },
+                "swap_used_mib": 9332.06,
+                "swapins": 3635699,
+                "swapouts": 5860010,
+                "thermal_state": 0
+              }
+            ],
+            "quiet_seconds_required": 10,
+            "swap_policy": "paging-aware",
+            "waited_seconds": 10.563827290898189
+          },
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": 0.0,
+            "swapin_pages": 84,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "thermal_state_after": 0,
+          "thermal_state_before": 0
+        }
+      },
+      "observer": {
+        "invalid_reasons": [],
+        "raw_timeline_summary": {
+          "command_buffers": 555,
+          "complete127interval_ms_per_token": 43.98807151954416,
+          "mean_sampled_gpu_command_interval_ms_per_token": 42.284052120521665,
+          "mean_sampled_outside_gpu_command_intervals_ms_per_token": 1.1465777643024921,
+          "mean_sampled_wall_ms_per_token": 43.43062988482416,
+          "sampled_decode_wall_ms": 347.44503907859325,
+          "sampled_gpu_command_interval_union_ms": 338.2724169641733,
+          "sampled_steps": [
+            1,
+            19,
+            37,
+            55,
+            73,
+            91,
+            109,
+            127
+          ],
+          "sampled_wall_outside_gpu_command_intervals_ms": 9.172622114419937,
+          "warning": "Eight fixed complete decode steps are sampled across the full128token request. Buffer intervals include stalls, not kernel-active time. Outside time is not automatically recoverable. Metadata observation between sampled steps is excluded from their step timers but included in complete-request cadence."
+        },
+        "swap_activity": {
+          "policy": "paging-aware",
+          "swap_growth_mib": 0.0,
+          "swapin_pages": 84,
+          "swapins_permitted": true,
+          "swapout_pages": 0
+        }
+      },
+      "pair": 3,
+      "paired_observer_minus_control": {
+        "timeline_complete127interval_minus_control_inter_token_latency_ms": 0.0029466092938505994
+      }
+    }
+  ],
+  "pid": 77840,
+  "protected_source_guards": {
+    "all_match": true,
+    "checked": 40,
+    "mismatches": []
+  },
+  "run_status_at_capture": "waiting_candidate_selection",
+  "schema": 1,
+  "source_state_path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/timeline-light/state.json",
+  "source_stderr_path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/timeline-light/stderr.log",
+  "source_stdout_path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/timeline-light/stdout.log",
+  "terminal_status": {
+    "errors": [
+      "Traceback (most recent call last):\n  File \"/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/timeline-light/run.py\", line 124, in main\n    time.sleep(2)\nKeyboardInterrupt\n"
+    ],
+    "intentional_sigint_after_all_six_probes": true,
+    "launchd_reports_running": false,
+    "pid_live": false,
+    "run_state_after_sigint": "failed",
+    "stderr_tail": "Traceback (most recent call last):\n  File \"/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/timeline-light/run.py\", line 144, in <module>\n    if __name__=='__main__':main()\n                            ^^^^^^\n  File \"/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/timeline-light/run.py\", line 124, in main\n    time.sleep(2)\nKeyboardInterrupt\n"
+  }
+}

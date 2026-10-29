@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>KeepAlive</key>
+	<false/>
+	<key>Label</key>
+	<string>com.kernelmax.sprint.vocab.caffeinate.20261028</string>
+	<key>ProcessType</key>
+	<string>Interactive</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/usr/bin/caffeinate</string>
+		<string>-i</string>
+		<string>-s</string>
+		<string>-w</string>
+		<string>48619</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardErrorPath</key>
+	<string>/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/logs/caffeinate.stderr.log</string>
+	<key>StandardOutPath</key>
+	<string>/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/logs/caffeinate.stdout.log</string>
+</dict>
+</plist>

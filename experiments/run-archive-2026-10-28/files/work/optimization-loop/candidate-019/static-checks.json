@@ -1,0 +1,6 @@
+{
+  "all16_fp4_values_exact": true,
+  "exact_real_boundary_gate_required_before_timing": true,
+  "native_order_metal_body_unchanged_from_prior32lane_fused_kernel": true,
+  "python_syntax_and_manifest_valid": true
+}

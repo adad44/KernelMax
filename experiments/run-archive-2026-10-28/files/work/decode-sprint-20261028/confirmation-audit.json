@@ -1,0 +1,113 @@
+{
+  "aa_calibrations": {},
+  "acceptance_enabled": false,
+  "attempted_contexts": [
+    512,
+    2048
+  ],
+  "candidate_bundle_sha256": "fe5ae0dd947e383f92c4ea10abd884838551ba74f6da205381e707935d3caaf5",
+  "confirmation_candidate_id": "cand_3f4c02fcfc71",
+  "confirmation_claim_supported": false,
+  "confirmation_command_sha256": "e6ae71d0c012eef8ecc00e0ee145912af3081dfbd7af6a8cbc00dfe0ed780e9f",
+  "confirmation_status": "stopped_NumericalFailure",
+  "failure": {
+    "cache_metadata_equal": true,
+    "cache_within_tolerance": false,
+    "context": 2048,
+    "logit_tolerance_violations": "200071/25739264",
+    "max_abs_logit_error": 0.75,
+    "maximum_cache_abs_error": 1.25,
+    "reason": "Full-model numerical/shape/dtype/cache comparison failed",
+    "route_set_differences": 14,
+    "route_slot_differences": 14,
+    "token_differences": 0,
+    "type": "NumericalFailure"
+  },
+  "five_percent_improvement_verified": false,
+  "full_length_checks": [
+    {
+      "all_logits_bit_exact": true,
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-004-confirm-cand_3f4c02fcfc71/correctness-512-128.npz",
+      "arrays_sha256": "fe9ba7abc68d0e9419a01f51e92a3a34482b2420bc3f32f9709d1304f3ed0c4f",
+      "cache_metadata_equal": true,
+      "cache_within_tolerance": true,
+      "detail": "max_abs_error=0; violations=0/25739264; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "length": 512,
+      "numerical_passed": true,
+      "outputs": 128,
+      "passed": true,
+      "route_set_differences": 0,
+      "route_slot_differences": 0,
+      "token_differences": 0
+    },
+    {
+      "all_logits_bit_exact": false,
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-004-confirm-cand_3f4c02fcfc71/correctness-2048-128.npz",
+      "arrays_sha256": "218581d49fbed41014cc594127d1b65d8e3ac2c49716cc8d2d9b661595673921",
+      "cache_metadata_equal": true,
+      "cache_within_tolerance": false,
+      "detail": "max_abs_error=0.75; violations=200071/25739264; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "length": 2048,
+      "numerical_passed": false,
+      "outputs": 128,
+      "passed": false,
+      "route_set_differences": 14,
+      "route_slot_differences": 14,
+      "token_differences": 0
+    }
+  ],
+  "integrity_guards": {
+    "checkpoint_and_snapshot_unchanged": true,
+    "original_methods_restored": true,
+    "protected_unchanged": true
+  },
+  "objective": "repeatable >=5% full-model decode improvement; remains unproven",
+  "official": false,
+  "post_run_token_audit": {
+    "confirmation_timed_requests": 0,
+    "correctness_npz_reference_candidate_tokens_equal": [
+      true,
+      true
+    ],
+    "no_confirmation_request_token_ids_to_compare": true,
+    "npz_artifacts": [
+      {
+        "path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-004-confirm-cand_3f4c02fcfc71/correctness-512-128.npz",
+        "sha256": "fe9ba7abc68d0e9419a01f51e92a3a34482b2420bc3f32f9709d1304f3ed0c4f"
+      },
+      {
+        "path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-004-confirm-cand_3f4c02fcfc71/correctness-2048-128.npz",
+        "sha256": "218581d49fbed41014cc594127d1b65d8e3ac2c49716cc8d2d9b661595673921"
+      }
+    ]
+  },
+  "queued_confirmation_or_retry": false,
+  "recorded_at_unix": 1793211777.237804,
+  "selection_record": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/confirmation-selection.json",
+  "selection_rule": "C3 short numerical pass and exploratory screen median >=1.05",
+  "source_hashes": {
+    "all_equal": true,
+    "plan_after": "dbd808ffe1ec0f46521d5d635e1fc2fe4b01fd918dd1631916a474663b9b574d",
+    "plan_before": "dbd808ffe1ec0f46521d5d635e1fc2fe4b01fd918dd1631916a474663b9b574d",
+    "runner_after": "a9116f4a37d559037e58d5d519e8bdb16911a368f8ae22452fdc6b28b7200367",
+    "runner_before": "a9116f4a37d559037e58d5d519e8bdb16911a368f8ae22452fdc6b28b7200367",
+    "session_after": "e5d96b0a1b2fb86e7e77f5df567c2bc69f29af477935ceb799a4f9e4d4b7354d",
+    "session_before": "e5d96b0a1b2fb86e7e77f5df567c2bc69f29af477935ceb799a4f9e4d4b7354d"
+  },
+  "summaries": {},
+  "timed_request_count": 0,
+  "timed_requests": [],
+  "unattempted_contexts": [
+    4096
+  ],
+  "verdict": null,
+  "worker": {
+    "birth": "2026-10-28 10:57:36 local",
+    "caffeinate_pid": 48639,
+    "errors": [],
+    "launchd_label": "com.kernelmax.sprint.vocab.20261028",
+    "next_command": 5,
+    "pid": 48619,
+    "status": "waiting_command"
+  }
+}

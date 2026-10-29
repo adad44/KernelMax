@@ -1,0 +1,265 @@
+{
+  "acceptance_enabled": false,
+  "authorization_sha256": "1f430dd2b73a31b6623e142c67f24b724e7d39b56a17849a19ee7ccbc7e063f3",
+  "caffeinate_pid_placeholder": "PENDING_VERIFIED_WORKER_PID",
+  "candidate_cap": 3,
+  "candidate_file_sha256": {
+    "README.md": "f8834f80e33bb6b938cf530c932d150a8d5dfa3438fe8212ff24659d7b7172ac",
+    "codec.py": "bb8079062c5f9aee76b5e964ef4ebc30bf151fc6d92f0563d4cc5846f5811b5e",
+    "implementation.metal": "7e4b2fa51eea175b9ad376ce1b6ab9276bca7aac6201733945174b3ee275862e",
+    "implementation.py": "ae0542d8d64034d7c70608fe7262c190da39aaafd5fc51519f20b4793bc8d4b5",
+    "manifest.json": "e126825f12c303cde55bd9172478e29142ee2c2c66ee79294a9a9f630fc8c1df",
+    "reader.py": "6ebd5dade9c57558d24b7ccfac291d85d76c3810e3146f7058cd67b353b9b66d",
+    "wrapper.py": "aae74e2f43d62be8197af65ecd1cd5da208409b3cba1136cee062ab5ffeb1beb"
+  },
+  "candidate_id": "cand_680ac65cf145",
+  "candidate_ids_current_round": [
+    "cand_680ac65cf145"
+  ],
+  "candidate_sha256": "9994db5b687579196de78dbf625d9b23543064432bdc9e096a50d33d90600881",
+  "checkpoint_receipt": {
+    "byte_verification": "passed in existing receipt",
+    "model_file_count": 10,
+    "model_revision": "6cee5e81ee83917806bbde320786a8fb61efebee",
+    "validated_current_pinned_manifest_and_file_identities": true,
+    "verifier_sha256": "ea768edf0da79a9aa761fb31bb13b92496ecb9c291bcfe1c6cfd1ce48c35017f"
+  },
+  "command_001": {
+    "frozen_info": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/vocabulary-frozen.json",
+    "mode": "screen"
+  },
+  "contract_sha256": "2a31bbda3389e91f12e1e17b1cff261b96c5f12cd3ce9af5dc818fd21a50c895",
+  "controller_sources_match_session": true,
+  "failed_2048_npz_offline_analysis": {
+    "analysis_sha256": "45b7f352d09a0dda2a63301299a3e05d1382682e78c722cefe7ed956e1a70e66",
+    "first_nonexact_logit_step_1based": 107,
+    "first_pointwise_tolerance_violation_step_1based": 107,
+    "first_route_slot_difference": {
+      "layer": 18,
+      "step_0based": 108,
+      "step_1based": 109
+    },
+    "no_gpu_or_checkpoint_loaded": true,
+    "per_step_counts_saved": true,
+    "route_set_difference_layers_total": 5,
+    "route_slot_differences": 14,
+    "source_npz_hash_matches_old_audit": true,
+    "source_npz_sha256": "218581d49fbed41014cc594127d1b65d8e3ac2c49716cc8d2d9b661595673921",
+    "token_differences": 0,
+    "total_pointwise_tolerance_violations": 200071
+  },
+  "fixtures": {
+    "actual_matrix_unpack_bit_exact": true,
+    "all_eight_projection_rows_exact_and_within_tolerance": true,
+    "backing_store_identity_and_sha256_checks": {
+      "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/storage-fixtures.backing/native-head.safetensors": {
+        "exists": true,
+        "identity_matches": true,
+        "sha256_matches": true
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/storage-fixtures.backing/packed-head.safetensors": {
+        "exists": true,
+        "identity_matches": true,
+        "sha256_matches": true
+      }
+    },
+    "full_model_correctness": false,
+    "native_roundtrip_bit_exact": true,
+    "no_checkpoint_loaded": true,
+    "storage_fixture_passed": true,
+    "storage_fixture_sha256": "ae49919b4703f3cae0fffd9f9a0d47e08ad707e43a108e44d72a092c855826e8",
+    "vocabulary_fixture_sha256": "3d732203fcd8e274731e612938f728a34475d0adcfa6bc06f5f40c0ab604af20"
+  },
+  "launchd_labels": {
+    "caffeinate": "com.kernelmax.sprint.r2.vocab.caffeinate.20261028",
+    "worker": "com.kernelmax.sprint.r2.vocab.20261028"
+  },
+  "matching_active_processes": [],
+  "plan_sha256": "f707db60e3f0b6dcd2d85946c35d848479c6bf87fbf39777ef37a6fdcc8181a2",
+  "post_fixture_process_snapshot": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/fixture-validation/post-fixture-ps.txt",
+  "prepared_at_unix": 1793226828.795708,
+  "primary_final_go_pending": true,
+  "prior_root_cause_unproven": true,
+  "protected_sources": {
+    "all_match_session": true,
+    "count": 33,
+    "sha256": {
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/AGENTS.md": {
+        "matches_session": true,
+        "sha256": "7bca53cf4fc2ab3f9a637020487f75b4c4a104c5f940954fc71bf181615dce8f"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/baseline_control.py": {
+        "matches_session": true,
+        "sha256": "5e875661a98c49773e10d02584e4a4f1dd080334bfe2c2cee76eeae662a0ea73"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/baseline_report.py": {
+        "matches_session": true,
+        "sha256": "e1fabd273ef4691766ecbc5f28a3ddd5a98a99be80b077373a13764411e33d4c"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/baseline_validation.py": {
+        "matches_session": true,
+        "sha256": "c02579ec4aefa5f88fe3bf3ad36dcea212c014c3d2f44fa54394bfa89d1af0f8"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/benchmark.py": {
+        "matches_session": true,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_execution.py": {
+        "matches_session": true,
+        "sha256": "2021d9bbb7024960957b2e3b7618d8e2e3b3c9e7d689d8403a1fb0d7ea88bb96"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_protocol.py": {
+        "matches_session": true,
+        "sha256": "7d53c380991ded462cde7aa22c4fb17b29ed0a3b3d23bbfc812a7b24f5441d2e"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_worker.py": {
+        "matches_session": true,
+        "sha256": "79ff191bcacca2189e5b47b99398d06f1a353b63d64fa888c81306b76fdf1755"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/checkpoint_verification.py": {
+        "matches_session": true,
+        "sha256": "ea768edf0da79a9aa761fb31bb13b92496ecb9c291bcfe1c6cfd1ce48c35017f"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/correctness.py": {
+        "matches_session": true,
+        "sha256": "2950193dcac879ca3859050df377d24b03fc4b92361f977f40f841d21f159914"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/correctness_cases.py": {
+        "matches_session": true,
+        "sha256": "1f7fafcc624aec310c4958ff927d1486da43ebf74a74b4cefdb76fa59a666825"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/correctness_suite.py": {
+        "matches_session": true,
+        "sha256": "e859715a5f9911b03ffeff8fac3deaa294d7875453c03e2349ec4e67b154eb05"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/environment.py": {
+        "matches_session": true,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/measurement.py": {
+        "matches_session": true,
+        "sha256": "61ced09d3af5fb2b43bda3d7085826b2d34d16c1d1d189fecc9a847a2fd1bdcb"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/native_baseline.py": {
+        "matches_session": true,
+        "sha256": "af7a8f890fd0242692b831446c5fb8a1d1b70bbf5c15cc6519dafb7931869844"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/pass_through.py": {
+        "matches_session": true,
+        "sha256": "8e3e48ab7be379a48f7134c4a6e3454d6af525f33d9090d4b8794aa858ee252a"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/schemas.py": {
+        "matches_session": true,
+        "sha256": "e2a5455f8dc074b8e1c93d14e194c1b3afe06aca0b338ef31d3493f247ba9dfb"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/verdict.py": {
+        "matches_session": true,
+        "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/kernelmaxxing.yaml": {
+        "matches_session": true,
+        "sha256": "5aec8b31bb9fe54857fb4e35920265a8fd799f93d0c9f14a1a547f27e386e15b"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/candidate_manager.py": {
+        "matches_session": true,
+        "sha256": "ee52e306ae9d22f64ca9a2e10832826d5c30e0838120ee1a60709852f9760068"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/experiment_budget.py": {
+        "matches_session": true,
+        "sha256": "4dc0bf94b091b1d2cb3653487cc90f9a81396eae6f01bd427068067b4abe9a23"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/journal.py": {
+        "matches_session": true,
+        "sha256": "899f5077d5cdf1cb1b7c19248d289950df0843c8c31b0f8f8277ff0468b2563c"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/main.py": {
+        "matches_session": true,
+        "sha256": "ce9c64bbc5f207a3723820613bf0415ebb135b0454453f8a3917e62f88298b6a"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/run.py": {
+        "matches_session": true,
+        "sha256": "5073a41c4edab30aa62922c2f6eca70cf9fd8978773495b9f0b05a3b651fbcb0"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/session.py": {
+        "matches_session": true,
+        "sha256": "68bfcce40a650d7fcbd11128ff6d826019f3fb6c9decee0f16dfbbd8e047f64a"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/state_machine.py": {
+        "matches_session": true,
+        "sha256": "829e24546ba96eb8de2ed2b8f85c2398d8c2a239781171c40798075d29325acd"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/scripts/loop_control.py": {
+        "matches_session": true,
+        "sha256": "ea70a9b54559cc1ef2c7a3ac75823fa0af6549ee03da5242fb4308f079e33d3c"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/scripts/run_candidate_loop.py": {
+        "matches_session": true,
+        "sha256": "c358ca4e2f80cb81ee54d4a05925bfb0c5071f906d3d9bb6de63858b35c5e64f"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/scripts/run_reviewed_candidate.py": {
+        "matches_session": true,
+        "sha256": "65bd6272f50b2b4ad8c27eb7b2b676b0c772091f399d7a1bf137c02e6777a9e5"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/target/adapter.py": {
+        "matches_session": true,
+        "sha256": "290f8c1bab4ca5af3429b06727834a9609ec482ffc56cffc7a791304e513d3a7"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/target/model_loader.py": {
+        "matches_session": true,
+        "sha256": "88401ad24d877a9618f5f7566a617777b81511d2c1b34115ec2ba46b9c5e93de"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/target/reference_moe.py": {
+        "matches_session": true,
+        "sha256": "7d3f5f6aecf70402027ad0c42a3727264df7de9ef4577c4627d05d945a71d9bd"
+      },
+      "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/target/workload.py": {
+        "matches_session": true,
+        "sha256": "62ce8d2c58c0106786523652b7396ff1b8dbad1296b416c8583ee732f5d789ab"
+      }
+    }
+  },
+  "resident_state_absent": true,
+  "routing_diagnostic": {
+    "fixture_count": 17,
+    "no_checkpoint_loaded": true,
+    "norm_nonexact_cases": 0,
+    "old_frozen_snapshot_sha256": "e4c96fc022079e58d7987f1bec0bdd4defb36589b4fc303efc5a41a5b76e1ed3",
+    "old_snapshot_files_match_manifest": true,
+    "output_sha256": "d34600c3cd5c91c57e8a3783906f0038121d7d504cd7fc44fe19b327d7b16747",
+    "performance_evidence": false,
+    "route_different_cases": 0,
+    "score_nonexact_cases": 0,
+    "script_sha256": "cabfbd84790843fd1290f33d610e5ba1758c7f48ad3c1772e197c5cdfbf1492f",
+    "wall_seconds": 0.2063310828525573,
+    "zero_router_fused_ids": [
+      28,
+      29,
+      30,
+      31
+    ],
+    "zero_router_native_ids": [
+      28,
+      29,
+      30,
+      31
+    ]
+  },
+  "routing_diagnostic_finds_no_same_input_norm_score_or_route_difference": true,
+  "runner_sha256": "bd1b0fa75fc7f56204ad23db9a7525728874531f9a38e04948c3b7208f94a354",
+  "session_sha256": "2a2f2ae86e9e5cf8f8de14296f62a4ec75169ebb5af987efcb539fad67bed0c7",
+  "slots_unallocated": [
+    2,
+    3
+  ],
+  "status": "READY_FOR_PRIMARY_GO; NOT_BOOTSTRAPPED",
+  "test_hashes": {
+    "check_storage.py": "df8359cd2f4793b6ad1a976089a4abf7460e7753d517bbdec03ad103d58aa3c0",
+    "check_vocabulary.py": "b9431c116082ea3f6387b52fd0aad472c1a5bcba79a9362066306e23cdce0640",
+    "test_bindings.py": "c743719af4cd5d1edb542dc6b34e7e2cb92b3255b1c9fe095509df6faed7d084",
+    "test_protocol.py": "6a28185d9fd6c3256a846f436584d16a2c1d1b6c45c3b7652e268ae8419c3ef1",
+    "test_residency.py": "15c1a4ea5b0a8a79e9ae9e6cd7e0de46f7f72db07f9acbee6197e178d72afb9c"
+  },
+  "updated_at_unix": 1793226998.5163589,
+  "weight_residency_sha256": "7fdcf58d8f116756b1bc1d0ab9a9f1d9918c33a323af8ea988d4ed267e6caba6",
+  "worker_launched": false
+}

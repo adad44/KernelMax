@@ -1,0 +1,14 @@
+{
+  "calibration": "20pair reference-style paired confidence gate; retain every sample and environment flag.",
+  "candidate_id": "cand_44a3e41eb5ae",
+  "candidate_source": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_44a3e41eb5ae",
+  "config": [
+    1,
+    "half"
+  ],
+  "exact_repair_required": true,
+  "hypothesis": "Vary threadgroup geometry while holding native32-lane/four-row accumulation arithmetic fixed; test occupancy/dispatch scheduling without a measured hardware-cause claim.",
+  "measured_target": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/probe-004/audited-result.json",
+  "model_contribution": "Unverified; audited isolated up/gate region0.379ms, no valid full-model share.",
+  "numerical_diagnosis": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/correctness-014/analysis.json"
+}

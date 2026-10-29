@@ -1,0 +1,13 @@
+{
+  "related_session": "memoryos-session-2026-10-03T20-49-01.json",
+  "benchmark_started": false,
+  "finding": "launchctl bootout completed asynchronously; the immediate registration-only restoration check was insufficient for the backend",
+  "recovery": "Re-registered the original backend plist and kickstarted the backend, capture daemon, and scheduler without altering their configuration",
+  "live_verified_service_pids": {
+    "com.memoryos.backend": 87054,
+    "com.memoryos.daemon": 87057,
+    "com.memoryos.scheduler": 87059
+  },
+  "history_deleted": false,
+  "supervisor_fix": "Wait for unload completion and kickstart restored jobs; preserve service configuration hashes"
+}

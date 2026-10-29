@@ -251,6 +251,61 @@ class CorrectnessPolicy(_Record):
 
 
 @dataclass(frozen=True, slots=True)
+class ExplorationPolicy(_Record):
+    swap_policy: str
+    max_requests: int
+    max_wall_time_seconds: int
+    preserve_completed_work: bool
+    observe_phase_memory: bool
+    allow_speedup_claims: bool
+
+    def __post_init__(self) -> None:
+        _Record.__post_init__(self)
+        _require(
+            self.swap_policy == "retain_and_flag",
+            "exploration must retain and flag swap-affected samples",
+        )
+        _require(
+            self.max_requests > 0 and self.max_wall_time_seconds > 0,
+            "exploration requires positive request and wall-time bounds",
+        )
+        _require(
+            self.preserve_completed_work,
+            "exploration must preserve completed calibration and correctness work",
+        )
+        _require(
+            self.observe_phase_memory,
+            "exploration must observe prefill/decode memory separately",
+        )
+        _require(
+            not self.allow_speedup_claims, "exploration cannot establish a speedup"
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class ConfirmationPolicy(_Record):
+    swap_policy: str
+    require_fresh_matched_comparisons: bool
+
+    def __post_init__(self) -> None:
+        _Record.__post_init__(self)
+        _require(
+            self.swap_policy == "reject_swap_outs_or_growth",
+            "confirmation must reject swap-outs or swap growth",
+        )
+        _require(
+            self.require_fresh_matched_comparisons,
+            "confirmation requires fresh matched comparisons",
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class MeasurementPolicy(_Record):
+    exploration: ExplorationPolicy
+    confirmation: ConfirmationPolicy
+
+
+@dataclass(frozen=True, slots=True)
 class BenchmarkPolicy(_Record):
     warmups: int
     trials_per_implementation: int
@@ -301,7 +356,7 @@ class BenchmarkPolicy(_Record):
         )
         _require(
             self.invalidate_on_swap_growth and self.invalidate_on_thermal_change,
-            "swap growth and thermal changes must invalidate timing",
+            "swap growth and thermal changes must invalidate confirmation timing",
         )
 
 
@@ -392,8 +447,8 @@ class AgentPolicy(_Record):
             self.candidate_root == "candidates", "candidate_root must be candidates"
         )
         _require(
-            self.optimization_boundary == "moe_expert_execution",
-            "only MoE expert execution is open to optimization",
+            self.optimization_boundary in {"moe_expert_execution", "complete_decode"},
+            "optimization_boundary must be moe_expert_execution or complete_decode",
         )
         _require(
             set(self.allowed_implementation_types) == {"mlx", "metal"}
@@ -451,6 +506,7 @@ class ExperimentContract(_Record):
     hardware: HardwareSpec
     workload: WorkloadSpec
     correctness: CorrectnessPolicy
+    measurement: MeasurementPolicy
     benchmark: BenchmarkPolicy
     acceptance: AcceptancePolicy
     task_quality: TaskQualityPolicy
@@ -458,7 +514,7 @@ class ExperimentContract(_Record):
 
     def __post_init__(self) -> None:
         _Record.__post_init__(self)
-        _require(self.schema_version == 2, "unsupported schema_version")
+        _require(self.schema_version == 3, "unsupported schema_version")
         _require(
             not self.acceptance.enabled
             or self.correctness.tolerance_status is CalibrationStatus.CALIBRATED,

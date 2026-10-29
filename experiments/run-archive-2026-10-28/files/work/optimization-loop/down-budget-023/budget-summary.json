@@ -1,0 +1,46 @@
+{
+  "acceptance_enabled": false,
+  "all240samples_retained": true,
+  "all_actual_counts_verified_by_controller": {
+    "all_actual_counts_verified": true,
+    "raw_sha256": "860761070aef39a5ab533c3f659f58a5943fd8641e5530fc019948d8a7ee390b",
+    "status": "completed_operator_diagnostic"
+  },
+  "all_native_outputs_exact": true,
+  "candidate_gate": "All3fresh A/A screens and region-budget lower bounds>.05ms passed before generation.",
+  "layers": {
+    "0:without_down": {
+      "descriptive_95pct_saved_ms": [
+        0.12633837890625,
+        0.13260982275390626
+      ],
+      "environment_valid": true,
+      "median_isolated_operator_fraction": 0.16122938511468848,
+      "median_saved_ms_per_call": 0.12970861767578123,
+      "native_ms_per_call": 0.8039504794921875
+    },
+    "12:without_down": {
+      "descriptive_95pct_saved_ms": [
+        0.12620367578124997,
+        0.1309648447265625
+      ],
+      "environment_valid": true,
+      "median_isolated_operator_fraction": 0.16008297630634516,
+      "median_saved_ms_per_call": 0.12854886865234377,
+      "native_ms_per_call": 0.8038161416015626
+    },
+    "23:without_down": {
+      "descriptive_95pct_saved_ms": [
+        0.12434195751953125,
+        0.12900828027343747
+      ],
+      "environment_valid": true,
+      "median_isolated_operator_fraction": 0.15761389234519885,
+      "median_saved_ms_per_call": 0.12666247363281252,
+      "native_ms_per_call": 0.8037409057617187
+    }
+  },
+  "planning": "A hypothetical20percent reduction gives about0.60..0.64ms/token if24layers are representative, additive and on the critical path. These assumptions are unverified; no model gain claimed.",
+  "scope": "Exact-output deletion inside sampled native expert only; not model critical-path share or GPU hardware time",
+  "status": "valid_isolated_down_deletion_budget"
+}

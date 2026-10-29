@@ -1,0 +1,36 @@
+load 0/531: model.embed_tokens.weight
+load 25/531: model.layers.1.self_attn.q_proj.weight
+load 50/531: model.layers.2.self_attn.k_proj.bias
+load 75/531: model.layers.3.self_attn.o_proj.weight
+load 100/531: model.layers.4.mlp.experts.gate_proj.scales
+load 125/531: model.layers.5.mlp.experts.up_proj.scales
+load 150/531: model.layers.6.mlp.experts.down_proj.scales
+load 175/531: model.layers.7.mlp.router.bias
+load 200/531: model.layers.9.self_attn.sinks
+load 225/531: model.layers.10.self_attn.k_proj.weight
+load 250/531: model.layers.11.self_attn.v_proj.bias
+load 275/531: model.layers.12.mlp.experts.gate_proj.weight
+load 300/531: model.layers.13.mlp.experts.up_proj.weight
+load 325/531: model.layers.14.mlp.experts.down_proj.weight
+load 350/531: model.layers.15.mlp.router.weight
+load 375/531: model.layers.16.post_attention_layernorm.weight
+load 400/531: model.layers.18.self_attn.q_proj.bias
+load 425/531: model.layers.19.self_attn.v_proj.weight
+load 450/531: model.layers.20.self_attn.o_proj.bias
+load 475/531: model.layers.21.mlp.experts.gate_proj.bias
+load 500/531: model.layers.22.mlp.experts.up_proj.bias
+load 525/531: model.layers.23.mlp.experts.down_proj.bias
+load 531/531: None
+quiet/cooldown preflight: warmup-512
+Traceback (most recent call last):
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-bottleneck-20261026/quiet-pass/profile_decode.py", line 485, in <module>
+    main()
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-bottleneck-20261026/quiet-pass/profile_decode.py", line 328, in main
+    warm, _ = run(f'warmup-{length}', length)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-bottleneck-20261026/quiet-pass/profile_decode.py", line 302, in run
+    quiet = quiet_preflight(quiet_seconds=10, timeout_seconds=180)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/native_baseline.py", line 200, in quiet_preflight
+    raise EnvironmentInvalid('Untimed quiet preflight did not settle; no request started',
+evaluator.native_baseline.EnvironmentInvalid: Untimed quiet preflight did not settle; no request started

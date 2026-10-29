@@ -1,0 +1,25 @@
+{
+  "ended_unix": 1793117180.69869,
+  "operator_status": "stopped_aa_screen",
+  "stage": "operator-diagnostic",
+  "stages": [
+    {
+      "name": "native-summary",
+      "returncode": 0
+    },
+    {
+      "name": "tiny-checks",
+      "returncode": 0
+    },
+    {
+      "name": "repair-checks",
+      "returncode": 0
+    },
+    {
+      "name": "operator-diagnostic",
+      "returncode": 0
+    }
+  ],
+  "started_unix": 1793116347.5378911,
+  "status": "completed_diagnostic"
+}

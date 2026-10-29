@@ -1,0 +1,8 @@
+{
+  "status": "prepared",
+  "target": "native expert down projection and bias",
+  "method": "Exact output-preserving down deletion, real seed42 decode inputs8/layer,20fresh A/A and20deletion pairs on0/12/23.1024calls/lane; unconditional1024native primer;ABBA;5second cooldown;allcounts;AC/nominal/paging gates.",
+  "reason": "Prior down deletion was thermally invalid. Up/gate fusion candidates showed sub1percent isolated gains; seek a separately measured target.",
+  "model_budget": "Unknown. Report isolated down savings and uncertainty first. Conditional20percent down optimization translates into24*0.2*measuredms only if representative/additive/oncriticalpath, unverified. No full-model claim.",
+  "candidate_gate": "All3layers calibrated and environmentvalid; each down-savings95percent lower bound above0.05ms. Then try one native-order down+bias kernel; no unchanged rerolls."
+}

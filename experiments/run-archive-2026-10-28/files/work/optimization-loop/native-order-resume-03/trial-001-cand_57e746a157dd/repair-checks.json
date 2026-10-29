@@ -1,0 +1,92 @@
+{
+  "candidate_id": "cand_57e746a157dd",
+  "errors": [],
+  "layout_checks": [
+    {
+      "check": "no parameter layout conversion or cache in this candidate",
+      "passed": true
+    }
+  ],
+  "real_boundary_checks": [
+    {
+      "candidate_exact": true,
+      "layer": 7,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 2
+    },
+    {
+      "candidate_exact": true,
+      "layer": 1,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 3
+    },
+    {
+      "candidate_exact": true,
+      "layer": 2,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 3
+    },
+    {
+      "candidate_exact": true,
+      "layer": 6,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 3
+    },
+    {
+      "candidate_exact": true,
+      "layer": 10,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 3
+    },
+    {
+      "candidate_exact": true,
+      "layer": 18,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 4
+    },
+    {
+      "candidate_exact": true,
+      "layer": 4,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 5
+    },
+    {
+      "candidate_exact": true,
+      "layer": 15,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 5
+    },
+    {
+      "candidate_exact": true,
+      "layer": 6,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 6
+    },
+    {
+      "candidate_exact": true,
+      "layer": 11,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 6
+    },
+    {
+      "candidate_exact": true,
+      "layer": 22,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "step": 6
+    }
+  ],
+  "scope": "untimed correctness/representation tests; no performance claim",
+  "snapshot_sha256": "aaa02f49e23e6d724d81e1d0966fa720e9b0bebb2c961e747762408efca5b3db",
+  "status": "passed_exact_repair_checks"
+}

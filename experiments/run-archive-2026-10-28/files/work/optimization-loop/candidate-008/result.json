@@ -1,0 +1,62 @@
+{
+  "aa_screens": {
+    "0": {
+      "full_range": 0.01942673568665885,
+      "passed": true,
+      "ratios": [
+        0.9956602129774804,
+        1.008275076439772
+      ],
+      "relative_mad": 0.005561765106576969
+    },
+    "12": {
+      "full_range": 0.040830058257721624,
+      "passed": false,
+      "ratios": [
+        1.0065729907204999,
+        1.0032880439910938
+      ],
+      "relative_mad": 0.01720070454340273
+    }
+  },
+  "candidate_id": "cand_430b7852e4b5",
+  "disposition": "parked_no_operator_gain",
+  "full_model_speedup_established": false,
+  "layer0": {
+    "ab_order_median_ratio": 0.9992413037137662,
+    "ba_order_median_ratio": 0.9987390152257134,
+    "descriptive_bootstrap_95pct": [
+      0.9968963305205947,
+      1.0034754607737417
+    ],
+    "environment_valid": true,
+    "median_baseline_ms_per_call": 0.8407341513671875,
+    "median_candidate_ms_per_call": 0.8388717451171874,
+    "median_ratio": 0.9987390152257134,
+    "paired_ratios": [
+      0.9971865302639764,
+      0.9994026552847346,
+      1.0015793371671124,
+      1.0107679622959755,
+      0.9956152683837404,
+      1.0204943717260833,
+      1.0064504183375398,
+      0.994449981213538,
+      0.9979135198544483,
+      0.9978328578824625,
+      1.0174572403619242,
+      1.0002611415069178,
+      0.996606130777213,
+      0.9877812131927252,
+      1.0005690875730842,
+      0.9847031315303294,
+      1.0186271064466816,
+      0.9980753751666921,
+      0.9953917432188786,
+      1.0053715843803708
+    ]
+  },
+  "native_checks_passed": 21,
+  "reason": "Native-style half decoder is a valid numerical implementation but gives no reliable local win. Layer0 ratio0.99874, descriptive CI[0.99690,1.00348]. No full-model promotion. Subsequent layer calibration/partial data are retained.",
+  "tiny_checks_passed": 30
+}

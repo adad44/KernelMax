@@ -1,0 +1,40 @@
+{
+  "acceptance_enabled": false,
+  "automation_status": "PAUSED",
+  "cleanup": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/deadline-cleanup.json",
+  "complete_candidate_pairs_512": 12,
+  "deadline_audit": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/deadline-evidence-audit.json",
+  "evidence_index": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/evidence-index.json",
+  "execution_gap": {
+    "after_controller": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-k-unroll-032/controller-state.json",
+    "duration_seconds": 8799.643869876862,
+    "from_unix": 1793117181.4275131,
+    "reason": "Agent did not advance exhausted pool promptly; acknowledged to user and resumed with a distinct measured composition. Do not report uninterrupted benchmark execution.",
+    "to_unix": 1793125981.071383
+  },
+  "external_postdeadline_integrity_audit_passed": true,
+  "finished_unix": 1793131263.8006961,
+  "fresh_512_aa_passed": true,
+  "full_model_bit_exact_candidates": [
+    "cand_02e5f860f143",
+    "cand_b50ecab31887",
+    "cand_35fff69ba1e1"
+  ],
+  "full_model_speedup_established": false,
+  "git_head_unchanged": true,
+  "hard_experiment_deadline_unix": 1793131200.0,
+  "latest_candidate": "cand_35fff69ba1e1",
+  "latest_model_status": "deadline_partial_not_graded",
+  "latest_operator_median_ratios": [
+    1.016072226019992,
+    1.0167962081104123,
+    1.017006630830168
+  ],
+  "native_suite_pass_count": 20,
+  "raw_finalizer_limitation": "Deadline termination retained the last atomic partial state; final in-process dispatch restoration is not claimed. All owned processes exited and external source/snapshot/checkpoint identities and correctness array hashes match.",
+  "raw_finalizers_completed": false,
+  "recorded_requests_valid": 85,
+  "task_owned_processes_remaining": 0,
+  "unique_candidates_with_native_reports": 20,
+  "unpaired_candidate_requests_512": 1
+}

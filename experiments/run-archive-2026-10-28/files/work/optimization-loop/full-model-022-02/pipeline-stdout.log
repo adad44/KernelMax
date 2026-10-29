@@ -1,0 +1,66 @@
+native_load 0/531
+native_load 25/531
+native_load 50/531
+native_load 75/531
+native_load 100/531
+native_load 125/531
+native_load 150/531
+native_load 175/531
+native_load 200/531
+native_load 225/531
+native_load 250/531
+native_load 275/531
+native_load 300/531
+native_load 325/531
+native_load 350/531
+native_load 375/531
+native_load 400/531
+native_load 425/531
+native_load 450/531
+native_load 475/531
+native_load 500/531
+native_load 525/531
+native_load 531/531
+full-model correctness context512: True
+full-model correctness context2048: True
+full-model correctness context4096: True
+512 aa_warmup pair1 A: 24.3215 tok/s; flags=[]
+512 aa_warmup pair1 B: 24.2768 tok/s; flags=[]
+512 aa_warmup pair2 A: 21.7693 tok/s; flags=[]
+512 aa_warmup pair2 B: 24.2445 tok/s; flags=[]
+512 aa_warmup pair3 A: 24.2648 tok/s; flags=[]
+512 aa_warmup pair3 B: 24.2121 tok/s; flags=[]
+512 aa_warmup pair4 A: 24.2390 tok/s; flags=[]
+512 aa_warmup pair4 B: 24.1766 tok/s; flags=[]
+512 aa_warmup pair5 A: 24.0987 tok/s; flags=[]
+512 aa_warmup pair5 B: 24.2841 tok/s; flags=[]
+512 aa pair1 A: 24.2825 tok/s; flags=[]
+512 aa pair1 B: 24.2781 tok/s; flags=[]
+512 aa pair2 B: 21.7475 tok/s; flags=[]
+512 aa pair2 A: 23.7758 tok/s; flags=[]
+512 aa pair3 A: 24.2757 tok/s; flags=[]
+512 aa pair3 B: 24.2876 tok/s; flags=[]
+512 aa pair4 B: 24.2763 tok/s; flags=[]
+512 aa pair4 A: 24.2517 tok/s; flags=[]
+512 aa pair5 A: 24.2376 tok/s; flags=[]
+512 aa pair5 B: 24.2827 tok/s; flags=[]
+512 aa pair6 B: 24.2817 tok/s; flags=[]
+512 aa pair6 A: 24.2787 tok/s; flags=[]
+512 aa pair7 A: 24.2324 tok/s; flags=[]
+512 aa pair7 B: 24.2206 tok/s; flags=[]
+512 aa pair8 B: 24.2507 tok/s; flags=[]
+512 aa pair8 A: 24.2545 tok/s; flags=[]
+512 aa pair9 A: 24.2721 tok/s; flags=[]
+512 aa pair9 B: 24.2967 tok/s; flags=[]
+512 aa pair10 B: 22.3291 tok/s; flags=[]
+512 aa pair10 A: 21.7868 tok/s; flags=[]
+512 aa pair11 A: 24.2858 tok/s; flags=[]
+512 aa pair11 B: 24.2579 tok/s; flags=[]
+512 aa pair12 B: 24.2513 tok/s; flags=[]
+512 aa pair12 A: 24.1746 tok/s; flags=[]
+512 aa pair13 A: 24.2562 tok/s; flags=[]
+512 aa pair13 B: 24.2565 tok/s; flags=[]
+512 aa pair14 B: 24.2590 tok/s; flags=[]
+512 aa pair14 A: 24.1956 tok/s; flags=[]
+512 aa pair15 A: 21.6974 tok/s; flags=[]
+512 aa pair15 B: 23.9398 tok/s; flags=['swap grew during the request', 'swapouts increased during request']

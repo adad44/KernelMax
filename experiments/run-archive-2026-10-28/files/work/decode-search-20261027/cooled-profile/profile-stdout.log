@@ -1,0 +1,82 @@
+load 0/531
+load 25/531
+load 50/531
+load 75/531
+load 100/531
+load 125/531
+load 150/531
+load 175/531
+load 200/531
+load 225/531
+load 250/531
+load 275/531
+load 300/531
+load 325/531
+load 350/531
+load 375/531
+load 400/531
+load 425/531
+load 450/531
+load 475/531
+load 500/531
+load 525/531
+load 531/531
+warmup-0: 40.893 ms/token; flags=[]
+warmup-1: 40.963 ms/token; flags=[]
+warmup-2: 41.551 ms/token; flags=[]
+warmup-3: 40.933 ms/token; flags=[]
+warmup-4: 41.265 ms/token; flags=[]
+aa-1-A: 41.033 ms/token; flags=[]
+aa-1-B: 40.964 ms/token; flags=[]
+aa-2-B: 40.918 ms/token; flags=[]
+aa-2-A: 40.968 ms/token; flags=[]
+aa-3-A: 41.005 ms/token; flags=[]
+aa-3-B: 41.598 ms/token; flags=[]
+aa-4-B: 40.970 ms/token; flags=[]
+aa-4-A: 41.023 ms/token; flags=[]
+aa-5-A: 40.964 ms/token; flags=[]
+aa-5-B: 40.948 ms/token; flags=[]
+aa-6-B: 40.936 ms/token; flags=[]
+aa-6-A: 41.507 ms/token; flags=[]
+aa-7-A: 41.069 ms/token; flags=[]
+aa-7-B: 40.968 ms/token; flags=[]
+aa-8-B: 41.026 ms/token; flags=[]
+aa-8-A: 41.066 ms/token; flags=[]
+aa-9-A: 41.055 ms/token; flags=[]
+aa-9-B: 40.960 ms/token; flags=[]
+aa-10-B: 40.994 ms/token; flags=[]
+aa-10-A: 40.934 ms/token; flags=[]
+aa-11-A: 40.998 ms/token; flags=[]
+aa-11-B: 40.951 ms/token; flags=[]
+aa-12-B: 41.068 ms/token; flags=[]
+aa-12-A: 40.971 ms/token; flags=[]
+aa-13-A: 41.063 ms/token; flags=[]
+aa-13-B: 40.995 ms/token; flags=[]
+aa-14-B: 40.958 ms/token; flags=[]
+aa-14-A: 40.975 ms/token; flags=[]
+aa-15-A: 40.950 ms/token; flags=[]
+aa-15-B: 40.989 ms/token; flags=[]
+aa-16-B: 40.980 ms/token; flags=[]
+aa-16-A: 40.962 ms/token; flags=[]
+aa-17-A: 40.962 ms/token; flags=[]
+aa-17-B: 40.947 ms/token; flags=[]
+aa-18-B: 40.955 ms/token; flags=[]
+aa-18-A: 41.002 ms/token; flags=[]
+aa-19-A: 41.023 ms/token; flags=[]
+aa-19-B: 40.916 ms/token; flags=[]
+aa-20-B: 41.080 ms/token; flags=[]
+aa-20-A: 40.943 ms/token; flags=[]
+capture: 41.105 ms/token; flags=[]
+delete_experts-warmup-0: 27.100 ms/token; flags=[]
+delete_experts-warmup-1: 27.157 ms/token; flags=[]
+delete_experts-warmup-2: 27.066 ms/token; flags=[]
+delete_experts-warmup-3: 27.102 ms/token; flags=[]
+delete_experts-warmup-4: 27.086 ms/token; flags=[]
+delete_experts-1-normal: 40.978 ms/token; flags=[]
+delete_experts-1-delete_experts: 27.060 ms/token; flags=[]
+delete_experts-2-delete_experts: 27.275 ms/token; flags=[]
+delete_experts-2-normal: 40.988 ms/token; flags=[]
+delete_experts-3-normal: 41.096 ms/token; flags=[]
+delete_experts-3-delete_experts: 27.126 ms/token; flags=[]
+delete_experts-4-delete_experts: 27.146 ms/token; flags=[]
+delete_experts-4-normal: 41.078 ms/token; flags=['swap grew during the request', 'swapouts increased during request']

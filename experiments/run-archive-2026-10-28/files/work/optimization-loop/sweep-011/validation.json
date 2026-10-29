@@ -1,0 +1,6 @@
+{
+  "prior_generator_96config_validation": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-010/validation.json",
+  "nested_control_path_fixed_and_verified": true,
+  "generated_pipeline_candidate_id_verified": true,
+  "prior_two_failures": "FileNotFoundError before native worker or candidate import; infrastructure-only failures retained in sweep010."
+}

@@ -1,0 +1,16 @@
+{
+  "candidate_bundle_sha256": "e4c96fc022079e58d7987f1bec0bdd4defb36589b4fc303efc5a41a5b76e1ed3",
+  "command": {
+    "frozen_info": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/moe-frozen.json",
+    "mode": "screen"
+  },
+  "path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/commands/002.json",
+  "previous_command_guards": {
+    "checkpoint_and_snapshot_unchanged": true,
+    "original_methods_restored": true,
+    "protected_unchanged": true
+  },
+  "queued_at_unix": 1793210930.744853,
+  "resident_state": "waiting_command",
+  "sha256": "aa017139f666188897ebf78164a64f605e35b11266142d175d81b06c9a637348"
+}

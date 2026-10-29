@@ -1,0 +1,10 @@
+{
+  "session_id": "8bcb5ab8-0f9b-412b-a319-53eddf22df44",
+  "worker_pid": 19700,
+  "status": "completed_pending_review",
+  "phase": "completed_pending_review",
+  "current_attempt": "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/official-attempt-2026-10-04T14-24-18-seed42-paging-aware",
+  "model_loads": 1,
+  "max_environment_retries": 2,
+  "failed_attempts": []
+}

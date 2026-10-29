@@ -1,0 +1,19 @@
+{
+  "actual_invoke_calls": {
+    "native": 2048,
+    "without_down": 1024
+  },
+  "blocks_per_lane": 8,
+  "elapsed_aggregation_verified": true,
+  "evaluated_calls": 3072,
+  "fixed_cooldown_seconds": [
+    5
+  ],
+  "microblocks": 16,
+  "no_mlx_import_or_gpu_execution": true,
+  "probe_sha256": "82a63f3e50d631af1b74b6edbd7f33842004e481199407052b439c8b877d0954",
+  "saved_time_normalization_uses_actual_sample_counts": true,
+  "status": "passed_cpu_counting_stubs_only",
+  "timed_calls_per_lane": 1024,
+  "untimed_native_primer_calls": 1024
+}

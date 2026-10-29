@@ -1,0 +1,9 @@
+{
+  "authorization_kind": "standing_user_instruction",
+  "candidate_id": "cand_35fff69ba1e1",
+  "human_reviewed_exact_snapshot": false,
+  "native_report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-035/native-correctness/artifacts/execution-p3xvqqph/report.json",
+  "session": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/session.json",
+  "snapshot": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-035/native-correctness/runs/ddae7b1af19e4c17a982798fa44ee85b/cand_35fff69ba1e1",
+  "snapshot_sha256": "14dce12ba76605fa3c04b56b0a431447c643540e63dbecea5a4351687d394e90"
+}

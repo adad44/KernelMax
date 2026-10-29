@@ -1,0 +1,24 @@
+{
+  "candidate_id": "cand_b64853d31601",
+  "command": [
+    "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+    "-B",
+    "-u",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/correctness-014/diagnose.py"
+  ],
+  "deadline_unix": 1793098642.86655,
+  "ended_unix": 1793097802.2003882,
+  "kind": "untimed_full_model_correctness_diagnosis",
+  "returncode": 0,
+  "started_unix": 1793097442.866581,
+  "status": "completed",
+  "supervisor_pid": 80269,
+  "tracked_processes": {
+    "80271": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/correctness-014/diagnose.py",
+      "ppid": 80269,
+      "start": "Tue Oct 27 03:37:22 2026"
+    }
+  },
+  "worker_pid": 80271
+}

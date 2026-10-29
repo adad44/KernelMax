@@ -1,0 +1,26 @@
+{
+  "acceptance_enabled": false,
+  "contract_schema_version": 3,
+  "created_at_unix": 1793174276.582853,
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "7fc2dce4eccbf79346a68e7022ca5709514d6477938b7ff7d7fe0363e3028bb9",
+      "size_bytes": 8454
+    },
+    {
+      "path": "kernelmaxxing.yaml",
+      "sha256": "b66979d7a3df6898e5437cc2fac7e8cb6600e4a458786365460ffd6b4a854484",
+      "size_bytes": 3485
+    },
+    {
+      "path": "scripts/CANDIDATE_LOOP.md",
+      "sha256": "d363d1c186e2de8b512cc7e43df3a3a66681487e039675d5fc29cd62f969b932",
+      "size_bytes": 5117
+    }
+  ],
+  "old_normalized_schema3_contract_sha256": "cb3fc638080fb65badca7854f753642ad93dec8d33fcf09d83841568a59c89bc",
+  "schema": 1,
+  "snapshot_directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/policy-before",
+  "source_checkout": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop"
+}

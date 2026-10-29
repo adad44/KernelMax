@@ -1,0 +1,36 @@
+{
+  "created_at_unix": 1793174276.5830941,
+  "schema": 1,
+  "slot3": {
+    "allocated": false,
+    "candidate_id": null,
+    "path": null,
+    "purpose": "combine verified winners only after their separate evaluation"
+  },
+  "slots": [
+    {
+      "candidate_id": "cand_5785998944e5",
+      "empty": false,
+      "executed": false,
+      "frozen": true,
+      "frozen_directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5",
+      "frozen_sha256": "b6dd528b50b4d3d89db496fb021bbcd21d2043f701c36196e39ea08457283918",
+      "implementation_added": true,
+      "path": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_5785998944e5",
+      "purpose": "vocabulary_only_integration",
+      "slot": 1,
+      "status": "prepared_waiting_for_resident_runner"
+    },
+    {
+      "candidate_id": "cand_4a02c3189b7d",
+      "empty": true,
+      "executed": false,
+      "frozen": false,
+      "implementation_added": false,
+      "path": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_4a02c3189b7d",
+      "purpose": "fused_moe_block",
+      "slot": 2,
+      "status": "empty_waiting_for_primary_implementation"
+    }
+  ]
+}

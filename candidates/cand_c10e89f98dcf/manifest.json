@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_c10e89f98dcf",
+  "name": "Joint up/gate L16 G2 V8 half",
+  "implementation_type": "mlx",
+  "description": "Measured-region numeric tuning: 16 lanes per row, 2 SIMD groups per threadgroup, 8 K values per lane, exact half FP4 decoder. Targets the audited 0.379 ms up/gate isolated saving, not a full-model share. Native MXFP4 weights/scales/routes, float accumulations and BF16 epilogue unchanged; no copied weights, requantization or tensor cache. Native down and prefill fallback remain; unsupported small output row tiles use reference fallback. No performance claim."
+}

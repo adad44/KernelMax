@@ -48,7 +48,7 @@ class ExperimentContractTests(unittest.TestCase):
         self.assertEqual(self.contract.workload.seed, 42)
         self.assertEqual(self.contract.workload.generation_tokens, 128)
         self.assertFalse(self.contract.acceptance.enabled)
-        self.assertEqual(self.contract.schema_version, 2)
+        self.assertEqual(self.contract.schema_version, 3)
         self.assertTrue(self.contract.task_quality.required)
         self.assertEqual(self.contract.task_quality.status, "planned")
         self.assertIsNone(self.contract.task_quality.suite_sha256)
@@ -61,6 +61,45 @@ class ExperimentContractTests(unittest.TestCase):
         parsed = ExperimentContract.from_mapping(reordered)
         self.assertEqual(parsed, self.contract)
         self.assertEqual(parsed.sha256, self.contract.sha256)
+
+    def test_decode_scope_is_explicit_and_legacy_expert_scope_remains_readable(self):
+        self.assertEqual(self.contract.agent.optimization_boundary, "complete_decode")
+        legacy = ExperimentContract.from_mapping(
+            self.changed("agent", "optimization_boundary", "moe_expert_execution")
+        )
+        self.assertNotEqual(legacy.sha256, self.contract.sha256)
+        for scope in ("scheduling", "whole_model", "", "complete_decode_typo"):
+            with self.subTest(scope=scope), self.assertRaises(ContractError):
+                ExperimentContract.from_mapping(
+                    self.changed("agent", "optimization_boundary", scope)
+                )
+
+    def test_exploration_and_confirmation_have_distinct_enforced_policies(self):
+        self.assertEqual(
+            self.contract.measurement.exploration.swap_policy, "retain_and_flag"
+        )
+        self.assertFalse(self.contract.measurement.exploration.allow_speedup_claims)
+        self.assertTrue(
+            self.contract.measurement.confirmation.require_fresh_matched_comparisons
+        )
+        self.assertTrue(self.contract.benchmark.invalidate_on_swap_growth)
+        for section, field, value in (
+            ("exploration", "max_requests", 0),
+            ("exploration", "max_wall_time_seconds", 0),
+            ("exploration", "swap_policy", "ignore"),
+            ("exploration", "preserve_completed_work", False),
+            ("exploration", "observe_phase_memory", False),
+            ("exploration", "allow_speedup_claims", True),
+            ("confirmation", "swap_policy", "retain_and_flag"),
+            ("confirmation", "require_fresh_matched_comparisons", False),
+        ):
+            data = self.contract.to_dict()
+            data["measurement"][section][field] = value
+            with (
+                self.subTest(section=section, field=field),
+                self.assertRaises(ContractError),
+            ):
+                ExperimentContract.from_mapping(data)
 
     def test_modified_contract_has_a_different_hash(self):
         parsed = ExperimentContract.from_mapping(self.changed("workload", "seed", 43))
@@ -216,7 +255,7 @@ class ExperimentContractTests(unittest.TestCase):
 
     def test_schema_version_is_explicit(self):
         data = self.contract.to_dict()
-        for version in (1, 3):
+        for version in (1, 2, 4):
             data["schema_version"] = version
             with self.subTest(version=version), self.assertRaises(ContractError):
                 ExperimentContract.from_mapping(data)

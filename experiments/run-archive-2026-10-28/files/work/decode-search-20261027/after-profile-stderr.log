@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/after_profile.py", line 64, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/after_profile.py", line 45, in main
+    raise RuntimeError('Profiler did not complete validly; no follow-up GPU process started')
+RuntimeError: Profiler did not complete validly; no follow-up GPU process started

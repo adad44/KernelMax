@@ -1,0 +1,13 @@
+{
+  "revision": "6cee5e81ee83917806bbde320786a8fb61efebee",
+  "exit_code": 0,
+  "command": ["/Users/alandiaz/.local/bin/hf", "cache", "verify", "openai/gpt-oss-20b", "--revision", "6cee5e81ee83917806bbde320786a8fb61efebee", "--local-dir", "/Users/alandiaz/Library/Logs/kernelmax-native-verify.W6R72Q", "--format", "json"],
+  "result": {
+    "repo_id": "openai/gpt-oss-20b",
+    "repo_type": "model",
+    "checked": 10,
+    "path": "/Users/alandiaz/Library/Logs/kernelmax-native-verify.W6R72Q"
+  },
+  "warning": "8 remote file(s) are missing locally. Unused alternative format and documentation files are not part of this ten-file native safetensors verification view.",
+  "files": ["model-00000-of-00002.safetensors", "model-00001-of-00002.safetensors", "model-00002-of-00002.safetensors", "config.json", "generation_config.json", "model.safetensors.index.json", "tokenizer.json", "tokenizer_config.json", "special_tokens_map.json", "chat_template.jinja"]
+}

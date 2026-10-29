@@ -1,0 +1,203 @@
+{
+  "schema": "kernelmax_reference_baseline_summary_v1",
+  "run_id": "c052ae53-8a6b-47d7-a9a7-d5c5414a43cd",
+  "status": "official_reference_under_approved_profile",
+  "candidate_acceptance_enabled": false,
+  "model": {
+    "repository": "openai/gpt-oss-20b",
+    "revision": "6cee5e81ee83917806bbde320786a8fb61efebee",
+    "architecture": "gpt_oss",
+    "expert_weight_format": "native_mxfp4",
+    "activation_dtype": "bfloat16",
+    "kv_cache_dtype": "bfloat16",
+    "requantize_weights": false
+  },
+  "hardware": {
+    "chip": "Apple M4",
+    "model_identifier": "Mac16,12",
+    "memory_bytes": 25769803776
+  },
+  "runtime": {
+    "mlx": "0.32.3",
+    "mlx-metal": "0.32.3",
+    "mlx-lm": "0.31.3",
+    "numpy": "2.5.3",
+    "transformers": "5.17.0",
+    "python": "3.12.12",
+    "macos": "26.5.2"
+  },
+  "workload": {
+    "batch_size": 1,
+    "prompt_tokens": [
+      512,
+      2048,
+      4096
+    ],
+    "generation_tokens": 128,
+    "seed": 42,
+    "warmups_per_size": 5,
+    "primary_trials_per_size": 20,
+    "calibration_trials_per_size": 20,
+    "sampling": "greedy",
+    "fresh_cache": true,
+    "order": "alternating_ab_ba"
+  },
+  "profile": {
+    "swap_policy": "paging-aware",
+    "per_request_settling": true,
+    "excluded_stability_screen_requests": 12,
+    "measured_swapin_pages": 4,
+    "measured_swapout_pages": 0,
+    "measured_swap_growth_mib": 0,
+    "nominal_sampled_thermal_state": true
+  },
+  "correctness": {
+    "stock_generation_checks_passed": 5,
+    "native_dispatch_checks_passed": 21,
+    "native_check_scope": "dispatch invariance, not independent matmul accuracy",
+    "dense_bf16_diagnostic": "unresolved layer-12 failure; tolerances unchanged"
+  },
+  "metrics": {
+    "512": {
+      "decode_tokens_per_second": {
+        "median": 24.184908520725667,
+        "p90": 24.507039652715132,
+        "mad": 0.07493130360280098,
+        "trials": 20
+      },
+      "time_to_first_token_ms": {
+        "median": 1512.8156044993375,
+        "p90": 1532.7257090029889,
+        "mad": 13.038979002885753,
+        "trials": 20
+      },
+      "prefill_tokens_per_second": {
+        "median": 338.50051199552155,
+        "p90": 341.7737372746379,
+        "mad": 2.8947706029800315,
+        "trials": 20
+      },
+      "inter_token_latency_ms": {
+        "median": 41.15727099633659,
+        "p90": 41.24624999531079,
+        "mad": 0.08195800182875246,
+        "trials": 20
+      },
+      "peak_memory_bytes": {
+        "median": 14200894173,
+        "p90": 14200894173,
+        "mad": 0,
+        "trials": 20
+      },
+      "full_model_wall_time_ms": {
+        "median": 6759.880624998914,
+        "p90": 6808.3123749966035,
+        "mad": 42.870353998296196,
+        "trials": 20
+      },
+      "decode_drift_first5_to_last5_percent": -1.335454915855805
+    },
+    "2048": {
+      "decode_tokens_per_second": {
+        "median": 23.746928864089064,
+        "p90": 23.985162246831123,
+        "mad": 0.07389468664439924,
+        "trials": 20
+      },
+      "time_to_first_token_ms": {
+        "median": 5412.2088749973045,
+        "p90": 5432.684375002282,
+        "mad": 19.98400050069904,
+        "trials": 20
+      },
+      "prefill_tokens_per_second": {
+        "median": 378.42213620789204,
+        "p90": 382.110122167911,
+        "mad": 1.3978279896630283,
+        "trials": 20
+      },
+      "inter_token_latency_ms": {
+        "median": 41.88372900171089,
+        "p90": 42.032167002616916,
+        "mad": 0.09231299918610603,
+        "trials": 20
+      },
+      "peak_memory_bytes": {
+        "median": 14496279159,
+        "p90": 14496279159,
+        "mad": 0,
+        "trials": 20
+      },
+      "full_model_wall_time_ms": {
+        "median": 10762.195999497635,
+        "p90": 10803.45991699869,
+        "mad": 28.49675050310907,
+        "trials": 20
+      },
+      "decode_drift_first5_to_last5_percent": -1.0254596141952566
+    },
+    "4096": {
+      "decode_tokens_per_second": {
+        "median": 23.257754230561563,
+        "p90": 23.52548776127337,
+        "mad": 0.03662213571596595,
+        "trials": 20
+      },
+      "time_to_first_token_ms": {
+        "median": 11423.826333499164,
+        "p90": 11463.709791998554,
+        "mad": 36.08516649910598,
+        "trials": 20
+      },
+      "prefill_tokens_per_second": {
+        "median": 358.5572358778691,
+        "p90": 362.29397853614955,
+        "mad": 1.1324867318331542,
+        "trials": 20
+      },
+      "inter_token_latency_ms": {
+        "median": 42.722437501652166,
+        "p90": 42.80070799723035,
+        "mad": 0.06835400199634023,
+        "trials": 20
+      },
+      "peak_memory_bytes": {
+        "median": 14859192735,
+        "p90": 14859192735,
+        "mad": 0,
+        "trials": 20
+      },
+      "full_model_wall_time_ms": {
+        "median": 16881.745396000042,
+        "p90": 16948.429417003354,
+        "mad": 42.498687500483356,
+        "trials": 20
+      },
+      "decode_drift_first5_to_last5_percent": -1.1249017582912968
+    }
+  },
+  "noise_95pct_ratio_ci": {
+    "512": [
+      0.9999311681661656,
+      1.0013444285425506
+    ],
+    "2048": [
+      0.9989398247382035,
+      1.001516918900951
+    ],
+    "4096": [
+      0.9990050955408434,
+      1.0029180206136779
+    ]
+  },
+  "provenance": {
+    "evidence_commit": "b3223bddb68848af054375263ffbeaf66543dfa9",
+    "raw_path": "reports/baselines/gpt-oss-20b-m4-week1/c052ae53-8a6b-47d7-a9a7-d5c5414a43cd/raw.json",
+    "raw_sha256": "abad2fd9f73b7c1b187b4ce919eff91f5aad29c5293d9b9f2afa237bbc363192",
+    "original_report_sha256": "3795bc4bb92ead9cf7a9ec12cf76623ea26885e0960e07d062391888ee870b6d",
+    "audit_sha256": "f600915250efb5abb6f2da81db606d6132d98438c36f86c4ece3c09a9a1a0ab9",
+    "local_archive_filename": "baseline-publication-full-e86ed7d.tar.gz",
+    "local_archive_sha256": "ac67d8faff74216ce8fd41152ca2674169f825f2bd492d684d6d3cf3a1b3e3d3",
+    "earlier_attempts_preserved": 16
+  }
+}

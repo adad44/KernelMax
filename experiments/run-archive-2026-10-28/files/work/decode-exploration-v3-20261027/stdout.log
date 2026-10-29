@@ -1,0 +1,86 @@
+load 0/531
+load 25/531
+load 50/531
+load 75/531
+load 100/531
+load 125/531
+load 150/531
+load 175/531
+load 200/531
+load 225/531
+load 250/531
+load 275/531
+load 300/531
+load 325/531
+load 350/531
+load 375/531
+load 400/531
+load 425/531
+load 450/531
+load 475/531
+load 500/531
+load 525/531
+load 531/531
+warmup-0: flags=[]; swap_affected=False; continue=True
+warmup-1: flags=[]; swap_affected=False; continue=True
+capture: flags=[]; swap_affected=False; continue=True
+delete_experts-warmup-0: flags=[]; swap_affected=False; continue=True
+delete_experts-warmup-1: flags=[]; swap_affected=False; continue=True
+delete_experts-warmup-2: flags=[]; swap_affected=False; continue=True
+delete_experts-warmup-3: flags=[]; swap_affected=False; continue=True
+delete_experts-warmup-4: flags=[]; swap_affected=False; continue=True
+delete_experts-1-normal: flags=[]; swap_affected=False; continue=True
+delete_experts-1-delete_experts: flags=[]; swap_affected=False; continue=True
+delete_experts-2-delete_experts: flags=[]; swap_affected=False; continue=True
+delete_experts-2-normal: flags=[]; swap_affected=False; continue=True
+delete_experts-3-normal: flags=[]; swap_affected=False; continue=True
+delete_experts-3-delete_experts: flags=[]; swap_affected=False; continue=True
+delete_experts-4-delete_experts: flags=[]; swap_affected=False; continue=True
+delete_experts-4-normal: flags=[]; swap_affected=False; continue=True
+delete_experts-5-normal: flags=[]; swap_affected=False; continue=True
+delete_experts-5-delete_experts: flags=[]; swap_affected=False; continue=True
+delete_attention-warmup-0: flags=[]; swap_affected=False; continue=True
+delete_attention-warmup-1: flags=[]; swap_affected=False; continue=True
+delete_attention-warmup-2: flags=[]; swap_affected=False; continue=True
+delete_attention-warmup-3: flags=[]; swap_affected=False; continue=True
+delete_attention-warmup-4: flags=[]; swap_affected=False; continue=True
+delete_attention-1-normal: flags=[]; swap_affected=False; continue=True
+delete_attention-1-delete_attention: flags=[]; swap_affected=False; continue=True
+delete_attention-2-delete_attention: flags=[]; swap_affected=False; continue=True
+delete_attention-2-normal: flags=[]; swap_affected=False; continue=True
+delete_attention-3-normal: flags=[]; swap_affected=False; continue=True
+delete_attention-3-delete_attention: flags=[]; swap_affected=False; continue=True
+delete_attention-4-delete_attention: flags=[]; swap_affected=False; continue=True
+delete_attention-4-normal: flags=[]; swap_affected=False; continue=True
+delete_attention-5-normal: flags=[]; swap_affected=False; continue=True
+delete_attention-5-delete_attention: flags=[]; swap_affected=False; continue=True
+delete_lm_head-warmup-0: flags=[]; swap_affected=False; continue=True
+delete_lm_head-warmup-1: flags=[]; swap_affected=False; continue=True
+delete_lm_head-warmup-2: flags=[]; swap_affected=False; continue=True
+delete_lm_head-warmup-3: flags=[]; swap_affected=False; continue=True
+delete_lm_head-warmup-4: flags=[]; swap_affected=False; continue=True
+delete_lm_head-1-normal: flags=[]; swap_affected=False; continue=True
+delete_lm_head-1-delete_lm_head: flags=[]; swap_affected=False; continue=True
+delete_lm_head-2-delete_lm_head: flags=[]; swap_affected=False; continue=True
+delete_lm_head-2-normal: flags=[]; swap_affected=False; continue=True
+delete_lm_head-3-normal: flags=[]; swap_affected=False; continue=True
+delete_lm_head-3-delete_lm_head: flags=[]; swap_affected=False; continue=True
+delete_lm_head-4-delete_lm_head: flags=[]; swap_affected=False; continue=True
+delete_lm_head-4-normal: flags=[]; swap_affected=False; continue=True
+delete_lm_head-5-normal: flags=[]; swap_affected=False; continue=True
+delete_lm_head-5-delete_lm_head: flags=[]; swap_affected=False; continue=True
+delete_small_ops-warmup-0: flags=[]; swap_affected=False; continue=True
+delete_small_ops-warmup-1: flags=[]; swap_affected=False; continue=True
+delete_small_ops-warmup-2: flags=[]; swap_affected=False; continue=True
+delete_small_ops-warmup-3: flags=[]; swap_affected=False; continue=True
+delete_small_ops-warmup-4: flags=[]; swap_affected=False; continue=True
+delete_small_ops-1-normal: flags=[]; swap_affected=False; continue=True
+delete_small_ops-1-delete_small_ops: flags=[]; swap_affected=False; continue=True
+delete_small_ops-2-delete_small_ops: flags=[]; swap_affected=False; continue=True
+delete_small_ops-2-normal: flags=[]; swap_affected=False; continue=True
+delete_small_ops-3-normal: flags=[]; swap_affected=False; continue=True
+delete_small_ops-3-delete_small_ops: flags=[]; swap_affected=False; continue=True
+delete_small_ops-4-delete_small_ops: flags=[]; swap_affected=False; continue=True
+delete_small_ops-4-normal: flags=[]; swap_affected=False; continue=True
+delete_small_ops-5-normal: flags=[]; swap_affected=False; continue=True
+delete_small_ops-5-delete_small_ops: flags=[]; swap_affected=False; continue=True

@@ -1,0 +1,32 @@
+{
+  "acceptance_enabled": false,
+  "additional_decode_checks_passed": 96,
+  "all_descriptive_intervals_include_one": true,
+  "candidate_id": "cand_b7f7dafae7bb",
+  "checkpoint_identity_unchanged": true,
+  "environment_issues": [
+    "swapins increased during request"
+  ],
+  "full_model_speedup_established": false,
+  "interpretation_status": "inconclusive_environment",
+  "invalid_samples": [
+    {
+      "issues": [
+        "swapins increased during request"
+      ],
+      "lane": "baseline",
+      "layer": 12,
+      "pair": 16,
+      "swap_growth_mib": 0.0,
+      "swapin_pages": 4,
+      "swapout_pages": 0
+    }
+  ],
+  "protected_sources_unchanged": true,
+  "repeat_reason": "AC power connected by user",
+  "research_disposition": "Park this candidate: no reliable operator improvement shown. Retain both runs; do not promote or chase a favorable timing retry.",
+  "snapshot_sha256": "04442d2a56c48c328cf812a86bbe0edc45f8736fb3765f223274ec8fd6212949",
+  "status": "completed_diagnostic",
+  "timing_samples_retained": 120,
+  "verdict": null
+}

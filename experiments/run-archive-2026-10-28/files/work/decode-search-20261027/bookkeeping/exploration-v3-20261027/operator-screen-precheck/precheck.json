@@ -1,0 +1,11 @@
+{
+  "after_sha256": "bb944e1b0caaacb977745c4dc188433d8ef5d6f40f041fed5a950a37e732bc29",
+  "ast_parse": "passed",
+  "before_sha256": "28f259d73b12852d5b4022fcd16084fe7421d34a4e1a31f58dea3c7d6338b271",
+  "executed": false,
+  "format_elapsed_seconds": 0.32268104213289917,
+  "format_stderr": "",
+  "format_stdout": "1 file reformatted\n",
+  "ruff_version": "0.17.3 (same isolated uvx runtime used for prior prepared script)",
+  "script": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/layout_operator_screen.py"
+}

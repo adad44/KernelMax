@@ -1,0 +1,26 @@
+{
+  "copied_at_unix": 1793209998.884416,
+  "logic_changes": false,
+  "mapping": [
+    {
+      "byte_identical": true,
+      "destination": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_5785998944e5/reader.py",
+      "sha256": "a0f31e2b8e18f8fd05146c3e8cea09609b3f0162195035f8b2cdfb0fb2d18214",
+      "source": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/frozen/cand_390712b41518/implementation.py"
+    },
+    {
+      "byte_identical": true,
+      "destination": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_5785998944e5/codec.py",
+      "sha256": "bb8079062c5f9aee76b5e964ef4ebc30bf151fc6d92f0563d4cc5846f5811b5e",
+      "source": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/frozen/cand_390712b41518/codec.py"
+    },
+    {
+      "byte_identical": true,
+      "destination": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_5785998944e5/implementation.metal",
+      "sha256": "7e4b2fa51eea175b9ad376ce1b6ab9276bca7aac6201733945174b3ee275862e",
+      "source": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/frozen/cand_390712b41518/implementation.metal"
+    }
+  ],
+  "source_bundle_sha256": "bbe50c8a03c67d5ba3811eb657a8f15c0292238e66fe8a1ddf3a93a8a5813595",
+  "source_candidate_id": "cand_390712b41518"
+}

@@ -14,6 +14,10 @@ orchestrator, environment setup, and candidate template. Changes to these inputs
 require human review. Freeze their hashes before running optimization experiments;
 changing them starts a new experiment contract and requires a new baseline.
 
+Use a GPT-6 Luna subagent with high reasoning for running prepared scripts,
+monitoring processes, collecting artifacts and concise run reports. The primary
+agent handles experiment design, implementation and evidence interpretation.
+
 ## Locked workload
 
 Read `kernelmaxxing.yaml` before proposing a candidate. It specifies the pinned
@@ -46,18 +50,73 @@ includes `wrapper.py` and `implementation.py` for MLX or `implementation.metal`
 for Metal. Describe the hypothesis and assumptions in `description`; never put a
 verdict or claimed benchmark result into the submission manifest.
 
-`moe_expert_execution` is the initial replacement boundary: evaluator-provided
-activations and selected expert indices pass through the selected expert
-projections and activation. Preserve checkpoint weight values, routing decisions,
-output shape, and dtype. The model adapter must define the exact callable and
-tensor layout before execution. Any layout conversion must be declared; do not
-requantize or replace weights. Shape-specialized code must reject unsupported
-inputs or use an explicitly declared reference fallback, reported by the evaluator.
+The active `complete_decode` boundary permits complete decode scheduling,
+including CPU graph construction overlapped with GPU execution and investigation
+of unnecessary waits; graph fusion across normalization, routing, attention and
+expert execution; and exact weight-layout transformations, buffer reuse and
+KV-cache updates. Preserve checkpoint weight values, native MXFP4 weights, BF16
+activations/cache, routing decisions, output shapes/dtypes and generation
+behavior. Do not requantize, approximate, skip layers/experts, change the sampler,
+reuse a prior request's cache or generate extra tokens to inflate throughput.
+Declare layout conversions, scheduling and cache-state changes explicitly.
+
+The existing `moe_expert_execution` adapter remains an expert-only interface;
+passing its suite cannot validate a broader candidate. The trusted controller
+must define the broader callable and check complete-model logits, routes, token
+IDs and cache behavior before timing. Scheduling candidates must account for
+the first token, every emitted token and the final GPU drain, with no hidden
+lookahead work excluded. Shape-specialized code must reject unsupported inputs
+or use an explicitly declared reference fallback, reported by the evaluator.
+
+The 2026-10-27 scope expansion starts a new contract and protected-source
+snapshot. Historical baseline and candidate results retain their old identities;
+collect fresh matched controls before making claims under this contract.
 
 ## Evaluation protocol
 
 The protected evaluator owns inputs, seeds, held-out cases, tolerances, model
 installation, warmups, synchronization, sample collection, and verdicts.
+
+Use the contract's two measurement modes explicitly:
+
+- **Exploration:** predeclare request and wall-time bounds, retain every sample,
+  flag system-wide swap activity and finish the bounded pass. Swap growth or
+  swap-outs alone do not abort it. Preserve completed calibration and numerical
+  correctness work with their original identities; a later timing flag does not
+  erase a completed result. Use exploratory measurements only to choose
+  hypotheses, never to establish a speedup or acceptance.
+- **Confirmation:** require fresh matched baseline/candidate comparisons,
+  numerical correctness, calibration and strict environment validity before a
+  speedup claim. Logged swap-ins may follow the existing paging-aware policy;
+  swap-outs or swap growth invalidate confirmation. Do not filter affected
+  samples and report the remaining subset as a successful confirmation.
+
+Observe prefill and decode separately. Retain phase boundary/sample times,
+memory-pressure observations, free/wired/file-backed/compressed memory, swap
+rate and process memory/fault counters when available. These are context and
+attribution limits: system-wide counters cannot identify whether model data
+paged, process faults are not swap-specific, and file-backed pages are not an
+exact reconstruction of Activity Monitor's Cached Files. Apple describes memory
+pressure using free memory, swap rate, wired memory and file cached memory:
+https://support.apple.com/en-mide/guide/activity-monitor/actmntr1004/mac
+
+Both modes still stop for numerical/build/GPU failures, integrity changes, loss
+of required power or nonnominal thermals. Exploration bounds remain mandatory;
+retaining swap-affected samples is not permission for an unbounded retry loop.
+
+For the authorized 2026-10-28 three-candidate sprint, use short full-model
+exploratory progression: an eight-token teacher-forced comparison under the
+existing BF16 tolerances, then three alternating baseline/candidate requests
+of128outputs. Record routing/token/cache differences; bit-exact equality is a
+diagnostic, not an additional exploratory gate. This short check is not full
+correctness or quality certification. Preserve the reference and checkpoint
+precision and stop numerical failures. Keep a resident model between candidates
+and reuse unchanged fixture evidence; no new broad profiling campaign. Limit
+the round to three substantive candidate snapshots (vocabulary integration,
+fusedMoEblock, optional composition). A repeated5% full-model improvement still
+requires full-length correctness, fresh strict calibration/matched confirmation
+and reported uncertainty across the locked prompt lengths. Acceptance/held-out
+task-quality gates remain disabled/planned and cannot be inferred from timing.
 
 1. Validate the manifest and candidate boundary without importing candidate code.
 2. Freeze and hash candidate files and protected inputs.
@@ -76,7 +135,7 @@ installation, warmups, synchronization, sample collection, and verdicts.
    orchestrator records that verdict without overriding it.
 
 An invalid build or submission is an execution/validation error, not a speedup.
-Noisy or environmentally invalid timings cannot support `ACCEPTED`. Passing a
+Noisy or environmentally invalid confirmation timings cannot support `ACCEPTED`. Passing a
 small operator test does not establish full-model correctness or performance.
 An insufficient task-quality sample or missing task evidence cannot support
 `ACCEPTED`. The agent cannot select task examples, scorers or regression margins.

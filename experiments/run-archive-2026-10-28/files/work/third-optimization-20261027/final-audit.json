@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "native_checks": 21,
+  "real_checks": 48,
+  "samples": 120,
+  "all_intervals_include_one": true,
+  "all_integrity_guards_passed": true,
+  "temporary_launchd_job_removed": true,
+  "sleep_assertion_ended": true,
+  "git_head_unchanged": "fc1dc28",
+  "committed": false
+}

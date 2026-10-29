@@ -1,0 +1,1328 @@
+{
+  "artifact": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-004-confirm-cand_3f4c02fcfc71/correctness-2048-128.npz",
+  "npz_sha256_before": "218581d49fbed41014cc594127d1b65d8e3ac2c49716cc8d2d9b661595673921",
+  "npz_sha256_after": "218581d49fbed41014cc594127d1b65d8e3ac2c49716cc8d2d9b661595673921",
+  "npz_hash_matches_confirmation_audit": true,
+  "logit_shape": [
+    128,
+    201088
+  ],
+  "pointwise_tolerance": {
+    "atol": 0.02,
+    "rtol": 0.02,
+    "comparison_dtype": "float64, matching compare_outputs"
+  },
+  "first_nonexact_logit_step_0based": 106,
+  "first_nonexact_logit_step_1based": 107,
+  "first_pointwise_tolerance_violation_step_0based": 106,
+  "first_pointwise_tolerance_violation_step_1based": 107,
+  "first_route_slot_difference": {
+    "step_0based": 108,
+    "step_1based": 109,
+    "layer": 18
+  },
+  "total_logit_nonexact_scalars": 3023855,
+  "total_pointwise_tolerance_violations": 200071,
+  "total_route_slot_differences": 14,
+  "route_set_difference_layers_total": 5,
+  "token_difference_count": 0,
+  "per_step": [
+    {
+      "step_0based": 0,
+      "step_1based": 1,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 1,
+      "step_1based": 2,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 2,
+      "step_1based": 3,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 3,
+      "step_1based": 4,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 4,
+      "step_1based": 5,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 5,
+      "step_1based": 6,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 6,
+      "step_1based": 7,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 7,
+      "step_1based": 8,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 8,
+      "step_1based": 9,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 9,
+      "step_1based": 10,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 10,
+      "step_1based": 11,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 11,
+      "step_1based": 12,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 12,
+      "step_1based": 13,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 13,
+      "step_1based": 14,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 14,
+      "step_1based": 15,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 15,
+      "step_1based": 16,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 16,
+      "step_1based": 17,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 17,
+      "step_1based": 18,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 18,
+      "step_1based": 19,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 19,
+      "step_1based": 20,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 20,
+      "step_1based": 21,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 21,
+      "step_1based": 22,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 22,
+      "step_1based": 23,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 23,
+      "step_1based": 24,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 24,
+      "step_1based": 25,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 25,
+      "step_1based": 26,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 26,
+      "step_1based": 27,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 27,
+      "step_1based": 28,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 28,
+      "step_1based": 29,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 29,
+      "step_1based": 30,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 30,
+      "step_1based": 31,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 31,
+      "step_1based": 32,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 32,
+      "step_1based": 33,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 33,
+      "step_1based": 34,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 34,
+      "step_1based": 35,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 35,
+      "step_1based": 36,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 36,
+      "step_1based": 37,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 37,
+      "step_1based": 38,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 38,
+      "step_1based": 39,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 39,
+      "step_1based": 40,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 40,
+      "step_1based": 41,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 41,
+      "step_1based": 42,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 42,
+      "step_1based": 43,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 43,
+      "step_1based": 44,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 44,
+      "step_1based": 45,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 45,
+      "step_1based": 46,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 46,
+      "step_1based": 47,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 47,
+      "step_1based": 48,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 48,
+      "step_1based": 49,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 49,
+      "step_1based": 50,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 50,
+      "step_1based": 51,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 51,
+      "step_1based": 52,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 52,
+      "step_1based": 53,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 53,
+      "step_1based": 54,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 54,
+      "step_1based": 55,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 55,
+      "step_1based": 56,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 56,
+      "step_1based": 57,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 57,
+      "step_1based": 58,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 58,
+      "step_1based": 59,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 59,
+      "step_1based": 60,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 60,
+      "step_1based": 61,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 61,
+      "step_1based": 62,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 62,
+      "step_1based": 63,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 63,
+      "step_1based": 64,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 64,
+      "step_1based": 65,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 65,
+      "step_1based": 66,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 66,
+      "step_1based": 67,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 67,
+      "step_1based": 68,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 68,
+      "step_1based": 69,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 69,
+      "step_1based": 70,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 70,
+      "step_1based": 71,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 71,
+      "step_1based": 72,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 72,
+      "step_1based": 73,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 73,
+      "step_1based": 74,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 74,
+      "step_1based": 75,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 75,
+      "step_1based": 76,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 76,
+      "step_1based": 77,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 77,
+      "step_1based": 78,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 78,
+      "step_1based": 79,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 79,
+      "step_1based": 80,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 80,
+      "step_1based": 81,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 81,
+      "step_1based": 82,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 82,
+      "step_1based": 83,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 83,
+      "step_1based": 84,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 84,
+      "step_1based": 85,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 85,
+      "step_1based": 86,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 86,
+      "step_1based": 87,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 87,
+      "step_1based": 88,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 88,
+      "step_1based": 89,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 89,
+      "step_1based": 90,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 90,
+      "step_1based": 91,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 91,
+      "step_1based": 92,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 92,
+      "step_1based": 93,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 93,
+      "step_1based": 94,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 94,
+      "step_1based": 95,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 95,
+      "step_1based": 96,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 96,
+      "step_1based": 97,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 97,
+      "step_1based": 98,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 98,
+      "step_1based": 99,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 99,
+      "step_1based": 100,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 100,
+      "step_1based": 101,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 101,
+      "step_1based": 102,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 102,
+      "step_1based": 103,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 103,
+      "step_1based": 104,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 104,
+      "step_1based": 105,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 105,
+      "step_1based": 106,
+      "logit_nonexact_scalar_count": 0,
+      "pointwise_tolerance_violation_scalar_count": 0,
+      "max_abs_logit_error": 0.0,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 106,
+      "step_1based": 107,
+      "logit_nonexact_scalar_count": 146033,
+      "pointwise_tolerance_violation_scalar_count": 1832,
+      "max_abs_logit_error": 0.125,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 107,
+      "step_1based": 108,
+      "logit_nonexact_scalar_count": 159517,
+      "pointwise_tolerance_violation_scalar_count": 3609,
+      "max_abs_logit_error": 0.09375,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 108,
+      "step_1based": 109,
+      "logit_nonexact_scalar_count": 91660,
+      "pointwise_tolerance_violation_scalar_count": 569,
+      "max_abs_logit_error": 0.125,
+      "route_slot_mismatch_count": 2,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": [
+        18
+      ]
+    },
+    {
+      "step_0based": 109,
+      "step_1based": 110,
+      "logit_nonexact_scalar_count": 139242,
+      "pointwise_tolerance_violation_scalar_count": 4619,
+      "max_abs_logit_error": 0.125,
+      "route_slot_mismatch_count": 2,
+      "route_set_mismatch_layer_count": 1,
+      "route_mismatch_layers": [
+        15
+      ]
+    },
+    {
+      "step_0based": 110,
+      "step_1based": 111,
+      "logit_nonexact_scalar_count": 104194,
+      "pointwise_tolerance_violation_scalar_count": 852,
+      "max_abs_logit_error": 0.09375,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 111,
+      "step_1based": 112,
+      "logit_nonexact_scalar_count": 186719,
+      "pointwise_tolerance_violation_scalar_count": 18557,
+      "max_abs_logit_error": 0.1875,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 112,
+      "step_1based": 113,
+      "logit_nonexact_scalar_count": 87868,
+      "pointwise_tolerance_violation_scalar_count": 594,
+      "max_abs_logit_error": 0.125,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 113,
+      "step_1based": 114,
+      "logit_nonexact_scalar_count": 117257,
+      "pointwise_tolerance_violation_scalar_count": 2368,
+      "max_abs_logit_error": 0.125,
+      "route_slot_mismatch_count": 1,
+      "route_set_mismatch_layer_count": 1,
+      "route_mismatch_layers": [
+        12
+      ]
+    },
+    {
+      "step_0based": 114,
+      "step_1based": 115,
+      "logit_nonexact_scalar_count": 145353,
+      "pointwise_tolerance_violation_scalar_count": 4293,
+      "max_abs_logit_error": 0.125,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 115,
+      "step_1based": 116,
+      "logit_nonexact_scalar_count": 148844,
+      "pointwise_tolerance_violation_scalar_count": 1096,
+      "max_abs_logit_error": 0.09375,
+      "route_slot_mismatch_count": 4,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": [
+        14,
+        16
+      ]
+    },
+    {
+      "step_0based": 116,
+      "step_1based": 117,
+      "logit_nonexact_scalar_count": 112932,
+      "pointwise_tolerance_violation_scalar_count": 1390,
+      "max_abs_logit_error": 0.09375,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 117,
+      "step_1based": 118,
+      "logit_nonexact_scalar_count": 189365,
+      "pointwise_tolerance_violation_scalar_count": 106871,
+      "max_abs_logit_error": 0.75,
+      "route_slot_mismatch_count": 1,
+      "route_set_mismatch_layer_count": 1,
+      "route_mismatch_layers": [
+        23
+      ]
+    },
+    {
+      "step_0based": 118,
+      "step_1based": 119,
+      "logit_nonexact_scalar_count": 159474,
+      "pointwise_tolerance_violation_scalar_count": 3593,
+      "max_abs_logit_error": 0.125,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 119,
+      "step_1based": 120,
+      "logit_nonexact_scalar_count": 151934,
+      "pointwise_tolerance_violation_scalar_count": 8813,
+      "max_abs_logit_error": 0.125,
+      "route_slot_mismatch_count": 1,
+      "route_set_mismatch_layer_count": 1,
+      "route_mismatch_layers": [
+        15
+      ]
+    },
+    {
+      "step_0based": 120,
+      "step_1based": 121,
+      "logit_nonexact_scalar_count": 108033,
+      "pointwise_tolerance_violation_scalar_count": 779,
+      "max_abs_logit_error": 0.125,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 121,
+      "step_1based": 122,
+      "logit_nonexact_scalar_count": 159961,
+      "pointwise_tolerance_violation_scalar_count": 7378,
+      "max_abs_logit_error": 0.15625,
+      "route_slot_mismatch_count": 3,
+      "route_set_mismatch_layer_count": 1,
+      "route_mismatch_layers": [
+        13,
+        18
+      ]
+    },
+    {
+      "step_0based": 122,
+      "step_1based": 123,
+      "logit_nonexact_scalar_count": 130304,
+      "pointwise_tolerance_violation_scalar_count": 2558,
+      "max_abs_logit_error": 0.125,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 123,
+      "step_1based": 124,
+      "logit_nonexact_scalar_count": 148734,
+      "pointwise_tolerance_violation_scalar_count": 2612,
+      "max_abs_logit_error": 0.09375,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 124,
+      "step_1based": 125,
+      "logit_nonexact_scalar_count": 100477,
+      "pointwise_tolerance_violation_scalar_count": 918,
+      "max_abs_logit_error": 0.125,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 125,
+      "step_1based": 126,
+      "logit_nonexact_scalar_count": 119419,
+      "pointwise_tolerance_violation_scalar_count": 1350,
+      "max_abs_logit_error": 0.125,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 126,
+      "step_1based": 127,
+      "logit_nonexact_scalar_count": 176770,
+      "pointwise_tolerance_violation_scalar_count": 24036,
+      "max_abs_logit_error": 0.1875,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    },
+    {
+      "step_0based": 127,
+      "step_1based": 128,
+      "logit_nonexact_scalar_count": 139765,
+      "pointwise_tolerance_violation_scalar_count": 1384,
+      "max_abs_logit_error": 0.125,
+      "route_slot_mismatch_count": 0,
+      "route_set_mismatch_layer_count": 0,
+      "route_mismatch_layers": []
+    }
+  ],
+  "scope": "Offline CPU analysis of retained failed correctness NPZ; no GPU/checkpoint/model run; diagnostic, not a repair or candidate result."
+}

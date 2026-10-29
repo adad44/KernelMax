@@ -1,0 +1,56 @@
+{
+  "approved_response": "yea do that, and try for the official baseline again",
+  "scope": "Temporary pause of MemoryOS capture/indexing and scheduler; restore initially loaded jobs on exit. No history deletion.",
+  "output": "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/official-attempt-2026-10-03T20-49-01-seed42",
+  "log": "/Users/alandiaz/Library/Logs/kernelmax-official-baseline-2026-10-03T20-49-01.log",
+  "initially_loaded": [
+    {
+      "label": "com.memoryos.scheduler",
+      "plist_sha256": "436d3d0a3f20da38f87cc2d21b3106dea25314c1f075af20581a02678baabbdc",
+      "pid": 1262
+    },
+    {
+      "label": "com.memoryos.daemon",
+      "plist_sha256": "eb7d1d0ce032bf4c4aebab9b7c70a3a9a8d1e3bf218c7b8d5f2e941539e03644",
+      "pid": 1268
+    },
+    {
+      "label": "com.memoryos.backend",
+      "plist_sha256": "60cb04f2d385d5d2c51cb86f8612883eb3adea7df6cbc27b14050e0c0a409441",
+      "pid": 1269
+    }
+  ],
+  "paused": [
+    {
+      "label": "com.memoryos.scheduler",
+      "at": 1791085741.709089
+    },
+    {
+      "label": "com.memoryos.daemon",
+      "at": 1791085741.718027
+    },
+    {
+      "label": "com.memoryos.backend",
+      "at": 1791085741.7261992
+    }
+  ],
+  "restored": [
+    {
+      "label": "com.memoryos.backend",
+      "at": 1791085741.737411
+    },
+    {
+      "label": "com.memoryos.daemon",
+      "at": 1791085741.7471309
+    },
+    {
+      "label": "com.memoryos.scheduler",
+      "at": 1791085741.755418
+    }
+  ],
+  "restoration_errors": [],
+  "status": "session_error",
+  "error": "RuntimeError: Service still loaded after pause: com.memoryos.backend",
+  "finished_at": 1791085741.755724,
+  "restoration_complete": true
+}

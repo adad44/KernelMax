@@ -1,0 +1,22 @@
+{
+  "acceptance_enabled": false,
+  "additional_decode_checks_passed": 96,
+  "branch": "candidate/first-optimization-loop",
+  "candidate_id": "cand_b7f7dafae7bb",
+  "checkpoint_identity_unchanged": true,
+  "commit": "9c110a26292b7185b096724321302305d69ffed3",
+  "environment_issues": [
+    "AC power unavailable"
+  ],
+  "interpretation_status": "inconclusive_environment",
+  "native_checks_passed": 21,
+  "native_run_id": "70a82e9f-5b06-4f9b-a3d0-a255d06b6ede",
+  "next_step": "Repeat paired operator timing on AC with a fresh artifact directory; pursue full-model integration only if the hypothesis warrants it.",
+  "optimized_native_checks": 3,
+  "paired_samples_retained": 120,
+  "protected_sources_unchanged": true,
+  "reference_fallback_checks": 18,
+  "snapshot_sha256": "04442d2a56c48c328cf812a86bbe0edc45f8736fb3765f223274ec8fd6212949",
+  "verdict": null,
+  "verified_full_model_speedup": null
+}

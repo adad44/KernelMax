@@ -1,0 +1,25 @@
+{
+  "status": "prepared_not_started",
+  "prior_tested_configs_excluded": [
+    [
+      16,
+      2,
+      8,
+      "lut"
+    ],
+    [
+      16,
+      2,
+      8,
+      "half"
+    ],
+    [
+      16,
+      2,
+      16,
+      "lut"
+    ]
+  ],
+  "starts_only_after_full_model_process_exits": true,
+  "no_overlap": true
+}

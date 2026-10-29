@@ -1,0 +1,11 @@
+{
+  "command": {
+    "mode": "finish"
+  },
+  "finished_after_failed_confirmation": true,
+  "path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/commands/006.json",
+  "sha256": "24aaf8160de6337a5f435edf75c5b7c99731f196c0eed7c17e56c6f0370a6f78",
+  "status_before": "waiting_command",
+  "time": 1793212443.036843,
+  "worker_pid": 48619
+}

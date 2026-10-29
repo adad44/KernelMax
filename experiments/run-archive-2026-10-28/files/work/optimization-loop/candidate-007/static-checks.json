@@ -1,0 +1,13 @@
+{
+  "all_16_fp4_codes_bit_exact": true,
+  "negative_zero_preserved": true,
+  "python_syntax_valid": true,
+  "source_sha256": {
+    "README.md": "038cad0bc77f2744c0172cc9106ba143dfdbbd29ebe379794ca49f47063f4535",
+    "implementation.py": "1a06349af4f8e5ea31236f73d1751b93bbc3eed7510afdfa58db6cf6a8c084b2",
+    "manifest.json": "8cc543d7ca5c241d17b407c5da04a756071f8a7406b50a8f354db0b698286f2f",
+    "octet_up_gate.metal": "3fc5e23d53f92c4097490a98d1b348974ab639e95fdd6f1d0337d8171b6991eb",
+    "wrapper.py": "2496a31e2f5a38d8955cf1bf624b543338c411e868eb7ec5cd754fb128e321b7"
+  },
+  "tiling_unchanged_from_correctness_passed_candidate": true
+}

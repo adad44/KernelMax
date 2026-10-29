@@ -1,0 +1,298 @@
+{
+  "candidate": {
+    "bundle_sha256": "b6dd528b50b4d3d89db496fb021bbcd21d2043f701c36196e39ea08457283918",
+    "candidate_cap": 3,
+    "existing_ids": [
+      "cand_5785998944e5",
+      "cand_4a02c3189b7d",
+      "cand_3f4c02fcfc71"
+    ],
+    "id": "cand_5785998944e5",
+    "matches_original_frozen": true
+  },
+  "candidate_timing": {
+    "candidate_pair_rows": 0,
+    "candidate_warmup_rows": 6,
+    "locked_metrics": "No completed paired candidate block; candidate summaries/5% CI unavailable.",
+    "summaries": {}
+  },
+  "correctness_reuse": {
+    "contexts": [
+      {
+        "context": 512,
+        "logits_exact": true,
+        "npz_path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-005-confirm-cand_5785998944e5/correctness-512-128.npz",
+        "npz_sha256_current": "fe9ba7abc68d0e9419a01f51e92a3a34482b2420bc3f32f9709d1304f3ed0c4f",
+        "npz_sha256_stored": "fe9ba7abc68d0e9419a01f51e92a3a34482b2420bc3f32f9709d1304f3ed0c4f",
+        "npz_sha_matches": true,
+        "outputs": 128,
+        "routes_equal": true,
+        "state_bit_exact": true,
+        "state_cache_within_tolerance": true,
+        "state_passed": true,
+        "tokens_equal": true
+      },
+      {
+        "context": 2048,
+        "logits_exact": true,
+        "npz_path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-005-confirm-cand_5785998944e5/correctness-2048-128.npz",
+        "npz_sha256_current": "1cbe4c1eedf3e6c8b9b507a109f606f04af1796805755191a66b5a48eb9695d8",
+        "npz_sha256_stored": "1cbe4c1eedf3e6c8b9b507a109f606f04af1796805755191a66b5a48eb9695d8",
+        "npz_sha_matches": true,
+        "outputs": 128,
+        "routes_equal": true,
+        "state_bit_exact": true,
+        "state_cache_within_tolerance": true,
+        "state_passed": true,
+        "tokens_equal": true
+      },
+      {
+        "context": 4096,
+        "logits_exact": true,
+        "npz_path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-005-confirm-cand_5785998944e5/correctness-4096-128.npz",
+        "npz_sha256_current": "2a7e1ab0f1a31fbb45b0c9efa80407bcbae69f286f32c4eb5b992fa5788d8c08",
+        "npz_sha256_stored": "2a7e1ab0f1a31fbb45b0c9efa80407bcbae69f286f32c4eb5b992fa5788d8c08",
+        "npz_sha_matches": true,
+        "outputs": 128,
+        "routes_equal": true,
+        "state_bit_exact": true,
+        "state_cache_within_tolerance": true,
+        "state_passed": true,
+        "tokens_equal": true
+      }
+    ],
+    "parent_manifest_sha256": "8b76510d4d0cd0b2371aeb5757d8bed4f052f2b3bc50fadb3a741f799f7ee521",
+    "reused_only_same_candidate_checkpoint_contract": true,
+    "source_state": "8efafb27e3eebe5b96b422bcdaa7d39004354434323292235d02837ce28d469f"
+  },
+  "fresh_aa_calibration_512": {
+    "matches_stored": true,
+    "pairs": 20,
+    "recomputed": {
+      "bootstrap_95pct_ci": [
+        0.99901965267588,
+        1.0020616306725079
+      ],
+      "median_ratio": 1.0002470844628015,
+      "paired_b_over_a_ratios": [
+        0.9985897071273657,
+        0.9967643156311936,
+        0.995681738340917,
+        0.999812940676401,
+        0.999204135224371,
+        1.003786300544722,
+        1.0016984726014835,
+        1.0001793098913132,
+        0.991038707874422,
+        1.0053051987138841,
+        1.0033495033374777,
+        1.000507010629321,
+        1.0014186508944631,
+        0.9989309087461351,
+        1.0068646181450391,
+        1.00031485903429,
+        1.0138421374745714,
+        0.997132493608137,
+        0.9991083966056249,
+        1.0024247887435325
+      ],
+      "passed": true
+    },
+    "rows": 40,
+    "stored": {
+      "bootstrap_95pct_ci": [
+        0.99901965267588,
+        1.0020616306725079
+      ],
+      "median_ratio": 1.0002470844628015,
+      "paired_b_over_a_ratios": [
+        0.9985897071273657,
+        0.9967643156311936,
+        0.995681738340917,
+        0.999812940676401,
+        0.999204135224371,
+        1.003786300544722,
+        1.0016984726014835,
+        1.0001793098913132,
+        0.991038707874422,
+        1.0053051987138841,
+        1.0033495033374777,
+        1.000507010629321,
+        1.0014186508944631,
+        0.9989309087461351,
+        1.0068646181450391,
+        1.00031485903429,
+        1.0138421374745714,
+        0.997132493608137,
+        0.9991083966056249,
+        1.0024247887435325
+      ],
+      "passed": true
+    },
+    "warmups": 10
+  },
+  "guards": {
+    "all_reused_npz_hashes_current": true,
+    "candidate_snapshot_verified": true,
+    "checkpoint_receipt_matches_parent": true,
+    "checkpoint_receipt_validator_passed": true,
+    "command_checkpoint_snapshot_unchanged": true,
+    "command_protected_unchanged": true,
+    "current_protected_hash_mismatches": [],
+    "historical_protected_hash_mismatches": [],
+    "original_methods_restored": true,
+    "resident_checkpoint_unchanged": true,
+    "resident_protected_unchanged": true
+  },
+  "objective": "repeatable >=5% full-model decode improvement; not verified",
+  "physical_request_audit": {
+    "all_baseline_projection_specialized_zero": true,
+    "all_candidate_block_fallback_counts_zero": true,
+    "all_measured_candidate_projection_counts_128": true,
+    "all_measured_forward_calls_129": true,
+    "all_measured_reference_tokens_match": true,
+    "all_primer_candidate_projection_counts_128": true,
+    "all_primer_measured_links_match": true,
+    "all_primers_forward_calls_129": true,
+    "all_primers_reference_tokens_match": true,
+    "complete": false,
+    "instrumented_rows": 0,
+    "measured_rows": 56,
+    "measured_strict_flags": [
+      {
+        "flags": [
+          "swapouts increased during request"
+        ],
+        "index": 55,
+        "lane": "candidate",
+        "phase": "warmup-1",
+        "swap": {
+          "policy": "paging-aware",
+          "swap_growth_mib": -64.44000000000051,
+          "swapin_pages": 33799,
+          "swapins_permitted": true,
+          "swapout_pages": 32230
+        },
+        "trial": 3
+      }
+    ],
+    "phase_counts": {
+      "aa": 40,
+      "aa_warmup": 10,
+      "confirm-1": 0,
+      "confirm-2": 0,
+      "warmup-1": 6,
+      "warmup-2": 0
+    },
+    "planned_measured_rows": 350,
+    "planned_primer_rows": 350,
+    "primer_hard_environment_flags": [],
+    "primer_link_results": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "primer_rows": 56,
+    "request_started_count_matches_lists": true
+  },
+  "protocol": "one changed-residency strict confirmation of existing C1 vocabulary-only snapshot",
+  "recorded_at_unix": 1793225588.641397,
+  "stop": {
+    "flags": [
+      "swapouts increased during request"
+    ],
+    "lane": "candidate",
+    "length": 512,
+    "phase": "warmup-1",
+    "status": "stopped_EnvironmentFailure",
+    "stop_reason": "Traceback (most recent call last):\n  File \"/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-confirm-resident-20261028/run_confirm.py\", line 750, in run_command\n    collect(length, lane, f\"warmup-{block}\", warm)\n  File \"/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-confirm-resident-20261028/run_confirm.py\", line 624, in collect\n    raise EnvironmentFailure(\"Environment flags: \" + str(flags))\nEnvironmentFailure: Environment flags: {'mode': 'confirmation', 'flags': ['swapouts increased during request'], 'swap_affected': True, 'continue_pass': False, 'stop_reasons': ['swapouts increased during request'], 'confirmation_sample_eligible': False, 'attribution': 'system-wide counters; no identification of model pages'}\n",
+    "swap_activity": {
+      "policy": "paging-aware",
+      "swap_growth_mib": -64.44000000000051,
+      "swapin_pages": 33799,
+      "swapins_permitted": true,
+      "swapout_pages": 32230
+    },
+    "trial": 3
+  },
+  "verdict": {
+    "acceptance_enabled": false,
+    "five_percent_improvement_verified": false,
+    "goal_proven": false,
+    "official": false
+  },
+  "worker": {
+    "active_wait_expired_after_30min": true,
+    "birth": "2026-10-28 11:44:09 local",
+    "command_status": "stopped_EnvironmentFailure",
+    "final_checkpoint_unchanged": true,
+    "final_protected_unchanged": true,
+    "final_state": "resident_wait_expired",
+    "launchd_jobs": {
+      "com.kernelmax.confirm-resident.20261028": {
+        "exit0": true,
+        "not_running": true
+      },
+      "com.kernelmax.confirm-resident.20261028.caffeinate": {
+        "exit0": true,
+        "not_running": true
+      }
+    },
+    "pid": 53245,
+    "requests_started_physical": 112,
+    "resident_errors": []
+  }
+}

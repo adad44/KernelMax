@@ -1,0 +1,7 @@
+{
+  "candidate_id": "cand_b7f7dafae7bb",
+  "snapshot_sha256": "04442d2a56c48c328cf812a86bbe0edc45f8736fb3765f223274ec8fd6212949",
+  "authorization": "Approve this snapshot for native tests",
+  "scope": "Human-authorized native tests of this exact snapshot; no acceptance enablement",
+  "snapshot": "/Users/alandiaz/Downloads/KernelMaxxxing/work/first-optimization-20261026/review/f8c93159c83647368348a5b022c6bf6d/cand_b7f7dafae7bb"
+}

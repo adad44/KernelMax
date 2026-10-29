@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_206746fae66e",
+  "name": "Complete native expert decode graph compilation",
+  "implementation_type": "mlx",
+  "description": "Hypothesis: compile the complete one-token expert graph, including all three original MXFP4 gather_qmm products, output biases and GPT-OSS SwiGLU, to reduce Python graph-construction work beyond the narrower bias/activation compilation candidate. Native packed weights, scales and biases are explicit function arguments; compiled graphs do not close over a layer's weights. No requantization, persistent tensor cache, weight copy or layout conversion. Specializes BF16 [1,1,H] with int32 or uint32 [1,1,4] IDs. All other shapes, including prefill, use the unchanged reference. No correctness, timing, bottleneck or acceptance claim."
+}

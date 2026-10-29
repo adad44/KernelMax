@@ -1,0 +1,15 @@
+{
+  "mode": "exploration",
+  "max_requests": 64,
+  "max_wall_time_seconds": 3600,
+  "expected_requests": 63,
+  "scope": "Complete bounded whole-decode profiling with prefill/decode memory observations; choose a several-ms hypothesis, never establish a speedup.",
+  "prior_work": "Retain original20pairA/A calibration and native output evidence under their original schema2 identities. Do not repeat calibration for this exploratory pass or relabel it as schema3 confirmation. Fresh strict matched confirmation is required for a speedup claim.",
+  "workload": "Pinned native checkpoint;512prompt,128greedy outputs, freshBF16 caches; unchanged model operations and exact cached-logit deletion diagnostics across all24layers.",
+  "regions": ["experts", "attention", "lm_head", "small_ops"],
+  "cadence": "Two native warmups, one capture; perregion fivewarmups plus five fixed alternating control/deletion pairs. Before each request fixed12s hold+5ssettle+10sidle; no swap-quiet gate that can abort exploration. AC/nominalthermal still required. No retries.",
+  "swap_policy": "Retain and flag every swap-affected sample; finish within bounds. All pairs, including flagged pairs, enter descriptive deletion budgets. System-wide counters do not identify whether model data paged. Preserve failures and completed correctness/calibration artifacts.",
+  "phase_memory": "Read-only VM/swap/OS pressure code/processRSS+fault/MLXallocator snapshots at semantic phase boundaries and about1Hz. Prefill includes first-token production; decode begins before first generated-token forward. Retain raw timestamps, page-equivalent swap rates and observation overhead. This instrumentation is for exploration only, not confirmation timings.",
+  "stop_conditions": "Request/wall bound finishes pass with completed results intact; numerical/GPU/build failures, protected-source/checkpoint changes, required-power loss or nonnominalthermal stop with all partial artifacts retained.",
+  "acceptance_enabled": false
+}

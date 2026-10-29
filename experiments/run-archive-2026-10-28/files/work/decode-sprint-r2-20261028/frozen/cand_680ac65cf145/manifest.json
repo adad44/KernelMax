@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_680ac65cf145",
+  "name": "Exact vocabulary reader with single-representation weight residency",
+  "implementation_type": "mlx",
+  "description": "Preserve the prior lossless BF16 one-token vocabulary GEMV arithmetic; export and reactivate packed tensors through a trusted controller so native and packed vocabulary weights are not persistently retained together during requests. Native baseline weights are restored from controller-owned exact backing storage before baseline lanes. Multi-token projection uses exact bit reconstruction and unchanged native linear math as a declared lazy fallback. Preparation and lane conversion are outside timing, all buffers/caches and 128 greedy outputs remain audited. New unpack/lifetime paths require fresh complete-model correctness and strict matched timing; no result or acceptance claimed."
+}

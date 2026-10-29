@@ -1,0 +1,16 @@
+{
+  "checkpoint_identity_fields_restored": [
+    "receipt_path",
+    "receipt_sha256",
+    "model_path",
+    "model_revision",
+    "byte_verification",
+    "model_files",
+    "file_identity"
+  ],
+  "current_fields_equal_original_creation_shape": true,
+  "original_hash_not_captured_before_transient_change": true,
+  "original_modified_hash_observed": "7dac790aaaa8562cd5398ce234120343258d8288220a507c09676a6b961a4e13",
+  "restored_hash": "8b76510d4d0cd0b2371aeb5757d8bed4f052f2b3bc50fadb3a741f799f7ee521",
+  "transient_change": "Temporarily replaced original checkpoint_identity subset with full receipt and added three top-level receipt fields. Restored the original creation-code field shape and removed those additions before new runner preflight. No original parent-state/005-state/candidate/source artifacts changed."
+}

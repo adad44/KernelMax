@@ -1,0 +1,225 @@
+{
+  "all_checks_passed": true,
+  "all_goal_requirements_passed": true,
+  "audited_at_unix": 1793158584.285723,
+  "candidate_bundle_sha256": "bbe50c8a03c67d5ba3811eb657a8f15c0292238e66fe8a1ddf3a93a8a5813595",
+  "candidate_id": "cand_390712b41518",
+  "candidate_loop_doc_sha256": "d363d1c186e2de8b512cc7e43df3a3a66681487e039675d5fc29cd62f969b932",
+  "candidate_loop_doc_status": "New untracked documentation file; semantic wording matches schema3 mode policy. No code/test rerun.",
+  "checks": {
+    "all_attention_median_regressions": {
+      "detail": "12/12 attention projection medians negative; lm_head median saving 2.504255 ms/call",
+      "passed": true
+    },
+    "all_worker_sleep_jobs_terminal": {
+      "detail": "[{\"label\": \"gui/501/com.kernelmax.exploration.v3.20261027\", \"launchctl_found\": true, \"not_running\": true, \"last_exit_0\": true}, {\"label\": \"gui/501/com.kernelmax.exploration.caffeinate.v3.20261027\", \"launchctl_found\": true, \"not_running\": true, \"last_exit_0\": true}, {\"label\": \"gui/501/com.kernelmax.native-gpu-fixture-001\", \"launchctl_found\": true, \"not_running\": true, \"last_exit_0\": true}, {\"label\": \"gui/501/com.kernelmax.checkpoint-operator-001\", \"launchctl_found\": true, \"not_running\": true, \"last_exit_0\": true}, {\"label\": \"gui/501/com.kernelmax.checkpoint-operator-001.caffeinate\", \"launchctl_found\": true, \"not_running\": true, \"last_exit_0\": true}]",
+      "passed": true
+    },
+    "calibration_report": {
+      "detail": "Raw calibration: 2/13 passed, 11/13 noisy. Report states 11 of 13 noisy and says lm_head calibration passed; the other passing family is inferable but not explicitly named.",
+      "passed": true
+    },
+    "candidate_loop_doc_policy_alignment": {
+      "detail": "Whitespace-normalized document contains bounded exploration retain/flag/finish behavior, fresh matched strict confirmation, failed confirmation stop/no reroll, and hard-failure stops.",
+      "passed": true
+    },
+    "disposition_requirements": {
+      "detail": "native candidate run done; no full-model run",
+      "passed": true
+    },
+    "encoded_ratios_and_bytes_reported": {
+      "detail": "Raw state has 13 actual matrices with encoded ratio range 0.785509\u20130.797135; RESULT accurately describes the 128-to-100-byte block mechanism. Exact measured ratio range is retained in completion-audit.json, not claimed as one rounded number in RESULT.",
+      "passed": true
+    },
+    "exploration_guardrails": {
+      "detail": "schema3 bounded exploration and no speedup eligibility",
+      "passed": true
+    },
+    "frozen_candidate_identity": {
+      "detail": "candidate and bundle hash agree",
+      "passed": true
+    },
+    "frozen_snapshot_hashes": {
+      "detail": "frozen files match candidate freeze manifest",
+      "passed": true
+    },
+    "large_target_conditional_arithmetic": {
+      "detail": "LAYOUT-HYPOTHESIS contains exact 532,062,720 logical bytes and 80\u2013120 GB/s -> 4.43\u20136.65 ms gross; RESULT rounds to 532 MB/token and explicitly labels bandwidth assumptions hypothetical.",
+      "passed": true
+    },
+    "no_required_queued_runs": {
+      "detail": "no queued run selection; future vocab-only expressly not executed",
+      "passed": true
+    },
+    "no_unsupported_gain_claim": {
+      "detail": "no speedup/acceptance claim",
+      "passed": true
+    },
+    "operator_model_estimate": {
+      "detail": "-9.924861 conditional ms/token; report includes value",
+      "passed": true
+    },
+    "operator_no_swap_noise_flags": {
+      "detail": "all screen samples retained without flags/swap",
+      "passed": true
+    },
+    "operator_timing_count": {
+      "detail": "100 lane/warmup sample rows; 13 families x 16 calls",
+      "passed": true
+    },
+    "profile_63_requests": {
+      "detail": "status=completed_bounded_exploration requests=63/63",
+      "passed": true
+    },
+    "profile_all_regions": {
+      "detail": "attention,experts,lm_head,small_ops",
+      "passed": true
+    },
+    "profile_capture_exact_trajectory": {
+      "detail": "capture entries=15621; common greedy token trajectory",
+      "passed": true
+    },
+    "profile_environment_flags": {
+      "detail": "all 63 no flags/no swap-affected rows",
+      "passed": true
+    },
+    "protected_checkpoint_guards": {
+      "detail": "profile, fixture, operator protected/checkpoint/snapshot guards passed",
+      "passed": true
+    },
+    "real_checkpoint_operator_correctness": {
+      "detail": "checks=52, all exact/finite/pass",
+      "passed": true
+    },
+    "region_median_attention": {
+      "detail": "raw=14.719788716578; report=14.720 ms/token",
+      "passed": true
+    },
+    "region_median_experts": {
+      "detail": "raw=14.673822497084; report=14.674 ms/token",
+      "passed": true
+    },
+    "region_median_lm_head": {
+      "detail": "raw=12.204901236439; report=12.205 ms/token",
+      "passed": true
+    },
+    "region_median_small_ops": {
+      "detail": "raw=0.296036087666; report=0.296 ms/token",
+      "passed": true
+    },
+    "sidecar_allocation_report": {
+      "detail": "native=1317567360 sidecar=1036300954",
+      "passed": true
+    },
+    "synthetic_gpu_fixture": {
+      "detail": "26/26 pass; integrity guards true",
+      "passed": true
+    }
+  },
+  "disposition_sha256": "e12f13dad3894a546190f028f2050d83cbbceda58bd7ec96217e7933fc326880",
+  "document_notes": [
+    {
+      "note": "Retained pre-run hypothesis artifact; its current-tense prep status (\u201cnot executed\u201d, \u201cbefore freezing/running\u201d) is stale after the completed screen. RESULT.md accurately reports execution and cites this file only for conditional bandwidth assumptions. This is preserved and flagged, not edited.",
+      "path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/LAYOUT-HYPOTHESIS.md"
+    }
+  ],
+  "goal_mark_complete_requested_by_primary": false,
+  "hypothesis_sha256": "24e6818f1e4f6eab60964e3cd01678b43fc180fc516b0fe762c7161d5aa99a77",
+  "objective_status": "executed_new_candidate_after_profile; primary disposition parked combined placement",
+  "raw_artifacts": [
+    {
+      "path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/state.json",
+      "sha256": "9b2f68a45516f3dd6055fb51ae0f2b803c33c2010213e5830e83fef72c366c52",
+      "size_bytes": 6514901
+    },
+    {
+      "path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/native-gpu-fixture-001/state.json",
+      "sha256": "788a0ac3dd418e4331c7baa8969769f898019e9b0663eec23d02ac018029f215",
+      "size_bytes": 591293
+    },
+    {
+      "path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/checkpoint-operator-001/state.json",
+      "sha256": "77eb941a09b0e2ddfbc9c4b2e6bfceb3346edfcb6a07db2a7b445e1653d6e1c6",
+      "size_bytes": 2817627
+    },
+    {
+      "path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/layout-frozen.json",
+      "sha256": "ec5445ed5ba7d5f1b3e8017c31652d0aa0a8f767a1db08684e695fa445b0fcd2",
+      "size_bytes": 2154
+    },
+    {
+      "path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/RESULT.md",
+      "sha256": "8eb8e8faffe2fc3b3e180e31c05c0005545d987ef53a8ef1737bbc76e8339820",
+      "size_bytes": 3403
+    },
+    {
+      "path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/disposition.json",
+      "sha256": "e12f13dad3894a546190f028f2050d83cbbceda58bd7ec96217e7933fc326880",
+      "size_bytes": 1722
+    },
+    {
+      "path": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/scripts/CANDIDATE_LOOP.md",
+      "sha256": "d363d1c186e2de8b512cc7e43df3a3a66681487e039675d5fc29cd62f969b932",
+      "size_bytes": 5117
+    },
+    {
+      "path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/LAYOUT-HYPOTHESIS.md",
+      "sha256": "24e6818f1e4f6eab60964e3cd01678b43fc180fc516b0fe762c7161d5aa99a77",
+      "size_bytes": 3835
+    }
+  ],
+  "report_calibration_note": "Report totals are consistent (11/13 noisy implies 2/13 passed), but it names only the lm_head pass and does not explicitly name the other passing family; recorded as a documentation precision note, not a raw-data mismatch.",
+  "report_sha256": "8eb8e8faffe2fc3b3e180e31c05c0005545d987ef53a8ef1737bbc76e8339820",
+  "schema": 1,
+  "scope": "No source edits, no tests rerun, no benchmark restarted. Report/evidence audit only.",
+  "source_hashes": {
+    "frozen_manifest": {
+      "path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/frozen/cand_390712b41518/manifest.json",
+      "sha256": "e55fce8435cc25b583362dae7f4212e4a1a2283171ae118711dbb0a718f96408"
+    },
+    "gpu_fixture": {
+      "path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/layout_gpu_fixture.py",
+      "sha256": "6b46050612a9f54a52483c444a90fde2ef42c0859d65e57d7f5371701354dc7b"
+    },
+    "operator_screen": {
+      "path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/layout_operator_screen.py",
+      "sha256": "bb944e1b0caaacb977745c4dc188433d8ef5d6f40f041fed5a950a37e732bc29"
+    },
+    "profile": {
+      "path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-exploration-v3-20261027/profile.py",
+      "sha256": "55df908186532c845f67c0f09042143b65ae419bfb021b843a2c886507c4806c"
+    }
+  },
+  "terminal_jobs": [
+    {
+      "label": "gui/501/com.kernelmax.exploration.v3.20261027",
+      "last_exit_0": true,
+      "launchctl_found": true,
+      "not_running": true
+    },
+    {
+      "label": "gui/501/com.kernelmax.exploration.caffeinate.v3.20261027",
+      "last_exit_0": true,
+      "launchctl_found": true,
+      "not_running": true
+    },
+    {
+      "label": "gui/501/com.kernelmax.native-gpu-fixture-001",
+      "last_exit_0": true,
+      "launchctl_found": true,
+      "not_running": true
+    },
+    {
+      "label": "gui/501/com.kernelmax.checkpoint-operator-001",
+      "last_exit_0": true,
+      "launchctl_found": true,
+      "not_running": true
+    },
+    {
+      "label": "gui/501/com.kernelmax.checkpoint-operator-001.caffeinate",
+      "last_exit_0": true,
+      "launchctl_found": true,
+      "not_running": true
+    }
+  ]
+}

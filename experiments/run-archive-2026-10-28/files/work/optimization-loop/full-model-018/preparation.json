@@ -1,0 +1,7 @@
+{
+  "status": "prepared_not_started",
+  "requires_complete_operator_shortlist": true,
+  "candidate_id": "cand_ab711e414d17",
+  "native_vs_packed_preparation_outside_timing": true,
+  "setup_and_temporary_memory_reported_separately": true
+}

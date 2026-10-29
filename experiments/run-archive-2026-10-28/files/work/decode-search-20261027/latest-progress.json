@@ -1,0 +1,15 @@
+{
+  "profile_status": "aa_calibration",
+  "requests": 23,
+  "last_label": "aa-9-B",
+  "aa": null,
+  "summaries": {},
+  "errors": [],
+  "step_profile_medians": {
+    "build_ms": 0.6786291964176133,
+    "build_cpu_ms": 0.7205433070867983,
+    "eval_cpu_ms": 5.10000787401562,
+    "eval_wait_ms": 40.28558260651203,
+    "readback_ms": 0.005020006508456441
+  }
+}

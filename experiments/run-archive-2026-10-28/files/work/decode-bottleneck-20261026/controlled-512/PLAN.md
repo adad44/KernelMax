@@ -1,0 +1,25 @@
+# Fresh paging-aware diagnostic at context 512
+
+## New intervention after a failed screen
+
+The preceding paging-aware run's unchanged-model A/A screen failed (ratios 1.10464 and 1.08455; all four boundary environment checks valid). It remains failed and is not reused. This attempt tests a different, predeclared environmental intervention: match the certified reference controller cadence before every request and operator block: 12 seconds for controller/UI updates, transient display sleep, five seconds of settling, then the same ten-second paging-aware quiet preflight. No saved power settings change, no service is paused, and no renderer is suspended. A task-scoped caffeinate assertion prevents system idle sleep and ends with the worker. The user has agreed to leave the Mac idle. Observe native thermals every 0.5 seconds during complete requests, matching the protected reference driver.
+
+This is one fresh diagnostic after a specific method change, not a statistical reroll. If its unchanged A/A screen fails, stop without another statistical retry. No old timing is relabelled valid. All math, checkpoint values, sample counts and screen thresholds below stay unchanged. This remains context-512 diagnosis, not a new certified reference or acceptance run.
+
+This is a controller-owned diagnostic, not an official baseline, candidate verdict or acceptance run. No optimization candidate is built. Preserve all prior attempts, including the exploratory complete pass and the strict quiet-preflight timeout, without reclassifying them.
+
+The certified reference protocol (`baseline-tools/official-reference-protocol-review.json` and `baseline-results/OFFICIAL-BASELINE-STATUS.md`) already specifies paging-aware measurements: permit and log global swap-ins, reject swap-outs, swap-usage growth, non-nominal thermals, AC loss or power-setting changes. The user explicitly approved that policy historically and has now reconnected AC and agreed to close heavy applications. This fresh diagnostic uses that policy, not a retroactive change to old data. Raw swap counters and deltas remain visible. It does not assert that global swap-ins are cost-free or that the model alone caused them.
+
+Scope: fixed seed-42 512-token input, batch one, greedy 128-token generation, fresh BF16 caches, unchanged native checkpoint/precision. The 2048/4096 cases in the earlier pass remain inconclusive. No comparison to historical baseline numbers is made. The cadence is now matched, but no temporary background-service pause is performed and this remains a smaller diagnostic protocol.
+
+Before every request and operator block require ten continuous quiet seconds with nominal thermals, AC and no policy-disallowed paging. Timeout after 180 seconds, retain observations and stop. Initial warmup is retained but excluded from statistics.
+
+After one warmup, run two A/A pairs in AB/BA order, with equal preconditions. Require every boundary valid, each pair ratio within 2% of one, relative MAD <=1%, and full relative range <=4%, matching the certified reference's diagnostic screen gates. A failed screen stops; do not rerun statistical failures to obtain a pass. Screen requests never count as baseline or candidate samples.
+
+After the screen, collect three plain-model requests; capture exact native expert intermediates and logits and compare them to a normal-hook control. Preserve selected real inputs for layers 0/12/23 at eight evenly spread decode steps. Run all four dependency-preserving cached-output deletion interventions (bias/SwiGLU, up/gate+activation, down, all experts), each with a retained warmup then three AB/BA pairs. Require exact logits for every replay. These estimate recoverable latency on this trajectory; they are not deployable candidates or universal bounds.
+
+Run a separate serial stage diagnostic over the first 16 decode steps of a full request. Report its inflation against the plain-model baseline; do not treat serial shares as the original GPU critical path.
+
+Use all 24 real cases to compare native experts, both frozen candidates, raw up/gate products, native up/gate+activation, each candidate's extracted up/gate region, down, and bias/SwiGLU alone. Five warmup cycles per lane, then twenty counterbalanced blocks of 24 cases repeated eight times (192 calls/lane/block). Candidate 1's ID cast remains timed. Validate every full and region output before timing. Distinct import packages and snapshot filename guards prevent aliasing; retain extracted region source and hashes.
+
+Keep all timing blocks and all environment flags. Timing interpretations require valid group conditions and the passed A/A screen; no outlier filtering or per-sample retries. Report uncertainty descriptively. Fix the earlier final-identity variable-shadowing bug without changing model math. Freeze source hashes and checkpoint identities; verify after execution. GPU timeline/counter tools remain unavailable, so dispatch gaps, DRAM bandwidth, occupancy and register pressure remain unmeasured.

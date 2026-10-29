@@ -1,0 +1,10 @@
+{
+  "phase": "untimed_checkpoint_loading",
+  "measured_requests": 0,
+  "operator_timing_blocks": 0,
+  "reason": "Pre-execution review found that the single-candidate import helper could alias two candidates in one process. Interrupted before measurements; retained original controller and evidence; corrected loader independently validated.",
+  "corrected_controller": "controller-repair/profile_decode.py",
+  "corrected_full_model_execution_started": false,
+  "remaining_external_requirement": "AC power",
+  "background_process_running": false
+}

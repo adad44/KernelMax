@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/scripts/run_candidate_loop.py", line 39, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/scripts/run_candidate_loop.py", line 26, in main
+    session = load_authorization(args.session, contract)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/scripts/loop_control.py", line 23, in load_authorization
+    data = read_json(path)
+           ^^^^^^^^^^^^^^^
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_protocol.py", line 28, in read_json
+    with path.open("rb") as source:
+         ^^^^^^^^^^^^^^^
+  File "/Users/alandiaz/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-010/session.json'

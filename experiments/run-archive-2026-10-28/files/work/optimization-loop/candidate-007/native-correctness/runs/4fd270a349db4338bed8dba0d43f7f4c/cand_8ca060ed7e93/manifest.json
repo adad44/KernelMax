@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_8ca060ed7e93",
+  "name": "Exact integer-bit FP4 decode for fused up/gate",
+  "implementation_type": "mlx",
+  "description": "Targets the validated sampled up/gate region, about 0.379 ms/call and 46.7% of one isolated expert call. Replaces dynamic FP4 constant-table lookups in the eight-lane fused kernel with exact integer construction of float bit patterns for all 16 E2M1 codes. Keeps tiling, reduction and BF16 epilogue unchanged to isolate dequantization implementation cost. Original native packed weights, scales and routes; no requantization, layout conversion or tensor cache. Native down and prefill fallback unchanged. No performance claim."
+}

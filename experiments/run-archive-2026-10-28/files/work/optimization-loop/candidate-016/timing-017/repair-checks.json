@@ -1,0 +1,104 @@
+{
+  "candidate_id": "cand_ab711e414d17",
+  "errors": [],
+  "layout_checks": [
+    {
+      "check": "parameter_roundtrip_and_decode",
+      "exact": true
+    },
+    {
+      "check": "up_bias_update_invalidation",
+      "exact": true
+    },
+    {
+      "check": "gate_weight_update_invalidation",
+      "exact": true
+    },
+    {
+      "check": "weak_owner_released",
+      "passed": true
+    }
+  ],
+  "real_boundary_checks": [
+    {
+      "layer": 7,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "packed_candidate_exact": true,
+      "step": 2
+    },
+    {
+      "layer": 1,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "packed_candidate_exact": true,
+      "step": 3
+    },
+    {
+      "layer": 2,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "packed_candidate_exact": true,
+      "step": 3
+    },
+    {
+      "layer": 6,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "packed_candidate_exact": true,
+      "step": 3
+    },
+    {
+      "layer": 10,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "packed_candidate_exact": true,
+      "step": 3
+    },
+    {
+      "layer": 18,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "packed_candidate_exact": true,
+      "step": 4
+    },
+    {
+      "layer": 4,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "packed_candidate_exact": true,
+      "step": 5
+    },
+    {
+      "layer": 15,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "packed_candidate_exact": true,
+      "step": 5
+    },
+    {
+      "layer": 6,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "packed_candidate_exact": true,
+      "step": 6
+    },
+    {
+      "layer": 11,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "packed_candidate_exact": true,
+      "step": 6
+    },
+    {
+      "layer": 22,
+      "max_abs": 0.0,
+      "native_reproduction_exact": true,
+      "packed_candidate_exact": true,
+      "step": 6
+    }
+  ],
+  "scope": "untimed correctness/representation tests; no performance claim",
+  "snapshot_sha256": "0a53ce206d0802b966b56caad5bb90f3c9d981b57274a15098d33257365307b1",
+  "status": "passed_exact_repair_checks"
+}

@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-010/trial-002-cand_c10e89f98dcf/pipeline.py", line 34, in <module>
+    stage('native-summary',[sys.executable,'-B','-u',str(ROOT/'scripts/run_candidate_loop.py'),
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-010/trial-002-cand_c10e89f98dcf/pipeline.py", line 27, in stage
+    raise RuntimeError(name+' failed; next stage blocked')
+RuntimeError: native-summary failed; next stage blocked

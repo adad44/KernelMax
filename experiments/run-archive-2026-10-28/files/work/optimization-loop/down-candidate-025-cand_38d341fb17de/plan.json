@@ -1,0 +1,126 @@
+{
+  "candidate_id": "cand_38d341fb17de",
+  "exact_repair_required": true,
+  "measured_down_deletion": [
+    {
+      "deletion_ms_per_call": 0.6745171704101562,
+      "descriptive_95pct_saved_ms": [
+        0.12633837890625,
+        0.13260982275390626
+      ],
+      "environment_valid": true,
+      "full_model_share_established": false,
+      "median_isolated_operator_fraction": 0.16122938511468848,
+      "median_saved_ms_per_call": 0.12970861767578123,
+      "native_ms_per_call": 0.8039504794921875,
+      "paired_savings_ms_per_call": [
+        0.13264880371093757,
+        0.12119038964843754,
+        0.11955281640624993,
+        0.12552933593750004,
+        0.12823518847656246,
+        0.1263406572265625,
+        0.13717940234375003,
+        0.12617626855468744,
+        0.13257084179687495,
+        0.12768192773437503,
+        0.18497449023437496,
+        0.13095129589843746,
+        0.13587324902343756,
+        0.13488378808593748,
+        0.131789103515625,
+        0.13496004003906248,
+        0.12968074414062503,
+        0.12633610058593747,
+        0.12973649121093744,
+        0.1252899970703124
+      ]
+    },
+    {
+      "deletion_ms_per_call": 0.6745980024414062,
+      "descriptive_95pct_saved_ms": [
+        0.12620367578124997,
+        0.1309648447265625
+      ],
+      "environment_valid": true,
+      "full_model_share_established": false,
+      "median_isolated_operator_fraction": 0.16008297630634516,
+      "median_saved_ms_per_call": 0.12854886865234377,
+      "native_ms_per_call": 0.8038161416015626,
+      "paired_savings_ms_per_call": [
+        0.13162707617187497,
+        0.13312662890624993,
+        0.1321699619140625,
+        0.128514486328125,
+        0.12614245800781243,
+        0.125120443359375,
+        0.13071236328125002,
+        0.13149410253906246,
+        0.12545414062499993,
+        0.127969400390625,
+        0.13067317675781254,
+        0.13121732617187498,
+        0.12903088476562508,
+        0.12858325097656254,
+        0.1254893388671875,
+        0.12827815820312505,
+        0.12497338769531252,
+        0.1262648935546875,
+        0.1243673095703125,
+        0.13243359472656258
+      ]
+    },
+    {
+      "deletion_ms_per_call": 0.6772732949218749,
+      "descriptive_95pct_saved_ms": [
+        0.12434195751953125,
+        0.12900828027343747
+      ],
+      "environment_valid": true,
+      "full_model_share_established": false,
+      "median_isolated_operator_fraction": 0.15761389234519885,
+      "median_saved_ms_per_call": 0.12666247363281252,
+      "native_ms_per_call": 0.8037409057617187,
+      "paired_savings_ms_per_call": [
+        0.13482584765624994,
+        0.12599910253906255,
+        0.12851892089843753,
+        0.12205956738281254,
+        0.1197721777343751,
+        0.12332165332031253,
+        0.1303384609375,
+        0.12876041601562493,
+        0.13112772753906254,
+        0.12536226171874998,
+        0.125565591796875,
+        0.11845577246093753,
+        0.12925614453125,
+        0.12047444433593757,
+        0.11819527441406252,
+        0.12650834082031248,
+        0.13092513281250007,
+        0.1273361435546876,
+        0.12681660644531256,
+        0.130506306640625
+      ]
+    }
+  ],
+  "measured_target": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-budget-023/result.json",
+  "mechanism": "Custom down QMV fuses BF16 bias and tests LUT conversion while preserving native per-lane accumulation order. Dispatch and hardware cause unmeasured. Prior up/gate changes provided small operator gains; down is a distinct target.",
+  "model_contribution": "Unverified; hypothetical20percent down reduction saves24*0.2*region_ms per token only under additive representative critical-path assumptions. Full-model validation required.",
+  "no_rerolls": true,
+  "planning_20percent_ms_per_token_interval": [
+    [
+      0.6064242187500001,
+      0.6365271492187501
+    ],
+    [
+      0.60577764375,
+      0.6286312546875001
+    ],
+    [
+      0.5968413960937501,
+      0.6192397453124999
+    ]
+  ]
+}

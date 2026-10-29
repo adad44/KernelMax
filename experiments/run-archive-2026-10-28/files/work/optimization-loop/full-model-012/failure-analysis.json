@@ -1,0 +1,115 @@
+{
+  "first_route_divergence": [
+    [
+      4,
+      21,
+      0
+    ],
+    [
+      4,
+      22,
+      0
+    ],
+    [
+      4,
+      22,
+      2
+    ],
+    [
+      4,
+      23,
+      1
+    ],
+    [
+      4,
+      23,
+      2
+    ],
+    [
+      5,
+      5,
+      0
+    ],
+    [
+      5,
+      5,
+      1
+    ],
+    [
+      7,
+      22,
+      0
+    ],
+    [
+      9,
+      13,
+      0
+    ],
+    [
+      10,
+      22,
+      0
+    ]
+  ],
+  "first_steps": [
+    {
+      "changed_routes": 0,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "step": 0
+    },
+    {
+      "changed_routes": 0,
+      "max_abs": 0.0,
+      "mean_abs": 0.0,
+      "step": 1
+    },
+    {
+      "changed_routes": 0,
+      "max_abs": 0.09375,
+      "mean_abs": 0.0124812051653862,
+      "step": 2
+    },
+    {
+      "changed_routes": 0,
+      "max_abs": 0.125,
+      "mean_abs": 0.013333478011190891,
+      "step": 3
+    },
+    {
+      "changed_routes": 3,
+      "max_abs": 2.25,
+      "mean_abs": 0.24572668969631195,
+      "step": 4
+    },
+    {
+      "changed_routes": 1,
+      "max_abs": 0.0625,
+      "mean_abs": 0.0113074304535985,
+      "step": 5
+    },
+    {
+      "changed_routes": 0,
+      "max_abs": 0.09375,
+      "mean_abs": 0.02310601994395256,
+      "step": 6
+    },
+    {
+      "changed_routes": 1,
+      "max_abs": 1.03125,
+      "mean_abs": 0.1541680097579956,
+      "step": 7
+    }
+  ],
+  "logit_shape": [
+    128,
+    201088
+  ],
+  "route_sets_changed": 111,
+  "route_shape": [
+    128,
+    24,
+    4
+  ],
+  "route_slots_changed": 427
+}

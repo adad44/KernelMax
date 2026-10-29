@@ -1,0 +1,10 @@
+{
+  "authorization": "User 2026-10-27 explicitly expanded the contract to complete decode scheduling, graph fusion, exact layouts, buffer reuse and behavior-preserving KV updates.",
+  "scope": "Fresh whole-decode profiling first, then a new candidate with a measured path to several ms/token. No acceptance or task-quality claim.",
+  "profiling": "512 prompt, 128 greedy tokens, native MXFP4/BF16, fresh request caches. Record Python build, eval/wait and readback separately. Exact-logit cached deletion of experts, attention including cache work, lm_head and small ops gives optimistic nonadditive budgets, not GPU hardware shares.",
+  "protocol": "Resident back-to-back cadence after two retained hydration requests and a 10-second quiet gate; five baseline warmups; twenty alternating A/A pairs with existing bootstrap gate; five warmups and twenty alternating control/deletion pairs per region. No historical samples reused. No extra idle/hold/display manipulation between requests. This is a new diagnostic cadence under a new contract, not historical baseline certification.",
+  "environment": "AC, nominal thermal sampled every 0.5 seconds, paging-aware counters retaining swapins and rejecting swapout/growth during measured requests. Stop at first environmental or statistical failure; retain all rows. No unchanged rerolls.",
+  "integrity": "Fresh contract and source hash snapshot; verified checkpoint receipt before/after; unchanged model/source files. Candidate code remains separately frozen.",
+  "candidate_direction": "If measured CPU graph build is several ms/token, evaluate one-token asynchronous graph construction overlap, with exactly 128 model-produced tokens and no extra forward, explicit first-token/last-drain accounting, full logits/routes/cache checks before timing. Otherwise choose the large measured region with a concrete plausible mechanism.",
+  "maximum_profile_seconds": 7200
+}

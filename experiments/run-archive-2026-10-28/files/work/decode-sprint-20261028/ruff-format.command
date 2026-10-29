@@ -1,0 +1,1 @@
+uvx --from ruff ruff format --no-cache /Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_5785998944e5/implementation.py /Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_5785998944e5/wrapper.py

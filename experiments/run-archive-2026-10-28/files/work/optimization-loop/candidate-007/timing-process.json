@@ -1,0 +1,50 @@
+{
+  "candidate_id": "cand_8ca060ed7e93",
+  "command": [
+    "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+    "-B",
+    "-u",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-007/operator_diagnostic.py",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-007/native-correctness/artifacts/execution-7kfpvlos/report.json"
+  ],
+  "deadline_unix": 1793093899.6158369,
+  "ended_unix": 1793093217.505301,
+  "kind": "candidate_real_operator_timing",
+  "returncode": 0,
+  "started_unix": 1793092999.615859,
+  "status": "completed",
+  "supervisor_pid": 66409,
+  "tracked_processes": {
+    "66414": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-007/operator_diagnostic.py /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-007/native-correctness/artifacts/execution-7kfpvlos/report.json",
+      "ppid": 66409,
+      "start": "Tue Oct 27 02:23:19 2026"
+    },
+    "66460": {
+      "command": "(sysctl)",
+      "ppid": 66414,
+      "start": "Tue Oct 27 02:23:25 2026"
+    },
+    "66732": {
+      "command": "(pmset)",
+      "ppid": 66414,
+      "start": "Tue Oct 27 02:24:21 2026"
+    },
+    "66832": {
+      "command": "(sysctl)",
+      "ppid": 66414,
+      "start": "Tue Oct 27 02:24:45 2026"
+    },
+    "67055": {
+      "command": "(pmset)",
+      "ppid": 66414,
+      "start": "Tue Oct 27 02:25:32 2026"
+    },
+    "67341": {
+      "command": "(pmset)",
+      "ppid": 66414,
+      "start": "Tue Oct 27 02:26:32 2026"
+    }
+  },
+  "worker_pid": 66414
+}

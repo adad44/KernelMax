@@ -1,0 +1,1 @@
+uv run --no-project --python /Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python --with pytest==8.3.4 --with PyYAML==6.0.3 --with numpy==2.5.3 python -c "import sys,pytest,yaml,numpy; print(\"python\",sys.version.split()[0]); print(\"pytest\",pytest.__version__); print(\"PyYAML\",yaml.__version__); print(\"numpy\",numpy.__version__)"

@@ -1,0 +1,30 @@
+{
+  "artifact": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-004-confirm-cand_3f4c02fcfc71/correctness-2048-128.npz",
+  "npz_sha256_before": "218581d49fbed41014cc594127d1b65d8e3ac2c49716cc8d2d9b661595673921",
+  "npz_sha256_after": "218581d49fbed41014cc594127d1b65d8e3ac2c49716cc8d2d9b661595673921",
+  "npz_hash_matches_confirmation_audit": true,
+  "logit_shape": [
+    128,
+    201088
+  ],
+  "pointwise_tolerance": {
+    "atol": 0.02,
+    "rtol": 0.02,
+    "comparison_dtype": "float64, matching compare_outputs"
+  },
+  "first_nonexact_logit_step_0based": 106,
+  "first_nonexact_logit_step_1based": 107,
+  "first_pointwise_tolerance_violation_step_0based": 106,
+  "first_pointwise_tolerance_violation_step_1based": 107,
+  "first_route_slot_difference": {
+    "step_0based": 108,
+    "step_1based": 109,
+    "layer": 18
+  },
+  "total_logit_nonexact_scalars": 3023855,
+  "total_pointwise_tolerance_violations": 200071,
+  "total_route_slot_differences": 14,
+  "route_set_difference_layers_total": 5,
+  "token_difference_count": 0,
+  "scope": "Offline CPU analysis of retained failed correctness NPZ; no GPU/checkpoint/model run; diagnostic, not a repair or candidate result."
+}

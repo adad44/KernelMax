@@ -1,0 +1,24 @@
+{
+  "candidate_id": "cand_f36e3678fbf1",
+  "cpu_order_checks": 16384,
+  "created_utc": "2026-10-27T15:29:27.380044+00:00",
+  "evidence": "Audited up/gate deletion saved0.37947ms/expert,95percent[0.37236,0.38048] on layer0. Native-order LUT variant gave~0.6percent operator improvement but no reliable model gain. Matrix-loop source is still a measured target; new unrolling is not a proven win.",
+  "exact_repair_required": true,
+  "loop_factor": 4,
+  "measured_target": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/probe-004/audited-result.json",
+  "mechanism": "Unroll native32-lane joint up/gate K loop by2, then by4 only as a distinct predeclared follow-up. Preserve the ordered per-lane K positions, each dot8 expression, every accumulation and simd_sum. Hypothesis: expose independent memory/decode work and reduce loop control; instruction/occupancy cause unmeasured.",
+  "no_model_or_gpu_execution": true,
+  "numerical_reason": "Changing lane-width/K grouping previously failed full-model routes. Preserve native accumulation order instead. CPU ordered-column proof passed16384lane/config checks acrossK32..8192; native and exact real-boundary checks still required.",
+  "planning_assumptions": "Only if24layers are representative, additive and on critical path, unverified. No model-share or hardware-counter claim.",
+  "planning_model_ms_per_token_for_hypothetical20percent_region_reduction": [
+    1.7873424000000002,
+    1.8262848000000003
+  ],
+  "predeclared_loop_factors": [
+    2,
+    4
+  ],
+  "prerequisite": "Finish current down candidate first; inspect its outcome. Do not overlap, rerun parked snapshots, or bypass any integrity/correctness/calibration rule.",
+  "source_frozen_candidate": "a50e24de7cb6bdff273d8d0f708ad1293cfac63bab4db597673f0d0b8745b29c",
+  "status": "prepared_candidate"
+}

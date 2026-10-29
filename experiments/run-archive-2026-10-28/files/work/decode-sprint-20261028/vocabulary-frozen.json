@@ -1,0 +1,24 @@
+{
+  "ast_passed": true,
+  "candidate_id": "cand_5785998944e5",
+  "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5",
+  "file_sha256": {
+    "codec.py": "bb8079062c5f9aee76b5e964ef4ebc30bf151fc6d92f0563d4cc5846f5811b5e",
+    "implementation.metal": "7e4b2fa51eea175b9ad376ce1b6ab9276bca7aac6201733945174b3ee275862e",
+    "implementation.py": "18baf2ffe4815c753917c81ef1aefa8d0c0ddb81f0f6d90179bb7710567dc16b",
+    "manifest.json": "55bf8c6f602549626dbd7f498f95c7219cc30f87d107814df9551fe72457cc7b",
+    "reader.py": "a0f31e2b8e18f8fd05146c3e8cea09609b3f0162195035f8b2cdfb0fb2d18214",
+    "wrapper.py": "aae74e2f43d62be8197af65ecd1cd5da208409b3cba1136cee062ab5ffeb1beb"
+  },
+  "frozen_at_unix": 1793210009.256832,
+  "ruff_version": "ruff 0.17.3",
+  "sha256": "b6dd528b50b4d3d89db496fb021bbcd21d2043f701c36196e39ea08457283918",
+  "source_directory": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_5785998944e5",
+  "source_unchanged_across_freeze": true,
+  "vendored_provenance": {
+    "codec.py": "codec.py",
+    "implementation.metal": "implementation.metal",
+    "reader.py": "implementation.py"
+  },
+  "vendored_reader_hashes_match_original": true
+}

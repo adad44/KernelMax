@@ -1,0 +1,177 @@
+{
+  "acceptance_enabled": false,
+  "additional_decode_checks_passed": 96,
+  "branch": "candidate/first-optimization-loop",
+  "candidate_id": "cand_90f0c66e0d03",
+  "checkpoint_identity_unchanged": true,
+  "corrected_call_count_verification": {
+    "declared_calls_per_sample": 256,
+    "method": "Actual controller invoke function executed with counting stubs; no candidate code or GPU execution",
+    "observed_calls_per_sample": {
+      "baseline": 256,
+      "candidate": 256
+    },
+    "passed": true
+  },
+  "declared_reference_fallback_checks": 18,
+  "diagnostic_errors": [],
+  "environment_issues": [],
+  "full_model_speedup_established": false,
+  "initial_fixture_setup_failure_retained": [
+    "ValueError: [quantize] The last dimension of the matrix needs to be divisible by the quantization group size 32. However the provided  matrix has shape (8,96,72)"
+  ],
+  "initial_protected_sources_unchanged": true,
+  "native_checks": 21,
+  "native_checks_passed": 21,
+  "native_errors": [],
+  "native_run_id": "f3a3cb04-6c93-405a-bb1c-9beaa461032f",
+  "native_status": "completed",
+  "operator_diagnostic_status": "completed_diagnostic",
+  "operator_summaries": {
+    "0": {
+      "descriptive_bootstrap_95pct_interval": [
+        0.9863804023252202,
+        1.033055989598346
+      ],
+      "environment_valid": true,
+      "median_baseline_ms": 223.2846455881372,
+      "median_candidate_ms": 223.09310408309102,
+      "median_ratio": 1.0018860262160332,
+      "paired_baseline_over_candidate_ratios": [
+        1.002599254433409,
+        1.0183472204230684,
+        1.005233360239972,
+        1.0582313131927794,
+        0.9961675611515558,
+        0.983657976238061,
+        0.9990016557658755,
+        1.073414448525259,
+        1.035799189160291,
+        0.9756531661312768,
+        1.0362674603948558,
+        1.2779940638702112,
+        0.9891028284123794,
+        1.0011727979986575,
+        0.910921101615239,
+        0.8672148307625034,
+        1.0428750628430252,
+        1.0303127900364013,
+        0.9591764289577006,
+        0.9827811888051442
+      ]
+    },
+    "12": {
+      "descriptive_bootstrap_95pct_interval": [
+        0.9651244757051856,
+        1.01991382017706
+      ],
+      "environment_valid": true,
+      "median_baseline_ms": 233.0641249427572,
+      "median_candidate_ms": 234.61270902771503,
+      "median_ratio": 1.0007709185242495,
+      "paired_baseline_over_candidate_ratios": [
+        1.012800767082787,
+        0.9688546026105431,
+        0.9613943487998281,
+        0.9770552745919483,
+        1.0589664253226914,
+        1.0148337643930136,
+        0.9940092655667386,
+        1.0213154858969502,
+        0.9973116444602516,
+        0.719733856091401,
+        1.0042301925882475,
+        1.0185121544571698,
+        1.0481914862286836,
+        0.6459889663500271,
+        0.7028691225945701,
+        0.9577966631807245,
+        0.9441931832906771,
+        1.0465279131108487,
+        1.0676400364197651,
+        1.0442759938274286
+      ]
+    },
+    "23": {
+      "descriptive_bootstrap_95pct_interval": [
+        0.996564760405628,
+        1.0460587183011016
+      ],
+      "environment_valid": true,
+      "median_baseline_ms": 240.1364379329607,
+      "median_candidate_ms": 234.3937085242942,
+      "median_ratio": 1.0243072336627894,
+      "paired_baseline_over_candidate_ratios": [
+        1.0533008833911326,
+        1.086289183857181,
+        1.0328194296254052,
+        0.9795274968941288,
+        0.9918470641654119,
+        1.0786567068747643,
+        1.0635518699922686,
+        1.0248801750570316,
+        0.9617221637668907,
+        0.9679522775712495,
+        1.0012824566458443,
+        1.0824698228815557,
+        1.023734292268547,
+        1.0386842253920938,
+        0.9649020789075585,
+        0.9558444541647385,
+        1.01415133967626,
+        1.0388165532110707,
+        1.0589442807023715,
+        1.0124445794637267
+      ]
+    }
+  },
+  "optimized_native_checks": 3,
+  "protected_correctness_report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/native-correctness/artifacts/execution-ka4ns_ag/report.json",
+  "protected_correctness_report_sha256": "8fb2b15c95a344190448b85f164cf373286bc0b151933b58659e07974fac0a5b",
+  "protected_sources_unchanged": true,
+  "research_disposition": "No consistent operator improvement established across sampled layers; no promotion.",
+  "snapshot_sha256": "93f523c916125738e860b796e6440170d192dcdeb207e327edaa26d826f14272",
+  "source_commit": "fc1dc28a4f18a12340668af2cee5cea9a0d6cbe7",
+  "synthetic_checks_passed": 12,
+  "timing_plan": {
+    "decode_calls_per_sample": 256,
+    "environment_policy": "strict; invalid samples retained; any issue makes summary inconclusive",
+    "layers": [
+      0,
+      12,
+      23
+    ],
+    "order": "alternating_ab_ba",
+    "pairs_per_layer": 20,
+    "routing_cycles_per_sample": 8,
+    "routing_inputs": 32,
+    "sample_metric": "wall_time_ms_per_256_synchronized_decode_operator_calls",
+    "seed": 42,
+    "warmup_cycles_per_lane": 5
+  },
+  "timing_protocol_mismatch_retained": {
+    "actual_calls_per_original_sample": 32,
+    "call_count_verification": {
+      "declared_calls_per_sample": 256,
+      "method": "Actual controller invoke function executed with counting stubs; no candidate code or GPU execution",
+      "observed_calls_per_sample": {
+        "baseline": 256,
+        "candidate": 256
+      },
+      "passed": true
+    },
+    "candidate_correctness_affected": false,
+    "candidate_source_changed": false,
+    "corrected_controller_sha256": "435527d3962285684704468d95090f4880c818ab61c48dc53f0ecab47aed5003",
+    "declared_calls_per_original_sample": 256,
+    "issue": "Initial timing report claimed 256 calls per lane but invoke executed 32 because a planned loop replacement was not applied.",
+    "original_controller_sha256": "831891480ca60bcbdc4826c533ac20942d1b26a622f7d38e6f3219c15d270d51",
+    "original_report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/operator-diagnostic.json",
+    "original_report_sha256": "f84d5338d3b3ff262ee45e7ac9e3d60070091c0fb72aeb3ebfc0b4f12e2a4e5f",
+    "original_timing_eligibility": "invalid_as_planned_due_to_instrumentation_mismatch; preserve all observations",
+    "repair_directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/timing-controller-repair",
+    "repeat_reason": "Correct the demonstrated instrumentation bug, not statistical selection"
+  },
+  "timing_samples_retained": 120,
+  "verdict": null
+}

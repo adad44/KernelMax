@@ -1,0 +1,140 @@
+{
+  "checks": [
+    {
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/synthetic-fixture-repair/tiny-native-arrays/k64-n64-t1-m1.npz",
+      "arrays_sha256": "f7e540acf3404566a46f8ad59519dda1bbf12108aabd8cc78ed9efe85acbc0c6",
+      "detail": "max_abs_error=0; violations=0/256; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "k": 64,
+      "magnitude": 1,
+      "n": 64,
+      "passed": true,
+      "path": "fused_metal_decode",
+      "tokens": 1
+    },
+    {
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/synthetic-fixture-repair/tiny-native-arrays/k64-n64-t1-m64.npz",
+      "arrays_sha256": "1a6ba1e9f5e43236360aff79caa01781e5f24aa0b0a3e682e4296fb89f1aa0e4",
+      "detail": "max_abs_error=0; violations=0/256; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "k": 64,
+      "magnitude": 64,
+      "n": 64,
+      "passed": true,
+      "path": "fused_metal_decode",
+      "tokens": 1
+    },
+    {
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/synthetic-fixture-repair/tiny-native-arrays/k64-n64-t16-m1.npz",
+      "arrays_sha256": "bae5c8b2c23db73f96c299180fad2f49d1c5ca591dcea4f25fd86e6e6f68d595",
+      "detail": "max_abs_error=0; violations=0/4096; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "k": 64,
+      "magnitude": 1,
+      "n": 64,
+      "passed": true,
+      "path": "reference_fallback",
+      "tokens": 16
+    },
+    {
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/synthetic-fixture-repair/tiny-native-arrays/k64-n64-t17-m1.npz",
+      "arrays_sha256": "ae1e7021590c0a8036d6e1e1d31188cce854ed7af31a1717af75a20c7a21a712",
+      "detail": "max_abs_error=0; violations=0/4352; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "k": 64,
+      "magnitude": 1,
+      "n": 64,
+      "passed": true,
+      "path": "reference_fallback",
+      "tokens": 17
+    },
+    {
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/synthetic-fixture-repair/tiny-native-arrays/k96-n96-t1-m1.npz",
+      "arrays_sha256": "5dc5d2a2e808007763ea9cacdee46064d5108630d191d407ac4cfc7e25e6eada",
+      "detail": "max_abs_error=0; violations=0/384; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "k": 96,
+      "magnitude": 1,
+      "n": 96,
+      "passed": true,
+      "path": "fused_metal_decode",
+      "tokens": 1
+    },
+    {
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/synthetic-fixture-repair/tiny-native-arrays/k96-n96-t1-m64.npz",
+      "arrays_sha256": "22a1afb6655cec47ac5c57d8a28a3e2f8c58b62e459a178acfaecae8c65b0bf3",
+      "detail": "max_abs_error=0; violations=0/384; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "k": 96,
+      "magnitude": 64,
+      "n": 96,
+      "passed": true,
+      "path": "fused_metal_decode",
+      "tokens": 1
+    },
+    {
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/synthetic-fixture-repair/tiny-native-arrays/k96-n96-t16-m1.npz",
+      "arrays_sha256": "25ca8b6cbd0fc529e77b51ad68b9ac0c22d9af965ae71863c62f40d413093ab5",
+      "detail": "max_abs_error=0; violations=0/6144; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "k": 96,
+      "magnitude": 1,
+      "n": 96,
+      "passed": true,
+      "path": "reference_fallback",
+      "tokens": 16
+    },
+    {
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/synthetic-fixture-repair/tiny-native-arrays/k96-n96-t17-m1.npz",
+      "arrays_sha256": "d8e04316d4d243311df4a02440909a0a40670f545777e160770c8c40565deae2",
+      "detail": "max_abs_error=0; violations=0/6528; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "k": 96,
+      "magnitude": 1,
+      "n": 96,
+      "passed": true,
+      "path": "reference_fallback",
+      "tokens": 17
+    },
+    {
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/synthetic-fixture-repair/tiny-native-arrays/k2880-n64-t1-m1.npz",
+      "arrays_sha256": "46b9ae0ff7bcc026d8f47b62ac3c59e2bdf2e0845ac53f16ee293c739930df92",
+      "detail": "max_abs_error=0; violations=0/11520; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "k": 2880,
+      "magnitude": 1,
+      "n": 64,
+      "passed": true,
+      "path": "fused_metal_decode",
+      "tokens": 1
+    },
+    {
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/synthetic-fixture-repair/tiny-native-arrays/k2880-n64-t1-m64.npz",
+      "arrays_sha256": "68c4aec7f519168d5aa31e443913a7160f8df16965658129b24f9e1e28051d7c",
+      "detail": "max_abs_error=0; violations=0/11520; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "k": 2880,
+      "magnitude": 64,
+      "n": 64,
+      "passed": true,
+      "path": "fused_metal_decode",
+      "tokens": 1
+    },
+    {
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/synthetic-fixture-repair/tiny-native-arrays/k2880-n64-t16-m1.npz",
+      "arrays_sha256": "4776e84d4f8f299c69d05aa8ffbc848f836b857fd042d3f8d11d711459336a3c",
+      "detail": "max_abs_error=0; violations=0/184320; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "k": 2880,
+      "magnitude": 1,
+      "n": 64,
+      "passed": true,
+      "path": "reference_fallback",
+      "tokens": 16
+    },
+    {
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/second-optimization-20261026/synthetic-fixture-repair/tiny-native-arrays/k2880-n64-t17-m1.npz",
+      "arrays_sha256": "632b9c0de043af6bc5c1b37caf4b91eaace3215d8a73554082a7357413052d47",
+      "detail": "max_abs_error=0; violations=0/195840; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "k": 2880,
+      "magnitude": 1,
+      "n": 64,
+      "passed": true,
+      "path": "reference_fallback",
+      "tokens": 17
+    }
+  ],
+  "errors": [],
+  "scope": "synthetic random native-MXFP4 expert fixtures; not pinned-checkpoint evidence",
+  "snapshot_sha256": "93f523c916125738e860b796e6440170d192dcdeb207e327edaa26d826f14272",
+  "status": "passed_synthetic_only"
+}

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from dataclasses import replace
 import json
 from pathlib import Path
 import sys
@@ -23,7 +24,8 @@ def native_runtime(root: Path, contract) -> WorkerRuntime:
     """Use pinned download metadata, never infer checkpoint approval from its name.
 
     Independently verify the checkout with `hf cache verify` before this command.
-    Shards retain their remote LFS SHA256, which each worker checks against bytes.
+    Shards retain their remote LFS SHA256. Workers check bytes unless the caller
+    explicitly supplies a controller-owned, identity-bound verification receipt.
     """
     root = root.resolve()
     index = read_json(root / "model.safetensors.index.json")
@@ -72,11 +74,20 @@ def main(argv=None):
         action="store_true",
         help="Freeze and print the hash; never execute",
     )
-    parser.add_argument(
+    authorization = parser.add_mutually_exclusive_group()
+    authorization.add_argument(
         "--approved-sha256",
         action="append",
         default=[],
         help="Human/controller approval of an exact frozen hash",
+    )
+    authorization.add_argument(
+        "--session-authorization", type=Path,
+        help="Controller-owned standing user authorization; freezes/authorizes once without another prompt",
+    )
+    parser.add_argument(
+        "--checkpoint-cache", type=Path,
+        help="Reuse controller byte verification only while checkpoint pins and file identities match",
     )
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument(
@@ -109,26 +120,54 @@ def main(argv=None):
             )
         )
         return 0
-    if not args.approved_sha256 or not (args.fixture or args.native_model):
+    if not (args.approved_sha256 or args.session_authorization) or not (args.fixture or args.native_model):
         parser.error(
-            "execution requires an explicit mode and externally approved snapshot SHA256"
+            "execution requires an explicit mode and approved hash or standing session authorization"
         )
+    if args.checkpoint_cache and not args.native_model:
+        parser.error("checkpoint verification reuse requires --native-model")
+    if args.checkpoint_cache and (
+        args.checkpoint_cache.resolve().is_relative_to(candidate)
+        or args.checkpoint_cache.resolve().is_relative_to(Path(__file__).resolve().parents[1] / "candidates")
+    ):
+        parser.error("checkpoint cache must be controller-owned, outside candidates")
     contract = load_contract(args.contract)
+    if args.session_authorization:
+        from scripts.loop_control import load_authorization
+
+        session = load_authorization(args.session_authorization, contract)
+        if args.native_model:
+            if candidate.parent != Path(__file__).resolve().parents[1] / "candidates":
+                parser.error("native standing authorization is limited to this repository's candidates")
+            if args.native_model.resolve() != Path(session["model_path"]).resolve():
+                parser.error("native model path disagrees with standing authorization")
     runtime = (
         native_runtime(args.native_model, contract)
         if args.native_model
         else WorkerRuntime()
     )
     if args.expert_factory:
-        from dataclasses import replace
-
         runtime = replace(runtime, expert_factory=args.expert_factory)
-    evaluator = ReviewedCandidateEvaluator(
-        frozenset(args.approved_sha256),
-        args.work_dir / "artifacts",
-        runtime=runtime,
-        timeout_seconds=args.timeout_seconds,
-    )
+    if args.checkpoint_cache:
+        from evaluator.checkpoint_verification import verify_checkpoint
+
+        receipt, reused = verify_checkpoint(
+            runtime.model_path, runtime.model_revision, runtime.model_files, args.checkpoint_cache,
+        )
+        write_path = args.work_dir / ("checkpoint-verification-" + uuid.uuid4().hex + ".json")
+        from evaluator.candidate_protocol import write_json
+
+        write_json(write_path, {"receipt": receipt, "reused": reused})
+        runtime = replace(runtime, checkpoint_verification=receipt)
+    options = {"runtime": runtime, "timeout_seconds": args.timeout_seconds}
+    if args.session_authorization:
+        from scripts.loop_control import SessionEvaluator
+
+        evaluator = SessionEvaluator(args.session_authorization, args.work_dir / "artifacts", **options)
+    else:
+        evaluator = ReviewedCandidateEvaluator(
+            frozenset(args.approved_sha256), args.work_dir / "artifacts", **options,
+        )
     budget = ExperimentBudget(max_attempts=1)
     result = run_candidate(
         candidate,

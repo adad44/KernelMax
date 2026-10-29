@@ -1,0 +1,19 @@
+{
+  "worker_pid": 69921,
+  "worker_birth_local": "2026-10-28 15:38:46",
+  "worker_command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/run_round.py",
+  "worker_label": "com.kernelmax.sprint.r2.vocab.20261028",
+  "worker_plist_sha256": "baa1a04c29d50b53468e56f7071e6e5a8e2f2e78cf45a5b1cac441cd2d401851",
+  "caffeinate_pid": 69921,
+  "caffeinate_label": "com.kernelmax.sprint.r2.vocab.caffeinate.20261028",
+  "caffeinate_plist_sha256": "d000bc09327d26b6c295e76c119369cf2eb53d4254baa8b8cecbb5169011e241",
+  "created_at_unix": 1793227133.703037,
+  "bootstrap_attempted": true,
+  "worker_launchctl_state": "running",
+  "worker_pid_verified": 69921,
+  "caffeinate_launchctl_state": "running",
+  "caffeinate_pid_verified": 69939,
+  "verified_worker_command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/run_round.py",
+  "verified_worker_birth_local": "2026-10-28 15:38:46",
+  "verified_caffeinate_command": "/usr/bin/caffeinate -i -s -w 69921"
+}

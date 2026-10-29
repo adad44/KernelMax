@@ -1,0 +1,11 @@
+{
+  "source_sha256": {
+    "probe.py": "84007db60d400ed88f787089b3f4c301e9e8ab30675958aa98094078554c9811",
+    "supervise.py": "4652ae387bf1ed158f4004862095b5a990ee7efd5e33efd1bf4852a5bed31995"
+  },
+  "actual_invoke_ast_default_calls": 256,
+  "actual_invoke_ast_microblock_calls": 32,
+  "microblocks_per_lane": 8,
+  "calls_per_lane_sample": 256,
+  "changes_from_previous": "Shared pair environment observations and balanced 32-call ABBA crossover microblocks; unchanged numerical, power, paging and noise gates; not a retry of the same protocol."
+}

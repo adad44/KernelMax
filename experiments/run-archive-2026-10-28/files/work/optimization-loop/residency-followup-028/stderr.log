@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/residency-followup-028/coordinator.py", line 77, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/residency-followup-028/coordinator.py", line 68, in main
+    if d['status']=='failed'and not any('Environment invalid'in e or'Resident primer power/thermal invalid'in e or'Primer preflight invalid'in e for e in d['errors']):raise ValueError('Unexpected resident experiment failure')
+                                                                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Unexpected resident experiment failure

@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_3f4c02fcfc71",
+  "name": "Vocabulary layout plus fused MoE decode block",
+  "implementation_type": "mlx",
+  "description": "Prepare(model) composes the two frozen placements without new arithmetic: lossless BF16 vocabulary projection only, plus three-stage post-attention normalization/routing/MXFP4expert/reduction/residual pipeline across24layers. Unchanged native prefill fallbacks, weights, precision and fresh caches. Declare byte-identical parent source provenance. Full-model numerical/route/token/cache checks and fresh strict matched confirmation required; no speedup/acceptance claim."
+}

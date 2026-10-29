@@ -51,6 +51,16 @@ Passing submission validation means only that the candidate has the expected
 shape. It does not establish correctness, safety, or performance; candidates
 must still pass the protected evaluator.
 
+The active contract also permits complete decode scheduling, larger graph
+fusion and exact memory-execution changes (see `AGENTS.md`). A broader MLX
+candidate may expose `decode_request(model, ids, step_size, mx,
+make_prompt_cache, ...)` in `wrapper.py`. Its description must declare this
+interface and its scope. The expert-only evaluator does not execute or certify
+that entry point; a controller-owned full-model diagnostic must freeze it and
+verify logits, routing, greedy tokens, cache state/precision and actual decode
+call counts before fresh matched timing. Submission validation alone does not
+establish that a broader candidate is runnable.
+
 ## Freeze before evaluation
 
 The controller must stop the optimization agent and other submission writers

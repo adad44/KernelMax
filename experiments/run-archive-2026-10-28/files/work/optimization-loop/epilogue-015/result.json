@@ -1,0 +1,106 @@
+{
+  "all_custom_pointwise_exact_on_native_inputs": true,
+  "all_native_reproductions_exact": true,
+  "checks": [
+    {
+      "custom_epilogue_differences": 0,
+      "custom_epilogue_on_identical_projection_inputs_exact": true,
+      "layer": 7,
+      "max_pointwise_abs_error": 0.0,
+      "native_reproduction_exact": true,
+      "original_candidate_activation_differences": 1,
+      "step": 2
+    },
+    {
+      "custom_epilogue_differences": 0,
+      "custom_epilogue_on_identical_projection_inputs_exact": true,
+      "layer": 1,
+      "max_pointwise_abs_error": 0.0,
+      "native_reproduction_exact": true,
+      "original_candidate_activation_differences": 1,
+      "step": 3
+    },
+    {
+      "custom_epilogue_differences": 0,
+      "custom_epilogue_on_identical_projection_inputs_exact": true,
+      "layer": 2,
+      "max_pointwise_abs_error": 0.0,
+      "native_reproduction_exact": true,
+      "original_candidate_activation_differences": 1,
+      "step": 3
+    },
+    {
+      "custom_epilogue_differences": 0,
+      "custom_epilogue_on_identical_projection_inputs_exact": true,
+      "layer": 6,
+      "max_pointwise_abs_error": 0.0,
+      "native_reproduction_exact": true,
+      "original_candidate_activation_differences": 1,
+      "step": 3
+    },
+    {
+      "custom_epilogue_differences": 0,
+      "custom_epilogue_on_identical_projection_inputs_exact": true,
+      "layer": 10,
+      "max_pointwise_abs_error": 0.0,
+      "native_reproduction_exact": true,
+      "original_candidate_activation_differences": 1,
+      "step": 3
+    },
+    {
+      "custom_epilogue_differences": 0,
+      "custom_epilogue_on_identical_projection_inputs_exact": true,
+      "layer": 18,
+      "max_pointwise_abs_error": 0.0,
+      "native_reproduction_exact": true,
+      "original_candidate_activation_differences": 1,
+      "step": 4
+    },
+    {
+      "custom_epilogue_differences": 0,
+      "custom_epilogue_on_identical_projection_inputs_exact": true,
+      "layer": 4,
+      "max_pointwise_abs_error": 0.0,
+      "native_reproduction_exact": true,
+      "original_candidate_activation_differences": 1,
+      "step": 5
+    },
+    {
+      "custom_epilogue_differences": 0,
+      "custom_epilogue_on_identical_projection_inputs_exact": true,
+      "layer": 15,
+      "max_pointwise_abs_error": 0.0,
+      "native_reproduction_exact": true,
+      "original_candidate_activation_differences": 1,
+      "step": 5
+    },
+    {
+      "custom_epilogue_differences": 0,
+      "custom_epilogue_on_identical_projection_inputs_exact": true,
+      "layer": 6,
+      "max_pointwise_abs_error": 0.0,
+      "native_reproduction_exact": true,
+      "original_candidate_activation_differences": 2,
+      "step": 6
+    },
+    {
+      "custom_epilogue_differences": 0,
+      "custom_epilogue_on_identical_projection_inputs_exact": true,
+      "layer": 11,
+      "max_pointwise_abs_error": 0.0,
+      "native_reproduction_exact": true,
+      "original_candidate_activation_differences": 1,
+      "step": 6
+    },
+    {
+      "custom_epilogue_differences": 0,
+      "custom_epilogue_on_identical_projection_inputs_exact": true,
+      "layer": 22,
+      "max_pointwise_abs_error": 0.0,
+      "native_reproduction_exact": true,
+      "original_candidate_activation_differences": 1,
+      "step": 6
+    }
+  ],
+  "scope": "untimed correctness isolation; no performance claim"
+}

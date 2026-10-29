@@ -1,0 +1,27 @@
+{
+  "command": {
+    "frozen_info": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/combined-frozen.json",
+    "mode": "confirm"
+  },
+  "path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/commands/004.json",
+  "queued_at_unix": 1793211599.2570398,
+  "resident_pid": 48619,
+  "resident_status_before_queue": "waiting_command",
+  "selection": {
+    "C3_guards": {
+      "checkpoint_and_snapshot_unchanged": true,
+      "original_methods_restored": true,
+      "protected_unchanged": true
+    },
+    "bootstrap_95pct_ratio": [
+      1.1001490293810527,
+      1.103459471911766
+    ],
+    "frozen_info": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/combined-frozen.json",
+    "median_ratio": 1.101605055610391,
+    "rule": "confirmation-selection-rule.json: C3 short numerical pass and screen median >= 1.05",
+    "selected_at_unix": 1793211599.25673,
+    "selected_candidate_id": "cand_3f4c02fcfc71"
+  },
+  "sha256": "e6ae71d0c012eef8ecc00e0ee145912af3081dfbd7af6a8cbc00dfe0ed780e9f"
+}

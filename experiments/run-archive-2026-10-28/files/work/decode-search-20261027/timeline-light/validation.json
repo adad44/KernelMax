@@ -1,0 +1,44 @@
+{
+  "command_buffer_class": "AGXG16GFamilyCommandBuffer",
+  "original_method_restored": true,
+  "output_exact": true,
+  "passed": true,
+  "rows": [
+    {
+      "cpu_commit": 1140764.6957072082,
+      "cpu_observed_complete": 1140764.6964240416,
+      "driver_end": 1140764.695964625,
+      "driver_start": 1140764.695767875,
+      "gpu_end": 1140764.696155375,
+      "gpu_start": 1140764.6961050418,
+      "sequence": 0,
+      "status": 4
+    },
+    {
+      "cpu_commit": 1140764.6963414582,
+      "cpu_observed_complete": 1140764.696427625,
+      "driver_end": 1140764.6963720417,
+      "driver_start": 1140764.6963659166,
+      "gpu_end": 1140764.69637375,
+      "gpu_start": 1140764.696373625,
+      "sequence": 1,
+      "status": 4
+    }
+  ],
+  "source_sha256": {
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/timeline-light/command_timeline.dylib": "5bc14f7bd2ea0a5f2875712e2aba84c65c18ec909c53d97ee53f661e8505fcf5",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/timeline-light/command_timeline.m": "b6a503d86256184f73734dc77e9e109a3dc929c2e1e210673b6d95fad31f74fa",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/timeline-light/probe.py": "1262f75265cfe9a69403c6694b3acace86b3e6f3bce40e8be34bf582c8a0e270",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/timeline-light/validate.py": "fb49c5eaec69fd63f59643044d2caa0d5ee22cfd00009dcd8d50bf056140302a"
+  },
+  "summary": {
+    "between_command_interval_gaps_ms": [
+      0.2182498574256897
+    ],
+    "command_buffers": 2,
+    "decode_wall_ms": 1.0238329414278269,
+    "gpu_command_interval_union_ms": 0.050458358600735664,
+    "wall_outside_gpu_command_intervals_ms": 0.9733745828270912,
+    "warning": "Command-buffer intervals include all commands and stalls inside buffers; they are not kernel-active time. Outside intervals includes CPU work, readback, submission and observation overhead. A gap alone does not establish recoverable latency."
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_d5987f75f173",
+  "name": "Native-order32-lane up/gate with half FP4 decode",
+  "implementation_type": "mlx",
+  "description": "Preserves the original four-row per32-lane SIMD reduction pattern, corresponding to native generic QMV arithmetic, while replacing the earlier dynamic FP4 table with exact native-style half conversion. Targets the measured up/gate region without the changed reduction grouping that caused rare amplified BF16 differences. Native MXFP4 weights/scales/routes, BF16 epilogue, native down, and prefill fallback unchanged. No tensor cache, packing or weight copies. All saved real-boundary failure cases must match exactly before timing. No performance claim."
+}

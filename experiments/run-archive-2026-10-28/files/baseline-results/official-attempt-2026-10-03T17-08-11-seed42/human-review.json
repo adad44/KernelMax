@@ -1,0 +1,10 @@
+{
+  "approved": true,
+  "run_id": "66e2e9d2-9b62-420e-8ba4-46468da314f6",
+  "driver_sha256": "86dc27d92f78e3dc6c22154a984cd4705a845fcfdcce4b792e0a67cc98280db5",
+  "reviewer": "Alan Diaz",
+  "review_date": "2026-10-03 America/Los_Angeles",
+  "human_response": "Approve this reference protocol",
+  "reviewed_protocol": "Native OpenAI weights; unchanged MLX-LM model with synchronous timing; stock-output and selected-expert correctness checks; 20 alternating A/A pairs per prompt size; nominal thermal state and no swap activity; reported noise confidence intervals. Freeze only if all checks pass. Candidate acceptance stays disabled.",
+  "scope": "Reference-protocol approval, not a code-security audit or approval of an optimization candidate"
+}

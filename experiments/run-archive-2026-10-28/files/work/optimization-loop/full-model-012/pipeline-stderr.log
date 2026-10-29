@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-012/run.py", line 281, in <module>
+    main()
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-012/run.py", line 225, in main
+    if not row['passed']:raise ValueError('Full-model correctness failed; timing blocked')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Full-model correctness failed; timing blocked
+Traceback (most recent call last):
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-013/search.py", line 261, in <module>
+    main()
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-013/search.py", line 234, in main
+    outcome=audit(work,cid);outcome.update(candidate_id=cid,directory=str(work),config=list(config),process=process)
+            ^^^^^^^^^^^^^^^
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-013/search.py", line 196, in audit
+    raise ValueError('Timing integrity failure; search stopped')
+ValueError: Timing integrity failure; search stopped

@@ -1,0 +1,45 @@
+{
+  "actual_matrix_unpack_bit_exact": true,
+  "backing_stores": {
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/storage-cand_680ac65cf145/native-head.safetensors": {
+      "identity": [
+        16777230,
+        22169711,
+        1158266987,
+        1793227487563066810,
+        1793227487563066810
+      ],
+      "sha256": "c1cb525e3647f6cb7888fa950124df7e87943c606d6568b99334cb75ab7be991"
+    },
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/storage-cand_680ac65cf145/packed-head.safetensors": {
+      "identity": [
+        16777230,
+        22169712,
+        910739411,
+        1793227487847953351,
+        1793227487847953351
+      ],
+      "sha256": "25870ce389affa32e9ca1971d7bb774b755db5b6260a131b7bad4b3ea748db0c"
+    }
+  },
+  "current": {
+    "candidate": false,
+    "mlx_active_bytes": 13763330024,
+    "native_vocabulary_bytes": 1158266880,
+    "packed_vocabulary_bytes": 0
+  },
+  "native_bytes": 1158266880,
+  "native_roundtrip_bit_exact": true,
+  "original_word_sha256": "b71791ff44723099c06ed3c379b2134fd98cbd22cbbf7bb658c36fdf79b799b5",
+  "packed_bytes": 910739074,
+  "switches": [
+    {
+      "candidate": false,
+      "mlx_active_bytes": 13763330024,
+      "native_vocabulary_bytes": 1158266880,
+      "outside_request_timing": true,
+      "packed_vocabulary_bytes": 0,
+      "wall_ms": 342.30991709046066
+    }
+  ]
+}

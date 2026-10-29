@@ -1,0 +1,40 @@
+{
+  "bootstrap_authorized": false,
+  "candidate_files_verified": true,
+  "candidate_frozen_sha256": "9994db5b687579196de78dbf625d9b23543064432bdc9e096a50d33d90600881",
+  "candidate_id": "cand_680ac65cf145",
+  "final_controller_review_pending": true,
+  "launchd": {
+    "caffeinate_label": "com.kernelmax.sprint.r2.vocab.caffeinate.20261028",
+    "caffeinate_pid_pending": "PENDING_VERIFIED_WORKER_PID",
+    "worker_label": "com.kernelmax.sprint.r2.vocab.20261028"
+  },
+  "note": "Prepared for primary final review. Do not bootstrap until final trusted-controller/manifest review is complete.",
+  "preparation_checks": {
+    "ast_json_exit": 0,
+    "candidate_freeze_verified": true,
+    "command_001": {
+      "frozen_info": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/vocabulary-frozen.json",
+      "mode": "screen"
+    },
+    "contract_sha256": "2a31bbda3389e91f12e1e17b1cff261b96c5f12cd3ce9af5dc818fd21a50c895",
+    "current_controller_sources_match_session": true,
+    "json_files_parsed": 7,
+    "python_files_ast_parsed": 10,
+    "resident_state_absent": true,
+    "session_load_authorization_verified": true,
+    "unit_test_exit": 0,
+    "unit_tests_passed": 12,
+    "unit_tests_run": 12
+  },
+  "prepared_at_unix": 1793226680.2806761,
+  "source_hashes": {
+    "caffeinate_plist_template": "d19db85453a535f600d3a768164436089ae6e369b04d5ffee6ac6c227a69d0b1",
+    "plan.json": "f707db60e3f0b6dcd2d85946c35d848479c6bf87fbf39777ef37a6fdcc8181a2",
+    "run_round.py": "bd1b0fa75fc7f56204ad23db9a7525728874531f9a38e04948c3b7208f94a354",
+    "session.json": "2a2f2ae86e9e5cf8f8de14296f62a4ec75169ebb5af987efcb539fad67bed0c7",
+    "test_protocol.py": "6a28185d9fd6c3256a846f436584d16a2c1d1b6c45c3b7652e268ae8419c3ef1",
+    "weight_residency.py": "7fdcf58d8f116756b1bc1d0ab9a9f1d9918c33a323af8ea988d4ed267e6caba6",
+    "worker_plist": "baa1a04c29d50b53468e56f7071e6e5a8e2f2e78cf45a5b1cac441cd2d401851"
+  }
+}

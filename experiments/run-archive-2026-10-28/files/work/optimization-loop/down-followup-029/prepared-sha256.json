@@ -1,0 +1,7 @@
+{
+  "build_candidate.py": "8caeed2a67200934fce6c2a3451fd5001da425e684004892cdbce83da3369cf4",
+  "coordinator-before-residency.py": "d81c1f401e81a8b1ff3ad05c5537a6f55940397de8cef1427e69f0520097d8e6",
+  "coordinator.py": "d2f7910162b8d96ef8f46dcd3697b48154fee6b619f7b70a1c486077d57eb740",
+  "prepared-before-residency-sha256.json": "8eb784788cb8cd23aab65ed7774892d59ee177be4714f14104a71107d7ab48fd",
+  "residency-validation.json": "36dcfe7bc8b21fafd93b61f76e9df22d12eb42a3465b5585267de3e76a8b126c"
+}

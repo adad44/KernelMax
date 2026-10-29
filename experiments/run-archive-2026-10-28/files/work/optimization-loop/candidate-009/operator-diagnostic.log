@@ -1,0 +1,4 @@
+native_load 0/27
+native_load 25/27
+native_load 27/27
+layer 0: A/A failed, no candidate timing or unchanged retry

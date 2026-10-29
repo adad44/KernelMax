@@ -1,0 +1,6 @@
+{
+  "instruction": "also stop asking for approval",
+  "applies_to": "Implementing, freezing, testing and timing candidates within this optimization experiment; no acceptance enablement or merging",
+  "recorded_at_unix": 1793069001.966505,
+  "exact_candidate_approval_already_recorded": "93f523c916125738e860b796e6440170d192dcdeb207e327edaa26d826f14272"
+}

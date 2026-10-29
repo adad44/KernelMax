@@ -1,0 +1,55 @@
+{
+  "next_method": "Fresh 4096-call-per-lane paired operator deletion diagnostic with its own A/A gate. No candidate gain yet.",
+  "observation": "The first timed microblock after the environment snapshot was consistently slower in the 256-call protocol. Longer predeclared sample budgets diluted this effect. A causal GPU/CPU root cause is not established. All samples remain retained.",
+  "other_32call_block_median_ms": 27.1606455,
+  "post_observation_first_32call_block_median_ms": 41.1289165,
+  "sample_budgets": {
+    "1024": {
+      "environment_valid": true,
+      "full_range": 0.03435473560179428,
+      "median_ms_per_call": 0.8527090439453124,
+      "passed": true,
+      "ratios": [
+        1.0096798913410268,
+        0.9941975643559859,
+        0.9994244035900988,
+        0.9883684899332917,
+        1.0013263257026164,
+        0.9859669599232848
+      ],
+      "relative_mad": 0.004806647022007632
+    },
+    "256": {
+      "environment_valid": true,
+      "full_range": 0.08516306880549801,
+      "median_ms_per_call": 0.86874910546875,
+      "passed": false,
+      "ratios": [
+        1.0794615534700194,
+        0.9458691244016652,
+        1.0490626452386944,
+        0.9644779493505408,
+        1.0538091609125264,
+        0.9398964141967343
+      ],
+      "relative_mad": 0.03130839779506781
+    },
+    "4096": {
+      "environment_valid": true,
+      "full_range": 0.020523359640579265,
+      "median_ms_per_call": 0.8615071105957031,
+      "passed": true,
+      "ratios": [
+        1.0046976911238206,
+        1.003341198689426,
+        1.0015136335498567,
+        0.992908725102335,
+        0.9980145214120839,
+        0.9956819494469742
+      ],
+      "relative_mad": 0.0022611340153414652
+    }
+  },
+  "scope": "sampled native expert operator, not full-model calibration",
+  "status": "noise_scaling_characterized"
+}

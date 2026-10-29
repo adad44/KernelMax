@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_4a02c3189b7d",
+  "name": "Three-stage fused post-attention MoE decode block",
+  "implementation_type": "metal",
+  "description": "Prepare(model) returns a MoE-block adapter. One-token decode uses three Metal stages after unchanged attention: attention residual plus RMSNorm/router/stabletop4/softmax; joint nativeMXFP4 up/gate plus GPT-OSS SwiGLU; nativeMXFP4 down plus expert weighting/BF16 reduction/finalresidual. Reuse checkpoint weight values, native precision and native arithmetic ordering where specified. Native GPT-OSS handles prefill and unsupported shapes. All24layers integrate through a trusted runtime-only block binding; no source monkeypatch or extra forward. Target launch/intermediate/scheduling overhead across the whole14.7ms expert region rather than a minor product-loop variant. Numerical tolerances and route/token/cache differences are evaluated by the controller. No correctness, speedup or acceptance claim."
+}

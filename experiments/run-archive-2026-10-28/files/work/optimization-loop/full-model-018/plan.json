@@ -1,0 +1,35 @@
+{
+  "controls": {
+    "ac_required": true,
+    "all_samples_retained": true,
+    "controller_hold_seconds": 12,
+    "log_swap_ins": true,
+    "quiet_seconds": 10,
+    "reject_swap_outs_and_growth": true,
+    "settle_seconds": 5,
+    "thermal_nominal_required": true
+  },
+  "correctness_before_timing": "On the same pinned native checkpoint, compare unchanged-reference and integrated candidate on fresh caches and deterministic baseline token trajectories. Retain logits/output tokens, numerical comparisons, shapes/dtypes and routing-related mismatches. Passing isolated checks is not full-model correctness.",
+  "deadline": "2026-10-27T13:00:00-07:00",
+  "integration": "Trusted controller temporarily replaces only the native expert class call during candidate requests. Intercept supported BF16 single-token expert input; call the original method directly for prefill/unsupported shapes to prevent fallback recursion. Restore the exact original method between candidate and baseline requests and on every exit. No source-file mutation.",
+  "measurement": "Materialize native model one tensor at a time on CPU outside timing. Use matched request driver, candidate snapshot, current protected/runtime/checkpoint identity. Fresh20-pair A/A confidence calibration before matched20-pair baseline/candidate comparisons with five warmups; preserve fixed per-request controls and paging-aware policy. Do not compare new candidate against historical baseline numbers. No old failed calibration relabeled.",
+  "new_run_started": false,
+  "parameter_layout_setup": "Before each native lane restore native contiguous up/gate fields; before each candidate lane prepare losslessly packed fields. Prepare all24 layers outside the timed request and record every setup duration, active memory and transient peak separately. Steady-state parameters share packed storage instead of duplicate original weights. Apply the same prepared layout to correctness and timing, including prefill.",
+  "prerequisite": "Candidate016 passed exact saved-boundary/layout/update tests. This full-model run must additionally wait for complete valid positive operator timing across allthree sampled layers. No new full-model run is claimed by preparation.",
+  "reporting": "Only valid fresh full-model results can support a speedup statement. No ACCEPTED verdict or task-quality claim: acceptance remains disabled and held-out task gate remains planned.",
+  "request_driver": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/native_baseline.py:request",
+  "status": "prepared_not_executed",
+  "workload": {
+    "batch": 1,
+    "fresh_cache_per_request": true,
+    "outputs": 128,
+    "precision": "native MXFP4 and BF16 activations/cache",
+    "prompts": [
+      512,
+      2048,
+      4096
+    ],
+    "sampling": "greedy",
+    "seed": 42
+  }
+}

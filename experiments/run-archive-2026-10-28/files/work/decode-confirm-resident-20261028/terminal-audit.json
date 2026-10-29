@@ -1,0 +1,433 @@
+{
+  "status": "terminal_environment_failure_unproven",
+  "resident_worker": {
+    "pid": 53245,
+    "birth_local": "2026-10-28 11:44:09",
+    "state": "stopped_EnvironmentFailure",
+    "terminal_resident_state": "resident_wait_expired",
+    "launchd_worker_not_running_exit0": true,
+    "launchd_caffeinate_not_running_exit0": true,
+    "process_inventory_matching_task_owned_worker_or_model": []
+  },
+  "command": {
+    "candidate_id": "cand_5785998944e5",
+    "mode": "confirm",
+    "terminal_status": "stopped_EnvironmentFailure",
+    "stop_phase": "warmup-1",
+    "stop_context": 512,
+    "stop_lane": "candidate",
+    "stop_trial": 3,
+    "requests_measured": 56,
+    "primers": 56,
+    "physical_request_starts": 112,
+    "instrumented_rows": 0,
+    "counts_by_phase_context_lane": {
+      "aa|512|A": 20,
+      "aa|512|B": 20,
+      "aa_warmup|512|A": 5,
+      "aa_warmup|512|B": 5,
+      "warmup-1|512|baseline": 3,
+      "warmup-1|512|candidate": 3
+    },
+    "strict_flag_rows": [
+      {
+        "index": 55,
+        "phase": "warmup-1",
+        "context": 512,
+        "lane": "candidate",
+        "trial": 3,
+        "invalid_reasons": [
+          "swapouts increased during request"
+        ],
+        "flags": [
+          "swapouts increased during request"
+        ],
+        "swap": {
+          "policy": "paging-aware",
+          "swap_growth_mib": -64.44000000000051,
+          "swapin_pages": 33799,
+          "swapins_permitted": true,
+          "swapout_pages": 32230
+        },
+        "memory": null,
+        "thermal_states": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "power_before": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+        "power_after": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+        "tokens_match": true,
+        "forward_calls": 129,
+        "placement_counts": {
+          "block_fallback": 0,
+          "block_specialized": 0,
+          "projection_fallback": 1,
+          "projection_specialized": 128
+        }
+      }
+    ],
+    "primer_hard_flags": [],
+    "all_measured_output_tokens_match": true,
+    "all_measured_forward_calls_129": true,
+    "all_primer_forward_calls_129": true,
+    "all_candidate_rows_projection_specialized_128": true,
+    "all_baseline_projection_specialized_zero": true,
+    "all_primers_match_measured_phase_context_lane_trial": true,
+    "warmup_metrics_descriptive_only": {
+      "512": {
+        "baseline": {
+          "count": 3,
+          "median_inter_token_latency_ms": 40.94745917245746,
+          "median_full_model_wall_time_ms": 6560.0482921581715,
+          "median_decode_tokens_per_second": 24.26622474977406
+        },
+        "candidate": {
+          "count": 3,
+          "median_inter_token_latency_ms": 37.97424980439246,
+          "median_full_model_wall_time_ms": 6157.899499870837,
+          "median_decode_tokens_per_second": 26.269251725403805
+        }
+      }
+    },
+    "aa_512_pairs": 20,
+    "aa_512_median_ratio": 1.0002470844628015,
+    "aa_512_bootstrap_95_ci": [
+      0.99901965267588,
+      1.0020616306725079
+    ],
+    "candidate_confirm_pairs": 0,
+    "candidate_blocks_complete": 0,
+    "planned_candidate_blocks": 4,
+    "planned_measured_rows": 350,
+    "planned_primers": 350,
+    "missing_metrics": "No candidate paired rows; candidate confirmation intervals, per-block summaries, p90/MAD and 5% lower bounds unavailable."
+  },
+  "failed_row_delta": {
+    "index": 55,
+    "phase": "warmup-1",
+    "context": 512,
+    "lane": "candidate",
+    "trial": 3,
+    "invalid_reasons": [
+      "swapouts increased during request"
+    ],
+    "flags": [
+      "swapouts increased during request"
+    ],
+    "swap": {
+      "policy": "paging-aware",
+      "swap_growth_mib": -64.44000000000051,
+      "swapin_pages": 33799,
+      "swapins_permitted": true,
+      "swapout_pages": 32230
+    },
+    "memory": {
+      "interpretation_limits": [
+        "These are whole-request boundary snapshots; they do not attribute paging to prefill versus decode portions.",
+        "vm_stat and swap counters are system-wide; there is no process-page attribution.",
+        "Pages stored in compressor is reported as a logical page count; nominal GiB conversion is only a page-size equivalent, not physical compressor storage."
+      ],
+      "primer": {
+        "source": "retained system vm_stat observations immediately before/after complete request; boundary snapshots, not continuous profiling",
+        "page_size_bytes": 16384,
+        "elapsed_seconds": 6.633965015411377,
+        "before": {
+          "observed_at_unix": 1793215664.521451,
+          "wired_pages": 150356,
+          "wired_gib_nominal": 2.29425048828125,
+          "free_pages": 4623,
+          "free_gib_nominal": 0.0705413818359375,
+          "file_backed_pages": 85437,
+          "file_backed_gib_nominal": 1.3036651611328125,
+          "compressor_occupied_pages": 274292,
+          "compressor_occupied_gib_nominal": 4.18536376953125,
+          "compressor_stored_pages": 1949162,
+          "compressor_stored_gib_nominal": 29.741851806640625,
+          "swapin_count": 5315690,
+          "swapout_count": 7629730
+        },
+        "after": {
+          "observed_at_unix": 1793215671.155416,
+          "wired_pages": 1066278,
+          "wired_gib_nominal": 16.270111083984375,
+          "free_pages": 15837,
+          "free_gib_nominal": 0.2416534423828125,
+          "file_backed_pages": 84823,
+          "file_backed_gib_nominal": 1.2942962646484375,
+          "compressor_occupied_pages": 224514,
+          "compressor_occupied_gib_nominal": 3.425811767578125,
+          "compressor_stored_pages": 1905943,
+          "compressor_stored_gib_nominal": 29.082382202148438,
+          "swapin_count": 5315698,
+          "swapout_count": 7629730
+        },
+        "delta": {
+          "wired_pages": 915922,
+          "free_pages": 11214,
+          "file_backed_pages": -614,
+          "compressor_occupied_pages": -49778,
+          "compressor_stored_pages": -43219,
+          "swapin_count": 8,
+          "swapout_count": 0,
+          "pageouts": 0
+        },
+        "swap_count_rates_per_second": {
+          "swapin_count_per_second": 1.2059153133028566,
+          "swapout_count_per_second": 0.0
+        },
+        "thermal_before": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "thermal_after": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "power_before": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+        "power_after": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true"
+      },
+      "measured_request": {
+        "source": "retained system vm_stat observations immediately before/after complete request; boundary snapshots, not continuous profiling",
+        "page_size_bytes": 16384,
+        "elapsed_seconds": 6.260217905044556,
+        "before": {
+          "observed_at_unix": 1793215671.193252,
+          "wired_pages": 1066278,
+          "wired_gib_nominal": 16.270111083984375,
+          "free_pages": 15680,
+          "free_gib_nominal": 0.2392578125,
+          "file_backed_pages": 84823,
+          "file_backed_gib_nominal": 1.2942962646484375,
+          "compressor_occupied_pages": 224437,
+          "compressor_occupied_gib_nominal": 3.4246368408203125,
+          "compressor_stored_pages": 1905680,
+          "compressor_stored_gib_nominal": 29.078369140625,
+          "swapin_count": 5315698,
+          "swapout_count": 7629730
+        },
+        "after": {
+          "observed_at_unix": 1793215677.45347,
+          "wired_pages": 1052767,
+          "wired_gib_nominal": 16.063949584960938,
+          "free_pages": 19063,
+          "free_gib_nominal": 0.2908782958984375,
+          "file_backed_pages": 89084,
+          "file_backed_gib_nominal": 1.35931396484375,
+          "compressor_occupied_pages": 219078,
+          "compressor_occupied_gib_nominal": 3.342864990234375,
+          "compressor_stored_pages": 1897409,
+          "compressor_stored_gib_nominal": 28.952163696289062,
+          "swapin_count": 5349497,
+          "swapout_count": 7661960
+        },
+        "delta": {
+          "wired_pages": -13511,
+          "free_pages": 3383,
+          "file_backed_pages": 4261,
+          "compressor_occupied_pages": -5359,
+          "compressor_stored_pages": -8271,
+          "swapin_count": 33799,
+          "swapout_count": 32230,
+          "pageouts": 45
+        },
+        "swap_count_rates_per_second": {
+          "swapin_count_per_second": 5399.01334309216,
+          "swapout_count_per_second": 5148.383089673076
+        },
+        "thermal_before": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "thermal_after": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "power_before": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+        "power_after": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true"
+      },
+      "primer_to_measured_residency": {
+        "primer_after_to_measured_before_elapsed_seconds": 0.03783607482910156,
+        "primer_after_wired_pages": 1066278,
+        "measured_before_wired_pages": 1066278,
+        "wired_pages_equal": true,
+        "wired_gib_nominal": 16.270111083984375,
+        "interpretation": "The retained boundary snapshots show the primer after wired count persisted exactly to measured-request before snapshot. This supports persistence of system wired pages across this short transition, but does not establish that the model pages were wired or identify what memory those pages represent."
+      }
+    },
+    "thermal_states": {
+      "before": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "after": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "power_before": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+    "power_after": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; charged; 0:00 remaining present: true",
+    "tokens_match": true,
+    "forward_calls": 129,
+    "placement_counts": {
+      "block_fallback": 0,
+      "block_specialized": 0,
+      "projection_fallback": 1,
+      "projection_specialized": 128
+    }
+  },
+  "correctness_reuse": {
+    "contexts": [
+      {
+        "context": 512,
+        "logits_exact": true,
+        "npz_path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-005-confirm-cand_5785998944e5/correctness-512-128.npz",
+        "npz_sha256_current": "fe9ba7abc68d0e9419a01f51e92a3a34482b2420bc3f32f9709d1304f3ed0c4f",
+        "npz_sha256_stored": "fe9ba7abc68d0e9419a01f51e92a3a34482b2420bc3f32f9709d1304f3ed0c4f",
+        "npz_sha_matches": true,
+        "outputs": 128,
+        "routes_equal": true,
+        "state_bit_exact": true,
+        "state_cache_within_tolerance": true,
+        "state_passed": true,
+        "tokens_equal": true
+      },
+      {
+        "context": 2048,
+        "logits_exact": true,
+        "npz_path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-005-confirm-cand_5785998944e5/correctness-2048-128.npz",
+        "npz_sha256_current": "1cbe4c1eedf3e6c8b9b507a109f606f04af1796805755191a66b5a48eb9695d8",
+        "npz_sha256_stored": "1cbe4c1eedf3e6c8b9b507a109f606f04af1796805755191a66b5a48eb9695d8",
+        "npz_sha_matches": true,
+        "outputs": 128,
+        "routes_equal": true,
+        "state_bit_exact": true,
+        "state_cache_within_tolerance": true,
+        "state_passed": true,
+        "tokens_equal": true
+      },
+      {
+        "context": 4096,
+        "logits_exact": true,
+        "npz_path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-005-confirm-cand_5785998944e5/correctness-4096-128.npz",
+        "npz_sha256_current": "2a7e1ab0f1a31fbb45b0c9efa80407bcbae69f286f32c4eb5b992fa5788d8c08",
+        "npz_sha256_stored": "2a7e1ab0f1a31fbb45b0c9efa80407bcbae69f286f32c4eb5b992fa5788d8c08",
+        "npz_sha_matches": true,
+        "outputs": 128,
+        "routes_equal": true,
+        "state_bit_exact": true,
+        "state_cache_within_tolerance": true,
+        "state_passed": true,
+        "tokens_equal": true
+      }
+    ],
+    "parent_manifest_sha256": "8b76510d4d0cd0b2371aeb5757d8bed4f052f2b3bc50fadb3a741f799f7ee521",
+    "reused_only_same_candidate_checkpoint_contract": true,
+    "source_state": "8efafb27e3eebe5b96b422bcdaa7d39004354434323292235d02837ce28d469f"
+  },
+  "candidate": {
+    "bundle_sha256": "b6dd528b50b4d3d89db496fb021bbcd21d2043f701c36196e39ea08457283918",
+    "candidate_cap": 3,
+    "existing_ids": [
+      "cand_5785998944e5",
+      "cand_4a02c3189b7d",
+      "cand_3f4c02fcfc71"
+    ],
+    "id": "cand_5785998944e5",
+    "matches_original_frozen": true
+  },
+  "guards": {
+    "all_reused_npz_hashes_current": true,
+    "candidate_snapshot_verified": true,
+    "checkpoint_receipt_matches_parent": true,
+    "checkpoint_receipt_validator_passed": true,
+    "command_checkpoint_snapshot_unchanged": true,
+    "command_protected_unchanged": true,
+    "current_protected_hash_mismatches": [],
+    "historical_protected_hash_mismatches": [],
+    "original_methods_restored": true,
+    "resident_checkpoint_unchanged": true,
+    "resident_protected_unchanged": true
+  },
+  "verdict": {
+    "repeatable_5pct_verified": false,
+    "acceptance_enabled": false,
+    "claim_scope": "No speedup or quality claim; all measured candidate evidence is warmup only and environment-confounded at stop."
+  }
+}

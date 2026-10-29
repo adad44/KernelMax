@@ -1,0 +1,6 @@
+
+## Changed-residency confirmation terminal outcome
+
+The one authorized C1 run stopped at the first strict candidate warmup: prompt 512, `warmup-1`, candidate trial 3. That measured row saw 32,230 system-wide swapout pages (swap growth −64.44 MiB), so strict policy stopped it despite matching reference tokens and completing 129 forwards. The fresh 512 A/A calibration completed 20 pairs and passed (median B/A 1.000247, bootstrap CI [0.999020, 1.002062]); the 2048/4096 A/A groups and all candidate timing pairs/blocks did not run. There were 56 measured rows and 56 primers, including 50 A/A rows and 6 first-block warmups; no candidate confirm rows. All rows had 129 calls and matched the saved token reference, all primers matched their corresponding measured lane/context/phase/trial, all candidate rows used 128 specialized vocabulary calls, and all reused correctness NPZs remained intact. One strict measured row was flagged; no other measured or primer row had a hard flag. Command guards and final resident protected/checkpoint guards passed.
+
+After the 30-minute idle wait, the resident reached `resident_wait_expired`; worker PID 53245 and caffeinate PID 53268 both exited 0. Full audit is `changed-residency-audit.json`. No finish command, retry, or additional model run was issued. The repeatable 5% objective remains unproven; acceptance stays disabled.

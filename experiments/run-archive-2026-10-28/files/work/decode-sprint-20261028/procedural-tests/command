@@ -1,0 +1,1 @@
+uv run --no-project --python /Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python --with pytest==8.3.4 --with PyYAML==6.0.3 --with numpy==2.5.3 python -B -m pytest -q tests/test_contract.py tests/test_measurement.py

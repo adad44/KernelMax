@@ -1,0 +1,26 @@
+{
+  "objective": "Verify repeatable5percent full-model decode improvement for the existing vocabulary-only snapshot. Three-substantive-candidate cap remains exhausted; no new implementation or broad profiling.",
+  "candidate_cap": 3,
+  "existing_candidate_ids": ["cand_5785998944e5", "cand_4a02c3189b7d", "cand_3f4c02fcfc71"],
+  "confirmation_candidate_id": "cand_5785998944e5",
+  "confirmation_candidate_sha256": "b6dd528b50b4d3d89db496fb021bbcd21d2043f701c36196e39ea08457283918",
+  "max_changed_protocol_attempts": 1,
+  "reason": "Failed original strict005 before any A/A pair or candidate timing: global swap+210.31MiB/14484pages while wired pages rose2.23GiB→15.98GiB withinrequest. This is a resident-working-set transition hypothesis, not process paging attribution. Historical memory-residency-027 unconditional post-idle primer completed100validtimedrequests; its old numerical/timing results are NOT used as new performance evidence.",
+  "intervention": "Fixed27secondidle before every lane. Then exactlyone unconditional untimed request in the SAME lane/context with128outputs/freshcache. Retain its complete metrics, outputs, thermal and swap observations; swap-only flags on this declared hydration request are permitted. Immediately observe environment and execute the measured fresh-cache request with unchanged native driver. No extraidle, conditional warmup retry, sample filtering or hidden speculative work. Both baseline and candidate get identical preparation.",
+  "confirmation": {
+    "prompt_lengths": [512, 2048, 4096],
+    "outputs": 128,
+    "warmups_per_lane": 5,
+    "aa_pairs": 20,
+    "candidate_pairs": 20,
+    "repeat_independent_candidate_block_at_512": true,
+    "before_each_request_idle_seconds": 27,
+    "swap_policy": "reject_swap_outs_or_growth_during_measured_requests",
+    "threshold": "Every context and independent512repeat medianratio>=1.05 and bootstrap95lower>max(1.05,1+freshAAnoise). Strictlyvalidpower/thermal/paging acrossallmeasuredrows. No unchangedstatisticalrerolls."
+  },
+  "bounds": "One confirmation command only, max800physicalrequests (planned350primers+350measuredwarmup/control/candidate requests), eight-hourcommandcap andten-hourresidentworker cap. Every physicalrequest has exactly129forwards including128singletokenoutputs; bound reached or anyhardfailure retainsallartifacts and stops. No candidate4.",
+  "correctness": "Reuse completed005128outputexactchecks at512/2048/4096 with originalsource/snapshot/contract/checkpointidentityandarraySHAguards. No repeated numerical session for unchanged mathematics. Every primer and measuredrequest must match the preserved native128tokenreference; every measuredcandidate must use128specializedvocabularycalls. Fullquality/acceptance remains disabled/planned.",
+  "data_integrity": "Old005failure/006closure and alloldscreen/confirmationartifacts remain untouched. New source/session/plan snapshot and freshmatchedtiming evidence. Primer samples are never substituted for measured samples. Whole-model canonical request implementation, seed, checkpoint, dtype, BF16cache, EOS behavior, model loading exclusion and metrics unchanged.",
+  "stop_conditions": "First measuredswap-out/growth, powerloss, nonnominalthermal (includingprimer), numerical/GPU/build/integrityerror, failedfreshAA or failed5percentblock stops; keep completedcorrectness/calibration andallfailedrows. No extrachanged-protocol attempt withoutprimary/user scope decision.",
+  "acceptance_enabled": false
+}

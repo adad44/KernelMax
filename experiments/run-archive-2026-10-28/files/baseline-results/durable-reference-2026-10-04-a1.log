@@ -1,0 +1,216 @@
+Attempt: /Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/official-attempt-2026-10-04T14-24-18-seed42-paging-aware
+Service receipt: /Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/memoryos-session-2026-10-04T14-24-18.json
+Log: /Users/alandiaz/Library/Logs/kernelmax-official-baseline-2026-10-04T14-24-18.log
+Verifying actual SHA256: model-00000-of-00002.safetensors
+Verifying actual SHA256: model-00001-of-00002.safetensors
+Verifying actual SHA256: model-00002-of-00002.safetensors
+Loading verified native checkpoint; model loading is excluded from timing.
+Materializing native tensors: 0/531; next=model.embed_tokens.weight
+Materializing native tensors: 25/531; next=model.layers.1.self_attn.q_proj.weight
+Materializing native tensors: 50/531; next=model.layers.2.self_attn.k_proj.bias
+Materializing native tensors: 75/531; next=model.layers.3.self_attn.o_proj.weight
+Materializing native tensors: 100/531; next=model.layers.4.mlp.experts.gate_proj.scales
+Materializing native tensors: 125/531; next=model.layers.5.mlp.experts.up_proj.scales
+Materializing native tensors: 150/531; next=model.layers.6.mlp.experts.down_proj.scales
+Materializing native tensors: 175/531; next=model.layers.7.mlp.router.bias
+Materializing native tensors: 200/531; next=model.layers.9.self_attn.sinks
+Materializing native tensors: 225/531; next=model.layers.10.self_attn.k_proj.weight
+Materializing native tensors: 250/531; next=model.layers.11.self_attn.v_proj.bias
+Materializing native tensors: 275/531; next=model.layers.12.mlp.experts.gate_proj.weight
+Materializing native tensors: 300/531; next=model.layers.13.mlp.experts.up_proj.weight
+Materializing native tensors: 325/531; next=model.layers.14.mlp.experts.down_proj.weight
+Materializing native tensors: 350/531; next=model.layers.15.mlp.router.weight
+Materializing native tensors: 375/531; next=model.layers.16.post_attention_layernorm.weight
+Materializing native tensors: 400/531; next=model.layers.18.self_attn.q_proj.bias
+Materializing native tensors: 425/531; next=model.layers.19.self_attn.v_proj.weight
+Materializing native tensors: 450/531; next=model.layers.20.self_attn.o_proj.bias
+Materializing native tensors: 475/531; next=model.layers.21.mlp.experts.gate_proj.bias
+Materializing native tensors: 500/531; next=model.layers.22.mlp.experts.up_proj.bias
+Materializing native tensors: 525/531; next=model.layers.23.mlp.experts.down_proj.bias
+Materializing native tensors: 531/531; next=None
+Running stock generation comparisons and native selected-expert dispatch-invariance checks.
+Stock generation comparison prefill/512: True
+Stock generation comparison prefill/2048: True
+Stock generation comparison prefill/4096: True
+Stock generation comparison decode/1: True
+Stock generation comparison held_out_inputs/257: True
+Native expert check decode/layer0: True; error=0.0
+Native expert check prefill/layer0: True; error=0.0
+Native expert check uneven_expert_load/layer0: True; error=0.0
+Native expert check unused_experts/layer0: True; error=0.0
+Native expert check non_divisible_token_counts/layer0: True; error=0.0
+Native expert check large_finite_activations/layer0: True; error=0.0
+Native expert check held_out_inputs/layer0: True; error=0.0
+Native expert check decode/layer12: True; error=0.0
+Native expert check prefill/layer12: True; error=0.0
+Native expert check uneven_expert_load/layer12: True; error=0.0
+Native expert check unused_experts/layer12: True; error=0.0
+Native expert check non_divisible_token_counts/layer12: True; error=0.0
+Native expert check large_finite_activations/layer12: True; error=0.0
+Native expert check held_out_inputs/layer12: True; error=0.0
+Native expert check decode/layer23: True; error=0.0
+Native expert check prefill/layer23: True; error=0.0
+Native expert check uneven_expert_load/layer23: True; error=0.0
+Native expert check unused_experts/layer23: True; error=0.0
+Native expert check non_divisible_token_counts/layer23: True; error=0.0
+Native expert check large_finite_activations/layer23: True; error=0.0
+Native expert check held_out_inputs/layer23: True; error=0.0
+Untimed setup for separate stability screen; no official samples are being collected.
+Diagnostic screen 512/1/A: 24.37 tok/s; invalid=[]
+Diagnostic screen 512/1/B: 24.40 tok/s; invalid=[]
+Diagnostic screen 2048/1/A: 24.03 tok/s; invalid=[]
+Diagnostic screen 2048/1/B: 24.02 tok/s; invalid=[]
+Diagnostic screen 4096/1/A: 23.55 tok/s; invalid=[]
+Diagnostic screen 4096/1/B: 23.54 tok/s; invalid=[]
+Diagnostic screen 2048/2/B: 24.07 tok/s; invalid=[]
+Diagnostic screen 2048/2/A: 24.03 tok/s; invalid=[]
+Diagnostic screen 4096/2/B: 23.52 tok/s; invalid=[]
+Diagnostic screen 4096/2/A: 23.56 tok/s; invalid=[]
+Diagnostic screen 512/2/B: 24.48 tok/s; invalid=[]
+Diagnostic screen 512/2/A: 24.48 tok/s; invalid=[]
+Separate stability screen passed. Fresh official settling/priming/warmups/samples follow; model stays resident.
+Resident model ready for attempt 1. Settling 60s; loading excluded.
+Untimed resident priming round 1 prompt=512: events=[]
+Untimed resident priming round 1 prompt=2048: events=[]
+Untimed resident priming round 1 prompt=4096: events=[]
+Untimed resident priming round 2 prompt=512: events=[]
+Untimed resident priming round 2 prompt=2048: events=[]
+Untimed resident priming round 2 prompt=4096: events=[]
+warmups 1/5 prompt=512 lane=A: 24.44 tok/s; invalid=[]
+warmups 1/5 prompt=2048 lane=A: 24.05 tok/s; invalid=[]
+warmups 1/5 prompt=4096 lane=A: 23.56 tok/s; invalid=[]
+warmups 2/5 prompt=2048 lane=A: 24.04 tok/s; invalid=[]
+warmups 2/5 prompt=4096 lane=A: 23.56 tok/s; invalid=[]
+warmups 2/5 prompt=512 lane=A: 24.48 tok/s; invalid=[]
+warmups 3/5 prompt=4096 lane=A: 23.51 tok/s; invalid=[]
+warmups 3/5 prompt=512 lane=A: 24.44 tok/s; invalid=[]
+warmups 3/5 prompt=2048 lane=A: 24.00 tok/s; invalid=[]
+warmups 4/5 prompt=512 lane=A: 24.47 tok/s; invalid=[]
+warmups 4/5 prompt=2048 lane=A: 23.99 tok/s; invalid=[]
+warmups 4/5 prompt=4096 lane=A: 23.54 tok/s; invalid=[]
+warmups 5/5 prompt=2048 lane=A: 24.03 tok/s; invalid=[]
+warmups 5/5 prompt=4096 lane=A: 23.54 tok/s; invalid=[]
+warmups 5/5 prompt=512 lane=A: 24.48 tok/s; invalid=[]
+samples 1/20 prompt=512 lane=A: 24.53 tok/s; invalid=[]
+samples 1/20 prompt=512 lane=B: 24.54 tok/s; invalid=[]
+samples 1/20 prompt=2048 lane=A: 23.99 tok/s; invalid=[]
+samples 1/20 prompt=2048 lane=B: 24.00 tok/s; invalid=[]
+samples 1/20 prompt=4096 lane=A: 23.54 tok/s; invalid=[]
+samples 1/20 prompt=4096 lane=B: 23.56 tok/s; invalid=[]
+samples 2/20 prompt=2048 lane=B: 24.06 tok/s; invalid=[]
+samples 2/20 prompt=2048 lane=A: 23.95 tok/s; invalid=[]
+samples 2/20 prompt=4096 lane=B: 23.49 tok/s; invalid=[]
+samples 2/20 prompt=4096 lane=A: 23.52 tok/s; invalid=[]
+samples 2/20 prompt=512 lane=B: 24.47 tok/s; invalid=[]
+samples 2/20 prompt=512 lane=A: 24.51 tok/s; invalid=[]
+samples 3/20 prompt=4096 lane=A: 23.45 tok/s; invalid=[]
+samples 3/20 prompt=4096 lane=B: 23.58 tok/s; invalid=[]
+samples 3/20 prompt=512 lane=A: 24.47 tok/s; invalid=[]
+samples 3/20 prompt=512 lane=B: 24.52 tok/s; invalid=[]
+samples 3/20 prompt=2048 lane=A: 23.99 tok/s; invalid=[]
+samples 3/20 prompt=2048 lane=B: 24.02 tok/s; invalid=[]
+samples 4/20 prompt=512 lane=B: 24.52 tok/s; invalid=[]
+samples 4/20 prompt=512 lane=A: 24.52 tok/s; invalid=[]
+samples 4/20 prompt=2048 lane=B: 23.94 tok/s; invalid=[]
+samples 4/20 prompt=2048 lane=A: 23.70 tok/s; invalid=[]
+samples 4/20 prompt=4096 lane=B: 23.51 tok/s; invalid=[]
+samples 4/20 prompt=4096 lane=A: 23.53 tok/s; invalid=[]
+samples 5/20 prompt=2048 lane=A: 23.99 tok/s; invalid=[]
+samples 5/20 prompt=2048 lane=B: 24.01 tok/s; invalid=[]
+samples 5/20 prompt=4096 lane=A: 23.49 tok/s; invalid=[]
+samples 5/20 prompt=4096 lane=B: 23.49 tok/s; invalid=[]
+samples 5/20 prompt=512 lane=A: 24.44 tok/s; invalid=[]
+samples 5/20 prompt=512 lane=B: 24.45 tok/s; invalid=[]
+samples 6/20 prompt=4096 lane=B: 23.52 tok/s; invalid=[]
+samples 6/20 prompt=4096 lane=A: 23.54 tok/s; invalid=[]
+samples 6/20 prompt=512 lane=B: 24.44 tok/s; invalid=[]
+samples 6/20 prompt=512 lane=A: 24.42 tok/s; invalid=[]
+samples 6/20 prompt=2048 lane=B: 23.97 tok/s; invalid=[]
+samples 6/20 prompt=2048 lane=A: 23.97 tok/s; invalid=[]
+samples 7/20 prompt=512 lane=A: 24.50 tok/s; invalid=[]
+samples 7/20 prompt=512 lane=B: 21.80 tok/s; invalid=[]
+samples 7/20 prompt=2048 lane=A: 23.44 tok/s; invalid=[]
+samples 7/20 prompt=2048 lane=B: 23.55 tok/s; invalid=[]
+samples 7/20 prompt=4096 lane=A: 23.29 tok/s; invalid=[]
+samples 7/20 prompt=4096 lane=B: 23.24 tok/s; invalid=[]
+samples 8/20 prompt=2048 lane=B: 23.67 tok/s; invalid=[]
+samples 8/20 prompt=2048 lane=A: 23.75 tok/s; invalid=[]
+samples 8/20 prompt=4096 lane=B: 23.25 tok/s; invalid=[]
+samples 8/20 prompt=4096 lane=A: 23.29 tok/s; invalid=[]
+samples 8/20 prompt=512 lane=B: 24.13 tok/s; invalid=[]
+samples 8/20 prompt=512 lane=A: 24.10 tok/s; invalid=[]
+samples 9/20 prompt=4096 lane=A: 23.29 tok/s; invalid=[]
+samples 9/20 prompt=4096 lane=B: 23.24 tok/s; invalid=[]
+samples 9/20 prompt=512 lane=A: 24.15 tok/s; invalid=[]
+samples 9/20 prompt=512 lane=B: 24.20 tok/s; invalid=[]
+samples 9/20 prompt=2048 lane=A: 23.67 tok/s; invalid=[]
+samples 9/20 prompt=2048 lane=B: 23.65 tok/s; invalid=[]
+samples 10/20 prompt=512 lane=B: 24.19 tok/s; invalid=[]
+samples 10/20 prompt=512 lane=A: 24.24 tok/s; invalid=[]
+samples 10/20 prompt=2048 lane=B: 23.75 tok/s; invalid=[]
+samples 10/20 prompt=2048 lane=A: 23.61 tok/s; invalid=[]
+samples 10/20 prompt=4096 lane=B: 23.25 tok/s; invalid=[]
+samples 10/20 prompt=4096 lane=A: 23.22 tok/s; invalid=[]
+samples 11/20 prompt=2048 lane=A: 23.77 tok/s; invalid=[]
+samples 11/20 prompt=2048 lane=B: 23.73 tok/s; invalid=[]
+samples 11/20 prompt=4096 lane=A: 21.67 tok/s; invalid=[]
+samples 11/20 prompt=4096 lane=B: 23.25 tok/s; invalid=[]
+samples 11/20 prompt=512 lane=A: 24.12 tok/s; invalid=[]
+samples 11/20 prompt=512 lane=B: 24.14 tok/s; invalid=[]
+samples 12/20 prompt=4096 lane=B: 23.28 tok/s; invalid=[]
+samples 12/20 prompt=4096 lane=A: 23.16 tok/s; invalid=[]
+samples 12/20 prompt=512 lane=B: 24.20 tok/s; invalid=[]
+samples 12/20 prompt=512 lane=A: 24.16 tok/s; invalid=[]
+samples 12/20 prompt=2048 lane=B: 23.64 tok/s; invalid=[]
+samples 12/20 prompt=2048 lane=A: 23.74 tok/s; invalid=[]
+samples 13/20 prompt=512 lane=A: 24.11 tok/s; invalid=[]
+samples 13/20 prompt=512 lane=B: 24.25 tok/s; invalid=[]
+samples 13/20 prompt=2048 lane=A: 23.67 tok/s; invalid=[]
+samples 13/20 prompt=2048 lane=B: 23.71 tok/s; invalid=[]
+samples 13/20 prompt=4096 lane=A: 23.24 tok/s; invalid=[]
+samples 13/20 prompt=4096 lane=B: 23.31 tok/s; invalid=[]
+samples 14/20 prompt=2048 lane=B: 23.75 tok/s; invalid=[]
+samples 14/20 prompt=2048 lane=A: 23.79 tok/s; invalid=[]
+samples 14/20 prompt=4096 lane=B: 23.30 tok/s; invalid=[]
+samples 14/20 prompt=4096 lane=A: 23.14 tok/s; invalid=[]
+samples 14/20 prompt=512 lane=B: 24.00 tok/s; invalid=[]
+samples 14/20 prompt=512 lane=A: 23.89 tok/s; invalid=[]
+samples 15/20 prompt=4096 lane=A: 23.23 tok/s; invalid=[]
+samples 15/20 prompt=4096 lane=B: 23.33 tok/s; invalid=[]
+samples 15/20 prompt=512 lane=A: 24.11 tok/s; invalid=[]
+samples 15/20 prompt=512 lane=B: 24.18 tok/s; invalid=[]
+samples 15/20 prompt=2048 lane=A: 23.71 tok/s; invalid=[]
+samples 15/20 prompt=2048 lane=B: 23.72 tok/s; invalid=[]
+samples 16/20 prompt=512 lane=B: 24.23 tok/s; invalid=[]
+samples 16/20 prompt=512 lane=A: 24.23 tok/s; invalid=[]
+samples 16/20 prompt=2048 lane=B: 23.68 tok/s; invalid=[]
+samples 16/20 prompt=2048 lane=A: 23.63 tok/s; invalid=[]
+samples 16/20 prompt=4096 lane=B: 23.27 tok/s; invalid=[]
+samples 16/20 prompt=4096 lane=A: 23.26 tok/s; invalid=[]
+samples 17/20 prompt=2048 lane=A: 23.76 tok/s; invalid=[]
+samples 17/20 prompt=2048 lane=B: 23.74 tok/s; invalid=[]
+samples 17/20 prompt=4096 lane=A: 23.25 tok/s; invalid=[]
+samples 17/20 prompt=4096 lane=B: 23.23 tok/s; invalid=[]
+samples 17/20 prompt=512 lane=A: 24.18 tok/s; invalid=[]
+samples 17/20 prompt=512 lane=B: 24.18 tok/s; invalid=[]
+samples 18/20 prompt=4096 lane=B: 23.18 tok/s; invalid=[]
+samples 18/20 prompt=4096 lane=A: 23.24 tok/s; invalid=[]
+samples 18/20 prompt=512 lane=B: 24.12 tok/s; invalid=[]
+samples 18/20 prompt=512 lane=A: 24.17 tok/s; invalid=[]
+samples 18/20 prompt=2048 lane=B: 23.74 tok/s; invalid=[]
+samples 18/20 prompt=2048 lane=A: 23.77 tok/s; invalid=[]
+samples 19/20 prompt=512 lane=A: 24.19 tok/s; invalid=[]
+samples 19/20 prompt=512 lane=B: 23.67 tok/s; invalid=[]
+samples 19/20 prompt=2048 lane=A: 23.74 tok/s; invalid=[]
+samples 19/20 prompt=2048 lane=B: 23.74 tok/s; invalid=[]
+samples 19/20 prompt=4096 lane=A: 23.26 tok/s; invalid=[]
+samples 19/20 prompt=4096 lane=B: 23.27 tok/s; invalid=[]
+samples 20/20 prompt=2048 lane=B: 23.52 tok/s; invalid=[]
+samples 20/20 prompt=2048 lane=A: 23.61 tok/s; invalid=[]
+samples 20/20 prompt=4096 lane=B: 23.32 tok/s; invalid=[]
+samples 20/20 prompt=4096 lane=A: 23.26 tok/s; invalid=[]
+samples 20/20 prompt=512 lane=B: 24.16 tok/s; invalid=[]
+samples 20/20 prompt=512 lane=A: 24.17 tok/s; invalid=[]
+Collection completed. Provisional until reviewer/environment/correctness gates pass.
+Session ended; restoration complete: True
+{"official_baseline": "/Users/alandiaz/Downloads/KernelMaxxxing/KernelMax/reports/baselines/gpt-oss-20b-m4-week1/c052ae53-8a6b-47d7-a9a7-d5c5414a43cd/README.md", "status": "complete"}

@@ -1,0 +1,22 @@
+{
+  "source_sha256": {
+    "probe.py": "917a2ae92ea8e07adaf024e786288a83f545cc586fad8e4164174f28a1192fec",
+    "supervise.py": "b088084d558daa8d33feb34cb7512701462160449534be5dcf7da396aec3f2ba"
+  },
+  "method_selection_evidence": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/noise-003/analysis.json",
+  "actual_invoke_ast_microblock_calls": 512,
+  "microblocks_per_lane": 8,
+  "calls_per_lane_sample": 4096,
+  "fresh_aa_gate_required": true,
+  "region_pairs_per_layer": 20,
+  "regions": [
+    "without_up_gate",
+    "without_down"
+  ],
+  "layers": [
+    0,
+    12,
+    23
+  ],
+  "no_outliers_removed": true
+}

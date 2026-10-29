@@ -1,0 +1,87 @@
+{
+  "runs": [
+    {
+      "after": {
+        "Anonymous pages_GiB": 3.039,
+        "File-backed pages_GiB": 1.936,
+        "Pages free_GiB": 0.389,
+        "Pages occupied by compressor_GiB": 2.726,
+        "Pages stored in compressor_GiB": 26.679,
+        "Pages wired down_GiB": 15.302
+      },
+      "before": {
+        "Anonymous pages_GiB": 10.19,
+        "File-backed pages_GiB": 2.038,
+        "Pages free_GiB": 0.052,
+        "Pages occupied by compressor_GiB": 8.717,
+        "Pages stored in compressor_GiB": 32.501,
+        "Pages wired down_GiB": 2.379
+      },
+      "candidate_id": "cand_b50ecab31887",
+      "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-022-01",
+      "first_invalid": {
+        "invalid_reasons": [
+          "swap grew during the request",
+          "swapouts increased during request"
+        ],
+        "lane": "candidate",
+        "length": 512,
+        "pair": 7,
+        "phase": "candidate",
+        "swap_activity": {
+          "policy": "paging-aware",
+          "swap_growth_mib": 53.94000000000051,
+          "swapin_pages": 12,
+          "swapins_permitted": true,
+          "swapout_pages": 3452
+        }
+      },
+      "full_model_correctness_all_exact": true,
+      "peak_array_allocator_GiB": 13.226,
+      "request_count": 74,
+      "timing_pass_valid": false
+    },
+    {
+      "after": {
+        "Anonymous pages_GiB": 1.863,
+        "File-backed pages_GiB": 2.901,
+        "Pages free_GiB": 0.207,
+        "Pages occupied by compressor_GiB": 2.997,
+        "Pages stored in compressor_GiB": 27.721,
+        "Pages wired down_GiB": 15.428
+      },
+      "before": {
+        "Anonymous pages_GiB": 10.161,
+        "File-backed pages_GiB": 2.549,
+        "Pages free_GiB": 0.019,
+        "Pages occupied by compressor_GiB": 8.181,
+        "Pages stored in compressor_GiB": 32.196,
+        "Pages wired down_GiB": 2.468
+      },
+      "candidate_id": "cand_02e5f860f143",
+      "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-022-02",
+      "first_invalid": {
+        "invalid_reasons": [
+          "swap grew during the request",
+          "swapouts increased during request"
+        ],
+        "lane": "B",
+        "length": 512,
+        "pair": 15,
+        "phase": "aa",
+        "swap_activity": {
+          "policy": "paging-aware",
+          "swap_growth_mib": 309.880000000001,
+          "swapin_pages": 496,
+          "swapins_permitted": true,
+          "swapout_pages": 19832
+        }
+      },
+      "full_model_correctness_all_exact": true,
+      "peak_array_allocator_GiB": 13.226,
+      "request_count": 40,
+      "timing_pass_valid": false
+    }
+  ],
+  "scope": "Read-only environment analysis, not hardware attribution or a model-speedup result"
+}

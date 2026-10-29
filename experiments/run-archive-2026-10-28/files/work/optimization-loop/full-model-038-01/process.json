@@ -1,0 +1,15 @@
+{
+  "candidate_id": "cand_35fff69ba1e1",
+  "command": [
+    "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+    "-B",
+    "-u",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-038-01/run.py"
+  ],
+  "deadline_unix": 1793131200.0,
+  "kind": "full_model_then_untried_candidate_search",
+  "started_unix": 1793127079.78208,
+  "status": "running",
+  "supervisor_pid": 25519,
+  "worker_pid": 25522
+}

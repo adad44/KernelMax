@@ -6,6 +6,11 @@ The scaffold descriptions below include historical deliverable scope; they do
 not override the current reference-only implementation. Candidate acceptance
 remains disabled.
 
+For the local candidate loop with standing user authorization and reusable,
+identity-bound checkpoint verification, see
+[scripts/CANDIDATE_LOOP.md](../scripts/CANDIDATE_LOOP.md). These controller
+shortcuts preserve required correctness cases and timing-validity gates.
+
 ## Three acceptance requirements
 
 Final candidate acceptance requires all three:

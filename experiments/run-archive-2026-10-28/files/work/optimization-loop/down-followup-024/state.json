@@ -1,0 +1,9 @@
+{
+  "deadline_unix": 1793131200.0,
+  "ended_unix": 1793108739.167454,
+  "error": "Deadline/stop",
+  "pid": 35034,
+  "stages": [],
+  "started_unix": 1793107935.570421,
+  "status": "deadline_or_stop_reached"
+}

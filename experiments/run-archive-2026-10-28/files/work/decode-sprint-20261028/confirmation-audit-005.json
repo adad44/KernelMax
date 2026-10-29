@@ -1,0 +1,111 @@
+{
+  "a_a_pairs_completed": 0,
+  "acceptance_enabled": false,
+  "calibrations": {},
+  "candidate_snapshot_sha256": "b6dd528b50b4d3d89db496fb021bbcd21d2043f701c36196e39ea08457283918",
+  "candidate_timing_rows": 0,
+  "confirmation_candidate_id": "cand_5785998944e5",
+  "confirmation_command": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/commands/005.json",
+  "confirmation_command_sha256": "c63740be3bb8206cc3101161293fdce546926cce82870f677ecf4f1b750fc53d",
+  "errors": [
+    "Traceback (most recent call last):\n  File \"/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/run_sprint.py\", line 653, in run_command\n    collect(length, lane, \"aa_warmup\", warm)\n  File \"/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/run_sprint.py\", line 575, in collect\n    raise EnvironmentFailure(\"Environment flags: \" + str(flags))\nEnvironmentFailure: Environment flags: {'mode': 'confirmation', 'flags': ['swap grew during the request', 'swapouts increased during request'], 'swap_affected': True, 'continue_pass': False, 'stop_reasons': ['swap grew during the request', 'swapouts increased during request'], 'confirmation_sample_eligible': False, 'attribution': 'system-wide counters; no identification of model pages'}\n"
+  ],
+  "first_stop": {
+    "context": 512,
+    "invalid_reasons": [
+      "swap grew during the request",
+      "swapouts increased during request"
+    ],
+    "lane": "A",
+    "phase": "aa_warmup",
+    "strict_confirmation_stops": true,
+    "swap_activity": {
+      "policy": "paging-aware",
+      "swap_growth_mib": 210.3099999999995,
+      "swapin_pages": 262,
+      "swapins_permitted": true,
+      "swapout_pages": 14484
+    },
+    "trial": 3
+  },
+  "five_percent_improvement_verified": false,
+  "full128_correctness": [
+    {
+      "all_logits_bit_exact": true,
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-005-confirm-cand_5785998944e5/correctness-512-128.npz",
+      "arrays_sha256": "fe9ba7abc68d0e9419a01f51e92a3a34482b2420bc3f32f9709d1304f3ed0c4f",
+      "cache_metadata_equal": true,
+      "cache_within_tolerance": true,
+      "detail": "max_abs_error=0; violations=0/25739264; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "length": 512,
+      "numerical_passed": true,
+      "outputs": 128,
+      "passed": true,
+      "route_set_differences": 0,
+      "route_slot_differences": 0,
+      "token_differences": 0
+    },
+    {
+      "all_logits_bit_exact": true,
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-005-confirm-cand_5785998944e5/correctness-2048-128.npz",
+      "arrays_sha256": "1cbe4c1eedf3e6c8b9b507a109f606f04af1796805755191a66b5a48eb9695d8",
+      "cache_metadata_equal": true,
+      "cache_within_tolerance": true,
+      "detail": "max_abs_error=0; violations=0/25739264; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "length": 2048,
+      "numerical_passed": true,
+      "outputs": 128,
+      "passed": true,
+      "route_set_differences": 0,
+      "route_slot_differences": 0,
+      "token_differences": 0
+    },
+    {
+      "all_logits_bit_exact": true,
+      "arrays": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-005-confirm-cand_5785998944e5/correctness-4096-128.npz",
+      "arrays_sha256": "2a7e1ab0f1a31fbb45b0c9efa80407bcbae69f286f32c4eb5b992fa5788d8c08",
+      "cache_metadata_equal": true,
+      "cache_within_tolerance": true,
+      "detail": "max_abs_error=0; violations=0/25739264; atol=0.02; rtol=0.02; tolerance_status=provisional",
+      "length": 4096,
+      "numerical_passed": true,
+      "outputs": 128,
+      "passed": true,
+      "route_set_differences": 0,
+      "route_slot_differences": 0,
+      "token_differences": 0
+    }
+  ],
+  "guards": {
+    "checkpoint_and_snapshot_unchanged": true,
+    "original_methods_restored": true,
+    "protected_unchanged": true
+  },
+  "objective": "repeatable >=5% full-model decode improvement; remains unproven",
+  "official": false,
+  "other_confirmation_failure": "C3 command004 stopped_NumericalFailure at context2048; see confirmation-audit.json",
+  "recorded_at_unix": 1793212216.000212,
+  "requests_started": 5,
+  "retry_or_finish_queued": false,
+  "source_hashes": {
+    "plan_after": "dbd808ffe1ec0f46521d5d635e1fc2fe4b01fd918dd1631916a474663b9b574d",
+    "plan_before": "dbd808ffe1ec0f46521d5d635e1fc2fe4b01fd918dd1631916a474663b9b574d",
+    "runner_after": "a9116f4a37d559037e58d5d519e8bdb16911a368f8ae22452fdc6b28b7200367",
+    "runner_before": "a9116f4a37d559037e58d5d519e8bdb16911a368f8ae22452fdc6b28b7200367",
+    "session_after": "e5d96b0a1b2fb86e7e77f5df567c2bc69f29af477935ceb799a4f9e4d4b7354d",
+    "session_before": "e5d96b0a1b2fb86e7e77f5df567c2bc69f29af477935ceb799a4f9e4d4b7354d",
+    "unchanged": true
+  },
+  "status": "stopped_EnvironmentFailure",
+  "summaries": {},
+  "verdict": null,
+  "worker": {
+    "birth": "2026-10-28 10:57:36 local",
+    "caffeinate_pid": 48639,
+    "errors": [],
+    "launchd_label": "com.kernelmax.sprint.vocab.20261028",
+    "next_command": 6,
+    "pid": 48619,
+    "status": "waiting_command"
+  }
+}

@@ -1,0 +1,1 @@
+{"fixtures": 17, "wall_seconds": 0.2063310828525573, "norm_nonexact_cases": 0, "score_nonexact_cases": 0, "route_different_cases": 0, "zero_router_native_ids": [28, 29, 30, 31], "zero_router_fused_ids": [28, 29, 30, 31]}

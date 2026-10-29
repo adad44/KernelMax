@@ -1,0 +1,44 @@
+{
+  "checkout": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop",
+  "completed_at_unix": 1793154395.445413,
+  "environment": [
+    "python 3.12.12",
+    "pytest 8.3.4",
+    "PyYAML 6.0.3",
+    "numpy 2.5.3"
+  ],
+  "formatter": {
+    "changed_files": [
+      "evaluator/schemas.py",
+      "evaluator/measurement.py",
+      "tests/test_contract.py",
+      "tests/test_measurement.py"
+    ],
+    "command": "uvx --from ruff ruff format evaluator/schemas.py evaluator/measurement.py tests/test_contract.py tests/test_measurement.py",
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "4 files reformatted\n",
+    "version": "ruff 0.17.3"
+  },
+  "full_suite": {
+    "command": "uv run --no-project --python /Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python --with pytest==8.3.4 --with PyYAML==6.0.3 --with numpy==2.5.3 python -B -m pytest -q .\n",
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "..................ss.................................................... [ 19%]\n.........................ss............................................. [ 39%]\n.......ss..................ss........................................... [ 59%]\n........................................................................ [ 78%]\n........................................................................ [ 98%]\n......                                                                   [100%]\n358 passed, 8 skipped in 8.09s\n"
+  },
+  "models_run": false,
+  "normalized_schema3_contract_sha256": "cb3fc638080fb65badca7854f753642ad93dec8d33fcf09d83841568a59c89bc",
+  "notes": [
+    "Full offline suite ran before formatting and passed. Four named files were formatted with isolated Ruff; targeted contract and measurement tests passed afterward."
+  ],
+  "policy_checks_stderr": "",
+  "policy_checks_stdout": "exploration_max_requests_128=True\nexploration_max_wall_time_seconds_7200=True\nexploration_swap_policy_retain_and_flag=True\nconfirmation_reject_swap_outs_or_growth=True\nacceptance_enabled_false=True\nall_checks_passed=True\n",
+  "schema": 1,
+  "schema3_contract_output": "Valid contract: gpt-oss-20b-m4-complete-decode\nContract SHA-256: cb3fc638080fb65badca7854f753642ad93dec8d33fcf09d83841568a59c89bc\nAcceptance enabled: False\n",
+  "targeted_after_format": {
+    "command": "uv run --no-project --python /Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python --with pytest==8.3.4 --with PyYAML==6.0.3 --with numpy==2.5.3 python -B -m pytest -q tests/test_contract.py tests/test_measurement.py\n",
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "..............................................                           [100%]\n46 passed in 0.11s\n"
+  }
+}

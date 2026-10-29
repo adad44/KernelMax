@@ -1,0 +1,19 @@
+{
+  "C2_guards": {
+    "checkpoint_and_snapshot_unchanged": true,
+    "original_methods_restored": true,
+    "protected_unchanged": true
+  },
+  "bundle_sha256": "fe5ae0dd947e383f92c4ea10abd884838551ba74f6da205381e707935d3caaf5",
+  "candidate_id": "cand_3f4c02fcfc71",
+  "command": {
+    "frozen_info": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/combined-frozen.json",
+    "mode": "screen"
+  },
+  "parent_provenance_verified": true,
+  "path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/commands/003.json",
+  "queued_at_unix": 1793211288.685796,
+  "resident_pid": 48619,
+  "resident_status_before_queue": "waiting_command",
+  "sha256": "ce7b645058ba10522360f2a5138921810931b7cc2fd6a466041b7fd76098a163"
+}

@@ -1,0 +1,24 @@
+load 0/531: model.embed_tokens.weight
+load 25/531: model.layers.1.self_attn.q_proj.weight
+load 50/531: model.layers.2.self_attn.k_proj.bias
+load 75/531: model.layers.3.self_attn.o_proj.weight
+load 100/531: model.layers.4.mlp.experts.gate_proj.scales
+load 125/531: model.layers.5.mlp.experts.up_proj.scales
+load 150/531: model.layers.6.mlp.experts.down_proj.scales
+load 175/531: model.layers.7.mlp.router.bias
+load 200/531: model.layers.9.self_attn.sinks
+load 225/531: model.layers.10.self_attn.k_proj.weight
+load 250/531: model.layers.11.self_attn.v_proj.bias
+load 275/531: model.layers.12.mlp.experts.gate_proj.weight
+load 300/531: model.layers.13.mlp.experts.up_proj.weight
+load 325/531: model.layers.14.mlp.experts.down_proj.weight
+load 350/531: model.layers.15.mlp.router.weight
+load 375/531: model.layers.16.post_attention_layernorm.weight
+Traceback (most recent call last):
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-bottleneck-20261026/profile_decode.py", line 403, in <module>
+    main()
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-bottleneck-20261026/profile_decode.py", line 215, in main
+    materialize_parameters(tree_flatten(model.parameters()), mx, progress)
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/native_baseline.py", line 86, in materialize_parameters
+    mx.eval(tensor)
+KeyboardInterrupt

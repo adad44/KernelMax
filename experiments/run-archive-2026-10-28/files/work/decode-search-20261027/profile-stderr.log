@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/profile.py", line 241, in <module>
+    if __name__=='__main__': main()
+                             ^^^^^^
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/profile.py", line 210, in main
+    row,_=collect(f'aa-{pair}-{lane}',lane=lane,pair=pair);aa.append(row)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/profile.py", line 191, in collect
+    if issues:raise RuntimeError('Environment invalid; retained sample: '+str(issues))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Environment invalid; retained sample: ['native thermal state is not nominal', 'Nonnominal thermal during request']

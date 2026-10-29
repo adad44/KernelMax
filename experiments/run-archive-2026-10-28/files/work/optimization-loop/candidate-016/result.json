@@ -1,0 +1,48 @@
+{
+  "all11_saved_failure_cases_exact": true,
+  "candidate_id": "cand_ab711e414d17",
+  "disposition": "parked_no_operator_gain",
+  "full_model018_status": "prepared but not executed because no reliable operator gain",
+  "full_model_speedup_established": false,
+  "layout_and_parameter_update_checks_passed": true,
+  "maximum_setup_peak_mib": 1481.4668,
+  "median_candidate_layout_setup_ms": 19.839,
+  "native_checks_passed": 21,
+  "operator_layer0": {
+    "ab_order_median_ratio": 1.000007689639364,
+    "ba_order_median_ratio": 0.9999842836494157,
+    "descriptive_bootstrap_95pct": [
+      0.9990030320247428,
+      1.001601687561868
+    ],
+    "environment_valid": true,
+    "median_baseline_ms_per_call": 0.7960556025390626,
+    "median_candidate_ms_per_call": 0.7958418183593751,
+    "median_ratio": 1.000007689639364,
+    "paired_ratios": [
+      1.0015549729698672,
+      0.9994669104874678,
+      1.0051665693115073,
+      1.0016186243772833,
+      0.9967361436425864,
+      0.9973579885013955,
+      0.9961762874001804,
+      1.0015847507464528,
+      0.9997652111100712,
+      1.0019655742239642,
+      1.0063771310784557,
+      0.9993252317283335,
+      0.9992335302229763,
+      1.003131401579858,
+      0.9973764301644017,
+      0.9987725338265093,
+      1.002492780467836,
+      1.0005016568113636,
+      1.0002501681686566,
+      0.992835050058726
+    ]
+  },
+  "reason": "Lossless packing fixes the observed numerical failures but removing one native product dispatch did not reduce steady-state expert wall time: about0.796ms in both lanes, paired median1.00001 with CI[0.99900,1.00160]. Setup and transient memory were separately retained. Exact GPU/host limiting cause is not established.",
+  "steady_weight_storage_mib": "about1212 for both lanes across sampled3layers",
+  "tiny_checks_passed": 30
+}

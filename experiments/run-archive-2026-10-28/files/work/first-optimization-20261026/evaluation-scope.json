@@ -1,0 +1,65 @@
+{
+  "decode": {
+    "basis": "frozen source branch and evaluator-owned input shapes; official report retained unchanged",
+    "layers": [
+      0,
+      12,
+      23
+    ],
+    "path": "optimized_decode"
+  },
+  "held_out_inputs": {
+    "basis": "frozen source branch and evaluator-owned input shapes; official report retained unchanged",
+    "layers": [
+      0,
+      12,
+      23
+    ],
+    "path": "declared_reference_fallback"
+  },
+  "large_finite_activations": {
+    "basis": "frozen source branch and evaluator-owned input shapes; official report retained unchanged",
+    "layers": [
+      0,
+      12,
+      23
+    ],
+    "path": "declared_reference_fallback"
+  },
+  "non_divisible_token_counts": {
+    "basis": "frozen source branch and evaluator-owned input shapes; official report retained unchanged",
+    "layers": [
+      0,
+      12,
+      23
+    ],
+    "path": "declared_reference_fallback"
+  },
+  "prefill": {
+    "basis": "frozen source branch and evaluator-owned input shapes; official report retained unchanged",
+    "layers": [
+      0,
+      12,
+      23
+    ],
+    "path": "declared_reference_fallback"
+  },
+  "uneven_expert_load": {
+    "basis": "frozen source branch and evaluator-owned input shapes; official report retained unchanged",
+    "layers": [
+      0,
+      12,
+      23
+    ],
+    "path": "declared_reference_fallback"
+  },
+  "unused_experts": {
+    "basis": "frozen source branch and evaluator-owned input shapes; official report retained unchanged",
+    "layers": [
+      0,
+      12,
+      23
+    ],
+    "path": "declared_reference_fallback"
+  }
+}

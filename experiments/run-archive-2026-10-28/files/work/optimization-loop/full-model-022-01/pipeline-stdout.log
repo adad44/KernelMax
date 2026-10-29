@@ -1,0 +1,100 @@
+native_load 0/531
+native_load 25/531
+native_load 50/531
+native_load 75/531
+native_load 100/531
+native_load 125/531
+native_load 150/531
+native_load 175/531
+native_load 200/531
+native_load 225/531
+native_load 250/531
+native_load 275/531
+native_load 300/531
+native_load 325/531
+native_load 350/531
+native_load 375/531
+native_load 400/531
+native_load 425/531
+native_load 450/531
+native_load 475/531
+native_load 500/531
+native_load 525/531
+native_load 531/531
+full-model correctness context512: True
+full-model correctness context2048: True
+full-model correctness context4096: True
+512 aa_warmup pair1 A: 24.3256 tok/s; flags=[]
+512 aa_warmup pair1 B: 24.2477 tok/s; flags=[]
+512 aa_warmup pair2 A: 24.2450 tok/s; flags=[]
+512 aa_warmup pair2 B: 24.2563 tok/s; flags=[]
+512 aa_warmup pair3 A: 24.2443 tok/s; flags=[]
+512 aa_warmup pair3 B: 24.1990 tok/s; flags=[]
+512 aa_warmup pair4 A: 24.2372 tok/s; flags=[]
+512 aa_warmup pair4 B: 24.2404 tok/s; flags=[]
+512 aa_warmup pair5 A: 24.2496 tok/s; flags=[]
+512 aa_warmup pair5 B: 24.2425 tok/s; flags=[]
+512 aa pair1 A: 24.2249 tok/s; flags=[]
+512 aa pair1 B: 24.2448 tok/s; flags=[]
+512 aa pair2 B: 24.2254 tok/s; flags=[]
+512 aa pair2 A: 24.2421 tok/s; flags=[]
+512 aa pair3 A: 24.2253 tok/s; flags=[]
+512 aa pair3 B: 24.2020 tok/s; flags=[]
+512 aa pair4 B: 24.2472 tok/s; flags=[]
+512 aa pair4 A: 24.2694 tok/s; flags=[]
+512 aa pair5 A: 24.2673 tok/s; flags=[]
+512 aa pair5 B: 23.9131 tok/s; flags=[]
+512 aa pair6 B: 24.2053 tok/s; flags=[]
+512 aa pair6 A: 24.1272 tok/s; flags=[]
+512 aa pair7 A: 24.1933 tok/s; flags=[]
+512 aa pair7 B: 24.2463 tok/s; flags=[]
+512 aa pair8 B: 24.2277 tok/s; flags=[]
+512 aa pair8 A: 24.2668 tok/s; flags=[]
+512 aa pair9 A: 24.2325 tok/s; flags=[]
+512 aa pair9 B: 24.2193 tok/s; flags=[]
+512 aa pair10 B: 24.2157 tok/s; flags=[]
+512 aa pair10 A: 24.2414 tok/s; flags=[]
+512 aa pair11 A: 23.8487 tok/s; flags=[]
+512 aa pair11 B: 24.2307 tok/s; flags=[]
+512 aa pair12 B: 24.2543 tok/s; flags=[]
+512 aa pair12 A: 24.2548 tok/s; flags=[]
+512 aa pair13 A: 24.2663 tok/s; flags=[]
+512 aa pair13 B: 24.2417 tok/s; flags=[]
+512 aa pair14 B: 24.2182 tok/s; flags=[]
+512 aa pair14 A: 24.2292 tok/s; flags=[]
+512 aa pair15 A: 24.2538 tok/s; flags=[]
+512 aa pair15 B: 24.2418 tok/s; flags=[]
+512 aa pair16 B: 24.2461 tok/s; flags=[]
+512 aa pair16 A: 24.2472 tok/s; flags=[]
+512 aa pair17 A: 23.7974 tok/s; flags=[]
+512 aa pair17 B: 24.2097 tok/s; flags=[]
+512 aa pair18 B: 24.2440 tok/s; flags=[]
+512 aa pair18 A: 22.2863 tok/s; flags=[]
+512 aa pair19 A: 24.2559 tok/s; flags=[]
+512 aa pair19 B: 24.2623 tok/s; flags=[]
+512 aa pair20 B: 24.2462 tok/s; flags=[]
+512 aa pair20 A: 24.2547 tok/s; flags=[]
+512 candidate_warmup pair1 baseline: 24.2378 tok/s; flags=[]
+512 candidate_warmup pair1 candidate: 24.4773 tok/s; flags=[]
+512 candidate_warmup pair2 baseline: 24.2488 tok/s; flags=[]
+512 candidate_warmup pair2 candidate: 24.5473 tok/s; flags=[]
+512 candidate_warmup pair3 baseline: 24.2205 tok/s; flags=[]
+512 candidate_warmup pair3 candidate: 24.5215 tok/s; flags=[]
+512 candidate_warmup pair4 baseline: 24.2607 tok/s; flags=[]
+512 candidate_warmup pair4 candidate: 24.5057 tok/s; flags=[]
+512 candidate_warmup pair5 baseline: 24.2529 tok/s; flags=[]
+512 candidate_warmup pair5 candidate: 24.5578 tok/s; flags=[]
+512 candidate pair1 baseline: 24.2225 tok/s; flags=[]
+512 candidate pair1 candidate: 24.5461 tok/s; flags=[]
+512 candidate pair2 candidate: 24.5447 tok/s; flags=[]
+512 candidate pair2 baseline: 24.2729 tok/s; flags=[]
+512 candidate pair3 baseline: 24.1949 tok/s; flags=[]
+512 candidate pair3 candidate: 22.2700 tok/s; flags=[]
+512 candidate pair4 candidate: 22.9084 tok/s; flags=[]
+512 candidate pair4 baseline: 24.2723 tok/s; flags=[]
+512 candidate pair5 baseline: 24.2586 tok/s; flags=[]
+512 candidate pair5 candidate: 23.9304 tok/s; flags=[]
+512 candidate pair6 candidate: 24.5668 tok/s; flags=[]
+512 candidate pair6 baseline: 24.2218 tok/s; flags=[]
+512 candidate pair7 baseline: 24.2645 tok/s; flags=[]
+512 candidate pair7 candidate: 24.5439 tok/s; flags=['swap grew during the request', 'swapouts increased during request']

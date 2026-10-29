@@ -1,0 +1,159 @@
+{
+  "candidate_id": "cand_206746fae66e",
+  "snapshot_sha256": "a4b4a69630d5444774119f44e323933a46da64d033779e96f57bb99a7710b901",
+  "pipeline_status": "completed_diagnostic",
+  "pipeline_errors": [],
+  "acceptance_enabled": false,
+  "verdict": null,
+  "full_model_speedup_established": false,
+  "committed": false,
+  "pushed": false,
+  "tiny_checks": 30,
+  "tiny_checks_passed": 30,
+  "native_status": "completed",
+  "native_checks": 21,
+  "native_checks_passed": 21,
+  "native_errors": [],
+  "native_report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/third-optimization-20261027/native-correctness/artifacts/execution-yd6op3cs/report.json",
+  "native_report_sha256": "80307c205839574d4dbe3ed295b8718a69822c8ee756c4d58576d42d3978dc4b",
+  "prepared_sources_unchanged": true,
+  "operator_status": "completed_diagnostic",
+  "operator_errors": [],
+  "real_decode_checks": 48,
+  "real_decode_checks_passed": 48,
+  "paired_samples_retained": 120,
+  "all_sample_call_counts_256": true,
+  "environment_issues": [],
+  "protected_sources_unchanged": true,
+  "checkpoint_identity_unchanged": true,
+  "snapshot_unchanged": true,
+  "operator_summaries": {
+    "0": {
+      "ab_order_median_ratio": 0.9604956248939702,
+      "ba_order_median_ratio": 1.005727843736458,
+      "descriptive_bootstrap_95pct": [
+        0.9494819677186845,
+        1.005727843736458
+      ],
+      "environment_valid": true,
+      "median_baseline_ms": 215.31847945880145,
+      "median_candidate_ms": 221.47797886282206,
+      "median_ratio": 0.9865279874836965,
+      "paired_ratios": [
+        0.9460414367951955,
+        1.059614009642213,
+        0.9529224986421736,
+        1.0058051054416073,
+        0.9758152620845731,
+        1.0056505820313089,
+        0.9241489996992964,
+        1.0090053797225158,
+        0.9972407128828198,
+        0.9594716700801975,
+        0.9680687511457668,
+        0.9424586308410831,
+        0.9259441595480039,
+        1.0728084265983608,
+        0.9445228890625791,
+        0.9298366950390687,
+        0.9998580903590581,
+        0.9995884374268089,
+        1.020243362125013,
+        1.0071198221930724
+      ]
+    },
+    "12": {
+      "ab_order_median_ratio": 0.9798893749859299,
+      "ba_order_median_ratio": 1.0058770809236575,
+      "descriptive_bootstrap_95pct": [
+        0.9797850513519851,
+        1.0115537532303733
+      ],
+      "environment_valid": true,
+      "median_baseline_ms": 221.460854052566,
+      "median_candidate_ms": 221.92781197372824,
+      "median_ratio": 0.9971815777218115,
+      "paired_ratios": [
+        0.9892749097499729,
+        1.0053282357902167,
+        1.0375487785710364,
+        0.9880258550943166,
+        0.9456089815887976,
+        0.965189685243207,
+        0.9729575974605326,
+        1.0064259260570982,
+        0.986463005270575,
+        1.0288787229287466,
+        1.013085137642947,
+        1.00508824569365,
+        0.9721408654150898,
+        0.9862543580026853,
+        1.062263503045561,
+        1.029286651908891,
+        0.9733157447012849,
+        1.0257725502571025,
+        0.9215550832202848,
+        1.0100223688177996
+      ]
+    },
+    "23": {
+      "ab_order_median_ratio": 1.0000492703204007,
+      "ba_order_median_ratio": 1.0024023660025625,
+      "descriptive_bootstrap_95pct": [
+        0.9954839421727766,
+        1.010516946428371
+      ],
+      "environment_valid": true,
+      "median_baseline_ms": 222.55727101583034,
+      "median_candidate_ms": 222.94545848853886,
+      "median_ratio": 1.0009683664650562,
+      "paired_ratios": [
+        1.0336207547021385,
+        1.0105731413221768,
+        0.9969802839347145,
+        1.0153222054940554,
+        0.9712252598563773,
+        0.9259821085551333,
+        1.0008574845503944,
+        0.9925672200665019,
+        0.9984605960681833,
+        1.001079248379718,
+        0.9992410560904071,
+        0.9886129818686022,
+        1.0016666385108455,
+        1.0037254836254068,
+        0.9939876004108387,
+        1.0275693530890047,
+        1.0229607765759807,
+        1.0246788262422208,
+        1.0104607515345652,
+        0.9576082461463189
+      ]
+    }
+  },
+  "instrumented_frontend_summaries": {
+    "0": {
+      "baseline_mean_build_ms": 0.00947282421875,
+      "candidate_mean_build_ms": 0.00991621875,
+      "baseline_mean_eval_wait_ms": 0.81889387109375,
+      "candidate_mean_eval_wait_ms": 0.856413359375,
+      "environment_valid": true
+    },
+    "12": {
+      "baseline_mean_build_ms": 0.00926790234375,
+      "candidate_mean_build_ms": 0.01021059375,
+      "baseline_mean_eval_wait_ms": 0.83673569140625,
+      "candidate_mean_eval_wait_ms": 0.8473733671875,
+      "environment_valid": true
+    },
+    "23": {
+      "baseline_mean_build_ms": 0.00929171484375,
+      "candidate_mean_build_ms": 0.009047515625,
+      "baseline_mean_eval_wait_ms": 0.8051527890625,
+      "candidate_mean_eval_wait_ms": 0.844651375,
+      "environment_valid": true
+    }
+  },
+  "hypothesis_assessment": "No consistent reduction in instrumented graph-construction cost; both lanes remained around 9\u201310 microseconds per expert call. Compiling the complete graph did not deliver the intended frontend saving in this operator experiment. The exact internal compiler/hardware cause is unmeasured.",
+  "research_disposition": "No consistent expert-operator improvement established across sampled layers. Park candidate; no promotion."
+}

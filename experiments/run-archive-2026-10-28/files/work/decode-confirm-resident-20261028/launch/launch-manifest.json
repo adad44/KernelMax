@@ -1,0 +1,44 @@
+{
+  "caffeinate_label": "com.kernelmax.confirm-resident.20261028.caffeinate",
+  "caffeinate_plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-confirm-resident-20261028/launch/caffeinate.plist",
+  "caffeinate_plist_sha256": "bfaf92c473bfa375f86460f2219cc974a393890242aba598ae929a6b9b19f75c",
+  "caffeinate_plist_template": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-confirm-resident-20261028/launch/caffeinate.template.plist",
+  "caffeinate_requires_verified_pid_fill_before_bootstrap": true,
+  "candidate_cap": 3,
+  "command": {
+    "frozen_info": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/vocabulary-frozen.json",
+    "mode": "confirm"
+  },
+  "command_path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-confirm-resident-20261028/commands/001.json",
+  "command_sha256": "c63740be3bb8206cc3101161293fdce546926cce82870f677ecf4f1b750fc53d",
+  "gpu_or_model_started": false,
+  "launched_at_unix": 1793213057.95503,
+  "output_precondition": "resident-state.json absent",
+  "prepared_at_unix": 1793212987.538084,
+  "source_hashes": {
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-confirm-resident-20261028/commands/001.json": "c63740be3bb8206cc3101161293fdce546926cce82870f677ecf4f1b750fc53d",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-confirm-resident-20261028/correctness-parent.json": "8b76510d4d0cd0b2371aeb5757d8bed4f052f2b3bc50fadb3a741f799f7ee521",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-confirm-resident-20261028/launch/caffeinate.template.plist": "1744bc7a89edc8e152138b35a3f9b59544f40dfccf5c5d51499fc72b34947e2b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-confirm-resident-20261028/launch/resident.plist": "8e005cc555692b3b21765d6b9226c2a4a2c39a3805952aac1333d9ac1e38437c",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-confirm-resident-20261028/parent-manifest-restoration.json": "ef4b60dcdf7b07b2d52820380470fa949f17e12ddababaeff768dc01ed060f6d",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-confirm-resident-20261028/plan.json": "09b59c5920d06fab69b598f045d5ee694cfb719f0133318391c62c8ce42b9666",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-confirm-resident-20261028/preflight-evidence.json": "214eb4e83a429ae5755abe028c14ad7378336c1b5776abfcad5ba03fb758c542",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-confirm-resident-20261028/run_confirm.py": "d2f5fc68277db9189d98bd1013ad870a8c645efb3d0add94621369e1301231ac",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-confirm-resident-20261028/session.json": "749a48b839bbf4fcc1bcce8d16ece8b53c6e48135809829c7117edaee8849859",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-confirm-resident-20261028/test_protocol.py": "c0c1bfeecf3f6de5b79c36e248d0d8af6623f449ad23855ebc4310b9a29a72a4",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/vocabulary-frozen.json": "ae21c63bb6e99e8a0d20552a440cf0604cf1d82dced81e4c15fb7e22caaa4ef0"
+  },
+  "unique_candidate_ids_existing": [
+    "cand_5785998944e5",
+    "cand_4a02c3189b7d",
+    "cand_3f4c02fcfc71"
+  ],
+  "verified_worker": {
+    "birth": "2026-10-28 11:44:09 local",
+    "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/decode-confirm-resident-20261028/run_confirm.py",
+    "pid": 53245,
+    "status_at_attachment": "loading"
+  },
+  "worker_label": "com.kernelmax.confirm-resident.20261028",
+  "worker_plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-confirm-resident-20261028/launch/resident.plist"
+}

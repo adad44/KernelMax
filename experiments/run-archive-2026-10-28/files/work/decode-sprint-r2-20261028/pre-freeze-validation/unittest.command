@@ -1,0 +1,1 @@
+PYTHONPATH=/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028:/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop /Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -m unittest test_bindings.py test_residency.py test_protocol.py

@@ -1,0 +1,23 @@
+{
+  "utc": "2026-10-28T01:13:01.859821+00:00",
+  "targeted_unittest": {
+    "passed": 72
+  },
+  "initial_full_unittest": {
+    "tests": 286,
+    "errors": 2,
+    "skipped": 8,
+    "reason": "Pinned benchmark runtime lacks pytest; no benchmark dependency was modified."
+  },
+  "full_pytest": {
+    "passed": 345,
+    "skipped": 8,
+    "isolated_dependencies": [
+      "pytest==8.3.4",
+      "PyYAML==6.0.3",
+      "numpy==2.5.3"
+    ],
+    "benchmark_runtime_unchanged": true
+  },
+  "contract_sha256": "5fc5d80bf357fd02a8977b10da7896692c79aa9c30019ab85ba6296c9bd56af4"
+}

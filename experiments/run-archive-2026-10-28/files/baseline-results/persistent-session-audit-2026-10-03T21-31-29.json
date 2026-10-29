@@ -1,0 +1,33 @@
+{
+  "schema": "kernelmax_retained_failure_audit_v1",
+  "official": false,
+  "scope": "Read-only audit of failure lineage, protected inputs and service restoration; not a performance baseline",
+  "session_root": "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/official-attempt-2026-10-03T21-31-29-seed42",
+  "model_loads": 1,
+  "worker_pid": 89237,
+  "distinct_attempts": 3,
+  "failed_artifact_hashes_verified": true,
+  "resident_chain_validation_issues": [],
+  "live_protected_input_verification": "passed for each of the three retained attempts",
+  "stock_generation_comparisons_passed_at_verified_load": 5,
+  "native_dispatch_invariance_cases_passed_at_verified_load": 21,
+  "independent_matmul_accuracy_verified": false,
+  "completed_untimed_priming_requests": 37,
+  "priming_requests_with_environment_events": 16,
+  "swapin_pages_during_completed_priming_requests": 250,
+  "swapout_pages_during_completed_priming_requests": 0,
+  "native_thermal_states_in_completed_priming_before_after_observations": [0],
+  "contract_warmups_collected": 0,
+  "official_timed_samples_collected": 0,
+  "official_report_gate": "rejects all three attempts",
+  "memoryos_restoration_complete": true,
+  "memoryos_live_running_pids": {"backend": 93162, "daemon": 93168, "scheduler": 93173},
+  "memoryos_live_health": {"ok": true, "api_key_enabled": false},
+  "candidate_acceptance_enabled": false,
+  "limitations": [
+    "Global swap counters do not identify which process caused or experienced paging.",
+    "Failed quiet-preflight observation sequences were not retained; their exact timeout causes are not attributed.",
+    "Native dispatch checks do not constitute an independent matrix-multiply numerical oracle.",
+    "A clean restart has not been authorized or performed and is not guaranteed to resolve this environment."
+  ]
+}

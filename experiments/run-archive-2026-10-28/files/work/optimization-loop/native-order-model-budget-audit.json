@@ -1,0 +1,107 @@
+{
+  "assumptions": [
+    "24layers behave like sampled layers0/12/23",
+    "isolated per-call savings remain on the model critical path",
+    "no interference, cache-state or frontend change"
+  ],
+  "candidates": [
+    {
+      "candidate_id": "cand_b50ecab31887",
+      "full_model_speedup_established": false,
+      "model_correctness": true,
+      "model_timing_status": "failed",
+      "operator_to_model_planning": [
+        {
+          "conditional24layer_interval_ms": [
+            0.07004330362215781,
+            0.136248398417465
+          ],
+          "conditional24layer_saved_ms": 0.1060231838843838,
+          "isolated_point_saved_ms": 0.004417632661849325,
+          "layer": 0,
+          "ratio_derived_saved_ms_interval": [
+            0.0029184709842565754,
+            0.005677016600727709
+          ]
+        },
+        {
+          "conditional24layer_interval_ms": [
+            0.07127080651553216,
+            0.13080327926994467
+          ],
+          "conditional24layer_saved_ms": 0.10371938820802691,
+          "isolated_point_saved_ms": 0.004321641175334455,
+          "layer": 12,
+          "ratio_derived_saved_ms_interval": [
+            0.0029696169381471732,
+            0.005450136636247695
+          ]
+        },
+        {
+          "conditional24layer_interval_ms": [
+            0.01583534302111106,
+            0.14163413962520569
+          ],
+          "conditional24layer_saved_ms": 0.12303812510039817,
+          "isolated_point_saved_ms": 0.005126588545849924,
+          "layer": 23,
+          "ratio_derived_saved_ms_interval": [
+            0.0006598059592129609,
+            0.0059014224843835705
+          ]
+        }
+      ],
+      "reason": "swap growth and swapouts invalidate the full-model pass; no completed model comparison"
+    },
+    {
+      "candidate_id": "cand_02e5f860f143",
+      "full_model_speedup_established": false,
+      "model_correctness": true,
+      "model_timing_status": "failed",
+      "operator_to_model_planning": [
+        {
+          "conditional24layer_interval_ms": [
+            0.07521265049288038,
+            0.15389258600093036
+          ],
+          "conditional24layer_saved_ms": 0.1092612627350331,
+          "isolated_point_saved_ms": 0.004552552613959713,
+          "layer": 0,
+          "ratio_derived_saved_ms_interval": [
+            0.003133860437203349,
+            0.0064121910833720985
+          ]
+        },
+        {
+          "conditional24layer_interval_ms": [
+            0.10206006058640943,
+            0.15455108925187686
+          ],
+          "conditional24layer_saved_ms": 0.13342722985039868,
+          "isolated_point_saved_ms": 0.005559467910433278,
+          "layer": 12,
+          "ratio_derived_saved_ms_interval": [
+            0.0042525025244337265,
+            0.006439628718828202
+          ]
+        },
+        {
+          "conditional24layer_interval_ms": [
+            0.07283951296260274,
+            0.15066030476419268
+          ],
+          "conditional24layer_saved_ms": 0.11388998024494358,
+          "isolated_point_saved_ms": 0.004745415843539316,
+          "layer": 23,
+          "ratio_derived_saved_ms_interval": [
+            0.0030349797067751143,
+            0.006277512698508028
+          ]
+        }
+      ],
+      "reason": "swap growth and swapouts invalidate the full-model pass; no completed model comparison"
+    }
+  ],
+  "scope": "conditional additive planning estimate only, not a measured model share or speedup",
+  "utc": "2026-10-27T13:35:00.650283+00:00"
+}

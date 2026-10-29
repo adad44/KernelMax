@@ -1,0 +1,23 @@
+{
+  "import_date_local": "2026-10-28",
+  "catalog_schema": 2,
+  "catalog_file_count": 7003,
+  "original_bytes": 5564530231,
+  "retained_file_count": 4722,
+  "retained_payload_bytes": 186719136,
+  "external_file_count": 2281,
+  "external_bytes": 5377811095,
+  "external_availability": "local only; not uploaded to GitHub",
+  "all_file_sha256_verification": "7003 verified; 0 external artifacts unchecked",
+  "original_manifest_comparison": "all 7003 path/size/SHA256 records identical; no missing or extra records",
+  "original_sources_modified": false,
+  "full_backup": "/Users/alandiaz/Downloads/KernelMaxxxing/local-run-artifacts/run-archive-2026-10-28",
+  "cpu_tests": {
+    "passed": 358,
+    "skipped": 8,
+    "subtests_passed": 380
+  },
+  "archive_utility_lint": "Ruff passed",
+  "new_model_runs_performed": false,
+  "new_acceptance_or_speedup_claim": false
+}

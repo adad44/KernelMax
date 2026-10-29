@@ -1,0 +1,604 @@
+{
+  "checkpoint_unchanged": true,
+  "checkpoint_verification": {
+    "receipt": {
+      "byte_verification": "passed",
+      "file_identity": {
+        "chat_template.jinja": [
+          16777240,
+          1072,
+          16738,
+          1790639396455109558,
+          1790639396455448887
+        ],
+        "config.json": [
+          16777240,
+          1070,
+          1806,
+          1790639396436893123,
+          1790639396437420741
+        ],
+        "generation_config.json": [
+          16777240,
+          1071,
+          177,
+          1790639396441185235,
+          1790639396441533439
+        ],
+        "model-00000-of-00002.safetensors": [
+          16777240,
+          1333,
+          4792272488,
+          1791066838774969066,
+          1791066838984715563
+        ],
+        "model-00001-of-00002.safetensors": [
+          16777240,
+          1334,
+          4798702184,
+          1791066827812806335,
+          1791066828014274710
+        ],
+        "model-00002-of-00002.safetensors": [
+          16777240,
+          1341,
+          4170342232,
+          1791067075930994469,
+          1791067076130473405
+        ],
+        "model.safetensors.index.json": [
+          16777240,
+          1140,
+          36355,
+          1790644497708119934,
+          1790644497709019927
+        ],
+        "special_tokens_map.json": [
+          16777240,
+          1090,
+          98,
+          1790639719070169263,
+          1790639719070633798
+        ],
+        "tokenizer.json": [
+          16777240,
+          1093,
+          27868174,
+          1790639720921328889,
+          1790639721114847566
+        ],
+        "tokenizer_config.json": [
+          16777240,
+          1096,
+          4200,
+          1790639721609042202,
+          1790639721610209184
+        ]
+      },
+      "model_files": {
+        "chat_template.jinja": "a4c9919cbbd4acdd51ccffe22da049264b1b73e59055fa58811a99efbd7c8146",
+        "config.json": "3a2a26ded679375b7928ddeca59764df7cea83220c1961035f6d6e232659e9ce",
+        "generation_config.json": "f9970ada892d2d1f72e3ed0a6535ccebadd11897318794ca671d8c7014c957da",
+        "model-00000-of-00002.safetensors": "16d0f997dcfc4462089d536bffe51b4bcea2f872f5c430be09ef8ed392312427",
+        "model-00001-of-00002.safetensors": "4fbe328ab445455d6f58dc73852b85873bd626986310abd91cd4d2ce3245eaea",
+        "model-00002-of-00002.safetensors": "a18106b209e9ab35c3406db4f6f12a927364a058b21e9d1373d682e20674b303",
+        "model.safetensors.index.json": "0e085b977c4c9942f85938828e8c989ed7d5cdabf852e4da6a67c116cd502cd1",
+        "special_tokens_map.json": "dd5e191d20c12d2fee1da5bae14ca1db0f5f4215300af691f23cdee97120a293",
+        "tokenizer.json": "0614fe83cadab421296e664e1f48f4261fa8fef6e03e63bb75c20f38e37d07d3",
+        "tokenizer_config.json": "9279e942392b742d633c7adbb89ebe002c98399db8926a7af5125c726f404070"
+      },
+      "model_path": "/Volumes/BankOfSouls/models/gpt-oss-20b",
+      "model_revision": "6cee5e81ee83917806bbde320786a8fb61efebee",
+      "schema": 1,
+      "verified_unix": 1793090429.004543,
+      "verifier_sha256": "ea768edf0da79a9aa761fb31bb13b92496ecb9c291bcfe1c6cfd1ce48c35017f"
+    },
+    "reused": false
+  },
+  "contract_sha256": "3855f2e4d5d0114a5b572905faf5042f0d31f70adff603446291e6ad19f25f4a",
+  "correctness": [
+    {
+      "case": 0,
+      "exact": true,
+      "layer": 0,
+      "mode": "native_repeat"
+    },
+    {
+      "case": 1,
+      "exact": true,
+      "layer": 0,
+      "mode": "native_repeat"
+    },
+    {
+      "case": 2,
+      "exact": true,
+      "layer": 0,
+      "mode": "native_repeat"
+    },
+    {
+      "case": 3,
+      "exact": true,
+      "layer": 0,
+      "mode": "native_repeat"
+    },
+    {
+      "case": 4,
+      "exact": true,
+      "layer": 0,
+      "mode": "native_repeat"
+    },
+    {
+      "case": 5,
+      "exact": true,
+      "layer": 0,
+      "mode": "native_repeat"
+    },
+    {
+      "case": 6,
+      "exact": true,
+      "layer": 0,
+      "mode": "native_repeat"
+    },
+    {
+      "case": 7,
+      "exact": true,
+      "layer": 0,
+      "mode": "native_repeat"
+    },
+    {
+      "case": 0,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_up_gate"
+    },
+    {
+      "case": 1,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_up_gate"
+    },
+    {
+      "case": 2,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_up_gate"
+    },
+    {
+      "case": 3,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_up_gate"
+    },
+    {
+      "case": 4,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_up_gate"
+    },
+    {
+      "case": 5,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_up_gate"
+    },
+    {
+      "case": 6,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_up_gate"
+    },
+    {
+      "case": 7,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_up_gate"
+    },
+    {
+      "case": 0,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_down"
+    },
+    {
+      "case": 1,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_down"
+    },
+    {
+      "case": 2,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_down"
+    },
+    {
+      "case": 3,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_down"
+    },
+    {
+      "case": 4,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_down"
+    },
+    {
+      "case": 5,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_down"
+    },
+    {
+      "case": 6,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_down"
+    },
+    {
+      "case": 7,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_down"
+    },
+    {
+      "case": 0,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_experts"
+    },
+    {
+      "case": 1,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_experts"
+    },
+    {
+      "case": 2,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_experts"
+    },
+    {
+      "case": 3,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_experts"
+    },
+    {
+      "case": 4,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_experts"
+    },
+    {
+      "case": 5,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_experts"
+    },
+    {
+      "case": 6,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_experts"
+    },
+    {
+      "case": 7,
+      "exact": true,
+      "layer": 0,
+      "mode": "without_experts"
+    }
+  ],
+  "ended_unix": 1793090477.248756,
+  "errors": [],
+  "input_source_sha256": "cdf36822a58e09c59712329a97feb0cf24c811a4aea5e376e9ed510563b91b4d",
+  "pid": 57780,
+  "plan": {
+    "aa_pairs": 2,
+    "calls_per_sample": 256,
+    "cases_per_layer": 8,
+    "cycles": 32,
+    "interpretation": "Deletion savings apply only to this sampled expert operator. Model contribution and hardware cause remain unverified.",
+    "layers": [
+      0,
+      12,
+      23
+    ],
+    "noise_limits": {
+      "full_range": 0.04,
+      "maximum_pair_deviation": 0.02,
+      "relative_mad": 0.01
+    },
+    "order": "alternating_ab_ba",
+    "paging_policy": "paging-aware",
+    "region_pairs": 20,
+    "warmups_per_lane": 5
+  },
+  "quiet_preflights": [
+    {
+      "layer": 0,
+      "observations": [
+        {
+          "elapsed_seconds": 2.1813554998952895,
+          "issues": [],
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": 0.0,
+            "swapin_pages": 0,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "swap_used_mib": 5577.56,
+          "swapins": 2383538,
+          "swapouts": 4233588,
+          "thermal_state": 0
+        },
+        {
+          "elapsed_seconds": 4.298007958102971,
+          "issues": [],
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": 0.0,
+            "swapin_pages": 0,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "swap_used_mib": 5577.56,
+          "swapins": 2383538,
+          "swapouts": 4233588,
+          "thermal_state": 0
+        },
+        {
+          "elapsed_seconds": 6.417685916880146,
+          "issues": [],
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": 0.0,
+            "swapin_pages": 0,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "swap_used_mib": 5577.56,
+          "swapins": 2383538,
+          "swapouts": 4233588,
+          "thermal_state": 0
+        },
+        {
+          "elapsed_seconds": 8.537412416888401,
+          "issues": [],
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": 0.0,
+            "swapin_pages": 11,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "swap_used_mib": 5577.56,
+          "swapins": 2383549,
+          "swapouts": 4233588,
+          "thermal_state": 0
+        },
+        {
+          "elapsed_seconds": 10.657928874948993,
+          "issues": [],
+          "swap_activity": {
+            "policy": "paging-aware",
+            "swap_growth_mib": 0.0,
+            "swapin_pages": 0,
+            "swapins_permitted": true,
+            "swapout_pages": 0
+          },
+          "swap_used_mib": 5577.56,
+          "swapins": 2383549,
+          "swapouts": 4233588,
+          "thermal_state": 0
+        }
+      ],
+      "quiet_seconds_required": 10,
+      "swap_policy": "paging-aware",
+      "waited_seconds": 10.657928874948993
+    }
+  ],
+  "samples": [
+    {
+      "after": {
+        "observed_at": 1793090476.214884,
+        "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; finishing charge; 0:32 remaining present: true",
+        "power_settings": "Battery Power:\n Sleep On Power Button 1\n lowpowermode         0\n standby              1\n ttyskeepawake        1\n hibernatemode        0\n powernap             1\n hibernatefile        /var/vm/sleepimage\n displaysleep         60\n womp                 1\n networkoversleep     0\n sleep                1\n lessbright           1\n tcpkeepalive         1\n disksleep            10\nAC Power:\n Sleep On Power Button 1\n lowpowermode         0\n standby              1\n ttyskeepawake        1\n hibernatemode        0\n powernap             1\n hibernatefile        /var/vm/sleepimage\n displaysleep         10\n womp                 1\n networkoversleep     0\n sleep                1\n tcpkeepalive         1\n disksleep            10",
+        "process_cpu_snapshot": "PID  %CPU COMM\n57780  16.2 /Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python\n  410   3.8 /usr/sbin/mDNSResponder\n  405   3.2 /usr/sbin/coreaudiod\n56574   3.1 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n  336   2.2 /usr/libexec/configd\n56496   1.4 /Applications/ChatGPT.app/Contents/MacOS/ChatGPT\n  389   1.1 /usr/sbin/bluetoothd\n98508   1.0 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU\n  680   0.7 /usr/libexec/sharingd\n56795   0.6 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n  438   0.6 /usr/libexec/symptomsd\n  658   0.6 /usr/libexec/rapportd\n31002   0.6 /Library/Apple/System/Library/PrivateFrameworks/RemotePairing.framework/Versions/A/XPCServices/remotepairingd.xpc/Contents/MacOS/remotepairingd\n  390   0.5 /usr/sbin/notifyd\n  530   0.5 /System/Library/DriverExtensions/com.apple.DriverKit-AppleBCMWLAN.dext/com.apple.DriverKit-AppleBCMWLAN\n48346   0.4 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n98497   0.3 /System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/MacOS/Safari\n  393   0.3 /usr/libexec/AirPlayXPCHelper\n  567   0.3 /usr/libexec/searchpartyd\n  773   0.3 /Users/alandiaz/.hermes/hermes-agent/venv/bin/python\n    1   0.2 /sbin/launchd\n59012   0.2 /System/Library/Frameworks/AppKit.framework/Versions/C/XPCServices/com.apple.appkit.xpc.openAndSavePanelService.xpc/Contents/MacOS/com.apple.appkit.xpc.openAndSavePanelService\n19103   0.2 /System/Library/Frameworks/AppKit.framework/Versions/C/XPCServices/com.apple.appkit.xpc.openAndSavePanelService.xpc/Contents/MacOS/com.apple.appkit.xpc.openAndSavePanelService\n  613   0.2 /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder\n  397   0.2 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer\n15125   0.2 /usr/libexec/trustd\n  372   0.1 /usr/libexec/locationd\n30308   0.1 /opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/Resources/Python.app/Contents/MacOS/Python\n  360   0.1 /usr/sbin/syslogd\n19633   0.1 /System/Library/Frameworks/Virtualization.framework/Versions/A/XPCServices/com.apple.Virtualization.VirtualMachine.xpc/Contents/MacOS/com.apple.Virtualization.VirtualMachine\n  392   0.1 /usr/libexec/corebrightnessd\n98507   0.1 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking\n  324   0.1 /usr/libexec/logd\n56830   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56829   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56810   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56777   0.0 /System/Library/CoreServices/ReportCrash\n56776   0.0 /System/Library/Frameworks/AuthenticationServices.framework/Versions/A/XPCServices/com.apple.AuthenticationServices.Helper.xpc/Contents/MacOS/com.apple.AuthenticationServices.Helper\n56775   0.0 /System/Library/PrivateFrameworks/SafariFoundation.framework/Versions/A/XPCServices/CredentialProviderExtensionHelper.xpc/Contents/MacOS/CredentialProviderExtensionHelper\n56773   0.0 /System/Cryptexes/App/usr/libexec/PasswordBreachAgent\n56766   0.0 /System/Library/PrivateFrameworks/CoreSuggestions.framework/Versions/A/Support/reversetemplated\n56762   0.0 /System/Library/Frameworks/NetFS.framework/Versions/A/XPCServices/PlugInLibraryService.xpc/Contents/MacOS/PlugInLibraryService\n56761   0.0 /usr/libexec/GamePolicyAgent\n56760   0.0 /System/Library/PrivateFrameworks/Ecosystem.framework/Support/ecosystemd\n56753   0.0 /System/Library/Frameworks/ImageIO.framework/Versions/A/XPCServices/ImageIOXPCService.xpc/Contents/MacOS/ImageIOXPCService\n56752   0.0 /System/Library/PrivateFrameworks/EcosystemAnalytics.framework/Support/ecosystemanalyticsd\n56750   0.0 /System/Library/Frameworks/AudioToolbox.framework/AudioComponentRegistrar\n56749   0.0 /System/Library/Frameworks/MediaAccessibility.framework/Versions/A/XPCServices/com.apple.accessibility.mediaaccessibilityd.xpc/Contents/MacOS/com.apple.accessibility.mediaaccessibilityd\n56710   0.0 /System/Library/Frameworks/VideoToolbox.framework/Versions/A/XPCServices/VTEncoderXPCService.xpc/Contents/MacOS/VTEncoderXPCService\n56673   0.0 /System/Library/PrivateFrameworks/CoreSymbolication.framework/coresymbolicationd\n56668   0.0 /Users/alandiaz/Library/Application Support/Codex/artifact-sessions/runtime-generations/generation-3gXHyr/runtime/bin/node\n56667   0.0 /System/Library/Frameworks/Security.framework/Versions/A/XPCServices/TrustedPeersHelper.xpc/Contents/MacOS/TrustedPeersHelper\n56663   0.0 /System/Library/CoreServices/ReportCrash\n56662   0.0 /System/Library/PrivateFrameworks/XprotectFramework.framework/Versions/A/XPCServices/XprotectService.xpc/Contents/MacOS/XprotectService\n56657   0.0 /System/Library/PrivateFrameworks/SafariPlatformSupport.framework/Versions/A/XPCServices/com.apple.SafariPlatformSupport.Helper.xpc/Contents/MacOS/com.apple.SafariPlatformSupport.Helper\n56624   0.0 /usr/libexec/filevaultd\n56622   0.0 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/MacOS/SkyComputerUseService\n56596   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56595   0.0 /System/Library/PrivateFrameworks/WorkflowKit.framework/XPCServices/ShortcutsViewService.xpc/Contents/MacOS/ShortcutsViewService\n56580   0.0 /System/Library/CoreServices/pbs\n56578   0.0 /System/Library/Frameworks/Metal.framework/Versions/A/XPCServices/MTLCompilerService.xpc/Contents/MacOS/MTLCompilerService\n56577   0.0 /System/Library/Frameworks/Metal.framework/Versions/A/XPCServices/MTLCompilerService.xpc/Contents/MacOS/MTLCompilerService\n56575   0.0 /System/Library/PrivateFrameworks/AXAssetLoader.framework/Support/axassetsd\n56570   0.0 /Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex\n56560   0.0 /System/Library/Frameworks/Contacts.framework/Support/postersyncd\n56553   0.0 /System/Library/CoreServices/iconservicesd\n56551   0.0 /System/Library/CoreServices/iconservicesagent\n56549   0.0 /Applications/ChatGPT.app/Contents/Resources/native/bare-modifier-monitor\n56544   0.0 /System/Cryptexes/App/usr/libexec/SafariLaunchAgent\n56542   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56540   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56539   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56521   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/browser_crashpad_handler\n56518   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/browser_crashpad_handler\n56511   0.0 /usr/libexec/keyboardservicesd\n56510   0.0 /System/Library/PrivateFrameworks/MobileTimer.framework/Executables/mobiletimerd\n56499   0.0 /System/Library/PrivateFrameworks/BackgroundTaskManagement.framework/Resources/backgroundtaskmanagementd\n56493   0.0 /usr/libexec/MTLAssetUpgraderD\n56494   0.0 /System/Library/Frameworks/MediaExten",
+        "process_cpu_time_seconds": 11.479042,
+        "swap_raw": "total = 7168.00M  used = 5577.56M  free = 1590.44M  (encrypted)",
+        "swap_used_mib": 5577.56,
+        "swapins": 2383549,
+        "swapouts": 4233588,
+        "thermal": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+        "thermal_state": 0,
+        "vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                     5016.\nPages active:                                 574515.\nPages inactive:                               572797.\nPages speculative:                               875.\nPages throttled:                                   0.\nPages wired down:                             180253.\nPages purgeable:                                 648.\n\"Translation faults\":                     2648199345.\nPages copy-on-write:                        99523275.\nPages zero filled:                        4515387940.\nPages reactivated:                         232546314.\nPages purged:                              173461696.\nFile-backed pages:                            566704.\nAnonymous pages:                              581483.\nPages stored in compressor:                  1380803.\nPages occupied by compressor:                 199581.\nDecompressions:                            388517081.\nCompressions:                              461673832.\nPageins:                                   126465143.\nPageouts:                                    1592719.\nSwapins:                                     2383549.\nSwapouts:                                    4233588."
+      },
+      "before": {
+        "observed_at": 1793090475.944114,
+        "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; finishing charge; 0:32 remaining present: true",
+        "power_settings": "Battery Power:\n Sleep On Power Button 1\n lowpowermode         0\n standby              1\n ttyskeepawake        1\n hibernatemode        0\n powernap             1\n hibernatefile        /var/vm/sleepimage\n displaysleep         60\n womp                 1\n networkoversleep     0\n sleep                1\n lessbright           1\n tcpkeepalive         1\n disksleep            10\nAC Power:\n Sleep On Power Button 1\n lowpowermode         0\n standby              1\n ttyskeepawake        1\n hibernatemode        0\n powernap             1\n hibernatefile        /var/vm/sleepimage\n displaysleep         10\n womp                 1\n networkoversleep     0\n sleep                1\n tcpkeepalive         1\n disksleep            10",
+        "process_cpu_snapshot": "PID  %CPU COMM\n57780  14.2 /Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python\n58266  10.0 /opt/homebrew/bin/gh\n  405   3.2 /usr/sbin/coreaudiod\n56574   2.7 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n  389   2.2 /usr/sbin/bluetoothd\n56496   1.6 /Applications/ChatGPT.app/Contents/MacOS/ChatGPT\n31002   1.6 /Library/Apple/System/Library/PrivateFrameworks/RemotePairing.framework/Versions/A/XPCServices/remotepairingd.xpc/Contents/MacOS/remotepairingd\n56795   1.4 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n  680   1.1 /usr/libexec/sharingd\n98508   1.0 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU\n  773   0.9 /Users/alandiaz/.hermes/hermes-agent/venv/bin/python\n  658   0.9 /usr/libexec/rapportd\n  613   0.7 /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder\n  410   0.7 /usr/sbin/mDNSResponder\n59012   0.7 /System/Library/Frameworks/AppKit.framework/Versions/C/XPCServices/com.apple.appkit.xpc.openAndSavePanelService.xpc/Contents/MacOS/com.apple.appkit.xpc.openAndSavePanelService\n  530   0.7 /System/Library/DriverExtensions/com.apple.DriverKit-AppleBCMWLAN.dext/com.apple.DriverKit-AppleBCMWLAN\n98507   0.7 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking\n  397   0.6 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer\n19103   0.6 /System/Library/Frameworks/AppKit.framework/Versions/C/XPCServices/com.apple.appkit.xpc.openAndSavePanelService.xpc/Contents/MacOS/com.apple.appkit.xpc.openAndSavePanelService\n15125   0.6 /usr/libexec/trustd\n  682   0.5 /usr/libexec/nearbyd\n48346   0.4 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n  432   0.3 /usr/libexec/airportd\n56540   0.3 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n  438   0.2 /usr/libexec/symptomsd\n  336   0.2 /usr/libexec/configd\n98497   0.2 /System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/MacOS/Safari\n49341   0.2 /usr/libexec/wifip2pd\n19633   0.1 /System/Library/Frameworks/Virtualization.framework/Versions/A/XPCServices/com.apple.Virtualization.VirtualMachine.xpc/Contents/MacOS/com.apple.Virtualization.VirtualMachine\n  390   0.1 /usr/sbin/notifyd\n  324   0.1 /usr/libexec/logd\n  392   0.1 /usr/libexec/corebrightnessd\n    1   0.1 /sbin/launchd\n70106   0.1 /Applications/Amphetamine.app/Contents/MacOS/Amphetamine\n56829   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56810   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56777   0.0 /System/Library/CoreServices/ReportCrash\n56776   0.0 /System/Library/Frameworks/AuthenticationServices.framework/Versions/A/XPCServices/com.apple.AuthenticationServices.Helper.xpc/Contents/MacOS/com.apple.AuthenticationServices.Helper\n56775   0.0 /System/Library/PrivateFrameworks/SafariFoundation.framework/Versions/A/XPCServices/CredentialProviderExtensionHelper.xpc/Contents/MacOS/CredentialProviderExtensionHelper\n56773   0.0 /System/Cryptexes/App/usr/libexec/PasswordBreachAgent\n56766   0.0 /System/Library/PrivateFrameworks/CoreSuggestions.framework/Versions/A/Support/reversetemplated\n56762   0.0 /System/Library/Frameworks/NetFS.framework/Versions/A/XPCServices/PlugInLibraryService.xpc/Contents/MacOS/PlugInLibraryService\n56761   0.0 /usr/libexec/GamePolicyAgent\n56760   0.0 /System/Library/PrivateFrameworks/Ecosystem.framework/Support/ecosystemd\n56753   0.0 /System/Library/Frameworks/ImageIO.framework/Versions/A/XPCServices/ImageIOXPCService.xpc/Contents/MacOS/ImageIOXPCService\n56752   0.0 /System/Library/PrivateFrameworks/EcosystemAnalytics.framework/Support/ecosystemanalyticsd\n56750   0.0 /System/Library/Frameworks/AudioToolbox.framework/AudioComponentRegistrar\n56749   0.0 /System/Library/Frameworks/MediaAccessibility.framework/Versions/A/XPCServices/com.apple.accessibility.mediaaccessibilityd.xpc/Contents/MacOS/com.apple.accessibility.mediaaccessibilityd\n56710   0.0 /System/Library/Frameworks/VideoToolbox.framework/Versions/A/XPCServices/VTEncoderXPCService.xpc/Contents/MacOS/VTEncoderXPCService\n56673   0.0 /System/Library/PrivateFrameworks/CoreSymbolication.framework/coresymbolicationd\n56668   0.0 /Users/alandiaz/Library/Application Support/Codex/artifact-sessions/runtime-generations/generation-3gXHyr/runtime/bin/node\n56667   0.0 /System/Library/Frameworks/Security.framework/Versions/A/XPCServices/TrustedPeersHelper.xpc/Contents/MacOS/TrustedPeersHelper\n56663   0.0 /System/Library/CoreServices/ReportCrash\n56662   0.0 /System/Library/PrivateFrameworks/XprotectFramework.framework/Versions/A/XPCServices/XprotectService.xpc/Contents/MacOS/XprotectService\n56657   0.0 /System/Library/PrivateFrameworks/SafariPlatformSupport.framework/Versions/A/XPCServices/com.apple.SafariPlatformSupport.Helper.xpc/Contents/MacOS/com.apple.SafariPlatformSupport.Helper\n56624   0.0 /usr/libexec/filevaultd\n56622   0.0 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/MacOS/SkyComputerUseService\n56596   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56595   0.0 /System/Library/PrivateFrameworks/WorkflowKit.framework/XPCServices/ShortcutsViewService.xpc/Contents/MacOS/ShortcutsViewService\n56580   0.0 /System/Library/CoreServices/pbs\n56578   0.0 /System/Library/Frameworks/Metal.framework/Versions/A/XPCServices/MTLCompilerService.xpc/Contents/MacOS/MTLCompilerService\n56577   0.0 /System/Library/Frameworks/Metal.framework/Versions/A/XPCServices/MTLCompilerService.xpc/Contents/MacOS/MTLCompilerService\n56575   0.0 /System/Library/PrivateFrameworks/AXAssetLoader.framework/Support/axassetsd\n56570   0.0 /Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex\n56560   0.0 /System/Library/Frameworks/Contacts.framework/Support/postersyncd\n56553   0.0 /System/Library/CoreServices/iconservicesd\n56551   0.0 /System/Library/CoreServices/iconservicesagent\n56549   0.0 /Applications/ChatGPT.app/Contents/Resources/native/bare-modifier-monitor\n56544   0.0 /System/Cryptexes/App/usr/libexec/SafariLaunchAgent\n56542   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56539   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56521   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/browser_crashpad_handler\n56518   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/browser_crashpad_handler\n56511   0.0 /usr/libexec/keyboardservicesd\n56510   0.0 /System/Library/PrivateFrameworks/MobileTimer.framework/Executables/mobiletimerd\n56499   0.0 /System/Library/PrivateFrameworks/BackgroundTaskManagement.framework/Resources/backgroundtaskmanagementd\n56493   0.0 /usr/libexec/MTLAssetUpgraderD\n56494   0.0 /System/Library/Frameworks/MediaExtension.framework/Versions/A/Helpers/MENotificationAgent\n56492   0.0 /System/Library/PrivateFrameworks/VoiceShortcuts.framework/Versions/A/Support/siriactionsd\n56495   0.0 /System/Library/PrivateFrameworks/BackgroundTaskManagement.framework/Support/Ba",
+        "process_cpu_time_seconds": 11.429658,
+        "swap_raw": "total = 7168.00M  used = 5577.56M  free = 1590.44M  (encrypted)",
+        "swap_used_mib": 5577.56,
+        "swapins": 2383549,
+        "swapouts": 4233588,
+        "thermal": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+        "thermal_state": 0,
+        "vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                     3798.\nPages active:                                 575214.\nPages inactive:                               573180.\nPages speculative:                               877.\nPages throttled:                                   0.\nPages wired down:                             180293.\nPages purgeable:                                 648.\n\"Translation faults\":                     2648194240.\nPages copy-on-write:                        99522263.\nPages zero filled:                        4515386702.\nPages reactivated:                         232546314.\nPages purged:                              173461696.\nFile-backed pages:                            566702.\nAnonymous pages:                              582569.\nPages stored in compressor:                  1380803.\nPages occupied by compressor:                 199581.\nDecompressions:                            388517081.\nCompressions:                              461673832.\nPageins:                                   126465135.\nPageouts:                                    1592719.\nSwapins:                                     2383549.\nSwapouts:                                    4233588."
+      },
+      "calls": 256,
+      "elapsed_ms": 220.052625,
+      "environment_issues": [],
+      "group": "aa",
+      "layer": 0,
+      "mode": "native",
+      "pair": 1
+    },
+    {
+      "after": {
+        "observed_at": 1793090476.5471349,
+        "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; finishing charge; 0:32 remaining present: true",
+        "power_settings": "Battery Power:\n Sleep On Power Button 1\n lowpowermode         0\n standby              1\n ttyskeepawake        1\n hibernatemode        0\n powernap             1\n hibernatefile        /var/vm/sleepimage\n displaysleep         60\n womp                 1\n networkoversleep     0\n sleep                1\n lessbright           1\n tcpkeepalive         1\n disksleep            10\nAC Power:\n Sleep On Power Button 1\n lowpowermode         0\n standby              1\n ttyskeepawake        1\n hibernatemode        0\n powernap             1\n hibernatefile        /var/vm/sleepimage\n displaysleep         10\n womp                 1\n networkoversleep     0\n sleep                1\n tcpkeepalive         1\n disksleep            10",
+        "process_cpu_snapshot": "PID  %CPU COMM\n57780  17.8 /Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python\n  405   3.1 /usr/sbin/coreaudiod\n  397   1.5 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer\n56795   1.3 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n98507   1.3 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking\n  432   1.2 /usr/libexec/airportd\n  530   1.2 /System/Library/DriverExtensions/com.apple.DriverKit-AppleBCMWLAN.dext/com.apple.DriverKit-AppleBCMWLAN\n98508   1.0 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU\n  410   0.8 /usr/sbin/mDNSResponder\n70106   0.7 /Applications/Amphetamine.app/Contents/MacOS/Amphetamine\n  390   0.6 /usr/sbin/notifyd\n  389   0.6 /usr/sbin/bluetoothd\n56574   0.6 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56496   0.5 /Applications/ChatGPT.app/Contents/MacOS/ChatGPT\n  324   0.5 /usr/libexec/logd\n  567   0.4 /usr/libexec/searchpartyd\n  438   0.4 /usr/libexec/symptomsd\n  336   0.4 /usr/libexec/configd\n98497   0.3 /System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/MacOS/Safari\n  372   0.3 /usr/libexec/locationd\n48346   0.3 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n    1   0.1 /sbin/launchd\n31002   0.1 /Library/Apple/System/Library/PrivateFrameworks/RemotePairing.framework/Versions/A/XPCServices/remotepairingd.xpc/Contents/MacOS/remotepairingd\n  680   0.1 /usr/libexec/sharingd\n30308   0.1 /opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/Resources/Python.app/Contents/MacOS/Python\n  658   0.1 /usr/libexec/rapportd\n  399   0.1 /usr/sbin/cfprefsd\n  613   0.1 /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder\n56877   0.0 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n56876   0.0 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node\n56875   0.0 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl\n56874   0.0 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl\n56831   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56830   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56829   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56810   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56777   0.0 /System/Library/CoreServices/ReportCrash\n56776   0.0 /System/Library/Frameworks/AuthenticationServices.framework/Versions/A/XPCServices/com.apple.AuthenticationServices.Helper.xpc/Contents/MacOS/com.apple.AuthenticationServices.Helper\n56775   0.0 /System/Library/PrivateFrameworks/SafariFoundation.framework/Versions/A/XPCServices/CredentialProviderExtensionHelper.xpc/Contents/MacOS/CredentialProviderExtensionHelper\n56773   0.0 /System/Cryptexes/App/usr/libexec/PasswordBreachAgent\n56766   0.0 /System/Library/PrivateFrameworks/CoreSuggestions.framework/Versions/A/Support/reversetemplated\n56762   0.0 /System/Library/Frameworks/NetFS.framework/Versions/A/XPCServices/PlugInLibraryService.xpc/Contents/MacOS/PlugInLibraryService\n56761   0.0 /usr/libexec/GamePolicyAgent\n56760   0.0 /System/Library/PrivateFrameworks/Ecosystem.framework/Support/ecosystemd\n56753   0.0 /System/Library/Frameworks/ImageIO.framework/Versions/A/XPCServices/ImageIOXPCService.xpc/Contents/MacOS/ImageIOXPCService\n56752   0.0 /System/Library/PrivateFrameworks/EcosystemAnalytics.framework/Support/ecosystemanalyticsd\n56750   0.0 /System/Library/Frameworks/AudioToolbox.framework/AudioComponentRegistrar\n56749   0.0 /System/Library/Frameworks/MediaAccessibility.framework/Versions/A/XPCServices/com.apple.accessibility.mediaaccessibilityd.xpc/Contents/MacOS/com.apple.accessibility.mediaaccessibilityd\n56710   0.0 /System/Library/Frameworks/VideoToolbox.framework/Versions/A/XPCServices/VTEncoderXPCService.xpc/Contents/MacOS/VTEncoderXPCService\n56673   0.0 /System/Library/PrivateFrameworks/CoreSymbolication.framework/coresymbolicationd\n56668   0.0 /Users/alandiaz/Library/Application Support/Codex/artifact-sessions/runtime-generations/generation-3gXHyr/runtime/bin/node\n56667   0.0 /System/Library/Frameworks/Security.framework/Versions/A/XPCServices/TrustedPeersHelper.xpc/Contents/MacOS/TrustedPeersHelper\n56663   0.0 /System/Library/CoreServices/ReportCrash\n56662   0.0 /System/Library/PrivateFrameworks/XprotectFramework.framework/Versions/A/XPCServices/XprotectService.xpc/Contents/MacOS/XprotectService\n56657   0.0 /System/Library/PrivateFrameworks/SafariPlatformSupport.framework/Versions/A/XPCServices/com.apple.SafariPlatformSupport.Helper.xpc/Contents/MacOS/com.apple.SafariPlatformSupport.Helper\n56624   0.0 /usr/libexec/filevaultd\n56622   0.0 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/MacOS/SkyComputerUseService\n56596   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56595   0.0 /System/Library/PrivateFrameworks/WorkflowKit.framework/XPCServices/ShortcutsViewService.xpc/Contents/MacOS/ShortcutsViewService\n56580   0.0 /System/Library/CoreServices/pbs\n56578   0.0 /System/Library/Frameworks/Metal.framework/Versions/A/XPCServices/MTLCompilerService.xpc/Contents/MacOS/MTLCompilerService\n56577   0.0 /System/Library/Frameworks/Metal.framework/Versions/A/XPCServices/MTLCompilerService.xpc/Contents/MacOS/MTLCompilerService\n56575   0.0 /System/Library/PrivateFrameworks/AXAssetLoader.framework/Support/axassetsd\n56570   0.0 /Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex\n56560   0.0 /System/Library/Frameworks/Contacts.framework/Support/postersyncd\n56553   0.0 /System/Library/CoreServices/iconservicesd\n56551   0.0 /System/Library/CoreServices/iconservicesagent\n56549   0.0 /Applications/ChatGPT.app/Contents/Resources/native/bare-modifier-monitor\n56544   0.0 /System/Cryptexes/App/usr/libexec/SafariLaunchAgent\n56542   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56540   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56539   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56521   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/browser_crashpad_handler\n56518   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/browser_crashpad_handler\n56511   0.0 /usr/libexec/keyboardservicesd\n56510   0.0 /System/Library/PrivateFrameworks/MobileTimer.framework/Executables/mobiletimerd\n56499   0.0 /System/Library/PrivateFrameworks/BackgroundTaskManagement.framework/Resources/backgroundtaskmanagementd\n56493   0.0 /usr/libexec/MTLAssetUpgraderD\n56494   0.0 /System/Library/Frameworks/MediaExtension.framework/Versions/A/Helpers/MENotificationAgent\n56492   0.0 /System/Librar",
+        "process_cpu_time_seconds": 11.549438,
+        "swap_raw": "total = 7168.00M  used = 5577.56M  free = 1590.44M  (encrypted)",
+        "swap_used_mib": 5577.56,
+        "swapins": 2383549,
+        "swapouts": 4233588,
+        "thermal": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+        "thermal_state": 0,
+        "vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                     5368.\nPages active:                                 574479.\nPages inactive:                               572872.\nPages speculative:                               876.\nPages throttled:                                   0.\nPages wired down:                             180253.\nPages purgeable:                                 648.\n\"Translation faults\":                     2648209334.\nPages copy-on-write:                        99525293.\nPages zero filled:                        4515390197.\nPages reactivated:                         232546314.\nPages purged:                              173461698.\nFile-backed pages:                            566706.\nAnonymous pages:                              581521.\nPages stored in compressor:                  1380802.\nPages occupied by compressor:                 199581.\nDecompressions:                            388517082.\nCompressions:                              461673832.\nPageins:                                   126465155.\nPageouts:                                    1592719.\nSwapins:                                     2383549.\nSwapouts:                                    4233588."
+      },
+      "before": {
+        "observed_at": 1793090476.265986,
+        "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; finishing charge; 0:32 remaining present: true",
+        "power_settings": "Battery Power:\n Sleep On Power Button 1\n lowpowermode         0\n standby              1\n ttyskeepawake        1\n hibernatemode        0\n powernap             1\n hibernatefile        /var/vm/sleepimage\n displaysleep         60\n womp                 1\n networkoversleep     0\n sleep                1\n lessbright           1\n tcpkeepalive         1\n disksleep            10\nAC Power:\n Sleep On Power Button 1\n lowpowermode         0\n standby              1\n ttyskeepawake        1\n hibernatemode        0\n powernap             1\n hibernatefile        /var/vm/sleepimage\n displaysleep         10\n womp                 1\n networkoversleep     0\n sleep                1\n tcpkeepalive         1\n disksleep            10",
+        "process_cpu_snapshot": "PID  %CPU COMM\n57780  19.1 /Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python\n  405   3.1 /usr/sbin/coreaudiod\n  410   2.2 /usr/sbin/mDNSResponder\n56574   1.8 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n  336   1.3 /usr/libexec/configd\n56496   1.3 /Applications/ChatGPT.app/Contents/MacOS/ChatGPT\n  389   1.0 /usr/sbin/bluetoothd\n98508   0.9 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU\n  390   0.9 /usr/sbin/notifyd\n  680   0.5 /usr/libexec/sharingd\n56795   0.4 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n  530   0.4 /System/Library/DriverExtensions/com.apple.DriverKit-AppleBCMWLAN.dext/com.apple.DriverKit-AppleBCMWLAN\n  658   0.4 /usr/libexec/rapportd\n  438   0.3 /usr/libexec/symptomsd\n31002   0.3 /Library/Apple/System/Library/PrivateFrameworks/RemotePairing.framework/Versions/A/XPCServices/remotepairingd.xpc/Contents/MacOS/remotepairingd\n98497   0.3 /System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/MacOS/Safari\n48346   0.3 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n    1   0.3 /sbin/launchd\n  397   0.2 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer\n  324   0.2 /usr/libexec/logd\n  567   0.1 /usr/libexec/searchpartyd\n19633   0.1 /System/Library/Frameworks/Virtualization.framework/Versions/A/XPCServices/com.apple.Virtualization.VirtualMachine.xpc/Contents/MacOS/com.apple.Virtualization.VirtualMachine\n  338   0.1 /System/Library/CoreServices/powerd.bundle/powerd\n  613   0.1 /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder\n  773   0.1 /Users/alandiaz/.hermes/hermes-agent/venv/bin/python\n19103   0.1 /System/Library/Frameworks/AppKit.framework/Versions/C/XPCServices/com.apple.appkit.xpc.openAndSavePanelService.xpc/Contents/MacOS/com.apple.appkit.xpc.openAndSavePanelService\n  393   0.1 /usr/libexec/AirPlayXPCHelper\n  682   0.1 /usr/libexec/nearbyd\n59012   0.1 /System/Library/Frameworks/AppKit.framework/Versions/C/XPCServices/com.apple.appkit.xpc.openAndSavePanelService.xpc/Contents/MacOS/com.apple.appkit.xpc.openAndSavePanelService\n  399   0.1 /usr/sbin/cfprefsd\n56875   0.0 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl\n56874   0.0 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl\n56831   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56830   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56829   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56810   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56777   0.0 /System/Library/CoreServices/ReportCrash\n56776   0.0 /System/Library/Frameworks/AuthenticationServices.framework/Versions/A/XPCServices/com.apple.AuthenticationServices.Helper.xpc/Contents/MacOS/com.apple.AuthenticationServices.Helper\n56775   0.0 /System/Library/PrivateFrameworks/SafariFoundation.framework/Versions/A/XPCServices/CredentialProviderExtensionHelper.xpc/Contents/MacOS/CredentialProviderExtensionHelper\n56773   0.0 /System/Cryptexes/App/usr/libexec/PasswordBreachAgent\n56766   0.0 /System/Library/PrivateFrameworks/CoreSuggestions.framework/Versions/A/Support/reversetemplated\n56762   0.0 /System/Library/Frameworks/NetFS.framework/Versions/A/XPCServices/PlugInLibraryService.xpc/Contents/MacOS/PlugInLibraryService\n56761   0.0 /usr/libexec/GamePolicyAgent\n56760   0.0 /System/Library/PrivateFrameworks/Ecosystem.framework/Support/ecosystemd\n56753   0.0 /System/Library/Frameworks/ImageIO.framework/Versions/A/XPCServices/ImageIOXPCService.xpc/Contents/MacOS/ImageIOXPCService\n56752   0.0 /System/Library/PrivateFrameworks/EcosystemAnalytics.framework/Support/ecosystemanalyticsd\n56750   0.0 /System/Library/Frameworks/AudioToolbox.framework/AudioComponentRegistrar\n56749   0.0 /System/Library/Frameworks/MediaAccessibility.framework/Versions/A/XPCServices/com.apple.accessibility.mediaaccessibilityd.xpc/Contents/MacOS/com.apple.accessibility.mediaaccessibilityd\n56710   0.0 /System/Library/Frameworks/VideoToolbox.framework/Versions/A/XPCServices/VTEncoderXPCService.xpc/Contents/MacOS/VTEncoderXPCService\n56673   0.0 /System/Library/PrivateFrameworks/CoreSymbolication.framework/coresymbolicationd\n56668   0.0 /Users/alandiaz/Library/Application Support/Codex/artifact-sessions/runtime-generations/generation-3gXHyr/runtime/bin/node\n56667   0.0 /System/Library/Frameworks/Security.framework/Versions/A/XPCServices/TrustedPeersHelper.xpc/Contents/MacOS/TrustedPeersHelper\n56663   0.0 /System/Library/CoreServices/ReportCrash\n56662   0.0 /System/Library/PrivateFrameworks/XprotectFramework.framework/Versions/A/XPCServices/XprotectService.xpc/Contents/MacOS/XprotectService\n56657   0.0 /System/Library/PrivateFrameworks/SafariPlatformSupport.framework/Versions/A/XPCServices/com.apple.SafariPlatformSupport.Helper.xpc/Contents/MacOS/com.apple.SafariPlatformSupport.Helper\n56624   0.0 /usr/libexec/filevaultd\n56622   0.0 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/MacOS/SkyComputerUseService\n56596   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56595   0.0 /System/Library/PrivateFrameworks/WorkflowKit.framework/XPCServices/ShortcutsViewService.xpc/Contents/MacOS/ShortcutsViewService\n56580   0.0 /System/Library/CoreServices/pbs\n56578   0.0 /System/Library/Frameworks/Metal.framework/Versions/A/XPCServices/MTLCompilerService.xpc/Contents/MacOS/MTLCompilerService\n56577   0.0 /System/Library/Frameworks/Metal.framework/Versions/A/XPCServices/MTLCompilerService.xpc/Contents/MacOS/MTLCompilerService\n56575   0.0 /System/Library/PrivateFrameworks/AXAssetLoader.framework/Support/axassetsd\n56570   0.0 /Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex\n56560   0.0 /System/Library/Frameworks/Contacts.framework/Support/postersyncd\n56553   0.0 /System/Library/CoreServices/iconservicesd\n56551   0.0 /System/Library/CoreServices/iconservicesagent\n56549   0.0 /Applications/ChatGPT.app/Contents/Resources/native/bare-modifier-monitor\n56544   0.0 /System/Cryptexes/App/usr/libexec/SafariLaunchAgent\n56542   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56540   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56539   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56521   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/browser_crashpad_handler\n56518   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/browser_crashpad_handler\n56511   0.0 /usr/libexec/keyboardservicesd\n56510   0.0 /System/Library/PrivateFrameworks/MobileTimer.framework/Executables/mobiletimerd\n56499   0.0 /System/Library/PrivateFrameworks/BackgroundTaskManagement.framework/Resources/backgroundtaskmanagementd\n56493   0.0 /usr/libexec/MTLAssetUpgraderD\n56494   0.0 /System/Libra",
+        "process_cpu_time_seconds": 11.498095,
+        "swap_raw": "total = 7168.00M  used = 5577.56M  free = 1590.44M  (encrypted)",
+        "swap_used_mib": 5577.56,
+        "swapins": 2383549,
+        "swapouts": 4233588,
+        "thermal": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+        "thermal_state": 0,
+        "vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                     5137.\nPages active:                                 574521.\nPages inactive:                               572796.\nPages speculative:                               876.\nPages throttled:                                   0.\nPages wired down:                             180253.\nPages purgeable:                                 648.\n\"Translation faults\":                     2648204271.\nPages copy-on-write:                        99524286.\nPages zero filled:                        4515389004.\nPages reactivated:                         232546314.\nPages purged:                              173461696.\nFile-backed pages:                            566706.\nAnonymous pages:                              581487.\nPages stored in compressor:                  1380803.\nPages occupied by compressor:                 199581.\nDecompressions:                            388517081.\nCompressions:                              461673832.\nPageins:                                   126465149.\nPageouts:                                    1592719.\nSwapins:                                     2383549.\nSwapouts:                                    4233588."
+      },
+      "calls": 256,
+      "elapsed_ms": 228.940833,
+      "environment_issues": [],
+      "group": "aa",
+      "layer": 0,
+      "mode": "native_repeat",
+      "pair": 1
+    },
+    {
+      "after": {
+        "observed_at": 1793090476.8764741,
+        "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; finishing charge; 0:32 remaining present: true",
+        "power_settings": "Battery Power:\n Sleep On Power Button 1\n lowpowermode         0\n standby              1\n ttyskeepawake        1\n hibernatemode        0\n powernap             1\n hibernatefile        /var/vm/sleepimage\n displaysleep         60\n womp                 1\n networkoversleep     0\n sleep                1\n lessbright           1\n tcpkeepalive         1\n disksleep            10\nAC Power:\n Sleep On Power Button 1\n lowpowermode         0\n standby              1\n ttyskeepawake        1\n hibernatemode        0\n powernap             1\n hibernatefile        /var/vm/sleepimage\n displaysleep         10\n womp                 1\n networkoversleep     0\n sleep                1\n tcpkeepalive         1\n disksleep            10",
+        "process_cpu_snapshot": "PID  %CPU COMM\n57780  19.9 /Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python\n  405   3.3 /usr/sbin/coreaudiod\n98507   2.0 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking\n  613   1.4 /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder\n  530   1.1 /System/Library/DriverExtensions/com.apple.DriverKit-AppleBCMWLAN.dext/com.apple.DriverKit-AppleBCMWLAN\n98508   0.9 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU\n56795   0.8 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n  432   0.7 /usr/libexec/airportd\n  397   0.6 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer\n  390   0.6 /usr/sbin/notifyd\n  389   0.4 /usr/sbin/bluetoothd\n    1   0.3 /sbin/launchd\n  680   0.3 /usr/libexec/sharingd\n48346   0.3 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n56496   0.3 /Applications/ChatGPT.app/Contents/MacOS/ChatGPT\n  324   0.2 /usr/libexec/logd\n98497   0.2 /System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/MacOS/Safari\n  399   0.1 /usr/sbin/cfprefsd\n  658   0.1 /usr/libexec/rapportd\n19633   0.1 /System/Library/Frameworks/Virtualization.framework/Versions/A/XPCServices/com.apple.Virtualization.VirtualMachine.xpc/Contents/MacOS/com.apple.Virtualization.VirtualMachine\n  410   0.1 /usr/sbin/mDNSResponder\n19103   0.1 /System/Library/Frameworks/AppKit.framework/Versions/C/XPCServices/com.apple.appkit.xpc.openAndSavePanelService.xpc/Contents/MacOS/com.apple.appkit.xpc.openAndSavePanelService\n  336   0.1 /usr/libexec/configd\n  438   0.1 /usr/libexec/symptomsd\n70106   0.1 /Applications/Amphetamine.app/Contents/MacOS/Amphetamine\n  356   0.1 /usr/libexec/diskarbitrationd\n  392   0.1 /usr/libexec/corebrightnessd\n59012   0.1 /System/Library/Frameworks/AppKit.framework/Versions/C/XPCServices/com.apple.appkit.xpc.openAndSavePanelService.xpc/Contents/MacOS/com.apple.appkit.xpc.openAndSavePanelService\n56574   0.1 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56876   0.0 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node\n56875   0.0 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl\n56874   0.0 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl\n56831   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56830   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56829   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56810   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56777   0.0 /System/Library/CoreServices/ReportCrash\n56776   0.0 /System/Library/Frameworks/AuthenticationServices.framework/Versions/A/XPCServices/com.apple.AuthenticationServices.Helper.xpc/Contents/MacOS/com.apple.AuthenticationServices.Helper\n56775   0.0 /System/Library/PrivateFrameworks/SafariFoundation.framework/Versions/A/XPCServices/CredentialProviderExtensionHelper.xpc/Contents/MacOS/CredentialProviderExtensionHelper\n56773   0.0 /System/Cryptexes/App/usr/libexec/PasswordBreachAgent\n56766   0.0 /System/Library/PrivateFrameworks/CoreSuggestions.framework/Versions/A/Support/reversetemplated\n56762   0.0 /System/Library/Frameworks/NetFS.framework/Versions/A/XPCServices/PlugInLibraryService.xpc/Contents/MacOS/PlugInLibraryService\n56761   0.0 /usr/libexec/GamePolicyAgent\n56760   0.0 /System/Library/PrivateFrameworks/Ecosystem.framework/Support/ecosystemd\n56753   0.0 /System/Library/Frameworks/ImageIO.framework/Versions/A/XPCServices/ImageIOXPCService.xpc/Contents/MacOS/ImageIOXPCService\n56752   0.0 /System/Library/PrivateFrameworks/EcosystemAnalytics.framework/Support/ecosystemanalyticsd\n56750   0.0 /System/Library/Frameworks/AudioToolbox.framework/AudioComponentRegistrar\n56749   0.0 /System/Library/Frameworks/MediaAccessibility.framework/Versions/A/XPCServices/com.apple.accessibility.mediaaccessibilityd.xpc/Contents/MacOS/com.apple.accessibility.mediaaccessibilityd\n56710   0.0 /System/Library/Frameworks/VideoToolbox.framework/Versions/A/XPCServices/VTEncoderXPCService.xpc/Contents/MacOS/VTEncoderXPCService\n56673   0.0 /System/Library/PrivateFrameworks/CoreSymbolication.framework/coresymbolicationd\n56668   0.0 /Users/alandiaz/Library/Application Support/Codex/artifact-sessions/runtime-generations/generation-3gXHyr/runtime/bin/node\n56667   0.0 /System/Library/Frameworks/Security.framework/Versions/A/XPCServices/TrustedPeersHelper.xpc/Contents/MacOS/TrustedPeersHelper\n56663   0.0 /System/Library/CoreServices/ReportCrash\n56662   0.0 /System/Library/PrivateFrameworks/XprotectFramework.framework/Versions/A/XPCServices/XprotectService.xpc/Contents/MacOS/XprotectService\n56657   0.0 /System/Library/PrivateFrameworks/SafariPlatformSupport.framework/Versions/A/XPCServices/com.apple.SafariPlatformSupport.Helper.xpc/Contents/MacOS/com.apple.SafariPlatformSupport.Helper\n56624   0.0 /usr/libexec/filevaultd\n56622   0.0 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/MacOS/SkyComputerUseService\n56596   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56595   0.0 /System/Library/PrivateFrameworks/WorkflowKit.framework/XPCServices/ShortcutsViewService.xpc/Contents/MacOS/ShortcutsViewService\n56580   0.0 /System/Library/CoreServices/pbs\n56578   0.0 /System/Library/Frameworks/Metal.framework/Versions/A/XPCServices/MTLCompilerService.xpc/Contents/MacOS/MTLCompilerService\n56577   0.0 /System/Library/Frameworks/Metal.framework/Versions/A/XPCServices/MTLCompilerService.xpc/Contents/MacOS/MTLCompilerService\n56575   0.0 /System/Library/PrivateFrameworks/AXAssetLoader.framework/Support/axassetsd\n56570   0.0 /Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex\n56560   0.0 /System/Library/Frameworks/Contacts.framework/Support/postersyncd\n56553   0.0 /System/Library/CoreServices/iconservicesd\n56551   0.0 /System/Library/CoreServices/iconservicesagent\n56549   0.0 /Applications/ChatGPT.app/Contents/Resources/native/bare-modifier-monitor\n56544   0.0 /System/Cryptexes/App/usr/libexec/SafariLaunchAgent\n56542   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56540   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56539   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56521   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/browser_crashpad_handler\n56518   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/browser_crashpad_handler\n56511   0.0 /usr/libexec/keyboardservicesd\n56510   0.0 /System/Library/PrivateFrameworks/MobileTimer.framework/Executables/mobiletimerd\n56499   0.0 /System/Library/PrivateFrameworks/BackgroundTaskManagement.framework/Resources/backgroundtaskmanagementd\n56493   0.0 /usr/libexec/MTLAssetUpgraderD\n56494 ",
+        "process_cpu_time_seconds": 11.618669,
+        "swap_raw": "total = 7168.00M  used = 5577.56M  free = 1590.44M  (encrypted)",
+        "swap_used_mib": 5577.56,
+        "swapins": 2383549,
+        "swapouts": 4233588,
+        "thermal": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+        "thermal_state": 0,
+        "vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                     4693.\nPages active:                                 574505.\nPages inactive:                               572865.\nPages speculative:                               877.\nPages throttled:                                   0.\nPages wired down:                             180253.\nPages purgeable:                                 648.\n\"Translation faults\":                     2648219290.\nPages copy-on-write:                        99527331.\nPages zero filled:                        4515392410.\nPages reactivated:                         232546314.\nPages purged:                              173461698.\nFile-backed pages:                            566707.\nAnonymous pages:                              581540.\nPages stored in compressor:                  1380802.\nPages occupied by compressor:                 199581.\nDecompressions:                            388517082.\nCompressions:                              461673832.\nPageins:                                   126465167.\nPageouts:                                    1592719.\nSwapins:                                     2383549.\nSwapouts:                                    4233588."
+      },
+      "before": {
+        "observed_at": 1793090476.598544,
+        "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; finishing charge; 0:32 remaining present: true",
+        "power_settings": "Battery Power:\n Sleep On Power Button 1\n lowpowermode         0\n standby              1\n ttyskeepawake        1\n hibernatemode        0\n powernap             1\n hibernatefile        /var/vm/sleepimage\n displaysleep         60\n womp                 1\n networkoversleep     0\n sleep                1\n lessbright           1\n tcpkeepalive         1\n disksleep            10\nAC Power:\n Sleep On Power Button 1\n lowpowermode         0\n standby              1\n ttyskeepawake        1\n hibernatemode        0\n powernap             1\n hibernatefile        /var/vm/sleepimage\n displaysleep         10\n womp                 1\n networkoversleep     0\n sleep                1\n tcpkeepalive         1\n disksleep            10",
+        "process_cpu_snapshot": "PID  %CPU COMM\n57780  17.8 /Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python\n  405   3.1 /usr/sbin/coreaudiod\n98507   1.9 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking\n  390   1.5 /usr/sbin/notifyd\n56795   1.3 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n  397   1.0 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer\n  530   1.0 /System/Library/DriverExtensions/com.apple.DriverKit-AppleBCMWLAN.dext/com.apple.DriverKit-AppleBCMWLAN\n  432   0.8 /usr/libexec/airportd\n98508   0.8 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU\n56574   0.6 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n  324   0.6 /usr/libexec/logd\n56496   0.5 /Applications/ChatGPT.app/Contents/MacOS/ChatGPT\n  410   0.5 /usr/sbin/mDNSResponder\n70106   0.5 /Applications/Amphetamine.app/Contents/MacOS/Amphetamine\n  389   0.4 /usr/sbin/bluetoothd\n  399   0.4 /usr/sbin/cfprefsd\n    1   0.4 /sbin/launchd\n  336   0.4 /usr/libexec/configd\n98497   0.3 /System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/MacOS/Safari\n48346   0.3 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n  338   0.2 /System/Library/CoreServices/powerd.bundle/powerd\n  392   0.1 /usr/libexec/corebrightnessd\n  680   0.1 /usr/libexec/sharingd\n  549   0.1 /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds_stores\n30308   0.1 /opt/homebrew/Cellar/python@3.10/3.10.18/Frameworks/Python.framework/Versions/3.10/Resources/Python.app/Contents/MacOS/Python\n  438   0.1 /usr/libexec/symptomsd\n  567   0.1 /usr/libexec/searchpartyd\n  372   0.1 /usr/libexec/locationd\n56877   0.0 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n56876   0.0 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node\n56875   0.0 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl\n56874   0.0 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl\n56831   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56830   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56829   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56810   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56777   0.0 /System/Library/CoreServices/ReportCrash\n56776   0.0 /System/Library/Frameworks/AuthenticationServices.framework/Versions/A/XPCServices/com.apple.AuthenticationServices.Helper.xpc/Contents/MacOS/com.apple.AuthenticationServices.Helper\n56775   0.0 /System/Library/PrivateFrameworks/SafariFoundation.framework/Versions/A/XPCServices/CredentialProviderExtensionHelper.xpc/Contents/MacOS/CredentialProviderExtensionHelper\n56773   0.0 /System/Cryptexes/App/usr/libexec/PasswordBreachAgent\n56766   0.0 /System/Library/PrivateFrameworks/CoreSuggestions.framework/Versions/A/Support/reversetemplated\n56762   0.0 /System/Library/Frameworks/NetFS.framework/Versions/A/XPCServices/PlugInLibraryService.xpc/Contents/MacOS/PlugInLibraryService\n56761   0.0 /usr/libexec/GamePolicyAgent\n56760   0.0 /System/Library/PrivateFrameworks/Ecosystem.framework/Support/ecosystemd\n56753   0.0 /System/Library/Frameworks/ImageIO.framework/Versions/A/XPCServices/ImageIOXPCService.xpc/Contents/MacOS/ImageIOXPCService\n56752   0.0 /System/Library/PrivateFrameworks/EcosystemAnalytics.framework/Support/ecosystemanalyticsd\n56750   0.0 /System/Library/Frameworks/AudioToolbox.framework/AudioComponentRegistrar\n56749   0.0 /System/Library/Frameworks/MediaAccessibility.framework/Versions/A/XPCServices/com.apple.accessibility.mediaaccessibilityd.xpc/Contents/MacOS/com.apple.accessibility.mediaaccessibilityd\n56710   0.0 /System/Library/Frameworks/VideoToolbox.framework/Versions/A/XPCServices/VTEncoderXPCService.xpc/Contents/MacOS/VTEncoderXPCService\n56673   0.0 /System/Library/PrivateFrameworks/CoreSymbolication.framework/coresymbolicationd\n56668   0.0 /Users/alandiaz/Library/Application Support/Codex/artifact-sessions/runtime-generations/generation-3gXHyr/runtime/bin/node\n56667   0.0 /System/Library/Frameworks/Security.framework/Versions/A/XPCServices/TrustedPeersHelper.xpc/Contents/MacOS/TrustedPeersHelper\n56663   0.0 /System/Library/CoreServices/ReportCrash\n56662   0.0 /System/Library/PrivateFrameworks/XprotectFramework.framework/Versions/A/XPCServices/XprotectService.xpc/Contents/MacOS/XprotectService\n56657   0.0 /System/Library/PrivateFrameworks/SafariPlatformSupport.framework/Versions/A/XPCServices/com.apple.SafariPlatformSupport.Helper.xpc/Contents/MacOS/com.apple.SafariPlatformSupport.Helper\n56624   0.0 /usr/libexec/filevaultd\n56622   0.0 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/MacOS/SkyComputerUseService\n56596   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56595   0.0 /System/Library/PrivateFrameworks/WorkflowKit.framework/XPCServices/ShortcutsViewService.xpc/Contents/MacOS/ShortcutsViewService\n56580   0.0 /System/Library/CoreServices/pbs\n56578   0.0 /System/Library/Frameworks/Metal.framework/Versions/A/XPCServices/MTLCompilerService.xpc/Contents/MacOS/MTLCompilerService\n56577   0.0 /System/Library/Frameworks/Metal.framework/Versions/A/XPCServices/MTLCompilerService.xpc/Contents/MacOS/MTLCompilerService\n56575   0.0 /System/Library/PrivateFrameworks/AXAssetLoader.framework/Support/axassetsd\n56570   0.0 /Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex\n56560   0.0 /System/Library/Frameworks/Contacts.framework/Support/postersyncd\n56553   0.0 /System/Library/CoreServices/iconservicesd\n56551   0.0 /System/Library/CoreServices/iconservicesagent\n56549   0.0 /Applications/ChatGPT.app/Contents/Resources/native/bare-modifier-monitor\n56544   0.0 /System/Cryptexes/App/usr/libexec/SafariLaunchAgent\n56542   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56540   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56539   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56521   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/browser_crashpad_handler\n56518   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/browser_crashpad_handler\n56511   0.0 /usr/libexec/keyboardservicesd\n56510   0.0 /System/Library/PrivateFrameworks/MobileTimer.framework/Executables/mobiletimerd\n56499   0.0 /System/Library/PrivateFrameworks/BackgroundTaskManagement.framework/Resources/backgroundtaskmanagementd\n56493   0.0 /usr/libexec/MTLAssetUpgraderD\n56494   0.0 /System/Library/Frameworks/MediaExtension.framework/Versions/A/Helpers/MENotificationAgent\n56492   0.0 /System/Library/PrivateFrameworks/VoiceSho",
+        "process_cpu_time_seconds": 11.568771,
+        "swap_raw": "total = 7168.00M  used = 5577.56M  free = 1590.44M  (encrypted)",
+        "swap_used_mib": 5577.56,
+        "swapins": 2383549,
+        "swapouts": 4233588,
+        "thermal": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+        "thermal_state": 0,
+        "vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                     5241.\nPages active:                                 574485.\nPages inactive:                               572867.\nPages speculative:                               877.\nPages throttled:                                   0.\nPages wired down:                             180253.\nPages purgeable:                                 648.\n\"Translation faults\":                     2648214252.\nPages copy-on-write:                        99526306.\nPages zero filled:                        4515391262.\nPages reactivated:                         232546314.\nPages purged:                              173461698.\nFile-backed pages:                            566707.\nAnonymous pages:                              581522.\nPages stored in compressor:                  1380802.\nPages occupied by compressor:                 199581.\nDecompressions:                            388517082.\nCompressions:                              461673832.\nPageins:                                   126465161.\nPageouts:                                    1592719.\nSwapins:                                     2383549.\nSwapouts:                                    4233588."
+      },
+      "calls": 256,
+      "elapsed_ms": 226.872875,
+      "environment_issues": [],
+      "group": "aa",
+      "layer": 0,
+      "mode": "native_repeat",
+      "pair": 2
+    },
+    {
+      "after": {
+        "observed_at": 1793090477.19893,
+        "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; finishing charge; 0:32 remaining present: true",
+        "power_settings": "Battery Power:\n Sleep On Power Button 1\n lowpowermode         0\n standby              1\n ttyskeepawake        1\n hibernatemode        0\n powernap             1\n hibernatefile        /var/vm/sleepimage\n displaysleep         60\n womp                 1\n networkoversleep     0\n sleep                1\n lessbright           1\n tcpkeepalive         1\n disksleep            10\nAC Power:\n Sleep On Power Button 1\n lowpowermode         0\n standby              1\n ttyskeepawake        1\n hibernatemode        0\n powernap             1\n hibernatefile        /var/vm/sleepimage\n displaysleep         10\n womp                 1\n networkoversleep     0\n sleep                1\n tcpkeepalive         1\n disksleep            10",
+        "process_cpu_snapshot": "PID  %CPU COMM\n57780  19.3 /Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python\n  405   3.2 /usr/sbin/coreaudiod\n19633   2.5 /System/Library/Frameworks/Virtualization.framework/Versions/A/XPCServices/com.apple.Virtualization.VirtualMachine.xpc/Contents/MacOS/com.apple.Virtualization.VirtualMachine\n  389   1.0 /usr/sbin/bluetoothd\n98508   0.8 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU\n  390   0.8 /usr/sbin/notifyd\n  530   0.8 /System/Library/DriverExtensions/com.apple.DriverKit-AppleBCMWLAN.dext/com.apple.DriverKit-AppleBCMWLAN\n98507   0.5 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking\n  613   0.5 /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder\n  432   0.5 /usr/libexec/airportd\n  567   0.3 /usr/libexec/searchpartyd\n  680   0.3 /usr/libexec/sharingd\n48346   0.3 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n    1   0.2 /sbin/launchd\n19627   0.2 /opt/homebrew/bin/limactl\n  399   0.2 /usr/sbin/cfprefsd\n  397   0.2 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer\n98497   0.2 /System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/MacOS/Safari\n  658   0.2 /usr/libexec/rapportd\n  338   0.1 /System/Library/CoreServices/powerd.bundle/powerd\n  372   0.1 /usr/libexec/locationd\n  336   0.1 /usr/libexec/configd\n  682   0.1 /usr/libexec/nearbyd\n56795   0.1 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n56496   0.1 /Applications/ChatGPT.app/Contents/MacOS/ChatGPT\n  324   0.1 /usr/libexec/logd\n56896   0.0 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl\n56873   0.0 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node\n56877   0.0 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient\n56876   0.0 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node\n56875   0.0 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl\n56874   0.0 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl\n56831   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56830   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56829   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56810   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56777   0.0 /System/Library/CoreServices/ReportCrash\n56776   0.0 /System/Library/Frameworks/AuthenticationServices.framework/Versions/A/XPCServices/com.apple.AuthenticationServices.Helper.xpc/Contents/MacOS/com.apple.AuthenticationServices.Helper\n56775   0.0 /System/Library/PrivateFrameworks/SafariFoundation.framework/Versions/A/XPCServices/CredentialProviderExtensionHelper.xpc/Contents/MacOS/CredentialProviderExtensionHelper\n56773   0.0 /System/Cryptexes/App/usr/libexec/PasswordBreachAgent\n56766   0.0 /System/Library/PrivateFrameworks/CoreSuggestions.framework/Versions/A/Support/reversetemplated\n56762   0.0 /System/Library/Frameworks/NetFS.framework/Versions/A/XPCServices/PlugInLibraryService.xpc/Contents/MacOS/PlugInLibraryService\n56761   0.0 /usr/libexec/GamePolicyAgent\n56760   0.0 /System/Library/PrivateFrameworks/Ecosystem.framework/Support/ecosystemd\n56753   0.0 /System/Library/Frameworks/ImageIO.framework/Versions/A/XPCServices/ImageIOXPCService.xpc/Contents/MacOS/ImageIOXPCService\n56752   0.0 /System/Library/PrivateFrameworks/EcosystemAnalytics.framework/Support/ecosystemanalyticsd\n56750   0.0 /System/Library/Frameworks/AudioToolbox.framework/AudioComponentRegistrar\n56749   0.0 /System/Library/Frameworks/MediaAccessibility.framework/Versions/A/XPCServices/com.apple.accessibility.mediaaccessibilityd.xpc/Contents/MacOS/com.apple.accessibility.mediaaccessibilityd\n56710   0.0 /System/Library/Frameworks/VideoToolbox.framework/Versions/A/XPCServices/VTEncoderXPCService.xpc/Contents/MacOS/VTEncoderXPCService\n56673   0.0 /System/Library/PrivateFrameworks/CoreSymbolication.framework/coresymbolicationd\n56668   0.0 /Users/alandiaz/Library/Application Support/Codex/artifact-sessions/runtime-generations/generation-3gXHyr/runtime/bin/node\n56667   0.0 /System/Library/Frameworks/Security.framework/Versions/A/XPCServices/TrustedPeersHelper.xpc/Contents/MacOS/TrustedPeersHelper\n56663   0.0 /System/Library/CoreServices/ReportCrash\n56662   0.0 /System/Library/PrivateFrameworks/XprotectFramework.framework/Versions/A/XPCServices/XprotectService.xpc/Contents/MacOS/XprotectService\n56657   0.0 /System/Library/PrivateFrameworks/SafariPlatformSupport.framework/Versions/A/XPCServices/com.apple.SafariPlatformSupport.Helper.xpc/Contents/MacOS/com.apple.SafariPlatformSupport.Helper\n56624   0.0 /usr/libexec/filevaultd\n56622   0.0 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/MacOS/SkyComputerUseService\n56596   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56595   0.0 /System/Library/PrivateFrameworks/WorkflowKit.framework/XPCServices/ShortcutsViewService.xpc/Contents/MacOS/ShortcutsViewService\n56580   0.0 /System/Library/CoreServices/pbs\n56578   0.0 /System/Library/Frameworks/Metal.framework/Versions/A/XPCServices/MTLCompilerService.xpc/Contents/MacOS/MTLCompilerService\n56577   0.0 /System/Library/Frameworks/Metal.framework/Versions/A/XPCServices/MTLCompilerService.xpc/Contents/MacOS/MTLCompilerService\n56575   0.0 /System/Library/PrivateFrameworks/AXAssetLoader.framework/Support/axassetsd\n56574   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56570   0.0 /Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex\n56560   0.0 /System/Library/Frameworks/Contacts.framework/Support/postersyncd\n56553   0.0 /System/Library/CoreServices/iconservicesd\n56551   0.0 /System/Library/CoreServices/iconservicesagent\n56549   0.0 /Applications/ChatGPT.app/Contents/Resources/native/bare-modifier-monitor\n56544   0.0 /System/Cryptexes/App/usr/libexec/SafariLaunchAgent\n56542   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56540   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56539   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56521   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/browser_crashpad_handler\n56518   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/browser_crashpad_handler\n56511   0.0 /usr/libexec/keyboardservicesd\n56510   0.0 /System/Library/PrivateFrameworks/MobileTimer.framework/Executables/mobiletimerd\n56499   0.0 /System/Library/PrivateFrameworks/BackgroundTaskManagement.framework/Resources/backgroundtaskmanagementd\n56493   0.0 /usr/libexec/MTLAssetUpgraderD\n56494   0.0 /System/Library/Frameworks/MediaExtension.framework/Versions/A/Helpers/MENoti",
+        "process_cpu_time_seconds": 11.687829,
+        "swap_raw": "total = 7168.00M  used = 5577.56M  free = 1590.44M  (encrypted)",
+        "swap_used_mib": 5577.56,
+        "swapins": 2383549,
+        "swapouts": 4233588,
+        "thermal": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+        "thermal_state": 0,
+        "vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                     5218.\nPages active:                                 574518.\nPages inactive:                               572858.\nPages speculative:                               879.\nPages throttled:                                   0.\nPages wired down:                             180254.\nPages purgeable:                                 648.\n\"Translation faults\":                     2648229148.\nPages copy-on-write:                        99529353.\nPages zero filled:                        4515394561.\nPages reactivated:                         232546314.\nPages purged:                              173461698.\nFile-backed pages:                            566709.\nAnonymous pages:                              581546.\nPages stored in compressor:                  1380802.\nPages occupied by compressor:                 199581.\nDecompressions:                            388517082.\nCompressions:                              461673832.\nPageins:                                   126465179.\nPageouts:                                    1592719.\nSwapins:                                     2383549.\nSwapouts:                                    4233588."
+      },
+      "before": {
+        "observed_at": 1793090476.92668,
+        "power": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=22151267)\t100%; finishing charge; 0:32 remaining present: true",
+        "power_settings": "Battery Power:\n Sleep On Power Button 1\n lowpowermode         0\n standby              1\n ttyskeepawake        1\n hibernatemode        0\n powernap             1\n hibernatefile        /var/vm/sleepimage\n displaysleep         60\n womp                 1\n networkoversleep     0\n sleep                1\n lessbright           1\n tcpkeepalive         1\n disksleep            10\nAC Power:\n Sleep On Power Button 1\n lowpowermode         0\n standby              1\n ttyskeepawake        1\n hibernatemode        0\n powernap             1\n hibernatefile        /var/vm/sleepimage\n displaysleep         10\n womp                 1\n networkoversleep     0\n sleep                1\n tcpkeepalive         1\n disksleep            10",
+        "process_cpu_snapshot": "PID  %CPU COMM\n57780  19.9 /Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python\n  405   3.3 /usr/sbin/coreaudiod\n98507   2.0 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.Networking.xpc/Contents/MacOS/com.apple.WebKit.Networking\n  613   1.4 /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder\n  530   1.1 /System/Library/DriverExtensions/com.apple.DriverKit-AppleBCMWLAN.dext/com.apple.DriverKit-AppleBCMWLAN\n98508   0.9 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.GPU.xpc/Contents/MacOS/com.apple.WebKit.GPU\n56795   0.8 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n  432   0.7 /usr/libexec/airportd\n  397   0.6 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer\n  390   0.6 /usr/sbin/notifyd\n  389   0.4 /usr/sbin/bluetoothd\n    1   0.3 /sbin/launchd\n  680   0.3 /usr/libexec/sharingd\n48346   0.3 /System/Library/Frameworks/WebKit.framework/Versions/A/XPCServices/com.apple.WebKit.WebContent.xpc/Contents/MacOS/com.apple.WebKit.WebContent\n56496   0.3 /Applications/ChatGPT.app/Contents/MacOS/ChatGPT\n  324   0.2 /usr/libexec/logd\n98497   0.2 /System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app/Contents/MacOS/Safari\n  399   0.1 /usr/sbin/cfprefsd\n  658   0.1 /usr/libexec/rapportd\n19633   0.1 /System/Library/Frameworks/Virtualization.framework/Versions/A/XPCServices/com.apple.Virtualization.VirtualMachine.xpc/Contents/MacOS/com.apple.Virtualization.VirtualMachine\n  410   0.1 /usr/sbin/mDNSResponder\n19103   0.1 /System/Library/Frameworks/AppKit.framework/Versions/C/XPCServices/com.apple.appkit.xpc.openAndSavePanelService.xpc/Contents/MacOS/com.apple.appkit.xpc.openAndSavePanelService\n  336   0.1 /usr/libexec/configd\n  438   0.1 /usr/libexec/symptomsd\n70106   0.1 /Applications/Amphetamine.app/Contents/MacOS/Amphetamine\n  356   0.1 /usr/libexec/diskarbitrationd\n  392   0.1 /usr/libexec/corebrightnessd\n59012   0.1 /System/Library/Frameworks/AppKit.framework/Versions/C/XPCServices/com.apple.appkit.xpc.openAndSavePanelService.xpc/Contents/MacOS/com.apple.appkit.xpc.openAndSavePanelService\n56574   0.1 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56876   0.0 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node\n56875   0.0 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl\n56874   0.0 /Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node_repl\n56831   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56830   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56829   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56810   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Renderer).app/Contents/MacOS/Codex (Renderer)\n56777   0.0 /System/Library/CoreServices/ReportCrash\n56776   0.0 /System/Library/Frameworks/AuthenticationServices.framework/Versions/A/XPCServices/com.apple.AuthenticationServices.Helper.xpc/Contents/MacOS/com.apple.AuthenticationServices.Helper\n56775   0.0 /System/Library/PrivateFrameworks/SafariFoundation.framework/Versions/A/XPCServices/CredentialProviderExtensionHelper.xpc/Contents/MacOS/CredentialProviderExtensionHelper\n56773   0.0 /System/Cryptexes/App/usr/libexec/PasswordBreachAgent\n56766   0.0 /System/Library/PrivateFrameworks/CoreSuggestions.framework/Versions/A/Support/reversetemplated\n56762   0.0 /System/Library/Frameworks/NetFS.framework/Versions/A/XPCServices/PlugInLibraryService.xpc/Contents/MacOS/PlugInLibraryService\n56761   0.0 /usr/libexec/GamePolicyAgent\n56760   0.0 /System/Library/PrivateFrameworks/Ecosystem.framework/Support/ecosystemd\n56753   0.0 /System/Library/Frameworks/ImageIO.framework/Versions/A/XPCServices/ImageIOXPCService.xpc/Contents/MacOS/ImageIOXPCService\n56752   0.0 /System/Library/PrivateFrameworks/EcosystemAnalytics.framework/Support/ecosystemanalyticsd\n56750   0.0 /System/Library/Frameworks/AudioToolbox.framework/AudioComponentRegistrar\n56749   0.0 /System/Library/Frameworks/MediaAccessibility.framework/Versions/A/XPCServices/com.apple.accessibility.mediaaccessibilityd.xpc/Contents/MacOS/com.apple.accessibility.mediaaccessibilityd\n56710   0.0 /System/Library/Frameworks/VideoToolbox.framework/Versions/A/XPCServices/VTEncoderXPCService.xpc/Contents/MacOS/VTEncoderXPCService\n56673   0.0 /System/Library/PrivateFrameworks/CoreSymbolication.framework/coresymbolicationd\n56668   0.0 /Users/alandiaz/Library/Application Support/Codex/artifact-sessions/runtime-generations/generation-3gXHyr/runtime/bin/node\n56667   0.0 /System/Library/Frameworks/Security.framework/Versions/A/XPCServices/TrustedPeersHelper.xpc/Contents/MacOS/TrustedPeersHelper\n56663   0.0 /System/Library/CoreServices/ReportCrash\n56662   0.0 /System/Library/PrivateFrameworks/XprotectFramework.framework/Versions/A/XPCServices/XprotectService.xpc/Contents/MacOS/XprotectService\n56657   0.0 /System/Library/PrivateFrameworks/SafariPlatformSupport.framework/Versions/A/XPCServices/com.apple.SafariPlatformSupport.Helper.xpc/Contents/MacOS/com.apple.SafariPlatformSupport.Helper\n56624   0.0 /usr/libexec/filevaultd\n56622   0.0 /Users/alandiaz/.codex/computer-use/Codex Computer Use.app/Contents/MacOS/SkyComputerUseService\n56596   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56595   0.0 /System/Library/PrivateFrameworks/WorkflowKit.framework/XPCServices/ShortcutsViewService.xpc/Contents/MacOS/ShortcutsViewService\n56580   0.0 /System/Library/CoreServices/pbs\n56578   0.0 /System/Library/Frameworks/Metal.framework/Versions/A/XPCServices/MTLCompilerService.xpc/Contents/MacOS/MTLCompilerService\n56577   0.0 /System/Library/Frameworks/Metal.framework/Versions/A/XPCServices/MTLCompilerService.xpc/Contents/MacOS/MTLCompilerService\n56575   0.0 /System/Library/PrivateFrameworks/AXAssetLoader.framework/Support/axassetsd\n56570   0.0 /Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS/codex\n56560   0.0 /System/Library/Frameworks/Contacts.framework/Support/postersyncd\n56553   0.0 /System/Library/CoreServices/iconservicesd\n56551   0.0 /System/Library/CoreServices/iconservicesagent\n56549   0.0 /Applications/ChatGPT.app/Contents/Resources/native/bare-modifier-monitor\n56544   0.0 /System/Cryptexes/App/usr/libexec/SafariLaunchAgent\n56542   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56540   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56539   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/Codex (Service).app/Contents/MacOS/Codex (Service)\n56521   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/browser_crashpad_handler\n56518   0.0 /Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/156.0.8078.48/Helpers/browser_crashpad_handler\n56511   0.0 /usr/libexec/keyboardservicesd\n56510   0.0 /System/Library/PrivateFrameworks/MobileTimer.framework/Executables/mobiletimerd\n56499   0.0 /System/Library/PrivateFrameworks/BackgroundTaskManagement.framework/Resources/backgroundtaskmanagementd\n56493   0.0 /usr/libexec/MTLAssetUpgraderD\n56494 ",
+        "process_cpu_time_seconds": 11.637509,
+        "swap_raw": "total = 7168.00M  used = 5577.56M  free = 1590.44M  (encrypted)",
+        "swap_used_mib": 5577.56,
+        "swapins": 2383549,
+        "swapouts": 4233588,
+        "thermal": "Note: No thermal warning level has been recorded\nNote: No performance warning level has been recorded\nNote: No CPU power status has been recorded",
+        "thermal_state": 0,
+        "vm_stat": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                     5082.\nPages active:                                 574513.\nPages inactive:                               572863.\nPages speculative:                               878.\nPages throttled:                                   0.\nPages wired down:                             180253.\nPages purgeable:                                 648.\n\"Translation faults\":                     2648224214.\nPages copy-on-write:                        99528351.\nPages zero filled:                        4515393477.\nPages reactivated:                         232546314.\nPages purged:                              173461698.\nFile-backed pages:                            566708.\nAnonymous pages:                              581546.\nPages stored in compressor:                  1380802.\nPages occupied by compressor:                 199581.\nDecompressions:                            388517082.\nCompressions:                              461673832.\nPageins:                                   126465173.\nPageouts:                                    1592719.\nSwapins:                                     2383549.\nSwapouts:                                    4233588."
+      },
+      "calls": 256,
+      "elapsed_ms": 221.137916,
+      "environment_issues": [],
+      "group": "aa",
+      "layer": 0,
+      "mode": "native",
+      "pair": 2
+    }
+  ],
+  "schema": 1,
+  "scope": "isolated native expert operator only; not full-model bottleneck shares",
+  "screens": {
+    "0": {
+      "environment_valid": true,
+      "full_range": 0.03967854426077872,
+      "passed": false,
+      "ratios": [
+        0.9611768338416066,
+        0.9747217070352725
+      ],
+      "relative_mad": 0.015223405634441488
+    }
+  },
+  "sources_before": {
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/AGENTS.md": "c5fdecf9aca47fcdff4ac684cc7a295abf347d27b6472162dbb9746a1f8f09d1",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/baseline_control.py": "5e875661a98c49773e10d02584e4a4f1dd080334bfe2c2cee76eeae662a0ea73",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/baseline_report.py": "e1fabd273ef4691766ecbc5f28a3ddd5a98a99be80b077373a13764411e33d4c",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/baseline_validation.py": "c02579ec4aefa5f88fe3bf3ad36dcea212c014c3d2f44fa54394bfa89d1af0f8",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/benchmark.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_execution.py": "2021d9bbb7024960957b2e3b7618d8e2e3b3c9e7d689d8403a1fb0d7ea88bb96",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_protocol.py": "7d53c380991ded462cde7aa22c4fb17b29ed0a3b3d23bbfc812a7b24f5441d2e",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_worker.py": "79ff191bcacca2189e5b47b99398d06f1a353b63d64fa888c81306b76fdf1755",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/checkpoint_verification.py": "ea768edf0da79a9aa761fb31bb13b92496ecb9c291bcfe1c6cfd1ce48c35017f",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/correctness.py": "2950193dcac879ca3859050df377d24b03fc4b92361f977f40f841d21f159914",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/correctness_cases.py": "1f7fafcc624aec310c4958ff927d1486da43ebf74a74b4cefdb76fa59a666825",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/correctness_suite.py": "e859715a5f9911b03ffeff8fac3deaa294d7875453c03e2349ec4e67b154eb05",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/environment.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/native_baseline.py": "af7a8f890fd0242692b831446c5fb8a1d1b70bbf5c15cc6519dafb7931869844",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/pass_through.py": "8e3e48ab7be379a48f7134c4a6e3454d6af525f33d9090d4b8794aa858ee252a",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/schemas.py": "182ad6a65f1d4f094032499a036cda949eefe7d273f859311bda317097c2e72c",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/verdict.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/kernelmaxxing.yaml": "d3d421fd53281bb5078f216f7756a3a8641e5d6a8942933f71af8c41bb28b98d",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/candidate_manager.py": "ee52e306ae9d22f64ca9a2e10832826d5c30e0838120ee1a60709852f9760068",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/experiment_budget.py": "4dc0bf94b091b1d2cb3653487cc90f9a81396eae6f01bd427068067b4abe9a23",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/journal.py": "899f5077d5cdf1cb1b7c19248d289950df0843c8c31b0f8f8277ff0468b2563c",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/main.py": "ce9c64bbc5f207a3723820613bf0415ebb135b0454453f8a3917e62f88298b6a",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/run.py": "5073a41c4edab30aa62922c2f6eca70cf9fd8978773495b9f0b05a3b651fbcb0",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/session.py": "68bfcce40a650d7fcbd11128ff6d826019f3fb6c9decee0f16dfbbd8e047f64a",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/orchestrator/state_machine.py": "829e24546ba96eb8de2ed2b8f85c2398d8c2a239781171c40798075d29325acd",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/target/adapter.py": "290f8c1bab4ca5af3429b06727834a9609ec482ffc56cffc7a791304e513d3a7",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/target/model_loader.py": "88401ad24d877a9618f5f7566a617777b81511d2c1b34115ec2ba46b9c5e93de",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/target/reference_moe.py": "7d3f5f6aecf70402027ad0c42a3727264df7de9ef4577c4627d05d945a71d9bd",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/target/workload.py": "62ce8d2c58c0106786523652b7396ff1b8dbad1296b416c8583ee732f5d789ab",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/probe-001/probe.py": "a91bd0fca06a7561dd5af789b51203a246aeb5eeb6f3f3837b835835044f3b90",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/probe-001/supervise.py": "d22e37810480782153152bbc0f04ba4d8e9b79124c2fcd5a227cfe28f4f58567"
+  },
+  "sources_unchanged": true,
+  "started_unix": 1793090080.157821,
+  "status": "stopped_aa_screen",
+  "summaries": {}
+}

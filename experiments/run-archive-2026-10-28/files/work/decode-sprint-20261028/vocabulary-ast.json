@@ -1,0 +1,29 @@
+{
+  "all_ast_passed": true,
+  "checked_at_unix": 1793210009.243805,
+  "formatted_files": "2 files reformatted",
+  "python_files": [
+    {
+      "ast": "passed",
+      "path": "codec.py",
+      "sha256": "bb8079062c5f9aee76b5e964ef4ebc30bf151fc6d92f0563d4cc5846f5811b5e"
+    },
+    {
+      "ast": "passed",
+      "path": "implementation.py",
+      "sha256": "18baf2ffe4815c753917c81ef1aefa8d0c0ddb81f0f6d90179bb7710567dc16b"
+    },
+    {
+      "ast": "passed",
+      "path": "reader.py",
+      "sha256": "a0f31e2b8e18f8fd05146c3e8cea09609b3f0162195035f8b2cdfb0fb2d18214"
+    },
+    {
+      "ast": "passed",
+      "path": "wrapper.py",
+      "sha256": "aae74e2f43d62be8197af65ecd1cd5da208409b3cba1136cee062ab5ffeb1beb"
+    }
+  ],
+  "ruff_version": "ruff 0.17.3",
+  "vendored_reader_formatted": false
+}

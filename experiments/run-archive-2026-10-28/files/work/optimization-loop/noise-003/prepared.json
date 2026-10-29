@@ -1,0 +1,15 @@
+{
+  "source_sha256": {
+    "probe.py": "6d032bfec09f6f110220dd640f867765bb99bdb39addc6afafa8525eeae430c9",
+    "supervise.py": "e40e3b1539e8576229d56f55c416e5f0d772555c3cd46204eea49a7169c6e6eb"
+  },
+  "purpose": "Noise attribution and sampling-duration study, not another candidate or unchanged retry",
+  "predeclared_call_budgets": [
+    256,
+    1024,
+    4096
+  ],
+  "pairs_per_budget": 6,
+  "retain_all_budgets_and_statistical_failures": true,
+  "method": "Balanced ABBA microblocks, process/thread CPU versus wall intervals, shared environment observations. No favorable-sample filtering."
+}

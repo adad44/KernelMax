@@ -1,0 +1,13 @@
+{
+  "ast_passed": true,
+  "candidate_id_allocated": false,
+  "format_changed": true,
+  "prepared_or_executed": false,
+  "recorded_at_unix": 1793211144.605278,
+  "ruff_format_target": "prepare_combined.py only",
+  "ruff_version": "ruff 0.17.3",
+  "sha256": {
+    "combined_implementation.py.in": "ba6643813d11e5afa3d617f877c2f814e10d5396faa9de1e77f71c1a6190537e",
+    "prepare_combined.py": "a1ba253f6969272dadffc85e299a1ce58f0ac654f15f595b12ffcefa40b58ad8"
+  }
+}

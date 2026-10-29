@@ -1,0 +1,9 @@
+{
+  "observed_calls_per_sample": {
+    "baseline": 32,
+    "candidate": 32
+  },
+  "claimed_calls_per_sample": 256,
+  "mismatch_confirmed": true,
+  "candidate_code_executed": false
+}

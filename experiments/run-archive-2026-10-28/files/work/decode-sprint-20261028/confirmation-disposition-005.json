@@ -1,0 +1,37 @@
+{
+  "C1_exploratory_screen": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-001-screen-cand_5785998944e5/state.json",
+  "C1_screen_median_ratio": 1.0839572187665303,
+  "C1_selected_id": "cand_5785998944e5",
+  "C1_source_snapshot_sha256": "b6dd528b50b4d3d89db496fb021bbcd21d2043f701c36196e39ea08457283918",
+  "C1_swap_affected_rows": 3,
+  "C3_confirmation_raw_state": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/command-004-confirm-cand_3f4c02fcfc71/state.json",
+  "C3_failure": {
+    "2048_passed": false,
+    "4096_attempted": false,
+    "512_passed": true,
+    "attempted_contexts": [
+      512,
+      2048
+    ],
+    "cache_within_tolerance": false,
+    "guards": {
+      "checkpoint_and_snapshot_unchanged": true,
+      "original_methods_restored": true,
+      "protected_unchanged": true
+    },
+    "logit_violations": "200071/25739264",
+    "max_logit_abs_error": 0.75,
+    "route_set_differences": 14,
+    "timed_requests": 0,
+    "token_differences": 0
+  },
+  "candidate_cap": 3,
+  "created_at_unix": 1793211837.7289011,
+  "fourth_candidate_allocated": false,
+  "primary_decision": "park C3 combined/C2 fusion for confirmation after C3 failed the 2048-output numerical check; test C1 vocabulary-only in a fresh strict confirmation.",
+  "unique_candidate_ids": [
+    "cand_5785998944e5",
+    "cand_4a02c3189b7d",
+    "cand_3f4c02fcfc71"
+  ]
+}

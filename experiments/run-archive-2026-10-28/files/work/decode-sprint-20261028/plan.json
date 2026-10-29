@@ -1,0 +1,35 @@
+{
+  "objective": "Demonstrate repeatable5percent complete-model decode improvement; aim10–20percent with fusion. At most3substantive snapshots; no new broad profiling.",
+  "candidate_cap": 3,
+  "initial_candidates": ["cand_5785998944e5", "cand_4a02c3189b7d"],
+  "screen": {
+    "prompt_lengths": [512],
+    "outputs": 128,
+    "short_correctness_outputs": 8,
+    "warmups_per_lane": 1,
+    "paired_trials": 3,
+    "order": "alternating_ab_ba",
+    "before_each_request_idle_seconds": 20,
+    "swap_policy": "retain_and_flag",
+    "instrumented_phase_memory_requests_per_lane": 1,
+    "unqualified_speedup_claims_allowed": false,
+    "promotion_signal_ratio": 1.03
+  },
+  "confirmation": {
+    "prompt_lengths": [512, 2048, 4096],
+    "outputs": 128,
+    "full_length_correctness_before_timing": true,
+    "warmups_per_lane": 5,
+    "aa_pairs": 20,
+    "candidate_pairs": 20,
+    "repeat_independent_candidate_block_at_512": true,
+    "swap_policy": "reject_swap_outs_or_growth",
+    "before_each_request_idle_seconds": 27,
+    "threshold": "Each context pairedmedianratio>=1.05 with bootstrap95percent lowerbound>1.05 and above fresh A/A noise;512independentsecondblock same requirement. Otherwise5percent objective remains unproven.",
+    "no_unchanged_statistical_rerolls": true
+  },
+  "numerical_policy": "Original BF16 pointwise tolerances0.02+0.02abs(reference); native checkpoint/MXFP4/BF16cache preserved. Teacher-forced logits compared on every retained step; record full route/token/cache differences. No extra exact-equality exploratory gate. Claims require full-length numerical comparison, finite/shape/dtype/cache checks and explicit behavior-difference disclosure. Acceptance and held-out task-quality gates remain disabled/planned.",
+  "model_loading": "Load checkpoint once per resident worker on CPU stream outside timing; prepare frozen adapters outside timing, restore original methods between lanes. Keep native weights resident for paired comparisons; report sidecar and peak overhead explicitly.",
+  "scheduling": "Luna high runs prepared scripts and monitors handles; primary handles architecture/code/interpretation. One GPU worker at a time. Worker waits at most30minutes per controller selection; tenhourtotal cap. No speculative extra forwards or hidden terminal GPU work.",
+  "claims": "An exploratory signal is not confirmation, task quality or ACCEPTED. No merge/publication. Fresh strict matched evidence required for a5percent claim. All failures/samples and source/snapshot/checkpoint identities retained."
+}

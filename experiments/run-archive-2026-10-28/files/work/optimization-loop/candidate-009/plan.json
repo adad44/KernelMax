@@ -1,0 +1,9 @@
+{
+  "candidate_id": "cand_06f4ad03af35",
+  "candidate_source": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_06f4ad03af35",
+  "hypothesis": "Sixteen-lane reductions reduce per-thread K work and rows per threadgroup, testing the measured up/gate region while holding native-style FP4 decode fixed.",
+  "measured_evidence": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/probe-004/audited-result.json",
+  "model_contribution": "Unknown; illustrative20%region improvement gives0.0759ms/expert or1.82ms/token only if24 layers additive and representative.",
+  "predeclared_futility": "After all20 layer0 pairs park if the descriptive CI includes1 or median gain does not exceed maximum A/A label deviation. Advance only a reliable positive effect to other layers; no formal verdict.",
+  "previous_result": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-008/result.json"
+}

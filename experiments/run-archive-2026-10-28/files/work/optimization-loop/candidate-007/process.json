@@ -1,0 +1,42 @@
+{
+  "candidate_id": "cand_8ca060ed7e93",
+  "command": [
+    "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+    "-B",
+    "-u",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/scripts/run_candidate_loop.py",
+    "--session",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/session.json",
+    "--candidate",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_8ca060ed7e93",
+    "--work-dir",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-007/native-correctness",
+    "--timeout-seconds",
+    "300"
+  ],
+  "deadline_unix": 1793093823.767078,
+  "ended_unix": 1793092931.1816661,
+  "kind": "candidate_native_correctness",
+  "returncode": 0,
+  "started_unix": 1793092923.767103,
+  "status": "completed",
+  "supervisor_pid": 66267,
+  "tracked_processes": {
+    "66269": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/scripts/run_candidate_loop.py --session /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/session.json --candidate /Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_8ca060ed7e93 --work-dir /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-007/native-correctness --timeout-seconds 300",
+      "ppid": 66267,
+      "start": "Tue Oct 27 02:22:03 2026"
+    },
+    "66276": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -I -B /Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_worker.py /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-007/native-correctness/artifacts/execution-7kfpvlos/reference/request.json /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-007/native-correctness/artifacts/execution-7kfpvlos/reference/response.jsonl",
+      "ppid": 66269,
+      "start": "Tue Oct 27 02:22:05 2026"
+    },
+    "66293": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -I -B /Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/candidate_worker.py /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-007/native-correctness/artifacts/execution-7kfpvlos/candidate/request.json /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-007/native-correctness/artifacts/execution-7kfpvlos/candidate/response.jsonl",
+      "ppid": 66269,
+      "start": "Tue Oct 27 02:22:09 2026"
+    }
+  },
+  "worker_pid": 66269
+}

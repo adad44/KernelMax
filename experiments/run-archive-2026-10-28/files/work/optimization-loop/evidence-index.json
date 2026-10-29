@@ -1,0 +1,778 @@
+{
+  "acceptance_enabled": false,
+  "as_of_utc": "2026-10-27T20:00:20.074682+00:00",
+  "candidates_bit_exact_on_all3full_model_contexts": [
+    "cand_02e5f860f143",
+    "cand_b50ecab31887",
+    "cand_35fff69ba1e1"
+  ],
+  "candidates_passing_protected_native_suite": 20,
+  "deadline_unix": 1793131200.0,
+  "execution_gap": {
+    "after_controller": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-k-unroll-032/controller-state.json",
+    "duration_seconds": 8799.643869876862,
+    "from_unix": 1793117181.4275131,
+    "reason": "Agent did not advance exhausted pool promptly; acknowledged to user and resumed with a distinct measured composition. Do not report uninterrupted benchmark execution.",
+    "to_unix": 1793125981.071383
+  },
+  "expected_unchanged_git_head": "fc1dc28a4f18a12340668af2cee5cea9a0d6cbe7",
+  "full_model_attempts": [
+    {
+      "aa_contexts": {},
+      "bit_exact_contexts": [
+        512,
+        2048,
+        4096
+      ],
+      "candidate_id": "cand_02e5f860f143",
+      "complete_context_summaries": {},
+      "errors": [
+        "Traceback (most recent call last):\n  File \"/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-022-02/run.py\", line 232, in main\n    for lane in (('A','B') if pair%2 else ('B','A')):aa.append(collect(length,lane,'aa',pair))\n                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-022-02/run.py\", line 201, in collect\n    if issues:raise RuntimeError('Environment invalid; complete request retained: '+str(issues))\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Environment invalid; complete request retained: ['swap grew during the request', 'swapouts increased during request']\n"
+      ],
+      "full_model_speedup_established": false,
+      "invalid_requests": 1,
+      "state": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-022-02/state.json",
+      "status": "failed",
+      "timed_requests": 40
+    },
+    {
+      "aa_contexts": {
+        "512": true
+      },
+      "bit_exact_contexts": [
+        512,
+        2048,
+        4096
+      ],
+      "candidate_id": "cand_02e5f860f143",
+      "complete_context_summaries": {
+        "512": {
+          "descriptive_bootstrap_95pct": [
+            0.9994369702384727,
+            1.017063259041103
+          ],
+          "improvement_above_measured_noise": false,
+          "median_ratio": 1.0058088307350967
+        }
+      },
+      "errors": [
+        "Traceback (most recent call last):\n  File \"/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/memory-residency-027/run.py\", line 257, in main\n    collect(length,'A','aa_warmup',warm);collect(length,'B','aa_warmup',warm)\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/memory-residency-027/run.py\", line 179, in collect\n    check();primer_before=environment()\n    ^^^^^^^\n  File \"/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/memory-residency-027/run.py\", line 131, in check\n    if time.time()>=deadline or (WORK/'STOP').exists():raise TimeoutError('Deadline or explicit stop reached')\n                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTimeoutError: Deadline or explicit stop reached\n"
+      ],
+      "full_model_speedup_established": false,
+      "invalid_requests": 0,
+      "state": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/memory-residency-027/state.json",
+      "status": "failed",
+      "timed_requests": 100
+    },
+    {
+      "aa_contexts": {
+        "512": true
+      },
+      "bit_exact_contexts": [
+        512,
+        2048,
+        4096
+      ],
+      "candidate_id": "cand_b50ecab31887",
+      "complete_context_summaries": {},
+      "errors": [
+        "Traceback (most recent call last):\n  File \"/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-022-01/run.py\", line 243, in main\n    row=collect(length,lane,'candidate',pair)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-022-01/run.py\", line 201, in collect\n    if issues:raise RuntimeError('Environment invalid; complete request retained: '+str(issues))\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Environment invalid; complete request retained: ['swap grew during the request', 'swapouts increased during request']\n"
+      ],
+      "full_model_speedup_established": false,
+      "invalid_requests": 1,
+      "state": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-022-01/state.json",
+      "status": "failed",
+      "timed_requests": 74
+    },
+    {
+      "aa_contexts": {
+        "512": true
+      },
+      "bit_exact_contexts": [
+        512,
+        2048,
+        4096
+      ],
+      "candidate_id": "cand_35fff69ba1e1",
+      "complete_context_summaries": {},
+      "errors": [],
+      "full_model_speedup_established": false,
+      "invalid_requests": 0,
+      "state": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-038-01/state.json",
+      "status": "context_512_candidate_timing",
+      "timed_requests": 85
+    },
+    {
+      "aa_contexts": {},
+      "bit_exact_contexts": [],
+      "candidate_id": "cand_b64853d31601",
+      "complete_context_summaries": {},
+      "errors": [
+        "Traceback (most recent call last):\n  File \"/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-012/run.py\", line 225, in main\n    if not row['passed']:raise ValueError('Full-model correctness failed; timing blocked')\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Full-model correctness failed; timing blocked\n"
+      ],
+      "full_model_speedup_established": false,
+      "invalid_requests": 0,
+      "state": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-012/state.json",
+      "status": "failed",
+      "timed_requests": 0
+    }
+  ],
+  "full_model_speedup_established": false,
+  "git_head": "fc1dc28a4f18a12340668af2cee5cea9a0d6cbe7",
+  "git_head_unchanged": true,
+  "native_reports": {
+    "cand_02e5f860f143": [
+      {
+        "errors": [],
+        "protected_native_suite_passed": true,
+        "report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-resume-02/trial-001-cand_02e5f860f143/native-correctness/artifacts/execution-i_iuu1fs/report.json",
+        "snapshot_sha256": "a50e24de7cb6bdff273d8d0f708ad1293cfac63bab4db597673f0d0b8745b29c",
+        "status": "completed"
+      }
+    ],
+    "cand_06f4ad03af35": [
+      {
+        "errors": [],
+        "protected_native_suite_passed": true,
+        "report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-009/native-correctness/artifacts/execution-yqd3nz3i/report.json",
+        "snapshot_sha256": "f115e96df4abb12a5d2d174d029d6deea489c91196d671ccaa0248020736a5df",
+        "status": "completed"
+      }
+    ],
+    "cand_255bf075877b": [
+      {
+        "errors": [],
+        "protected_native_suite_passed": true,
+        "report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-011/trial-002-cand_255bf075877b/native-correctness/artifacts/execution-p9kezczl/report.json",
+        "snapshot_sha256": "b19062776dabca32f7a6886865c8ac24da975ac837d84b22745bfd5a9c36776d",
+        "status": "completed"
+      }
+    ],
+    "cand_291130cc756a": [
+      {
+        "errors": [],
+        "protected_native_suite_passed": true,
+        "report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-020/trial-003-cand_291130cc756a/native-correctness/artifacts/execution-7419ma53/report.json",
+        "snapshot_sha256": "7bcb23caf3757485e36dddbd78183feca70d23b5e2e78adfab994b1c337122eb",
+        "status": "completed"
+      }
+    ],
+    "cand_35fff69ba1e1": [
+      {
+        "errors": [],
+        "protected_native_suite_passed": true,
+        "report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-035/native-correctness/artifacts/execution-p3xvqqph/report.json",
+        "snapshot_sha256": "14dce12ba76605fa3c04b56b0a431447c643540e63dbecea5a4351687d394e90",
+        "status": "completed"
+      }
+    ],
+    "cand_38d341fb17de": [
+      {
+        "errors": [],
+        "protected_native_suite_passed": true,
+        "report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-candidate-025-cand_38d341fb17de/native-correctness/artifacts/execution-wv7lywb3/report.json",
+        "snapshot_sha256": "e5e1c8d5e703a523d34f4593c6dbbe5bf4955d5cc720c5771f09f5df4b7e3d14",
+        "status": "completed"
+      }
+    ],
+    "cand_430b7852e4b5": [
+      {
+        "errors": [],
+        "protected_native_suite_passed": true,
+        "report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-008/native-correctness/artifacts/execution-n3_ae4ie/report.json",
+        "snapshot_sha256": "d74ac1e283b5fac3e0d478b425b35e1aa038916bdded1cc79d7abf04e43bbc56",
+        "status": "completed"
+      }
+    ],
+    "cand_44a3e41eb5ae": [
+      {
+        "errors": [],
+        "protected_native_suite_passed": true,
+        "report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-020/trial-002-cand_44a3e41eb5ae/native-correctness/artifacts/execution-78z80orc/report.json",
+        "snapshot_sha256": "cf4b244a443f37388f5569348e229baaf023ced96e16c8542108214360df945c",
+        "status": "completed"
+      }
+    ],
+    "cand_57e746a157dd": [
+      {
+        "errors": [],
+        "protected_native_suite_passed": true,
+        "report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-resume-03/trial-001-cand_57e746a157dd/native-correctness/artifacts/execution-5sqjip15/report.json",
+        "snapshot_sha256": "aaa02f49e23e6d724d81e1d0966fa720e9b0bebb2c961e747762408efca5b3db",
+        "status": "completed"
+      }
+    ],
+    "cand_5dc343a37cb3": [
+      {
+        "errors": [],
+        "protected_native_suite_passed": true,
+        "report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-005/native-correctness/artifacts/execution-sl98zclh/report.json",
+        "snapshot_sha256": "f3b7ff991e37b9c113d2ba587a98567ba271bf60c4082e89c32ccd70d42bd1b9",
+        "status": "completed"
+      }
+    ],
+    "cand_62a307e4eac7": [
+      {
+        "errors": [],
+        "protected_native_suite_passed": true,
+        "report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-020/trial-001-cand_62a307e4eac7/native-correctness/artifacts/execution-gipd534i/report.json",
+        "snapshot_sha256": "2fc572a4b6581c355506e67cf85a289270228cc95e990afc9f71f81f52b1bebf",
+        "status": "completed"
+      }
+    ],
+    "cand_6dbb410bc1b0": [
+      {
+        "errors": [],
+        "protected_native_suite_passed": true,
+        "report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-011/trial-001-cand_6dbb410bc1b0/native-correctness/artifacts/execution-2ogidjkk/report.json",
+        "snapshot_sha256": "7af4085b14cf395c5cbe96260beaa9d77a5d7b4262b85b455a66e121665183d1",
+        "status": "completed"
+      }
+    ],
+    "cand_8ca060ed7e93": [
+      {
+        "errors": [],
+        "protected_native_suite_passed": true,
+        "report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-007/native-correctness/artifacts/execution-7kfpvlos/report.json",
+        "snapshot_sha256": "ed2547a59651db3a5bcd36b0bbf0cff0367976f6c96e1fb74ca49563c12afd15",
+        "status": "completed"
+      }
+    ],
+    "cand_ab711e414d17": [
+      {
+        "errors": [],
+        "protected_native_suite_passed": true,
+        "report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-016/native-correctness/artifacts/execution-4l0e7txu/report.json",
+        "snapshot_sha256": "0a53ce206d0802b966b56caad5bb90f3c9d981b57274a15098d33257365307b1",
+        "status": "completed"
+      }
+    ],
+    "cand_b435496c6696": [
+      {
+        "errors": [],
+        "protected_native_suite_passed": true,
+        "report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-013/trial-001-cand_b435496c6696/native-correctness/artifacts/execution-oz8ugioe/report.json",
+        "snapshot_sha256": "1b4fe20c0c8baf289e4b211d8bec17d265764849deb037308007307344fe2e83",
+        "status": "completed"
+      }
+    ],
+    "cand_b50ecab31887": [
+      {
+        "errors": [],
+        "protected_native_suite_passed": true,
+        "report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-020/trial-004-cand_b50ecab31887/native-correctness/artifacts/execution-5v88j5mw/report.json",
+        "snapshot_sha256": "a5968b0159a06b753e6e75106807eb6678a9d5909c27fcd2d918147b15ffefe7",
+        "status": "completed"
+      }
+    ],
+    "cand_b51b7021c8f2": [
+      {
+        "errors": [],
+        "protected_native_suite_passed": true,
+        "report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-k-unroll-032/trial-001-cand_b51b7021c8f2/native-correctness/artifacts/execution-orpzs27o/report.json",
+        "snapshot_sha256": "479b9aedac2513a825de6c2d5479effebbd2dcd7e51420e93851ef227dbab8f7",
+        "status": "completed"
+      }
+    ],
+    "cand_b64853d31601": [
+      {
+        "errors": [],
+        "protected_native_suite_passed": true,
+        "report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-011/trial-003-cand_b64853d31601/native-correctness/artifacts/execution-jjrf4mvj/report.json",
+        "snapshot_sha256": "61219d79785172a9ecb3f07f2cebc8f2419fc962460ec021df17df20ead3d81e",
+        "status": "completed"
+      }
+    ],
+    "cand_d5987f75f173": [
+      {
+        "errors": [],
+        "protected_native_suite_passed": true,
+        "report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-019/native-correctness/artifacts/execution-toa4z3ox/report.json",
+        "snapshot_sha256": "e24805c1edaab9281b814be7719b63a020cfaa38d62bb9689ee92fd416085e9e",
+        "status": "completed"
+      }
+    ],
+    "cand_f36e3678fbf1": [
+      {
+        "errors": [],
+        "protected_native_suite_passed": true,
+        "report": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-k-unroll-032/trial-002-cand_f36e3678fbf1/native-correctness/artifacts/execution-hvaf9eus/report.json",
+        "snapshot_sha256": "2c4b26dcbd8158b69d74b669e3c459d0329df06635e7b87808218db56e5970e4",
+        "status": "completed"
+      }
+    ]
+  },
+  "notes": [
+    "Operator improvements are isolated and require independent model validation.",
+    "A stopped/partial model pass is not a measured model speedup.",
+    "Native fixtures and numerical equality do not satisfy the planned held-out task-quality gate.",
+    "Historical failures, samples and source snapshots are retained."
+  ],
+  "operator_attempts": [
+    {
+      "candidate_id": "cand_35fff69ba1e1",
+      "errors": [],
+      "guards_passed": true,
+      "layer_results": {
+        "0": {
+          "descriptive_bootstrap_95pct": [
+            1.0135568339663465,
+            1.0172275304469636
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.016072226019992
+        },
+        "12": {
+          "descriptive_bootstrap_95pct": [
+            1.0147603178692317,
+            1.0199303893096636
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.0167962081104123
+        },
+        "23": {
+          "descriptive_bootstrap_95pct": [
+            1.014152371812738,
+            1.0185118643723574
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.017006630830168
+        }
+      },
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/combined-035/operator-diagnostic.json",
+      "samples": 240,
+      "status": "completed_diagnostic"
+    },
+    {
+      "candidate_id": "cand_430b7852e4b5",
+      "errors": [],
+      "guards_passed": true,
+      "layer_results": {
+        "0": {
+          "descriptive_bootstrap_95pct": [
+            0.9968963305205947,
+            1.0034754607737417
+          ],
+          "environment_valid": true,
+          "median_ratio": 0.9987390152257134
+        }
+      },
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-008/operator-diagnostic.json",
+      "samples": 48,
+      "status": "stopped_aa_screen"
+    },
+    {
+      "candidate_id": "cand_06f4ad03af35",
+      "errors": [],
+      "guards_passed": true,
+      "layer_results": {},
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-009/operator-diagnostic.json",
+      "samples": 4,
+      "status": "stopped_aa_screen"
+    },
+    {
+      "candidate_id": "cand_8ca060ed7e93",
+      "errors": [],
+      "guards_passed": true,
+      "layer_results": {
+        "0": {
+          "descriptive_bootstrap_95pct": [
+            0.9615751096522713,
+            0.966426899105931
+          ],
+          "environment_valid": true,
+          "median_ratio": 0.9639938481625578
+        }
+      },
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-007/operator-diagnostic.json",
+      "samples": 48,
+      "status": "stopped_aa_screen"
+    },
+    {
+      "candidate_id": "cand_d5987f75f173",
+      "errors": [],
+      "guards_passed": true,
+      "layer_results": {
+        "0": {
+          "descriptive_bootstrap_95pct": [
+            1.0001365977553207,
+            1.0029390021027402
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.0020882347029567
+        }
+      },
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-019/operator-diagnostic.json",
+      "samples": 80,
+      "status": "stopped_operator_futility"
+    },
+    {
+      "candidate_id": "cand_5dc343a37cb3",
+      "errors": [],
+      "guards_passed": true,
+      "layer_results": {},
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-005/operator-diagnostic.json",
+      "samples": 4,
+      "status": "stopped_aa_screen"
+    },
+    {
+      "candidate_id": "cand_38d341fb17de",
+      "errors": [],
+      "guards_passed": true,
+      "layer_results": {
+        "0": {
+          "descriptive_bootstrap_95pct": [
+            1.002975317003537,
+            1.0147349417139735
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.006765992134866
+        },
+        "12": {
+          "descriptive_bootstrap_95pct": [
+            1.004277623989402,
+            1.0126800948990236
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.0091225814715794
+        },
+        "23": {
+          "descriptive_bootstrap_95pct": [
+            0.9980724728287345,
+            1.0172922882922473
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.0077507710632134
+        }
+      },
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/down-candidate-025-cand_38d341fb17de/operator-diagnostic.json",
+      "samples": 240,
+      "status": "stopped_operator_futility"
+    },
+    {
+      "candidate_id": "cand_62a307e4eac7",
+      "errors": [],
+      "guards_passed": true,
+      "layer_results": {
+        "0": {
+          "descriptive_bootstrap_95pct": [
+            0.9996389850407188,
+            1.002348127101775
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.001277402773796
+        }
+      },
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-020/trial-001-cand_62a307e4eac7/operator-diagnostic.json",
+      "samples": 80,
+      "status": "stopped_operator_futility"
+    },
+    {
+      "candidate_id": "cand_b50ecab31887",
+      "errors": [],
+      "guards_passed": true,
+      "layer_results": {
+        "0": {
+          "descriptive_bootstrap_95pct": [
+            1.0036549464676865,
+            1.0071342568979693
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.0055428277701028
+        },
+        "12": {
+          "descriptive_bootstrap_95pct": [
+            1.003714530229686,
+            1.0068384937718466
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.005414860327642
+        },
+        "23": {
+          "descriptive_bootstrap_95pct": [
+            1.0008241080764004,
+            1.0074195447356096
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.0064391145075828
+        }
+      },
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-020/trial-004-cand_b50ecab31887/operator-diagnostic.json",
+      "samples": 240,
+      "status": "completed_diagnostic"
+    },
+    {
+      "candidate_id": "cand_291130cc756a",
+      "errors": [],
+      "guards_passed": true,
+      "layer_results": {
+        "0": {
+          "descriptive_bootstrap_95pct": [
+            0.9963482797832282,
+            1.0033779555800046
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.0013829866734398
+        }
+      },
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-020/trial-003-cand_291130cc756a/operator-diagnostic.json",
+      "samples": 80,
+      "status": "stopped_operator_futility"
+    },
+    {
+      "candidate_id": "cand_44a3e41eb5ae",
+      "errors": [],
+      "guards_passed": true,
+      "layer_results": {
+        "0": {
+          "descriptive_bootstrap_95pct": [
+            1.0002072771201718,
+            1.0050628055240578
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.0016884229696776
+        }
+      },
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-020/trial-002-cand_44a3e41eb5ae/operator-diagnostic.json",
+      "samples": 80,
+      "status": "stopped_operator_futility"
+    },
+    {
+      "candidate_id": "cand_b435496c6696",
+      "errors": [],
+      "guards_passed": false,
+      "layer_results": {},
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-013/trial-001-cand_b435496c6696/operator-diagnostic.json",
+      "samples": 18,
+      "status": "running"
+    },
+    {
+      "candidate_id": "cand_6dbb410bc1b0",
+      "errors": [],
+      "guards_passed": true,
+      "layer_results": {
+        "0": {
+          "descriptive_bootstrap_95pct": [
+            0.9694463861231764,
+            0.9732601743438924
+          ],
+          "environment_valid": true,
+          "median_ratio": 0.9705773429355509
+        }
+      },
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-011/trial-001-cand_6dbb410bc1b0/operator-diagnostic.json",
+      "samples": 80,
+      "status": "stopped_operator_futility"
+    },
+    {
+      "candidate_id": "cand_b64853d31601",
+      "errors": [],
+      "guards_passed": true,
+      "layer_results": {
+        "0": {
+          "descriptive_bootstrap_95pct": [
+            1.0141071498945005,
+            1.0185493766931644
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.0163258813475489
+        },
+        "12": {
+          "descriptive_bootstrap_95pct": [
+            1.0138186681526604,
+            1.018870897860177
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.0160369223468346
+        },
+        "23": {
+          "descriptive_bootstrap_95pct": [
+            1.0169934784573353,
+            1.0198062267748331
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.0188751666565539
+        }
+      },
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-011/trial-003-cand_b64853d31601/operator-diagnostic.json",
+      "samples": 240,
+      "status": "completed_diagnostic"
+    },
+    {
+      "candidate_id": "cand_255bf075877b",
+      "errors": [],
+      "guards_passed": true,
+      "layer_results": {
+        "0": {
+          "descriptive_bootstrap_95pct": [
+            0.9706992166085124,
+            0.9745020880645938
+          ],
+          "environment_valid": true,
+          "median_ratio": 0.9737862582688348
+        }
+      },
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/sweep-011/trial-002-cand_255bf075877b/operator-diagnostic.json",
+      "samples": 80,
+      "status": "stopped_operator_futility"
+    },
+    {
+      "candidate_id": "cand_f36e3678fbf1",
+      "errors": [],
+      "guards_passed": true,
+      "layer_results": {
+        "0": {
+          "descriptive_bootstrap_95pct": [
+            1.00301941535214,
+            1.0116822083791013
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.0079873898011136
+        },
+        "12": {
+          "descriptive_bootstrap_95pct": [
+            1.0038130963755507,
+            1.0104267022113609
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.0086614242167675
+        }
+      },
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-k-unroll-032/trial-002-cand_f36e3678fbf1/operator-diagnostic.json",
+      "samples": 200,
+      "status": "stopped_aa_screen"
+    },
+    {
+      "candidate_id": "cand_b51b7021c8f2",
+      "errors": [],
+      "guards_passed": true,
+      "layer_results": {
+        "0": {
+          "descriptive_bootstrap_95pct": [
+            1.0074888816492682,
+            1.015090517884365
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.0109643292458559
+        },
+        "12": {
+          "descriptive_bootstrap_95pct": [
+            1.0029159335909958,
+            1.0100072829054876
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.005342235398163
+        }
+      },
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-k-unroll-032/trial-001-cand_b51b7021c8f2/operator-diagnostic.json",
+      "samples": 160,
+      "status": "stopped_operator_futility"
+    },
+    {
+      "candidate_id": "cand_ab711e414d17",
+      "errors": [],
+      "guards_passed": true,
+      "layer_results": {
+        "0": {
+          "descriptive_bootstrap_95pct": [
+            0.9990030320247428,
+            1.001601687561868
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.000007689639364
+        }
+      },
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-016/timing-017/operator-diagnostic.json",
+      "samples": 80,
+      "status": "stopped_operator_futility"
+    },
+    {
+      "candidate_id": "cand_5dc343a37cb3",
+      "errors": [],
+      "guards_passed": true,
+      "layer_results": {
+        "0": {
+          "descriptive_bootstrap_95pct": [
+            1.0060109345451154,
+            1.0104596457182242
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.0082751141869681
+        }
+      },
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/candidate-005/timing-warm-primer-006/operator-diagnostic.json",
+      "samples": 48,
+      "status": "stopped_aa_screen"
+    },
+    {
+      "candidate_id": "cand_02e5f860f143",
+      "errors": [],
+      "guards_passed": true,
+      "layer_results": {
+        "0": {
+          "descriptive_bootstrap_95pct": [
+            1.0039260711387699,
+            1.0080662618465106
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.0057135503033328
+        },
+        "12": {
+          "descriptive_bootstrap_95pct": [
+            1.0053365583699339,
+            1.00810347221499
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.0069881593564358
+        },
+        "23": {
+          "descriptive_bootstrap_95pct": [
+            1.0038002389361582,
+            1.0078924091482775
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.0059547086974283
+        }
+      },
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-resume-02/trial-001-cand_02e5f860f143/operator-diagnostic.json",
+      "samples": 240,
+      "status": "completed_diagnostic"
+    },
+    {
+      "candidate_id": "cand_57e746a157dd",
+      "errors": [],
+      "guards_passed": true,
+      "layer_results": {
+        "0": {
+          "descriptive_bootstrap_95pct": [
+            1.0013027466810245,
+            1.0064818696853148
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.0038694725221293
+        },
+        "12": {
+          "descriptive_bootstrap_95pct": [
+            1.0039374952179334,
+            1.00827731747345
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.0050697032514941
+        },
+        "23": {
+          "descriptive_bootstrap_95pct": [
+            1.0012101632016943,
+            1.0077324793974696
+          ],
+          "environment_valid": true,
+          "median_ratio": 1.003016367310289
+        }
+      },
+      "raw": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-order-resume-03/trial-001-cand_57e746a157dd/operator-diagnostic.json",
+      "samples": 240,
+      "status": "stopped_operator_futility"
+    }
+  ],
+  "scope": "This scheduled search under work/optimization-loop; earlier three parked reference candidates are outside this count.",
+  "unique_candidates_with_protected_native_reports": 20
+}

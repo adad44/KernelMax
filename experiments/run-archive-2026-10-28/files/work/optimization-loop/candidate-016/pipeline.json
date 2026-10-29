@@ -1,0 +1,20 @@
+{
+  "ended_unix": 1793098636.128736,
+  "stage": "repair-checks",
+  "stages": [
+    {
+      "name": "native-summary",
+      "returncode": 0
+    },
+    {
+      "name": "tiny-checks",
+      "returncode": 0
+    },
+    {
+      "name": "repair-checks",
+      "returncode": 0
+    }
+  ],
+  "started_unix": 1793098488.100363,
+  "status": "completed_exact_repair_checks"
+}

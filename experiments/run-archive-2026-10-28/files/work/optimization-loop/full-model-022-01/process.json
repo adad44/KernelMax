@@ -1,0 +1,279 @@
+{
+  "candidate_id": "cand_b50ecab31887",
+  "command": [
+    "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python",
+    "-B",
+    "-u",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-022-01/run.py"
+  ],
+  "deadline_unix": 1793131200.0,
+  "ended_unix": 1793104846.2684171,
+  "kind": "full_model_then_untried_candidate_search",
+  "returncode": 1,
+  "started_unix": 1793101858.8384352,
+  "status": "failed",
+  "supervisor_pid": 98778,
+  "tracked_processes": {
+    "10111": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:22:47 2026"
+    },
+    "10279": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:23:15 2026"
+    },
+    "10337": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:23:23 2026"
+    },
+    "10753": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:24:32 2026"
+    },
+    "10943": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:25:05 2026"
+    },
+    "11089": {
+      "command": "(python3.12)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:25:31 2026"
+    },
+    "11154": {
+      "command": "(ps)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:25:39 2026"
+    },
+    "11362": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:26:14 2026"
+    },
+    "11564": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:26:48 2026"
+    },
+    "11772": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:27:22 2026"
+    },
+    "11977": {
+      "command": "(sysctl)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:27:57 2026"
+    },
+    "12333": {
+      "command": "(sysctl)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:28:57 2026"
+    },
+    "12393": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:29:06 2026"
+    },
+    "12546": {
+      "command": "ps -Ao pid,pcpu,comm -r",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:29:32 2026"
+    },
+    "12749": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:30:06 2026"
+    },
+    "12815": {
+      "command": "ps -Ao pid,pcpu,comm -r",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:30:14 2026"
+    },
+    "13168": {
+      "command": "(python3.12)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:31:15 2026"
+    },
+    "13226": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:31:23 2026"
+    },
+    "13371": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:31:49 2026"
+    },
+    "13434": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:31:57 2026"
+    },
+    "13575": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:32:23 2026"
+    },
+    "13641": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:32:32 2026"
+    },
+    "1372": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 04:58:43 2026"
+    },
+    "13783": {
+      "command": "ps -Ao pid,pcpu,comm -r",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:32:58 2026"
+    },
+    "13991": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:33:32 2026"
+    },
+    "15865": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:38:43 2026"
+    },
+    "16279": {
+      "command": "(ps)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:39:51 2026"
+    },
+    "16342": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:40:00 2026"
+    },
+    "16487": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:40:26 2026"
+    },
+    "2011": {
+      "command": "(ps)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:00:24 2026"
+    },
+    "2241": {
+      "command": "(ps)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:01:01 2026"
+    },
+    "2378": {
+      "command": "(ps)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:01:27 2026"
+    },
+    "2693": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:02:16 2026"
+    },
+    "2808": {
+      "command": "(python3.12)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:02:37 2026"
+    },
+    "3223": {
+      "command": "(sysctl)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:03:46 2026"
+    },
+    "3434": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:04:21 2026"
+    },
+    "3638": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:04:55 2026"
+    },
+    "3846": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:05:30 2026"
+    },
+    "5306": {
+      "command": "(sysctl)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:09:30 2026"
+    },
+    "5742": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:10:41 2026"
+    },
+    "5918": {
+      "command": "ps -Ao pid,pcpu,comm -r",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:11:11 2026"
+    },
+    "5982": {
+      "command": "(ps)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:11:19 2026"
+    },
+    "6388": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:12:28 2026"
+    },
+    "6595": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:13:02 2026"
+    },
+    "7629": {
+      "command": "(python3.12)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:15:54 2026"
+    },
+    "7696": {
+      "command": "(ps)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:16:03 2026"
+    },
+    "8059": {
+      "command": "(sysctl)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:17:05 2026"
+    },
+    "8269": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:17:39 2026"
+    },
+    "8412": {
+      "command": "(pmset)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:18:05 2026"
+    },
+    "8473": {
+      "command": "(ps)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:18:14 2026"
+    },
+    "8687": {
+      "command": "(ps)",
+      "ppid": 98781,
+      "start": "Tue Oct 27 05:18:48 2026"
+    },
+    "98781": {
+      "command": "/Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -u /Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/full-model-022-01/run.py",
+      "ppid": 98778,
+      "start": "Tue Oct 27 04:50:58 2026"
+    }
+  },
+  "worker_pid": 98781
+}

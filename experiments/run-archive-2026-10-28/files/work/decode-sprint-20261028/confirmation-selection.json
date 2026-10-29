@@ -1,0 +1,16 @@
+{
+  "C3_guards": {
+    "checkpoint_and_snapshot_unchanged": true,
+    "original_methods_restored": true,
+    "protected_unchanged": true
+  },
+  "bootstrap_95pct_ratio": [
+    1.1001490293810527,
+    1.103459471911766
+  ],
+  "frozen_info": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/combined-frozen.json",
+  "median_ratio": 1.101605055610391,
+  "rule": "confirmation-selection-rule.json: C3 short numerical pass and screen median >= 1.05",
+  "selected_at_unix": 1793211599.25673,
+  "selected_candidate_id": "cand_3f4c02fcfc71"
+}

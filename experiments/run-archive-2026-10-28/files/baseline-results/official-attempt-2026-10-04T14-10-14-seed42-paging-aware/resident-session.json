@@ -1,0 +1,10 @@
+{
+  "session_id": "51f224fc-47fb-4dde-9357-ca9b557524a2",
+  "worker_pid": 18729,
+  "status": "running",
+  "phase": "preflight",
+  "current_attempt": "/Users/alandiaz/Downloads/KernelMaxxxing/baseline-results/official-attempt-2026-10-04T14-10-14-seed42-paging-aware",
+  "model_loads": 0,
+  "max_environment_retries": 2,
+  "failed_attempts": []
+}

@@ -1,0 +1,39 @@
+{
+  "ast_json_validation": {
+    "python_files_ast_parsed": 9,
+    "json_files_parsed": 5,
+    "result": "pass"
+  },
+  "unit_tests": {
+    "command": "PYTHONPATH=/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028:/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop /Users/alandiaz/Downloads/KernelMaxxxing/runtime/gpt-oss/.venv/bin/python -B -m unittest test_bindings.py test_residency.py",
+    "stdout": "",
+    "stderr": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.007s\n\nOK\n",
+    "exit_code": 0,
+    "tests_run": 7,
+    "result": "pass"
+  },
+  "ruff": {
+    "available": false,
+    "command_lookup": "not found",
+    "python_module_available": false,
+    "result": "skipped because Ruff is not installed"
+  },
+  "resources": {
+    "disk_available_gib": 149,
+    "required_gib": 5,
+    "sufficient": true,
+    "matching_live_model_or_previous_worker_processes": []
+  },
+  "candidate_frozen": false,
+  "source_hashes_after_checks": {
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_680ac65cf145/codec.py": "bb8079062c5f9aee76b5e964ef4ebc30bf151fc6d92f0563d4cc5846f5811b5e",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_680ac65cf145/implementation.py": "ae0542d8d64034d7c70608fe7262c190da39aaafd5fc51519f20b4793bc8d4b5",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_680ac65cf145/reader.py": "6ebd5dade9c57558d24b7ccfac291d85d76c3810e3146f7058cd67b353b9b66d",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_680ac65cf145/wrapper.py": "aae74e2f43d62be8197af65ecd1cd5da208409b3cba1136cee062ab5ffeb1beb",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/check_vocabulary.py": "b9431c116082ea3f6387b52fd0aad472c1a5bcba79a9362066306e23cdce0640",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/run_round.py": "50860e59e85c5ebd4f6b5d082915a111aeb573c8e07cebbb5710acd755a04ef5",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/test_bindings.py": "c743719af4cd5d1edb542dc6b34e7e2cb92b3255b1c9fe095509df6faed7d084",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/test_residency.py": "15c1a4ea5b0a8a79e9ae9e6cd7e0de46f7f72db07f9acbee6197e178d72afb9c",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-r2-20261028/weight_residency.py": "7fdcf58d8f116756b1bc1d0ab9a9f1d9918c33a323af8ea988d4ed267e6caba6"
+  }
+}

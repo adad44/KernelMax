@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_5785998944e5",
+  "name": "Lossless vocabulary-only full-model integration",
+  "implementation_type": "mlx",
+  "description": "Prepare(model) returns a vocabulary adapter for the unchanged native GPT-OSS model. Apply the previously tested exact BF16 lossless-layout reader only to the one-token lm_head; unchanged original linear handles prefill, attention and unsupported shapes. Preserve all original weight bits, precision and mathematical operations. Declared source provenance: frozen cand_390712b41518 bundle bbe50c8a03c67d5ba3811eb657a8f15c0292238e66fe8a1ddf3a93a8a5813595, whose combined attention/vocabulary placement was parked. This new placement tests the isolated vocabulary signal in complete-model decode. Sidecar preparation is outside inference timing; original weights remain resident for matched comparison and sidecar overhead must be reported. No model speedup, correctness or acceptance claim."
+}

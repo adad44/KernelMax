@@ -1,0 +1,28 @@
+{
+  "command_path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/commands/001.json",
+  "command_sha256": "505442fa46513d6851cb715e7e1d1cd0bb6ed21f73b99570fb56ee12bb9f6688",
+  "created_at_unix": 1793210246.887326,
+  "frozen_info": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/vocabulary-frozen.json",
+  "frozen_sha256": "b6dd528b50b4d3d89db496fb021bbcd21d2043f701c36196e39ea08457283918",
+  "label": "com.kernelmax.sprint.vocab.20261028",
+  "output_precondition": "resident-state.json absent",
+  "plan_sha256": "dbd808ffe1ec0f46521d5d635e1fc2fe4b01fd918dd1631916a474663b9b574d",
+  "plist": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/launch/resident.plist",
+  "plist_sha256": "fb921a0de3c35e244107b450deaacbd433fd819ea7710c72962516e8e1e21235",
+  "script": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/run_sprint.py",
+  "script_sha256": "a9116f4a37d559037e58d5d519e8bdb16911a368f8ae22452fdc6b28b7200367",
+  "session_sha256": "e5d96b0a1b2fb86e7e77f5df567c2bc69f29af477935ceb799a4f9e4d4b7354d",
+  "source_hashes_before": {
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5/codec.py": "bb8079062c5f9aee76b5e964ef4ebc30bf151fc6d92f0563d4cc5846f5811b5e",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5/implementation.metal": "7e4b2fa51eea175b9ad376ce1b6ab9276bca7aac6201733945174b3ee275862e",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5/implementation.py": "18baf2ffe4815c753917c81ef1aefa8d0c0ddb81f0f6d90179bb7710567dc16b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5/manifest.json": "55bf8c6f602549626dbd7f498f95c7219cc30f87d107814df9551fe72457cc7b",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5/reader.py": "a0f31e2b8e18f8fd05146c3e8cea09609b3f0162195035f8b2cdfb0fb2d18214",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/frozen/cand_5785998944e5/wrapper.py": "aae74e2f43d62be8197af65ecd1cd5da208409b3cba1136cee062ab5ffeb1beb",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/plan.json": "dbd808ffe1ec0f46521d5d635e1fc2fe4b01fd918dd1631916a474663b9b574d",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/run_sprint.py": "a9116f4a37d559037e58d5d519e8bdb16911a368f8ae22452fdc6b28b7200367",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/session.json": "e5d96b0a1b2fb86e7e77f5df567c2bc69f29af477935ceb799a4f9e4d4b7354d",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/test_bindings.py": "02870126d4a28be65938b39c2b8fbb057e25ad5bae065f6b2281872a8de597aa",
+    "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-sprint-20261028/vocabulary-frozen.json": "ae21c63bb6e99e8a0d20552a440cf0604cf1d82dced81e4c15fb7e22caaa4ef0"
+  }
+}

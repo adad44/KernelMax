@@ -1,0 +1,16 @@
+{
+  "acceptance_enabled": false,
+  "calibration": "New20pair paired-ratio bootstrap A/A; CI includes1, width<=0.04, center/order bias<=0.02. All raw samples/MAD/range retained. This replaces the exploratory four-wall-time MAD screen; no old results relabeled.",
+  "candidate_id": "cand_6dbb410bc1b0",
+  "candidate_source": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_6dbb410bc1b0",
+  "config": [
+    16,
+    2,
+    8,
+    "lut"
+  ],
+  "futility": "After20 candidate pairs, park unless CI lower>1 and median gain exceeds A/A order bias. Independent full-model confirmation required after the exploratory multi-candidate search.",
+  "hypothesis": "Numeric reduction/coalescing/parallelism variants within the measured up/gate region. Emitted-instruction, occupancy and bandwidth causes are unmeasured.",
+  "measured_target": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/probe-004/audited-result.json",
+  "model_contribution": "Unverified. A hypothetical 20% region gain gives 0.0759 ms per sampled expert or 1.82 ms/token only if all24 layers are representative and additive."
+}

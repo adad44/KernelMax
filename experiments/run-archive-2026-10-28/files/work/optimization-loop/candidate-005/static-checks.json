@@ -1,0 +1,26 @@
+{
+  "candidate_code_imported": false,
+  "candidate_id": "cand_5dc343a37cb3",
+  "candidate_source_sha256": {
+    "README.md": "9a5b4eacdc7c74faf0110272d882351b4f988b67d5f56de0231548621c83ae54",
+    "implementation.py": "7fbcc4f73761601b285ebf4bcc53b37f886f3adc9700bf40586d6bb497e8c784",
+    "manifest.json": "b163165f46c4f4dc03be96632e765629c89fe8886c49b5749968541e61b98903",
+    "octet_up_gate.metal": "3fc5e23d53f92c4097490a98d1b348974ab639e95fdd6f1d0337d8171b6991eb",
+    "wrapper.py": "2496a31e2f5a38d8955cf1bf624b543338c411e868eb7ec5cd754fb128e321b7"
+  },
+  "column_coverage_checked": [
+    64,
+    96,
+    256,
+    2880
+  ],
+  "correctness_claimed": false,
+  "eight_lane_shuffle_boundaries_checked": true,
+  "manifest_valid": true,
+  "python_syntax_valid": true,
+  "row_coverage_checked": [
+    64,
+    96,
+    2880
+  ]
+}

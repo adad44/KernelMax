@@ -1,0 +1,15 @@
+{
+  "python_syntax_valid": true,
+  "k_coverage": [
+    64,
+    96,
+    256,
+    2880
+  ],
+  "n_coverage": [
+    64,
+    96,
+    2880
+  ],
+  "sixteen_lane_shuffle_groups_verified": true
+}

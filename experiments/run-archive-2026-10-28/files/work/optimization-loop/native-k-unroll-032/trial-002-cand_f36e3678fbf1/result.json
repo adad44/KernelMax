@@ -1,0 +1,92 @@
+{
+  "all_actual_counts_verified": true,
+  "candidate_id": "cand_f36e3678fbf1",
+  "config": [
+    4
+  ],
+  "directory": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/native-k-unroll-032/trial-002-cand_f36e3678fbf1",
+  "full_model_speedup_established": false,
+  "guards_passed": true,
+  "process": {
+    "candidate_id": "cand_f36e3678fbf1",
+    "deadline_unix": 1793118147.518801,
+    "ended_unix": 1793117181.253641,
+    "returncode": 0,
+    "started_unix": 1793116347.518802,
+    "status": "completed",
+    "supervisor_pid": 97882
+  },
+  "raw_sha256": "bfcf2a69386471ff5954dc622820e8fe3b96594258e87926583cacce7c16f3d8",
+  "shortlisted": false,
+  "status": "stopped_aa_screen",
+  "summaries": {
+    "0": {
+      "ab_order_median_ratio": 1.002557785962931,
+      "ba_order_median_ratio": 1.0106874176840241,
+      "descriptive_bootstrap_95pct": [
+        1.00301941535214,
+        1.0116822083791013
+      ],
+      "environment_valid": true,
+      "median_baseline_ms_per_call": 0.8079286899414063,
+      "median_candidate_ms_per_call": 0.8030252685546875,
+      "median_ratio": 1.0079873898011136,
+      "paired_ratios": [
+        1.0035492226251663,
+        1.0091783829915215,
+        1.001258279280997,
+        1.0115067487817555,
+        1.00685916177583,
+        1.0125298284958268,
+        1.0197016244700434,
+        1.011857667976447,
+        1.0242966738673684,
+        1.0040053026638847,
+        1.001566349300696,
+        1.0024896080791137,
+        1.0072520039126962,
+        1.0098680865862926,
+        0.9983820320205885,
+        1.0087227756895312,
+        0.9965408308719815,
+        1.021392435204017,
+        0.9885893043544315,
+        1.0230131243558702
+      ]
+    },
+    "12": {
+      "ab_order_median_ratio": 1.0084361795981631,
+      "ba_order_median_ratio": 1.008860517200592,
+      "descriptive_bootstrap_95pct": [
+        1.0038130963755507,
+        1.0104267022113609
+      ],
+      "environment_valid": true,
+      "median_baseline_ms_per_call": 0.8213055620117188,
+      "median_candidate_ms_per_call": 0.814259642578125,
+      "median_ratio": 1.0086614242167675,
+      "paired_ratios": [
+        0.9922677925505806,
+        1.0129891301857044,
+        1.0104566219785986,
+        1.0003560050182803,
+        0.9813650866043712,
+        1.0009758521742633,
+        1.0079917609981017,
+        1.0039129017012187,
+        1.0037132910498825,
+        1.01492065340896,
+        1.0127977050367714,
+        1.0084422502353103,
+        1.0056375911215427,
+        1.0092787841658737,
+        1.0137658677775745,
+        1.0034000202783242,
+        1.0096401827397559,
+        1.0366997625712766,
+        1.0088805981982247,
+        1.0103967824441233
+      ]
+    }
+  }
+}

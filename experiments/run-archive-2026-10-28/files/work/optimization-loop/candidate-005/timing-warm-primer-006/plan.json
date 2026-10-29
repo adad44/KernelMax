@@ -1,0 +1,63 @@
+{
+  "candidate_id": "cand_5dc343a37cb3",
+  "candidate_source": "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/candidates/cand_5dc343a37cb3",
+  "commits_authorized": false,
+  "estimated_potential": {
+    "assumed_region_improvement_fraction": 0.2,
+    "hypothetical_24layer_saved_ms": 1.8214756101562504,
+    "is_full_model_bound": false,
+    "limitations": [
+      "single sampled layer valid",
+      "other regions thermal-invalid",
+      "critical-path and cache effects unverified"
+    ],
+    "sampled_expert_saved_ms": 0.07589481708984376
+  },
+  "evidence": "/Users/alandiaz/Downloads/KernelMaxxxing/work/optimization-loop/probe-004/audited-result.json",
+  "hypothesis": "Eight-lane per output-row joint up/gate reduction instead of four-accumulator 32-lane mapping; preserve native down and BF16 epilogue.",
+  "measured_target": {
+    "calls_per_lane_sample": 4096,
+    "complete_pairs": 20,
+    "deleted_ms_per_call": 0.43407093310546874,
+    "descriptive_95pct_saved_ms": [
+      0.37236257934570305,
+      0.38047638964843755
+    ],
+    "environment_issues": [],
+    "full_model_contribution_established": false,
+    "median_isolated_operator_fraction": 0.46669783046501145,
+    "median_saved_ms_per_call": 0.3794740854492188,
+    "native_ms_per_call": 0.8114382528076172,
+    "paired_savings_ms": [
+      0.386617533203125,
+      0.38045418286132815,
+      0.3849874775390625,
+      0.37854608178710936,
+      0.38431529785156243,
+      0.3764009702148438,
+      0.3804985964355469,
+      0.3717826228027344,
+      0.37968223046875,
+      0.3717458806152344,
+      0.3802232770996094,
+      0.3717366743164062,
+      0.3818312883300781,
+      0.3712855637207031,
+      0.3798535258789062,
+      0.3719882097167968,
+      0.37926594042968753,
+      0.37273694897460935,
+      0.3808158566894531,
+      0.3710364174804687
+    ],
+    "usable_as_sampled_operator_deletion_evidence": true
+  },
+  "native_correctness_required": true,
+  "timing_conditions": "Wait for nominal thermals; use fresh A/A screen and short duty cycles with fixed cooldown rather than extended continuous stress. Preserve every raw sample, actual counts, power/paging/thermal guards. Stop immediately on an invalid condition. No unchanged statistical reroll.",
+  "timing_only_after_correctness": true,
+  "timing_repair": {
+    "full_model_claim": false,
+    "new_method": "Use a predeclared unconditional 1024-call native resident primer after each identical five-second cooldown. Record its excluded wall time and immediate thermal state. Keep 1024 timed calls per lane, shared environment boundary, balanced ABBA blocks, every sample, and unchanged A/A thresholds. This is a changed protocol, not an unchanged retry.",
+    "reason": "The first timed 128-call microblock after a five-second idle measured 196/262 ms versus subsequent blocks around 103 ms, despite a 32-call primer. A/A failed with nominal thermals. This setup-induced startup effect must be addressed rather than claiming a candidate result."
+  }
+}

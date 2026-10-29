@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "candidate_id": "cand_75ca936df290",
+  "state": "parked_not_executed",
+  "disposition": "Do not select or launch for this exploration pass; pursue larger C1 exact-layout dense-projection hypothesis instead.",
+  "evidence_context": {
+    "light_timeline_summary": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-search-20261027/bookkeeping/timeline-light-summary.json",
+    "sampled_mean_outside_gpu_command_interval_ms_per_token": [1.1818025377579033, 1.2540106545202434, 1.1465777643024921],
+    "interpretation": "Observed outside-interval time is around 1.15-1.25 ms/token and does not justify a several-ms pure scheduling hypothesis. Command-buffer intervals include stalls; this is not an absolute hardware ceiling or a speedup claim."
+  },
+  "candidate_frozen_sha256": "afb45fa871e35ba35161c09d6797d8e44731430e77c62cf0a99ec990bd090c22",
+  "native_execution": false
+}

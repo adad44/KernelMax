@@ -1,0 +1,57 @@
+load 0/531
+load 25/531
+load 50/531
+load 75/531
+load 100/531
+load 125/531
+load 150/531
+load 175/531
+load 200/531
+load 225/531
+load 250/531
+load 275/531
+load 300/531
+load 325/531
+load 350/531
+load 375/531
+load 400/531
+load 425/531
+load 450/531
+load 475/531
+load 500/531
+load 525/531
+load 531/531
+warmup-0: 40.982 ms/token; flags=[]
+warmup-1: 41.150 ms/token; flags=[]
+warmup-2: 41.267 ms/token; flags=[]
+warmup-3: 41.177 ms/token; flags=[]
+warmup-4: 41.116 ms/token; flags=[]
+aa-1-A: 40.989 ms/token; flags=[]
+aa-1-B: 40.982 ms/token; flags=[]
+aa-2-B: 40.948 ms/token; flags=[]
+aa-2-A: 40.953 ms/token; flags=[]
+aa-3-A: 41.000 ms/token; flags=[]
+aa-3-B: 40.930 ms/token; flags=[]
+aa-4-B: 40.959 ms/token; flags=[]
+aa-4-A: 40.936 ms/token; flags=[]
+aa-5-A: 40.913 ms/token; flags=[]
+aa-5-B: 40.959 ms/token; flags=[]
+aa-6-B: 41.886 ms/token; flags=[]
+aa-6-A: 41.109 ms/token; flags=[]
+aa-7-A: 41.013 ms/token; flags=[]
+aa-7-B: 41.223 ms/token; flags=[]
+aa-8-B: 41.025 ms/token; flags=[]
+aa-8-A: 41.040 ms/token; flags=[]
+aa-9-A: 41.030 ms/token; flags=[]
+aa-9-B: 41.203 ms/token; flags=[]
+aa-10-B: 41.034 ms/token; flags=[]
+aa-10-A: 41.003 ms/token; flags=[]
+aa-11-A: 41.114 ms/token; flags=[]
+aa-11-B: 41.005 ms/token; flags=[]
+aa-12-B: 41.088 ms/token; flags=[]
+aa-12-A: 41.191 ms/token; flags=[]
+aa-13-A: 41.169 ms/token; flags=[]
+aa-13-B: 41.456 ms/token; flags=[]
+aa-14-B: 41.195 ms/token; flags=[]
+aa-14-A: 41.185 ms/token; flags=[]
+aa-15-A: 41.172 ms/token; flags=['native thermal state is not nominal', 'Nonnominal thermal during request']
