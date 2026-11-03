@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_521ff575f496",
+  "name": "Single-sort expert prefill permutation",
+  "implementation_type": "mlx",
+  "description": "For inference with batch-one BF16 activations, four selected experts and at least 16 tokens, replace the inverse argsort in MLX-LM's sorted expert path with an integer permutation scatter. Keep the first expert-ID sort, native MXFP4 projection modules, activation and final output gather unchanged. Decode and unsupported interfaces use the supplied reference callable. No weight transform, routing change or cached request data. Hypothesis: remove inverse-sort overhead; native correctness and M4 timing remain required."
+}
