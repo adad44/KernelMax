@@ -293,8 +293,16 @@ class OrchestratorSessionTests(unittest.TestCase):
                 lambda *args, **kwargs: calls.append(args),
                 ExperimentBudget(max_attempts=3),
             )
-        self.assert_session_stopped(result, first, second, calls, attempts=0)
-        self.assertIn("JournalError", result.stop_reason)
+        # Session provenance is now persisted before touching any submission.
+        self.assertEqual(
+            [item.outcome for item in result.submissions],
+            [SubmissionOutcome.BUDGET_EXHAUSTED, SubmissionOutcome.BUDGET_EXHAUSTED],
+        )
+        self.assertEqual(calls, [])
+        self.assertEqual(result.attempts_started, 0)
+        self.assertIn("session journal failed", result.stop_reason)
+        self.assertIn("disk full", result.journal_error)
+        self.assertFalse(self.frozen.exists())
 
     def test_final_journal_failures_retain_report_and_stop(self):
         for failure in ("history", "snapshot"):

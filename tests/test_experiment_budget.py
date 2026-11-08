@@ -44,6 +44,26 @@ def fake_report(candidate_id, run_id, status=RunStatus.FAILED, verdict=None):
 
 
 class ExperimentBudgetTests(unittest.TestCase):
+    def test_fixed_limits_share_counters_and_restore_configuration_access(self):
+        budget = ExperimentBudget(max_attempts=1)
+        with budget.fixed_limits():
+            budget.max_attempts = 3
+            budget.max_retries_per_candidate = 2
+            with budget.fixed_limits():
+                self.assertEqual((budget.attempt_limit, budget.retry_limit), (1, 0))
+                budget.start_attempt(fake_run("cand_012345abcdef"))
+                self.assertTrue(budget.must_stop)
+            self.assertEqual(budget.attempt_limit, 1)
+        self.assertEqual((budget.attempt_limit, budget.retry_limit), (3, 2))
+        self.assertEqual((budget.attempts_started, budget.attempts_remaining), (1, 2))
+
+    def test_fixed_limits_release_when_setup_fails(self):
+        budget = ExperimentBudget(max_attempts=1)
+        with self.assertRaisesRegex(ValueError, "setup failed"), budget.fixed_limits():
+            budget.max_attempts = 2
+            raise ValueError("setup failed")
+        self.assertEqual(budget.attempt_limit, 2)
+
     def test_counts_attempts_and_stops_at_total_limit(self):
         budget = ExperimentBudget(max_attempts=2, max_retries_per_candidate=1)
         first = budget.start_attempt(fake_run("cand_012345abcdef"))

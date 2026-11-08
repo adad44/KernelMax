@@ -7,6 +7,7 @@ interrupted runs are never retried automatically.
 
 from __future__ import annotations
 
+from contextlib import contextmanager
 from dataclasses import dataclass, field
 
 from evaluator.schemas import EvaluationReport, RunStatus
@@ -69,6 +70,7 @@ class ExperimentBudget:
         default_factory=dict, init=False, repr=False
     )
     _finalized_candidates: set[str] = field(default_factory=set, init=False, repr=False)
+    _active_limits: tuple[int, int] | None = field(default=None, init=False, repr=False)
 
     def __post_init__(self) -> None:
         if type(self.max_attempts) is not int or self.max_attempts < 1:
@@ -92,12 +94,35 @@ class ExperimentBudget:
             raise ValueError("retry counts are outside the configured budget")
 
     @property
+    def attempt_limit(self) -> int:
+        """Effective cap; a session captures it independently of caller changes."""
+        return self._active_limits[0] if self._active_limits else self.max_attempts
+
+    @property
+    def retry_limit(self) -> int:
+        return (
+            self._active_limits[1]
+            if self._active_limits
+            else self.max_retries_per_candidate
+        )
+
+    @contextmanager
+    def fixed_limits(self):
+        """Hold configuration fixed while retaining this budget's shared counters."""
+        previous = self._active_limits
+        self._active_limits = (self.attempt_limit, self.retry_limit)
+        try:
+            yield
+        finally:
+            self._active_limits = previous
+
+    @property
     def retries_started(self) -> int:
         return sum(self.retries_by_candidate.values())
 
     @property
     def attempts_remaining(self) -> int:
-        return max(0, self.max_attempts - self.attempts_started)
+        return max(0, self.attempt_limit - self.attempts_started)
 
     @property
     def must_stop(self) -> bool:
@@ -181,7 +206,7 @@ class ExperimentBudget:
             return self._decision(False, "retry requires an evaluator EvaluationReport")
         candidate_id = report.candidate.candidate_id
         retries_used = self.retries_by_candidate.get(candidate_id, 0)
-        retries_remaining = max(0, self.max_retries_per_candidate - retries_used)
+        retries_remaining = max(0, self.retry_limit - retries_used)
         if self.stop_reason is not None:
             return self._decision(
                 False, f"budget stopped: {self.stop_reason}", retries_remaining

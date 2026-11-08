@@ -157,6 +157,24 @@ class ExperimentJournal:
             },
         )
 
+    def record_session(self, session_id: str, event: str, payload: dict) -> None:
+        """Append controller-owned search accounting; never alter run reports."""
+        if not isinstance(session_id, str) or not session_id.strip():
+            raise ValueError("session_id must be a non-empty string")
+        if event not in {"started", "submission", "completed"}:
+            raise ValueError("unknown session accounting event")
+        if type(payload) is not dict:
+            raise TypeError("session payload must be a dictionary")
+        self._append_and_save(
+            None,
+            {
+                "kind": "search_session",
+                "session_id": session_id,
+                "session_event": event,
+                "payload": payload,
+            },
+        )
+
     def _append_and_save(
         self, state: ExperimentState | None, entry: dict[str, Any]
     ) -> None:
