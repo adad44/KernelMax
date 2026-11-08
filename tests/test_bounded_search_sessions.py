@@ -7,13 +7,17 @@ from dataclasses import FrozenInstanceError, replace
 from pathlib import Path
 from unittest.mock import patch
 
-from evaluator.candidate_execution import ReviewedCandidateEvaluator
+import numpy as np
+
+from evaluator.candidate_execution import ReviewedCandidateEvaluator, _Session, _session
+from evaluator.candidate_protocol import pack_tensor
 from evaluator.schemas import RunStatus, Verdict, VerdictResult
 from orchestrator.candidate_manager import freeze_candidate
 from orchestrator.experiment_budget import ExperimentBudget
 from orchestrator.journal import ExperimentJournal, JournalError
 from orchestrator.run import run_candidate
 from orchestrator.session import STRATEGY_ID, SubmissionOutcome, run_session
+from orchestrator.state_machine import EventType, ExperimentPhase
 from tests.test_orchestrator_session import CONTRACT, make_submission, report_for
 
 
@@ -324,20 +328,21 @@ class BoundedSearchTests(unittest.TestCase):
         self.assertEqual(result.retries_started, 0)
         self.assertEqual(result.elapsed_seconds, 4)
 
-    def test_reviewed_worker_timeout_is_capped_without_mutating_evaluator(self):
+    def test_reviewed_deadline_is_forwarded_without_mutating_evaluator(self):
         evaluator = ReviewedCandidateEvaluator(
             frozenset(), self.root / "artifacts", timeout_seconds=600
         )
         seen = []
 
         def fake_call(instance, run, *args, **kwargs):
-            seen.append(instance.timeout_seconds)
+            self.assertIs(instance, evaluator)
+            seen.append(kwargs["deadline"] - kwargs["clock"]())
             self.clock.advance(1)
             return report_for(run)
 
         with patch.object(ReviewedCandidateEvaluator, "__call__", new=fake_call):
             result = self.run_search([self.submission(), self.submission()], evaluator)
-        self.assertEqual(seen, [5, 4.5])
+        self.assertEqual(seen, [10, 9])
         self.assertEqual(evaluator.timeout_seconds, 600)
         self.assertEqual(result.attempts_started, 2)
 
@@ -590,6 +595,298 @@ class BoundedSearchTests(unittest.TestCase):
         self.assertIn("snapshot differs", retry.error)
         self.assertEqual(budget.attempts_started, 1)
         self.assertEqual(budget.retries_started, 0)
+
+    def reviewed_schedule(self, validation_seconds, worker_limit=600):
+        """Use real evaluator scheduling; replace only workers and hash I/O."""
+        candidate = self.submission()
+        approved = freeze_candidate(
+            candidate,
+            frozen_root=self.root / "approved",
+            candidates_root=self.candidates,
+        )
+        evaluator = ReviewedCandidateEvaluator(
+            frozenset({approved.sha256}),
+            self.root / "artifacts",
+            timeout_seconds=worker_limit,
+        )
+        calls, protected_checks = [], []
+
+        def protected(extra):
+            protected_checks.append(True)
+            if len(protected_checks) == 2:
+                self.clock.advance(validation_seconds)
+            return {}
+
+        def worker(request, directory, runtime, plan, timeout, *args, **kwargs):
+            calls.append((request["phase"], self.clock() - 100, timeout))
+            self.clock.advance(4 if request["phase"] == "reference" else 1)
+            rows = {
+                (case.case_name, case.layer_index): {
+                    "error": None,
+                    "input_sha256": "a" * 64,
+                    "output": pack_tensor(
+                        np.zeros((1, case.tokens, 4, runtime.hidden_size), np.float32)
+                    ),
+                }
+                for case in plan
+            }
+            return _Session(rows, ())
+
+        with (
+            patch("evaluator.candidate_execution._session", side_effect=worker),
+            patch(
+                "evaluator.candidate_execution._protected_files", side_effect=protected
+            ),
+        ):
+            result = self.run_search([candidate], evaluator)
+        self.assertEqual(evaluator.timeout_seconds, worker_limit)
+        return result, calls
+
+    def test_reviewed_candidate_does_not_launch_at_exact_deadline(self):
+        result, calls = self.reviewed_schedule(validation_seconds=6)
+        self.assertEqual([phase for phase, _, _ in calls], ["reference"])
+        self.assertEqual(result.stop_reason, "session deadline reached")
+        self.assertEqual(result.elapsed_seconds, 10)
+        self.assertEqual(result.submissions[0].report.status, RunStatus.FAILED)
+        self.assertTrue(
+            any("deadline" in e for e in result.submissions[0].report.errors)
+        )
+        self.assertTrue(
+            all(
+                not json.loads(check.detail)["candidate_execution_started"]
+                for check in result.submissions[0].report.correctness
+            )
+        )
+
+    def test_reviewed_candidate_does_not_launch_after_deadline(self):
+        result, calls = self.reviewed_schedule(validation_seconds=7)
+        self.assertEqual([phase for phase, _, _ in calls], ["reference"])
+        self.assertEqual(result.elapsed_seconds, 11)
+        self.assertEqual(result.stop_reason, "session deadline reached")
+        self.assertFalse(result.submissions[0].attempts[0].within_deadline)
+        self.assertIsNone(result.score)
+
+    def test_reviewed_worker_limits_use_current_remaining_time(self):
+        result, calls = self.reviewed_schedule(validation_seconds=2, worker_limit=8)
+        self.assertEqual(calls, [("reference", 0, 8), ("candidate", 6, 4)])
+        self.assertEqual(result.submissions[0].report.status, RunStatus.COMPLETED)
+        self.assertEqual(result.elapsed_seconds, 7)
+
+    def test_caller_cannot_expand_session_attempt_limit(self):
+        budget = ExperimentBudget(max_attempts=1)
+        calls = []
+
+        def evaluator(run, *args, **kwargs):
+            calls.append(run)
+            budget.max_attempts = 3
+            return report_for(run)
+
+        result = self.run_search(
+            [self.submission() for _ in range(3)], evaluator, budget
+        )
+        self.assertEqual(len(calls), 1)
+        self.assertEqual((result.max_attempts, result.attempts_started), (1, 1))
+        self.assertEqual(result.attempts_remaining, 0)
+        self.assertEqual(budget.attempts_started, 1)
+        records = [
+            r["payload"]
+            for r in self.journal.read_history()
+            if r["kind"] == "search_session"
+            and r["session_event"] in {"started", "completed"}
+        ]
+        self.assertEqual([r["max_attempts"] for r in records], [1, 1])
+
+    def test_caller_cannot_expand_session_retry_limit(self):
+        budget = ExperimentBudget(max_attempts=5, max_retries_per_candidate=1)
+        candidates = [self.submission(), self.submission()]
+
+        def evaluator(run, *args, **kwargs):
+            budget.max_attempts = 99
+            budget.max_retries_per_candidate = 99
+            return replace(
+                report_for(run), status=RunStatus.FAILED, errors=("transient",)
+            )
+
+        result = self.run_search(
+            candidates, evaluator, budget, retry_classifier=lambda report: True
+        )
+        self.assertEqual([len(s.attempts) for s in result.submissions], [2, 2])
+        self.assertEqual(
+            (result.max_attempts, result.max_retries_per_candidate), (5, 1)
+        )
+        self.assertEqual((budget.attempts_started, budget.retries_started), (4, 2))
+        self.assertEqual(result.attempts_remaining, 1)
+        self.assertEqual(budget.retries_by_candidate, {c.name: 1 for c in candidates})
+        records = [
+            r["payload"]
+            for r in self.journal.read_history()
+            if r["kind"] == "search_session"
+            and r["session_event"] in {"started", "completed"}
+        ]
+        self.assertEqual([r["max_retries_per_candidate"] for r in records], [1, 1])
+
+    def test_zero_session_retries_stay_disabled_after_caller_mutation(self):
+        budget = ExperimentBudget(max_attempts=3, max_retries_per_candidate=0)
+
+        def evaluator(run, *args, **kwargs):
+            budget.max_retries_per_candidate = 2
+            return replace(
+                report_for(run), status=RunStatus.FAILED, errors=("transient",)
+            )
+
+        result = self.run_search(
+            [self.submission()], evaluator, budget, retry_classifier=lambda report: True
+        )
+        self.assertEqual((result.attempts_started, result.retries_started), (1, 0))
+        self.assertEqual(result.max_retries_per_candidate, 0)
+
+    def retry_journal_failure(self, *, continuing):
+        original_record, original_session = (
+            self.journal.record,
+            self.journal.record_session,
+        )
+        reserved, unavailable = [], False
+
+        def record(state, event, **kwargs):
+            nonlocal unavailable
+            if event.type is EventType.CANDIDATE_FROZEN:
+                reserved.append(event.run)
+                if len(reserved) == 2:
+                    unavailable = True
+                    self.clock.advance(2)
+                    raise JournalError("retry transition write failed")
+            return original_record(state, event, **kwargs)
+
+        def record_session(*args, **kwargs):
+            if unavailable and continuing:
+                raise JournalError("journal still unavailable")
+            return original_session(*args, **kwargs)
+
+        def evaluator(run, *args, **kwargs):
+            self.clock.advance(1)
+            return replace(
+                report_for(run), status=RunStatus.FAILED, errors=("transient",)
+            )
+
+        budget = ExperimentBudget(max_attempts=3, max_retries_per_candidate=1)
+        with (
+            patch.object(self.journal, "record", side_effect=record),
+            patch.object(self.journal, "record_session", side_effect=record_session),
+        ):
+            result = self.run_search(
+                [self.submission()],
+                evaluator,
+                budget,
+                retry_classifier=lambda report: True,
+            )
+        self.assertEqual((result.attempts_started, result.retries_started), (2, 1))
+        attempts = result.submissions[0].attempts
+        self.assertEqual(len(attempts), 2)
+        self.assertNotEqual(attempts[0].result.attempt.run_id, reserved[1].run_id)
+        self.assertEqual(attempts[1].result.attempt.run, reserved[1])
+        self.assertEqual(attempts[1].result.attempt.retry_number, 1)
+        self.assertIs(result.submissions[0].result, attempts[1].result)
+        self.assertIsNone(attempts[1].result.report)
+        self.assertIn("retry transition write failed", attempts[1].result.journal_error)
+        self.assertEqual(
+            (attempts[1].started_seconds, attempts[1].finished_seconds), (1, 3)
+        )
+        durations = {d.stage: d.elapsed_seconds for d in attempts[1].result.durations}
+        self.assertEqual(durations["runner_total"], 2)
+        self.assertNotIn("evaluation_call", durations)
+        self.assertIn(reserved[1].run_id, json.dumps(result.to_dict()))
+        saved = json.dumps(self.journal.read_history())
+        self.assertEqual(reserved[1].run_id in saved, not continuing)
+        self.assertEqual(
+            result.submissions[0].submission_record_persisted, not continuing
+        )
+        self.assertIn(reserved[1].run_id, result.summary())
+        observation = result.to_dict()["submissions"][0]["attempts"][1]
+        for name in ("environment", "errors", "report_run_id"):
+            self.assertIsNone(observation[name])
+        if continuing:
+            self.assertIn("journal still unavailable", result.journal_error)
+            self.assertIn("submission record unavailable", result.summary())
+        else:
+            self.assertIsNone(result.journal_error)
+            self.assertIn("submission record saved", result.summary())
+
+    def test_charged_retry_survives_one_time_journal_failure(self):
+        self.retry_journal_failure(continuing=False)
+
+    def test_charged_retry_survives_continuing_journal_failure(self):
+        self.retry_journal_failure(continuing=True)
+
+    def test_worker_launch_rechecks_deadline_after_request_preparation(self):
+        from evaluator.candidate_execution import WorkerRuntime
+        from evaluator.candidate_protocol import write_json
+
+        def prepare(*args, **kwargs):
+            write_json(*args, **kwargs)
+            self.clock.advance(10)
+
+        with (
+            patch("evaluator.candidate_execution.write_json", side_effect=prepare),
+            patch("evaluator.candidate_execution.subprocess.Popen") as launch,
+            self.assertRaisesRegex(TimeoutError, "session deadline"),
+        ):
+            _session(
+                {"phase": "reference"},
+                self.root / "worker",
+                WorkerRuntime(),
+                (),
+                600,
+                65536,
+                1048576,
+                deadline=110,
+                clock=self.clock,
+            )
+        launch.assert_not_called()
+
+    def test_post_evaluation_journal_failure_keeps_the_original_report(self):
+        original = self.journal.record
+        reports = []
+
+        def evaluator(run, *args, **kwargs):
+            # Preserve foreign evidence without adopting its identity as valid.
+            report = replace(report_for(run), run_id="foreign-run")
+            reports.append(report)
+            return report
+
+        def record(state, event, **kwargs):
+            if event.type is EventType.CONTROLLER_FAILED:
+                raise JournalError("failure transition unavailable")
+            original(state, event, **kwargs)
+
+        with patch.object(self.journal, "record", side_effect=record):
+            result = self.run_search([self.submission()], evaluator)
+        attempt = result.submissions[0].attempts[0].result
+        self.assertEqual(result.attempts_started, 1)
+        self.assertIs(attempt.report, reports[0])
+        self.assertIsNone(attempt.state.evaluator_report)
+        self.assertNotEqual(attempt.attempt.run_id, "foreign-run")
+        self.assertIn("failure transition unavailable", attempt.journal_error)
+        self.assertIn("invalid evaluator report", attempt.error)
+
+    def test_interruption_with_journal_failure_remains_interrupted(self):
+        original = self.journal.record
+
+        def evaluator(*args, **kwargs):
+            raise KeyboardInterrupt("fixture interruption")
+
+        def record(state, event, **kwargs):
+            if event.type is EventType.INTERRUPTED:
+                raise JournalError("interruption transition unavailable")
+            original(state, event, **kwargs)
+
+        with patch.object(self.journal, "record", side_effect=record):
+            result = self.run_search([self.submission()], evaluator)
+        attempt = result.submissions[0].attempts[0].result
+        self.assertEqual(attempt.state.phase, ExperimentPhase.INTERRUPTED)
+        self.assertEqual(result.submissions[0].outcome, SubmissionOutcome.INTERRUPTED)
+        self.assertIsNone(attempt.report)
+        self.assertIn("interruption transition unavailable", attempt.journal_error)
+        self.assertIn("fixture interruption", attempt.error)
 
 
 if __name__ == "__main__":

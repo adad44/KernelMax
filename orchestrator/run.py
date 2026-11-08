@@ -74,6 +74,15 @@ class CandidateRunResult:
     report: EvaluationReport | None = None
     error: str | None = None
     durations: tuple[StageDuration, ...] = ()
+    journal_error: str | None = None
+
+
+@dataclass
+class _RunProgress:
+    """In-memory evidence once an attempt has been charged to the budget."""
+
+    result: CandidateRunResult | None = None
+    interrupted: bool = False
 
 
 def run_candidate(
@@ -99,22 +108,46 @@ def run_candidate(
     Search durations include journal/callback overhead and are not GPU timings.
     """
     durations = []
+    progress = _RunProgress()
     with _measure("runner_total", durations, clock):
-        result = _run_candidate(
-            candidate_dir,
-            evaluator=evaluator,
-            contract=contract,
-            budget=budget,
-            journal=journal,
-            frozen_root=frozen_root,
-            candidates_root=candidates_root,
-            experiment_id=experiment_id,
-            retry_of=retry_of,
-            retryable=retryable,
-            deadline=deadline,
-            clock=clock,
-            durations=durations,
-        )
+        try:
+            result = _run_candidate(
+                candidate_dir,
+                evaluator=evaluator,
+                contract=contract,
+                budget=budget,
+                journal=journal,
+                frozen_root=frozen_root,
+                candidates_root=candidates_root,
+                experiment_id=experiment_id,
+                retry_of=retry_of,
+                retryable=retryable,
+                deadline=deadline,
+                clock=clock,
+                durations=durations,
+                progress=progress,
+            )
+        except JournalError as exc:
+            if progress.result is None:
+                raise  # No reserved attempt: preserve the setup-failure convention.
+            journal_reason = f"attempt journal failed: {exc}"
+            reason = (
+                f"{progress.result.error}; {journal_reason}"
+                if progress.result.error
+                else journal_reason
+            )
+            budget.stop(reason)
+            event = (
+                EventType.INTERRUPTED
+                if progress.interrupted
+                else EventType.CONTROLLER_FAILED
+            )
+            result = replace(
+                progress.result,
+                state=transition(progress.result.state, ExperimentEvent(event, reason)),
+                error=reason,
+                journal_error=journal_reason,
+            )
     return replace(result, durations=tuple(durations))
 
 
@@ -145,6 +178,7 @@ def _run_candidate(
     deadline: float | None = None,
     clock=time.monotonic,
     durations=None,
+    progress=None,
 ) -> CandidateRunResult:
     """Validate, freeze, reserve, evaluate, and journal one candidate.
 
@@ -261,11 +295,12 @@ def _run_candidate(
             state, candidate=candidate, frozen_candidate=frozen, error=reason
         )
 
-    state = _advance(
-        state,
-        ExperimentEvent(EventType.CANDIDATE_FROZEN, run=attempt.run),
-        journal,
+    frozen_event = ExperimentEvent(EventType.CANDIDATE_FROZEN, run=attempt.run)
+    # Preserve the reserved identity even if this first bound journal write fails.
+    progress.result = CandidateRunResult(
+        transition(state, frozen_event), candidate, frozen, attempt
     )
+    state = _advance(state, frozen_event, journal)
 
     diagnostic_error: Exception | None = None
 
@@ -328,30 +363,25 @@ def _run_candidate(
             callbacks["on_candidate_correctness_passed"] = (
                 on_candidate_correctness_passed
             )
-        # Reuse the existing worker process timeout, without mutating its frozen
-        # configuration. Setup/cleanup and arbitrary Python calls are not bounded.
-        bounded_evaluator = evaluator
-        if (
-            deadline is not None
-            and type(evaluator).__module__ == "evaluator.candidate_execution"
-        ):
+        # The reviewed evaluator checks this absolute deadline at each launch.
+        # Generic Python calls and setup/cleanup still lack safe cancellation.
+        if deadline is not None:
             from evaluator.candidate_execution import ReviewedCandidateEvaluator
 
             if isinstance(evaluator, ReviewedCandidateEvaluator):
-                remaining = deadline - clock()
-                if remaining <= 0:
-                    budget.stop("session deadline reached")
-                    raise TimeoutError("session deadline reached before worker setup")
-                bounded_evaluator = replace(
-                    evaluator,
-                    timeout_seconds=min(evaluator.timeout_seconds, remaining / 2),
-                )
+                callbacks.update(deadline=deadline, clock=clock)
         with _measure("evaluation_call", durations, clock):
-            report = bounded_evaluator(attempt.run, frozen, contract, **callbacks)
+            report = evaluator(attempt.run, frozen, contract, **callbacks)
     except KeyboardInterrupt as exc:
         evaluator_interrupted = exc
     except Exception as exc:  # noqa: BLE001 -- Retain any injected evaluator failure.
         evaluator_error = exc
+
+    progress.interrupted = evaluator_interrupted is not None
+    if isinstance(report, EvaluationReport):
+        progress.result = replace(progress.result, report=report)
+    if deadline is not None and clock() >= deadline and budget.stop_reason is None:
+        budget.stop("session deadline reached")
 
     # An evaluator may catch callback exceptions. They remain controller failures.
     if diagnostic_error is not None:
@@ -361,6 +391,7 @@ def _run_candidate(
         verify_frozen_candidate(frozen)
     except CandidateValidationError as exc:
         reason = f"snapshot integrity failure: {exc}"
+        progress.result = replace(progress.result, error=reason)
         budget.stop(reason)
         failed = ExperimentEvent(EventType.CONTROLLER_FAILED, reason)
         state = _advance(
@@ -380,6 +411,7 @@ def _run_candidate(
 
     if evaluator_interrupted is not None:
         reason = f"evaluator interrupted: {evaluator_interrupted}".rstrip()
+        progress.result = replace(progress.result, error=reason)
         budget.stop(reason)
         state = _advance(state, ExperimentEvent(EventType.INTERRUPTED, reason), journal)
         return CandidateRunResult(
@@ -393,6 +425,7 @@ def _run_candidate(
         reason = (
             f"evaluator failed: {type(evaluator_error).__name__}: {evaluator_error}"
         )
+        progress.result = replace(progress.result, error=reason)
         if isinstance(evaluator_error, JournalError):
             budget.stop(reason)
         state = _advance(
@@ -415,6 +448,7 @@ def _run_candidate(
         budget.observe_result(report)
     except CandidateValidationError as exc:
         reason = f"snapshot integrity failure: {exc}"
+        progress.result = replace(progress.result, error=reason)
         budget.stop(reason)
         state = _advance(
             state,
@@ -432,6 +466,7 @@ def _run_candidate(
         )
     except (TypeError, ValueError) as exc:
         reason = f"invalid evaluator report: {exc}"
+        progress.result = replace(progress.result, error=reason)
         budget.stop(reason)
         state = _advance(
             state,
@@ -464,6 +499,7 @@ def _run_candidate(
             attempt=attempt,
             report=report,
             error=reason,
+            journal_error=reason,
         )
     return CandidateRunResult(
         state,

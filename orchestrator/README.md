@@ -76,6 +76,10 @@ the original behavior with attempt limits only. A unique `search_id` identifies
 each invocation even when a caller reuses a display `session_id`; frozen files
 are namespaced by this ID under the controller's frozen root. Use a fresh budget
 for an independent search. Reusing a budget intentionally shares its limits.
+Each invocation captures the configured attempt and retry caps separately from
+the same budget object's consumption counters. Caller/callback edits to those
+configuration fields cannot change the active session's caps or its provenance.
+Outside the session, the budget remains configurable for subsequent work.
 
 There is no candidate-generation or automatic transient-error classifier in the
 current repository. Default behavior continues to move to the next distinct
@@ -93,9 +97,12 @@ Retries reuse the same frozen files/hash with a fresh run ID through
 The deadline is a **scheduling boundary, not a hard runtime cutoff**. The
 controller checks it before submissions and between stages/retries; it never
 terminates Python threads. For the existing `ReviewedCandidateEvaluator`, it
-uses an immutable copy whose per-worker timeout is capped at half the remaining
-session time, because reference and candidate workers run sequentially. Its
-existing process-group cleanup still handles worker timeouts. Model hashing,
+passes the absolute monotonic deadline through to both sequential worker
+launches. After intervening validation and again after request preparation,
+the evaluator declines launches at or beyond the deadline. Each worker timeout
+is the smaller of its existing limit and the current remaining session time;
+the process wait also accounts for launch/setup time. Existing process-group
+cleanup still handles worker timeouts. Model hashing,
 setup, cleanup, finite iterable consumption and arbitrary injected Python
 evaluators lack safe cancellation and can overrun the deadline. Late results
 are retained with `within_deadline=False`; no late result can improve a score.
@@ -112,6 +119,14 @@ Run report contents remain in the existing transition/signal records; official
 reports remain evaluator-owned. Session-journal failures stop new work and are
 retained in `result.journal_error`, including final-flush failures. Skipped and
 duplicate submissions remain in the final session summary.
+
+A run-journal failure after budget reservation retains a partial attempt with
+its assigned run/candidate identity, measured durations and `run_journal_error`.
+It never substitutes the preceding retry result or fabricates an evaluator
+report. `submission_record_persisted` says whether that submission accounting
+write succeeded: if the journal recovers, it contains the partial evidence; if
+writes continue to fail, evidence remains in memory with session journal errors.
+This flag does not claim the failed run transition itself was durably saved.
 
 Elapsed search time begins on entry to `run_session` and includes collection,
 validation, freezing, evaluator calls, controller decisions, retries, failures

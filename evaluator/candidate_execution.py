@@ -8,7 +8,6 @@ from __future__ import annotations
 
 import json
 import os
-from pathlib import Path
 import re
 import selectors
 import signal
@@ -18,13 +17,14 @@ import sys
 import tempfile
 import time
 from dataclasses import dataclass, field, replace
+from pathlib import Path
 from types import MappingProxyType
 
 import numpy as np
 
 from evaluator.candidate_protocol import (
-    VERSION,
     MAX_RESPONSE_BYTES,
+    VERSION,
     file_digest,
     pack_tensor,
     unpack_tensor,
@@ -41,7 +41,6 @@ from evaluator.schemas import (
 )
 from orchestrator.candidate_manager import FrozenCandidate, verify_frozen_candidate
 from orchestrator.state_machine import RunIdentity
-
 
 ROOT = Path(__file__).resolve().parents[1]
 _WORKER = Path(__file__).with_name("candidate_worker.py")
@@ -257,7 +256,28 @@ def _read_session(path, request, plan, limit):
     return rows, errors
 
 
-def _session(request, directory, runtime, plan, timeout, log_limit, response_limit):
+def _worker_timeout(timeout, deadline, clock):
+    """Recheck the shared deadline before scheduling a worker."""
+    if deadline is None:
+        return timeout
+    remaining = deadline - clock()
+    if remaining <= 0:
+        raise TimeoutError("session deadline reached before worker launch")
+    return min(timeout, remaining)
+
+
+def _session(
+    request,
+    directory,
+    runtime,
+    plan,
+    timeout,
+    log_limit,
+    response_limit,
+    *,
+    deadline=None,
+    clock=time.monotonic,
+):
     directory.mkdir()
     (directory / "home").mkdir()
     request_path, response_path = (
@@ -273,6 +293,8 @@ def _session(request, directory, runtime, plan, timeout, log_limit, response_lim
         "TRANSFORMERS_OFFLINE": "1",
     }
     errors, interrupted = [], False
+    # Request-file preparation can consume time too. Check again at launch.
+    timeout = _worker_timeout(timeout, deadline, clock)
     process = subprocess.Popen(
         [
             str(runtime.python),
@@ -297,10 +319,11 @@ def _session(request, directory, runtime, plan, timeout, log_limit, response_lim
         for stream in (process.stdout, process.stderr):
             os.set_blocking(stream.fileno(), False)
             selector.register(stream, selectors.EVENT_READ)
-        deadline, total = time.monotonic() + timeout, 0
+        worker_deadline = time.monotonic() + _worker_timeout(timeout, deadline, clock)
+        total = 0
         with (directory / "worker.log").open("wb") as log:
             while process.poll() is None:
-                if time.monotonic() >= deadline:
+                if time.monotonic() >= worker_deadline:
                     raise TimeoutError("worker execution deadline exceeded")
                 if (
                     response_path.exists()
@@ -308,7 +331,7 @@ def _session(request, directory, runtime, plan, timeout, log_limit, response_lim
                 ):
                     raise ValueError("worker response exceeds byte limit")
                 for key, _ in selector.select(
-                    timeout=min(0.05, max(0, deadline - time.monotonic()))
+                    timeout=min(0.05, max(0, worker_deadline - time.monotonic()))
                 ):
                     chunk = os.read(key.fileobj.fileno(), 4096)
                     if not chunk:
@@ -401,9 +424,15 @@ class ReviewedCandidateEvaluator:
         *,
         on_diagnostic_passed=None,
         on_candidate_correctness_passed=None,
+        deadline=None,
+        clock=time.monotonic,
     ):
         if not isinstance(contract, ExperimentContract):
             raise TypeError("contract must be a validated ExperimentContract")
+        if not callable(clock):
+            raise TypeError("clock must be callable")
+        if deadline is not None and not np.isfinite(deadline):
+            raise ValueError("deadline must be finite monotonic seconds")
         if not isinstance(run_identity, RunIdentity) or not isinstance(
             frozen_candidate, FrozenCandidate
         ):
@@ -504,9 +533,11 @@ class ReviewedCandidateEvaluator:
                 artifacts / "reference",
                 self.runtime,
                 plan,
-                self.timeout_seconds,
+                _worker_timeout(self.timeout_seconds, deadline, clock),
                 self.max_log_bytes,
                 self.max_response_bytes,
+                deadline=deadline,
+                clock=clock,
             )
             errors.extend(f"reference: {error}" for error in reference.errors)
             interrupted = reference.interrupted
@@ -557,16 +588,18 @@ class ReviewedCandidateEvaluator:
             if protected != _protected_files(protected_paths):
                 raise ValueError("protected sources changed during reference execution")
             # Reference process has exited/reaped BEFORE candidate/model starts.
-            started = True
             actual = _session(
                 dict(request, phase="candidate"),
                 artifacts / "candidate",
                 self.runtime,
                 plan,
-                self.timeout_seconds,
+                _worker_timeout(self.timeout_seconds, deadline, clock),
                 self.max_log_bytes,
                 self.max_response_bytes,
+                deadline=deadline,
+                clock=clock,
             )
+            started = True
             errors.extend(f"candidate: {error}" for error in actual.errors)
             interrupted = actual.interrupted
             for case in plan:
@@ -598,7 +631,7 @@ class ReviewedCandidateEvaluator:
         except KeyboardInterrupt:
             interrupted = True
             errors.append("parent evaluation interrupted")
-        except Exception as exc:
+        except Exception as exc:  # noqa: BLE001 -- Retain evaluator failures in the report.
             errors.append(f"{type(exc).__name__}: {exc}")
         finally:
             try:
@@ -614,7 +647,7 @@ class ReviewedCandidateEvaluator:
                     raise ValueError(
                         "checkpoint file identity changed during execution"
                     )
-            except Exception as exc:
+            except Exception as exc:  # noqa: BLE001 -- Retain integrity-check failures.
                 errors.append(f"integrity: {type(exc).__name__}: {exc}")
         suite = summarize_checks(checks, policy=contract.correctness)
         errors.extend(suite.errors)
@@ -659,7 +692,7 @@ class ReviewedCandidateEvaluator:
                     status=RunStatus.INTERRUPTED,
                     errors=("candidate correctness callback interrupted",),
                 )
-            except Exception as exc:
+            except Exception as exc:  # noqa: BLE001 -- Retain correctness-callback failures.
                 report = replace(
                     report,
                     status=RunStatus.FAILED,

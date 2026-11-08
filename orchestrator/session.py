@@ -85,6 +85,7 @@ class AttemptObservation:
             "verdict": report.verdict.to_dict() if report and report.verdict else None,
             "errors": list(report.errors) if report else None,
             "controller_error": self.result.error,
+            "run_journal_error": self.result.journal_error,
         }
 
 
@@ -99,6 +100,7 @@ class SubmissionResult:
     result: CandidateRunResult | None = None
     detail: str = ""
     attempts: tuple[AttemptObservation, ...] = ()
+    submission_record_persisted: bool | None = None
 
     @property
     def report(self) -> EvaluationReport | None:
@@ -208,6 +210,7 @@ class SessionResult:
                     "directory": str(item.directory),
                     "outcome": item.outcome.value,
                     "detail": item.detail,
+                    "submission_record_persisted": item.submission_record_persisted,
                     "attempts": [attempt.to_dict() for attempt in item.attempts],
                 }
                 for item in self.submissions
@@ -242,6 +245,15 @@ class SessionResult:
             if item.detail:
                 line += f" — {item.detail}"
             lines.append(line)
+            for attempt in item.attempts:
+                if attempt.result.journal_error:
+                    persistence = (
+                        "saved" if item.submission_record_persisted else "unavailable"
+                    )
+                    lines.append(
+                        f"  Run {attempt.result.attempt.run_id}: run journal write failed; "
+                        f"partial evidence retained in memory; submission record {persistence}"
+                    )
         if self.stop_reason:
             lines.append(f"Session stop reason: {self.stop_reason}")
         if self.elapsed_seconds is not None:
@@ -291,6 +303,41 @@ def run_session(
     retry_classifier: Callable[[EvaluationReport], bool] | None = None,
     configuration_ids: Mapping[str, str | None] | None = None,
     clock: Callable[[], float] = time.monotonic,
+) -> SessionResult:
+    """Run an ordered session with fixed caps and the supplied shared counters."""
+    if not isinstance(budget, ExperimentBudget):
+        raise TypeError("budget must be an ExperimentBudget")
+    with budget.fixed_limits():
+        return _run_session(
+            candidate_dirs,
+            evaluator=evaluator,
+            contract=contract,
+            budget=budget,
+            journal=journal,
+            frozen_root=frozen_root,
+            candidates_root=candidates_root,
+            session_id=session_id,
+            max_elapsed_seconds=max_elapsed_seconds,
+            retry_classifier=retry_classifier,
+            configuration_ids=configuration_ids,
+            clock=clock,
+        )
+
+
+def _run_session(
+    candidate_dirs: Iterable[str | Path],
+    *,
+    evaluator: Evaluator,
+    contract: ExperimentContract,
+    budget: ExperimentBudget,
+    journal: ExperimentJournal,
+    frozen_root: str | Path,
+    candidates_root: str | Path,
+    session_id: str | None,
+    max_elapsed_seconds: float | None,
+    retry_classifier: Callable[[EvaluationReport], bool] | None,
+    configuration_ids: Mapping[str, str | None] | None,
+    clock: Callable[[], float],
 ) -> SessionResult:
     """Process submissions in order through ``run_candidate`` with one budget.
 
@@ -385,9 +432,11 @@ def run_session(
             journal.record_session(
                 session_id, event, {"search_id": search_id, **payload}
             )
+            return True
         except JournalError as exc:
             journal_error = f"session journal failed: {exc}"
             budget.stop(journal_error)
+            return False
 
     def check_deadline():
         if deadline is not None and now() >= deadline and budget.stop_reason is None:
@@ -402,9 +451,9 @@ def run_session(
             "workload_seed": provenance.workload_seed,
             "evaluator_type": provenance.evaluator_type,
             "configuration_ids": dict(provenance.configuration_ids),
-            "max_attempts": budget.max_attempts,
+            "max_attempts": budget.attempt_limit,
             "attempts_started": budget.attempts_started,
-            "max_retries_per_candidate": budget.max_retries_per_candidate,
+            "max_retries_per_candidate": budget.retry_limit,
             "max_elapsed_seconds": max_elapsed_seconds,
             "journal_history": str(journal.history_path.absolute()),
         },
@@ -509,7 +558,7 @@ def run_session(
             index, candidate_id, directory, outcome, result, detail, tuple(attempts)
         )
         outcomes.append(submission)
-        record(
+        persisted = record(
             "submission",
             {
                 "index": index,
@@ -522,13 +571,14 @@ def run_session(
                 "retries_started": budget.retries_started,
             },
         )
+        outcomes[-1] = replace(submission, submission_record_persisted=persisted)
 
     check_deadline()
     result = SessionResult(
         session_id=session_id,
         submissions=tuple(outcomes),
         attempts_started=budget.attempts_started,
-        max_attempts=budget.max_attempts,
+        max_attempts=budget.attempt_limit,
         retries_started=budget.retries_started,
         stop_reason=budget.stop_reason
         or (
@@ -542,7 +592,7 @@ def run_session(
         provenance=provenance,
         durations=tuple(durations),
         attempts_remaining=budget.attempts_remaining,
-        max_retries_per_candidate=budget.max_retries_per_candidate,
+        max_retries_per_candidate=budget.retry_limit,
         journal_error=journal_error,
     )
     record("completed", result.to_dict())
