@@ -2,7 +2,9 @@
 
 The proposed [search-policy improvement loop](SEARCH_POLICY_DESIGN.md) describes
 how a future outer loop could evaluate better experiment-selection strategies.
-It is a design for a later phase; the runner behavior below is unchanged.
+Its first two foundation steps now have session accounting and a scheduling
+deadline. Policy generation, policy comparisons, promotion and rollback remain
+proposals; this code establishes no measured policy or inference improvement.
 
 `run_candidate` connects candidate validation/freezing, evaluator handoff, the
 experiment budget, the state machine and the local journal. The runner does not
@@ -39,6 +41,125 @@ failure to `history.jsonl`. It atomically replaces one state snapshot per
 experiment under `states/`, syncing both file and parent directory. Its hashed
 state filenames avoid treating experiment IDs as paths. Journal files are
 controller-owned and should be placed outside agent-writable candidate space.
+
+## Bounded search sessions and costs
+
+Extend the existing trusted `run_session` call with an elapsed-time limit:
+
+```python
+from orchestrator.session import run_session
+
+result = run_session(
+    candidate_dirs,  # Finite, trusted iterable of already selected directories.
+    evaluator=evaluator,  # Existing trusted/injected evaluator with its approvals.
+    contract=contract,
+    budget=ExperimentBudget(max_attempts=5, max_retries_per_candidate=1),
+    journal=journal,
+    frozen_root=frozen_root,
+    candidates_root=candidates_root,
+    max_elapsed_seconds=120,
+    configuration_ids={
+        "generator": "externally-recorded-generator-version-or-hash",
+        "evaluator_configuration": "externally-recorded-config-hash",
+        "controller_revision": "externally-recorded-git-commit",
+    },
+)
+print(result.summary())
+accounting = result.to_dict()
+```
+
+The fixed strategy is `ordered_unique_submissions_v1`: input order, first
+occurrence of each candidate ID, no reranking. One shared monotonic deadline
+and the supplied `ExperimentBudget` apply across the session, including retries;
+previously consumed attempts are not reset. `max_elapsed_seconds=None` preserves
+the original behavior with attempt limits only. A unique `search_id` identifies
+each invocation even when a caller reuses a display `session_id`; frozen files
+are namespaced by this ID under the controller's frozen root. Use a fresh budget
+for an independent search. Reusing a budget intentionally shares its limits.
+
+There is no candidate-generation or automatic transient-error classifier in the
+current repository. Default behavior continues to move to the next distinct
+candidate after failures. A trusted controller may pass
+`retry_classifier=its_existing_classifier`, a callable receiving an unchanged
+failed `EvaluationReport` and returning an actual bool. The existing
+`ExperimentBudget.can_retry/start_retry` rules remain authoritative: only
+observed failed reports explicitly classified as transient can retry, each
+retry consumes a total attempt, and completed verdicts/interrupted runs cannot
+retry. Exceptions without an evaluator report do not gain a synthetic report
+or a retry. Classification errors stop the session and preserve prior evidence.
+Retries reuse the same frozen files/hash with a fresh run ID through
+`run_candidate(retry_of=..., retryable=True)`; live submissions are not refrozen.
+
+The deadline is a **scheduling boundary, not a hard runtime cutoff**. The
+controller checks it before submissions and between stages/retries; it never
+terminates Python threads. For the existing `ReviewedCandidateEvaluator`, it
+uses an immutable copy whose per-worker timeout is capped at half the remaining
+session time, because reference and candidate workers run sequentially. Its
+existing process-group cleanup still handles worker timeouts. Model hashing,
+setup, cleanup, finite iterable consumption and arbitrary injected Python
+evaluators lack safe cancellation and can overrun the deadline. Late results
+are retained with `within_deadline=False`; no late result can improve a score.
+
+The returned immutable observations retain all attempts, original report
+objects, relative start/finish offsets and controller stage durations. Existing
+run transitions, evaluator reports and verdicts stay unchanged. The append-only
+journal gains `kind="search_session"` records with `session_event` values
+`started`, `submission` and `completed`. They link the session/search IDs,
+fixed strategy identity/hash, contract hash, workload seed, available external
+configuration identities, evaluator/run/candidate identities, observed report
+environment, retry classifications, remaining attempt budget and stop reason.
+Run report contents remain in the existing transition/signal records; official
+reports remain evaluator-owned. Session-journal failures stop new work and are
+retained in `result.journal_error`, including final-flush failures. Skipped and
+duplicate submissions remain in the final session summary.
+
+Elapsed search time begins on entry to `run_session` and includes collection,
+validation, freezing, evaluator calls, controller decisions, retries, failures
+and journaling. The runner reports `validation`, `freezing`, `evaluation_call`
+and `runner_total` durations. **Do not sum runner_total with its components.**
+Profiling, compilation, warmups and benchmarking inside an evaluator call are
+included in that aggregate wall time, but their individual durations are
+unavailable and remain null. Work performed by a trusted iterable is charged to
+`submission_collection`; this is not a new generation API. Pre-generated
+candidate costs and contract/environment initialization before entry remain
+outside the boundary. Generation resource usage and unavailable provenance are
+null, never invented zero costs. Accounting is explicitly
+`partial_search_boundary`, not complete end-to-end search cost.
+
+The returned elapsed total includes the final journal flush. The completed
+journal record captures the pre-flush total: recording the cost of that very
+write would require another write. This distinction is explicit in accounting.
+All of these durations are search-level wall time, separate from timed model
+inference samples, and cannot establish GPU performance.
+
+Sessions are currently **unscored**: `score` and `best_run_id` are null with a
+reason. The report schema supports only planned task-quality execution, the
+locked contract disables acceptance with provisional gates, and no authoritative
+search-score aggregation exists. Even a synthetic ACCEPTED verdict is preserved
+as an evaluator outcome without becoming a verified best search result. No
+reference score of 1.0 is invented for incomplete diagnostic searches.
+
+Remaining prerequisites from `SEARCH_POLICY_DESIGN.md` include isolated native
+candidate execution, complete model/performance/quality integration, calibrated
+acceptance and workload aggregation, and complete search cost/provenance
+coverage. Versioned policy proposals, paired validation/confirmation searches,
+statistical comparisons, promotion and rollback are later steps. This controller
+grants no additional candidate-agent write access or approval authority.
+
+Run the fake-clock session and existing orchestration regressions offline:
+
+```sh
+python -B -m unittest \
+  tests.test_bounded_search_sessions tests.test_orchestrator_session \
+  tests.test_orchestrator_run tests.test_orchestrator_journal \
+  tests.test_experiment_budget tests.test_orchestrator_cli -v
+python -B -m pytest -q -p no:cacheprovider
+```
+
+Use an existing Python 3.12 environment with NumPy and PyYAML (plus pytest for
+the full suite). The new tests use the real runner and controlled submissions,
+fake evaluators and an injectable clock; they download no models, execute no
+optimization candidates and require neither MLX nor M4 hardware.
 
 If an append is interrupted, the next read or append preserves the unfinished
 final bytes in a private `history-incomplete-*.bin` recovery file before trimming

@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 import json
+import time
 import uuid
 from collections.abc import Callable
-from dataclasses import dataclass
+from contextlib import contextmanager
+from dataclasses import dataclass, replace
 from pathlib import Path
 from typing import Protocol
 
@@ -45,6 +47,23 @@ class Evaluator(Protocol):
 
 
 @dataclass(frozen=True, slots=True)
+class StageDuration:
+    """Controller wall time, never an inference benchmark sample."""
+
+    stage: str
+    elapsed_seconds: float
+
+
+@contextmanager
+def _measure(stage, durations, clock):
+    started = clock()
+    try:
+        yield
+    finally:
+        durations.append(StageDuration(stage, clock() - started))
+
+
+@dataclass(frozen=True, slots=True)
 class CandidateRunResult:
     """The final controller state and untouched evaluator response, if any."""
 
@@ -54,6 +73,49 @@ class CandidateRunResult:
     attempt: Attempt | None = None
     report: EvaluationReport | None = None
     error: str | None = None
+    durations: tuple[StageDuration, ...] = ()
+
+
+def run_candidate(
+    candidate_dir: str | Path,
+    *,
+    evaluator: Evaluator,
+    contract: ExperimentContract,
+    budget: ExperimentBudget,
+    journal: ExperimentJournal,
+    frozen_root: str | Path,
+    candidates_root: str | Path = DEFAULT_CANDIDATES_ROOT,
+    experiment_id: str | None = None,
+    retry_of: CandidateRunResult | None = None,
+    retryable: bool = False,
+    deadline: float | None = None,
+    clock: Callable[[], float] = time.monotonic,
+) -> CandidateRunResult:
+    """Run one attempt; optional retries reuse the original frozen snapshot.
+
+    Only the controller supplies ``retryable``. ExperimentBudget still decides
+    whether an observed failed report permits a retry. Deadline checks prevent
+    new evaluation work; arbitrary Python evaluators cannot be safely interrupted.
+    Search durations include journal/callback overhead and are not GPU timings.
+    """
+    durations = []
+    with _measure("runner_total", durations, clock):
+        result = _run_candidate(
+            candidate_dir,
+            evaluator=evaluator,
+            contract=contract,
+            budget=budget,
+            journal=journal,
+            frozen_root=frozen_root,
+            candidates_root=candidates_root,
+            experiment_id=experiment_id,
+            retry_of=retry_of,
+            retryable=retryable,
+            deadline=deadline,
+            clock=clock,
+            durations=durations,
+        )
+    return replace(result, durations=tuple(durations))
 
 
 def _advance(
@@ -68,7 +130,7 @@ def _advance(
     return updated
 
 
-def run_candidate(
+def _run_candidate(
     candidate_dir: str | Path,
     *,
     evaluator: Evaluator,
@@ -78,6 +140,11 @@ def run_candidate(
     frozen_root: str | Path,
     candidates_root: str | Path = DEFAULT_CANDIDATES_ROOT,
     experiment_id: str | None = None,
+    retry_of: CandidateRunResult | None = None,
+    retryable: bool = False,
+    deadline: float | None = None,
+    clock=time.monotonic,
+    durations=None,
 ) -> CandidateRunResult:
     """Validate, freeze, reserve, evaluate, and journal one candidate.
 
@@ -108,13 +175,43 @@ def run_candidate(
     submitted = ExperimentEvent(EventType.SUBMITTED)
     state = _advance(state, submitted, journal)
     try:
-        candidate = validate_candidate(candidate_dir, candidates_root)
+        with _measure("validation", durations, clock):
+            if retry_of is None:
+                candidate = validate_candidate(candidate_dir, candidates_root)
+            else:
+                if (
+                    retry_of.state is None
+                    or retry_of.state.evaluator_report is not retry_of.report
+                    or retry_of.frozen_candidate is None
+                    or retry_of.candidate is None
+                    or retry_of.candidate.candidate_id != candidate_id
+                    or retry_of.report is None
+                    or retry_of.report.contract_sha256 != contract.sha256
+                ):
+                    raise CandidateValidationError(
+                        "retry requires a retained evaluator result"
+                    )
+                frozen_identity = CandidateIdentity(
+                    retry_of.frozen_candidate.candidate_id,
+                    retry_of.frozen_candidate.implementation_type,
+                    retry_of.frozen_candidate.sha256,
+                )
+                if frozen_identity != retry_of.report.candidate:
+                    raise CandidateValidationError(
+                        "retry snapshot differs from the observed candidate identity"
+                    )
+                decision = budget.can_retry(retry_of.report, retryable=retryable)
+                if not decision.allowed:
+                    raise CandidateValidationError(decision.reason)
+                candidate = retry_of.candidate
     except CandidateValidationError as exc:
         rejected = ExperimentEvent(EventType.CANDIDATE_REJECTED, str(exc))
         state = _advance(state, rejected, journal)
         return CandidateRunResult(state, error=str(exc))
 
     state = _advance(state, ExperimentEvent(EventType.CANDIDATE_VALIDATED), journal)
+    if deadline is not None and clock() >= deadline:
+        budget.stop("session deadline reached")
     if budget.must_stop:
         reason = budget.stop_reason or "maximum total attempts reached"
         failed = ExperimentEvent(EventType.CONTROLLER_FAILED, reason)
@@ -123,12 +220,17 @@ def run_candidate(
 
     frozen: FrozenCandidate | None = None
     try:
-        frozen = freeze_candidate(
-            candidate.directory,
-            frozen_root=frozen_root,
-            candidates_root=candidates_root,
-        )
-        verify_frozen_candidate(frozen)
+        with _measure("freezing", durations, clock):
+            frozen = (
+                freeze_candidate(
+                    candidate.directory,
+                    frozen_root=frozen_root,
+                    candidates_root=candidates_root,
+                )
+                if retry_of is None
+                else retry_of.frozen_candidate
+            )
+            verify_frozen_candidate(frozen)
         identity = RunIdentity(
             run_id=str(uuid.uuid4()),
             candidate=CandidateIdentity(
@@ -136,7 +238,15 @@ def run_candidate(
             ),
             contract_sha256=contract.sha256,
         )
-        attempt = budget.start_attempt(identity)
+        if deadline is not None and clock() >= deadline:
+            budget.stop("session deadline reached")
+        attempt = (
+            budget.start_attempt(identity)
+            if retry_of is None
+            else budget.start_retry(
+                retry_of.report, run_id=identity.run_id, retryable=retryable
+            )
+        )
     except (
         CandidateValidationError,
         BudgetExhausted,
@@ -208,6 +318,9 @@ def run_candidate(
     evaluator_error: Exception | None = None
     evaluator_interrupted: KeyboardInterrupt | None = None
     try:
+        if deadline is not None and clock() >= deadline:
+            budget.stop("session deadline reached")
+            raise TimeoutError("session deadline reached before evaluator call")
         callbacks = {"on_diagnostic_passed": on_diagnostic_passed}
         # Legacy diagnostics/fakes retain their existing call signature. Session
         # orchestration need not know about this opt-in evaluator capability.
@@ -215,7 +328,26 @@ def run_candidate(
             callbacks["on_candidate_correctness_passed"] = (
                 on_candidate_correctness_passed
             )
-        report = evaluator(attempt.run, frozen, contract, **callbacks)
+        # Reuse the existing worker process timeout, without mutating its frozen
+        # configuration. Setup/cleanup and arbitrary Python calls are not bounded.
+        bounded_evaluator = evaluator
+        if (
+            deadline is not None
+            and type(evaluator).__module__ == "evaluator.candidate_execution"
+        ):
+            from evaluator.candidate_execution import ReviewedCandidateEvaluator
+
+            if isinstance(evaluator, ReviewedCandidateEvaluator):
+                remaining = deadline - clock()
+                if remaining <= 0:
+                    budget.stop("session deadline reached")
+                    raise TimeoutError("session deadline reached before worker setup")
+                bounded_evaluator = replace(
+                    evaluator,
+                    timeout_seconds=min(evaluator.timeout_seconds, remaining / 2),
+                )
+        with _measure("evaluation_call", durations, clock):
+            report = bounded_evaluator(attempt.run, frozen, contract, **callbacks)
     except KeyboardInterrupt as exc:
         evaluator_interrupted = exc
     except Exception as exc:  # noqa: BLE001 -- Retain any injected evaluator failure.
