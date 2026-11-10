@@ -1,0 +1,8 @@
+{
+  "parent_candidate_id": "cand_d8749565cc73",
+  "parent_sha256": "19934e29b287d4b3913fc8758c9524168cd0e0ce90dd8546e07e9b8f79c3bd0c",
+  "arithmetic": "Allmoe/ and vocabulary/ files copied byte-for-byte; rootadapter adds scheduling delegation only.",
+  "scheduling_reference": "cand_75ca936df290/implementation.py, adapted with correctness-only reference capture and common8/128output core.",
+  "correctness_reference": "C2 full128 at512/2048/4096 bitexact; C3 actual scheduled path still requires fresh full-model validation.",
+  "claim": "No C3 performance or native correctness result yet."
+}

@@ -1,7 +1,7 @@
 """Exploration triage and passive phase-memory observations; no verdicts.
 
 Phase observations are instrumentation for hypothesis discovery. Confirmation
-uses fresh matched comparisons and the unchanged strict environment checks.
+defaults to strict paging checks; desktop-load confirmation is an explicit opt-in.
 """
 
 from __future__ import annotations
@@ -15,6 +15,7 @@ import threading
 import time
 
 from evaluator.native_baseline import environment_issues
+from evaluator.schemas import ConfirmationSwapPolicy
 
 
 _SWAP_FLAGS = frozenset(
@@ -26,26 +27,36 @@ _SWAP_FLAGS = frozenset(
 )
 
 
-def assess_environment(before, after, *, mode, thermal_states=()):
+def assess_environment(before, after, *, mode, thermal_states=(), confirmation_policy=None):
     if mode not in {"exploration", "confirmation"}:
         raise ValueError("measurement mode must be exploration or confirmation")
+    policy=ConfirmationSwapPolicy(ConfirmationSwapPolicy.STRICT if confirmation_policy is None else confirmation_policy)
+    desktop_load=policy is ConfirmationSwapPolicy.DESKTOP_LOAD
     flags = environment_issues(before, after, swap_policy="paging-aware")
+    if (desktop_load and 'swapins' in before and 'swapins' in after
+            and after['swapins']>before['swapins']):
+        flags.append('swapins increased during request')
     if any(value != 0 for value in thermal_states):
         flags.append("nonnominal thermal state during request")
     flags = sorted(set(flags))
     swap_flags = [value for value in flags if value in _SWAP_FLAGS]
     stop_reasons = [
-        value for value in flags if mode == "confirmation" or value not in _SWAP_FLAGS
+        value for value in flags
+        if (mode == "confirmation" and not desktop_load) or value not in _SWAP_FLAGS
     ]
-    return {
+    result = {
         "mode": mode,
         "flags": flags,
         "swap_affected": bool(swap_flags),
         "continue_pass": not stop_reasons,
         "stop_reasons": stop_reasons,
-        "confirmation_sample_eligible": mode == "confirmation" and not flags,
+        "confirmation_sample_eligible": mode == "confirmation" and not stop_reasons,
         "attribution": "system-wide counters; no identification of model pages",
     }
+    if confirmation_policy is not None:
+        result.update(confirmation_policy=policy.value,
+            environment_policy='desktop_load' if desktop_load else 'strict')
+    return result
 
 
 class ExplorationComplete(RuntimeError):

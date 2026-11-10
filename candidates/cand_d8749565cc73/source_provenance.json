@@ -1,0 +1,71 @@
+{
+  "parents": {
+    "vocabulary": {
+      "candidate_id": "cand_680ac65cf145",
+      "frozen_sha256": "9994db5b687579196de78dbf625d9b23543064432bdc9e096a50d33d90600881"
+    },
+    "moe": {
+      "candidate_id": "cand_4a02c3189b7d",
+      "frozen_sha256": "e4c96fc022079e58d7987f1bec0bdd4defb36589b4fc303efc5a41a5b76e1ed3"
+    }
+  },
+  "unchanged_parent_file_checks": {
+    "vocabulary/reader.py": {
+      "parent_id": "cand_680ac65cf145",
+      "candidate_sha256": "6ebd5dade9c57558d24b7ccfac291d85d76c3810e3146f7058cd67b353b9b66d",
+      "parent_sha256": "6ebd5dade9c57558d24b7ccfac291d85d76c3810e3146f7058cd67b353b9b66d",
+      "byte_identical": true
+    },
+    "vocabulary/codec.py": {
+      "parent_id": "cand_680ac65cf145",
+      "candidate_sha256": "bb8079062c5f9aee76b5e964ef4ebc30bf151fc6d92f0563d4cc5846f5811b5e",
+      "parent_sha256": "bb8079062c5f9aee76b5e964ef4ebc30bf151fc6d92f0563d4cc5846f5811b5e",
+      "byte_identical": true
+    },
+    "vocabulary/implementation.py": {
+      "parent_id": "cand_680ac65cf145",
+      "candidate_sha256": "ae0542d8d64034d7c70608fe7262c190da39aaafd5fc51519f20b4793bc8d4b5",
+      "parent_sha256": "ae0542d8d64034d7c70608fe7262c190da39aaafd5fc51519f20b4793bc8d4b5",
+      "byte_identical": true
+    },
+    "vocabulary/implementation.metal": {
+      "parent_id": "cand_680ac65cf145",
+      "candidate_sha256": "7e4b2fa51eea175b9ad376ce1b6ab9276bca7aac6201733945174b3ee275862e",
+      "parent_sha256": "7e4b2fa51eea175b9ad376ce1b6ab9276bca7aac6201733945174b3ee275862e",
+      "byte_identical": true
+    },
+    "vocabulary/wrapper.py": {
+      "parent_id": "cand_680ac65cf145",
+      "candidate_sha256": "aae74e2f43d62be8197af65ecd1cd5da208409b3cba1136cee062ab5ffeb1beb",
+      "parent_sha256": "aae74e2f43d62be8197af65ecd1cd5da208409b3cba1136cee062ab5ffeb1beb",
+      "byte_identical": true
+    },
+    "moe/up_gate.metal": {
+      "parent_id": "cand_4a02c3189b7d",
+      "candidate_sha256": "6455430ec62efd2473edcbe13ed2467452ffb044343b5570996489322a212050",
+      "parent_sha256": "6455430ec62efd2473edcbe13ed2467452ffb044343b5570996489322a212050",
+      "byte_identical": true
+    },
+    "moe/down_reduce.metal": {
+      "parent_id": "cand_4a02c3189b7d",
+      "candidate_sha256": "0e9818a1e40b7de49e1c45ca220941892c4796b5db1a4f9e5ccfd3892aba0392",
+      "parent_sha256": "0e9818a1e40b7de49e1c45ca220941892c4796b5db1a4f9e5ccfd3892aba0392",
+      "byte_identical": true
+    },
+    "moe/implementation.metal": {
+      "parent_id": "cand_4a02c3189b7d",
+      "candidate_sha256": "87528181cbbf76e2e3c2b66e69fcc5c724f627fd7604f6d78f502a50b7a7f3c3",
+      "parent_sha256": "87528181cbbf76e2e3c2b66e69fcc5c724f627fd7604f6d78f502a50b7a7f3c3",
+      "byte_identical": true
+    }
+  },
+  "declared_changed_paths": [
+    "README.md",
+    "manifest.json",
+    "implementation.py",
+    "wrapper.py",
+    "moe/implementation.py",
+    "moe/route.metal"
+  ],
+  "candidate_status": "mutable_unfrozen_unexecuted"
+}

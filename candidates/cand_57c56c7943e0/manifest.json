@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_57c56c7943e0",
+  "name": "Exact fused decode with asynchronous graph scheduling",
+  "implementation_type": "mlx",
+  "description": "Compose exact single-representation vocabulary and BN8 fused MoE arithmetic with one true greedy step queued while the CPU observes its predecessor. Preserve native MXFP4, BF16 activations and KV cache, routing and greedy generation. Timed requests emit exactly128tokens with127async submissions and no extra model forward; first-token boundary and final GPU drain are accounted. Batch1 specialization; native prefill fallback. No requantization or approximate arithmetic."
+}

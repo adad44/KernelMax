@@ -91,6 +91,23 @@ Use the contract's two measurement modes explicitly:
   swap-outs or swap growth invalidate confirmation. Do not filter affected
   samples and report the remaining subset as a successful confirmation.
 
+The default confirmation policy above remains strict and historical contracts
+remain readable with their original identities. An explicitly frozen desktop-load
+contract may opt into `measurement.confirmation.swap_policy:
+retain_and_flag_desktop_load` together with
+`benchmark.invalidate_on_swap_growth: false`. Only a trusted controller that
+explicitly passes this selected policy may use it. Safari and ordinary desktop
+applications may remain open. Record paging flags/counts/rates, memory pressure,
+allocator/process observations and known workload changes; paging alone neither
+stops this bounded pass nor excludes its samples. Keep all predeclared control
+and comparison observations. Failed controls or repeatability make the result
+inconclusive; do not filter slow/paging samples or rerun unchanged comparisons
+until favorable. Numerical/generation, GPU/runtime, source/checkpoint, AC, thermal
+and request/time hard stops remain. Describe supported gains as applying under
+the recorded desktop workload, including observed paging, without claiming a
+paging-free or isolated-machine result. Never relabel old strict attempts.
+See `DESKTOP_LOAD_CONFIRMATION.md` for activation and reporting requirements.
+
 Observe prefill and decode separately. Retain phase boundary/sample times,
 memory-pressure observations, free/wired/file-backed/compressed memory, swap
 rate and process memory/fault counters when available. These are context and

@@ -1,0 +1,6 @@
+{
+  "candidate_id": "cand_d8749565cc73",
+  "name": "Exact vocabulary residency with native-partition fused MoE",
+  "implementation_type": "mlx",
+  "description": "Compose the prior exact single-representation vocabulary layout with a three-stage post-attention MoE pipeline across24layers. Align the pinned K2880,N32 BF16 router with native MLX eight-way K partition and ordered partial reduction instead of the old single-partition accumulation. Keep native MXFP4 values, BF16 rounding/bias/activation/cache, selected experts and native prefill fallbacks. The trusted controller releases/restores native and packed vocabulary backing representations outside timing and audits all model outputs/routes/tokens/cache. This source alignment is a hypothesis pending actual-input fixtures and full128 complete-model comparisons; no numerical/performance/acceptance result is claimed."
+}

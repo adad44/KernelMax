@@ -35,6 +35,11 @@ class CalibrationStatus(str, Enum):
     CALIBRATED = "calibrated"
 
 
+class ConfirmationSwapPolicy(str, Enum):
+    STRICT = "reject_swap_outs_or_growth"
+    DESKTOP_LOAD = "retain_and_flag_desktop_load"
+
+
 class RunStatus(str, Enum):
     COMPLETED = "completed"
     INTERRUPTED = "interrupted"
@@ -284,15 +289,11 @@ class ExplorationPolicy(_Record):
 
 @dataclass(frozen=True, slots=True)
 class ConfirmationPolicy(_Record):
-    swap_policy: str
+    swap_policy: ConfirmationSwapPolicy
     require_fresh_matched_comparisons: bool
 
     def __post_init__(self) -> None:
         _Record.__post_init__(self)
-        _require(
-            self.swap_policy == "reject_swap_outs_or_growth",
-            "confirmation must reject swap-outs or swap growth",
-        )
         _require(
             self.require_fresh_matched_comparisons,
             "confirmation requires fresh matched comparisons",
@@ -355,8 +356,8 @@ class BenchmarkPolicy(_Record):
             "time resident-model inference with agent activity excluded",
         )
         _require(
-            self.invalidate_on_swap_growth and self.invalidate_on_thermal_change,
-            "swap growth and thermal changes must invalidate confirmation timing",
+            self.invalidate_on_thermal_change,
+            "thermal changes must invalidate confirmation timing",
         )
 
 
@@ -515,6 +516,11 @@ class ExperimentContract(_Record):
     def __post_init__(self) -> None:
         _Record.__post_init__(self)
         _require(self.schema_version == 3, "unsupported schema_version")
+        desktop_load = self.measurement.confirmation.swap_policy is ConfirmationSwapPolicy.DESKTOP_LOAD
+        _require(
+            self.benchmark.invalidate_on_swap_growth is not desktop_load,
+            "confirmation swap policy and invalidate_on_swap_growth must agree; desktop-load requires explicit opt-in",
+        )
         _require(
             not self.acceptance.enabled
             or self.correctness.tolerance_status is CalibrationStatus.CALIBRATED,
