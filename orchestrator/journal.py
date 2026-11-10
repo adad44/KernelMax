@@ -157,6 +157,39 @@ class ExperimentJournal:
             },
         )
 
+    def record_session(self, session_id: str, event: str, payload: dict) -> None:
+        """Append outer-loop accounting without changing run reports."""
+
+        if not isinstance(session_id, str) or not session_id.strip():
+            raise ValueError("session_id must be a non-empty string")
+        if event not in {
+            "started",
+            "round",
+            "policy_proposed",
+            "comparison_started",
+            "search_observation",
+            "search_failure",
+            "policy_proposal_failed",
+            "validation_decision",
+            "confirmation_decision",
+            "policy_promoted",
+            "policy_retained",
+            "comparison_completed",
+            "completed",
+        }:
+            raise ValueError("unknown session accounting event")
+        if type(payload) is not dict:
+            raise TypeError("session payload must be a dictionary")
+        self._append_and_save(
+            None,
+            {
+                "kind": "search_session",
+                "session_id": session_id,
+                "session_event": event,
+                "payload": payload,
+            },
+        )
+
     def _append_and_save(
         self, state: ExperimentState | None, entry: dict[str, Any]
     ) -> None:

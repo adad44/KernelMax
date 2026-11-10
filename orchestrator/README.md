@@ -1,8 +1,9 @@
 # Orchestrator
 
-The proposed [search-policy improvement loop](SEARCH_POLICY_DESIGN.md) describes
-how a future outer loop could evaluate better experiment-selection strategies.
-It is a design for a later phase; the runner behavior below is unchanged.
+The [search-policy improvement loop](SEARCH_POLICY_DESIGN.md) has an outer loop
+in `orchestrator.search` and `orchestrator.search_comparison`. It sits on the
+existing `run_session` inner loop. It does not change candidate acceptance and
+does not by itself establish a measured policy gain.
 
 `run_candidate` connects candidate validation/freezing, evaluator handoff, the
 experiment budget, the state machine and the local journal. The runner does not
@@ -24,6 +25,13 @@ being frozen or evaluated. The session summary distinguishes an explicit
 `ACCEPTED` evaluator verdict from a completed run with no verdict. The latter is
 reported as `completed_no_verdict`, so diagnostic success is never presented as
 candidate approval.
+
+`run_search_loop` is the outer loop around that session. Each round has one
+immutable `SearchPolicy`. The controller applies `ranking`, `avoid_duplicates`,
+`new_hypothesis_fraction`, and `stop_after_unchanged_rounds` before calling
+`run_session`. Omitted keys keep factory order. A trusted proposer may supply a
+higher revision for the next exploratory round. The loop does not promote a
+policy. `run_policy_comparison` is the separate paired confirmation protocol.
 
 The runner validates returned report provenance against the reserved identity,
 keeps that exact `EvaluationReport` object, lets the budget observe it, and

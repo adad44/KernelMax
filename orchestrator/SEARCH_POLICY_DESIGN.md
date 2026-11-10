@@ -45,6 +45,14 @@ Keep it immutable for the duration of each search. Initial policy controls are:
 - Avoiding duplicate proposals using controller-computed identities.
 - Choosing to stop or move to another hypothesis within controller limits.
 
+`run_search_loop` enforces those four controls when the policy includes
+`ranking` (`input_order` or `unseen_first`), `avoid_duplicates`,
+`new_hypothesis_fraction`, or `stop_after_unchanged_rounds`. Omitted keys keep
+factory order, do not filter candidate IDs across rounds, and do not add an
+early stop. The fraction only limits how many new candidate IDs are admitted
+against the attempts still remaining. Candidate IDs are the submission directory
+names the inner session already uses.
+
 Policies cannot change model weights, routing, precision, kernel boundaries,
 correctness checks, task-quality requirements, benchmark inputs, thresholds,
 report contents, or the total budget. They cannot retry final evaluator verdicts
@@ -164,13 +172,17 @@ identity records make the comparison inconclusive.
 ## Implementation sequence
 
 1. Instrument complete-search costs and provenance without changing selection.
-2. Add a bounded search-session controller over `run_candidate`, using a fixed
-   policy and the existing attempt/retry rules. Prove repeated end-to-end runs.
-3. Add a versioned declarative policy interface and a reproducible seeded-random
-   baseline. Keep proposal generation separate from policy execution.
-4. Build paired comparison and reporting against fake evaluator fixtures first;
-   verify deadline enforcement, state isolation, score provenance, failure
-   retention, hidden-partition access, and refusal to promote on missing evidence.
+2. The existing `run_session` is the inner loop: one shared attempt budget over
+   ordered submissions.
+3. `orchestrator.search.run_search_loop` runs immutable declarative policies over
+   that inner session. The controller applies ranking, duplicate avoidance,
+   new-hypothesis allocation, and unchanged-round stopping before each round. A
+   proposed policy may guide the next exploratory round and is not promoted.
+4. `orchestrator.search_comparison.run_policy_comparison` compares one incumbent
+   and one challenger on disjoint task partitions, with paired seeds, equal
+   per-search caps, reserved confirmation capacity, and journaled
+   promotion or retention. Fake-evidence tests exercise this protocol. Real
+   promotion stays unavailable until the evaluator supplies authoritative scores.
 5. Calibrate budgets and statistical gates on training/validation searches, then
    run independent confirmation on the designated hardware. Begin with reviewed
    promotion; automate activation only after its own reviewed contract change.
