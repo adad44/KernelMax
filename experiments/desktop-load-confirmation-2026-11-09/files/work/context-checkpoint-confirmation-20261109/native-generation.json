@@ -1,0 +1,18 @@
+{
+  "source": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-r2-resumed-20261103/run_round.py",
+  "source_sha256": "d791880b17714fbc832da03bae4ecc9ca0e6bdcbd55afb4ac0f23f0b4a2b98e2",
+  "generated_sha256": "47228969d7db3b1a353e33ab777ab5679332d8b1292512b75372b9783f479990",
+  "unchanged_AST": {
+    "Binding": true,
+    "AuditModel": true,
+    "interval": true,
+    "trace": true,
+    "correctness": true
+  },
+  "revision": 2,
+  "previous_proof_path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/resumable-controller-20261104/validation/native-generation-001/original-generation-proof.json",
+  "previous_proof_sha256": "79adbc1d9e84d2e79ff58b7d3508840bbc321ad10337a51efe10449dc2ba3407",
+  "reason": "Stage conclusions until outer native cleanup finishes, then require external exit accounting before a full-goal claim.",
+  "model_or_gpu_run_started": false,
+  "timing_authorized": false
+}

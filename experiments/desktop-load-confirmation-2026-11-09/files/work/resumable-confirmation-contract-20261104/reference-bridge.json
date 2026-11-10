@@ -1,0 +1,28 @@
+{
+  "basis": "Only experiment identity and confirmation paging policy differ. Original reference driver, numerical workload/precision and candidate mathematics are unchanged. Historical strict samples retain their original status.",
+  "candidate_id": "cand_57c56c7943e0",
+  "candidate_sha256": "709f9a33eb632748e472f213157405dca706f42fd547d87494f950919065ef18",
+  "desktop_contract_sha256": "0aabbe4e702fbacc7edade934c24131cd00ab4f9cdb9b90c26aa0255cc1b36b5",
+  "original_contract_path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/checkpoint-ladder-20261030/reference-source-snapshot/repository/kernelmaxxing.yaml",
+  "original_contract_sha256": "2a31bbda3389e91f12e1e17b1cff261b96c5f12cd3ce9af5dc818fd21a50c895",
+  "original_reference_path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/checkpoint-ladder-20261030/original-reference.json",
+  "original_reference_sha256": "87230ee192aea2c097a063a7f062f7ad4b7fe1f98182ef118b80f0f04ccbb1a2",
+  "policy_source_changes": {
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/AGENTS.md": {
+      "desktop_sha256": "6e88f22fe6d7696ea684468794179f77ceca78c574dbf0820c919addf7c62c78",
+      "original_archive_path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/checkpoint-ladder-20261030/reference-source-snapshot/repository/AGENTS.md",
+      "original_sha256": "7bca53cf4fc2ab3f9a637020487f75b4c4a104c5f940954fc71bf181615dce8f"
+    },
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/measurement.py": {
+      "desktop_sha256": "06f6445e9c492aa290cd457a2bf6b28c8dbef160c8af92dc15fa1979b352b518",
+      "original_archive_path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/checkpoint-ladder-20261030/reference-source-snapshot/repository/evaluator/measurement.py",
+      "original_sha256": "61ced09d3af5fb2b43bda3d7085826b2d34d16c1d1d189fecc9a847a2fd1bdcb"
+    },
+    "/Users/alandiaz/Downloads/KernelMaxxxing/kernelmax-first-loop/evaluator/schemas.py": {
+      "desktop_sha256": "2d9fadf93eeb0248b02e8e50d37a152d69ea3eb32128ab746ed49a59c4f9dcc2",
+      "original_archive_path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/checkpoint-ladder-20261030/reference-source-snapshot/repository/evaluator/schemas.py",
+      "original_sha256": "e2a5455f8dc074b8e1c93d14e194c1b3afe06aca0b338ef31d3493f247ba9dfb"
+    }
+  },
+  "schema": 1
+}

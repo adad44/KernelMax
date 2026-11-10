@@ -1,0 +1,7 @@
+{
+  "contexts": [
+    4096
+  ],
+  "max_active_seconds": 21600,
+  "max_starts": 240
+}

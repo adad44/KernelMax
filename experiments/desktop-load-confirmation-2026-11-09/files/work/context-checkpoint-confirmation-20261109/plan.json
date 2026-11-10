@@ -1,0 +1,72 @@
+{
+  "acceptance_enabled": false,
+  "allowed_modes": [
+    "confirm"
+  ],
+  "candidate_cap": 3,
+  "confirmation": {
+    "before_each_request_idle_seconds": 60,
+    "max_request_or_trace_starts": 240,
+    "max_wall_seconds": 21600
+  },
+  "contract_sha256": "0aabbe4e702fbacc7edade934c24131cd00ab4f9cdb9b90c26aa0255cc1b36b5",
+  "desktop_workload": {
+    "Safari_closure_required": false,
+    "agent_process_or_OS_changes": false,
+    "definition": "Safari and ordinary background applications may remain open. Measure under that recorded desktop workload, kept approximately consistent across baseline and candidate trials.",
+    "initial_user_context": "User resumed Nov3 after explicit Nov2 pause. Record current desktop workload; ordinary apps/Safari may remain open. No apps or OS power settings changed by agent.",
+    "known_change_handling": "Record substantial known workload changes. Do not remove slow or paging-affected observations or silently relabel old strict data.",
+    "known_changes_log": "/Users/alandiaz/Downloads/KernelMaxxxing/work/decode-r2-resumed-20261103/workload-events.jsonl"
+  },
+  "existing_candidate_ids": [
+    "cand_680ac65cf145",
+    "cand_d8749565cc73",
+    "cand_57c56c7943e0"
+  ],
+  "new_candidate_ids_allowed_in_this_worker": false,
+  "original_reference": {
+    "path": "/Users/alandiaz/Downloads/KernelMaxxxing/work/checkpoint-ladder-20261030/original-reference.json",
+    "sha256": "87230ee192aea2c097a063a7f062f7ad4b7fe1f98182ef118b80f0f04ccbb1a2"
+  },
+  "overall_goal": "Produce a 4096 receipt for the separately approved per-context audit.",
+  "previous_round_candidates": [
+    "cand_5785998944e5",
+    "cand_4a02c3189b7d",
+    "cand_3f4c02fcfc71"
+  ],
+  "qualification_preparation": {
+    "max_seconds": 1200,
+    "scope": "Before post-load qualification, each native/candidate correctness trace, and strict timing qualification: one bounded CPU-only wait for15continuous native thermal0 seconds. Materialize chosen weight representation first. No GPU/inference, no discarded request or retry. Retain raw thermal/AC observations. Stop after1200s or power/integrity loss. This replaces the fragile fixed600s final-point check that stopped C2 before any timing; actual request thermal rules stay unchanged.",
+    "stable_seconds": 15
+  },
+  "quiet_preparation": {
+    "max_seconds": 180,
+    "poll_seconds": 1,
+    "scope": "Before every primer-plus-measured pair, after 60 seconds fixed idle, require 60 continuous native thermal-0 seconds in a bounded CPU-only wait of at most180 seconds. Identical for both lanes. No failed request retry, no inference during preparation, no paging filter. All original request hard stops remain.",
+    "stable_seconds": 60
+  },
+  "resident_worker_max_wall_seconds": 21600,
+  "resumable_protocol": "/Users/alandiaz/Downloads/KernelMaxxxing/work/resumable-confirmation-contract-20261104/protocol.json",
+  "resumable_protocol_sha256": "adcca90515c41a3c8f9f12bd78671921996734e6cbf3af62d3840e3cf579032e",
+  "round_id": "decode-sprint-r2-20261028",
+  "screen": {
+    "allow_speedup_claims": false,
+    "before_each_request_idle_seconds": 20,
+    "instrumented_phase_memory_requests_per_lane": 1,
+    "max_request_or_trace_starts": 128,
+    "max_wall_seconds": 7200,
+    "order": "alternating_ab_ba",
+    "outputs": 128,
+    "paired_trials": 3,
+    "promotion_signal_ratio": 1.03,
+    "prompt_lengths": [
+      512
+    ],
+    "short_correctness_outputs": 8,
+    "swap_policy": "retain_and_flag",
+    "warmups_per_lane": 1
+  },
+  "selected_candidate_id": "cand_57c56c7943e0",
+  "selected_candidate_sha256": "709f9a33eb632748e472f213157405dca706f42fd547d87494f950919065ef18",
+  "timing_authorized": false
+}
