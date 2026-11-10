@@ -105,6 +105,27 @@ class ExperimentContractTests(unittest.TestCase):
         parsed = ExperimentContract.from_mapping(self.changed("workload", "seed", 43))
         self.assertNotEqual(parsed.sha256, self.contract.sha256)
 
+    def test_strict_contract_keeps_its_historical_identity(self):
+        self.assertEqual(self.contract.sha256,
+            '2a31bbda3389e91f12e1e17b1cff261b96c5f12cd3ce9af5dc818fd21a50c895')
+
+    def test_desktop_confirmation_is_a_separate_explicit_contract(self):
+        data=self.contract.to_dict()
+        data['measurement']['confirmation']['swap_policy']='retain_and_flag_desktop_load'
+        with self.assertRaisesRegex(ContractError,'must agree'):
+            ExperimentContract.from_mapping(data)
+        data['benchmark']['invalidate_on_swap_growth']=False
+        desktop=ExperimentContract.from_mapping(data)
+        self.assertNotEqual(desktop.sha256,self.contract.sha256)
+        self.assertEqual(desktop.model,self.contract.model)
+        self.assertEqual(desktop.workload,self.contract.workload)
+        self.assertEqual(desktop.correctness,self.contract.correctness)
+        self.assertTrue(desktop.measurement.confirmation.require_fresh_matched_comparisons)
+        self.assertTrue(desktop.benchmark.invalidate_on_thermal_change)
+        data['benchmark']['invalidate_on_thermal_change']=False
+        with self.assertRaisesRegex(ContractError,'thermal changes'):
+            ExperimentContract.from_mapping(data)
+
     def test_contract_and_nested_sequences_are_immutable(self):
         with self.assertRaises(FrozenInstanceError):
             self.contract.workload.seed = 7

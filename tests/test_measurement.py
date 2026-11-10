@@ -41,6 +41,60 @@ Pageouts: 40.
 
 
 class MeasurementPolicyTests(unittest.TestCase):
+    def test_desktop_paging_flags_remain_eligible_without_mutating_inputs(self):
+        before=environment()
+        after={**before,'swap_used_mib':107.44,'swapouts':1088,'swapins':250}
+        original=copy.deepcopy((before,after))
+        result=assess_environment(before,after,mode='confirmation',
+            confirmation_policy='retain_and_flag_desktop_load')
+        self.assertEqual(result['flags'],['swap grew during the request',
+            'swapins increased during request','swapouts increased during request'])
+        self.assertTrue(result['continue_pass'])
+        self.assertTrue(result['confirmation_sample_eligible'])
+        self.assertTrue(result['swap_affected'])
+        self.assertEqual(result['stop_reasons'],[])
+        self.assertEqual(result['environment_policy'],'desktop_load')
+        self.assertEqual(result['confirmation_policy'],'retain_and_flag_desktop_load')
+        self.assertEqual((before,after),original)
+
+    def test_explicit_strict_paging_behavior_and_default_shape_are_unchanged(self):
+        before=environment();after={**before,'swapouts':101}
+        default=assess_environment(before,after,mode='confirmation')
+        explicit=assess_environment(before,after,mode='confirmation',
+            confirmation_policy='reject_swap_outs_or_growth')
+        self.assertNotIn('confirmation_policy',default)
+        self.assertFalse(default['continue_pass'])
+        self.assertEqual(default['flags'],explicit['flags'])
+        self.assertFalse(explicit['confirmation_sample_eligible'])
+
+    def test_desktop_hard_stops_remain_hard_with_paging_flags(self):
+        before=environment()
+        for changed in ({'power':"Now drawing from 'Battery Power'"},
+                        {'thermal_state':1},{'swapouts':99}):
+            result=assess_environment(before,{**before,'swap_used_mib':110,**changed},
+                mode='confirmation',confirmation_policy='retain_and_flag_desktop_load')
+            with self.subTest(changed=changed):
+                self.assertFalse(result['continue_pass'])
+                self.assertFalse(result['confirmation_sample_eligible'])
+                self.assertTrue(result['stop_reasons'])
+                self.assertIn('swap grew during the request',result['flags'])
+        transient=assess_environment(before,before,mode='confirmation',thermal_states=[0,1,0],
+            confirmation_policy='retain_and_flag_desktop_load')
+        self.assertFalse(transient['continue_pass'])
+
+    def test_desktop_opt_in_never_promotes_exploration(self):
+        before=environment()
+        result=assess_environment(before,{**before,'swapins':200},mode='exploration',
+            confirmation_policy='retain_and_flag_desktop_load')
+        self.assertTrue(result['continue_pass'])
+        self.assertFalse(result['confirmation_sample_eligible'])
+        self.assertTrue(result['swap_affected'])
+
+    def test_unknown_or_empty_confirmation_policy_is_rejected(self):
+        for policy in ('','desktop','ignore','retain_and_flag'):
+            with self.subTest(policy=policy),self.assertRaises(ValueError):
+                assess_environment(environment(),environment(),mode='confirmation',confirmation_policy=policy)
+
     def test_swap_affected_exploration_finishes_but_cannot_be_confirmation(self):
         before = environment()
         after = {**before, "swap_used_mib": 107.44, "swapouts": 1088}
