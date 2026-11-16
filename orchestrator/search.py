@@ -81,6 +81,107 @@ class SearchPolicy:
         return json.loads(self.specification)
 
 
+ACTIVE_POLICY_NAME = "active.json"
+PREVIOUS_POLICY_NAME = "previous.json"
+
+
+def _policy_document(policy: SearchPolicy) -> bytes:
+    return (
+        json.dumps(
+            {
+                "policy_id": policy.policy_id,
+                "revision": policy.revision,
+                "specification": policy.specification,
+            },
+            sort_keys=True,
+            separators=(",", ":"),
+            allow_nan=False,
+        )
+        + "\n"
+    ).encode("utf-8")
+
+
+def _read_policy_document(path: Path) -> SearchPolicy:
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(f"cannot read policy file {path.name}") from exc
+    if not isinstance(payload, dict):
+        raise ValueError(f"{path.name} must contain a policy object")
+    try:
+        return SearchPolicy(
+            payload["policy_id"], payload["revision"], payload["specification"]
+        )
+    except (KeyError, TypeError, ValueError) as exc:
+        raise ValueError(f"{path.name} is not a stored SearchPolicy") from exc
+
+
+def _atomic_write(path: Path, data: bytes) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(f".{path.name}.tmp")
+    with temporary.open("wb") as handle:
+        handle.write(data)
+        handle.flush()
+        os.fsync(handle.fileno())
+    os.replace(temporary, path)
+
+
+def load_active_policy(store: str | Path) -> SearchPolicy | None:
+    """Return the controller's active policy, or None when the store has none."""
+
+    path = Path(store) / ACTIVE_POLICY_NAME
+    if not path.exists():
+        return None
+    return _read_policy_document(path)
+
+
+def promote_active_policy(store: str | Path, policy: SearchPolicy) -> SearchPolicy | None:
+    """Save the current active policy beside the new one, then make the new one active.
+
+    The returned policy is the one that was active before this write. A failed
+    write leaves the previous active file in place.
+    """
+
+    if not isinstance(policy, SearchPolicy):
+        raise TypeError("policy must be a SearchPolicy")
+    root = Path(store)
+    root.mkdir(parents=True, exist_ok=True)
+    previous = load_active_policy(root)
+    if previous is not None:
+        _atomic_write(root / PREVIOUS_POLICY_NAME, _policy_document(previous))
+    _atomic_write(root / ACTIVE_POLICY_NAME, _policy_document(policy))
+    return previous
+
+
+def withdraw_active_policy(store: str | Path, policy: SearchPolicy) -> None:
+    """Undo a store write when its activation record did not land."""
+
+    active = load_active_policy(store)
+    if active is None or active.sha256 != policy.sha256:
+        return
+    root = Path(store)
+    if (root / PREVIOUS_POLICY_NAME).exists():
+        rollback_active_policy(root)
+        return
+    (root / ACTIVE_POLICY_NAME).unlink()
+
+
+def rollback_active_policy(store: str | Path) -> SearchPolicy:
+    """Swap the active policy with the previous one."""
+
+    root = Path(store)
+    previous_path = root / PREVIOUS_POLICY_NAME
+    if not previous_path.exists():
+        raise ValueError("no previous policy to restore")
+    restored = _read_policy_document(previous_path)
+    active_path = root / ACTIVE_POLICY_NAME
+    displaced = _read_policy_document(active_path) if active_path.exists() else None
+    _atomic_write(active_path, _policy_document(restored))
+    if displaced is not None:
+        _atomic_write(previous_path, _policy_document(displaced))
+    return restored
+
+
 @dataclass(frozen=True, slots=True)
 class SearchRound:
     index: int
@@ -324,7 +425,7 @@ class PolicyControls:
     """Scheduling keys interpreted by the controller. Other keys stay factory data."""
 
     ranking: str = "input_order"
-    avoid_duplicates: bool = False
+    avoid_duplicates: bool = True
     new_hypothesis_fraction: float | None = None
     stop_after_unchanged_rounds: int | None = None
 
@@ -338,7 +439,7 @@ def scheduling_controls(policy: SearchPolicy) -> PolicyControls:
     ranking = controls.get("ranking", "input_order")
     if ranking not in _RANKINGS:
         raise ValueError("ranking must be input_order or unseen_first")
-    avoid = controls.get("avoid_duplicates", False)
+    avoid = controls.get("avoid_duplicates", True)
     if type(avoid) is not bool:
         raise ValueError("avoid_duplicates must be a bool")
     fraction = controls.get("new_hypothesis_fraction", None)
@@ -492,7 +593,7 @@ def callback_failure_category(exc: BaseException) -> str:
 
 def _run_search_loop_impl(
     *,
-    initial_policy: SearchPolicy,
+    initial_policy: SearchPolicy | None,
     candidate_factory: CandidateFactory,
     policy_proposer: PolicyProposer,
     max_rounds: int,
@@ -506,6 +607,7 @@ def _run_search_loop_impl(
     max_elapsed_seconds: float | None = None,
     callback_timeout_seconds: float = 300.0,
     generation_quota: SearchQuota | None = None,
+    policy_store: str | Path | None = None,
     clock: Callable[[], float] = time.monotonic,
 ) -> SearchLoopResult:
     """Run an outer policy-proposal loop around the existing inner session.
@@ -519,8 +621,18 @@ def _run_search_loop_impl(
     policy.
     """
 
+    policy_source = "caller"
+    if policy_store is not None:
+        if not isinstance(policy_store, (str, Path)):
+            raise TypeError("policy_store must be a path or None")
+        stored = load_active_policy(policy_store)
+        if stored is not None:
+            initial_policy = stored
+            policy_source = "active_store"
     if not isinstance(initial_policy, SearchPolicy):
-        raise TypeError("initial_policy must be a SearchPolicy")
+        raise TypeError(
+            "initial_policy is required when the policy store has no active policy"
+        )
     scheduling_controls(initial_policy)
     if not callable(candidate_factory) or not callable(policy_proposer):
         raise TypeError("candidate_factory and policy_proposer must be callable")
@@ -594,6 +706,7 @@ def _run_search_loop_impl(
             "attempts_started": budget.attempts_started,
             "max_elapsed_seconds": max_elapsed_seconds,
             "contract_sha256": contract.sha256,
+            "policy_source": policy_source,
             "initial_policy_id": initial_policy.policy_id,
             "initial_policy_revision": initial_policy.revision,
             "initial_policy_sha256": initial_policy.sha256,
@@ -648,11 +761,6 @@ def _run_search_loop_impl(
                         generation_quota.consume()
                     for _ in range(exc.attempts):
                         generation_quota.consume_attempt()
-                elif isinstance(exc, CallbackTimeout):
-                    for _ in range(generation_quota.maximum - generation_quota.used):
-                        generation_quota.consume()
-                    for _ in range(generation_quota.max_attempts - generation_quota.attempts_used):
-                        generation_quota.consume_attempt()
             reason = f"candidate generation failed: {type(exc).__name__}: {exc}"
             budget.stop(reason)
             finished = now()
@@ -667,6 +775,7 @@ def _run_search_loop_impl(
                     "policy_sha256": policy.sha256,
                     "candidate_count": 0,
                     "error": reason,
+                    "usage_observed": not isinstance(exc, CallbackTimeout),
                 },
             )
             stop_reason = reason
@@ -915,7 +1024,7 @@ def _run_search_loop_impl(
 
 def run_search_loop(
     *,
-    initial_policy: SearchPolicy,
+    initial_policy: SearchPolicy | None = None,
     candidate_factory: CandidateFactory,
     policy_proposer: PolicyProposer,
     max_rounds: int,
@@ -929,6 +1038,7 @@ def run_search_loop(
     max_elapsed_seconds: float | None = None,
     callback_timeout_seconds: float = 300.0,
     generation_quota: SearchQuota | None = None,
+    policy_store: str | Path | None = None,
     clock: Callable[[], float] = time.monotonic,
 ) -> SearchLoopResult:
     """Run policy rounds over the existing shared-budget inner session."""
@@ -950,5 +1060,6 @@ def run_search_loop(
         max_elapsed_seconds=max_elapsed_seconds,
         callback_timeout_seconds=callback_timeout_seconds,
         generation_quota=generation_quota,
+        policy_store=policy_store,
         clock=clock,
     )

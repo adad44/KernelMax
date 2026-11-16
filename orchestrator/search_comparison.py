@@ -14,6 +14,7 @@ import math
 import time
 import uuid
 from collections.abc import Callable, Sequence
+from pathlib import Path
 from dataclasses import dataclass
 from enum import Enum
 
@@ -24,6 +25,8 @@ from orchestrator.search import (
     SearchPolicy,
     _invoke_with_timeout,
     callback_failure_category,
+    promote_active_policy,
+    withdraw_active_policy,
 )
 
 
@@ -272,7 +275,6 @@ class ComparisonRules:
     minimum_paired_seeds: int = 2
     minimum_gain_fraction: float = 0.01
     maximum_task_regression_fraction: float = 0.02
-    confidence_z: float = 1.96
     task_weights: tuple[tuple[str, float], ...] = ()
 
     def __post_init__(self) -> None:
@@ -284,8 +286,6 @@ class ComparisonRules:
             value = getattr(self, name)
             if type(value) not in (int, float) or not math.isfinite(value) or not 0 <= value < 1:
                 raise ValueError(f"{name} must be finite and in [0, 1)")
-        if type(self.confidence_z) not in (int, float) or not math.isfinite(self.confidence_z) or self.confidence_z <= 0:
-            raise ValueError("confidence_z must be finite and positive")
         names = [name for name, _ in self.task_weights]
         if len(names) != len(set(names)) or any(not name for name in names):
             raise ValueError("task_weights must have unique non-empty task IDs")
@@ -306,11 +306,9 @@ class ComparisonResult:
     validation_decision: str
     confirmation_decision: str
     final_decision: str
-    validation_mean_log_gain: float | None
-    validation_lower_log_gain: float | None
+    validation_median_log_gain: float | None
     validation_task_results: tuple["TaskComparison", ...]
-    confirmation_mean_log_gain: float | None
-    confirmation_lower_log_gain: float | None
+    confirmation_median_log_gain: float | None
     confirmation_task_results: tuple["TaskComparison", ...]
     elapsed_seconds: float
     attempts_used: int
@@ -348,21 +346,25 @@ class SearchPolicyProposal:
 @dataclass(frozen=True, slots=True)
 class TaskComparison:
     task_id: str
-    mean_log_gain: float
-    standard_error: float
-    lower_confidence_log_gain: float
+    median_log_gain: float
     regression_limit_log_gain: float
     decision: str
 
     def to_dict(self) -> dict:
         return {
             "task_id": self.task_id,
-            "mean_log_gain": self.mean_log_gain,
-            "standard_error": self.standard_error,
-            "lower_confidence_log_gain": self.lower_confidence_log_gain,
+            "median_log_gain": self.median_log_gain,
             "regression_limit_log_gain": self.regression_limit_log_gain,
             "decision": self.decision,
         }
+
+
+def _median(values: Sequence[float]) -> float:
+    ordered = sorted(values)
+    middle = len(ordered) // 2
+    if len(ordered) % 2 == 1:
+        return ordered[middle]
+    return (ordered[middle - 1] + ordered[middle]) / 2
 
 
 def _partitioned_tasks(
@@ -387,55 +389,39 @@ def _partitioned_tasks(
 def _paired_summary(
     incumbent: Sequence[SearchObservation], challenger: Sequence[SearchObservation],
     task_ids: Sequence[str], seeds: Sequence[int], rules: ComparisonRules,
-) -> tuple[str, float | None, float | None, tuple[TaskComparison, ...]]:
-    task_means: list[tuple[str, float, float, int]] = []
+) -> tuple[str, float | None, tuple[TaskComparison, ...]]:
+    task_medians: list[tuple[str, float]] = []
     for task_id in task_ids:
         deltas = []
         for seed in seeds:
             left = next((x for x in incumbent if x.task.task_id == task_id and x.seed == seed), None)
             right = next((x for x in challenger if x.task.task_id == task_id and x.seed == seed), None)
             if left is None or right is None or left.evidence.score is None or right.evidence.score is None:
-                return "inconclusive", None, None, ()
+                return "inconclusive", None, ()
             deltas.append(math.log(right.evidence.score / left.evidence.score))
         if len(deltas) < rules.minimum_paired_seeds:
-            return "inconclusive", None, None, ()
-        mean = sum(deltas) / len(deltas)
-        variance = sum((value - mean) ** 2 for value in deltas) / (len(deltas) - 1)
-        task_means.append((task_id, mean, math.sqrt(variance / len(deltas)), len(deltas)))
+            return "inconclusive", None, ()
+        task_medians.append((task_id, _median(deltas)))
 
     weights = dict(rules.task_weights)
     if weights and not set(task_ids).issubset(weights):
         raise ValueError("task_weights must specify every compared task")
-    raw_weights = [weights.get(task_id, 1.0) for task_id in task_ids]
-    total_weight = sum(raw_weights)
-    normalized = [value / total_weight for value in raw_weights]
-    mean = sum(weight * row[1] for weight, row in zip(normalized, task_means))
-    standard_error = math.sqrt(
-        sum((weight * row[2]) ** 2 for weight, row in zip(normalized, task_means))
-    )
-    lower = mean - rules.confidence_z * standard_error
     regression_floor = math.log1p(-rules.maximum_task_regression_fraction)
     task_results = tuple(
         TaskComparison(
-            task_id=row[0],
-            mean_log_gain=row[1],
-            standard_error=row[2],
-            lower_confidence_log_gain=row[1] - rules.confidence_z * row[2],
+            task_id=task_id,
+            median_log_gain=median,
             regression_limit_log_gain=regression_floor,
-            decision=(
-                "reject_regression"
-                if row[1] - rules.confidence_z * row[2] < regression_floor
-                else "pass"
-            ),
+            decision="reject_regression" if median < regression_floor else "pass",
         )
-        for row in task_means
+        for task_id, median in task_medians
     )
+    overall = _median([median for _, median in task_medians])
     if any(row.decision == "reject_regression" for row in task_results):
-        return "reject", mean, lower, task_results
-    gain_floor = math.log1p(rules.minimum_gain_fraction)
-    if lower > gain_floor:
-        return "pass", mean, lower, task_results
-    return "reject", mean, lower, task_results
+        return "reject", overall, task_results
+    if overall >= math.log1p(rules.minimum_gain_fraction):
+        return "pass", overall, task_results
+    return "reject", overall, task_results
 
 
 def _record(journal: ExperimentJournal, comparison_id: str, event: str, payload: dict) -> None:
@@ -457,6 +443,7 @@ def run_policy_comparison(
     rules: ComparisonRules,
     journal: ExperimentJournal,
     comparison_id: str | None = None,
+    policy_store: str | Path | None = None,
     clock: Callable[[], float] = time.monotonic,
 ) -> ComparisonResult:
     """Train a proposal, compare it on paired validation, then confirm on test.
@@ -471,6 +458,8 @@ def run_policy_comparison(
         raise TypeError("rules and journal have invalid types")
     if not callable(proposer) or not callable(executor) or not callable(clock):
         raise TypeError("proposer, executor, and clock must be callable")
+    if policy_store is not None and not isinstance(policy_store, (str, Path)):
+        raise TypeError("policy_store must be a path or None")
     for label, seeds in (
         ("training_seeds", training_seeds),
         ("validation_seeds", validation_seeds),
@@ -547,7 +536,7 @@ def run_policy_comparison(
     challenger: SearchPolicy | None = None
     validation_decision = confirmation_decision = "not_run"
     final_decision = "inconclusive"
-    validation_mean = validation_lower = confirmation_mean = confirmation_lower = None
+    validation_median = confirmation_median = None
     validation_task_results: tuple[TaskComparison, ...] = ()
     confirmation_task_results: tuple[TaskComparison, ...] = ()
     stop_reason = None
@@ -587,7 +576,6 @@ def run_policy_comparison(
             "minimum_paired_seeds": rules.minimum_paired_seeds,
             "minimum_gain_fraction": rules.minimum_gain_fraction,
             "maximum_task_regression_fraction": rules.maximum_task_regression_fraction,
-            "confidence_z": rules.confidence_z,
             "task_weights": dict(rules.task_weights),
         },
     })
@@ -632,11 +620,6 @@ def run_policy_comparison(
                     quota.consume()
                 for _ in range(exc.attempts):
                     quota.consume_attempt()
-            elif isinstance(exc, CallbackTimeout):
-                for _ in range(budget.per_search.max_generation_units - quota.used):
-                    quota.consume()
-                for _ in range(budget.per_search.max_attempts - quota.attempts_used):
-                    quota.consume_attempt()
             attempts_used += quota.attempts_used
             generation_used += quota.used
             record("search_failure", {
@@ -652,6 +635,7 @@ def run_policy_comparison(
                 "failure": str(exc),
                 "attempts_used": quota.attempts_used,
                 "generation_units_used": quota.used,
+                "usage_observed": not isinstance(exc, CallbackTimeout),
                 "elapsed_seconds": measured,
                 "remaining_elapsed_seconds": max(0.0, budget.max_elapsed_seconds - elapsed_used),
                 "remaining_attempts": budget.max_attempts - attempts_used,
@@ -764,13 +748,12 @@ def run_policy_comparison(
         )
         validation_left = [x for x in validation_observations if x.policy_sha256 == incumbent.sha256]
         validation_right = [x for x in validation_observations if x.policy_sha256 == challenger.sha256]
-        validation_decision, validation_mean, validation_lower, validation_task_results = _paired_summary(
+        validation_decision, validation_median, validation_task_results = _paired_summary(
             validation_left, validation_right, [t.task_id for t in validation], validation_seeds, rules
         )
         record("validation_decision", {
             "decision": validation_decision,
-            "mean_log_gain": validation_mean,
-            "lower_confidence_log_gain": validation_lower,
+            "median_log_gain": validation_median,
             "task_results": [item.to_dict() for item in validation_task_results],
         })
         if validation_decision != "pass":
@@ -787,7 +770,7 @@ def run_policy_comparison(
             )
             confirmation_left = [x for x in confirmation_observations if x.policy_sha256 == incumbent.sha256]
             confirmation_right = [x for x in confirmation_observations if x.policy_sha256 == challenger.sha256]
-            confirmation_decision, confirmation_mean, confirmation_lower, confirmation_task_results = _paired_summary(
+            confirmation_decision, confirmation_median, confirmation_task_results = _paired_summary(
                 confirmation_left,
                 confirmation_right,
                 [t.task_id for t in confirmation],
@@ -796,8 +779,7 @@ def run_policy_comparison(
             )
             record("confirmation_decision", {
                 "decision": confirmation_decision,
-                "mean_log_gain": confirmation_mean,
-                "lower_confidence_log_gain": confirmation_lower,
+                "median_log_gain": confirmation_median,
                 "task_results": [item.to_dict() for item in confirmation_task_results],
             })
             if confirmation_decision == "pass":
@@ -844,11 +826,9 @@ def run_policy_comparison(
         validation_decision,
         confirmation_decision,
         final_decision,
-        validation_mean,
-        validation_lower,
+        validation_median,
         validation_task_results,
-        confirmation_mean,
-        confirmation_lower,
+        confirmation_median,
         confirmation_task_results,
         elapsed,
         attempts_used,
@@ -872,14 +852,52 @@ def run_policy_comparison(
             result.comparison_id, result.incumbent, result.challenger, result.training,
             result.validation, result.confirmation, result.validation_seeds,
             result.confirmation_seeds, result.validation_decision,
-            result.confirmation_decision, "inconclusive", result.validation_mean_log_gain,
-            result.validation_lower_log_gain, result.validation_task_results,
-            result.confirmation_mean_log_gain, result.confirmation_lower_log_gain,
+            result.confirmation_decision, "inconclusive", result.validation_median_log_gain,
+            result.validation_task_results, result.confirmation_median_log_gain,
             result.confirmation_task_results, result.elapsed_seconds,
             result.attempts_used, result.generation_units_used,
             "comparison journal failed; provenance incomplete",
         )
         if promoted:
+            try:
+                record("policy_retained", {
+                    "incumbent_policy_id": incumbent.policy_id,
+                    "revision": incumbent.revision,
+                    "sha256": incumbent.sha256,
+                    "reason": result.stop_reason,
+                    "withdrawn": True,
+                })
+            except Exception:
+                pass
+        return result
+    if (
+        result.final_decision == "promote"
+        and result.challenger is not None
+        and policy_store is not None
+    ):
+        try:
+            promote_active_policy(policy_store, result.challenger)
+            record("policy_activated", {
+                "policy_id": result.challenger.policy_id,
+                "revision": result.challenger.revision,
+                "sha256": result.challenger.sha256,
+                "policy_store": str(policy_store),
+            })
+        except Exception as exc:
+            try:
+                withdraw_active_policy(policy_store, result.challenger)
+            except Exception:
+                pass
+            result = ComparisonResult(
+                result.comparison_id, result.incumbent, result.challenger, result.training,
+                result.validation, result.confirmation, result.validation_seeds,
+                result.confirmation_seeds, result.validation_decision,
+                result.confirmation_decision, "inconclusive", result.validation_median_log_gain,
+                result.validation_task_results, result.confirmation_median_log_gain,
+                result.confirmation_task_results, result.elapsed_seconds,
+                result.attempts_used, result.generation_units_used,
+                f"active policy was not saved: {exc}",
+            )
             try:
                 record("policy_retained", {
                     "incumbent_policy_id": incumbent.policy_id,

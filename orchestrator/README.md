@@ -29,9 +29,12 @@ candidate approval.
 `run_search_loop` is the outer loop around that session. Each round has one
 immutable `SearchPolicy`. The controller applies `ranking`, `avoid_duplicates`,
 `new_hypothesis_fraction`, and `stop_after_unchanged_rounds` before calling
-`run_session`. Omitted keys keep factory order. A trusted proposer may supply a
-higher revision for the next exploratory round. The loop does not promote a
-policy. `run_policy_comparison` is the separate paired confirmation protocol.
+`run_session`. Omitted `avoid_duplicates` means duplicates are skipped. The other
+three keys stay optional. A trusted proposer may supply a higher revision for
+the next exploratory round. That proposal is not a promotion. A confirmed
+`run_policy_comparison` writes the controller's active policy file and keeps the
+previous policy beside it. The next search that is given that store starts from
+the active file.
 
 The runner validates returned report provenance against the reserved identity,
 keeps that exact `EvaluationReport` object, lets the budget observe it, and

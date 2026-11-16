@@ -13,6 +13,9 @@ from orchestrator.search import (
     CallbackTimeout,
     SearchPolicy,
     _invoke_with_timeout,
+    load_active_policy,
+    promote_active_policy,
+    rollback_active_policy,
     run_search_loop,
     schedule_candidates,
     scheduling_controls,
@@ -103,6 +106,22 @@ def fake_eval(run, frozen, contract, *, on_diagnostic_passed=None):
         status=RunStatus.COMPLETED,
         errors=(),
         verdict=None,
+    )
+
+
+def store_proposer(incumbent, training):
+    return SearchPolicyProposal(
+        SearchPolicy.create(
+            "challenger",
+            incumbent.revision + 1,
+            {
+                "ranking": "input_order",
+                "candidate_paths": list(incumbent.controls["candidate_paths"]),
+                "note": "confirmed ordering",
+            },
+        ),
+        "training outcomes indicate the old ordering wastes attempts",
+        "improve first-verified-result rate without relaxing correctness gates",
     )
 
 
@@ -393,7 +412,12 @@ class OrchestratorSearchTests(unittest.TestCase):
         self.assertEqual(result.final_decision, "inconclusive")
         self.assertIsNone(result.promoted_policy)
         self.assertIn("CallbackTimeout", result.stop_reason)
-        self.assertEqual((result.attempts_used, result.generation_units_used), (1, 0))
+        self.assertEqual((result.attempts_used, result.generation_units_used), (0, 0))
+        failure = next(
+            item for item in self.journal.read_history()
+            if item.get("session_event") == "search_failure"
+        )
+        self.assertIs(failure["payload"]["usage_observed"], False)
         self.assertTrue(any(
             item.get("session_event") == "search_failure"
             for item in self.journal.read_history()
@@ -473,6 +497,12 @@ class OrchestratorSearchTests(unittest.TestCase):
             attempts_remaining=4,
             controls=controls,
         )
+        self.assertTrue(scheduling_controls(SearchPolicy.create("baseline", 1, {})).avoid_duplicates)
+        self.assertFalse(
+            scheduling_controls(
+                SearchPolicy.create("baseline", 1, {"avoid_duplicates": False})
+            ).avoid_duplicates
+        )
         self.assertEqual([Path(path).name for path in decision.selected], ["b", "c"])
         self.assertEqual(decision.skipped_duplicates, ("a",))
         self.assertEqual(decision.deferred_candidates, ("d",))
@@ -515,6 +545,7 @@ class OrchestratorSearchTests(unittest.TestCase):
         second = write_candidate(candidates)
         policy = SearchPolicy.create("baseline", 1, {
             "ranking": "input_order",
+            "avoid_duplicates": False,
             "candidate_paths": [str(first)],
             "next_paths": [str(first), str(second)],
         })
@@ -600,6 +631,93 @@ class OrchestratorSearchTests(unittest.TestCase):
         self.assertEqual(result.final_decision, "promote")
         self.assertGreater(result.elapsed_seconds, 0)
         self.assertLess(result.elapsed_seconds, 30)
+
+    def test_confirmed_policy_is_the_next_search_and_can_be_rolled_back(self):
+        candidates = self.root / "candidates-store"
+        chosen = write_candidate(candidates)
+        ignored = write_candidate(candidates)
+        store = self.root / "policy-store"
+        incumbent = SearchPolicy.create("incumbent", 1, {
+            "ranking": "input_order",
+            "candidate_paths": [str(chosen)],
+        })
+        promote_active_policy(store, incumbent)
+        rules = ComparisonRules(
+            minimum_paired_seeds=2,
+            minimum_gain_fraction=0.01,
+            maximum_task_regression_fraction=0.02,
+            task_weights=(("val-store", 1.0), ("test-store", 1.0)),
+        )
+        result = run_policy_comparison(
+            incumbent=incumbent,
+            training_tasks=(make_task("train-store", TaskPartition.TRAINING, 41),),
+            validation_tasks=(make_task("val-store", TaskPartition.VALIDATION, 42),),
+            confirmation_tasks=(make_task("test-store", TaskPartition.CONFIRMATION, 43),),
+            training_seeds=(141,),
+            validation_seeds=(241, 242),
+            confirmation_seeds=(341, 342),
+            proposer=store_proposer,
+            executor=comparison_executor,
+            budget=ComparisonBudget(200, 30, 60, SearchLimits(5, 1, 2)),
+            rules=rules,
+            journal=self.journal,
+            policy_store=store,
+        )
+        self.assertEqual(result.final_decision, "promote", result.stop_reason)
+        self.assertEqual(load_active_policy(store).policy_id, "challenger")
+        self.assertEqual(load_active_policy(store).sha256, result.challenger.sha256)
+        previous = json.loads((store / "previous.json").read_text(encoding="utf-8"))
+        self.assertEqual(previous["policy_id"], "incumbent")
+        self.assertTrue(any(
+            item.get("session_event") == "policy_activated"
+            for item in self.journal.read_history()
+        ))
+        search = run_search_loop(
+            initial_policy=SearchPolicy.create("ignored", 1, {
+                "candidate_paths": [str(ignored)],
+            }),
+            candidate_factory=generate_policy_paths,
+            policy_proposer=stop_proposing,
+            max_rounds=1,
+            evaluator=fake_eval,
+            contract=self.contract,
+            budget=ExperimentBudget(max_attempts=1),
+            journal=self.journal,
+            frozen_root=self.root / "frozen-store",
+            candidates_root=candidates,
+            policy_store=store,
+            callback_timeout_seconds=10,
+        )
+        self.assertEqual(search.rounds[0].policy.policy_id, "challenger", search.summary())
+        self.assertEqual(search.rounds[0].session.submissions[0].candidate_id, chosen.name)
+        restored = rollback_active_policy(store)
+        self.assertEqual(restored.policy_id, "incumbent")
+        self.assertEqual(load_active_policy(store).sha256, incumbent.sha256)
+        displaced = json.loads((store / "previous.json").read_text(encoding="utf-8"))
+        self.assertEqual(displaced["policy_id"], "challenger")
+
+    def test_retention_does_not_replace_the_active_policy(self):
+        store = self.root / "policy-store-retain"
+        incumbent = SearchPolicy.create("incumbent", 1, {"ranking": "old"})
+        promote_active_policy(store, incumbent)
+        result = run_policy_comparison(
+            incumbent=incumbent,
+            training_tasks=(make_task("train-retain", TaskPartition.TRAINING, 44),),
+            validation_tasks=(make_task("val-retain", TaskPartition.VALIDATION, 45),),
+            confirmation_tasks=(make_task("test-retain", TaskPartition.CONFIRMATION, 46),),
+            training_seeds=(151,),
+            validation_seeds=(251, 252),
+            confirmation_seeds=(351, 352),
+            proposer=comparison_proposer,
+            executor=failed_gain_executor,
+            budget=ComparisonBudget(200, 30, 60, SearchLimits(5, 1, 2)),
+            rules=ComparisonRules(task_weights=(("val-retain", 1.0), ("test-retain", 1.0))),
+            journal=self.journal,
+            policy_store=store,
+        )
+        self.assertEqual(result.final_decision, "retain_incumbent")
+        self.assertEqual(load_active_policy(store).sha256, incumbent.sha256)
+        self.assertFalse((store / "previous.json").exists())
 
 
 if __name__ == "__main__":

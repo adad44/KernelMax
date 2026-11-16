@@ -173,6 +173,8 @@ class ExperimentJournal:
             "validation_decision",
             "confirmation_decision",
             "policy_promoted",
+            "policy_activated",
+            "policy_rolled_back",
             "policy_retained",
             "comparison_completed",
             "completed",

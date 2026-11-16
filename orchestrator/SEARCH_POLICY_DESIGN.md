@@ -47,11 +47,11 @@ Keep it immutable for the duration of each search. Initial policy controls are:
 
 `run_search_loop` enforces those four controls when the policy includes
 `ranking` (`input_order` or `unseen_first`), `avoid_duplicates`,
-`new_hypothesis_fraction`, or `stop_after_unchanged_rounds`. Omitted keys keep
-factory order, do not filter candidate IDs across rounds, and do not add an
-early stop. The fraction only limits how many new candidate IDs are admitted
-against the attempts still remaining. Candidate IDs are the submission directory
-names the inner session already uses.
+`new_hypothesis_fraction`, or `stop_after_unchanged_rounds`. Duplicate avoidance
+is on unless `avoid_duplicates` is explicitly false. The other omitted keys keep
+factory order and do not add an early stop. The fraction only limits how many
+new candidate IDs are admitted against the attempts still remaining. Candidate
+IDs are the submission directory names the inner session already uses.
 
 Policies cannot change model weights, routing, precision, kernel boundaries,
 correctness checks, task-quality requirements, benchmark inputs, thresholds,
@@ -68,9 +68,11 @@ and baseline rules; comparisons cannot mix different experiment contracts.
 
 Only trusted code records policy identities, enforces bounds, evaluates results,
 and promotes a reviewed policy. Proposing agents cannot grade or activate their
-own proposals. Promotion changes the policy for subsequent searches; it never
-replaces a policy during a running experiment. Keep the prior version available
-for rollback, and journal both promotion and rollback decisions.
+own proposals. A comparison writes the controller's `active.json` only after
+confirmation is journaled. It first copies the current active policy to
+`previous.json`, so a bad promotion can be swapped back. The next
+`run_search_loop` given that store starts from `active.json`. Promotion never
+replaces a policy during a running experiment.
 
 ## Outer-loop protocol
 
@@ -84,8 +86,11 @@ for rollback, and journal both promotion and rollback decisions.
    machine; avoid concurrent searches and reset controller state between runs.
 5. Select a challenger using validation results. Freeze that version before
    independent confirmation on untouched test tasks and seeds.
-6. Promote only if confirmation satisfies the predeclared improvement and
-   regression rules. Otherwise retain the incumbent and all comparison records.
+6. Promote only if the paired median gain meets the predeclared minimum and no
+   task median falls below the regression cap. Too few pairs, a missing score,
+   or an invalid environment stays inconclusive. Otherwise retain the incumbent
+   and all comparison records. A promotion is the active policy file, not a
+   change to the model or the budget.
 
 For example, training history might motivate requiring a profiling step after
 repeated failures attributed to the same memory-layout assumption. The challenger
@@ -178,11 +183,15 @@ identity records make the comparison inconclusive.
    that inner session. The controller applies ranking, duplicate avoidance,
    new-hypothesis allocation, and unchanged-round stopping before each round. A
    proposed policy may guide the next exploratory round and is not promoted.
+   When a policy store is supplied and it already has an active policy, that
+   file is the starting policy.
 4. `orchestrator.search_comparison.run_policy_comparison` compares one incumbent
    and one challenger on disjoint task partitions, with paired seeds, equal
    per-search caps, reserved confirmation capacity, and journaled
-   promotion or retention. Fake-evidence tests exercise this protocol. Real
-   promotion stays unavailable until the evaluator supplies authoritative scores.
+   promotion or retention. After a completed promotion it writes the active
+   policy and keeps the previous one. Fake-evidence tests exercise this
+   protocol. A stored policy is still not a measured speedup until the
+   evaluator supplies authoritative scores.
 5. Calibrate budgets and statistical gates on training/validation searches, then
    run independent confirmation on the designated hardware. Begin with reviewed
    promotion; automate activation only after its own reviewed contract change.
